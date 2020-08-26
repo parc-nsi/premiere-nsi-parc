@@ -4,11 +4,11 @@
 
 Tous les documents disponibles sur ce dépôt Github sont placés sous licence [Creative Commons Attribution Share Alike 4.0 International](https://github.com/frederic-junier/ISN/blob/master/LICENSE)
 
-# Jupyter Hub
 
-Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers ressources ou corrige) du dépôt en mode interactif, cliquez sur le lien Binder ci-dessous.
+# Programme 
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master)
+* Le  [programme officiel](Programme/PPL18_Numerique-sciences-informatiques_SPE_1eGen_1025707.pdf)
+* [Carte mentale du programme](Programme/PremièreNSI.jpg)
 
 # Ressources :
 
@@ -29,6 +29,13 @@ Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers
 
 - [repl.it](https://repl.it/languages/python3)
 - [Pythontutor](http://pythontutor.com/)  : permet de visualiser l'évolution des variables
+
+### Jupyter Hub
+
+Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers ressources ou corrige) du dépôt en mode interactif, cliquez sur le lien Binder ci-dessous.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master)
+
 
 ## Langages de programmation
 
