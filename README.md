@@ -1,4 +1,4 @@
-__Bienvenue sur le site public pour les élèves de première NSI au lycée du Parc de Lyon__
+# Bienvenue sur le site public pour les élèves de première NSI au lycée du Parc de Lyon
 
 # Licence
 
