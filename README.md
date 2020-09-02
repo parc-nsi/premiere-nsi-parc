@@ -37,8 +37,19 @@ Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master)
 
 
-## Langages de programmation
+### Ressources 
 
 * Conférence de Judicael Courant : "Une brève histoire des langages de programmation"
 
 [Captation vidéo de la conférence](https://tube.ac-lyon.fr/videos/watch/2f7065e3-13c7-432c-80cc-94e769d38272)
+
+
+### Chapitres
+
+
+* [Chapitre1](chapitre1/chapitre1.md)
+
+
+
+
+
