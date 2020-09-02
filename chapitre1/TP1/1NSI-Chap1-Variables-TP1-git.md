@@ -6,12 +6,6 @@
     bord](#etat-dun-programme-effets-de-bord)
   - [Utiliser une bibliothèque](#utiliser-une-bibliothèque)
 
-gr— title : TP1 Variables et affectations subtitle: Thème 6 langages de
-programmation author : Première NSI, [Lycée du
-Parc](https://frederic-junier.org/) numbersections: true fontsize: 11pt
-geometry: - top=20mm - left=20mm - right=20mm - heightrounded  
-—
-
 <!-- Définition des hyperliens  -->
 
 # Crédits
@@ -190,7 +184,8 @@ print("La température en degrés Celsius est de ", d)
     [Python](https://docs.python.org/3/tutorial/datastructures.html) ne
     peut réaliser l’opération demandée. On dit que l’interpréteur
     [Python](https://docs.python.org/3/tutorial/datastructures.html) a
-    levé une [exception]().
+    levé une
+    [exception](https://docs.python.org/3.5/tutorial/errors.html).
 
 <!-- end list -->
 
@@ -263,16 +258,15 @@ print("a = ", a, " et b = ", b)
 | a = b                              |            |            |                                        |
 | b = a                              |            |            |                                        |
 | print ( “a =” , a, " et b = " , b) |            |            |                                        |
-|                                    |            |            |                                        |
 
-3.  Proposer une modification du programme qui permute les valeurs des
+1.  Proposer une modification du programme qui permute les valeurs des
     variables `a` et `b` saisies en entrée.
     
     Démontrer que le programme est correct en complétant un tableau
     d’état de ce nouveau programme qui utilise des valeurs
     indéterminées `x` et `y` pour les variables `a` et `b` en entrée.
 
-4.  Proposer une modification du programme qui permute les valeurs des
+2.  Proposer une modification du programme qui permute les valeurs des
     variables `a` et `b` saisies en entrée, sans utiliser de variable
     supplémentaire.
 
@@ -380,6 +374,7 @@ goto(100, 0)
 goto(100, 100)
 goto(0,100)
 goto(0,0)
+exitonclick()  #permet de fermer la fenêtre de tracé proprement
 ```
 
 **Exercice 6**
@@ -413,9 +408,10 @@ left(120)
 forward(60)
 right(90)
 circle(60,150)
+exitonclick() 
 ```
 
-4.  Compléter le programme pour afficher la figure de gauche.
+1.  Compléter le programme pour afficher la figure de gauche.
 
 ![clef](images/clef.png)  
 & ![clef](images/triangle_pyramide.png)  
