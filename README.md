@@ -44,7 +44,7 @@ Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers
 [Captation vidéo de la conférence](https://tube.ac-lyon.fr/videos/watch/2f7065e3-13c7-432c-80cc-94e769d38272)
 
 
-### Chapitres
+# Chapitres
 
 
 * [Chapitre1](chapitre1/chapitre1.md)
