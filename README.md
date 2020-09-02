@@ -47,7 +47,7 @@ Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers
 # Chapitres
 
 
-* [Chapitre1](chapitre1/chapitre1.md)
+* [Chapitre1](chapitre1/chapitre1-git.md)
 
 
 
