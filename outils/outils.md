@@ -1,4 +1,4 @@
-# Outils pour le cours de NSI 
+# Outils et ressources techniques pour le cours de NSI 
 
 ## Python 
 
@@ -26,4 +26,4 @@ Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers
 
 
 
-[Retour à la page d'accueil du site](https://parc-nsi.github.io/premiere-nsi/)
+## [Retour à la page d'accueil du site](https://parc-nsi.github.io/premiere-nsi/)
