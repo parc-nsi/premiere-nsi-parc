@@ -10,7 +10,7 @@ Tous les documents disponibles sur ce dépôt Github sont placés sous licence [
 * Le  [programme officiel](Programme/PPL18_Numerique-sciences-informatiques_SPE_1eGen_1025707.pdf)
 * [Carte mentale du programme](Programme/PremièreNSI.jpg)
 
-# [Outils et technique](outils/outils.md)
+# [Outils et ressources techniques](outils/outils.md)
 
 # [Ressources par thèmes](ressources/ressources.md)
 
