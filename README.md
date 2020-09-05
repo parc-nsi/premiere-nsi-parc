@@ -19,6 +19,9 @@ Tous les documents disponibles sur ce dépôt Github sont placés sous licence [
 * Binder Jupyter Notebook du site : [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master)
 
 
+# [QCM](qcm/qcm.md)
+
+
 # Progression
 
 
