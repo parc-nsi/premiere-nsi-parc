@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "Build a Website"
+title:  Chapitre 1
 ---
 
 * [Cours](Cours/Intro_var.pdf)

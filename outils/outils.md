@@ -1,3 +1,8 @@
+---
+layout: default
+title:  Chapitre 1
+---
+
 # Outils et ressources techniques pour le cours de NSI 
 
 ## Python 
