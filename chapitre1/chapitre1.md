@@ -1,3 +1,7 @@
+---
+layout: default
+title:  "Build a Website"
+---
 
 * [Cours](Cours/Intro_var.pdf)
 * TP1 :
