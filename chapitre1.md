@@ -1,7 +1,4 @@
----
-title:  Chapitre 1
-layout: default
----
+
 
 * [Cours](Cours/Intro_var.pdf)
 * TP1 :
