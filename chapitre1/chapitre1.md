@@ -1,5 +1,4 @@
 ---
-layout: default
 title:  Chapitre 1
 ---
 
