@@ -1,3 +1,9 @@
+---
+layout: default
+title:  "Ressources pour le cours de NSI"
+---
+
+
 # Ressources pour le cours de NSI
 
 
