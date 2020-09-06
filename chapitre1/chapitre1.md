@@ -17,6 +17,3 @@ title:  Chapitre 1
 
 
 
-
-
-[Retour à la page d'accueil du site](https://parc-nsi.github.io/premiere-nsi/)
