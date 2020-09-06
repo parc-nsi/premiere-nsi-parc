@@ -30,5 +30,3 @@ Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master)
 
 
-
-## [Retour à la page d'accueil du site](https://parc-nsi.github.io/premiere-nsi/)
