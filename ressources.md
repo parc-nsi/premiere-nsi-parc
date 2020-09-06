@@ -4,10 +4,6 @@ title:  "Ressources pour le cours de NSI"
 ---
 
 
-# Ressources pour le cours de NSI
-
-
-
 ## Langages de programmation (thème 6) 
 
 * Conférence de Judicael Courant : "Une brève histoire des langages de programmation"
