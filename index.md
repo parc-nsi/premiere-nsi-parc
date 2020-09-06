@@ -1,6 +1,3 @@
----
-title:  Chapitre 1
----
 
 # Licence
 
