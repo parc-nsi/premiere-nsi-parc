@@ -1,5 +1,6 @@
-
-__Bienvenue sur le site public pour les élèves de première NSI au lycée du Parc de Lyon__
+---
+title:  Progression
+---
 
 # Licence
 
