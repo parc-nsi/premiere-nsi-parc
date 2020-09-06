@@ -3,9 +3,9 @@
 /* ------------------------------------------------------------------------- */
 
 body{
-	counter-reset: num_exo 1;							/* mise à zéro du compteur num_exo */
-    counter-reset: num_cours 1;							/* mise à zéro du compteur num_cours */
-    counter-reset: num_partie 1;							/* mise à zéro du compteur num_cours */
+	counter-reset: num_exo ;							/* mise à zéro du compteur num_exo */
+    counter-reset: num_cours ;							/* mise à zéro du compteur num_cours */
+    counter-reset: num_partie ;							/* mise à zéro du compteur num_cours */
 	}
 
 
