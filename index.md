@@ -3,7 +3,7 @@ title:  Progression
 ---
 
 
-@import "";
+@import "style.css";
 
 
 ## Programme index
