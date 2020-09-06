@@ -19,8 +19,7 @@ h2:nth-child(1n+1){
 	}
     
 h2:before{
-	content : counter(num_partie)' - ';		/* mise en forme du compteur num_partie */
-	margin-left: 40px;    
+	content : counter(num_partie)' - ';		/* mise en forme du compteur num_partie */   
 	}
     
     
