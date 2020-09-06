@@ -1,3 +1,7 @@
+---
+theme: jekyll-theme-cayman
+---
+ 
   - [Crédits](#crédits)
   - [Utiliser le mode interactif](#utiliser-le-mode-interactif)
   - [Premiers programmes et premières
