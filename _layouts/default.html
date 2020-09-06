@@ -13,7 +13,7 @@
 
   <!-- Bootstrap -->
          <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="lib/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% link lib/bootstrap-4.3.1-dist/css/bootstrap.min.css %}">
          <style>
           /* Make the image fully responsive */
           .carousel-inner img {
@@ -22,35 +22,35 @@
             }
         </style>
     <!-- jQuery library -->
-    <script src="lib/jquery.min.js"></script>
+    <script src="{% link lib/jquery.min.js %}"></script>
 
     <!-- Popper JS -->
-<script src="lib/popper.min.js"></script>
+<script src="{% link lib/popper.min.js %}"></script>
 
     <!-- Latest compiled JavaScript -->
     
-<script src="lib/bootstrap-4.3.1-dist/js/bootstrap.min.js"> </script> 
+<script src="{% link lib/bootstrap-4.3.1-dist/js/bootstrap.min.js %}"> </script> 
 
     <!-- Code Mirror coloration syntaxique du code -->
-    <link rel="stylesheet" href="lib/codemirror-5.47.0/lib/codemirror.css">
-    <script src="lib/codemirror-5.47.0/lib/codemirror.js"></script>  
-    <script src="lib/codemirror-5.47.0/mode/python/python.js"></script>
-	<script src="lib/codemirror-5.47.0/mode/xml/xml.js"></script>
-	<script src="lib/codemirror-5.47.0/mode/javascript/javascript.js"></script>
-	<script src="lib/codemirror-5.47.0/mode/css/css.js"></script>
-	<script src="lib/codemirror-5.47.0/mode/htmlmixed/htmlmixed.js"></script>
-	<script src="lib/codemirror-5.47.0/addon/edit/matchbrackets.js"></script>
+    <link rel="stylesheet" href="{% link lib/codemirror-5.47.0/lib/codemirror.css %}">
+    <script src="{% link lib/codemirror-5.47.0/lib/codemirror.js %}"></script>  
+    <script src="{% link lib/codemirror-5.47.0/mode/python/python.js %}"></script>
+	<script src="{% link lib/codemirror-5.47.0/mode/xml/xml.js %}"></script>
+	<script src="{% link lib/codemirror-5.47.0/mode/javascript/javascript.js %}"></script>
+	<script src="{% link lib/codemirror-5.47.0/mode/css/css.js %}"></script>
+	<script src="{% link lib/codemirror-5.47.0/mode/htmlmixed/htmlmixed.js %}"></script>
+	<script src="{% link lib/codemirror-5.47.0/addon/edit/matchbrackets.js %}"></script>
 
 
     
  
     
     <!-- Prism theme coy -->
-      <link rel="stylesheet"  href="css/prism.css" />  
-      <script src="lib/prism.js"></script>
+      <link rel="stylesheet"  href="{% link css/prism.css %}" />  
+      <script src="{% link lib/prism.js"></script>
 
      <!-- Style NSI -->
-    <link rel="stylesheet"  href="css/style_nsi.css" />  
+    <link rel="stylesheet"  href="{% link css/style_nsi.css %}" />  
     
 </head>
 <!-- Fin en-tête -->
@@ -65,7 +65,7 @@
     <nav class="navbar navbar-expand-sm bg-info navbar-dark fixed-top">
         
   <a class="navbar-brand" href="https://lyceeduparc.fr/">
-          <img src="images/logo-parc.png" alt="Logo" style="width:80px;">
+          <img src="{% link images/logo-parc.png %}" alt="Logo" style="width:80px;">
     </a>
         
         
