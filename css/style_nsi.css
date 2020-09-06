@@ -3,8 +3,6 @@
 /* ------------------------------------------------------------------------- */
 
 body{
-	counter-reset: num_exo ;							/* mise à zéro du compteur num_exo */
-    counter-reset: num_cours ;							/* mise à zéro du compteur num_cours */
     counter-reset: num_partie ;							/* mise à zéro du compteur num_cours */
 	}
 
@@ -15,7 +13,7 @@ body{
 /* ------------------------------------------------------------------------- */
 
 h2:nth-child(1n+1){
-	counter-increment : num_partie;						/* mise à jour du compteur de points cours */
+	counter-increment : num_partie;						/* mise à jour du compteur de parties */
 	}
     
 h2:before{
@@ -24,11 +22,7 @@ h2:before{
     
     
 
-
-/* ------------------------------------------------------------------------- */
-/*                                Les images                                 */
-/* ------------------------------------------------------------------------- */
-img.img_centre {
+img {
 	display: block;
 	border: 1px dashed #17A2B8;
 	margin: 5px auto;
@@ -39,35 +33,7 @@ img.img_centre {
 	}
 	
     
-p img.logo,
-li img.logo,
-h2 img.logo {									/* images dans les paragraphes, dans les listes */
-	display: inline;
-	max-height: 40px;
-	margin: 5px;
-	padding: 0;
-	vertical-align: middle;
-	border: 0;
-	border-radius: 4px;
-	}
-	
-td img {									/* images dans les paragraphes, dans les listes */
-	display: inline;
-	max-height: 150px;
-	margin: 5px;
-	vertical-align: middle;
-	border: 0;
-	border-radius: 0;
-	}
 
-img.img_flotte {							/* Image flottante à côté d'un paragraphe */
-	float: right;
-	max-width: 250px;
-	margin: 5px 5px 5px 30px;
-	padding: 5px;
-	border: 1px dashed #17A2B8;
-	border-radius: 6px;
-	}
     
     
 iframe {
@@ -78,32 +44,3 @@ iframe {
 	padding: 5px;
 }
 
-
-
-/* ------------------------------------------------------------------------- */
-/*         Ligne horizontal                                                  */
-/* ------------------------------------------------------------------------- */
-
-hr{
-    border-width: 3px;
-    color : #17A2B8;
-}
-
-
-/* ------------------------------------------------------------------------- */
-/*         Citation                                                          */
-/* ------------------------------------------------------------------------- */
-
-blockquote.definition {
-    font-style : italic;
-    margin-left : 10%;
-    border-left : 2px solid black;
-    border-bottom : 2px solid black;
-    padding : 5px;
-}
-
-blockquote.definition::before {
-    content : "Définition : ";
-    font-weight : bold;
-    font-style : normal;
-}
