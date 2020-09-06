@@ -1,5 +1,6 @@
 ---
 title:  Chapitre 1
+layout: parc
 ---
 
 ## Cours

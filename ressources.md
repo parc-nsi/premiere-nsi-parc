@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: parc
 title:  "Ressources pour le cours de NSI"
 ---
 

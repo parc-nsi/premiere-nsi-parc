@@ -1,6 +1,6 @@
 ---
 title:  QCM
-layout: default
+layout: parc
 ---
 
 

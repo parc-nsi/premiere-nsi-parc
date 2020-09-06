@@ -1,5 +1,6 @@
 ---
 title:  Progression
+layout: parc
 ---
 
 
