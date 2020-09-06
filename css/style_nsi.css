@@ -14,7 +14,7 @@ body{
 /*                     Cours                                             */
 /* ------------------------------------------------------------------------- */
 
-h1:nth-child(1n+1){
+h1:nth-child(1n+2){
 	counter-increment : num_partie;						/* mise à jour du compteur de points cours */
 	}
     
