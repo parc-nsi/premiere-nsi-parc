@@ -1,6 +1,7 @@
 ---
 title:  Chapitre 1
 layout: parc
+permalink: /:path
 ---
 
 ## Cours
