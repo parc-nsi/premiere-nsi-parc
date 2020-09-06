@@ -1,5 +1,6 @@
 ---
 title:  QCM
+layout: default
 ---
 
 
