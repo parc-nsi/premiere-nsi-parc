@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html lang="fr">
 
@@ -32,7 +32,7 @@
 <script src="lib/bootstrap-4.3.1-dist/js/bootstrap.min.js"> </script> 
 
     <!-- Code Mirror coloration syntaxique du code -->
-    <link rel="stylesheet" href="lib/codemirror-5.47.0/lib/codemirror.css">
+    <link rel="stylesheet" href="../lib/codemirror-5.47.0/lib/codemirror.css">
     <script src="lib/codemirror-5.47.0/lib/codemirror.js"></script>  
     <script src="lib/codemirror-5.47.0/mode/python/python.js"></script>
 	<script src="lib/codemirror-5.47.0/mode/xml/xml.js"></script>
@@ -78,17 +78,17 @@
 
 </nav>
     
-
+<h1>Bienvenue sur le site public pour les élèves de première NSI au lycée du Parc de Lyon </h1>
 
     <div class="jumbotron" style="margin-top:10%;">
-      <h1>{{ page.title }} </h1>
+  <h1>Menu</h1>
                       
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="https://parc-nsi.github.io/premiere-nsi/index.html">Progression</a></li>
-    <li class="page-item"><a   class="page-link"  href="https://parc-nsi.github.io/premiere-nsi/outils.html">Outils</a></li>
-    <li class="page-item"><a  class="page-link"  href="https://parc-nsi.github.io/premiere-nsi/ressources.html">Ressources</a></li>
-    <li class="page-item"><a  class="page-link"  href="https://parc-nsi.github.io/premiere-nsi/qcm.html">QCM</a></li>
-    <li class="page-item"><a  class="page-link"  href="https://github.com/parc-nsi/premiere-nsi">Github</a></li>
+    <li class="page-item"><a href="{% link index.md %}">Progression</a></li>
+    <li class="page-item"><a href="{% link outils/outils.md %}">Outils</a></li>
+    <li class="page-item"><a href="{% link ressources/ressources.md %}">Ressources</a></li>
+    <li class="page-item"><a href="{% link qcm/qcm.md %}">QCM</a></li>
+    <li class="page-item"><a href="https://github.com/parc-nsi/premiere-nsi">Github</a></li>
   </ul>
     
 </div>
@@ -97,7 +97,6 @@
    <h2>Crédits</h2>    
         
     <article>
-      <p>Bienvenue sur le site des Première NSI du lycée du Parc à Lyon.</p>
         <p>Ce document est placé de même sous licence <a href="https://github.com/frederic-junier/ISN/blob/master/LICENSE"> 
           Creative Commons Attribution Share Alike 4.0 International.</a>
             </p>
@@ -110,8 +109,7 @@
    
    </section>
   
-   <footer><a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d'accueil</a></footer>
-
+   <footer><a href="{% link index.md %}">Retour à la page d'accueil</a></footer>
 
 
 <!-- Fin de la balise container bootstrap -->
