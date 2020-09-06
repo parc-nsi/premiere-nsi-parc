@@ -14,12 +14,12 @@ body{
 /*                     Cours                                             */
 /* ------------------------------------------------------------------------- */
 
-h1{
+h1:nth-child(1n+1){
 	counter-increment : num_partie;						/* mise à jour du compteur de points cours */
 	}
     
 h1:before{
-	content : counter(num_cours)' - ';		/* mise en forme du compteur num_partie */
+	content : counter(num_partie)' - ';		/* mise en forme du compteur num_partie */
 	margin-left: 40px;    
 	}
     
