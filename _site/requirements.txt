@@ -1,0 +1,9 @@
+
+numpy
+matplotlib
+seaborn
+pillow
+pandas
+ipyturtle
+wand
+ipythonblocks
