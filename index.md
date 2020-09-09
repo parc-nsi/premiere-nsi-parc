@@ -15,7 +15,8 @@ layout: parc
 ## Progression
 
 
-* [Chapitre1](chapitre1.md)
+* [Chapitre 1 : variables et affectations en Python](chapitre1.md)
+* [Chapitre 2 : HTML/CSS](chapitre2.md)
 
 
 
