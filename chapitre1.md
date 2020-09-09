@@ -3,6 +3,8 @@ title:  Chapitre 1 : variables et affectations
 layout: parc
 ---
 
+# Chapitre 1 : variables et affectations
+
 ## Cours
 
 * [Pdf du cours](Cours/Intro_var.pdf)
