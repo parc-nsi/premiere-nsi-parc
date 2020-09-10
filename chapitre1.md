@@ -13,7 +13,7 @@ layout: parc
 
 * TP1 :
   * [version Markdown](chapitre1/TP1/1NSI-Chap1-Variables-TP1-git.md)
-  * [version PDF](chapitre1/TP1/c1NSI-Chap1-Variables-TP1-.pdf)
+  * [version PDF](chapitre1/TP1/1NSI-Chap1-Variables-TP1-.pdf)
   * [corrigé version PDF](chapitre1/TP1/corrigé-TP1.pdf)
   * [corrigé version ipynb](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre1/TP1/corrigé-TP1.ipynb)
 * QCM :
