@@ -32,3 +32,4 @@ Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers
 Il est indispensable d'installer un éditeur de textes sur sa plateforme, pour éditer des fichier sources en Python, Javascript ou HTML.
 
 * Un éditeur multiplateformes : [Notepad++](https://notepad-plus-plus.org/)
+* Un éditeur pour le développement Web : [Brackets](http://brackets.io/)
