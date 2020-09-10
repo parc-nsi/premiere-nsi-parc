@@ -26,3 +26,9 @@ permalink: /:basename
 ### Jupyter Hub
 
 Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers ressources ou corrige) du dépôt en mode interactif, cliquez sur le lien Binder ci-dessous.
+
+## Éditeurs de textes 
+
+Il est indispensable d'installer un éditeur de textes sur sa plateforme, pour éditer des fichier sources en Python, Javascript ou HTML.
+
+* Un éditeur multiplateformes : [Notepad++](https://notepad-plus-plus.org/)

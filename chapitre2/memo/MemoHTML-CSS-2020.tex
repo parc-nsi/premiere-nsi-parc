@@ -1691,7 +1691,7 @@ Nous étudierons plus en détail le protocole \texttt{HTPP} un peu plus tard dan
 
 \begin{cours}{}
 
-Les \href{info.cern.ch/hypertext/WWW/TheProject.html}{premières pages Web} sont des \textbf{pages statiques}, \ie{} que la page retournée par le serveur ne dépend pas du client. Le premier langage du Web est \href{https://developer.mozilla.org/fr/docs/Glossaire/HTML}{HyperText Markup Language} qui est un langage de description de documents à l'aide de \textbf{balises}.  Un fichier écrit en \texttt{HTML} est un simple fichier texte qui est interprété par le navigateur pour obtenir un affichage.
+Les \href{info.cern.ch/hypertext/WWW/TheProject.html}{premières pages Web} sont des \textbf{pages statiques}, \ie{} que la page retournée par le serveur ne dépend pas du client. Le premier langage du Web est \href{https://developer.mozilla.org/fr/docs/Glossaire/HTML}{HyperText Markup Language} qui est un langage de description de documents à l'aide de \textbf{balises}.  Un fichier écrit en \texttt{HTML} est un simple fichier texte qui est interprété par le navigateur pour obtenir un affichage. Pour éditer un fichier texte, on utilise un \textbf{éditeur de textes} comme \href{https://notepad-plus-plus.org/}{Notepad++}.
 
 \texttt{HTML} permet de définir la structure d'un document en le découpant en \textbf{éléments} logiques délimités par une \textbf{<balise>} ouvrante et une \textbf{</balise>}  fermante. En particulier il permet de créer des liens hypertextes entre deux éléments d'un même document ou de documents différents.
 
@@ -1781,16 +1781,16 @@ On donne ci-dessous la structure minimale d'un fichier \texttt{HTML} :
 
 \begin{cours}{}
 
-Une  page Web est un document de structure non linéaire (lien hypertexte), avec des contenus riches (images, video) et des interactions possibles côté client (navigateur) ou côté serveur (accès à une base de données).
+Une  page Web est un document de structure non linéaire (liens hypertextes), avec des contenus riches (images, video) et des interactions possibles côté client (navigateur) ou côté serveur (accès à une base de données).
 
-On distingue les pages Web \textbf{statiques} dont le contenu ne dépend de l'utilisateur et de ses interaction, des pages Web \textbf{dynamiques}. 
+On distingue les pages Web \textbf{statiques} dont le contenu ne dépend que de l'utilisateur et de ses interactions, des pages Web \textbf{dynamiques}. 
 
 Un \textbf{principe de séparation} des fonctionnalités est appliqué dans  la  réalisation d'une page Web :
 
 \begin{itemize}
 	
-	\item La structure du document est défini par le langage \texttt{HTML}. Pour les pages Web dynamiques, le code \texttt{HTML} peut être généré par le serveur et envoyé au client à sa demande.
-	\item L'apparence et la disposition des éléments sont définis par le langage \texttt{HTML}.
+	\item La structure du document est définie par le langage \texttt{HTML}. Pour les pages Web dynamiques, le code \texttt{HTML} peut être généré par le serveur et envoyé au client à sa demande.
+	\item L'apparence et la disposition des éléments sont définies par le langage \texttt{CSS}.
 	\item La gestion des événements utilisateurs (clics ...) est assurée par le langage \texttt{Javascript} qui peut modifier la structure du document \texttt{HTML} dans le navigateur du client.
 
 \end{itemize}
@@ -1811,7 +1811,7 @@ Il existe deux grandes catégories de balises :
 	\item \textbf{balises blocs} qui sont  affichées après un saut de ligne, se superposent et occupent toute la place possible en largeur. 
 \end{itemize}
 
-Certaines balises ont une \textbf{sémantique} prédéfinie : \texttt{<article>}, \texttt{<section>}, très utile pour l'indexation de la page par un moteur de recherche. D'autre balises comme \texttt{<span>} (en-ligne)  ou \texttt{<div>} (bloc) sont neutres et personnalisables par le développeur.
+Certaines balises ont une \textbf{sémantique} prédéfinie : \texttt{<article>}, \texttt{<section>}, très utile pour l'indexation de la page par un moteur de recherche. D'autres balises comme \texttt{<span>} (en-ligne)  ou \texttt{<div>} (bloc) sont neutres et personnalisables par le développeur.
 \end{cours}
 
 
@@ -1832,13 +1832,17 @@ Balise  & Sémantique & Syntaxe \\
 \hline 
 <img> & insertion d'image &  	<img src="https://linux.org/Tux.png" alt="tux"> \\ 
 \hline 
-<strong> & texte important & <strong>important</strong> \\ 
+<strong> & texte très important  & <strong>important</strong> \\ 
+\hline 
+<em> & texte important & <em>important</em> \\ 
 \hline 
 <span> & balise neutre & <span>contenu</span> \\ 
 \hline 
 \end{tabularx} 
 
-\item Les principales balises de type \textbf{bloc} qu'il faut connaître :
+En général, le contenu de la balise <strong> est en gras et celui de la balise <em> en italique.
+
+\item Les principales balises de type \textbf{bloc} qu'il faut connaître
 
 
 
@@ -1856,9 +1860,13 @@ Balise  & Sémantique & Syntaxe \\
 \hline 
 <div> & balise neutre & <div><p>paragraphe 1</p> <p>paragraphe 2</p></div> \\ 
 \hline 
+<h1> & titre de niveau 1 & <h1> Section </h1> \\ 
+\hline 
+<h2> & titre de niveau 2 & <h2> Sous-section </h2>  \\ 
+\hline 
 \end{tabularx} 
 
-
+Il existe six niveaux de titres de <h1> à <h6> par ordre décroissant d'importance.
 \end{itemize}
 
 
