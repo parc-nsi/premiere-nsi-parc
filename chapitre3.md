@@ -15,7 +15,7 @@ layout: parc
 ## TP Quickpi : constructions élémentaires en Python, bibliothèque, IHM
 
 * [Pdf de la synthèse IHM](chapitre3/Cours/)
-* TP :
+* TP issu d'un travail original d'Eric Madec de l'académie de Rennes :
   * [énoncé version ipynb](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Eleve.ipynb)
   * [énoncé version html](chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Eleve.html)
   * [corrigé version PDF](chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Correction.pdf)
