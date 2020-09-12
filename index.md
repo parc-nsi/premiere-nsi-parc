@@ -17,6 +17,7 @@ layout: parc
 
 * [Chapitre 1 : variables et affectations en Python](chapitre1.md)
 * [Chapitre 2 : HTML/CSS](chapitre2.md)
+* [Chapitre 3 : boucles et tests en Python](chapitre2.md) avec en TP une approche de l'entrée du programme _IHM et périphériques d'entrée/sortie_ à travers la plateforme [Quickpi](https://amazon.quick-pi.org/)
 
 
 
