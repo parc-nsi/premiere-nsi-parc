@@ -16,7 +16,8 @@ layout: parc
 
 * [Pdf de la synthèse IHM](chapitre3/Cours/)
 * TP issu d'un travail original d'Eric Madec de l'académie de Rennes :
-  * [énoncé version ipynb](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Eleve.ipynb)
+  * [énoncé version ipynb](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Eleve.ipynb).
+  * [l'archive de l'énoncé en .ipynb avec le dossier des images](chapitre3/quickpi/TP-Quick-Pi-Eleves.zip) : pour chaque exercice, l'élève recopie le code validé sur la plateforme [Quickpi](https://amazon.quick-pi.org/) puis  exporte le document en HTML pour garder une trace.
   * [énoncé version html](chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Eleve.html)
   * [corrigé version PDF](chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Correction.pdf)
   * [corrigé version ipynb](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Correction.ipynb)
