@@ -20,8 +20,6 @@ layout: parc
   * [énoncé version html](chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Eleve.html)
   * [corrigé version PDF](chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Correction.pdf)
   * [corrigé version ipynb](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre3/quickpi/TP-Quick_Pi-Objets_connectes-Parcours_1-Correction.ipynb)
-  * Corrigés video : 
-
-<iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="https://tube.ac-lyon.fr/videos/embed/42ed980e-ad67-4837-a349-ff57e674b644" frameborder="0" allowfullscreen></iframe>
+  * [Corrigés video](https://tube.ac-lyon.fr/videos/watch/playlist/33c4984a-b64e-46cb-b0eb-3118f9728953)
 
 
