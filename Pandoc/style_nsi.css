@@ -1,0 +1,140 @@
+/* ------------------------------------------------------------------------- */
+/*                       Règles générales pour la page                       */
+/* ------------------------------------------------------------------------- */
+
+body{
+	counter-reset: num_exo;							/* mise à zéro du compteur num_exo */
+    counter-reset: num_definition;							
+    counter-reset: num_theoreme;	
+    counter-reset: num_propriete;	
+    background-color: #f8f9fa ;
+}
+	
+.title{
+text-align: center ;
+}
+
+
+.author{
+text-align: center ;
+}
+
+/* ------------------------------------------------------------------------- */
+/*                     Code                                                  */
+/* ------------------------------------------------------------------------- */
+
+div.sourceCode{
+    display: block;
+    margin-left: 20px;
+    margin-right: auto;
+    border-left: 2px solid red; }
+
+div.sourceCode::before{
+    content : 'Code';		
+    font-family: "monospace";    
+}
+
+/* ------------------------------------------------------------------------- */
+/*                     Définition                                            */
+/* ------------------------------------------------------------------------- */
+
+.definition{
+	counter-increment : num_definition;						/* mise à jour du compteur de définition */
+    border-color : #DC3545;
+    border-style : solid ;
+    border-radius: 5px;
+    margin : 10px;
+	}
+
+
+.definition::before{
+    color: #DC3545;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	content : 'Définition n°'counter(num_definition)' - ';		/* mise en forme du compteur num_definition */
+	margin-left: 20px;   
+    font-size:1.5em; 
+	}    
+	}
+    
+.definition p {
+    margin-left: 40px;
+}
+    
+
+/* ------------------------------------------------------------------------- */
+/*                     Théorème                                              */
+/* ------------------------------------------------------------------------- */
+
+.theoreme{
+	counter-increment : num_theoreme;						/* mise à jour du compteur de définition */
+    border-color : #DC3545;
+    border-style : solid ;
+    border-radius: 5px;
+    margin : 10px;
+	}
+
+
+.theoreme::before{
+    color: #DC3545;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	content : 'Théorème n°'counter(num_theoreme)' - ';		/* mise en forme du compteur num_definition */
+	margin-left: 20px;   
+    font-size:1.5em; 
+	}
+    
+.theoreme p {
+    margin-left: 40px;
+}
+    
+
+
+/* ------------------------------------------------------------------------- */
+/*                     Prorpiété                                             */
+/* ------------------------------------------------------------------------- */
+
+.propriete{
+	counter-increment : num_propriete;						/* mise à jour du compteur de définition */
+    border-color : #DC3545;
+    border-style : solid ;
+    border-radius: 5px;
+    margin : 10px;
+	}
+
+
+.propriete::before{
+    color: #DC3545;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	content : 'Propriété n°'counter(num_propriete)' - ';		/* mise en forme du compteur num_definition */
+	margin-left: 20px;   
+    font-size:1.5em; 
+	}
+    
+.propriete p {
+    margin-left: 40px;
+}
+    
+
+/* ------------------------------------------------------------------------- */
+/*                     Exercices                                             */
+/* ------------------------------------------------------------------------- */
+
+.exercice{
+	counter-increment : num_exo;						/* mise à jour du compteur de questions */
+    border-color : #007BFF;
+    border-style : dotted ;
+    border-radius: 5px;
+    margin : 10px;
+	}
+
+
+
+.exercice::before{
+	content : 'Exercice n°'counter(num_exo);		/* mise en forme du compteur num_exo */
+	margin-left: 20px;  
+    font-weight: bold;  
+    font-size:1.5em;
+	}
+    
+.exercice p {
+    margin-left: 40px;
+}

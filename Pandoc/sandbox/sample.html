@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Frédéric Junier" />
+  <title>Test pandoc</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="style_nsi.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Test pandoc</h1>
+<p class="author">Frédéric Junier</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#préambule-non-numéroté-commandes-pour-compiler">Préambule non numéroté : Commandes pour compiler</a></li>
+<li><a href="#section-1"><span class="toc-section-number">1</span> Section 1</a>
+<ul>
+<li><a href="#sous-section"><span class="toc-section-number">1.1</span> Sous-Section</a>
+<ul>
+<li><a href="#des-exemples"><span class="toc-section-number">1.1.1</span> Des exemples</a></li>
+<li><a href="#un-exemple-de-tableau"><span class="toc-section-number">1.1.2</span> Un exemple de tableau</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="unnumbered" data-number="" id="préambule-non-numéroté-commandes-pour-compiler" class="unnumbered" data-number="">Préambule non numéroté : Commandes pour compiler</h1>
+<ul>
+<li><p>pour HTML : <code>pandoc -s sample.md  -c style_nsi.css  --toc   -o  sample.html</code></p></li>
+<li><p>pour PDF : <code>pandoc -s sample.md --listings --template=template-pandocV1.tex --filter ./filtre.py -V colorlinks -o sample.pdf</code></p></li>
+<li><p>pour Beamer : <code>pandoc -s sample.md --listings --template=template-pandoc-beamerV1.tex --filter ./filtre.py -V colorlinks -t beamer -V theme=Warsaw -V navigation=vertical -o sample-beamer.pdf</code></p></li>
+<li><p>Pour Diaporama HTML : <code>pandoc -s  -V geometry:margin=1.5cm --mathjax -t slidy sample.md  -c style_nsi.css -o sample-slidy.html</code></p></li>
+<li><p>Pour Github : <code>pandoc -s sample.md  --filter ./filtre.py -V colorlinks -t markdown -o sample_github.md</code></p></li>
+<li><p>Pour afficher la structure AST générée à partir du document lu par pandoc : <code>pandoc -s -t native   sample.md</code> , voir <a href="https://pandoc.org/filters.html">https://pandoc.org/filters.html</a></p></li>
+</ul>
+<h1 data-number="1" id="section-1" data-number="1"><span class="header-section-number">1</span> Section 1</h1>
+<h2 data-number="1.1" id="sous-section" data-number="1.1"><span class="header-section-number">1.1</span> Sous-Section</h2>
+<hr />
+<h3 data-number="1.1.1" id="des-exemples" data-number="1.1.1"><span class="header-section-number">1.1.1</span> Des exemples</h3>
+<div id="exemple" class="exercice">
+<ol type="1">
+<li>question 1</li>
+<li>question2</li>
+</ol>
+<ul>
+<li>Here is a paragraph.</li>
+<li>And another.</li>
+<li>Un lien vers <a href="https://frederic-junier.org/">mon site</a></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="bu">print</span>(k)</span></code></pre></div>
+</div>
+<p><strong>Exemple d’environnements minipage juxtaposés</strong></p>
+<div class="minipage" data-center="true">
+<p>Image1 <img src="image.png" style="width:80.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
+&amp; Image2 <img src="image.png" style="width:80.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
+&amp; Image3 <img src="image.png" style="width:80.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
+&amp; texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte</p>
+</div>
+<div class="exercice">
+<p>Here is a paragraph.</p>
+<p>And another.</p>
+</div>
+<div class="exercice">
+<p>Here is a paragraph.</p>
+<p>And another.</p>
+</div>
+<div class="theoreme">
+<p>Here is a paragraph.</p>
+<p>And another.</p>
+</div>
+<div class="theoreme">
+<ul>
+<li>un</li>
+<li>deux</li>
+</ul>
+</div>
+<div class="definition">
+<p>Here is a paragraph.</p>
+<p>And another.</p>
+</div>
+<div class="definition">
+<ol type="1">
+<li>Un</li>
+<li>Deux</li>
+</ol>
+</div>
+<figure>
+<img src="image.png" style="width:80.0%" alt="" /><figcaption>une image flottante</figcaption>
+</figure>
+<h3 data-number="1.1.2" id="un-exemple-de-tableau" data-number="1.1.2"><span class="header-section-number">1.1.2</span> Un exemple de tableau</h3>
+<p><a href="http://www.tablesgenerator.com/markdown_tables#">http://www.tablesgenerator.com/markdown_tables#</a></p>
+<p>Comment juxtaposer des tableaux ? Mon filtre ne fonctionne pas, il place les contenus des minipage dans des éléments de type {‘t’ : ‘Para’} alors que dans un tableau on a des types {‘t’: ‘AlignCenter’} par exemple.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">a</th>
+<th style="text-align: center;">b</th>
+<th style="text-align: center;">a and b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">a</th>
+<th style="text-align: center;">b</th>
+<th style="text-align: center;">a and b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
