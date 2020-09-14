@@ -1,0 +1,1392 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{
+\usepackage{hyperref}
+}
+\hypersetup{
+  pdftitle={TP1 Variables et affectations},
+  pdfauthor={Première NSI, Lycée du Parc},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=Blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[top=20mm,left=20mm,right=20mm,heightrounded]{geometry}
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+\title{TP1 Variables et affectations}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Thème 6 langages de programmation}
+\author{Première NSI, \href{https://frederic-junier.org/}{Lycée du
+Parc}}
+\date{}
+
+%%%jolis boites
+
+\usepackage{fancybox, graphicx}
+
+
+
+%%%%%%%%%%%%%%%%Packages et Macros Frederic%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%Insertion de liens hypertextes %%%%
+
+            
+%%%%%%%%%%PSTricks%%%%%%%%%%%%
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math,pstricks-add,pst-xkey,pst-eucl}
+
+
+%%%%%%%Tikz%%%%%%%%%%%%%%%
+\usepackage{pgf,tikz,tkz-tab}
+% Pour les tableaux de signes ou de variations avec tkz-tab voir https://zestedesavoir.com/tutoriels/439/des-tableaux-de-variations-et-de-signes-avec-latex/#1-13389_tikz-un-package-qui-en-a-dans-le-ventre
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{petri}
+\usetikzlibrary{decorations}
+\usetikzlibrary{arrows}
+\usetikzlibrary{math}
+ %Variables must be declared in a tikzmath environment but
+       % can be used outside
+%       \tikzmath{int \n; \n = 508; \x1 = 1; \y1 =1; 
+%                   %computations are also possible
+%                    \x2 = \x1 + 1; \y2 =\y1 +3; } 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%Commandes Tikz Perso%%%%%%%%%%%%%%%
+
+% Définition des nouvelles options xmin, xmax, ymin, ymax
+% Valeurs par défaut : -3, 3, -3, 3
+\tikzset{
+xmin/.store in=\xmin, xmin/.default=-3, xmin=-3,
+xmax/.store in=\xmax, xmax/.default=3, xmax=3,
+ymin/.store in=\ymin, ymin/.default=-3, ymin=-3,
+ymax/.store in=\ymax, ymax/.default=3, ymax=3,
+}
+% Commande qui trace la grille entre (xmin,ymin) et (xmax,ymax)
+\newcommand {\grille}[2]
+{\draw[help lines,black, thick] (\xmin,\ymin) grid[xstep=#1, ystep=#2] (\xmax,\ymax);}
+% Commande \axes
+\newcommand {\axes} {
+\draw[->,very thick] (\xmin,0) -- (\xmax,0);
+\draw[->,very thick] (0,\ymin) -- (0,\ymax);
+\draw (0.95*\xmax, 0) node[above] {};
+\draw (0, 0.95*\ymax) node[left] {};
+}
+% Commande qui limite l?affichage à (xmin,ymin) et (xmax,ymax)
+\newcommand {\fenetre}
+{\clip (\xmin,\ymin) rectangle (\xmax,\ymax);}
+
+%Exemple d'utilisation
+
+%\begin{center}
+%\begin{tikzpicture} [xmin=-2,xmax=2,ymin=0,ymax=5]
+%\grille{1} \axes \fenetre
+%\draw plot[smooth] (\x,\x^2);
+%\end{tikzpicture}
+%\end{center}
+
+%style pour la perspective cavalière française
+%voir Tikz pour l'impatient page 68
+\tikzset{math3d/.style=
+{x= {(-0.353cm,-0.353cm)}, z={(0cm,1cm)},y={(1cm,0cm)}}}
+
+%%%%%%%Symbole pour code calculatrice%%%%%%
+
+%Flèche remplie pour défilement de menu
+
+\newcommand{\flechefillright}{
+\begin{tikzpicture}[scale=0.15] \fill (0,0)--(2,1)--(0,2)--cycle;
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%Symboles pour calculatrice Casio%%%%
+\newcommand{\execasio}{\Pisymbol{psy}{191}} %Retour chariot
+\newcommand{\dispcasio}{\begin{pspicture}(.1,.1)\pspolygon*(.1,0)(.1,.1)\end{pspicture}} %Triangle Â« Disp Â»
+\newcommand{\dispcasiotikz}{\begin{tikzpicture}[scale=0.2]
+\fill (0,0) -- (1,0) -- (1,1) -- cycle;
+\end{tikzpicture}} %Triangle Â« Disp Â»
+%
+
+%Fleche entre deux lignes, d'apres 'un bon petit' : http://forum.mathematex.net/latex-f6/fleches-entre-deux-lignes-pour-resolution-d-equation-t10283.html#p99817
+\newcommand\addnode[1]{\Rnode{#1}{}}
+\newcommand\linknode[3]{\ncbar[angleA=0,angleB=0,nodesep=1ex,arm=10ex,offset=-2pt]{->}{#1}{#2}\Aput{\vphantom{x}#3}}
+
+
+%%Commande pour touche de calculatrice
+
+\newcommand\tc[1]{%
+{
+\begin{tikzpicture}
+\node[draw,rectangle,rounded corners=3pt] (P) at (0,0){#1};
+\end{tikzpicture}
+}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%Fin Commandes Tikz%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%Specifiques%%%%%%%%%%%
+\usepackage{wrapfig}
+%pour insérer une figure à droite ou à gauche d'un texte
+%\begin{wrapfigure}[nb lignes]{placement l,r,c,i(inside),o(outside)}[overhang]{width}
+%ce package fonctionne mal à proximité des listes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%Environnements et symboles spéciaux pour faire joli%%%%%%
+
+%%%Bclogo, pour des environnements + jolis avec insertion de logo%%%%
+%Dépendances de  bclogo
+\usepackage{xkeyval}  
+\usepackage{etoolbox}
+\usepackage{ifpdf}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[tikz]{bclogo}
+
+%\newcommand\bcpython{\includegraphics[width=17pt]{/home/fjunier/Maths/python-logo.eps}}
+\newcommand\bcpython{\includegraphics[width=17pt]{/home/fjunier/Maths/python-logo.png}}
+%\newcommand\bcpython{\includegraphics[width=17pt]{/home/frederic/Maths/python-logo.png}}
+
+%% Framed
+\usepackage{framed}  %Le package « framed» Crée 3 nouveaux environnements, qui se comportent comme des minipage de largeur \linewidth, mais permettant en plus de se casser entre plusieurs pages.     * framed : avec un cadre autour;     * shaded : avec un fonc coloré (il faut définir la couleur shadecolor);     * leftbar : avec une barre le long du côté gauche.
+
+%%%%%%%%%%%%%%%%%%%Présentation de codes sources%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+%On utilise l?environnement lstlisting pour insérer
+%un code source.
+%En plus de l?environnement lstlisting, on peut également utiliser la
+%commande \lstinline qui fonctionne comme la commande \verb, en ce
+%sens qu?on peut utiliser n?importe quel caractère comme délimiteur. Enfin,
+%la commande \lstinputlisting permet de charger un code source depuis
+%un fichier externe.
+%Il y a deux manières de préciser des options : soit via l?option de l?envi-
+%ronnement ou de la commande, soit en utilisant la commande \lstset
+%qui permet de définir des options de manière globale.
+
+\lstset{ %
+  language=Python,                % the language of the code
+  basicstyle=\ttfamily,           % the size of the fonts that are used for the code
+  %numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny,  % the style that is used for the line-numbers
+  %stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  %numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  tabsize=4,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  %title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  breakindent=1cm,
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{red},       % comment style
+  %stringstyle=\ttfamily\color{green},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  morekeywords={*,...},              % if you want to add more keywords to the set
+  deletekeywords={...}              % if you want to delete keywords from the given language
+  upquote=true,columns=flexible,
+xleftmargin=1cm,xrightmargin=1cm,
+ inputencoding=utf8,			%Les lignes qui suivent sont pour le codage utf8
+  extendedchars=true,
+  literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a} }}1
+            {î}{{\^{i}}}1
+            {ô}{{\^{o}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1
+}
+
+\lstdefinestyle{rond}{
+  numbers=none,
+  backgroundcolor=\color{gristclair},
+  frameround =tttt
+}
+
+\lstdefinestyle{compil}{
+  numbers=none,
+  backgroundcolor=\color{gristclair}
+}
+%\lstset{language=Python,basicstyle=\small , frame=single,tabsize=4,showspaces=false,showtabs=false,showstringspaces=false,numbers=left,numberstyle=\tiny , extendedchars=true}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%Environnements persos%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Syntaxe :
+%\newenvironment{nom}[nombre d'args][defaut]{definitions initiales}{definitions finales}
+%definitions intiales sont les commandes appelées par \begin{nom}
+%Definitions finales sont les commandes appelées par \end{nom}
+
+%%%%%%%%%%%%%%%%Définitions des environnemts persostheoreme, exemple ..%%%%
+%%%% Exercice avec encadré %%%%
+\newcounter{exo}
+\newenvironment{exercice}[1]
+{\par \medskip   \addtocounter{exo}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bccrayon, marge=4]{~\textbf{Exercice} \textbf{\theexo} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+%%Axiomes, Theoremes, Propriété, Définition, Methode, Preuve
+
+
+\newenvironment{axiome}[1]
+{\par \medskip   \begin{leftbar} \noindent \underline{\textbf{Axiome}}\hspace{0.5cm}{\itshape #1}   \vspace*{10pt} \par }
+{\end{leftbar}  \par \medskip }
+
+
+\newcounter{thme}
+\newenvironment{theoreme}[1]
+{\par \medskip  \addtocounter{thme}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Théorème} \textbf{\thethme} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip}
+
+ \newenvironment{theoremedef}[1]
+{\par \medskip   \addtocounter{thme}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Théorème-Définition} \textbf{\thethme} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{prop}
+\newenvironment{propriete}[1]
+{\par \medskip   \addtocounter{prop}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Propriété} \textbf{\theprop} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newenvironment{corollaire}[1]
+{\par \medskip   \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Corollaire} {\itshape #1} } \par }
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newenvironment{demo}[1]
+{\par \medskip   \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=zigzag, noborder = true, logo=\bcloupe, marge=0]{~\textbf{Démonstration} {\itshape #1} } \par \vspace{10pt}}
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{activite}
+\newenvironment{activite}[1]
+{\par \medskip   \noindent   \addtocounter{activite}{1}
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bcvelo, marge=4]{~\textbf{Activité} \textbf{\theactivite} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newcounter{rque}
+\newenvironment{remarque}
+{\par \medskip    \addtocounter{rque}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=snake, noborder = true, logo=\bcinfo, marge=0]{~\textbf{Remarque} \textbf{\therque}}  \par }
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{def}
+\newenvironment{definition}[1]
+{\par \medskip   \addtocounter{def}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Définition} \textbf{\thedef} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+ 
+ \newcounter{cours}
+\newenvironment{cours}[1]
+{\par \medskip   \addtocounter{cours}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Point de cours} \textbf{\thecours} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+ 
+
+\newenvironment{introduction}
+{\par \medskip    \noindent  
+ \begin {bclogo}[couleur = blue!5 , arrondi =0.1,logo=\bcrosevents, marge=4] {~\textbf{Introduction}    }
+ \par }
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newenvironment{memo}[1]
+{\par \medskip    \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bccle, marge=4]{~\textbf{À retenir}  {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{exple}
+\newenvironment{exemple}[1]
+{\par \medskip   \addtocounter{exple}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bclampe, marge=4]{~\textbf{Exemple} \textbf{\theexple} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+
+
+\newcounter{alg}
+\newenvironment{algorithme}[1]
+{\par \medskip   \addtocounter{alg}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bcpython, marge=4] {~\textbf{Algorithmique} \textbf{\thealg} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{prog}
+\newenvironment{programme}[1]
+{\par \medskip   \addtocounter{prog}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bcpython, marge=4] {~\textbf{Programme} \textbf{\theprog} {\itshape #1} }  \par  \bigskip}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{logi}
+\newenvironment{logique}[1]
+{\par \medskip   \addtocounter{logi}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bclampe, marge=4] {~\textbf{Logique} \textbf{\thelogi} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newenvironment{methode}[1]
+{\par \medskip    \noindent  
+ \begin {bclogo}[arrondi =0.1,logo=\bcoutil, marge=4,noborder = true] {~\textbf{Méthode}   {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newcounter{histo}
+\newenvironment{histoire}[1]
+{\par \medskip   \addtocounter{histo}{1} \noindent  
+ \begin {bclogo}[couleur = blue!10 , arrondi =0.1,logo=\bchorloge, marge=4] {~\textbf{Histoire} \textbf{\thehisto} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+
+
+%Environnement contenu pour un document présentant une progression annuelle
+\newenvironment{contenu}
+{\par \medskip   \begin {bclogo}[ noborder = true,logo=\bccrayon] \noindent {\large \textbf{Contenu de la séance}} \vspace*{10pt} \par  }
+{\end{bclogo}  \par \medskip }
+
+%Environnement programme pour un document présentant une progression annuelle
+%\newenvironment{programme}
+%{\par \medskip   \begin {bclogo}[ noborder = true, barre=zigzag,logo=\bcinfo] \noindent {\large \textbf{Programme officiel}} \vspace*{10pt} \par  }
+%{\end{bclogo}  \par \medskip }
+
+%Environnement programme pour un document présentant une progression annuelle
+\newenvironment{ressource}
+{\par \medskip   \begin {bclogo}[ noborder = true,logo=\bcbook] \noindent {\large \textbf{Ressources}}\\vspace*{10pt} \par }
+{\end{bclogo}  \par \medskip }
+
+
+
+
+%%%%%%%%%%%%%%%%%%Maths divers%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%Nombres%%%%%%%%%%%%%%%%
+
+%Ensemble prive de...
+%\newcommand{\prive}{\boi}%{\backslash}
+
+%Ensembles de nombres%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\C}{\mathbb{C}}
+\newcommand{\df}{~\ensuremath{]0;+\infty[}~}
+\newcommand{\K}{\mathbb{K}}
+
+%%%%%%%%Arithmetique%%%%%%%%%%
+%PGCD, PPCM
+\newcommand{\PGCD}{\mathop{\rm PGCD}\nolimits}
+\newcommand{\PPCM}{\mathop{\rm PPCM}\nolimits}
+
+%Intervalles
+\newcommand{\interoo}[2]{]#1\, ;\, #2[}
+\newcommand{\Interoo}[2]{\left]#1\, ;\, #2\right[}
+\newcommand{\interof}[2]{]#1\, ;\, #2]}
+\newcommand{\Interof}[2]{\left]#1\, ;\, #2\right]}
+\newcommand{\interfo}[2]{[#1\, ;\, #2[}
+\newcommand{\Interfo}[2]{\left[#1\, ;\, #2\right[}
+\newcommand{\interff}[2]{[#1\, ;\, #2]}
+\newcommand{\Interff}[2]{\left[#1\, ;\, #2\right]}
+%\newcommand\interentiers #1#2{[\! [#1\, ;\, #2]\! ]}
+\newcommand{\interentiers}[2]{\llbracket #1\, ;\, #2\rrbracket}
+%
+
+
+%%%%%%%%%%%%%%Nombres complexes%%%%%
+
+\newcommand{\ic}{\text{i}}
+%\newcommand{\I}{\text{i}}
+\newcommand{\im}[1]{\text{Im}\left(#1\right)}
+\newcommand{\re}[1]{\text{Re}\left(#1\right)}
+\newcommand{\Arg}[1]{\text{arg}\left(#1\right)}
+\newcommand{\Mod}[1]{\left[#1\right]}
+%Parties entiÃ¨re, rÃ©elle, imaginaire, nombre i
+\newcommand{\ent}[1]{\text{E}\left(#1\right)}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+\renewcommand{\i}{\textrm{i}}
+
+%%%%%%%%%%%Probabilites et statistiques%%%%%
+\newcommand{\loibinom}[2]{\mathcal{B}\left(#1\ ; \ #2 \right)}
+\newcommand{\loinorm}[2]{\mathcal{N}\left(#1\ ; \ #2 \right)}
+\newcommand{\loiexp}[1]{\mathcal{E}\left(#1\right)}
+\newcommand{\proba}[1]{\mathbb{P}\big(#1\big)}
+\newcommand{\probacond}[2]{\mathbb{P}_{#2}\big(#1\big)}
+\newcommand{\esperance}[1]{\mathbb{E}\left(#1\right)}
+\newcommand{\variance}[1]{\mathbb{V}\left(#1\right)}
+\newcommand{\ecart}[1]{\sigma\left(#1\right)}
+\newcommand{\dnormx}{\frac{1}{\sqrt{2\pi}} \text{e}^{-\frac{x^2}{2}}}
+\newcommand{\dnormt}{\frac{1}{\sqrt{2\pi}} \text{e}^{-\frac{t^2}{2}}}
+
+%Covariance
+\newcommand{\cov}{\mathop{\rm cov}\nolimits}
+%
+
+
+%%%%%%%%%%Analyse%%%%%%%%%%%
+
+%%%%%%%%%%%Courbe%%%%%%%%%%%%
+\newcommand{\courbe}[1]{\ensuremath{\mathcal{C}_{#1}}}
+
+%%%%%%%Fonction exponentielle%%%%%
+\newcommand{\fe}{~fonction exponentielle~}
+\newcommand{\e}{\text{e}}
+
+%Fonction cotangente
+\newcommand{\cotan}{\mathop{\rm cotan}\nolimits}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Fonctions hyperboliques
+\newcommand{\ch}{\mathop{\rm ch}\nolimits}
+\newcommand{\sh}{\mathop{\rm sh}\nolimits}
+
+
+%%%%%%%%%%%%%%Limites%%%%%%
+\newcommand{\limite}[2]{\lim\limits
+_{x \to #1} #2}
+\newcommand{\limitesuite}[1]{\lim\limits
+_{n \to +\infty} #1}
+\newcommand{\limiteg}[2]{\lim\limits
+_{\substack{x \to #1 \\ x < #1 }} #2}
+\newcommand{\limited}[2]{\lim\limits
+_{\substack{x \to #1 \\ x > #1 }} #2}
+
+%%%%%%%%%%Continuité%%%%%%%%%%%
+\newcommand{\TVI}{théorème des valeurs intermédiaires}
+
+%%%%%%%%%%%Suites%%%%%%%%%%%%
+\newcommand{\suite}[1]{\ensuremath{\left(#1_{n}\right)}}
+\newcommand{\Suite}[2]{\ensuremath{\left(#1\right)_{#2}}}
+%
+
+%%%%%%%%%%%%%%%Calcul intégral%%%%%%
+\newcommand{\dx}{\ensuremath{\text{d}x}}		% dx
+\newcommand{\dt}{\ensuremath{\text{d}t}}		% dt
+\newcommand{\dtheta}{\ensuremath{\text{d}\theta}}		% dtheta
+\newcommand{\dy}{\ensuremath{\text{d}y}}		% dy
+\newcommand{\dq}{\ensuremath{\text{d}q}}		% dq
+
+%%%Intégrale%%%
+\newcommand{\integralex}[3]{\int_{#1}^{#2} #3 \ \dx}
+\newcommand{\integralet}[3]{\int_{#1}^{#2} #3 \ \dt}
+\newcommand{\integraletheta}[3]{\int_{#1}^{#2} #3 \ \dtheta}
+
+%%%%%Equivalent%%
+\newcommand{\equivalent}[1]{\build\sim_{#1}^{}}
+
+%o et O%%%%
+\renewcommand{\o}[2]{\build o_{#1\to #2}^{}}
+\renewcommand{\O}[2]{\build O_{#1\to #2}^{}}
+
+
+
+%%%%%%%%%%%%%%%Geometrie%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%Reperes%%%%%%%%%%%%%%
+\def\Oij{\ensuremath{\left(\text{O},~\vect{\imath},~\vect{\jmath}\right)}}
+\def\Oijk{\ensuremath{\left(\text{O},~\vect{\imath},~ \vect{\jmath},~ \vect{k}\right)}}
+\def\Ouv{\ensuremath{\left(\text{O},~\vect{u},~\vect{v}\right)}}
+\renewcommand{\ij}{(\vec\imath\, ;\vec\jmath\,)}
+\newcommand{\ijk}{(\vec\imath\, ;\vec\jmath\, ;\vec k\,)}
+\newcommand{\OIJ}{(O\,;\, I\,;\, J\,)}
+\newcommand{\repere}[3]{\big(#1\, ;\,\vect{#2} ;\vect{#3}\big)}
+\newcommand{\reperesp}[4]{\big(#1\, ;\,\vect{#2} ;\vect{#3} ;\vect{#4}\big)}
+
+%%%%%%%%%Coordonnees%%%%%%%%%%%%%%
+\newcommand{\coord}[2]{(#1\, ;\, #2)}
+\newcommand{\bigcoord}[2]{\big(#1\, ;\, #2\big)}
+\newcommand{\Coord}[2]{\left(#1\, ;\, #2\right)}
+\newcommand{\coordesp}[3]{(#1\, ;\, #2\, ;\, #3)}
+\newcommand{\bigcoordesp}[3]{\big(#1\, ;\, #2\, ;\, #3\big)}
+\newcommand{\Coordesp}[3]{\left(#1\, ;\, #2\, ;\, #3\right)}
+\newcommand{\Vcoord}[3]{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}
+%Symboles entre droites
+%\newcommand{\paral}{\sslash}
+\newcommand{\paral}{\mathop{/\!\! /}}
+%
+
+%%%%%%%%%Produit scalaire, Angles%%%%%%%%%%
+\newcommand{\scal}[2]{\vect{#1} \, \cdot \, \vect{#2}}
+\newcommand{\Angle}[2]{\left(\vect{#1} \, , \, \vect{#2}\right)}
+\newcommand{\Anglegeo}[2]{\left(\widehat{\vect{#1} \, ; \, \vect{#2}}\right)}
+\renewcommand{\angle}[1]{\widehat{#1}}
+\newcommand{\anglevec}[2]{\left(\vect {#1}\, ,\,\vect {#2} \right)}
+\newcommand{\anglevecteur}[2]{(#1\, , \, #2)}
+\newcommand{\Anglevec}[2]{(\vecteur{#1}\, ,\,\vecteur{#2})}
+\newcommand{\prodscal}[2]{#1 \, \cdot \, #2}
+%
+
+
+%Arc
+%\newcommand{\arc}[1]{\wideparen{#1}}
+\newcommand{\arcoriente}[1]{\overset{\curvearrowright}{#1}}
+%
+%
+
+
+%%%%%%%%%%%%%%%Normes%%%%%%%%%%%%%%%%
+\newcommand{\norme}[1]{\left\| #1\right\|}
+\newcommand{\normebis}[1]{\delim{2pt}{\|}{9pt}\! #1\delim{2pt}{\|}{9pt}}
+\newcommand{\normetriple}[1]{\left |\kern -.07em\left\| #1\right |\kern -.07em\right\|}
+\newcommand{\valabs}[1]{\big| \, #1 \, \big|}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%Degré%%%%%%
+%\newcommand{\Degre}{\ensuremath{^\circ}}
+%La commande \degre est déjà définie dans le package babel
+
+%%%%%%%%%%Vecteurs%%%%%%%%%%%
+\newcommand{\vect}[1]{\mathchoice%
+{\overrightarrow{\displaystyle\mathstrut#1\,\,}}%
+{\overrightarrow{\textstyle\mathstrut#1\,\,}}%
+{\overrightarrow{\scriptstyle\mathstrut#1\,\,}}%
+{\overrightarrow{\scriptscriptstyle\mathstrut#1\,\,}}}
+
+
+
+%%%%%%%%%%%%%Algebre%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%Systemes%%%%%%%%%%%
+%Systemes
+\newcommand{\sys}[2]{
+\left\lbrace
+ \begin{array}{l}
+  \negthickspace\negthickspace #1\\
+  \negthickspace\negthickspace #2\\
+ \end{array}
+\right.\negthickspace\negthickspace}
+\newcommand{\Sys}[3]{
+\left\lbrace
+ \begin{array}{l}
+  #1\\
+  #2\\
+  #3\\
+ \end{array}
+\right.}
+\newcommand{\Sysq}[4]{
+\left\lbrace
+ \begin{array}{l}
+  #1\\
+  #2\\
+  #3\\
+  #4\\
+ \end{array}
+\right.}
+%
+%
+
+%%%%%%%%%%%%%%%%Matrices%%%%%%%%%%%%%%%%%%
+%Comatrice
+\newcommand{\com}{\mathop{\rm com}\nolimits}
+%
+%
+%Trace
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+%
+%
+%Transposee
+\newcommand{\transposee}[1]{{\vphantom{#1}}^t\negmedspace #1}
+%
+%
+%Noyau
+\newcommand{\Ker}{\mathop{\rm Ker}\nolimits}
+%
+%
+
+%
+%Matrices
+\newcommand{\Mn}{\mathcal M_n}
+\newcommand{\matrice}[4]{
+\left(
+ \begin{array}{cc}
+  #1 & #2 \\
+  #3 & #4
+ \end{array}
+\right)}
+
+\newcommand{\Matrice}[9]{
+\left(
+ \begin{array}{ccc}
+  #1 & #2 & #3\\
+  #4 & #5 & #6\\
+  #7 & #8 & #9
+ \end{array}
+\right)}
+\newcommand{\Vect}[3]{
+\left(\negmedspace
+ \begin{array}{c}
+  #1\\
+  #2\\
+  #3
+ \end{array}\negmedspace
+\right)}
+\newcommand{\Ideux}{\matrice{1}{0}{0}{1}}
+\newcommand{\Itrois}{\Matrice{1}{0}{0}{0}{1}{0}{0}{0}{1}}
+%
+%
+%Determinants
+\newcommand{\determinant}[4]{
+\left|
+ \begin{array}{cc}
+  #1 & #2 \\
+  #3 & #4
+ \end{array}
+\right|}
+\newcommand{\Determinant}[9]{
+\left|
+ \begin{array}{ccc}
+  #1 & #2 & #3\\
+  #4 & #5 & #6\\
+  #7 & #8 & #9
+ \end{array}
+\right|}
+
+\begin{document}
+\maketitle
+
+\hypertarget{cruxe9dits}{%
+\section*{Crédits}\label{cruxe9dits}}
+\addcontentsline{toc}{section}{Crédits}
+
+\emph{Ce cours est inspiré du chapitre 1 du manuel NSI de la collection
+Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre,
+N'Guyen.}
+
+\hypertarget{utiliser-le-mode-interactif}{%
+\section{Utiliser le mode
+interactif}\label{utiliser-le-mode-interactif}}
+
+\begin{methode}{}
+
+Pour installer sur votre machine l'environnement Idle de programmation
+en
+\href{https://docs.python.org/3/tutorial/datastructures.html}{Python},
+on peut le télécharger depuis le site officiel
+\url{https://www.python.org/downloads/}.
+
+Au lycée dans une session Windows, un raccourci sur le bureau doit
+permettre de lancer Idle, et dans une session Ubuntu, il suffit d'ouvrir
+un terminal de commande avec \passthrough{\lstinline!CTRL + ALT + T!} et
+de saisir la commande \passthrough{\lstinline!idle-python3.x!} ou
+\passthrough{\lstinline!x!} est le numéro de version de
+\href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+(la touche de tabulation permet d'obtenir l'autocomplétion après avoir
+saisi \passthrough{\lstinline!idle-python3!}).
+
+\end{methode}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Écrire les expressions suivantes avec un parenthésage explicite
+  permettant d'indiquer l'ordre de priorité des opérations :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> 2 - 3 - 4 
+-5
+>>> 1 / 2 ** 3
+0.125
+>>> 1/ 2 / 4
+0.125
+>>> 1/ 2 * 4
+2.0
+>>> 2 * 3 ** 2
+18
+>>> 2 ** 3 ** 2
+512
+>>> 34 // 3 % 4 
+3
+>>> 5 % 3 ** 4
+5
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Écrire les expressions suivantes avec le moins de parenthèses
+  possibles :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> 2 + (8 * (4 - 5))
+>>> (3 - 5) - ((6 * 2) / (5 ** 2)) 
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+Prédire la valeur affichée dans l'interprète
+\href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+après les séquences d'instructions suivantes.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Séquence 1 :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> a = 5
+>>> a = a + 1
+>>> b = a
+>>> b = b ** 2 - a
+>>> print(b)
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Séquence 2 :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> a = 5
+>>> b = 6
+>>> a = a - b
+>>> b = b + a
+>>> a = b - a
+>>> print(a, b)
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Séquence 3 :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> from random import randint
+>>> a = randint(1, 100)  #entier aléatoire entre 1 et 100
+>>> b = randint(1, 100)  #entier aléatoire entre 1 et 100
+>>> a = a - b
+>>> b = b + a
+>>> a = b - a
+>>> print(a, b)
+\end{lstlisting}
+
+\end{exercice}
+
+\hypertarget{premiers-programmes-et-premiuxe8res-erreurs}{%
+\section{Premiers programmes et premières
+erreurs}\label{premiers-programmes-et-premiuxe8res-erreurs}}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Dans son espace personnel, créer un répertoire
+  \passthrough{\lstinline!Chapitre1!} avec un sous-répertoire
+  \passthrough{\lstinline!TP1!}.
+\item
+  Le prix d'une matière première est de 873 euros la tonne au début de
+  l'année. Ce prix subit des variations saisonnières : au premier
+  trimestre il augmente de 347 euros, au second trimestre il augmente de
+  25 \%, au troisième trimestre il subit une baisse de 50 \% et enfin il
+  diminue de 100 euros.
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Créer un nouveau programme avec l'éditeur d'Idle et l'enregistrer dans
+  \passthrough{\lstinline!Chapitre1/TP1!} sous le nom
+  \passthrough{\lstinline!prix.py!}.
+\item
+  Saisir dans ce fichier le code ci-dessous en le complétant afin qu'il
+  calcule les valeurs successives de la variable
+  \passthrough{\lstinline!prix!}.
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+prix = 873       #prix au début de l'année
+prix = ....      #prix à la fin du premier trimestre
+prix = ....      #prix à la fin du second trimestre
+prix = ....      #prix à la fin du troisième trimestre
+prix = ....      #prix à la fin de l'année
+print("Prix final :", prix)
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+La température \(f\) en degrés Fahrenheit s'obtient à partir de la
+température \(c\) en degrés Celsius par la formule de conversion
+\(f=1,8 * c + 32\).
+
+On veut écrire un programme qui réponde à la \textbf{spécification}
+suivante : \emph{convertir une mesure de température de l'échelle
+Celsius vers l'échelle Fahrenheit.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Dans l'éditeur d'Idle, créer un programme
+  \passthrough{\lstinline!temperature.py!} et saisir le code ci-dessous
+  :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+f = input("Température en degrés Celsius ? "
+d = 1,8 * f + 32
+print("La température en degrés Fahrenheit est de ", d)
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Exécuter le code, on doit obtenir un message d'erreur indiquant une
+  erreur de Syntaxe. Un curseur indique dans le code la position où
+  l'interpréteur
+  \href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+  s'est interrompu dans la lecture du code. Si le curseur est en début
+  de ligne, il faut souvent chercher l'erreur à la fin de la ligne
+  précédente \ldots{}
+
+  Corriger l'erreur de syntaxe.
+\end{enumerate}
+
+\includegraphics[width=0.5\textwidth,height=\textheight]{images/syntax_error.png}\\
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Exécuter de nouveau le code, on doit obtenir un message d'erreur
+  indiquant que
+  \href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+  ne peut réaliser l'opération demandée. On dit que l'interpréteur
+  \href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+  a levé une
+  \href{https://docs.python.org/3.5/tutorial/errors.html}{exception}.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+TypeError: can only concatenate str (not "int") to str
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\item
+  Insérer l'instruction \passthrough{\lstinline!print(type(f))!} en
+  ligne 2, exécuter de nouveau. Que représente la valeur affichée avant
+  le message d'erreur ?
+\item
+  Remplacer la première instruction par
+  \passthrough{\lstinline!float(input("Température en degrés Celsius ? "))!}
+  puis exécuter.
+
+  Quel est l'effet de la fonction \passthrough{\lstinline!float!} ?
+  Afficher sa documentation dans l'interpréteur avec l'instruction
+  \passthrough{\lstinline!help(float)!}.
+\item
+  Si on teste le programme pour une température de 45 degrés Celsisus on
+  doit obtenir l'affichage ci-dessous.
+
+  Est-ce que la spécification du programme est vérifiée ? Corriger le
+  programme.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+Température en degrés Celsius ? 45
+<class 'float'>
+La température en degrés Fahrenheit est de  (1, 392.0)
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{remarque}{}
+
+À propose des différents types d'erreurs possibles en
+\href{https://docs.python.org/3/tutorial/datastructures.html}{Python},
+on pourra lire le premier paragraphe de cette page de la documentation
+\url{https://docs.python.org/fr/3.5/tutorial/errors.html}.
+
+\end{remarque}
+
+\hypertarget{etat-dun-programme-effets-de-bord}{%
+\section{Etat d'un programme, effets de
+bord}\label{etat-dun-programme-effets-de-bord}}
+
+\begin{exercice}{}
+
+On veut écrire un programme vérifiant la \textbf{spécification} suivant
+: \emph{le programme doit permuter les valeurs de deux variables
+\passthrough{\lstinline!a!} et \passthrough{\lstinline!b!} de type
+entier saisies en entrée}.
+
+Avec l'éditeur Idle, créer dans le répertoire
+\passthrough{\lstinline!TP1!} un nouveau programme
+\passthrough{\lstinline!permutation.py!} et recopier le code ci-dessous
+
+\begin{lstlisting}[language=Python]
+# entrées
+a = int(input('a ?'))
+b = int(input('b ?'))
+# traitement
+a = b
+b = a 
+# sorties
+print("a = ", a, " et b = ", b)
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Tester ce programme pour les entrées 605 et 506. La spécification du
+  programme est-elle satisfaite ?
+\item
+  Pour représenter l'exécution du programme, compléter le tableau d'état
+  ci-dessous, qui affiche pour chaque ligne d'instruction, les valeurs
+  des variables \passthrough{\lstinline!a!} et
+  \passthrough{\lstinline!b!} et les éventuelles interactions avec
+  l'utilisateur.
+\end{enumerate}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Ligne & Variable a & Variable b & Interactions\tabularnewline
+\midrule
+\endhead
+a = int ( input ( `a ?' )) & 734 & & \textbf{affichage :} `a ?'
+\textbf{saisie} : 734\tabularnewline
+b = int ( input ( `b ?' )) & 734 & 437 & \textbf{affichage :} `b ?'
+\textbf{saisie :} 437\tabularnewline
+a = b & & &\tabularnewline
+b = a & & &\tabularnewline
+print ( ``a ='' , a, " et b = " , b) & & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Proposer une modification du programme qui permute les valeurs des
+  variables \passthrough{\lstinline!a!} et \passthrough{\lstinline!b!}
+  saisies en entrée.
+
+  Démontrer que le programme est correct en complétant un tableau d'état
+  de ce nouveau programme qui utilise des valeurs indéterminées
+  \passthrough{\lstinline!x!} et \passthrough{\lstinline!y!} pour les
+  variables \passthrough{\lstinline!a!} et \passthrough{\lstinline!b!}
+  en entrée.
+\item
+  Proposer une modification du programme qui permute les valeurs des
+  variables \passthrough{\lstinline!a!} et \passthrough{\lstinline!b!}
+  saisies en entrée, sans utiliser de variable supplémentaire.
+\end{enumerate}
+
+\end{exercice}
+
+\hypertarget{utiliser-une-bibliothuxe8que}{%
+\section{Utiliser une bibliothèque}\label{utiliser-une-bibliothuxe8que}}
+
+\begin{cours}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Le coeur du langage
+  \href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+  est constitué d'une grammaire, de mots clefs et d'une bibliothèque
+  \passthrough{\lstinline!built-in!} rassemblant des instructions qui
+  sont toujours disponibles : comme
+  \passthrough{\lstinline!max, print, abs!} etc \ldots{} Par ailleurs,
+  des \textbf{bibliothèques}, appelées \textbf{modules} en
+  \href{https://docs.python.org/3/tutorial/datastructures.html}{Python},
+  constituent des boîtes outils d'instructions que le programmeur peut
+  réutiliser en important le module. La distribution standard de
+  \href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+  est livrée avec un ensemble de modules constituant sa bibliothèque
+  standard.
+\item
+  Lorsqu'on a besoin d'utiliser une fonction de bibliothèque, on
+  commence par explorer la bibliothèque standard dont les modules sont
+  listés et documentés sur le site officiel
+  \url{https://www.python.org/}. Une fois qu'on a déterminé le module
+  qui nous intéresse, par exemple \passthrough{\lstinline!math!}, on
+  dispose de plusieurs façons d'importer des instructions :
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Si on a besoin juste d'une instruction comme
+  \passthrough{\lstinline!sqrt!}, pour la fonction racine carrée, on
+  peut écrire avant de l'appeler :
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+from math import sqrt
+\end{lstlisting}
+
+\begin{itemize}
+\tightlist
+\item
+  Si on a besoin de plusieurs instructions, mais en nombre limité, comme
+  \passthrough{\lstinline!sqrt, cos!} et \passthrough{\lstinline!sin!},
+  on peut écrire avant de les appeler :
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+from math import sqrt, cos, sin
+\end{lstlisting}
+
+\begin{itemize}
+\tightlist
+\item
+  Si on a besoin de beaucoup d'instructions du module, on peut utiliser
+  le joker \passthrough{\lstinline!*!} et écrire avant de les appeler :
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+from math import *
+\end{lstlisting}
+
+Cette méthode peut sembler pratique mais elle est dangereuse si on
+importe plusieurs modules, qui contiennent des instructions avec les
+mêmes noms. Pour cloisonner les espaces de nommage, on préférera la
+méthode suivante.
+
+\begin{itemize}
+\tightlist
+\item
+  Une autre méthode consiste à importer juste le module, puis on peut
+  accéder à chacune des instructions ou constantes qu'il contient en les
+  préfixant du nom du module en notation pointée :
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+import math
+racine3 = math.sqrt(3)
+\end{lstlisting}
+
+Cette méthode alourdit la syntaxe mais permet un meilleur cloisonnement
+des noms utilisés par les différents modules utilisés dans un même
+programme.
+
+\end{cours}
+
+\begin{center}{}
+
+\includegraphics[width=0.25\textwidth,height=\textheight]{images/Repere_Turtle.png}\\
+
+\end{center}
+
+\begin{methode}{}
+
+Le module graphique \passthrough{\lstinline!turtle!} permet de piloter
+un «crayon» afin de tracer dynamiquement des figures géométriques.
+
+Les dessins sont réalisés dans un repère orthonormé virtuel centré sur
+la fenêtre d'affichage. L'unité des axes est le pixel. Le repère n'est
+pas visible à l'écran.
+
+La forme par défaut du crayon de tracé est une flèche «orientée», placé
+au départ à l'origine du repère. Le crayon est situé à la pointe, la
+flèche montre le sens du tracé en cours ou à venir.
+
+La liste complète des fonctions disponibles grâce au module turtle est
+disponible sur la
+\href{http://www.frederic-junier.org/PythonSeconde/Python_Seconde_Parc/tortue/doc/turtleDoc.html}{documentation
+officielle}. On pourra aussi télécharger un petit résumé au format .pdf
+en
+\href{http://www.frederic-junier.org/PythonSeconde/Python_Seconde_Parc/fichiers_python_2nde/Resume_Turtle.pdf}{cliquant
+ici}.
+
+On donne ci-dessous un exemple de programme permettant de tracer un
+carré de côté 100 pixels.
+
+\begin{lstlisting}[language=Python]
+# Carré programme 1
+from turtle import *
+up()       #lever le crayon
+goto(0,0)
+down()     #poser le crayon
+goto(100, 0)
+goto(100, 100)
+goto(0,100)
+goto(0,0)
+exitonclick()  #permet de fermer la fenêtre de tracé proprement
+\end{lstlisting}
+
+\end{methode}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Avec l'éditeur d'Idle, créer dans le répertoire
+  \passthrough{\lstinline!TP1!} un nouveau programme
+  \passthrough{\lstinline!tortue-polygones.py!} et importer toutes les
+  fonctions du module \passthrough{\lstinline!turtle!} avec
+  \passthrough{\lstinline!from turtle import *!}.
+\item
+  Écrire un programme qui trace un carré de côté 100 pixels en utilisant
+  les instructions \passthrough{\lstinline!forward!} et
+  \passthrough{\lstinline!left!}.
+\item
+  Écrire un programme qui trace un triangle équilatéral de côté 100
+  pixels.
+\item
+  Écrire un programme qui trace un hexagone régulier de côté 100 pixels.
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Avec l'éditeur d'Idle, créer dans le répertoire
+  \passthrough{\lstinline!TP1!} un nouveau programme
+  \passthrough{\lstinline!tortue-clef.py!} et importer toutes les
+  fonctions du module \passthrough{\lstinline!turtle!} avec
+  \passthrough{\lstinline!from turtle import *!}.
+\item
+  Exécuter puis dans le du mode interactif la documentation de
+  l'instruction \passthrough{\lstinline!circle!} avec
+  \passthrough{\lstinline!help(circle)!}.
+\item
+  Saisir dans le programme la séquence d'instructions suivante, exécuter
+  puis observer.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+from turtle import *
+forward(60)
+left(120)
+forward(60)
+right(90)
+circle(60,150)
+exitonclick() 
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compléter le programme pour afficher la figure de gauche.
+\end{enumerate}
+
+\end{exercice}
+
+\begin{center}
+
+\begin{tabular}{cc}
+
+\begin{minipage}{0.5\linewidth}
+
+\includegraphics[width=0.4\textwidth,height=\textheight]{images/clef.png}\\
+
+\end{minipage} &
+
+\begin{minipage}{0.5\linewidth}
+
+\includegraphics[width=0.4\textwidth,height=\textheight]{images/triangle_pyramide.png}\\
+
+\end{minipage} \end{tabular}
+
+\end{center}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Avec l'éditeur d'Idle, créer dans le répertoire
+  \passthrough{\lstinline!TP1!} un nouveau programme
+  \passthrough{\lstinline!tortue-triangles.py!}.
+\item
+  Le programme ci-dessous permet de tracer un triangle équilatéral noir
+  de côté 100 pixels. Compléter le code pour tracer la figure de droite
+  avec la pyramide de triangles.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+begin_fill()
+fillcolor("black")
+forward(100)
+left(120)
+forward(100)
+left(120)
+forward(100)
+left(120)
+end_fill()
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Avec l'éditeur d'Idle, créer dans le répertoire
+  \passthrough{\lstinline!TP1!} un nouveau programme
+  \passthrough{\lstinline!tortue-drapeau.py!}.
+\item
+  Écrire un programme qui dessine le drapeau français.
+\end{enumerate}
+
+\end{exercice}
+
+\end{document}

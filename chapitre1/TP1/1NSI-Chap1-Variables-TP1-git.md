@@ -1,7 +1,3 @@
----
-theme: jekyll-theme-cayman
----
- 
   - [Crédits](#crédits)
   - [Utiliser le mode interactif](#utiliser-le-mode-interactif)
   - [Premiers programmes et premières
@@ -166,9 +162,9 @@ l’échelle Fahrenheit.*
 <!-- end list -->
 
 ``` python
-f = input("Température en degrés Fahrenheit ? "
+f = input("Température en degrés Celsius ? "
 d = 1,8 * f + 32
-print("La température en degrés Celsius est de ", d)
+print("La température en degrés Fahrenheit est de ", d)
 ```
 
 2.  Exécuter le code, on doit obtenir un message d’erreur indiquant une
@@ -202,7 +198,7 @@ TypeError: can only concatenate str (not "int") to str
     ?
 
 5.  Remplacer la première instruction par `float(input("Température en
-    degrés Fahrenheit ? "))` puis exécuter.
+    degrés Celsius ? "))` puis exécuter.
     
     Quel est l’effet de la fonction `float` ? Afficher sa documentation
     dans l’interpréteur avec l’instruction `help(float)`.
@@ -216,9 +212,9 @@ TypeError: can only concatenate str (not "int") to str
 <!-- end list -->
 
 ``` python
-Température en degrés Fahrenheit ? 45
+Température en degrés Celsius ? 45
 <class 'float'>
-La température en degrés Celsius est de  (1, 392.0)
+La température en degrés Fahrenheit est de  (1, 392.0)
 ```
 
 À propose des différents types d’erreurs possibles en
@@ -427,6 +423,20 @@ exitonclick()
 2.  Le programme ci-dessous permet de tracer un triangle équilatéral
     noir de côté 100 pixels. Compléter le code pour tracer la figure de
     droite avec la pyramide de triangles.
+
+<!-- end list -->
+
+``` python
+begin_fill()
+fillcolor("black")
+forward(100)
+left(120)
+forward(100)
+left(120)
+forward(100)
+left(120)
+end_fill()
+```
 
 **Exercice 9**
 
