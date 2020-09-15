@@ -23,6 +23,4 @@ title:  "Ressources pour le cours de NSI"
 
     [Captation vidéo de la conférence](https://www.college-de-france.fr/site/gerard-berry/inaugural-lecture-2009-11-19-18h00.htm)
 
-    <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="http://www.college-de-france.fr/video/gerard-berry/2010/berry-20091119.mp4" frameborder="0" allowfullscreen></iframe>
-
 
