@@ -9,7 +9,7 @@ layout: parc
 
 ## Cours
 
-* [Pdf du cours sur les boucles et tests](chapitre3/Cours/)
+* [Pdf du cours sur les boucles et tests](chapitre3/cours/Cours_2_Boucles.pdf)
 
 
 ## TP Quickpi : constructions élémentaires en Python, bibliothèque, IHM

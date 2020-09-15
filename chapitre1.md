@@ -7,7 +7,8 @@ layout: parc
 
 ## Cours
 
-* [Pdf du cours](chapitre1/Cours/Intro_var.pdf)
+* [Pdf du cours](chapitre1/cours/Intro_var.pdf)
+* [Correction des entraînements](chapitre1/cours/Corrigé_Ent_C1.pdf)
 
 ## TP 
 
