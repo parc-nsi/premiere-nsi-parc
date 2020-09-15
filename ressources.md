@@ -16,5 +16,13 @@ title:  "Ressources pour le cours de NSI"
     [Captation vidéo de la conférence](https://tube.ac-lyon.fr/videos/watch/2f7065e3-13c7-432c-80cc-94e769d38272)
 
     <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="https://tube.ac-lyon.fr/videos/embed/2f7065e3-13c7-432c-80cc-94e769d38272" frameborder="0" allowfullscreen></iframe>
+    
+## Ordinateur et calcul
+
+* Conférence de Gérard Berry : "Penser, modéliser et maîtriser le calcul informatique"
+
+    [Captation vidéo de la conférence](https://www.college-de-france.fr/site/gerard-berry/inaugural-lecture-2009-11-19-18h00.htm)
+
+    <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="http://www.college-de-france.fr/video/gerard-berry/2010/berry-20091119.mp4" frameborder="0" allowfullscreen></iframe>
 
 
