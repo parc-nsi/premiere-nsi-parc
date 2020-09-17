@@ -23,10 +23,6 @@ permalink: /:basename
 - [repl.it](https://repl.it/languages/python3)
 - [Pythontutor](http://pythontutor.com/)  : permet de visualiser l'évolution des variables
 
-### Plateforme d'entraînement France IOI
-
-   <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="presentation-franceioi.mp4" frameborder="0" allowfullscreen></iframe>
-    
 
 ### Jupyter Hub
 
@@ -38,3 +34,8 @@ Il est indispensable d'installer un éditeur de textes sur sa plateforme, pour �
 
 * Un éditeur multiplateformes : [Notepad++](https://notepad-plus-plus.org/)
 * Un éditeur pour le développement Web : [Brackets](http://brackets.io/)
+
+## Plateforme d'entraînement France IOI
+
+   <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="presentation-franceioi.mp4" frameborder="0" allowfullscreen></iframe>
+    
