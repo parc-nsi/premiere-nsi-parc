@@ -23,6 +23,11 @@ permalink: /:basename
 - [repl.it](https://repl.it/languages/python3)
 - [Pythontutor](http://pythontutor.com/)  : permet de visualiser l'évolution des variables
 
+### Plateforme d'entraînement France IOI
+
+   <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="presentation-franceioi.mp4" frameborder="0" allowfullscreen></iframe>
+    
+
 ### Jupyter Hub
 
 Pour accéder aux Notebook Jupyter (fichiers d'extension ipynb dans les dossiers ressources ou corrige) du dépôt en mode interactif, cliquez sur le lien Binder ci-dessous.
