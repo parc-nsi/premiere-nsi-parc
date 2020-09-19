@@ -41,5 +41,5 @@ Il est indispensable d'installer un éditeur de textes sur sa plateforme, pour �
    <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="presentation-franceioi.mp4" frameborder="0" allowfullscreen></iframe>
 
 * [Codin Game](https://www.codingame.com) : l'inscription est libre, une orientation plus ludique mais attention ce  site comporte des publicités.
-* [![Prologin](prologin.jpg "logo prologin")](https://prologin.org/),  le site de préparation du  concours Prologin destiné initialement plutôt à des étudiants en première ou deuxième année postbac, mais c'était avant l'ouverture de la spécialité NSI ...
+* Le site de préparation du  concours [Prologin](https://prologin.org/) destiné initialement plutôt à des étudiants en première ou deuxième année postbac, mais c'était avant l'ouverture de la spécialité NSI ... [![Prologin](prologin.jpg "logo prologin")](https://prologin.org/)
     
