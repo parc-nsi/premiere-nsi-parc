@@ -26,4 +26,6 @@ title:  "Ressources pour le cours de NSI"
     
 * [Conférence de Gérard Berry sur la révolution informatique dans les sciences](https://www.college-de-france.fr/site/gerard-berry/course-2015-01-28-16h00.htm)
 
+> "Qu'est-ce que la simulation ? La simulation c'est remplacer l'énergie et la matière par de l'information".
+
 
