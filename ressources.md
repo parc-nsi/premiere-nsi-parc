@@ -25,7 +25,7 @@ title:  "Ressources pour le cours de NSI"
 
     [Captation vidéo de la conférence](https://www.college-de-france.fr/site/gerard-berry/inaugural-lecture-2009-11-19-18h00.htm)
     
- ## Informatique et simulation
+## Informatique et simulation
     
 * [Conférence de Gérard Berry sur la révolution informatique dans les sciences](https://www.college-de-france.fr/site/gerard-berry/course-2015-01-28-16h00.htm)
 
