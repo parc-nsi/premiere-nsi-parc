@@ -13,7 +13,7 @@ title:  "Ressources pour le cours de NSI"
 
 * L'excellent cours du MOOC Python 3 de la plateforme FUN.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/q_F4ffWPUzE?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q_F4ffWPUzE?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Langages de programmation (thème 6) 
@@ -22,7 +22,7 @@ title:  "Ressources pour le cours de NSI"
 
     [Captation vidéo de la conférence](https://tube.ac-lyon.fr/videos/watch/2f7065e3-13c7-432c-80cc-94e769d38272)
 
-    <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="https://tube.ac-lyon.fr/videos/embed/2f7065e3-13c7-432c-80cc-94e769d38272" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="https://tube.ac-lyon.fr/videos/embed/2f7065e3-13c7-432c-80cc-94e769d38272" frameborder="0" allowfullscreen></iframe>
 
 * [Conférence de Gérard Berry sur l'importance des langages en informatique (à partie de la minute 12)](https://www.college-de-france.fr/site/gerard-berry/course-2015-11-04-16h00.htm)
 
