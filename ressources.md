@@ -9,6 +9,13 @@ title:  "Ressources pour le cours de NSI"
 * [Un outil pour télécharger tous les sujets sur son PC](https://github.com/frederic-junier/Outils/blob/master/telechargement_e3c/telecharger_e3c.py)
 
 
+## Tutoriels Python
+
+* L'excellent cours du MOOC Python 3 de la plateforme FUN.
+
+<iframe width="1239" height="697" src="https://www.youtube.com/embed/q_F4ffWPUzE?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Langages de programmation (thème 6) 
 
 * Conférence de Judicael Courant : "Une brève histoire des langages de programmation"
