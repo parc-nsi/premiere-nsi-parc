@@ -13,7 +13,7 @@ title:  "Ressources pour le cours de NSI"
 
 * L'excellent cours du MOOC Python 3 de la plateforme FUN.
 
-<iframe width="1239" height="697" src="https://www.youtube.com/embed/q_F4ffWPUzE?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q_F4ffWPUzE?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Langages de programmation (thème 6) 
