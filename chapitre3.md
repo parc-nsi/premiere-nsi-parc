@@ -15,7 +15,7 @@ layout: parc
 
 <iframe width="1239" height="697" src="https://www.youtube.com/embed/Y-Ri2gdiOTA?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
+ 
 ## TP Quickpi : constructions élémentaires en Python, bibliothèque, IHM
 
 * [Pdf de la synthèse IHM](IHM-peripheriques/NSI-IHM-Cours2020V1.pdf)
