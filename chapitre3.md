@@ -13,7 +13,8 @@ layout: parc
 
 * Boucles `for` :
 
-<iframe width="1239" height="697" src="https://www.youtube.com/embed/Mvx1fOr2Hrg?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="1239" height="697" src="https://www.youtube.com/embed/Y-Ri2gdiOTA?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## TP Quickpi : constructions élémentaires en Python, bibliothèque, IHM
 
