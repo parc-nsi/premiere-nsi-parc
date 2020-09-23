@@ -10,11 +10,10 @@ layout: parc
 ## Cours
 
 * [Pdf du cours sur les boucles conditionnelles et les tests]()
-  <!--
 * [Corrigés des exemples du cours en version pdf](chapitre4/TestBouclesConditionnelles-Correction.pdf)
 * [Corrigés des exemples du cours en version html](chapitre4/TestBouclesConditionnelles-Correction.html)
 * [Corrigés des exemples du cours en version jupyter notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre4/TestBouclesConditionnelles-Correction.ipynb)
--->
+
 
 * Tests et opérateurs booléens :
 
