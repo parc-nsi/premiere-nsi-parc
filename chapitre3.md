@@ -1,16 +1,19 @@
 ---
-title:  Chapitre 3 : boucles et test
+title:  Chapitre 3 : boucles inconditionnelles
 layout: parc
 ---
 
 
 
-# Chapitre 3 : boucles et tests
+# Chapitre 3 : boucles inconditionnelles
 
 ## Cours
 
-* [Pdf du cours sur les boucles et tests](chapitre3/cours/Cours_2_Boucles.pdf)
+* [Pdf du cours sur les boucles inconditionnelles](chapitre3/cours/Cours_2_Boucles.pdf)
 
+* Boucles `for` :
+
+<iframe width="1239" height="697" src="https://www.youtube.com/embed/Mvx1fOr2Hrg?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## TP Quickpi : constructions élémentaires en Python, bibliothèque, IHM
 
