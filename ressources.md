@@ -11,7 +11,7 @@ title:  "Ressources pour le cours de NSI"
 
 ## Tutoriels Python
 
-* L'excellent cours du MOOC Python 3 de la plateforme FUN.
+* L'excellent cours du [MOOC Python 3 de la plateforme FUN](https://www.youtube.com/channel/UCIlUBOXnXjxdjmL_atU53kA).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/q_F4ffWPUzE?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
