@@ -11,6 +11,15 @@ layout: parc
 
 * [Pdf du cours sur les fonctions et la portée d'une variable](chapitre5/Chapitre5-Fonctions-PorteeVariable-2020.pdf)
 
+* Corrigés des exemples du cours :
+  * [version pdf]()
+  * [version html]()
+  * [version Jupyter Notebook]()
+
+* TD sur Rurple :
+  * [énoncé](chapitre5/TD-Rurple/PremiereNSI-TD-Rurple-2021.pdf)
+  * [archive avec le matériel](chapitre5/TD-Rurple/RurpleEleve.zip)
+
   
 * Règle __LEGB__ de portée d'une variable sur la chaîne YouTube du [Cours Python 3 d'Arnaud Legout](https://www.youtube.com/channel/UCIlUBOXnXjxdjmL_atU53kA):
 
