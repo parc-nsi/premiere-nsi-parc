@@ -22,6 +22,7 @@ permalink: /:basename
 
 - [repl.it](https://repl.it/languages/python3)
 - [Pythontutor](http://pythontutor.com/)  : permet de visualiser l'évolution des variables
+- [https://python.infobrisson.fr/](https://python.infobrisson.fr/)
 
 
 ### Jupyter Hub
