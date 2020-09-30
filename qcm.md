@@ -19,3 +19,5 @@ Les QCM sont disponibles sur les sites [Genumsi](https://genumsi.inria.fr)  ou [
   * Énoncé : <https://genumsi.inria.fr/qcm.php?h=74f0a61998145ab12b8d2824c13d1e1a>
   * Corrigé : <https://genumsi.inria.fr/qcm-corrige.php?cle=MTg7MTk7MjM7MjQ7MjU7MjY7Mjc7NDQ7NDU7NDY7NTQ7MTIxOzEzNjsxNDA7MTgyOzIxMjszNjY7MzgzOzM4NDszODU=>
 
+* QCM sur les fonctions (partie 1, sans tableaux) :
+  * Énoncé : <https://genumsi.inria.fr/qcm.php?h=b8fc2a0db42e73eb293891e24c349d08>
