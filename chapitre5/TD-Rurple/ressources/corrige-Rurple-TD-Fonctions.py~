@@ -1,0 +1,8 @@
+
+from rurple import *
+
+def mystere():
+    while bille_au_sol():
+        prends()
+    
+mystere()

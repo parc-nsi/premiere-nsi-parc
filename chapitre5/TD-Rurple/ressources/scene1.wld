@@ -1,0 +1,24 @@
+{
+    "height": 1, 
+    "robots": [
+        {
+            "dir": 0, 
+            "name": "Rurple", 
+            "stones": 0, 
+            "x": 0, 
+            "y": 0
+        }
+    ], 
+    "stones": [
+        [
+            [
+                0, 
+                0
+            ], 
+            8
+        ]
+    ], 
+    "walls": [], 
+    "width": 1, 
+    "world": "maze"
+}
