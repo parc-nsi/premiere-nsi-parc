@@ -12,9 +12,9 @@ layout: parc
 * [Pdf du cours sur les fonctions et la portée d'une variable](chapitre5/Chapitre5-Fonctions-PorteeVariable-2020.pdf)
 
 * Corrigés des exemples du cours :
-  * [version pdf]()
-  * [version html]()
-  * [version Jupyter Notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=)
+  * [version pdf](chapitre5/corrige-cours/Corrige_Cours_Chapitre5_Fonctions.pdf)
+  * [version html](chapitre5/corrige-cours/Corrige_Cours_Chapitre5_Fonctions.html)
+  * [version Jupyter Notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre5/corrige-cours/Corrige_Cours_Chapitre5_Fonctions.ipynb)
 
 * TD sur Rurple :
   * [énoncé](chapitre5/TD-Rurple/PremiereNSI-TD-Rurple-2021.pdf)
