@@ -14,7 +14,7 @@ layout: parc
 * Corrigés des exemples du cours :
   * [version pdf]()
   * [version html]()
-  * [version Jupyter Notebook]()
+  * [version Jupyter Notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=)
 
 * TD sur Rurple :
   * [énoncé](chapitre5/TD-Rurple/PremiereNSI-TD-Rurple-2021.pdf)
