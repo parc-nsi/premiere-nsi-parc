@@ -1630,8 +1630,7 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 
 \end{itemize}
 
-
-
+ 
 \begin{methode}{}
 Le Rurple logiciel permet de déplacer un robot  sur une scène en utilisant le langage de programmation Python augmenté de quelques fonctions spécifiques.
 
@@ -1656,6 +1655,8 @@ Voici les principales fonctions qui permettent de déplacer le robot ou de le fa
  \item « \texttt{gauche( )} »  (ou appui sur touche G) : le robot effectue un quart de tour vers la gauche.
  \item « \texttt{depose( )} » (ou appui sur touche D) : le robot dépose une bille sur la case où il se trouve.
  \item « \texttt{prends( )} » (ou appui sur touche P) : le robot ramasse une bille sur la case où il se trouve.
+  \item « \texttt{mur\_devant( )} » renvoie un booléen indiquant si un mur se trouve devant le robot.
+   \item « \texttt{bille\_au\_sol( )} » renvoie un booléen indiquant si une  bille se trouve sur la même case que le robot.
 \end{itemize}
 
 L'interface graphique est composée d'une barre de menu classique en haut et de trois fen\^etres :

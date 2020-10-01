@@ -61,5 +61,47 @@ def aspirateur_grille():
         
 
 #aspirateur_grille()
+
+def demi_tour():
+    gauche()
+    gauche()
+    
+def bille_devant():
+    "Détermine si la case devant contient une bille"
+    avance()
+    reponse = bille_au_sol()
+    demi_tour()
+    avance()
+    demi_tour()
+    return reponse
     
 
+def petit_poucet():
+    """Le robot parcourt toutes les cases d'une grille carré nxn avec n impair
+    et dépose 1 billes sur chaque case """
+    while bille_en_poche():
+        depose()
+        if mur_devant() or bille_devant():
+            gauche()
+        if not bille_devant():
+            avance()            
+
+petit_poucet()
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
