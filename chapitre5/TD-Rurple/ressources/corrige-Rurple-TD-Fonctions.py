@@ -14,6 +14,13 @@ def tour_grille(n):
             parcourir_ligne()
             gauche()
 
+def tour_grille2(n):
+    "Effectue n tours d'une grille rectangulaire"
+    for i in range(4 * n):
+        parcourir_ligne()
+        gauche()
+
+
 #tour_grille(6)
 
 
