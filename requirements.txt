@@ -7,3 +7,4 @@ pandas
 ipyturtle
 wand
 ipythonblocks
+metakernel
