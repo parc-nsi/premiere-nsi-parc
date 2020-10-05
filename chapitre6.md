@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 5 : fonctions et portée d'une variable
+title:  Chapitre 6 : tableaux
 layout: parc
 ---
 
