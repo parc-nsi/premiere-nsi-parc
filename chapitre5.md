@@ -19,6 +19,7 @@ layout: parc
 * TD sur Rurple :
   * [énoncé](chapitre5/TD-Rurple/PremiereNSI-TD-Rurple-2021.pdf)
   * [archive avec le matériel](chapitre5/TD-Rurple/RurpleEleve.zip)
+  * [corrigé](chapitre5/TD-Rurple/corrige-Rurple-TD-Fonctions.py)
 
   
 * Règle __LEGB__ de portée d'une variable sur la chaîne YouTube du [Cours Python 3 d'Arnaud Legout](https://www.youtube.com/channel/UCIlUBOXnXjxdjmL_atU53kA):
