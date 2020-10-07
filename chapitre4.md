@@ -7,6 +7,8 @@ layout: parc
 
 # Chapitre 4 : boucles conditionnelles et tests
 
+[Retour à la page d'accueil]("https://parc-nsi.github.io/premiere-nsi/index.html")
+
 ## Cours
 
 * [Pdf du cours sur les boucles conditionnelles et les tests](chapitre4/Cours_3_tests et while.pdf)

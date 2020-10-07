@@ -7,6 +7,8 @@ layout: parc
 
 # Chapitre 5 : fonctions et portée d'une variable
 
+[Retour à la page d'accueil]("https://parc-nsi.github.io/premiere-nsi/index.html")
+
 ## Cours
 
 * [Pdf du cours sur les fonctions et la portée d'une variable](chapitre5/Chapitre5-Fonctions-PorteeVariable-2020.pdf)

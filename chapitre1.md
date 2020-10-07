@@ -5,6 +5,8 @@ layout: parc
 
 # Chapitre 1 : variables et affectations
 
+[Retour à la page d'accueil]("https://parc-nsi.github.io/premiere-nsi/index.html")
+
 ## Cours
 
 * [Pdf du cours](chapitre1/cours/Intro_var.pdf)

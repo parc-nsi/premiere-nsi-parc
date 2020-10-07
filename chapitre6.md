@@ -7,6 +7,8 @@ layout: parc
 
 # Chapitre 6: tableaux à une dimension
 
+[Retour à la page d'accueil]("https://parc-nsi.github.io/premiere-nsi/index.html")
+
 ## Cours
 
 * [Cours en version pdf](chapitre6/Cours/tableaux-cours-.pdf)
