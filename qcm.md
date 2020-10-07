@@ -21,3 +21,12 @@ Les QCM sont disponibles sur les sites [Genumsi](https://genumsi.inria.fr)  ou [
 
 * QCM sur les fonctions (partie 1, sans tableaux) :
   * Énoncé : <https://genumsi.inria.fr/qcm.php?h=b8fc2a0db42e73eb293891e24c349d08>
+  * Corrigé : <https://genumsi.inria.fr/qcm-corrige.php?cle=NDE7NDI7NDM7NDg7NTQ7MTM4OzE3ODsyMDU7MjA5OzIxMjsyMTM7MzAwOzM4MjszOTg7NDkzOzQ5NDs0OTU=>
+
+* QCM sur les tableaux/listes Python à une dimension :
+  * QCM 1 sur les thèmes Index / Méthodes de tableau dynamique :
+    *  Énoncé : <https://genumsi.inria.fr/qcm.php?h=45405b2f41716ea7ea773a4e3d3f7177>
+    *  Corrigé : 
+  * QCM 2 sur les tableaux/listes en compréhension :
+    *  Énoncé : <https://genumsi.inria.fr/qcm.php?h=66f6a8ff3099844f78f411bd489183ba>
+    *  Corrigé : 
