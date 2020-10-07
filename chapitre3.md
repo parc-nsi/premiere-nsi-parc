@@ -11,6 +11,8 @@ layout: parc
 
 * [Pdf du cours sur les boucles inconditionnelles](chapitre3/cours/Cours_2_Boucles.pdf)
 
+* [Corrigé des entraînements](chapitre3/Corrigé_Ent_C3.pdf)
+
 * Boucles `for` sur la chaîne YouTube du [Cours Python 3 d'Arnaud Legout](https://www.youtube.com/channel/UCIlUBOXnXjxdjmL_atU53kA):
 
 <iframe width="1239" height="697" src="https://www.youtube.com/embed/Y-Ri2gdiOTA?list=PL2CXLryTKuwwlCGfgpApOTmMn7_dbtwWa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
