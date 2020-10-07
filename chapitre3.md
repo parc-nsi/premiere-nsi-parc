@@ -7,7 +7,7 @@ layout: parc
 
 # Chapitre 3 : boucles inconditionnelles
 
-[Retour à la page d'accueil]("https://parc-nsi.github.io/premiere-nsi/index.html")
+[Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
 
 ## Cours
 
