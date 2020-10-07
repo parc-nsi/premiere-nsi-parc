@@ -3,6 +3,11 @@ title:  Progression
 layout: parc
 ---
 
+Ci-dessous  différentes étapes du déroulement d'un algorithme de rotation d'images selon le paradigme algorithmique _Diviser pour régner_ qui est au programme de Terminale. 
+
+L'image source représente l'oeuvre _Matsuri Yatai Dragon_ du peintre japonais [Hokusai](https://en.wikipedia.org/wiki/en:Hokusai). Elle est dans le domaine public et disponible sur [https://commons.wikimedia.org](https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg).
+
+[![Dragon](rotation-dragon-2.gif "dragon-hokusai")](https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg)
 
 
 ## Programme 
