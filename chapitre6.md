@@ -20,3 +20,18 @@ layout: parc
 * [Corrigé des exemples du cours en version pdf](chapitre6/Cours/ressources/PremiereNSI-Cours-Tableaux-Corriges.pdf)   
   
 * [Corrigé des exemples du cours en version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre6/Cours/ressources/PremiereNSI-Cours-Tableaux-Corriges.ipynb)
+
+
+## TP
+
+* [TP en version pdf](chapitre6/TP/TP-tableaux-.pdf)
+
+* [TP en version markdown](chapitre6/TP/TP-tableaux-git.md)
+  
+* [Matériel du TP à télécharger](chapitre6/TP/eleves.zip)
+
+* [Corrigé du TP en version pdf](chapitre6/TP/corriges/TP-Tableaux-Corrige.pdf)
+  
+* [Corrigé du TP en version html](chapitre6/TP/corriges/TP-Tableaux-Corrige.html)
+  
+* [Corrigé  du TP en version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre6/TP/corriges/TP-Tableaux-Corrige.ipynb)

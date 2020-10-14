@@ -90,6 +90,50 @@ que l'appel `somme([10,11,12,13,14])` renvoie 60 ?
 
 :::
 
+
+:::methode
+À partir de cet exercice, on précisera pour chaque fonction, dans une chaîne de documentation (ou _docstring_)
+multiligne placée juste après l'en-tête de la fonction entre triples quotes ou guillemets, sa __spécification__.
+
+Celle-ci est constituée  :
+
+ * du ou des  __type(s)__ du ou des paramètre(s), en précisant si la fonction ne prend pas de paramètre
+ * de la ou des __précondition(s)__ que doivent vérifier ces paramètres
+ * du ou des __type(s)__ de la (ou les) valeur(s) renvoyée(s), en précisant si la fonction ne renvoie rien (`None` par défaut en Python)
+ * de la ou des __postcondition(s)__ que doivent vérifier  la ou les valeur(s) renvoyée(s)
+
+Pour vérifier les préconditions on utilise l'instruction `assert` qui permet de vérifier l'assertion (à valeur booléenne) qu'elle préfixe : si l'assertion est vraie, l'exécution continue sinon une exception `AssertionError` est levée et l'exécution s'interrompt. On peut passer un message d'erreur personnalisée en le séparant de l'assertion par une virgule :
+
+```python
+>>> assert (1 + 1) % 2 == 0, 'attention on calcule modulo 2'
+>>> assert (1 + 1) % 2 == 2, 'attention on calcule modulo 2'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AssertionError: attention on calcule modulo 2
+```
+  
+Voici un exemple de rédaction pour la deuxième fonction de l'exercice 4 :
+
+```python
+def vsom(tab1, tab2):
+    """
+    Paramètres :
+        tab1 et tab2 des tableaux de type list contenant des  nombres de type int ou float
+    Préconditions :
+        tab1 non vide et len(tab1) == len(tab2)
+    Valeur renvoyée :
+        un tableau de type list contenant des  nombres de type int ou float
+    Postcondition :
+        le tableau renvoyé est constitué des sommes
+        terme à terme des éléments de tab1 et tab2        
+    """
+    assert len(tab1) > 0 and len(tab1) == len(tab2); "tab1 et tab2 doivent être de même longueur"
+    return ................. #à compléter
+```
+
+:::
+
+
 :::exercice
 
 1. Écrire une fonction Python   `smul` à deux paramètres, un nombre et une liste de nombres, qui multiplie chaque élément de la liste par le nombre et renvoie une nouvelle liste :
@@ -123,7 +167,7 @@ que l'appel `somme([10,11,12,13,14])` renvoie 60 ?
 
 :::exercice
 
-1. Écrire une fonction `tableau_aleatoire(n, a, b)` qui retourne un tableau de `n` entiers tirés aléatoirement entre les entiers `a` et `b` inclus. On utilisera la fonction `randint`  du module `random`.
+1. Écrire une fonction `tableau_aleatoire(n, a, b)` qui renvoie un tableau de `n` entiers tirés aléatoirement entre les entiers `a` et `b` inclus. On utilisera la fonction `randint`  du module `random`.
 
 ~~~python
 Help on method randint in module random:
@@ -133,23 +177,45 @@ randint(a, b) method of random.Random instance
 ~~~
 
 
-2. Écrire une fonction `echantillon(nbexp)` qui retourne un tableau de taille 6 comptant le nombre d'occurences de chaque face numérotée de 1 à 6 sur un échantillon de `nbexp` lancers d'un dé cubique équilibré.
+2. Écrire une fonction `histo_echantillon(nbexp)` qui renvoie un tableau de taille 6 comptant le nombre d'occurences de chaque face numérotée de 1 à 6 sur un échantillon de `nbexp` lancers d'un dé cubique équilibré.
 
-3. On donne ci-dessous une fonction qui prend en paramètre un tableau et retourne un élément extrait au hasard  du tableau. Elle permet par exemple de simuler un tirage sans remise d'une boule dans une urne.
+3. On donne ci-dessous une fonction qui prend en paramètre un tableau et renvoie un élément extrait au hasard  du tableau. Elle permet par exemple de simuler un tirage sans remise d'une boule dans une urne.
 
     ~~~python
     from random import randint
     def tirage_sans_remise(urne):
-        return tab.pop(randint(0, .......)
+        """ 
+        Paramètres :
+            urne un tableau homogène type list
+        Précondition :
+            urne non vide
+        Valeur renvoyée :
+            un élément du même type que ceux dans urne
+        Postcondition :
+            l'élement renvoyée a été extrait aléatoirement de urne
+            urne a été modifiée
+        """
+        return urne.pop(randint(0, .......))
     ~~~
 
    * Compléter les pointillés pour respecter la spécification de la fonction.
-   * Écrire une fonction `echantillon_tirage_sans_remise` respectant la spécification ci-dessous. Les [annotations de type](https://docs.python.org/fr/3/tutorial/controlflow.html#function-annotations) sont des métadonnées optionnelles décrivant les types utilisés par une fonction.
+   * Écrire une fonction `echantillon_tirage_sans_remise` respectant la spécification ci-dessous. Les [annotations de type](https://docs.python.org/fr/3/tutorial/controlflow.html#function-annotations) sont des métadonnées optionnelles décrivant les types des paramètres et des valeurs renvoyées.
 
     ~~~python
-    def echantillon_tirage_sans_remise(urne : list, nbtirage : int) -> list:
-        """Retourne un tableau, échantillon de nbtirage sans remises
-        dans une urne qui est un tableau"""
+    def echantillon_tirage_sans_remise(urne:list, nbtirage:int) -> list:
+        """ 
+        Paramètres :
+            urne un tableau homogène type list
+            nbtirage un entier de type int
+        Préconditions :
+            nbtirage >= 0
+            urne non vide
+        Valeur renvoyée :
+            un tableau d'entiers de type list
+        Postcondition :
+            le tableau renvoyé est un échantillon extrait
+            aléatoirement de l'urne sans remise
+        """
     ~~~
 :::
 
@@ -157,8 +223,8 @@ randint(a, b) method of random.Random instance
 
 :::exercice
 
-* La fonction `ord` prend en paramètre un caractère de type `string` et retourne son point de code dans le jeu de caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode).
-* La fonction `chr` prend en paramètre un point de code Unicode et retourne le caractère correspondant.
+* La fonction `ord` prend en paramètre un caractère de type `string` et renvoie son point de code dans le jeu de caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode).
+* La fonction `chr` prend en paramètre un point de code Unicode et renvoie le caractère correspondant.
 
 ~~~python
 >>> ord('a')
@@ -170,7 +236,7 @@ randint(a, b) method of random.Random instance
 
 1. Construire un tableau  `alphabet` qui contient toutes les lettres minuscules de l'alphabet romain.
 2. Construire un tableau `consonne` qui contient toutes les consonnes dans `alphabet`.
-3. Écrire une fonction `occurences(chaine)` qui prend en paramètre une chaîne de caractère et retourne un tableau de taille 26 avec le nombre d'occurences dans `chaine` des 26 lettres de l'alphabet romain.
+3. Écrire une fonction `occurences(chaine)` qui prend en paramètre une chaîne de caractère et renvoie un tableau de taille 26 avec le nombre d'occurences dans `chaine` des 26 lettres de l'alphabet romain.
 :::
 
 :::exercice
@@ -180,12 +246,13 @@ _Exercice du manuel de NSI de Thibault Balabonski  chez Ellipses_
 En mathématiques, la [suite de Fibonacci](http://images.math.cnrs.fr/Mysteres-arithmetiques-de-la-suite-de-Fibonacci.html) est une séquence d'entiers définie ainsi : on part des entiers 0 et 1 puis on construit à chaque fois l'entier suivant comme la somme des deux précédents :
 $$0, 1, 1, 2, 3, 5 ....$$
 
-Compléter la fonction `fibonacci(n)` ci-dessous pour qu'elle retourne un tableau contenant les `n`  premiers termes de la suite de Fibonacci avec `n` entier supposé supérieur ou égal à 2. Les deux assertions proposées doivent être vérifiées.
+Compléter la fonction `fibonacci(n)` ci-dessous pour qu'elle renvoie un tableau contenant les `n`  premiers termes de la suite de Fibonacci avec `n` entier supposé supérieur ou égal à 2. Les deux assertions proposées en tests unitaires, doivent être vérifiées.
 
 ~~~python
 def fibonacci(n):
     #à compléter
 
+# Tests unitaires (vérification de postconditions)
 f6 = fibonacci(6)
 assert f6 == [0,1, 1, 2,3,5]
 f30 = fibonacci(30)
@@ -195,7 +262,7 @@ assert f30[29] == 514229
 
 
 :::methode
-Pour stocker  de façon persistante (sur le disque et pas seulement en mémoire vive) des informations  lisibles par un humain, on utilise un __fichier texte__ qui est une simple séquence de caractères. Le contenu du fichier doit respecter un  __format__ qui fixe  des contraintes pour que les informations soient interprétables lors de la  lecture.  Par exemple le code source d'un programme [Python][Python] ou d'une page Web en HTML, un fichier de mesures au format [CSV][https://fr.wikipedia.org/wiki/Comma-separated_values),  sont  des fichiers textes. 
+Pour stocker  de façon persistante (sur le disque et pas seulement en mémoire vive) des informations  lisibles par un humain, on utilise un __fichier texte__ qui est une simple séquence de caractères. Le contenu du fichier doit respecter un  __format__ qui fixe  des contraintes pour que les informations soient interprétables lors de la  lecture.  Par exemple le code source d'un programme [Python][Python] ou d'une page Web en HTML, un fichier de mesures au format [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values),  sont  des fichiers textes. 
 
 Tester les séquences  d'instructions suivantes dans une console [Python][Python] pour découvrir des manipulations de base de fichiers textes.
 
@@ -316,7 +383,8 @@ def arnaque(inputfile):
     else:
         print("Ok bon voyage, bisous, n'oublie pas de m'envoyer des photos !")
         return 0
-         
+
+# Tests unitaires        
 assert arnaque('arnaque-exemple1.txt') == 1
 assert arnaque('arnaque-exemple2.txt') == 0
 print("Tests unitaires réussis !")
@@ -328,8 +396,8 @@ print("Tests unitaires réussis !")
 Écrire une fonction `maximum_intervalle(t, n)` qui prend en paramètres un tableau d'entiers `t`  et un entier `n` supposé inférieur ou égal à la longueur de `t` et qui retourne la somme maximale sur tous les sous-tableaux de longueur `n`  inclus dans `t` .
 
 ~~~python
->>> maximum_intervalle([10,2,8,4,7,5], 3)
-16
+>>> maximum_intervalle([4,1,10,2,8,5], 3)
+20
 ~~~
 :::
 
