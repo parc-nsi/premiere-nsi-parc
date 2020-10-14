@@ -3,7 +3,7 @@ title : TP sur les tableaux
 subtitle: Thème types construits
 author : Première NSI,  [Lycée du Parc](https://frederic-junier.org/)
 numbersections: true
-fontsize: 11pt
+fontsize: 10pt
 geometry:
 - top=20mm
 - left=20mm
@@ -18,11 +18,16 @@ geometry:
 
 _On désigne par tableaux, les objets de type `list` du langage [Python][Python]. Dans les exercices, comme dans les QCM d'E3C, on rencontrera parfois l'appellation Python liste pour désigner la structure de données tableau_.
 
-:::exercice
-Créer un fichier _TP-Tableaux.py_  pour rassembler les scripts rédigés pendant le TP.
 
-Enregistrer ce fichier dans un dossier pertinent de son espace personnel sur le réseau pédagogique.
-:::
+:::exercice
+
+1. Télécharger le matériel de TP depuis <https://parc-nsi.github.io/premiere-nsi/chapitre6/TP/eleves.zip>
+2. Extraire l'archive dans un dossier pertinent de son répertoire personnel.
+3. Ouvrir le fichier `TP-Tableaux-Eleve.py` avec `Spyder`. Le fichier est prérempli avec des cellules contenant les codes à compléter suivis de tests unitaires pour tester les fonctions que vous aurez écrites. 
+4. Chaque cellule est préfixée par le commentaire spécial `#%%`  et peut être exécutée avec `CTRL + Return`.
+5. Écrivez d'abord la fonction avant de la tester avec les tests unitaires s'ils sont disponibles : il faut les sélectionner puis les décommenter avec `CTRL + 1`. 
+::: 
+
 
 :::exercice
 
@@ -92,8 +97,7 @@ que l'appel `somme([10,11,12,13,14])` renvoie 60 ?
 
 
 :::methode
-À partir de cet exercice, on précisera pour chaque fonction, dans une chaîne de documentation (ou _docstring_)
-multiligne placée juste après l'en-tête de la fonction entre triples quotes ou guillemets, sa __spécification__.
+À partir de cet exercice, on précisera pour chaque fonction sa __spécification__, dans une chaîne de documentation (ou _docstring_) multiligne placée juste après l'en-tête de la fonction entre triples quotes ou guillemets.
 
 Celle-ci est constituée  :
 

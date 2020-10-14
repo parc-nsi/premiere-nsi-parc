@@ -8,11 +8,19 @@ tableau*.
 
 **Exercice 1**
 
-Créer un fichier *TP-Tableaux.py* pour rassembler les scripts rédigés
-pendant le TP.
-
-Enregistrer ce fichier dans un dossier pertinent de son espace personnel
-sur le réseau pédagogique.
+1.  Télécharger le matériel de TP depuis
+    <https://parc-nsi.github.io/premiere-nsi/chapitre6/TP/eleves.zip>
+2.  Extraire l’archive dans un dossier pertinent de son répertoire
+    personnel.
+3.  Ouvrir le fichier `TP-Tableaux-Eleve.py` avec `Spyder`. Le fichier
+    est prérempli avec des cellules contenant les codes à compléter
+    suivis de tests unitaires pour tester les fonctions que vous aurez
+    écrites.
+4.  Chaque cellule est préfixée par le commentaire spécial `#%%` et peut
+    être exécutée avec `CTRL + Return`.
+5.  Écrivez d’abord la fonction avant de la tester avec les tests
+    unitaires s’ils sont disponibles : il faut les sélectionner puis les
+    décommenter avec `CTRL + 1`.
 
 **Exercice 2**
 
@@ -84,10 +92,10 @@ que l’appel `somme([10,11,12,13,14])` renvoie 60 ?
     >>> 2 * [1, 2, 3]
     ```
 
-À partir de cet exercice, on précisera pour chaque fonction, dans une
-chaîne de documentation (ou *docstring*) multiligne placée juste après
-l’en-tête de la fonction entre triples quotes ou guillemets, sa
-**spécification**.
+À partir de cet exercice, on précisera pour chaque fonction sa
+**spécification**, dans une chaîne de documentation (ou *docstring*)
+multiligne placée juste après l’en-tête de la fonction entre triples
+quotes ou guillemets.
 
 Celle-ci est constituée :
 
