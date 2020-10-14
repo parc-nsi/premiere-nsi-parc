@@ -26,7 +26,7 @@ Les QCM sont disponibles sur les sites [Genumsi](https://genumsi.inria.fr)  ou [
 * QCM sur les tableaux/listes Python à une dimension :
   * QCM 1 sur les thèmes Index / Méthodes de tableau dynamique :
     *  Énoncé : <https://genumsi.inria.fr/qcm.php?h=45405b2f41716ea7ea773a4e3d3f7177>
-    *  Corrigé : 
+    *  Corrigé : <https://genumsi.inria.fr/qcm-corrige.php?cle=Mjg7MTE1OzE0NTsxNDY7Mjc1OzI3ODsyNzk7MzI0OzQ2Njs0NzA7MTM2MTsxMzc0OzEzOTE7MTM5MjsxMzkzOzEzOTQ7MTM5NTsxMzk2OzE0Mjc=>
   * QCM 2 sur les tableaux/listes en compréhension :
     *  Énoncé : <https://genumsi.inria.fr/qcm.php?h=66f6a8ff3099844f78f411bd489183ba>
-    *  Corrigé : 
+    *  Corrigé : <https://genumsi.inria.fr/qcm-corrige.php?cle=MTE4OzExOTsxNDE7MTQ3OzIxNzsyNjY7Mjc2OzMwMjszMDY7MzIzOzMyNTszMjY7NDMxOzQzMjs0MzM7NDM0OzQzNTs0MzY7NDM3OzQ0MDsxMzc2>
