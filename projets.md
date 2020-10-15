@@ -5,9 +5,9 @@ layout: parc
 
 # Projet 1
 
-* Projet HTML/CSS de réalisation d'un mini-site sur un thème en relation avec l'histoire de l'informatique. Le cahier des charges, les [sujets](Projets/HTML-CSS-Histoire/sujets-html-css.md) et des exemples de ressources ont été proposés aux élèves.
-
-* [Modèle de site](Projets/HTML-CSS-Histoire/modele.zip)
+* Projet HTML/CSS de réalisation d'un mini-site sur un thème en relation avec l'histoire de l'informatique. 
+* Le cahier des charges, les [sujets](Projets/HTML-CSS-Histoire/sujets-html-css.md) et des exemples de ressources ont été proposés aux élèves.
+* [Modèle de site fourni](Projets/HTML-CSS-Histoire/modele.zip)
 
 # Projet 2
 
