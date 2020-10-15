@@ -14,5 +14,6 @@ layout: parc
 # Projet 2
 
 * Projet de programmation sur le jeu _Bulls and Cows_ permettant de réinvestir les constructions élémentaires du langage Python :
+  * [Inscription](https://cloud-lyon.beta.education.fr/s/CZQ256P9zNbAbN7)
   * [Sujet](Projets/BullsCows/PremiereNSI-DM-BullsCows-2021V1.pdf)
   * [Matériel](Projets/BullsCows/ProjetBullsCows.zip)
