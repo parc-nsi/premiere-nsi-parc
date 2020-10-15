@@ -23,7 +23,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
   
 * [Corrigé des exemples du cours en version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre6/Cours/ressources/PremiereNSI-Cours-Tableaux-Corriges.ipynb)
 
-* [Brouillon des exemples du cours](chapitre6/brouillon-prof-cours-tableaux.py)
+* [Brouillon des exemples du cours](chapitre6/Cours/brouillon-prof-cours-tableaux.py)
 
 
 ## TP
