@@ -20,7 +20,7 @@ layout: parc
   <li> Au CDI, le livre  <em>Histoire illustrée de l'informatique</em>  d'Emmanuel Lazard et Pierre Mounier-Kuhn.</li>
   <li> La <a href="https://tube.ac-lyon.fr/videos/watch/2f7065e3-13c7-432c-80cc-94e769d38272">captation vidéo</a> de la conférence de Judicael Courant sur <em>L'histoire des langages de programmation.</em></li>
 
-  <iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="https://tube.ac-lyon.fr/videos/embed/2f7065e3-13c7-432c-80cc-94e769d38272" frameborder="0" allowfullscreen></iframe>
+
     
   <li> Le <a href="https://interstices.info/domaine/histoire-numerique/">portail sur l'histoire du numérique d'Interstices</a>, revue de culture scientifique de l'INRIA. </li>
   
@@ -69,14 +69,14 @@ layout: parc
   <li>
       <a href="https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Dartmouth"> https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Dartmouth</a> 
   
-    </li>
-  
-    <li>
-      <a href="https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Dartmouth"> https://interstices.info/marvin-minsky-un-pere-visionnaire-de-lintelligence-artificielle/</a> 
+  </li>
 
-    </li>
+  <li>
+    <a href="https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Dartmouth"> https://interstices.info/marvin-minsky-un-pere-visionnaire-de-lintelligence-artificielle/</a> 
 
-    <li> <a href="https://interstices.info/la-revolution-de-lapprentissage-profond/">https://interstices.info/la-revolution-de-lapprentissage-profond/</a></li>
+  </li>
+
+  <li> <a href="https://interstices.info/la-revolution-de-lapprentissage-profond/">https://interstices.info/la-revolution-de-lapprentissage-profond/</a></li>
   </ul>
 
 
