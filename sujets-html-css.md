@@ -180,7 +180,7 @@ l'URFIST de Rennes</a></li>
 
 <ul >
           			
-<li>Les <a href="documents/histoire.pdf">notes</a> de la conférence de Judicael Courant sur les langages de programmation. </li>
+<li>Les <a href="Projets/HTML-CSS-Histoire/histoire.pdf">notes</a> de la conférence de Judicael Courant sur les langages de programmation. </li>
 
 <li><a href="https://interstices.info/naissance-des-langages-de-programmation/">https://interstices.info/naissance-des-langages-de-programmation/</a></li>
 
