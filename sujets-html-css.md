@@ -5,7 +5,7 @@ layout: parc
 
 <article>
 
-  <h2>Ressources générales sur l'histoire de l'informatique :</h2>
+  <p>Ressources générales sur l'histoire de l'informatique :</p>
 
   <ul >
               
