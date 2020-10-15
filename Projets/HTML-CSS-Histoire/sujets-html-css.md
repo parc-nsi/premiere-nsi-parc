@@ -20,6 +20,8 @@ layout: parc
 
   <li> La <a href="https://www.computerhistory.org/timeline/">frise chronologique </a>(en anglais) du musée de l'informatique de Mountain View. </li>
 
+</ul>
+
   <p>Voici quelques sujets sur l'histoire de l'informatique avec des liens vers des ressources. </p>
     
   <h2> Les machines mécaniques : de la Pascaline à la machine analytique de Babbage en passant par la joueuse de tympanon </h2>
