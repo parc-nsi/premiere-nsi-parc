@@ -14,6 +14,9 @@ title:  "Ressources pour le cours de NSI"
 * L'excellent cours du [MOOC Python 3 de la plateforme FUN](https://www.youtube.com/channel/UCIlUBOXnXjxdjmL_atU53kA).
 
 
+## Ressources pour le cours de première NSI
+
+* L'excellente [chaîne peertube de Pierre Marquestaut](https://peertube.lyceeconnecte.fr/video-channels/pierre.marquestaut_channel/videos).
 ## Langages de programmation (thème 6) 
 
 * Conférence de Judicael Courant : "Une brève histoire des langages de programmation"
