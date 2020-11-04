@@ -25,7 +25,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 * [Brouillon des exemples du cours](chapitre6/Cours/brouillon-prof-cours-tableaux.py)
 
-
+   
 ## TP
 
 * [TP en version pdf](chapitre6/TP/TP-tableaux-.pdf)
