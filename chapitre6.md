@@ -39,3 +39,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 * [Corrigé du TP en version html](chapitre6/TP/corriges/TP-Tableaux-Corrige.html)
   
 * [Corrigé  du TP en version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre6/TP/corriges/TP-Tableaux-Corrige.ipynb)
+
+## Tutoriel vidéo 
+
+[Cours sur les tableaux de Pierre Marquestaut de l'académie de Bordeaux](https://peertube.lyceeconnecte.fr/videos/watch/59073d01-ceff-4e4e-8387-012f79690eda)
