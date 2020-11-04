@@ -27,6 +27,6 @@ layout: parc
 * [Chapitre 4 : boucles conditionnelles et tests](chapitre4.md)
 * [Chapitre 5 : fonctions et portée d'une variable](chapitre5.md)
 * [Chapitre 6 : tableaux à une dimension](chapitre6.md)
-
+* [Chapitre 7 : tableaux à deux dimensions](chapitre7.md)
 
 
