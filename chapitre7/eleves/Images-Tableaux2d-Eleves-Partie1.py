@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+
+#%% Imports de bibliothèques
 
 
 from PIL import Image
@@ -9,9 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# ## Outils fournis
-
-# In[1]:
+#%% Outils fournis
 
 
 def dimensions(pix):
@@ -96,9 +95,78 @@ def matrice_vide(ncol, nlig, mode):
         "à compléter : return ...."
 
 
-# ## Exercice 2
 
-# In[15]:
+#%% Exercice 1
+        
+pix = [[1, 0, 1, 0], [0, 1, 0, 1]]
+matrice_to_image([[1,0,1,0],[0,1,0,1]], mode = '1', fichier='exemple_binaire_4x2.png',res=1)
+        
+
+#%% Exemples du point Méthode pages 3, 4 et 5
+
+#%% Définition de tableaux à plusieurs dimensions
+
+t1 = [[1,2], [3,4]]     #tableau/matrice à 2 dimensions
+print("t1 = [[1,2], [3,4]] ", "affichage : ",t1, sep ="\n")
+
+print('*' * 80)
+
+t2 = [[1,2], [3,4],[5,6,7]] #tableau à 2 dimensions
+print("t2 = [[1,2], [3,4],[5,6,7]]", "affichage : ",t2, sep ="\n")
+
+print('*' * 80)
+
+t3 = [[[1], [2,3]],[4,5,6],[7]]  #tableau mixte 
+print("t3 = [[[1], [2,3]],[4,5,6],[7]]", "affichage : ",t3, sep="\n")
+
+print('*' * 80)
+
+print("Longueur de t2 : ", "affichage : ",len(t2), sep="\n")    #t2 contient 2 tableaux éléments
+print("Longueur de la première ligne de t2 notée t2[0] ", "affichage : ",len(t2[0]), sep="\n")#t2[0] est un tableau contenant 2 entiers
+print("Longueur de la troisième ligne de t2 notée t2[2] ", "affichage : ",len(t2[2]), sep="\n")
+
+
+print('*' * 80)
+
+t4 = [[0] * 3 for _ in range(2)]
+print("t4 = [[0] * 3 for _ in range(2)]", "affichage : ",t4, sep ="\n")
+
+print('*' * 80)
+
+t5 = [[ [0] * 4 for i in range(3)] for j in range(2)]
+print("t5 = [[0] * 3 for _ in range(2)]", "affichage : ",t5, sep ="\n")
+
+#%% Parcours de tableaux à plusieurs dimensions
+print('*' * 80)
+def parcours_tableau2d_index(tab):
+    """Parcours par index d'un tableau à 2 dimensions"""
+    for i in range(len(tab)):
+        for j in range(len(tab[i])):
+            print('Element en ligne {} colonne {} : '.format(i,j),tab[i][j])
+            
+def parcours_tableau2d_element(tab):
+    """Parcours par élément d'un tableau à 2 dimensions"""
+    for ligne in tab:
+        for element in ligne:
+            print(element)
+
+print("Parcours de t1 par index :", "Affichage : ", sep ="\n")
+print(t1)
+print("Parcours : ")
+parcours_tableau2d_index(t1)
+
+print('*' * 80)
+print("Parcours de t1 par élément :", "Affichage : ", sep ="\n")
+print(t1)
+print("Parcours : ")
+parcours_tableau2d_element(t1)
+
+
+
+
+
+#%% Exercice 2
+
 
 
 def max_tab2d(tab):
@@ -111,7 +179,6 @@ def max_tab2d(tab):
 
 # Assertions à vérifier
 
-# In[ ]:
 
 
 assert max_tab2d([[-1,-2],[-2,-3,-0.5]]) == -0.5
@@ -119,21 +186,16 @@ assert max_tab2d([[1,2],[float('inf'),10]]) == float('inf')
 assert max_tab2d([[1,2],[8,0]]) == 8
 
 
-# ## Exercice 5
-
-# In[4]:
-
+#%% Exercice 5
 
 def generer_croix(couleur):
     blanc = [255,255,255]
-    ## TO DO
+    ## TO DO
     #croix = à compléter
     matrice_to_image(croix, mode = 'RGB', res = 100, fichier='croix.png')  
 
 
-# ## Exercice 6
-
-# In[5]:
+#%% Exercice 6
 
 
 def drapeau_3bandes_verticales(nlig, ncol, couleur1, couleur2, couleur3):
@@ -158,18 +220,13 @@ def transpose(pix, mode):
 
 # Les assertions suivantes doivent être vérifiées par la fonction `transpose`
 
-# In[ ]:
-
-
 assert transpose([[0]],'L') == [[0]]
 assert transpose([[1,2],[4,5]], 'L') == [[1,4],[2,5]]
 assert transpose([[1,2,3],[4,5,6]],'L') == [[1,4],[2,5],[3,6]]
 assert transpose([[[1,2,3],[4,5,6]],[[7,8,9],[10,11,12]]],'RGB') == [[[1,2,3],[7,8,9]],[[4,5,6],[10,11,12]]]
 
 
-# ## Exercice 7
-
-# In[ ]:
+#%% Exercice 7
 
 
 def barres_horizontales(nlig, ncol):
@@ -186,9 +243,7 @@ def barres_horizontales(nlig, ncol):
     return pix 
 
 
-# ## Exercice 8
-
-# In[9]:
+#%% Exercice 8
 
 
 def applique_filtre(pix, filtre, mode):
@@ -200,9 +255,7 @@ def applique_filtre(pix, filtre, mode):
     return pix_but
 
 
-# ### Filtre négatif
-
-# In[ ]:
+#%% Filtre négatif
 
 
 def filtre_negatif_gris(pixel):
@@ -216,16 +269,11 @@ def filtre_negatif_rgb(pixel):
 
 # ### Assertion qui doit être vérifiée
 
-# In[ ]:
-
 
 assert filtre_negatif_rgb([255,0,100]) == [0,255,155]
 
 
-# ### Filtre de seuillage
-
-# In[10]:
-
+#%% Filtre de seuillage
 
 def filtre_seuillage_gris(seuil):
     """Retourne une fonction filtre de seuillage pour une image en niveaux de gris
@@ -233,10 +281,6 @@ def filtre_seuillage_gris(seuil):
     def f(pixel):
         return fonction_seuil(pixel, seuil, 0, 255)    
     return f
-
-
-# In[ ]:
-
 
 def filtre_seuillage_rgb(seuil):
     """Retourne une fonction filtre de seuillage pour une image en RGB
@@ -246,9 +290,7 @@ def filtre_seuillage_rgb(seuil):
     return g
 
 
-# ### Filtre de composante
-
-# In[11]:
+#%% Filtre de composante
 
 
 def filtre_rouge(pixel):
@@ -258,16 +300,11 @@ def filtre_rouge(pixel):
 
 # Assertions à vérifier
 
-# In[ ]:
-
 
 assert filtre_rouge([255,0,0]) == [255,0,0]
 assert filtre_rouge([255,255,0]) == [255,0,0]
 assert filtre_rouge([255,255,255]) == [255,0,0]
 assert filtre_rouge([0,255,0]) == [0,0,0]
-
-
-# In[12]:
 
 
 def filtre_composante_rgb(index_comp):
@@ -276,17 +313,13 @@ def filtre_composante_rgb(index_comp):
     "à compléter"
 
 
-# In[ ]:
-
 
 assert filtre_composante_rgb(0)([255,200,100]) == [255,0,0]
 assert filtre_composante_rgb(1)([255,200,100]) == [0,200,0]
 assert filtre_composante_rgb(2)([255,200,100]) == [0,0,100]
 
 
-# ### Filtre monochrome
-
-# In[13]:
+#%%  Filtre monochrome
 
 
 def filtre_monochrome(pixel_rgb):
@@ -300,7 +333,6 @@ def filtre_monochrome(pixel_rgb):
 
 # Assertions qui doivent être vérifiées
 
-# In[ ]:
 
 
 assert filtre_monochrome([255,100,200]) == 157
