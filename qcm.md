@@ -30,3 +30,7 @@ Les QCM sont disponibles sur les sites [Genumsi](https://genumsi.inria.fr)  ou [
   * QCM 2 sur les tableaux/listes en compréhension :
     *  Énoncé : <https://genumsi.inria.fr/qcm.php?h=66f6a8ff3099844f78f411bd489183ba>
     *  Corrigé : <https://genumsi.inria.fr/qcm-corrige.php?cle=MTE4OzExOTsxNDE7MTQ3OzIxNzsyNjY7Mjc2OzMwMjszMDY7MzIzOzMyNTszMjY7NDMxOzQzMjs0MzM7NDM0OzQzNTs0MzY7NDM3OzQ0MDsxMzc2>
+
+* QCM sur les tableaux à deux dimensions :
+  * Énoncé : <https://genumsi.inria.fr/qcm.php?h=24a7b78df2ca32192ec7ef53f5d7b6b5>
+  * Corrigé : 
