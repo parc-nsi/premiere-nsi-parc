@@ -35,3 +35,13 @@ def au_moins_un_zero(t):
     Valeur renvoyée : un booléen indiquant si t contient au moins un zéro
     """
 ~~~
+
+3. **Automatisme 3 :** Représenter en binaire le nombre d’écriture décimale 49.
+
+4. **Automatisme 4 :**  Représenter en base dix, le nombre dont l'écriture en base deux est `1010110` puis le nombre dont l'écriture en base 16 est `A4`.
+
+5. **Automatisme 5 :**  Déterminer le successeur  des entiers dont l'écriture en base deux est :
+   * 111
+   * 10011
+   * 10111
+ 
