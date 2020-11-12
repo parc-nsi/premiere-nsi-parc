@@ -1,5 +1,5 @@
 ---
-title:  Progression
+title:  Automatismes
 layout: parc
 ---
 
