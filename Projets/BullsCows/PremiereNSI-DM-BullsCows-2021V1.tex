@@ -1655,7 +1655,7 @@ Un prolongement  de ce mini-projet sera la réalisation d'une interface graphiqu
 \end{enumerate}
 
 
-}
+} 
 
 \section{Partie A : le joueur est un humain}
 
@@ -1935,9 +1935,8 @@ def partie_joueur_humain(nbmax_essai, debug = False):
         ...................
         ...................
         ...................
-        if debug:
-            print('essai=',essai,' bulls=',bulls,'cows=',cows)
-            print('-' * 80)
+        print('essai=',essai,' bulls=',bulls,'cows=',cows)
+        print('-' * 80)
     if ..................:
         return "Secret trouvé en " + str(essai) +  " essais"
     else:
@@ -2194,7 +2193,7 @@ def diagramme(n, nbmax_essai):
 \end{lstlisting}
 
 
-
+ 
 
 
 	\item Ajouter à  \texttt{partieB.py}  le code client ci-dessous qui est exécuté uniquement si  \texttt{partieB.py} n'est pas importé sous forme de module dans un autre programme Python.
