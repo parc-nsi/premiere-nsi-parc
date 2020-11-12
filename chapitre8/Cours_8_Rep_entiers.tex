@@ -1,0 +1,482 @@
+\include{MeijeCours}
+
+\newboolean{versionprof}  % Cette variable booléenne permet le contrôle de la compilation selon la version professeur (avec les preuves, commentaires pédagogiques etc...) si true ou selon la version élève (de ''base'') si false.
+\setboolean{versionprof}{false}
+
+% =============================================================================================
+%                                                                                      Début du texte 
+% =============================================================================================
+
+\author{Informatique}  % Pour spécifier l'auteur qui sera affiché sous le titre
+\title{Représentation des entiers}  % Titre 
+\date{Année 2016-2017} %en utilisant \today on obtiendra la date courante lors de la production du document
+\renewcommand{\thesection}{\Roman{section}}  % permet de numéroter les sections en chiffres romains
+\pagestyle{fancy}
+
+\lhead{NSI}   %  Indiquer la classe ici  
+\rhead{Représentation des entiers}		% Indiquer la date pour rendre le devoir ici
+
+
+\fancyfoot[C]{\thepage} % bas de page : centre par exemple:  - \thepage\ -
+\fancyfoot[L]{} % bas de page : gauche
+\fancyfoot[R]{} % bas de page : droite
+\newcommand{\p}[1]{ \left( #1 \right)}   %parenthèse
+\newcommand\abs[1]{|{#1}|}
+\newcommand{\intent}[2]{[\![ #1 , #2 ]\!]} %intervalle fermé entier
+\newcommand{\pe}[1]{ \left\lfloor #1 \right\rfloor} %partie entière crochets bas
+\begin{document}
+\rule[0pt]{0pt}{0pt}
+\vspace{0.2cm}
+%\maketitle  %produit le titre conformément aux instructions données par \author, \date ...etc
+\begin{center}
+{\LARGE\bf Représentation des entiers}
+\end{center}
+\thispagestyle{empty}
+% ------------------------------------------------   Introduction   -------------------------------------------
+\vskip 1cm
+\renewcommand{\abstractname}{Introduction\hfill}
+
+\section{{\'E}criture en base $b$ d'un entier}
+
+$2021$ signifie dans notre écriture \textbf{décimale} $2\times 10^3 + 0 \times 10^2 + 2 \times 10^1 + 1 \times 10^0$. C'est ce que l'on appelle une écriture en
+base $10$. Mais d'autres bases peuvent être utilisées. En informatique, on utilise, outre la base $10$, les bases $2$ (\textbf{binaire}) et $16$ (\textbf{hexadécimal})\footnote{On utilise alors A,B,C,D,E et F pour représenter les valeurs 10, 11, 12, 13, 14 et 15.}.
+\bigskip
+
+\begin{définition}{(\'Ecriture dans une base)}
+Si $b$ est un entier supérieur ou égal à $2$, une \textbf{écriture en base $b$} d'un nombre $x \geq 1$ est de la forme
+$$x = r_n b^n + r_{n-1} b^{n-1} + \cdots + r_1 b + r_0 \text{ que l'on notera } \overline{r_n r_{n-1} \dots r_1 r_0}^{(b)}.$$ 
+Les $r_i$ sont les \textbf{chiffres} et sont compris entre $0$ et $b-1$. $r_n$ étant le premier chiffre,
+il est non nul par définition.
+
+\end{définition}
+
+\exercice{}
+\begin{enumerate}
+\item Jusifier que $17$ s'écrit $\overline{10001}^{(2)}$ en base 2.
+
+\item Comment s'écrit $47$ en base 5 ? 
+
+
+\item Que vaut $\overline{131}^{ (6)}$ ?
+
+\item Que vaut $\overline{B7}^{ (16)}$ ?
+
+\end{enumerate}
+
+
+\lignes{12}
+
+\entrainement
+\begin{enumerate}
+
+\item Comment s'écrit $47$ en base 4 ? 
+
+\item Comment s'écrit $255$ en base 16 ?
+
+
+\item Que vaut $\overline{88}^{ (8)}$ ?
+
+\end{enumerate}
+\smallskip
+\vfill
+\eject
+
+Pour déterminer l'écriture d'un entier en base $b$, on peut utiliser deux algorithmes, suivant que l'on commence à calculer le premier chiffre en partant de la gauche ou le dernier.
+\exercice{: De la gauche vers la droite}
+
+\medskip
+
+\'Ecrivez $181$ en binaire :
+
+
+\begin{center}
+\includegraphics[width=8cm]{binaire-grille}
+\end{center}
+
+\lignes{3}
+\medskip
+
+
+L'inconvénient de cette méthode est qu'il faut déjà calculer les puissances de $2$ mais elle est assez commode à la main pour de petits nombres. Par contre, informatiquement, on utilisera plutôt l'algorithme suivant (très simple à coder et efficace).
+
+\bigskip
+\exercice{: De la droite vers la gauche}
+\medskip
+
+On remarque que si $x = r_n b^n + r_{n-1} b^{n-1} + \cdots + r_1 b + r_0$ alors $x = b \p{r_n b^{n-1} + r_{n-1} b^{n-2} + \cdots + r_1 } + r_0$. Comme $0 \leq r_0 < b$, $r_0$ est le reste de la division euclidienne de $x$ par $b$. Ainsi, pour calculer $r_0$, on fait cette division euclidienne sous la forme $x=bq_0+r_0$ puis on itère sur $q_0$ ce qui donne $q_0 = b q_1 + r_1$ donc $x = b(bq_1+r_1)+r_0 = q_1 b^2 + r_1 b + r_0$ et on continue sur $q_1$ \dots 
+
+Déterminer l'écriture binaire de $77$.
+
+\begin{center}
+	\includegraphics[width=8cm]{binaire-grille}
+\end{center}
+
+\lignes{3}
+
+
+\entrainement{}
+
+En utilisant successivement les deux méthodes vues dans les exercices précédent, écrire 205 en binaire.
+\begin{center}
+	---------------------
+\end{center}
+
+
+Il est souvent important de savoir combien de chiffres seront nécessaires pour écrire un nombre en binaire. Pour cela, on a besoin de la fonction $\log_2$.
+
+
+
+
+\smallskip
+
+\begin{propriété}{}
+Il existe une fonction mathématique $\log_2$ qui vérifient les propriétés suivantes : 
+
+\begin{itemize}
+	\item $\log_2$ est croissante sur $]0, +\infty[$
+	\item $\log_2(2) = 1$
+	\item $\log_2(a\times b)=\log_2(a)+\log_2(b)$
+	\item $\log_2(a/ b)=\log_2(a)-\log_2(b)$
+	\item $\log_2(a^n) = n\log_2(a)$
+\end{itemize}
+
+\end{propriété}
+On peux alors énoncer la propriété :
+
+\begin{propriété}{}
+Le nombre de chiffres de l'écriture de $x$ en base $2$ est $\pe{ \log_2(x)}+1$.
+\end{propriété}
+
+Remarque : $\pe{a}$ désigne la partie entière du nombre a. C'est le plus grand entier relatif inférieure ou égale à $a$. Par exemple : $\pe{3,26} = 3$, $\pe{-7} = -7$ et $\pe{-2,3} = -3$.
+
+{\it Preuve: } Admis
+\exercice{}
+On donne $10^3 < 1024 = 2^{10}$. En déduire une majoration du nombre de chiffres binaires nécessaires pour écrire $10^{100}$.
+
+\lignes{3}
+
+\exercice{}
+
+Les nombres $a$ et $b$ sont respectivement représentés avec $\alpha$ et $\beta$ chiffres en binaire. Donner le nombre de chiffres nécessaires pour représenter $a+b$ et $a\times b$.
+
+\lignes{4}
+
+\entrainement{}
+
+Le nombres $a$ est représenté avec $\alpha$ chiffres en binaire. Donner le nombre de chiffres nécessaires pour représenter $a^n$.
+\begin{center}
+	------------------
+\end{center}
+\exercice{}
+
+\'Ecrire une fonction \verb!base(n,b)! qui renvoie une liste donnant l'écriture en base $b \leqslant 10$ de $n$.
+
+
+\begin{lstlisting}
+>>> base(77, 2)
+[1, 0, 0, 1, 1, 0, 1]
+\end{lstlisting}
+
+\lignes{7}
+\entrainement{}
+
+Même consigne qu'à l'exercice précédent mais en fixant le nombre de chiffres de l'écriture :
+\begin{lstlisting}
+>>> base_complet(77, 2, 8)
+[0, 1, 0, 0, 1, 1, 0, 1]
+\end{lstlisting}
+\bigskip
+
+\exercice{}
+
+Même consigne qu'à l'exercice 6 mais renvoyer une chaine. On pourra avoir $b>10$.
+
+\begin{lstlisting}
+>>> base_chaine(255, 16)
+'FF'
+\end{lstlisting}
+\lignes{12}
+
+
+\entrainement{}
+
+Même consigne qu'à l'exercice précédent mais en fixant le nombre de chiffres de l'écriture :
+\begin{center}
+	---------------------
+\end{center}
+
+Pour réaliser l'opération inverse, on utilise 
+ l'\textbf{algorithme de Hörner} :\\
+
+Imaginons que l'on dispose séquentiellement des chiffres d'un grand nombre. Par exemple 4, puis 5, puis 0, puis 7, puis 3, enfin 5. Comment construire pas à pas le nombre correspondant ?
+
+\lignes{3}
+
+\exercice
+
+En déduire une fonction \verb!valeur(L, b):! qui calcule le nombre représenté par la liste de chiffres \verb!L! dans la base $b$.
+
+
+\begin{lstlisting}
+>>>valeur([1, 0, 1, 1, 0], 2)
+22
+\end{lstlisting}
+
+\lignes{8}
+
+
+
+\section{Une première approche pour les négatifs}
+
+Les mémoires d'ordinateur sont constituées de "cases" prenant la valeur $0$ ou la valeur $1$ (il s'agit d'un circuit électronique ouvert ou fermé). Une telle case est appelée un \textbf{bit} (binary digit = chiffre binaire). 
+
+\smallskip
+
+Les ordinateurs travaillent en regroupant les bits par paquets. Un paquet de $8$ bits est appelé \textbf{octet} (byte).
+
+\begin{center}
+\includegraphics[width=8cm]{bits-octets}
+\end{center}
+
+Ainsi, pour stocker un entier, il est naturel d'utiliser sa représentation binaire. L'exemple ci-dessus est donc le stockage en mémoire du nombre $181$.
+
+\medskip
+
+Si l'on travaille sur un octet, on peut donc représenter les entiers entre $0$ et $1+2+\dots+2^7=2^8-1=255$.
+
+D'une manière générale, si les nombres sont codés sur $n$ bits, on pourra représenter les entiers entre $0$ et $2^n-1$.
+
+\medskip
+Mais il faut évidemment pouvoir travailler avec des entiers relatifs. Une première idée consiste à réserver le premier bit (celui le plus à gauche, dit "bit de poids fort") au signe de l'entier (par exemple $0$ pour positif et $1$ pour négatif) et les $n-1$ autres bits à la valeur absolue. Pour $n=8$, on peut alors représenter les entiers entre $-127$ et $127$ :
+
+
+\medskip
+
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=8cm]{binaire-positif} & & \includegraphics[width=8cm]{binaire-negatif} \\
+\end{tabular}
+\end{center}
+
+Cette représentation des entiers pose plusieurs problèmes. Par exemple, le nombre $0$ admet deux représentations différentes : $00000000$ et $10000000$ et il y a problème pour l'addition si l'on applique l'algorithme usuel (bit par bit de la droite vers la gauche avec propagation de retenue) :
+
+\begin{center}
+\includegraphics[width=10cm]{addition-binaire}
+\end{center}
+
+On préfère donc utiliser une autre représentation :
+
+\section{La notation en complément à $2$}
+
+Commençons par regarder le cas particulier des entiers codés sur un octet. On décide de représenter les entiers entre $-128$ et $127$ (au lieu de $0$ à $255$) de la manière suivante :
+
+\begin{itemize}
+
+\item si $x \in \intent{0}{127}$ alors $x$ est codé par son écriture binaire sur un octet.
+
+\item si $x \in \intent{-128}{-1}$ alors $x$ est codé par l'écriture binaire de $x+256$ sur un octet.
+
+\end{itemize}
+
+
+\begin{center}
+\includegraphics[width=12cm]{complement-a-deux-1.eps} 
+\end{center}
+
+Ainsi, on fait correspondre à chaque entier de $\intent{-128}{127}$ un entier de $\intent{0}{255}$ qui est ensuite codé sur $8$ bits par sa représentation binaire. On remarquera que $0$ admet alors une seule écriture : $00000000$.
+
+ Voici par exemple la notation en complément à deux de $-43$ et $117$ :
+
+\begin{lstlisting}
+>>> base_complet(-43+256, 2, 8)
+[1, 1, 0, 1, 0, 1, 0, 1]
+>>> base_complet(117, 2, 8)
+[0, 1, 1, 1, 0, 1, 0, 1]
+\end{lstlisting}
+
+
+On remarque que le signe d'un entier est immédiat à déterminer via sa notation en complément à deux : il est donné par le bit de poids fort. Le nombre est positif ou nul lorsque le bit de poids fort vaut $0$ et négatif sinon.
+
+Nous pouvons maintenant généraliser à la notation en complément à deux sur $n$ bits. On représente les entiers entre $-2^{n-1}$ et $2^{n-1}-1$ de la manière suivante :
+
+\begin{itemize}
+
+\item si $x \in \intent{0}{2^{n-1}-1}$ alors $x$ est codé par son écriture binaire sur $n$ bits.
+
+\item si $x \in \intent{-2^{n-1}}{-1}$ alors $x$ est codé par l'écriture binaire sur $n$ bits de $x+2^n$.
+
+\end{itemize}
+
+
+
+
+
+
+\bigskip
+ Voici deux codes permettant de passer d'un entier à sa notation en complément à deux et réciproquement :
+
+
+\begin{itemize}
+
+\item Notation en complément à $2$ de $n$ sur $N$ bits :\\
+
+\begin{lstlisting}  
+def complement_a_deux(n, N):
+    if n >= 0:
+        return base_complet(n, 2, N)
+    else:
+        return base_complet(n+2**N, 2, N)
+\end{lstlisting}
+
+\medskip
+
+\item Opération inverse :\\
+
+\begin{lstlisting}[escapeinside=;;]
+def valeur_cads(L):
+    N = len(L)
+    if L[0] =;\,;= 0:
+        return valeur(L[1:], 2)
+    else:
+        return valeurle(L, 2) - 2**N
+\end{lstlisting}
+\end{itemize}
+
+La notation en complément à deux peut également être vue de la manière suivante :
+
+\begin{center}
+La liste de bits $[r_{n-1} , \dots, r_0]$ code l'entier $-r_{n-1} 2^{n-1} + r_{n-2}2^{n-2} + \dots + r_0$
+\end{center}
+On voit bien alors que $r_{n-1}$ donne le signe de l'entier.
+
+\exercice{}
+On travaille sur $8$ bits. Quel entier est codé par :
+
+\begin{itemize}
+\item $01110011$ :
+\item $11000001$ :
+\end{itemize}
+
+
+
+\exercice{}
+En utilisant cette remarque, écrire une fonction permettant de passer de la notation en complément à deux à l'entier représenté par cette notation :
+
+
+\lignes{12}
+
+ \textbf{Dépassement de capacité} : supposons que l'on travaille avec une représentation sur $8$ bits. On peut donc représenter les entiers de $\intent{-128}{127}$. Mais si l'on additionne deux tels entiers, il se peut que le résultat sorte de cet intervalle. Il se produit alors un dépassement de capacité (overflow ou underflow).
+
+\medskip
+
+Si l'on veut additionner deux nombres, on  commence par déterminer leur notation en complément à deux puis on applique l'algorithme habituel d'addition bit à bit avec retenue et on revient à la notation décimale. Le faire pour $55$ et $-21$ puis $54$ et $81$ :
+
+\medskip
+
+
+
+\begin{center}
+\begin{tabular}{cc}
+\begin{minipage}{9cm}
+\begin{center}
+\includegraphics[width=7cm]{binaire-grille.eps} \\
+\bigskip
+\includegraphics[width=7cm]{binaire-grille.eps} \\
+\bigskip
+\includegraphics[width=7cm]{binaire-grille.eps} \\
+\end{center}
+\end{minipage}
+&
+\begin{minipage}{9cm}
+\begin{center}
+\includegraphics[width=7cm]{binaire-grille.eps} \\
+\bigskip
+\includegraphics[width=7cm]{binaire-grille.eps} \\
+\bigskip
+\includegraphics[width=7cm]{binaire-grille.eps} \\
+\end{center}
+\end{minipage}
+\end{tabular}
+\end{center}
+
+
+
+
+En Python 2, les entiers ont une taille limitée et dès qu'il y a dépassement de cette taille, ils changent de type et deviennent des entiers longs. En Python 3, il y a un seul type d'entiers et ils ont une taille illimitée.
+
+\smallskip
+
+La limite de la taille des entiers en Python 2 dépend de la machine ($32$ bits ou $64$ bits).
+
+
+\exercice{}
+Expliquez le code suivant, exécuté en Python 2 :
+
+\medskip
+
+
+\begin{center}
+\begin{tabular}{cc}
+\begin{minipage}{6cm}
+\begin{lstlisting}
+>>> 2**30
+1073741824
+>>> 2**31-1
+2147483647L
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}{11cm}
+\begin{lstlisting}
+>>> x = sum(2**k for k in range(31))
+>>> x
+2147483647
+>>> x+1
+2147483648L
+\end{lstlisting}
+\end{minipage}
+\end{tabular}
+\end{center}
+
+
+\lignes{4}
+
+\entrainement{}
+On travaille sur $16$ bits avec la notation en complément à deux.
+\begin{enumerate}
+\item Quels sont les entiers que l'on peut représenter ?
+\item Trouver la notation en complément à $2$ de $21213$ et $-15155$.
+\item Quels sont les entiers représentés par $1000000000001111$ et $0101010101000001$ ?
+\item Additionner ces deux nombres via leur représentation puis vérifier.
+\end{enumerate}
+\vskip 2cm
+
+\begin{center}
+	{\bf\large  Exercices supplémentaires}
+
+\end{center}
+\exercice{}
+
+\'Ecrire en Python une fonction \verb+sommeBinaire(L, M)+ qui renvoie la liste des chiffres de l'écriture binaire de la somme des nombres représentés en binaire par \verb+L+ et \verb+M+. 
+
+
+
+\exercice{}
+
+\'Ecrire en Python une fonction \verb+diffBinaire(L, M)+ qui renvoie la liste des chiffres de l'écriture binaire de la différence des nombres représentés en binaire par \verb+L+ et \verb+M+. 
+
+\exercice{}
+
+\'Ecrire en Python une fonction \verb+prodBinaire(L, M)+ qui renvoie la liste des chiffres de l'écriture binaire du produit des nombres représentés en binaire par \verb+L+ et \verb+M+. 
+
+\exercice{}
+
+\'Ecrire une fonction \verb!complement(b)! qui calcule le complément à 2 d'un nombre binaire donné sous forme d'un tableau de taille quelconque contenant uniquement de 0 et des 1. La fonction renverra un tableau de même taille.
+
+  \end{document}
+
+
+
+
+
