@@ -1742,7 +1742,7 @@ La dimension d'un tableau imbriqué est le nombre de niveaux d'imbrication. Il e
 >>> t1 = [[1,2], [3,4]]     #tableau/matrice à 2 dimensions
 >>> t2 = [[1,2], [3,4],[5,6,7]] #tableau à 2 dimensions
 >>> t3 = [[[1], [2,3]],[4,5,6],[7]]  #tableau mixte 
->>> len(t2)    #t2 contient 2 tableaux éléments
+>>> len(t2)    #t2 contient 3 tableaux éléments
 3
 >>> len(t2[0]) #t2[0] est un tableau contenant 2 entiers
 2
@@ -1895,7 +1895,7 @@ M[0][0] = 0
 \begin{minipage}[t]{0.45\linewidth}
 Après l'exécution de la ligne 8, les éléments du tableau \texttt{N}, copie superficielle de \texttt{M}, sont des alias des éléments de \texttt{M} :
 \begin{center}
-\includegraphics[scale=0.6]{images/copie_tab2.png}
+\includegraphics[scale=0.6]{images/copie_tab1.png}
 \end{center}
 \end{minipage}
 \hfill
@@ -2107,7 +2107,7 @@ Déterminer le prototype  de la fonction  \texttt{matrice\_to\_image} qui est fo
 \item Le paramètre \texttt{res} permet de définir le côté en pixels  sur l'écran d'un pixel défini dans la matrice de pixels passée en paramètre. Cela permet de visualiser les images de petites dimensions. L'expression suivante permet d'obtenir l'image du point de cours n°1 avec des blocs de 100 pixels sur l'écran :
 
 \begin{lstlisting}[style=compil]
->> matrice_to_image([[1,0,1,0],[0,1,0,1]], fichier='exemple_binaire.png',res=50)
+>> matrice_to_image([[1,0,1,0],[0,1,0,1]], fichier='exemple_binaire.png',res=100)
 \end{lstlisting}
 
 Quelle expression permet de générer l'image ci-dessous avec des blocs de 60 pixels écran ?
