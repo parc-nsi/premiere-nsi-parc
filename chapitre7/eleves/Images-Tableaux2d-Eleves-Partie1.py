@@ -134,7 +134,7 @@ print("t4 = [[0] * 3 for _ in range(2)]", "affichage : ",t4, sep ="\n")
 print('*' * 80)
 
 t5 = [[ [0] * 4 for i in range(3)] for j in range(2)]
-print("t5 = [[0] * 3 for _ in range(2)]", "affichage : ",t5, sep ="\n")
+print("t5 = [[ [0] * 4 for i in range(3)] for j in range(2)]", "affichage : ",t5, sep ="\n")
 
 #%% Parcours de tableaux à plusieurs dimensions
 print('*' * 80)
