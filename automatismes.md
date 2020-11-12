@@ -40,7 +40,7 @@ def au_moins_un_zero(t):
 
 4. **Automatisme 4 :**  Représenter en base dix, le nombre dont l'écriture en base deux est $1010110$ puis le nombre dont l'écriture en base 16 est `A4`.
 
-5. **Automatisme5 :**  Déterminer le successeur en base deux des entiers :
+5. **Automatisme5 :**  Déterminer le successeur  des entiers dont l'écriture en base deux est :
    * 111
    * 10011
    * 10111
