@@ -28,5 +28,5 @@ layout: parc
 * [Chapitre 5 : fonctions et portée d'une variable](chapitre5.md)
 * [Chapitre 6 : tableaux à une dimension](chapitre6.md)
 * [Chapitre 7 : tableaux à deux dimensions](chapitre7.md)
-
+* [Chapitre 8 : représentation des entiers](chapitre8.md)
 
