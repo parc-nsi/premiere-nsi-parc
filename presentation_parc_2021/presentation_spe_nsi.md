@@ -1,9 +1,9 @@
 % Présentation de la spécialité NSI
-% Lycée du Parc
+% [![](images/logo-parc.png "logo")](https://lyceeduparc.fr/ldp/)
 % 20 novembre 2020
 
 # NSI ?
-
+ 
 ## Qu'est-ce que c'est ?
 
 NSI désigne l'enseignement  de la spécialité  Numérique et Sciences Informatiques qui permet :
