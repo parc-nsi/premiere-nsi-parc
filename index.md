@@ -11,6 +11,10 @@ layout: parc
 [![Dragon](rotation-dragon-2.gif "dragon-hokusai")](https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg)
 
 
+## Présentation
+
+* Voir notre [présentation de la spécialité NSI](presentation_parc_2021/presentation_spe_nsi.html).
+
 ## Programme 
 
 * Le  [programme officiel](Programme/PPL18_Numerique-sciences-informatiques_SPE_1eGen_1025707.pdf)
