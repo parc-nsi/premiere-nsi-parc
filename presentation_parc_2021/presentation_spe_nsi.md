@@ -101,3 +101,4 @@ Si l’élève a conservé la spécialité NSI en terminale, (voir [eduscol](htt
 
 * [Mail](mailto:frederic.junier@ac-lyon.fr)
 * Site web : [https://parc-nsi.github.io/premiere-nsi/](https://parc-nsi.github.io/premiere-nsi/)
+* Code source de ce document : <https://github.com/parc-nsi/premiere-nsi/tree/master/presentation_parc_2021>
