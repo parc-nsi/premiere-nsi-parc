@@ -15,7 +15,7 @@ NSI désigne l'enseignement  de la spécialité  Numérique et Sciences Informat
 
 ## Les thèmes du programme
 
-!["7 themes"](images/7themes.png "autre")
+!["7 thèmes, source : Lycée Laennec - Pont L'Abbé"](images/7themes2.png "autre")
 
 ## Les compétences transversales 
 
@@ -43,7 +43,7 @@ On peut choisir NSI :
 
 ## Etudes  postbac 
 
-!["Les débouchés"](images/postbac.png "les débouchés")
+!["Les débouchés, source : Lycée Berthelot Toulouse"](images/postbac.png "les débouchés")
 
 
 ## Débouchés professionnels
