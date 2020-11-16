@@ -17,3 +17,6 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
   
 
 
+## Tutoriel vidéo 
+
+[Cours sur les opérations binaires de Pierre Marquestaut de l'académie de Bordeaux](https://peertube.lyceeconnecte.fr/videos/watch/b9913547-0bea-4d42-82ea-47598f2e74fd)
