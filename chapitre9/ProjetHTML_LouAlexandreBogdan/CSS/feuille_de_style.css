@@ -1,0 +1,152 @@
+@charset "UTF-8"; /* Encodage du fichier CSS */
+
+/* Corps du document */
+
+body {
+ 	background-color : khaki;   	/* fond khaki */
+ 	margin : 5%;			/* marges de la page à 5% de l'écran */
+	width: 1000px;			/* Largeur de la page 1000 px */
+ }
+
+ 
+ 
+ /* En-tête,  bannière  */
+ 
+header {
+ 	margin : 50px auto ;                      /* largeur 800px (taille de l'image de fond, bordure violet foncé épaisseur 5px */
+ 	background-image: url("../Images/Big_Data.jpg");  /* Image par DARPA, domaine public */
+ 	border-color : DarkViolet;			/* bordure pleine, large de 5px, couleur violet foncé */
+ 	border-style : solid;
+ 	border-width :5px;
+ 	width: 800px;					/* Largeur de la bannière 1000px */
+ 	text-align: center;				/* alignement du texte au centre */
+ 	color : white;                                  /* Couleur du texte blanc (de base) */
+ }
+ 
+ 
+ /* Menu de navigation dans le site */
+
+nav {
+	margin : 30px;					/* Espacement extérieur 30px */
+	color : red;  					/* Couleur du texte rouge */
+	font-size: 18px; 				/* Taille du texte 18 */
+	font-weight: bold;				/* texte gras */
+	border-style: ridge;				/* Bordure 3D, 5px de largeur */				
+	border-color: blue;
+	border-width: 5px;
+	padding: 15px;					/* espacement avec le contenu interne 15px */
+	width : 500px;					/* largeur du cadre 500px */
+	                          
+ }
+ 
+
+
+nav a {	                                       /* liens dans les balises nav rouge */
+	color: red;                         
+}
+
+
+/* Pied de page */
+
+
+footer { 
+	margin-top: 50px;			/* marges haute et basse 50px */
+	margin-bottom: 50px;
+	text-align: center;			/* texte aligné */
+	clear : both;				/* pas d'image flottante */
+	color : DarkViolet;			/* couleur violet foncé */
+	font-style : italic;			/* Italique, gras et violet foncé, texte centré*/
+	font-weight : bold;
+	border-top-color : DarkViolet;
+	border-top-style: solid;
+}
+
+/* Liens */
+
+a {
+	color : blue;	
+	font-weight : bold;			/* liens hypertextes non ouverts en bleu et gras */
+}
+
+a:hover {
+	color : fuchsia;			/* lien survolés en fuchsia */
+}
+
+
+
+/* Titres */
+
+
+h2 {						/* titres de niveau 2 (utilisé pour le titre des pages) */
+	margin-top : 30px;			/* marges haut et bas de 30px */
+	margin-bottom : 30px;
+	text-align : center;			/* alignement au centre */
+	text-decoration: underline;		/* texte souligné */
+	font-size: 2em;				/* taille moitié celle de l'élément parent */
+	color : #FFBB03;
+	clear : both;				/* pas d'images flottantes */
+}
+
+h3 {
+	margin : 30px;				/* espacement extérieur de 30px */
+	text-decoration : underline;		/* texte souligné */
+}
+
+/* Paragraphes */
+
+p {                                
+	margin-left: 30px;			/* marges gauche et droite de 30px */
+	margin-right: 30px;
+}
+
+li {
+	margin-right: 30px;			/* contenu de liste : marge gauche 30px */
+	}
+	
+.souligne {
+	text-decoration: underline;
+	}
+
+
+/* Images */
+
+
+img {                                                 
+	margin: 15px;				/* Espacement autour des images 15px */
+}
+
+.longue {					/* Pour l'image en longueur */
+	height: 150px;				/* hauteur de 150px */
+}
+
+.haute {
+	height: 400px;				/* Hauteur de 400px */
+}
+
+.droite {	
+	float : right;				/* alignement à droite (image flotante) */   
+}
+
+
+.centre{
+	display: block;				/* centrage de l'image avec espacement extérieur haut et bas de 30px */                
+	margin: 30px auto 30px auto;
+}
+
+.fleche {					/* image de navigation en bas de page (fleche) */
+	height: 30px;				/* hauteur de 30px */
+	margin-left: 30px;			/* espacement extérieur gauche de 30px */
+	}
+
+	
+
+/* Videos */
+
+video {
+	 display: block;			/* centrage des vidéos avec marges de 30px en haut et 20 en bas */
+	 margin: 30px auto 20px auto;
+	 width: 800px;				/* Largeur de la vidéo 800px */
+	}
+
+
+

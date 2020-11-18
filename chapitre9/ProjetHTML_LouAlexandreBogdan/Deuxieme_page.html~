@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<!--Code de la deuxième page du site « Histoire des systèmes d'exploitation »
+Par REINA--KUNTZIGER Lou (601)-->
+<!-- Licence : CC BY-NC-SA :
+		Respect de la paternité
+		Usage non commercial
+		Partage avec la même licence-->
+
+<!-- (Message aux membres du groupe) Important : Respect du travail des autres (ça prend du  temps !). Ne pas supprimer les lignes des autres et ne modifier que pour ajouter du contenu merci -->
+
+<html lang="fr">
+ 
+<!-- *************************** Begin : Entête de la page ********************************** -->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Lou, Alexandre et Bogdan">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- *********************** Begin : titre de la page ************************* -->
+	<link rel="shortcut icon" type="image/x-icon" href="Images/logo_MsDOS.png" /> <!-- Icon de l'onglet -->
+	<title> Histoire des systèmes d'exploitation  </title>
+	<!-- ************************* End : Titre de la page ************************* -->
+	
+
+	<!-- ******************** Begin : Feuille de style CSS ************************** -->
+
+	<link rel="stylesheet" href="CSS/feuille_de_style.css">
+	
+	<!-- *********************** End : Feuille de style CSS ************************* -->
+
+</head>
+<!-- ********************************** End : Entête de la page ******************************** -->
+
+
+<!-- ********************************** Begin : Corps du document ****************************** -->
+
+<body>
+
+	<!-- ************************* Begin : Bannière de la Page ***************************** -->
+	<header>
+		<h1>De GM/NAA à Linux et Windows en passant par Unix et MS DOS, une histoire des systèmes d'exploitation</h1> <!-- titre du site -->
+		<h2>Deuxième partie :</h2>
+		<h2>Les systèmes d'exploitation de nos jours</h2> <!-- titre de la Page -->
+	</header>
+	<!-- ************************** End : Bannière de la page ***************************** -->
+
+	<!-- ************************** Begin : Sommaire ************************************** -->
+	<nav>
+	<!-- Lien rapide vers la première page -->
+	<h3><a href="Premiere_page.html">Histoire des systèmes d'exploitation</a></h3>
+	<ol>
+	<li><a href="Premiere_page.html#Definition">Qu'est-ce qu'un système d'exploitation ?</a></li>
+	<li><a href="Premiere_page.html#Naissance">La naissance des premiers systèmes d'exploitation</a></li>
+	</ol>
+	<!-- Lien rapide vers la deuxième page -->
+	<h3><a href="Deuxieme_page.html">Les systèmes d'exploitation de nos jours</a></h3>
+	<ol>
+	<li><a href="Deuxieme_page.html#ListeOsActuels">Les systèmes d'exploitation de 2000 à aujourd'hui</a>
+		<ul class="SousTitre">
+		<li><a href="Deuxieme_page.html#Windows">Windows</a></li>
+		<li><a href="Deuxieme_page.html#Unix">Unix</a></li>
+		</ul>
+	</li>
+	<li><a href="Deuxieme_page.html#AutresSystemes">Les PC sont-il les seuls à utiliser un OS ?</a></li>
+	<li><a href="Deuxieme_page.html#LiensExternes">Liens externes</a></li>
+	</ol>
+</nav>
+	
+	<!-- *************************** End : Sommaire ***************************************** -->
+	<!-- *************************** Begin : Contenu **************************************** -->
+	
+	<!-- Les OS actuels -->
+	<h3 id="ListeOsActuels">Les systèmes d'exploitation de 2000 à aujourd'hui</h3>
+	<p>De nos jours, en 2020, les systèmes d'exploitation pour ordinateur de bureau les plus répandus
+appartiennent aux deux grandes familles Unix et Windows. Si Windows domine le marché depuis
+plus d'une décénie, les systèmes Unix se développent et gagnent en part de marché.</p>
+
+	<img class="longue centre" src="Images/parts_marche_os_aout_2020.png" alt="Parts de marché">
+	<p>Parts de marché des systèmes d'exploitation sur ordinateur en Août 2020, d'après <a href="http://netmarketshare.com">netmarketshare.com</a></p>
+
+	<!-- Windows -->
+	<h3 id="Windows">Windows</h3>
+	<ol>
+	<li><h4>Qu'est-ce que Windows ?</h4>
+
+	<p>Windows est un système d'exploitation créé par Microsoft en 1985. Il est surtout destiné aux ordinateurs PC, malgré le fait que certaines versions soient destinés aux téléphones ou aux tablettes, et s'accapare près de 90% du marché des systèmes d'exploitation PC.
+	Windows était anciennement l'interface graphique de MS DOS, le système d'exploitation développé par Microsoft initialement pour les IBM PC.</p>
+	</li>
+	<li><h4>Microsoft</h4>
+
+	<p>Microsoft est une multinationale informatique fondée en 1975 pas Bill Gates et Paul Allen. Elle emploie plus de 150 000 personnes dans 120 pays et son chiffre d'affaire s'élevait à plus de 110 milliards de dollards en 2018.
+ Microsoft a eu du succès dans les systèmes d'exploitation (MS-DOS et Windows), les sites web (Bing, Linkedin, Outlook) et les consoles de jeu vidéo (Xbox). Bill Gates, son fondateur, a été homme le plus riche du monde grâce à Windows de 1996 à 2007, en 2009, en 2014 et en 2016. Il se consacre depuis 2007 à sa fondation humanitaire.</p>
+	</li>
+	<li><h4>Historique de Windows</h4>
+
+	<p>Windows MS-DOS, créé en 1985, a connu 5 « branches » depuis ses débuts.</p>
+	<ul>
+		<li>Branche 1 (1985-1993) : Dite branche 16 bits, couvre Windows 1 à 3,11. Elle n'est plus accessible au grand public depuis 1993, mais une émulation reste disponible.</li>
+ 
+		<li>Branche 2 (1993) : Dite Windows NT, c'est la branche qui est destinée aux ordinateurs personnels. Elle contient notamment Windows XP, Windows Vista et Windows 7 à 10.</li>
+
+		<li>Branche 3 (1995-2001) : Dite branche 9x, cette branche a commencé avec Windows 95 et avait pour projet de remplacer la branche NT pour les ordinateurs personnels. Elle fut néanmoins annulée en 2001 avec la création de Windows NT 5.1, connu sous le nom de Windows XP, plus stable et moins vulnérable.</li>
+
+		<li>Branche 4 (1996) : Dite branche CE, elle est apparue en 1996 avec WinCE, et la dernière version est Windows CE 6.0, apparue en 2006. Elle est destinée aux Windows Phone, des téléphones portables, ainsi qu'à des systèmes embarqués ou des PC de poche, des ordinateurs de la taille d'un smartphone.</li>
+
+		<li>Branche 5 (2012, 2015) : Branche RT, elle a été créée en 2012, en même que Windows 8, destinée pour certaines tablettes. Elle n'est disponible que préinstallée sur les produits. Elle fut annulée en 2015 à cause de son manque de compatibilité avec beaucoup d'applications.</li>
+	</ul>
+	</li>
+	<li><h4>Qu'est-ce qui cause son succès ?</h4>
+
+	<p>La plus grande raison pour laquelle Windows est le système d'exploitation le plus utilisé avec les ordinateurs est le fait qu'il soit vendu avec l'ordinateur, contrairement à Linux qui doit être installé, qui est par ce fait moins connu du grand public. La célébrité de Windows a donc créé un « effet boule de neige » chez le grand public qui fait que les gens ne s'intéressant pas à l'informatique associent Windows au seul système d'exploitation disponible.</p>
+	</li>
+	</ol>		
+
+	<!-- Unix -->
+	<h3 id="Unix">Unix</h3>
+	
+	<ol>
+	<li><h4>Qu'est-ce qu'Unix ?</h4>
+	<p>Unix est un système d'exploitation créé en 1970 par Kenneth Thompson et Dennis Ritchie en travaillant pour AT&T Corporation, l'ancien leader américain en télécommunications. Particulièrement répandu dans les milieux universitaires au début des années 19802, il a été utilisé par beaucoup de start-ups fondées par des jeunes entrepreneurs à cette époque et a donné naissance à une famille de systèmes, dont les plus populaires à ce jour sont les variantes de BSD ainsi que GNU/Linux, Android, iOS et MacOS.</p>
+	</li>
+	
+	<li><h4>Les familles d'Unix</h4>
+	<p>Unix possède beaucoup de branches, d'une part à cause de la liberté de modification de son code qui le rend libre, et aussi à cause de la division entre l'USL (Unix System Laboratories) et AT&T. Le tableau ci-dessous réportorie toutes ses branches, leurs dates de création, ainsi que comment elles sont liées :</p>
+
+	<img class="Haute centre" src="Images/Schéma_Unix.png" alt="Schéma des différentes branches d'Unix">
+	<p><a href="https://commons.wikimedia.org/w/index.php?title=File:Unix_history-simple.svg&lang=fr&uselang=fr">Source de l'image</a></p>
+	<p>Auteurs : Eraserhead1, Infinity0, Sav_vas, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a></p>
+
+	<p>(Android, qui représente la majorité des systèmes d'exploitation pour téléphones portables, est compris dans Linux)</p>
+	</li>
+
+	<li><h4>Linux</h4>
+	<p>Linux est avec MacOS et iOS, l'un des systèmes d'exploitation les plus connus basés sur Unix. Il est destiné aux ordinateurs et aux téléphones portables grâce à Android. Sa première caractéristique est que son code est ouvert, c'est-à-dire qu'il peut être modifiable facilement et qu'il est accessible à tous, ce qui est la première raison pour laquelle Android est le premier sur le marché des téléphones portables. En effet beaucoup de marques (Wiko, Asus, Huawei, Samsung...) gardent le noyau en modifiant un peu le code. D'autre part cela fait que Linux est gratuit pour les ordinateurs, contrairement à Windows, malgré le fait que Windows est presque tout le temps acheté avec l'ordinateur. On peut donc conclure que l'ouverture du code de Linux est le plus grand facteur de son succès.</p>
+	</li>
+	</ol>
+
+	<!-- OS pour d'autres machines -->
+	<h3 id="AutresSystemes">Les PC sont-ils les seuls à utiliser un OS ?</h3>
+	<p>Les systèmes d'exploitation ne sont pas utilisés que sur les ordinateurs. Il existe également des OS pour d'autres machines dont voici quelques exemples : </p>
+	<!-- Liste -->
+		<ul>
+			<li><span class="souligne">Les smartphones et tablettes électroniques :</span> Androïd (développé par Google à partir d'un noyau Linux), etc...</li>
+			<li><span class="souligne">Les consoles de jeux :</span> OrbisOS (par Sony, à partir d'un noyau Unix), etc...</li>
+			<li><span class="souligne">Les téléviseurs :</span> LG webOS (noyau Linux), etc...</li>
+			<li><span class="souligne">Les décodeurs TV :</span> IOS (Apple), etc...</li>
+			<li><span class="souligne">Les baladeurs numériques (MP3...) :</span> IOS (par Apple), etc...</li>
+			<li><span class="souligne">Les systèmes embarqués, les automates industriels :</span> QNX (par Quantum Software Systems, OS de type Unix), etc...</li>
+			<li><span class="souligne">Les superordinateurs et supercalculateurs :</span> Solaris (par SUN Microsystems à partir d'un noyau Unix), etc...</li>
+			<li><span class="souligne">Les serveurs et ordinateurs centraux :</span> OpenVMS (par DEC), etc...</li>
+		</ul>
+	<p>NB : Pour les serveurs, les systèmes d'exploitation de la famille UNIX sont assez majoritaires.</p>
+	<br>
+	<p>Les systèmes d'exploitation sont donc la couche externe de tout système informatique, et l'un des premiers programmes exécutés par la machine.</p>
+
+	<img class="haute centre" src="Images/CouchesOS.gif" alt="Les programmes d'un ordinateur">
+	<p>Auteur : Juju2004, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a></p>
+	
+	<!-- Liens Externes -->
+	<h3 id="LiensExternes">Liens externes</h3>
+	<ul>
+		<li><a href="https://m.youtube.com/watch?feature=youtu.be&v=4OhUDAtmAUo">https://m.youtube.com/watch?feature=youtu.be&v=4OhUDAtmAUo</a> :
+		Vidéo en introduction du site, qui retrace l'histoire des systèmes d'exploitation.</li>
+		<li><a href="https://m.youtube.com/watch?v=-5evLFh3ZAc">https://m.youtube.com/watch?v=-5evLFh3ZAc</a> :
+		Vidéo qui relate l'histoire du système d'exploitation Windows.</li>
+		<li><a href="https://m.youtube.com/watch?v=bdSWj7Y50VY">https://m.youtube.com/watch?v=bdSWj7Y50VY</a> :
+		Vidéo qui présente l'histoire d'Unix.</li>
+		<li><a href="https://en.wikipedia.org/wiki/Pirates_of_Silicon_Valley"><em>Les Pirates de la Silicon Valley</em></a>, un téléfilm américain réalisé par Martyn Burke en 1999, qui relate de manière romancée mais inspirée de temoignages les débuts de la micro-informatique aux États-Unis, et la rivalité entre les PDG d'Apple et de Microsoft dans les années 70 et 80. 
+		Ce film dénonce la manière dont les deux entreprises ont copié leurs idées et celles d'autres sociétés comme Xeros.</li>
+	</ul>
+		<h3>À propos de Linux</h3>
+	<ul>
+		<li><a href="https://youtu.be/8PtLsftCC70">https://youtu.be/8PtLsftCC70</a> :
+		Pour mieux connaître le système d'exploitation Linux, 10 raisons de passer à Linux.</li>
+		<li><a href="https://m.youtube.com/watch?feature=youtu.be&v=baxmRgeX7-E">https://m.youtube.com/watch?feature=youtu.be&v=baxmRgeX7-E</a> :
+		Histoire et anecdotes sur les systèmes d'exploitation Unix et Linux</li>
+	</ul>
+	
+	<!-- Sources -->
+	<h3>Sources</h3>
+	<ul>
+		<li><a href="https://wikipedia.org">Wikipedia.org</a></li>
+		<li><a href="https://interstices.info">Insterstices.info</a></li>
+		<li><a href="https://futura-sciences.com">Futura-sciences.com</a></li>
+		
+	</ul>
+	<br>
+
+		
+		
+		
+	<!-- Lien première page -->
+		<a href="Premiere_page.html"><img class="fleche" src="Images/arrow-left-purple.png" alt="Page précédente">Page précédente</a>
+		
+	<!-- **************************** End : Contenu ***************************************** -->
+	<!-- **************************** Begin : Pied de page ***********************************-->
+	<footer>
+		<p>Auteurs : REINA--KUNTZIGER Lou (601), PARESY Alexandre (606), PARAYKO Bogdan (604)</p>
+		<p>Contact : lou.r--k@outlook.fr</p>
+		<p><a href="https://creativecommons.org/licenses/by-nc-sa/2.0/fr/">Creative Commons BY-NC-SA</a></p>
+<p>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="CSS Valide !" />
+    </a>
+</p>
+	</footer>
+	
+	<!-- *************************** End : Pied de Page ************************************** -->
+
+</body>
+</html>

@@ -11,6 +11,7 @@ layout: parc
 
 Tous les documents sur ce site sont   placés sous licence [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
+
 ## TP 1
 
 * [Enoncé TP1 version pdf](chapitre9/TP1/NSI-TP1-systeme-2020-.pdf)
@@ -30,6 +31,11 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 * [Cours version pdf](chapitre9/cours-systeme/systeme-cours-.pdf)
 * [Cours version markdown](chapitre9/cours-systeme/systeme-cours-git.md)
+
+
+## Exposé de Lou, Bogdan et Alexandre sur les systèmes d'exploitation
+
+* [page d'accueil](ProjetHTML_LouAlexandreBogdan/Premiere_page.html)
 
 
 ## Tutoriel vidéo 
