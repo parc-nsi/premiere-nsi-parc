@@ -9,15 +9,17 @@
   <meta name="author" content="Première NSI, Lycée du Parc" />
   <title>Systèmes d’exploitation</title>
   <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
-   href="../../../Pandoc/style_nsi.css" />
+   href="../../Pandoc/style_nsi.css" />
   <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
     charset="utf-8" type="text/javascript"></script>
 </head>
@@ -34,7 +36,7 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 <!-- Définition des hyperliens  -->
 </div>
 <div id="crédits" class="slide section level1 unnumbered">
-<h1>Crédits</h1>
+<h1 class="unnumbered">Crédits</h1>
 <p><em>Ce cours est inspiré du chapitre 24 du manuel NSI de la collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N’Guyen. J’ai également consulté <a href="https://gitlab.com/lyceeND/1ere/-/blob/master/2019_20/2_Systeme_1/systeme19.md">le cours de Guillaume Connan</a>, le livre <a href="https://laurentbloch.net/MySpip3/IMG/pdf/histsys-screen-20200727.pdf">Splendeurs et servitudes des Systèmes d’exploitation Histoire, fonctionnement, enjeux</a> de Laurent Bloch, le livre <a href="https://www.eyrolles.com/Informatique/Livre/la-ligne-de-commande-par-l-exemple-9782351410721/">La ligne de commande par l’exemple</a> de Vincent Fourmond et le livre <a href="https://www.eyrolles.com/Informatique/Livre/parlez-vous-shell--9782729877590/">Parlez-vous Shell ?</a> de Thomas Hugel.</em></p>
 </div>
 <div id="chronologie-des-systèmes-dexploitation" class="slide section level1">
@@ -49,14 +51,15 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 <li><p>1990 Microsoft développé Windows un système d’exploitation avec interface graphique inspiré du système disponible sur les machines Apple</p></li>
 <li><p>1991 système d’exploitation libre Linux, noyau développé par Linus Torvalds, outils logiciels du projet GNU, distribué sous licence libre</p></li>
 <li><p>2001 système d’exploitation MacOS sur les machines Apple, dérivé de BSD</p></li>
+<li><p>2007 Apple développe un version de MacOS pour téléphones portables</p></li>
+<li><p>2008 Google développe le système d’exploitation Android pour téléphones portables, basé sur le noyau libre Linux avec ajout de logiciels propriétaires</p></li>
 </ul>
-<p>2007 Apple développe un version de MacOS pour téléphones portables 2008 Google développe le système d’exploitation Android pour téléphones portables, basé sur le noyau libre Linux avec ajout de logiciels propriétaires</p>
 </div>
 <div id="définition-dun-système-dexploitation" class="slide section level1">
 <h1>Définition d’un système d’exploitation</h1>
 <p>Un <em>système d’exploitation</em> est un logiciel, ou ensemble de programmes, qui sert d’interface entre les programmes exécuté par l’utilisateur et les ressources matérielles d’un ordinateur.</p>
 <div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Operating_system_placement-fr.svg/250px-Operating_system_placement-fr.svg.png" alt="Illustration du rôle d’un système d’exploitation" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Operating_system_placement-fr.svg/250px-Operating_system_placement-fr.svg.png" alt="" />
 <p class="caption">Illustration du rôle d’un système d’exploitation</p>
 </div>
 <p>Il est à la fois :</p>
@@ -164,7 +167,7 @@ Partition d&#39;échange:        1303        1288          14</code></pre>
 </ul>
 <p>Les <em>répertoires</em> pouvant contenir d’autres fichiers, un système de fichiers <a href="https://fr.wikipedia.org/wiki/POSIX">POSIX</a> possède une structure hiérarchique qui est une <em>arborescence</em> avec un <em>répertoire racine</em> symbolisé par un /.</p>
 <div class="figure">
-<img src="https://www.frederic-junier.org/ISN/Architecture-HTML-CSS-Internet-2019/pages/images/arborescence.png" alt="Un exemple d’arborescence" />
+<img src="https://www.frederic-junier.org/ISN/Architecture-HTML-CSS-Internet-2019/pages/images/arborescence.png" alt="" />
 <p class="caption">Un exemple d’arborescence</p>
 </div>
 <p>Les fichiers sont repérés par leur <em>chemin</em> :</p>
@@ -191,7 +194,7 @@ Partition d&#39;échange:        1303        1288          14</code></pre>
 </ul></li>
 </ul>
 <div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Unix-file-rights.png" alt="droits unix" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Unix-file-rights.png" alt="" />
 <p class="caption">droits unix</p>
 </div>
 <p><em>Source : Wikimedia Commons, Jimbotyson / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)</em></p>
@@ -231,7 +234,7 @@ junier@fredportable:~$ sudo apt install pandoc
 <h3 id="exemples-de-lectures-de-permissions">Exemples de lectures de permissions</h3>
 <p>On peut afficher les droits d’un fichier avec la commande <code>ls -l</code>, en considérant les 10 premiers caractères :</p>
 <ul>
-<li>le premier précise le type de fichier : <code>d</code> pour un répertoire et tiret <code>-</code> pour un autre fichier</li>
+<li><p>le premier précise le type de fichier : <code>d</code> pour un répertoire et tiret <code>-</code> pour un autre fichier</p></li>
 <li><p>les 9 caractères suivants dénotent les attributs pour les trois types de permission avec de gauche à droite le <em>propriétaire</em>, le <em>groupe</em>, les <em>autres</em>.</p></li>
 <li><p>Exemple 1 :</p>
 <pre><code>  junier@fredportable:~/sandbox$ ls -l histoire-systeme.txt         
@@ -454,7 +457,7 @@ total 4
 <li><p><a href="http://fr.wikipedia.org/wiki/Unix" class="uri">http://fr.wikipedia.org/wiki/Unix</a></p></li>
 </ul>
 <div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Carte_conceptuelle_du_logiciel_libre.svg/1024px-Carte_conceptuelle_du_logiciel_libre.svg.png" alt="Carte du libre" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Carte_conceptuelle_du_logiciel_libre.svg/1024px-Carte_conceptuelle_du_logiciel_libre.svg.png" alt="" />
 <p class="caption">Carte du libre</p>
 </div>
 <p><em>Source : Wikimedia Commons, René Mérou et autres auteurs</em></p>
@@ -495,11 +498,11 @@ Il ne faut pas confondre licence libre et domaine public : mettre un logiciel so
 </ol>
 <h2 id="exemple-des-systèmes-dexploitation">Exemple des systèmes d’exploitation</h2>
 <div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Unix_history-simple.svg/1024px-Unix_history-simple.svg.png" alt="Arbre généalogique des systèmes UNIX" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Unix_history-simple.svg/1024px-Unix_history-simple.svg.png" alt="" />
 <p class="caption">Arbre généalogique des systèmes UNIX</p>
 </div>
 <div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Microsoft_timeline_of_operating_systems_2.png" alt="Arbre généalogique des systèmes Windows" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Microsoft_timeline_of_operating_systems_2.png" alt="" />
 <p class="caption">Arbre généalogique des systèmes Windows</p>
 </div>
 <ul>

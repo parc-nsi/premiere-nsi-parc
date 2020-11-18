@@ -41,8 +41,9 @@ _Ce cours est inspiré du chapitre 24 du manuel NSI de la collection Tortue chez
 
 * 2001 système d'exploitation MacOS sur les machines Apple, dérivé de BSD
 
-2007 Apple développe un version de MacOS pour téléphones portables
-2008 Google développe le système d'exploitation Android pour téléphones portables, basé sur le noyau libre Linux avec ajout de logiciels propriétaires
+* 2007 Apple développe un version de MacOS pour téléphones portables
+
+* 2008 Google développe le système d'exploitation Android pour téléphones portables, basé sur le noyau libre Linux avec ajout de logiciels propriétaires
 
 
 # Définition d'un système d'exploitation

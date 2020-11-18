@@ -85,7 +85,8 @@
 }
 \makeatother
 \subtitle{Thème architectures matérielles et systèmes d'exploitation}
-\author{Première NSI, \href{https://frederic-junier.org/}{Lycée du Parc}}
+\author{Première NSI, \href{https://frederic-junier.org/}{Lycée du
+Parc}}
 \date{}
 
 %%%jolis boites
@@ -397,6 +398,14 @@ xleftmargin=1cm,xrightmargin=1cm,
  
  
 
+\newenvironment{introduction}
+{\par \medskip    \noindent  
+ \begin {bclogo}[couleur = blue!5 , arrondi =0.1,logo=\bcrosevents, marge=4] {~\textbf{Introduction}    }
+ \par }
+{
+\end{bclogo}
+ \par \bigskip }
+ 
 \newenvironment{memo}[1]
 {\par \medskip    \noindent  
 \begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bccle, marge=4]{~\textbf{À retenir}  {\itshape #1} }  \par}
@@ -820,12 +829,13 @@ d'exploitation}\label{chronologie-des-systuxe8mes-dexploitation}}
 \item
   2001 système d'exploitation MacOS sur les machines Apple, dérivé de
   BSD
+\item
+  2007 Apple développe un version de MacOS pour téléphones portables
+\item
+  2008 Google développe le système d'exploitation Android pour
+  téléphones portables, basé sur le noyau libre Linux avec ajout de
+  logiciels propriétaires
 \end{itemize}
-
-2007 Apple développe un version de MacOS pour téléphones portables 2008
-Google développe le système d'exploitation Android pour téléphones
-portables, basé sur le noyau libre Linux avec ajout de logiciels
-propriétaires
 
 \hypertarget{duxe9finition-dun-systuxe8me-dexploitation}{%
 \section{Définition d'un système
@@ -847,7 +857,7 @@ Il est à la fois :
 \item
   une \emph{machine virtuelle} qui présente une interface simplifiée
   d'accès aux ressources (processeur, mémoire, périphériques
-  d'entrée/sortie, réseau \ldots{}) pour les autres programmes et pour
+  d'entrée/sortie, réseau \ldots) pour les autres programmes et pour
   l'utilisateur
 \item
   un \emph{chef d'orchestre} et un \emph{administrateur} :
@@ -1086,9 +1096,9 @@ fichiers}\label{attributs-du-systuxe8me-dexploitation-le-contruxf4le-du-systuxe8
 \hypertarget{systuxe8me-de-fichiers}{%
 \subsection{Système de fichiers}\label{systuxe8me-de-fichiers}}
 
-Sur les supports de mémoire persistants (disques durs, clefs
-USB\ldots{}), les informations sont regroupées par le système
-d'exploitation dans des \emph{fichiers} qui sont organisés à travers un
+Sur les supports de mémoire persistants (disques durs, clefs USB\ldots),
+les informations sont regroupées par le système d'exploitation dans des
+\emph{fichiers} qui sont organisés à travers un
 \href{https://fr.wikipedia.org/wiki/Syst\%C3\%A8me_de_fichiers}{système
 de fichiers}.
 
@@ -1587,7 +1597,7 @@ On distingue :
   conditions d'usage du logiciel : limitation du nombre de copies, de
   postes sur lequel le logiciel peut être installé, interdiction de
   modification et de redistribution . En général, le code source n'est
-  pas accessible (on parle de logiciel fermé) \ldots{}.
+  pas accessible (on parle de logiciel fermé) \ldots.
 \item
   les \textbf{licences libres} ou \textbf{open-source} :\\
   elles respectent les quatre libertés fondamentales du logiciel libre :
@@ -1663,7 +1673,7 @@ On distingue deux types de licences libres :
   \texttt{CeCill} créée par l'INRIA est une adaptation de la licence GPL
   au droit français. La licence \texttt{Creative\ Commons} CC BY-SA 3.0,
   paternité et partage à l'identique, est une licence libre avec
-  copyleft pour les oeuvres numériques (image, video \ldots{}).
+  copyleft pour les oeuvres numériques (image, video \ldots).
 
   Il existe des formes plus ou moins fortes de copyleft. Ainsi si on
   inclut du code sous license GPL dans un autre, le programme hybride
@@ -1708,7 +1718,7 @@ d'exploitation}\label{exemple-des-systuxe8mes-dexploitation}}
 \item
   \textbf{Systèmes d'exploitation libres :} de nombreuses distributions
   basées sur le noyau Linux, système dérivé d'UNIX : Debian, Ubuntu,
-  Fedora, ArchLinux \ldots{}..
+  Fedora, ArchLinux \ldots..
 \end{itemize}
 
 \begin{exercice}{}
