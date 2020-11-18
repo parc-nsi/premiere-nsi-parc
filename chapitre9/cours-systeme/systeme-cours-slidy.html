@@ -57,7 +57,7 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 </div>
 <div id="définition-dun-système-dexploitation" class="slide section level1">
 <h1>Définition d’un système d’exploitation</h1>
-<p>Un <em>système d’exploitation</em> est un logiciel, ou ensemble de programmes, qui sert d’interface entre les programmes exécuté par l’utilisateur et les ressources matérielles d’un ordinateur.</p>
+<p>Un <em>système d’exploitation</em> est un logiciel, ou ensemble de programmes, qui sert d’interface entre les programmes exécutés par l’utilisateur et les ressources matérielles d’un ordinateur.</p>
 <div class="figure">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Operating_system_placement-fr.svg/250px-Operating_system_placement-fr.svg.png" alt="" />
 <p class="caption">Illustration du rôle d’un système d’exploitation</p>
@@ -79,15 +79,15 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 </div>
 <div id="interface-utilisateur-dun-système-dexploitation-le-shell" class="slide section level1">
 <h1>Interface utilisateur d’un système d’exploitation : le shell</h1>
-<p>Une interface entre l’utilisateur et le système d’exploitation s’appelle un <a href="https://fr.wikipedia.org/wiki/Shell_Unix">shell</a> ou *interpréteur de commandes.</p>
+<p>Une interface entre l’utilisateur et le système d’exploitation s’appelle un <a href="https://fr.wikipedia.org/wiki/Shell_Unix">shell</a> ou <em>interpréteur de commandes</em>.</p>
 <p>Le rôle d’un <em>shell</em> est de prendre une entrée de l’utilisateur, de la traduire en instructions compréhensibles par le système d’exploitation et de renvoyer la réponse du système à l’utilisateur.</p>
 <p>Il existe deux grandes catégories de <em>shell</em> :</p>
 <ul>
 <li>les <em>interfaces textuelles</em> comme <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">bash</a>, le plus commun sur les systèmes de la famille <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">UNIX</a>.</li>
 <li>les <em>interfaces graphiques</em> qu’on retrouve dans les systèmes d’exploitation grand public tels que <a href="https://fr.wikipedia.org/wiki/Microsoft_Windows">Windows</a></li>
 </ul>
-<p>Nous utiliserons <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">bash</a> dans ce TP et le suivant. La syntaxe d’une commande <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">bash</a> est simple : le nom de la commande peut être suivi d’options facultatives introduites par un tiret et d’arguments : <code>nom_commande -option1 -option2 argument1 argument2</code>.</p>
-<p>Par exemple, la commande ci-dessous demande d’utiliser la commande <code>ls</code> pour afficher les informations détaillées (option <code>_l</code>) sur le fichier <code>exemple</code>:</p>
+<p>Nous utiliserons <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">bash</a> dans les TP. La syntaxe d’une commande <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">bash</a> est simple : le nom de la commande peut être suivi d’options facultatives introduites par un tiret et d’arguments : <code>nom_commande -option1 -option2 argument1 argument2</code>.</p>
+<p>Par exemple, la commande ci-dessous demande d’utiliser la commande <code>ls</code> pour afficher les informations détaillées (option <code>-l</code>) sur le fichier <code>exemple</code>:</p>
 <pre><code>junier@fredportable:~/bac$ ls -l exemple
 -rw-rw-r-- 1 nobody mail 0 août  16 12:05 exemple</code></pre>
 <p>Chaque commande est un programme enregistré dans un fichier, par exemple <code>/usr/bin/ls</code> pour la commande <code>ls</code>:</p>
@@ -102,7 +102,7 @@ junier@fredportable:~/bac$ ls -l /usr/bin/ls
 <li><em>la sortie d’erreur</em> qui est par défaut l’écran également</li>
 </ul>
 <p>Il existe des opérateurs <code>&gt;</code> et <code>&lt;</code> pour rediriger les flux d’entrée / sortie.</p>
-<p>Considérons un exemple . La commande <code>ls</code> sans argument affiche le contenu du répertoire courant sur la sortie standard et la commande <code>cat</code> renvoie son entrée standard sur sa sortie standard :</p>
+<p>Considérons un exemple . La commande <code>ls</code> sans argument affiche le contenu du répertoire courant sur la sortie standard et la commande <code>cat</code> concatène les fichiers fournis en paramètres ou sur son entrée standard et renvoie le résultat sur sa sortie standard :</p>
 <pre><code>    junier@fredportable:~/bac$ ls 
     entree
     junier@fredportable:~/bac$ cat --help 
@@ -116,7 +116,7 @@ junier@fredportable:~/bac$ ls -l /usr/bin/ls
     entree  sortie
     junier@fredportable:~/bac$ cat sortie
     contenu de entree</code></pre>
-<p>Nous fournirons un memento des principales commandes de <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">bash</a> communes à tous la plupart des <em>shell</em> des systèmes de la famille UNIX](https://fr.wikipedia.org/wiki/Bourne-Again_shell).</p>
+<p>Nous fournirons un memento des principales commandes de <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">bash</a> communes à la plupart des <em>shell</em> des systèmes de la famille <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">UNIX</a>.</p>
 <p>Un memento en ligne : <a href="https://juliend.github.io/linux-cheatsheet/" class="uri">https://juliend.github.io/linux-cheatsheet/</a></p>
 </div>
 <div id="attributs-du-système-dexploitation-le-mode-noyau" class="slide section level1">
@@ -127,8 +127,8 @@ junier@fredportable:~/bac$ ls -l /usr/bin/ls
 </div>
 <div id="attributs-du-système-dexploitation-le-contrôle-de-lactivité-des-programmes" class="slide section level1">
 <h1>Attributs du système d’exploitation : le contrôle de l’activité des programmes</h1>
-<p>Un programme ne peut être exécuté que si le système d’exploitation l’autorise. L’exécution d’un programme peut être interrompue par le système d’exploitation, pour libérer une ressource ou en cas d’erreur, on parle d’interruption système.</p>
-<p>Un programme en cours d’exécution s’appelle un <em>processus</em> et le système d’exploitation arbitre le partage de temps de calcul du processeur par les processus concurrents. Il jour un rôle <em>d’ordonnanceur</em> pour éviter par exemple qu’un processus s’accapare le processeur.</p>
+<p>Un programme ne peut être exécuté que si le système d’exploitation l’autorise. L’exécution d’un programme peut être interrompue par le système d’exploitation, pour libérer une ressource ou en cas d’erreur. On parle d’<em>interruption système</em>.</p>
+<p>Un programme en cours d’exécution s’appelle un <em>processus</em> et le système d’exploitation arbitre le partage de temps de calcul du processeur par les processus concurrents. Il joue un rôle <em>d’ordonnanceur</em> pour éviter par exemple qu’un processus s’accapare le processeur.</p>
 <p>Le système d’exploitation maintient une base de temps unique pour tous les processus et fournit des services de gestion du temps : estampillage, chronologie, attente, réveil.</p>
 <p>La commande de <em>shell</em> <code>ps</code> permet d’afficher la liste des processus : l’option <code>U</code> permet de sélectionner l’utilisateur qui a lancé les processus. S’il s’agit d’un processus qu’on a lancé ou si on est superutilisateur, peut alors “tuer” le processus avec la commande <code>kill</code> suivie du numéro du processus.</p>
 <pre><code>    junier@fredportable:~$ ps U
@@ -162,7 +162,7 @@ Partition d&#39;échange:        1303        1288          14</code></pre>
 <ul>
 <li><em>fichiers réguliers</em> ou <em>fichiers textes</em> qui contiennent des suites de caractères et qui sont lisibles par des humains</li>
 <li><em>fichiers binaires</em> qui sont des suites d’octets non lisibles par des humains</li>
-<li><em>fichiers exécutables</em> qui sont des programmes, ils peuvent être des fichiers textes binaires.</li>
+<li><em>fichiers exécutables</em> qui sont des programmes, ils peuvent être des fichiers textes ou binaires.</li>
 <li><em>répertoires</em> qui sont des listes de fichiers : ils servent de conteneur à fichiers.</li>
 </ul>
 <p>Les <em>répertoires</em> pouvant contenir d’autres fichiers, un système de fichiers <a href="https://fr.wikipedia.org/wiki/POSIX">POSIX</a> possède une structure hiérarchique qui est une <em>arborescence</em> avec un <em>répertoire racine</em> symbolisé par un /.</p>
@@ -225,7 +225,7 @@ Partition d&#39;échange:        1303        1288          14</code></pre>
 </tr>
 </tbody>
 </table>
-<p>En général le nom d’utilisateur figure dans le prompt de l’interpréteur de commandes / shell, mais la commande <code>id</code> permet de l’afficher avec la liste des groupes auxquels on appartient :</p>
+<p>En général le nom d’utilisateur figure dans le prompt de l’interpréteur de commandes / shell, mais la commande <code>id</code> permet de l’afficher avec la liste des groupes auxquels il appartient :</p>
 <pre><code>junier@fredportable:~$ id
 uid=1000(junier) gid=1000(junier) groupes=1000(junier),4(adm),8(mail),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),131(lxd),132(sambashare)
 junier@fredportable:~$ sudo apt install pandoc
@@ -373,7 +373,7 @@ total 4
   junier@fredportable:~/bac$ echo &quot;echo exécution&quot; &gt; fichier
   junier@fredportable:~/bac$ cat fichier 
   echo exécution</code></pre></li>
-<li><p>On ajoute le droite d’exécution à <code>fichier</code> pour son propriétaire et on vérifie que la commande qu’il contient est bien exécutée lorsqu’on écrit <code>.\fichier</code> :</p>
+<li><p>On ajoute le droite d’exécution à <code>fichier</code> pour son propriétaire et on vérifie que la commande qu’il contient est bien exécutée lorsqu’on écrit <code>./fichier</code> :</p>
 <pre><code>  junier@fredportable:~/bac$ chmod u+x fichier
   junier@fredportable:~/bac$ ./fichier 
   exécution
@@ -492,7 +492,7 @@ Il ne faut pas confondre licence libre et domaine public : mettre un logiciel so
 <ol style="list-style-type: decimal">
 <li><p>Les <strong>licences avec copyleft</strong> :</p>
 <p>Le copyleft ( gauche d’auteur , jeu de mots sur copyright), n’est pas l’abandon du copyright (droits patrimoniaux) mais au contraire s’appuie dessus pour rendre libre un programme (respect des 4 libertés fondamentales) en obligeant toutes les versions modifiées à être libres également et redistribuées sous la même licence. Ainsi le logiciel (ou l’oeuvre numérique) sera éternellement libre. La licence <code>GPL</code> (General Public License) créée par Richard Stallman en 1989 fut la première licence libre avec copyleft. La licence <code>CeCill</code> créée par l’INRIA est une adaptation de la licence GPL au droit français. La licence <code>Creative Commons</code> CC BY-SA 3.0, paternité et partage à l’identique, est une licence libre avec copyleft pour les oeuvres numériques (image, video …).</p>
-<p>Il existe des formes plus ou moins fortes de copyleft. Ainsi si on inclut du code sous license GPL dans un autre, le programme hybride créé est contaminé et doit être distribué sous licence GPL. La license <strong>LGPL</strong> présente un copyleft plus faible : du code sous cette license cette license peut être inclus dans un code sous une autre license sans que le programme hybride soit nécessairement sous license LGPL. C’est utile pour développer des bibliothèques de fonctions.</p></li>
+<p>Il existe des formes plus ou moins fortes de copyleft. Ainsi si on inclut du code sous license GPL dans un autre, le programme hybride créé est contaminé et doit être distribué sous licence GPL. La license <strong>LGPL</strong> présente un copyleft plus faible : du code sous cette license peut être inclus dans un code sous une autre license sans que le programme hybride soit nécessairement sous license LGPL. C’est utile pour développer des bibliothèques de fonctions.</p></li>
 <li><p>Les <strong>licences sans copyleft</strong> :</p>
 <p>L’utilisateur peut redistribuer et modifier le logiciel, mais aussi ajouter des restrictions et distribuer une version modifiée sous licence propriétaire. On parle aussi de licence permissive . La première licence libre sans copyleft fut la licence <code>BSD</code> pour le distributions de logiciels créés par l’université de Berkeley. <em>La licence de Python est une licence libre sans copyleft</em>. Ce sont des licences compatibles avec la GPL mais la réciproque est fausse.</p></li>
 </ol>

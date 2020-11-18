@@ -86,7 +86,7 @@ de Thomas Hugel.*
 # Définition d’un système d’exploitation
 
 Un *système d’exploitation* est un logiciel, ou ensemble de programmes,
-qui sert d’interface entre les programmes exécuté par l’utilisateur et
+qui sert d’interface entre les programmes exécutés par l’utilisateur et
 les ressources matérielles d’un ordinateur.
 
 ![Illustration du rôle d’un système
@@ -118,8 +118,8 @@ Il est à la fois :
 # Interface utilisateur d’un système d’exploitation : le shell
 
 Une interface entre l’utilisateur et le système d’exploitation s’appelle
-un [shell](https://fr.wikipedia.org/wiki/Shell_Unix) ou \*interpréteur
-de commandes.
+un [shell](https://fr.wikipedia.org/wiki/Shell_Unix) ou *interpréteur de
+commandes*.
 
 Le rôle d’un *shell* est de prendre une entrée de l’utilisateur, de la
 traduire en instructions compréhensibles par le système d’exploitation
@@ -136,15 +136,15 @@ Il existe deux grandes catégories de *shell* :
     [Windows](https://fr.wikipedia.org/wiki/Microsoft_Windows)
 
 Nous utiliserons
-[bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) dans ce TP et
-le suivant. La syntaxe d’une commande
+[bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) dans les TP. La
+syntaxe d’une commande
 [bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) est simple : le
 nom de la commande peut être suivi d’options facultatives introduites
 par un tiret et d’arguments : `nom_commande -option1 -option2 argument1
 argument2`.
 
 Par exemple, la commande ci-dessous demande d’utiliser la commande `ls`
-pour afficher les informations détaillées (option `_l`) sur le fichier
+pour afficher les informations détaillées (option `-l`) sur le fichier
 `exemple`:
 
     junier@fredportable:~/bac$ ls -l exemple
@@ -172,7 +172,8 @@ sortie.
 
 Considérons un exemple . La commande `ls` sans argument affiche le
 contenu du répertoire courant sur la sortie standard et la commande
-`cat` renvoie son entrée standard sur sa sortie standard :
+`cat` concatène les fichiers fournis en paramètres ou sur son entrée
+standard et renvoie le résultat sur sa sortie standard :
 
 ``` 
     junier@fredportable:~/bac$ ls 
@@ -191,9 +192,9 @@ contenu du répertoire courant sur la sortie standard et la commande
 ```
 
 Nous fournirons un memento des principales commandes de
-[bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) communes à tous
-la plupart des *shell* des systèmes de la famille
-UNIX\](https://fr.wikipedia.org/wiki/Bourne-Again\_shell).
+[bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) communes à la
+plupart des *shell* des systèmes de la famille
+[UNIX](https://fr.wikipedia.org/wiki/Bourne-Again_shell).
 
 Un memento en ligne : <https://juliend.github.io/linux-cheatsheet/>
 
@@ -222,12 +223,12 @@ Linux est téléchargeable sur <https://www.kernel.org/>.
 
 Un programme ne peut être exécuté que si le système d’exploitation
 l’autorise. L’exécution d’un programme peut être interrompue par le
-système d’exploitation, pour libérer une ressource ou en cas d’erreur,
-on parle d’interruption système.
+système d’exploitation, pour libérer une ressource ou en cas d’erreur.
+On parle d’*interruption système*.
 
 Un programme en cours d’exécution s’appelle un *processus* et le système
 d’exploitation arbitre le partage de temps de calcul du processeur par
-les processus concurrents. Il jour un rôle *d’ordonnanceur* pour éviter
+les processus concurrents. Il joue un rôle *d’ordonnanceur* pour éviter
 par exemple qu’un processus s’accapare le processeur.
 
 Le système d’exploitation maintient une base de temps unique pour tous
@@ -305,7 +306,7 @@ catégories de fichiers :
   - *fichiers binaires* qui sont des suites d’octets non lisibles par
     des humains
   - *fichiers exécutables* qui sont des programmes, ils peuvent être des
-    fichiers textes binaires.
+    fichiers textes ou binaires.
   - *répertoires* qui sont des listes de fichiers : ils servent de
     conteneur à fichiers.
 
@@ -370,7 +371,7 @@ pas propriétaire \!
 
 En général le nom d’utilisateur figure dans le prompt de l’interpréteur
 de commandes / shell, mais la commande `id` permet de l’afficher avec la
-liste des groupes auxquels on appartient :
+liste des groupes auxquels il appartient :
 
     junier@fredportable:~$ id
     uid=1000(junier) gid=1000(junier) groupes=1000(junier),4(adm),8(mail),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),131(lxd),132(sambashare)
@@ -501,7 +502,7 @@ utilisateur même s’il s’agit du superutilisateur `root` :
     
       - On ajoute le droite d’exécution à `fichier` pour son
         propriétaire et on vérifie que la commande qu’il contient est
-        bien exécutée lorsqu’on écrit `.\fichier` :
+        bien exécutée lorsqu’on écrit `./fichier` :
         
         ``` 
           junier@fredportable:~/bac$ chmod u+x fichier
@@ -760,10 +761,9 @@ On distingue deux types de licences libres :
     inclut du code sous license GPL dans un autre, le programme hybride
     créé est contaminé et doit être distribué sous licence GPL. La
     license **LGPL** présente un copyleft plus faible : du code sous
-    cette license cette license peut être inclus dans un code sous une
-    autre license sans que le programme hybride soit nécessairement sous
-    license LGPL. C’est utile pour développer des bibliothèques de
-    fonctions.
+    cette license peut être inclus dans un code sous une autre license
+    sans que le programme hybride soit nécessairement sous license LGPL.
+    C’est utile pour développer des bibliothèques de fonctions.
 
 2.  Les **licences sans copyleft** :
     

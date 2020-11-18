@@ -49,7 +49,7 @@ _Ce cours est inspiré du chapitre 24 du manuel NSI de la collection Tortue chez
 # Définition d'un système d'exploitation
 
 Un *système d’exploitation* est un logiciel, ou ensemble de programmes, qui sert d'interface
-entre les programmes exécuté par l'utilisateur et les ressources matérielles d'un
+entre les programmes exécutés par l'utilisateur et les ressources matérielles d'un
 ordinateur.
 
 ![Illustration du rôle d'un système d'exploitation](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Operating_system_placement-fr.svg/250px-Operating_system_placement-fr.svg.png)
@@ -77,7 +77,7 @@ ou utilisateurs (droits d'accès du système de fichiers)
 
 # Interface utilisateur d'un système d'exploitation : le shell
 
-Une interface entre l'utilisateur  et le système d'exploitation s'appelle un [shell](https://fr.wikipedia.org/wiki/Shell_Unix) ou *interpréteur de commandes.
+Une interface entre l'utilisateur  et le système d'exploitation s'appelle un [shell](https://fr.wikipedia.org/wiki/Shell_Unix) ou *interpréteur de commandes*.
 
 Le rôle d'un *shell* est de prendre une entrée de l'utilisateur, de la traduire en instructions compréhensibles par le système d'exploitation et de renvoyer la réponse du système à l'utilisateur.
 
@@ -88,10 +88,10 @@ Il existe deux grandes catégories de *shell* :
 * les *interfaces textuelles* comme [bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell), le plus commun sur les systèmes de la famille [UNIX](https://fr.wikipedia.org/wiki/Bourne-Again_shell).
 * les *interfaces graphiques* qu'on retrouve dans les systèmes d'exploitation grand public tels que [Windows](https://fr.wikipedia.org/wiki/Microsoft_Windows)
 
-Nous utiliserons [bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) dans ce TP et le suivant. La syntaxe d'une commande [bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) est simple : le nom de la commande peut être suivi d'options facultatives introduites par un tiret et d'arguments :
+Nous utiliserons [bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) dans les TP. La syntaxe d'une commande [bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) est simple : le nom de la commande peut être suivi d'options facultatives introduites par un tiret et d'arguments :
  `nom_commande -option1 -option2 argument1 argument2`.
 
- Par exemple, la commande ci-dessous demande d'utiliser la commande `ls` pour afficher les informations détaillées (option `_l`) sur le fichier `exemple`:
+ Par exemple, la commande ci-dessous demande d'utiliser la commande `ls` pour afficher les informations détaillées (option `-l`) sur le fichier `exemple`:
 
     junier@fredportable:~/bac$ ls -l exemple
     -rw-rw-r-- 1 nobody mail 0 août  16 12:05 exemple
@@ -111,7 +111,7 @@ Enfin chaque commande possède trois flux d'entrée / sortie :
 
 Il existe des opérateurs `>` et `<` pour rediriger les flux d'entrée / sortie.
 
-Considérons un exemple . La commande `ls` sans argument affiche le contenu du répertoire courant sur la sortie standard et la  commande  `cat`  renvoie son entrée standard sur sa sortie standard : 
+Considérons un exemple . La commande `ls` sans argument affiche le contenu du répertoire courant sur la sortie standard et la  commande  `cat`  concatène les fichiers fournis en paramètres ou sur son entrée standard et renvoie le résultat sur sa sortie standard : 
 
         junier@fredportable:~/bac$ ls 
         entree
@@ -127,7 +127,7 @@ Considérons un exemple . La commande `ls` sans argument affiche le contenu du r
         junier@fredportable:~/bac$ cat sortie
         contenu de entree
 
-Nous fournirons un memento des principales commandes de [bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) communes à tous la plupart des *shell* des systèmes de la famille UNIX](https://fr.wikipedia.org/wiki/Bourne-Again_shell).
+Nous fournirons un memento des principales commandes de [bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) communes à  la plupart des *shell* des systèmes de la famille [UNIX](https://fr.wikipedia.org/wiki/Bourne-Again_shell).
 
 Un memento en ligne :  <https://juliend.github.io/linux-cheatsheet/>
 
@@ -146,9 +146,9 @@ Le __noyau__ désigne l'ensemble des programmes au coeur du système d'exploitat
 
 Un programme ne peut être exécuté que si le système d'exploitation l'autorise.
 L'exécution d'un programme peut être interrompue par le système d'exploitation,
-pour libérer une ressource ou en cas d'erreur, on parle d'interruption système.
+pour libérer une ressource ou en cas d'erreur. On parle d'*interruption système*.
 
-Un programme en cours d'exécution s'appelle un *processus* et le système d'exploitation arbitre le partage de temps de calcul du processeur par les processus concurrents. Il jour un rôle *d'ordonnanceur* pour éviter par exemple qu'un processus s'accapare le  processeur.  
+Un programme en cours d'exécution s'appelle un *processus* et le système d'exploitation arbitre le partage de temps de calcul du processeur par les processus concurrents. Il joue un rôle *d'ordonnanceur* pour éviter par exemple qu'un processus s'accapare le  processeur.  
 
 Le système d'exploitation maintient une base de temps unique pour tous les
 processus et fournit des services de gestion du temps : estampillage, chronologie, attente, réveil.
@@ -203,7 +203,7 @@ Dans les systèmes d'exploitation qui  respectent le standard [POSIX](https://fr
 
 *  *fichiers réguliers* ou *fichiers textes* qui contiennent des suites de caractères et qui sont lisibles par des humains
 *  *fichiers binaires* qui sont des suites d'octets non lisibles par des humains
-*  *fichiers exécutables* qui sont des programmes, ils peuvent être des fichiers textes binaires.
+*  *fichiers exécutables* qui sont des programmes, ils peuvent être des fichiers textes ou binaires.
 *  *répertoires* qui sont des listes de fichiers : ils servent de conteneur à fichiers.
 
 Les *répertoires* pouvant contenir d'autres fichiers, un système de fichiers  [POSIX](https://fr.wikipedia.org/wiki/POSIX) possède une structure hiérarchique  qui est une  *arborescence* avec  un *répertoire racine* symbolisé par un /.
@@ -252,7 +252,7 @@ supprimer tous les fichiers qu'il contient même ceux dont on n'est pas proprié
 | w | écriture           | ajouter, supprimer, renommer des fichiers |
 | x | exécution          | entrer dedans                             |
 
-En général le nom d'utilisateur figure dans le prompt de l'interpréteur de commandes / shell, mais la commande `id` permet de l'afficher avec la liste des groupes auxquels on appartient :
+En général le nom d'utilisateur figure dans le prompt de l'interpréteur de commandes / shell, mais la commande `id` permet de l'afficher avec la liste des groupes auxquels il appartient :
 
     junier@fredportable:~$ id
     uid=1000(junier) gid=1000(junier) groupes=1000(junier),4(adm),8(mail),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),131(lxd),132(sambashare)
@@ -354,7 +354,7 @@ Attention, si tout membre du groupe `mail` peut écrire dans le répertoire `var
             junier@fredportable:~/bac$ cat fichier 
             echo exécution
 
-    * On ajoute le droite d'exécution à  `fichier` pour son propriétaire et on vérifie que la commande qu'il contient est bien exécutée lorsqu'on écrit `.\fichier` :
+    * On ajoute le droite d'exécution à  `fichier` pour son propriétaire et on vérifie que la commande qu'il contient est bien exécutée lorsqu'on écrit `./fichier` :
 
             junier@fredportable:~/bac$ chmod u+x fichier
             junier@fredportable:~/bac$ ./fichier 
@@ -603,7 +603,7 @@ On distingue deux types de licences libres :
     inclut du code sous license GPL dans un autre, le programme hybride
     créé est contaminé et doit être distribué sous licence GPL. La
     license **LGPL** présente un copyleft plus faible : du code sous
-    cette license cette license peut être inclus dans un code sous une autre license
+    cette license  peut être inclus dans un code sous une autre license
     sans que le programme hybride soit nécessairement sous license LGPL.
     C'est utile pour développer des bibliothèques de fonctions.
 

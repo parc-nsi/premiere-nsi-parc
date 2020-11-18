@@ -842,7 +842,7 @@ d'exploitation}\label{chronologie-des-systuxe8mes-dexploitation}}
 d'exploitation}\label{duxe9finition-dun-systuxe8me-dexploitation}}
 
 Un \emph{système d'exploitation} est un logiciel, ou ensemble de
-programmes, qui sert d'interface entre les programmes exécuté par
+programmes, qui sert d'interface entre les programmes exécutés par
 l'utilisateur et les ressources matérielles d'un ordinateur.
 
 \begin{figure}
@@ -892,7 +892,7 @@ shell}\label{interface-utilisateur-dun-systuxe8me-dexploitation-le-shell}}
 
 Une interface entre l'utilisateur et le système d'exploitation s'appelle
 un \href{https://fr.wikipedia.org/wiki/Shell_Unix}{shell} ou
-*interpréteur de commandes.
+\emph{interpréteur de commandes}.
 
 Le rôle d'un \emph{shell} est de prendre une entrée de l'utilisateur, de
 la traduire en instructions compréhensibles par le système
@@ -914,8 +914,8 @@ Il existe deux grandes catégories de \emph{shell} :
 \end{itemize}
 
 Nous utiliserons
-\href{https://fr.wikipedia.org/wiki/Bourne-Again_shell}{bash} dans ce TP
-et le suivant. La syntaxe d'une commande
+\href{https://fr.wikipedia.org/wiki/Bourne-Again_shell}{bash} dans les
+TP. La syntaxe d'une commande
 \href{https://fr.wikipedia.org/wiki/Bourne-Again_shell}{bash} est simple
 : le nom de la commande peut être suivi d'options facultatives
 introduites par un tiret et d'arguments :
@@ -923,7 +923,7 @@ introduites par un tiret et d'arguments :
 
 Par exemple, la commande ci-dessous demande d'utiliser la commande
 \texttt{ls} pour afficher les informations détaillées (option
-\texttt{\_l}) sur le fichier \texttt{exemple}:
+\texttt{-l}) sur le fichier \texttt{exemple}:
 
 \begin{verbatim}
 junier@fredportable:~/bac$ ls -l exemple
@@ -960,7 +960,8 @@ pour rediriger les flux d'entrée / sortie.
 
 Considérons un exemple . La commande \texttt{ls} sans argument affiche
 le contenu du répertoire courant sur la sortie standard et la commande
-\texttt{cat} renvoie son entrée standard sur sa sortie standard :
+\texttt{cat} concatène les fichiers fournis en paramètres ou sur son
+entrée standard et renvoie le résultat sur sa sortie standard :
 
 \begin{verbatim}
     junier@fredportable:~/bac$ ls 
@@ -980,8 +981,8 @@ le contenu du répertoire courant sur la sortie standard et la commande
 
 Nous fournirons un memento des principales commandes de
 \href{https://fr.wikipedia.org/wiki/Bourne-Again_shell}{bash} communes à
-tous la plupart des \emph{shell} des systèmes de la famille
-UNIX{]}(https://fr.wikipedia.org/wiki/Bourne-Again\_shell).
+la plupart des \emph{shell} des systèmes de la famille
+\href{https://fr.wikipedia.org/wiki/Bourne-Again_shell}{UNIX}.
 
 Un memento en ligne : \url{https://juliend.github.io/linux-cheatsheet/}
 
@@ -1016,12 +1017,12 @@ programmes}\label{attributs-du-systuxe8me-dexploitation-le-contruxf4le-de-lactiv
 
 Un programme ne peut être exécuté que si le système d'exploitation
 l'autorise. L'exécution d'un programme peut être interrompue par le
-système d'exploitation, pour libérer une ressource ou en cas d'erreur,
-on parle d'interruption système.
+système d'exploitation, pour libérer une ressource ou en cas d'erreur.
+On parle d'\emph{interruption système}.
 
 Un programme en cours d'exécution s'appelle un \emph{processus} et le
 système d'exploitation arbitre le partage de temps de calcul du
-processeur par les processus concurrents. Il jour un rôle
+processeur par les processus concurrents. Il joue un rôle
 \emph{d'ordonnanceur} pour éviter par exemple qu'un processus s'accapare
 le processeur.
 
@@ -1116,7 +1117,7 @@ plusieurs catégories de fichiers :
   des humains
 \item
   \emph{fichiers exécutables} qui sont des programmes, ils peuvent être
-  des fichiers textes binaires.
+  des fichiers textes ou binaires.
 \item
   \emph{répertoires} qui sont des listes de fichiers : ils servent de
   conteneur à fichiers.
@@ -1217,7 +1218,7 @@ x & exécution & entrer dedans\tabularnewline
 
 En général le nom d'utilisateur figure dans le prompt de l'interpréteur
 de commandes / shell, mais la commande \texttt{id} permet de l'afficher
-avec la liste des groupes auxquels on appartient :
+avec la liste des groupes auxquels il appartient :
 
 \begin{verbatim}
 junier@fredportable:~$ id
@@ -1387,7 +1388,7 @@ permissions}\label{modification-des-droits-permissions}}
   \item
     On ajoute le droite d'exécution à \texttt{fichier} pour son
     propriétaire et on vérifie que la commande qu'il contient est bien
-    exécutée lorsqu'on écrit \texttt{.\textbackslash{}fichier} :
+    exécutée lorsqu'on écrit \texttt{./fichier} :
 
 \begin{verbatim}
   junier@fredportable:~/bac$ chmod u+x fichier
@@ -1679,9 +1680,9 @@ On distingue deux types de licences libres :
   inclut du code sous license GPL dans un autre, le programme hybride
   créé est contaminé et doit être distribué sous licence GPL. La license
   \textbf{LGPL} présente un copyleft plus faible : du code sous cette
-  license cette license peut être inclus dans un code sous une autre
-  license sans que le programme hybride soit nécessairement sous license
-  LGPL. C'est utile pour développer des bibliothèques de fonctions.
+  license peut être inclus dans un code sous une autre license sans que
+  le programme hybride soit nécessairement sous license LGPL. C'est
+  utile pour développer des bibliothèques de fonctions.
 \item
   Les \textbf{licences sans copyleft} :
 
