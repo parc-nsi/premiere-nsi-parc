@@ -33,4 +33,5 @@ layout: parc
 * [Chapitre 6 : tableaux à une dimension](chapitre6.md)
 * [Chapitre 7 : tableaux à deux dimensions](chapitre7.md)
 * [Chapitre 8 : représentation des entiers](chapitre8.md)
+* [Chapitre 9 : système d'exploitation et ligne de commandes](chapitre8.md)
 
