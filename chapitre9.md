@@ -35,7 +35,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 ## Exposé de Lou, Bogdan et Alexandre sur les systèmes d'exploitation
 
-* [page d'accueil](ProjetHTML_LouAlexandreBogdan/Premiere_page.html)
+* [Page d'accueil](chapitre9/ProjetHTML_LouAlexandreBogdan/Premiere_page.html)
 
 
 ## Tutoriel vidéo 
