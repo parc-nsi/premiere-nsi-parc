@@ -45,3 +45,22 @@ def au_moins_un_zero(t):
    * 10011
    * 10111
  
+6. **Automatisme 6 :**  Pour déterminer la liste des chiffres en base dix d'un entier naturel, un élève a écrit la fonction ci-dessous :
+
+~~~python
+def liste_chiffres(n):
+    L = [n % 10]
+    while n > 0:
+        n = n // 10
+        L.insert(0, n % 10)
+    return L
+~~~
+
+Malheureusement sa fonction ne retourne pas le résultat attendu pour l'entier 730 :
+
+~~~
+>>> liste_chiffres(730)
+[0, 7, 3, 0]
+~~~
+
+Proposer une version corrigée de la fonction `liste_chiffres`.
