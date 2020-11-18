@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Première NSI, Lycée du Parc" />
+  <title>TP1 système d’exploitation et shell</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../Pandoc/style_nsi.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">TP1 système d’exploitation et shell</h1>
+<p class="subtitle">Thème architectures matérielles et systèmes d’exploitation</p>
+<p class="author">Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a></p>
+</header>
+<!-- Définition des hyperliens  -->
+<div class="cours">
+<p>Le <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation">système d’exploitation</a> est l’ensemble des programmes qui permet aux autres programmes d’interagir avec les ressources matérielles (processeur, mémoire, périphériques d’entrée / sortie) sur un ordinateur. Il sert donc <em>d’intermédiaire</em> entre le <em>matériel</em> et le <em>logiciel</em> et assure la coordination, la sécurité et la stabilité d’un environnement partagés par plusieurs programmes et plusieurs utilisateurs.</p>
+<p>Les systèmes d’exploitation les plus utilisés son <a href="https://fr.wikipedia.org/wiki/Microsoft_Windows">Windows</a>, <a href="https://fr.wikipedia.org/wiki/MacOS">MacOS</a>, <a href="https://fr.wikipedia.org/wiki/Linux">Linux</a> et <a href="https://fr.wikipedia.org/wiki/FreeBSD">FreeBSD</a>, ces trois derniers étant dérivés du système <a href="https://fr.wikipedia.org/wiki/Unix">UNIX</a>.</p>
+<p>Un <em>interpréteur de commandes</em> ou <em>shell</em> est un programme qui sert d’intermédiaire entre l’utilisateur et le système d’exploitation : son <em>interface</em> d’entrée / sortie peut être graphique ou textuelle.</p>
+<p>Nous allons travailler sur un <em>shell</em> avec interface textuelle nommé <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">BASH</a> qui est installé par défaut sur les systèmes <a href="https://fr.wikipedia.org/wiki/MacOS">MacOS</a> et <a href="https://fr.wikipedia.org/wiki/Linux">Linux</a>.</p>
+</div>
+<div class="exercice">
+<ol type="1">
+<li>Ouvrir un terminal d’interpréteur de commandes avec le raccourci clavier <code>CTRL + ALT + T</code>.</li>
+<li><p>Vérifier son identité, le répertoire courant et la date avec les commandes suivantes :</p>
+<pre><code> junier@fredportable:~$ whoami
+ junier
+ junier@fredportable:~$ pwd
+ /home/junier
+ junier@fredportable:~$ date
+ lun. 17 août 2020 13:42:38 CEST</code></pre></li>
+<li><p>Télécharger l’archive du TP avec la commande <code>wget</code> en lui passant l’[URL][URL] en argument.</p>
+<pre><code> junier@fredportable:~$ wget https://gitlab.com/frederic-junier/nsi-public/-/blob/master/Premiere/Systeme/sandbox.zip</code></pre></li>
+<li><p>Déballer l’archive avec la commande <code>unzip</code>.</p>
+<pre><code> junier@fredportable:~$ unzip sandbox.zip
+ junier@fredportable:~$ ls -ld sandbox
+ drwxrwxr-x 28 junier junier 4096 août  15 22:29 sandbox</code></pre></li>
+<li><p>Changer de répertoire courant pour le répertoire <code>sandbox</code> avec la commande <code>cd</code> pour <code>change directory</code>.</p>
+<pre><code> junier@fredportable:~$ cd sandbox
+ junier@fredportable:~/sandbox$ ls
+ a  c              consigne3.txt  e  g  i  k  m  o  q  s  u  w  y
+ b  consigne1.txt  d              f  h  j  l  n  p  r  t  v  x  z</code></pre></li>
+<li><p>Afficher dans le terminal (ou console) le contenu du fichier <code>consigne1.txt</code>.</p>
+<pre><code> junier@fredportable:~/sandbox$ cat consigne1.txt</code></pre></li>
+<li><p>Suivre les instructions données successivement dans les fichiers <code>consigne{1..8}.txt</code>.</p></li>
+</ol>
+<p>L’objectif est de retrouver ou construire deux fichiers <code>systeme-cours.md</code> et <code>memento-shell.md</code> au format <a href="https://fr.wikipedia.org/wiki/Markdown">Markdown</a> et de les convertir en <code>pdf</code> soit avec l’outil <a href="">pandoc</a> s’il est installé, soit avec un convertisseur en ligne directement depuis le <em>shell</em> :</p>
+<pre><code>    junier@fredportable:~/sandbox$ pandoc systeme-cours.md -o systeme-cours.pdf</code></pre>
+<p>ou avec l’API du convertisseur en ligne <code>docverter</code> et la commande <code>curl</code>:</p>
+<pre><code>    junier@fredportable:~/sandbox$ curl \
+    -F from=markdown \
+    -F to=pdf \
+    -F input_files[]=@systeme-cours.md  \
+    -F table_of_contents=true  \
+    http://c.docverter.com/convert &gt; systeme-cours.pdf</code></pre>
+<ol start="8" type="1">
+<li>À la fin du TP, copier avec la commande <code>cp</code>, les fichiers <code>systeme-cours.pdf</code> et <code>memento-shell.pdf</code> qui ont été produits sur sa clef USB qui devrait être montée dans le dossier <code>media</code>. On peut afficher le point de montage avec <code>mount|grep media</code>.</li>
+</ol>
+</div>
+</body>
+</html>
