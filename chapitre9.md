@@ -20,7 +20,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
   * 
   * [archive zip](chapitre9/TP1/)
   
-## Memento `shell` 
+## Memento shell
 
 * [Memento shell version pdf](chapitre9/memento-shell/memento-shell-.pdf)
 * [Memento shell version markdown](chapitre9/memento-shell/memento-shell-source.md)
