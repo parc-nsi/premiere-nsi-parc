@@ -29,7 +29,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 ## Cours 
 
 * [Cours version pdf](chapitre9/cours-systeme/systeme-cours-.pdf)
-* [Cours version markdown](chapitre9/cours_systeme/systeme-cours-git.md)
+* [Cours version markdown](chapitre9/cours-systeme/systeme-cours-git.md)
 
 
 ## Tutoriel vidéo 
