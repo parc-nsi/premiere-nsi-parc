@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Première NSI, Lycée du Parc" />
   <title>TP1 système d’exploitation et shell</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="../../Pandoc/style_nsi.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
@@ -29,7 +34,7 @@
 </div>
 <div class="exercice">
 <ol type="1">
-<li>Ouvrir un terminal d’interpréteur de commandes avec le raccourci clavier <code>CTRL + ALT + T</code>.</li>
+<li><p>Ouvrir un terminal d’interpréteur de commandes avec le raccourci clavier <code>CTRL + ALT + T</code>.</p></li>
 <li><p>Vérifier son identité, le répertoire courant et la date avec les commandes suivantes :</p>
 <pre><code> junier@fredportable:~$ whoami
  junier
@@ -37,8 +42,8 @@
  /home/junier
  junier@fredportable:~$ date
  lun. 17 août 2020 13:42:38 CEST</code></pre></li>
-<li><p>Télécharger l’archive du TP avec la commande <code>wget</code> en lui passant l’[URL][URL] en argument.</p>
-<pre><code> junier@fredportable:~$ wget https://gitlab.com/frederic-junier/nsi-public/-/blob/master/Premiere/Systeme/sandbox.zip</code></pre></li>
+<li><p>Télécharger l’archive du TP avec la commande <code>wget</code> en lui passant l’[URL][URL] en argument l’URL qui est <a href="https://parc-nsi.github.io/premiere-nsi/chapitre9/TP1/materiel/sandbox.zip" class="uri">https://parc-nsi.github.io/premiere-nsi/chapitre9/TP1/materiel/sandbox.zip</a> (faire un copier-coller de cette URL dans l’interpréteur de commandes).</p>
+<pre><code> junier@fredportable:~$ wget https://parc-nsi.github.io/premiere-nsi/chapitre9/TP1/materiel/sandbox.zip</code></pre></li>
 <li><p>Déballer l’archive avec la commande <code>unzip</code>.</p>
 <pre><code> junier@fredportable:~$ unzip sandbox.zip
  junier@fredportable:~$ ls -ld sandbox

@@ -63,7 +63,8 @@
 }
 \makeatother
 \subtitle{Thème architectures matérielles et systèmes d'exploitation}
-\author{Première NSI, \href{https://frederic-junier.org/}{Lycée du Parc}}
+\author{Première NSI, \href{https://frederic-junier.org/}{Lycée du
+Parc}}
 \date{}
 
 %%%jolis boites
@@ -375,6 +376,14 @@ xleftmargin=1cm,xrightmargin=1cm,
  
  
 
+\newenvironment{introduction}
+{\par \medskip    \noindent  
+ \begin {bclogo}[couleur = blue!5 , arrondi =0.1,logo=\bcrosevents, marge=4] {~\textbf{Introduction}    }
+ \par }
+{
+\end{bclogo}
+ \par \bigskip }
+ 
 \newenvironment{memo}[1]
 {\par \medskip    \noindent  
 \begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bccle, marge=4]{~\textbf{À retenir}  {\itshape #1} }  \par}
@@ -796,10 +805,13 @@ est installé par défaut sur les systèmes
 \end{verbatim}
 \item
   Télécharger l'archive du TP avec la commande \texttt{wget} en lui
-  passant l'{[}URL{]}{[}URL{]} en argument.
+  passant l'{[}URL{]}{[}URL{]} en argument l'URL qui est
+  \url{https://parc-nsi.github.io/premiere-nsi/chapitre9/TP1/materiel/sandbox.zip}
+  (faire un copier-coller de cette URL dans l'interpréteur de
+  commandes).
 
 \begin{verbatim}
- junier@fredportable:~$ wget https://gitlab.com/frederic-junier/nsi-public/-/blob/master/Premiere/Systeme/sandbox.zip
+ junier@fredportable:~$ wget https://parc-nsi.github.io/premiere-nsi/chapitre9/TP1/materiel/sandbox.zip
 \end{verbatim}
 \item
   Déballer l'archive avec la commande \texttt{unzip}.

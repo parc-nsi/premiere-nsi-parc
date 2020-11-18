@@ -46,9 +46,10 @@ Nous allons travailler sur  un *shell* avec interface textuelle nommé [BASH][BA
 
 
 
-3. Télécharger l'archive du TP avec la commande `wget` en lui passant l'[URL][URL] en argument.
+3. Télécharger l'archive du TP avec la commande `wget` en lui passant l'[URL][URL] en argument l'URL
+ qui est <https://parc-nsi.github.io/premiere-nsi/chapitre9/TP1/materiel/sandbox.zip> (faire un copier-coller de cette URL dans l'interpréteur de commandes).
 
-        junier@fredportable:~$ wget https://gitlab.com/frederic-junier/nsi-public/-/blob/master/Premiere/Systeme/sandbox.zip
+        junier@fredportable:~$ wget https://parc-nsi.github.io/premiere-nsi/chapitre9/TP1/materiel/sandbox.zip
 
 
 4. Déballer l'archive avec la commande `unzip`.
