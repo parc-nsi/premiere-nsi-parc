@@ -33,4 +33,8 @@ Les QCM sont disponibles sur les sites [Genumsi](https://genumsi.inria.fr)  ou [
 
 * QCM sur les tableaux à deux dimensions :
   * Énoncé : <https://genumsi.inria.fr/qcm.php?h=24a7b78df2ca32192ec7ef53f5d7b6b5>
+  * Corrigé : <https://genumsi.inria.fr/qcm-corrige.php?cle=MTUwOzI3MjsyNzM7Mjc0OzMxMjszMzk7Mzk5OzQyNjs0Njc7NDcxOzEzMzA7MTM3NjsxNDI4OzE0Mjk=>
+
+* QCM sur le système d'exploitation et la ligne de commandes : 
+  * Énoncé : <https://genumsi.inria.fr/qcm.php?h=629a91f29647762dda098d895fcb2d33>
   * Corrigé : 
