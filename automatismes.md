@@ -66,7 +66,7 @@ Malheureusement sa fonction ne retourne pas le résultat attendu pour l'entier 7
 Proposer une version corrigée de la fonction `liste_chiffres`.
 
 
-7.  **Automatisme 6 :**
+7. **Automatisme 7 :**
 
 On travaille sur des tableaux à deux dimensions qui représentent des images binaires : un pixel a pour valeur un entier : 0 pour un pixel noir et 1 pour un pixel blanc.
 
