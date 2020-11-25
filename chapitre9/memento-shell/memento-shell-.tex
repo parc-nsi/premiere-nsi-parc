@@ -76,7 +76,8 @@
 }
 \makeatother
 \subtitle{Thème architectures matérielles et systèmes d'exploitation}
-\author{Première NSI, \href{https://frederic-junier.org/}{Lycée du Parc}}
+\author{Première NSI, \href{https://frederic-junier.org/}{Lycée du
+Parc}}
 \date{}
 
 %%%jolis boites
@@ -388,6 +389,14 @@ xleftmargin=1cm,xrightmargin=1cm,
  
  
 
+\newenvironment{introduction}
+{\par \medskip    \noindent  
+ \begin {bclogo}[couleur = blue!5 , arrondi =0.1,logo=\bcrosevents, marge=4] {~\textbf{Introduction}    }
+ \par }
+{
+\end{bclogo}
+ \par \bigskip }
+ 
 \newenvironment{memo}[1]
 {\par \medskip    \noindent  
 \begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bccle, marge=4]{~\textbf{À retenir}  {\itshape #1} }  \par}
@@ -802,6 +811,11 @@ quelques raccourcis clavier bien pratiques :
 \item
   les flèches de direction Haut et Bas permettent de naviguer dans
   l'historique des commandes.
+\item
+  la plupart des commandes du \emph{shell} sont dotées d'une
+  documentation accessible depuis l'interpréteur avec la commande
+  \texttt{man}. Par exemple pour afficher l'aide de la commande
+  \texttt{ls}, on écrira \texttt{man\ ls}.
 \end{itemize}
 
 \hypertarget{un-premier-exemple-de-commande}{%
@@ -1034,8 +1048,8 @@ fichier}\label{copier-supprimer-duxe9placer-un-fichier}}
 \item
   La commande \texttt{rm} permet de supprimer les fichiers qu'on lui
   passe en argument. Pour supprimer un répertoire et son contenu, il
-  faut lui passer l'option \texttt{-R} comme pour \texttt{mv}.
-  \emph{Attention, \texttt{rm} ne déplace pas les fichiers vers un
+  faut lui passer l'option \texttt{-R} comme pour \texttt{cp}.
+  \emph{Attention, \texttt{rm} ne déplace pas les fichiers vers une
   corbeille, ils sont supprimés définitivement !}
 
 \begin{verbatim}
@@ -1207,7 +1221,8 @@ affiché de façon détaillée avec la commande \texttt{ls\ -l} :
 
     \begin{itemize}
     \item
-      Donner le droit d'écriture à tous sur \texttt{fichier3} :
+      Fixer les droits à -x (écriture seule) pour tous les utilisateurs
+      sur \texttt{fichier3} :
 
 \begin{verbatim}
     junier@fredportable:~/sandbox$ chmod a=x fichier3

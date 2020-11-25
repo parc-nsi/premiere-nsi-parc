@@ -1,3 +1,14 @@
+  - [Crédits](#crédits)
+  - [Un premier exemple de commande](#un-premier-exemple-de-commande)
+  - [Naviguer dans l’arborescence du système de
+    fichiers](#naviguer-dans-larborescence-du-système-de-fichiers)
+  - [Copier, supprimer, déplacer un
+    fichier](#copier-supprimer-déplacer-un-fichier)
+  - [Expansion des noms de fichiers et
+    *globbing*](#expansion-des-noms-de-fichiers-et-globbing)
+  - [Gestion des droits sur les
+    fichiers](#gestion-des-droits-sur-les-fichiers)
+
 <!-- Définition des hyperliens  -->
 
 # Crédits
@@ -34,6 +45,10 @@ quelques raccourcis clavier bien pratiques :
 
   - les flèches de direction Haut et Bas permettent de naviguer dans
     l’historique des commandes.
+
+  - la plupart des commandes du *shell* sont dotées d’une documentation
+    accessible depuis l’interpréteur avec la commande `man`. Par exemple
+    pour afficher l’aide de la commande `ls`, on écrira `man ls`.
 
 # Un premier exemple de commande
 
@@ -223,8 +238,8 @@ relative](https://gitlab.com/frederic-junier/nsi-public/-/raw/master/Premiere/Sy
 
 3.  La commande `rm` permet de supprimer les fichiers qu’on lui passe en
     argument. Pour supprimer un répertoire et son contenu, il faut lui
-    passer l’option `-R` comme pour `mv`. *Attention, `rm` ne déplace
-    pas les fichiers vers un corbeille, ils sont supprimés
+    passer l’option `-R` comme pour `cp`. *Attention, `rm` ne déplace
+    pas les fichiers vers une corbeille, ils sont supprimés
     définitivement \!*
     
     ``` 
@@ -343,7 +358,8 @@ détaillée avec la commande `ls -l` :
           - `-R` : récursivement (nécessaire pour agir sur un
             répertoire)
       - Quelques exemples :
-          - Donner le droit d’écriture à tous sur `fichier3` :
+          - Fixer les droits à -x (écriture seule) pour tous les
+            utilisateurs sur `fichier3` :
             
             ``` 
                 junier@fredportable:~/sandbox$ chmod a=x fichier3

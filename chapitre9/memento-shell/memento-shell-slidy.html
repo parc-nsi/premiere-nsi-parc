@@ -9,15 +9,17 @@
   <meta name="author" content="Première NSI, Lycée du Parc" />
   <title>Memento ligne de commandes, shell bash</title>
   <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
-   href="../../../Pandoc/style_nsi.css" />
+   href="../../Pandoc/style_nsi.css" />
   <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
     charset="utf-8" type="text/javascript"></script>
 </head>
@@ -34,7 +36,7 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 <!-- Définition des hyperliens  -->
 </div>
 <div id="crédits" class="slide section level1 unnumbered">
-<h1>Crédits</h1>
+<h1 class="unnumbered">Crédits</h1>
 <p><em>Memento directement inspiré des livres <a href="https://www.eyrolles.com/Informatique/Livre/la-ligne-de-commande-par-l-exemple-9782351410721/">La ligne de commande par l’exemple</a> de Vincent Fourmond et <a href="https://www.eyrolles.com/Informatique/Livre/parlez-vous-shell--9782729877590/">Parlez-vous Shell ?</a> de Thomas Hugel.</em></p>
 <p>Dans ce memento, nous présentons des commandes du <em>shell</em> <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">BASH</a> sous licence libre, qui est le <em>shell</em> par défaut sur la plupart des distributions du système d’exploitation libre <a href="https://fr.wikipedia.org/wiki/Linux">Linux</a>. On distinguera parfois fichiers et répertoires mais on rappelle que les répertoires sont juste des fichiers spéciaux, qui contiennent d’autres fichiers. Un memento en ligne est disponible sur <a href="https://juliend.github.io/linux-cheatsheet/" class="uri">https://juliend.github.io/linux-cheatsheet/</a>.</p>
 <p><em>Conseils pratiques :</em> pour faciliter la saisie des commandes avec le clavier, <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">BASH</a> offre quelques raccourcis clavier bien pratiques :</p>
@@ -43,6 +45,7 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 <pre><code> junier@fredportable:~$ pw
  pwck      pwconv    pwd       pwdx      pwgen     pwunconv </code></pre></li>
 <li><p>les flèches de direction Haut et Bas permettent de naviguer dans l’historique des commandes.</p></li>
+<li><p>la plupart des commandes du <em>shell</em> sont dotées d’une documentation accessible depuis l’interpréteur avec la commande <code>man</code>. Par exemple pour afficher l’aide de la commande <code>ls</code>, on écrira <code>man ls</code>.</p></li>
 </ul>
 </div>
 <div id="un-premier-exemple-de-commande" class="slide section level1">
@@ -91,7 +94,7 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 <li>La commande <code>tree</code> permet d’afficher l’arborescence du système de fichiers à partir du répertoire passé en argument (le répertoire courant par défaut). Ci-dessous, une partie de l’affichage de l’arborescence d’un <em>système de fichiers</em> (répertoires seulement) depuis le <em>répertoire racine</em> <code>/</code>. Le <em>chemin absolu</em> du répertoire <code>grub</code> est <code>/boot/grub</code>.</li>
 </ol>
 <div class="figure">
-<img src="https://gitlab.com/frederic-junier/nsi-public/-/raw/master/Premiere/Systeme/images/tree-racine.png" alt="arborescence racine" style="width:35.0%" />
+<img src="https://gitlab.com/frederic-junier/nsi-public/-/raw/master/Premiere/Systeme/images/tree-racine.png" style="width:35.0%" alt="" />
 <p class="caption">arborescence racine</p>
 </div>
 <ol start="2" style="list-style-type: decimal">
@@ -101,7 +104,7 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 <li><p>La commande <code>tree</code> sans argument permet alors d’afficher toute l’arborescence depuis le répertoire courant qui est représenté par un <code>.</code>. Le <em>chemin relatif</em> du fichier <code>photo1.jpg</code> par rapport au répertoire courant <code>sandbox</code> est <code>./rep1/photo1.jpg</code> ou <code>rep1/photo1.jpg</code> et son chemin absolu par rapport au répertoire racine s’obtient en le faisant précéder par le chemin absolu de <code>sandbox</code>, c’est donc <code>/home/junier/sandbox/rep1/photo1.jpg</code>.</p></li>
 </ol>
 <div class="figure">
-<img src="https://gitlab.com/frederic-junier/nsi-public/-/raw/master/Premiere/Systeme/images/tree-sandbox.png" alt="arborescence relative" style="width:35.0%" />
+<img src="https://gitlab.com/frederic-junier/nsi-public/-/raw/master/Premiere/Systeme/images/tree-sandbox.png" style="width:35.0%" alt="" />
 <p class="caption">arborescence relative</p>
 </div>
 <ol start="4" style="list-style-type: decimal">
@@ -158,7 +161,7 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
  junier@fredportable:~/sandbox$ cp -R rep2 rep3
  junier@fredportable:~/sandbox$ ls rep3
  rep2</code></pre></li>
-<li><p>La commande <code>rm</code> permet de supprimer les fichiers qu’on lui passe en argument. Pour supprimer un répertoire et son contenu, il faut lui passer l’option <code>-R</code> comme pour <code>mv</code>. <em>Attention, <code>rm</code> ne déplace pas les fichiers vers un corbeille, ils sont supprimés définitivement !</em></p>
+<li><p>La commande <code>rm</code> permet de supprimer les fichiers qu’on lui passe en argument. Pour supprimer un répertoire et son contenu, il faut lui passer l’option <code>-R</code> comme pour <code>cp</code>. <em>Attention, <code>rm</code> ne déplace pas les fichiers vers une corbeille, ils sont supprimés définitivement !</em></p>
 <pre><code> junier@fredportable:~/sandbox$ ls
  fichier2  fichier3  fichier4  rep2  rep3
  junier@fredportable:~/sandbox$ rm fichier2
@@ -233,7 +236,7 @@ Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
 </ul></li>
 <li>Quelques exemples :
 <ul>
-<li><p>Donner le droit d’écriture à tous sur <code>fichier3</code> :</p>
+<li><p>Fixer les droits à -x (écriture seule) pour tous les utilisateurs sur <code>fichier3</code> :</p>
 <pre><code>    junier@fredportable:~/sandbox$ chmod a=x fichier3</code></pre></li>
 <li><p>Donner le droit d’écriture aux autres utilisateurs sur <code>fichier4</code>:</p>
 <pre><code>    junier@fredportable:~/sandbox$ chmod o+w fichier4</code></pre></li>

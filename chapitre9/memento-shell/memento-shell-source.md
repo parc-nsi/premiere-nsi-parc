@@ -36,6 +36,8 @@ Un memento en ligne est disponible sur <https://juliend.github.io/linux-cheatshe
 
 * les flèches de direction Haut et Bas permettent de naviguer dans l'historique des commandes.
 
+* la plupart des commandes du *shell* sont dotées d'une documentation accessible depuis l'interpréteur avec la commande `man`. Par exemple pour afficher l'aide de la commande `ls`, on écrira `man ls`. 
+
 #  Un premier exemple de commande 
 
 
@@ -172,7 +174,7 @@ Ainsi, la commande `ls` permet d'afficher des informations sur répertoire ou un
         junier@fredportable:~/sandbox$ ls rep3
         rep2
 
-3. La commande `rm` permet de supprimer les fichiers qu'on lui passe en argument. Pour supprimer un répertoire et son contenu, il faut lui passer l'option `-R` comme pour `mv`. *Attention,  `rm` ne déplace pas les fichiers vers un corbeille, ils sont supprimés définitivement !*
+3. La commande `rm` permet de supprimer les fichiers qu'on lui passe en argument. Pour supprimer un répertoire et son contenu, il faut lui passer l'option `-R` comme pour `cp`. *Attention,  `rm` ne déplace pas les fichiers vers une corbeille, ils sont supprimés définitivement !*
 
         junier@fredportable:~/sandbox$ ls
         fichier2  fichier3  fichier4  rep2  rep3
@@ -252,7 +254,7 @@ Considérons le contenu  du répertoire `~/sandbox` affiché de façon détaill�
       * `x` : droit d'exécution 
       * `-R` : récursivement (nécessaire pour agir sur un répertoire)
     * Quelques exemples :
-      * Donner le droit d'écriture à tous sur `fichier3` :
+      * Fixer les droits à -x (écriture seule) pour tous les utilisateurs  sur `fichier3` :
   
                 junier@fredportable:~/sandbox$ chmod a=x fichier3
 
