@@ -21,6 +21,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 ## Exercices supplémentaires
 
+* [Exercice Tas de Graine Castor 2017](https://concours.castor-informatique.fr/index.php?team=castor2017)
 * [Énoncé des exercices](chapitre10/exercice.md)
 * [Corrigés des exercices](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre10/Corrige_Exercices_10022020.ipynb)
 
