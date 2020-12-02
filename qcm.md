@@ -38,3 +38,7 @@ Les QCM sont disponibles sur les sites [Genumsi](https://genumsi.inria.fr)  ou [
 * QCM sur le système d'exploitation et la ligne de commandes : 
   * Énoncé : <https://genumsi.inria.fr/qcm.php?h=629a91f29647762dda098d895fcb2d33>
   * Corrigé : <https://genumsi.inria.fr/qcm-corrige.php?cle=MTA7MTI3OzIzMTsyMzI7MzY5OzQxNjs0MTc7NDE4OzQxOTs0MjA7NDIyOzQyNDs0NDM7NDQ0OzQ4NDs0ODc7NDg4OzQ4OTsxMjUwOzEzMjc7MTMzMjsxMzQ4>
+
+
+* QCM sur les chaînes de caractères :
+  * Énoncé : <https://genumsi.inria.fr/qcm.php?h=93a256eb3c0dfe07ee905c31cda86ab6>
