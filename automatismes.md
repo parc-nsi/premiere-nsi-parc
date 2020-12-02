@@ -12,7 +12,7 @@ layout: parc
 
 
 
-## Automatisme n° 1
+## Automatisme 1
 
 Programmer la fonction dont on donne la spécification :
 
@@ -25,7 +25,7 @@ def index_min(t):
     """
 ~~~
 
-## Automatisme n° 2 
+## Automatisme 2 
 
 Programmer la fonction dont on donne la spécification :
 
