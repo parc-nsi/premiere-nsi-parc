@@ -122,3 +122,77 @@ assert nombre_blancs([[0,0], [0,0]]) == 0
 assert dimensions([[0,1,1], [0,1,0]]) == 3
 assert dimensions([[], []]) == 0
 ~~~
+
+8. **Automatisme 8** 
+
+Modifier les expressions "à modifier"  dans la fonction Python ci-dessous pour que la spécification soit vérifiée.
+
+Tester le code dans [Basthon](https://python.infobrisson.fr/?script=%2523%2520Fonction%2520de%2520tri%2520dans%2520l%27ordre%2520croissant%2520par%2520s%25C3%25A9lection%2520du%2520maximum%250D%250A%250D%250Adef%2520indice_maximum%2528tab%252C%2520debut%252C%2520fin%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520Param%25C3%25A8tres%2520%253A%2520%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520un%2520tableau%2520d%27entiers%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520debut%2520un%2520entier%2520indice%2520du%2520d%25C3%25A9but%2520de%2520la%2520plage%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520fin%2520un%2520entier%2520indice%2520de%2520la%2520fin%2520de%2520la%2520plage%2520%2528inclus%2529%250D%250A%2520%2520%2520%2520Valeur%2520renvoy%25C3%25A9e%2520%253A%2520l%27indice%2520de%2520la%2520premi%25C3%25A8re%2520occurence%2520du%2520maximum%2520de%2520tab%2520%250D%250A%2520%2520%2520%2520dans%2520la%2520plage%2520%2520de%2520valeurs%2520entre%2520les%2520indice%2520et%2520debut%2520et%2520fin%2520%2528inclus%2529%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520imax%2520%253D%2520%2522%25C3%25A0%2520modifier%2522%250D%250A%2520%2520%2520%2520for%2520i%2520in%2520range%2528imax%2520%252B%25201%252C%2520fin%2520%252B%25201%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520if%2520%2522%25C3%25A0%2520modifier%2522%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520imax%2520%253D%2520%2522%25C3%25A0%2520modifier%2522%250D%250A%2520%2520%2520%2520return%2520imax%250D%250A%2520%2520%2520%2520%250D%250A%2520%2520%2520%2520%250D%250Adef%2520tri_selection%2528tab%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520Param%25C3%25A8tre%2520%253A%2520tab%2520un%2520tableau%2520de%2520nombres%250D%250A%2520%2520%2520%2520Valeur%2520renvoy%25C3%25A9e%2520%253A%2520tab%250D%250A%2520%2520%2520%2520Postcondition%2520%253A%2520valeur%2520renvoy%25C3%25A9e%2520de%2520tab%2520tri%25C3%25A9e%2520dans%2520l%27ordre%2520croissant%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520i%2520%253D%2520len%2528tab%2529%2520-%25201%250D%250A%2520%2520%2520%2520while%2520i%2520%253E%253D%25201%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520imax%2520%253D%2520indice_maximum%2528tab%252C%2520%2522%25C3%25A0%2520modifier%2522%252C%2520%2522%25C3%25A0%2520modifier%2522%2529%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%255Bi%255D%252C%2520tab%255Bimax%255D%2520%253D%2520%2520%2522%25C3%25A0%2520modifier%2522%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2523%2520assertion%2520qui%2520doit%2520%25C3%25AAtre%2520v%25C3%25A9rifi%25C3%25A9e%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520max%2528tab%255B%253Ai%252B1%255D%2529%2520%253D%253D%2520tab%255Bi%255D%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520i%2520%253D%2520%2522%25C3%25A0%2520modifier%2522%250D%250A%2520%2520%2520%2520return%2520tab%2520%250D%250A%2520%2520%2520%2520%250D%250A%2523%2520Tests%2520unitaires%250D%250A%250D%250Aimport%2520random%250D%250A%250D%250A%250D%250Adef%2520test_indice_maximum%2528fonction_indice_maximum%2529%253A%250D%250A%2520%2520%2520%2520%2523tableaux%2520al%25C3%25A9atoires%250D%250A%2520%2520%2520%2520for%2520size%2520in%2520range%25281%252C%252010%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520%253D%2520%255Brandom.randint%25280%252C%2520100%2529%2520for%2520_%2520in%2520range%2528size%2529%255D%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520fonction_indice_maximum%2528tab%252C%25200%252C%2520len%2528tab%2529%2520-%25201%2529%2520%253D%253D%2520tab.index%2528max%2528tab%2529%2529%250D%250A%2520%2520%2520%2520print%2528f%2522Tests%2520unitaires%2520r%25C3%25A9ussis%2520pour%2520%257Bfonction_indice_maximum.__name__%257D%2522%2529%250D%250A%2520%2520%2520%2520%250D%250Adef%2520test_tri%2528fonction_tri%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522Test%2520unitaire%2520d%27une%2520fonction%2520de%2520tri%2522%2522%2522%250D%250A%2520%2520%2520%2520%2523tableaux%2520d%25C3%25A9j%25C3%25A0%2520tri%25C3%25A9s%250D%250A%2520%2520%2520%2520for%2520size%2520in%2520range%25280%252C%252010%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520%253D%2520list%2528range%25280%252C%2520size%2529%2529%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520fonction_tri%2528tab%2529%2520%253D%253D%2520sorted%2528tab%2529%252C%2520f%2522echec%2520sur%2520%257Btab%257D%2522%250D%250A%2520%2520%2520%2520%2523tableaus%2520tri%25C3%25A9s%2520dans%2520l%27ordre%2520inverse%250D%250A%2520%2520%2520%2520for%2520size%2520in%2520range%25280%252C%252011%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520%253D%2520list%2528range%25289%2520-%2520size%252C%2520-1%252C%2520-1%2529%2529%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520fonction_tri%2528tab%2529%2520%253D%253D%2520sorted%2528tab%2529%252C%2520f%2522echec%2520sur%2520%257Btab%257D%2522%250D%250A%2520%2520%2520%2520%2523tableaux%2520al%25C3%25A9atoires%250D%250A%2520%2520%2520%2520for%2520size%2520in%2520range%25280%252C%252010%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520%253D%2520%255Brandom.randint%25280%252C%2520100%2529%2520for%2520_%2520in%2520range%2528size%2529%255D%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520fonction_tri%2528tab%2529%2520%253D%253D%2520sorted%2528tab%2529%252C%2520f%2522echec%2520sur%2520%257Btab%257D%2522%250D%250A%2520%2520%2520%2520print%2528f%2522Tests%2520unitaires%2520r%25C3%25A9ussis%2520pour%2520%257Bfonction_tri.__name__%257D%2522%2529%250D%250A%250D%250A%2523d%25C3%25A9sactiver%2520pour%2520effectuer%2520les%2520tests%2520unitaire%2520%2520%2520%2520%2520%2520%250D%250A%2523test_indice_maximum%2528indice_maximum%2529%250D%250A%2523test_tri%2528tri_selection%2529)
+
+Décommenter  `#test_indice_maximum(indice_maximum)`  en ligne 63 pour soumettre votre fonction au test unitaire. 
+
+
+~~~python
+def indice_maximum(tab, debut, fin):
+    """
+    Paramètres : 
+        tab un tableau d'entiers
+        debut un entier indice du début de la plage
+        fin un entier indice de la fin de la plage (inclus)
+    Valeur renvoyée : l'indice de la première occurence du maximum de tab 
+    dans la plage  de valeurs entre les indice et debut et fin (inclus)
+    """
+    imax = "à modifier"
+    for i in range(imax + 1, fin + 1):
+        if "à modifier":
+            imax = "à modifier"
+    return imax
+~~~
+
+
+9. **Automatisme 9**
+
+Modifier les expressions "à modifier" dans la fonction `tri_selection` ci-dessous pour que la spécification et l'assertion placée à la fin de la boucle externe soient vérifiés.
+
+~~~python
+def tri_selection(tab):
+    """
+    Paramètre : tab un tableau de nombres
+    Valeur renvoyée : tab
+    Postcondition : valeur renvoyée de tab triée dans l'ordre croissant
+    """
+    i = len(tab) - 1
+    while i >= 1:
+        imax = indice_maximum(tab, "à modifier", "à modifier")
+        tab[i], tab[imax] =  "à modifier"
+        # assertion qui doit être vérifiée
+        assert max(tab[:i+1]) == tab[i]
+        i = "à modifier"
+    return tab 
+~~~
+
+Décommenter  `#test_tri(tri_selection)`  en ligne 64 pour soumettre votre fonction au test unitaire. 
+
+
+1.   **Automatisme 10**
+
+Un algorithme de tri d’une liste d’entiers est implémenté  de la façon suivante : 
+
+~~~python
+def trier(L) : 
+    for i in range(len(L)): 
+        indice_min = i 
+        for j in range(i+1, len(L)): 
+            if L[j] < L[indice_min] : 
+                indice_min = j 
+        L[i], L[indice_min] = L[indice_min], L[i] 
+        # assertion vraie à cet endroit 
+    return L 
+~~~
+
+Parmi les assertions suivantes laquelle reste vraie à chaque itération de la boucle, à l'endroit indiqué ci-dessus ?
+
+* __Réponse A :__ la sous-liste `L[0:i+1]` contient les `i` plus grandes valeurs de `L` triées par ordre décroissant
+* __Réponse B :__  la sous-liste `L[0:i+1]` contient les `i` plus grandes valeurs de `L` triées par ordre croissant
+* __Réponse C :__  la sous-liste `L[0:i+1]` contient les i plus petites valeurs de `L` triées par ordre décroissant
+* __Réponse D :__ la sous-liste `L[0:i+1]` contient les i plus petites valeurs de L triées par ordre croissant

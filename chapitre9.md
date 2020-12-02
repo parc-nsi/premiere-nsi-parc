@@ -39,6 +39,9 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 * [Page d'accueil](chapitre9/ProjetHTML_LouAlexandreBogdan/Premiere_page.html)
 
 
+![Comment choisir son OS ?](chapitre9/cours-systeme/choix-os.jpg)
+
+
 ## Tutoriel vidéo 
 
 [Comprendre ce qu’est un système d’exploitation](https://youtu.be/SpCP2oaCx8A)
