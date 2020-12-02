@@ -13,6 +13,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 
 
+
 ## Cours 
 
 * [Cours version pdf](chapitre12/cours/NSI-CodageCaracteres-2020V1.pdf)
@@ -22,3 +23,4 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 
 
+![Emojis, caractères de points de codes entre U+1F600 et U+1F64F](chapitre12/cours/images/emojis.png)
