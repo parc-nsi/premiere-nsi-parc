@@ -11,10 +11,10 @@ layout: parc
 [![Dragon](rotation-dragon-2.gif "dragon-hokusai")](https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg)
 
 
-## Automatismes :
 
+## Automatisme n° 1
 
-1. **Automatisme n° 1 :**  programmer la fonction dont on donne la spécification :
+Programmer la fonction dont on donne la spécification :
 
 ~~~python
 def index_min(t):
@@ -25,7 +25,9 @@ def index_min(t):
     """
 ~~~
 
-2.  **Automatisme n° 2 :**  programmer la fonction dont on donne la spécification :
+## Automatisme n° 2 
+
+Programmer la fonction dont on donne la spécification :
 
 ~~~python
 def au_moins_un_zero(t):
@@ -36,16 +38,25 @@ def au_moins_un_zero(t):
     """
 ~~~
 
-3. **Automatisme 3 :** Représenter en binaire le nombre d’écriture décimale 49.
+## Automatisme 3
 
-4. **Automatisme 4 :**  Représenter en base dix, le nombre dont l'écriture en base deux est `1010110` puis le nombre dont l'écriture en base 16 est `A4`.
+Représenter en binaire le nombre d’écriture décimale 49.
 
-5. **Automatisme 5 :**  Déterminer le successeur  des entiers dont l'écriture en base deux est :
-   * 111
-   * 10011
-   * 10111
+## Automatisme 4
+
+Représenter en base dix, le nombre dont l'écriture en base deux est `1010110` puis le nombre dont l'écriture en base 16 est `A4`.
+
+## Automatisme 5 
+
+Déterminer le successeur  des entiers dont l'écriture en base deux est :
+
+* 111
+* 10011
+* 10111
  
-6. **Automatisme 6 :**  Pour déterminer la liste des chiffres en base dix d'un entier naturel, un élève a écrit la fonction ci-dessous :
+## Automatisme 6  
+
+Pour déterminer la liste des chiffres en base dix d'un entier naturel, un élève a écrit la fonction ci-dessous :
 
 ~~~python
 def liste_chiffres(n):
@@ -65,7 +76,7 @@ Malheureusement sa fonction ne retourne pas le résultat attendu pour l'entier 7
 
 Proposer une version corrigée de la fonction `liste_chiffres`.
 
-7. **Automatisme 7 :**
+## Automatisme 7 
 
 On travaille sur des tableaux à deux dimensions qui représentent des images binaires : un pixel a pour valeur un entier : 0 pour un pixel noir et 1 pour un pixel blanc.
 
@@ -123,7 +134,7 @@ assert dimensions([[0,1,1], [0,1,0]]) == 3
 assert dimensions([[], []]) == 0
 ~~~
 
-8. **Automatisme 8** 
+## Automatisme 8
 
 Modifier les expressions "à modifier"  dans la fonction Python ci-dessous pour que la spécification soit vérifiée.
 
@@ -150,7 +161,7 @@ def indice_maximum(tab, debut, fin):
 ~~~
 
 
-9. **Automatisme 9**
+## Automatisme 9
 
 Modifier les expressions "à modifier" dans la fonction `tri_selection` ci-dessous pour que la spécification et l'assertion placée à la fin de la boucle externe soient vérifiés.
 
@@ -174,7 +185,7 @@ def tri_selection(tab):
 Décommenter  `#test_tri(tri_selection)`  en ligne 64 pour soumettre votre fonction au test unitaire. 
 
 
-1.   **Automatisme 10**
+## Automatisme 10
 
 Un algorithme de tri d’une liste d’entiers est implémenté  de la façon suivante : 
 
