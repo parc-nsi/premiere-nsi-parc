@@ -1751,7 +1751,7 @@ Out[38]: True
 \end{lstlisting}
 
 
-    \Pointilles{6}{\linewidth}
+    \Pointilles{10}{\linewidth}
     
     
 \end{enumerate}
@@ -1894,6 +1894,12 @@ Out[9]: True
 
 \begin{exercice}{}
  \begin{enumerate}
+ 
+\item Afficher les 128 caractères de la table ASCII sur 8 lignes de 16 colonnes avec deux boucles \texttt{for} imbriquées et la fonction \texttt{chr}. Comparer avec la table en Annexe , commentaire ?
+
+    \Pointilles{6}{\linewidth}
+    
+    
 \item Sans utiliser l'opérateur \texttt{<=} directement sur les caractères, écrire une fonction
 
  \texttt{caractere\_plus\_petit(c1, c2)} qui retourne \texttt{True} si le point de code du caractère  \texttt{c1} (renvoyé par la fonction \texttt{ord}) est inférieur ou égal au point de code du caractère  \texttt{c2}.
@@ -1971,6 +1977,7 @@ Out[60]: 'E'
 
     \Pointilles{5}{\linewidth}
     
+\item Dans un interpréteur \texttt{Ipython}, importer le module \texttt{this}, lire le \textit{Zen de Python}, méditer  puis afficher le code source du module avec la commande \texttt{\%psource this}.
     
 \end{enumerate}
 
@@ -1979,14 +1986,43 @@ Out[60]: 'E'
 \vspace*{-20pt}
 
 \begin{exercice}{Défi Turing problème 165}
-Le fichier \texttt{dico.txt} contient \np{323471} mots français non accentués. En associant à chaque lettre son rang dans l'alphabet (a=1, b=2, c=3, \ldots, z=26), puis en multipliant entre elles toutes les lettres d'un mot, on obtient un nombre.
+Le fichier \href{ressources/dico.txt}{dico.txt} contient \np{323471} mots français non accentués. En associant à chaque lettre son rang dans l'alphabet (a=1, b=2, c=3, \ldots, z=26), puis en multipliant entre elles toutes les lettres d'un mot, on obtient un nombre.
 
 Par exemple, "chaud" $= 3 \times 8 \times 1 \times 21 \times 4 = 2016$. 
 
-Si l'on applique ce procédé à tous les mots du fichier \texttt{dico.txt}, quelle est l'année du troisième millénaire qui sera atteinte le plus souvent ?
+Si l'on applique ce procédé à tous les mots du fichier \href{ressources/dico.txt}{dico.txt}, quelle est l'année du troisième millénaire qui sera atteinte le plus souvent ? Compléter le code ci-dessous :
 
 
-    \Pointilles{10}{\linewidth}
+\begin{lstlisting}[style=rond]
+def valeur(mot):
+    v = 1
+    for c in mot:
+        v = .................
+    return v
+
+def indice_maximum(tab):
+    """Renvoie l'index du maximum du tableau de nombres tab"""
+    imax = 0
+    for k in range(1, len(tab)):
+    
+        .................
+        
+        .................        
+    return imax    
+    
+f = open('dico.txt')
+histo = [0 for _ in range(1000)]
+for mot in f:
+    v = valeur(mot.rstrip())    
+    if 2000 <= v < 3000:
+    
+        .................
+f.close()     
+annee_max = ..............
+print(annee_max)
+
+
+\end{lstlisting}
     
     
 {\itshape Plus de défis sur \url{http://apprendre-en-ligne.net/turing/enonces.php}.}
@@ -2185,11 +2221,14 @@ OU [11] : ...................
    
     
     
-\item Écrire un code \texttt{Python} qui affiche tous les caractères dont le point de code est compris entre \texttt{U+1F600} et \texttt{U+Ff64F}.
+\item Écrire un code \texttt{Python} qui affiche tous les caractères dont le point de code est compris entre \texttt{U+1F600} et \texttt{U+1F64F} sur des lignes de 16 caractères par colonne.
 
  \Pointilles{4}{\linewidth}
  
  
+ \begin{center}
+ \includegraphics[scale=0.95]{images/emojis.png}
+ \end{center}
   \end{enumerate}
 
 
@@ -2299,7 +2338,7 @@ Plage de points de code & Séquence d'octets (en binaire)  & bits codants \\
 			    
 			    
 		\end{enumerate}
-	\item Écrire en \texttt{Python} une fonction  \texttt{longueur(b)} qui parcours une chaîne d'octets de type \texttt{bytes} encodée en \textbf{UTF-8} et qui retourne le nombre de caractères représentés.
+	\item Écrire en \texttt{Python} une fonction  \texttt{longueur(b)} qui parcourt une chaîne d'octets de type \texttt{bytes} encodée en \textbf{UTF-8} et qui retourne le nombre de caractères représentés.
 	
 \bcattention{} Il est interdit de convertir la séquence d'octets en chaîne de caractères avec la méthode \texttt{decode}.
 
