@@ -106,14 +106,14 @@ Il est à la fois :
         programmes (ordonnancement de l’utilisation du processeur par
         les programmes en cours d’exécution ou processus, sécurisation
         de la mémoire) ou utilisateurs (droits d’accès du système de
-        fichiers)
+        fich
 
-  - Sitographie :
-    
-      - [Page
-        Wikipedia](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation)
-      - [Présentation en
-        video](https://www.lumni.fr/video/comprendre-ce-qu-est-un-systeme-d-exploitation)
+Sitographie :
+
+  - [Page
+    Wikipedia](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation)
+  - [Présentation en
+    video](https://www.lumni.fr/video/comprendre-ce-qu-est-un-systeme-d-exploitation)
 
 # Interface utilisateur d’un système d’exploitation : le shell
 
@@ -271,14 +271,13 @@ et la séquence d’opération suivante :
     P1 attend pour acquérir M2 (qui est détenu par P2).
     P2 attend pour acquérir M1 (qui est détenu par P1).
 
-Dans cette situation, les deux processus légers sont définitivement
-bloqués.
+Dans cette situation, les deux processus sont définitivement bloqués.
 
 La commande *shell* `free` permet d’afficher l’utilisation de la
 mémoire, l’option `-m` convertit les mesures en megaoctets (Mo). Dans
 l’exemple ci-dessous, la mémoire vive disponible est de 3856 Mo, 618
 Mo sont utilisés pour les buffers/cache et 254 sont libres soit un total
-de 3856 - 618 - 254 = 2983 Mo utilisés. La seconde ligne concerne un
+de 3856 - 618 - 254 = 2984 Mo utilisés. La seconde ligne concerne un
 espace du disque dur, nommé [swap](https://doc.ubuntu-fr.org/swap),
 utilisé par le système pour étendre la mémoire vive en mémoire
 virtuelle.

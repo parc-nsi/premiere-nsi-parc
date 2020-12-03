@@ -82,13 +82,13 @@
 <li><p>un <em>chef d’orchestre</em> et un <em>administrateur</em> :</p>
 <ul>
 <li>c’est le premier programme exécuté au démarrage de l’ordinateur</li>
-<li>il gère l’accès concurrent aux ressources par les différents programmes (ordonnancement de l’utilisation du processeur par les programmes en cours d’exécution ou processus, sécurisation de la mémoire) ou utilisateurs (droits d’accès du système de fichiers)</li>
+<li>il gère l’accès concurrent aux ressources par les différents programmes (ordonnancement de l’utilisation du processeur par les programmes en cours d’exécution ou processus, sécurisation de la mémoire) ou utilisateurs (droits d’accès du système de fich</li>
 </ul></li>
-<li><p>Sitographie :</p>
+</ul>
+<p>Sitographie :</p>
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation">Page Wikipedia</a></li>
 <li><a href="https://www.lumni.fr/video/comprendre-ce-qu-est-un-systeme-d-exploitation">Présentation en video</a></li>
-</ul></li>
 </ul>
 <h1 id="interface-utilisateur-dun-système-dexploitation-le-shell">Interface utilisateur d’un système d’exploitation : le shell</h1>
 <p>Une interface entre l’utilisateur et le système d’exploitation s’appelle un <a href="https://fr.wikipedia.org/wiki/Shell_Unix">shell</a> ou <em>interpréteur de commandes</em>.</p>
@@ -153,8 +153,8 @@ junier@fredportable:~/bac$ ls -l /usr/bin/ls
 P2 acquiert M2.
 P1 attend pour acquérir M2 (qui est détenu par P2).
 P2 attend pour acquérir M1 (qui est détenu par P1).</code></pre>
-<p>Dans cette situation, les deux processus légers sont définitivement bloqués.</p>
-<p>La commande <em>shell</em> <code>free</code> permet d’afficher l’utilisation de la mémoire, l’option <code>-m</code> convertit les mesures en megaoctets (Mo). Dans l’exemple ci-dessous, la mémoire vive disponible est de 3856 Mo, 618 Mo sont utilisés pour les buffers/cache et 254 sont libres soit un total de 3856 - 618 - 254 = 2983 Mo utilisés. La seconde ligne concerne un espace du disque dur, nommé <a href="https://doc.ubuntu-fr.org/swap">swap</a>, utilisé par le système pour étendre la mémoire vive en mémoire virtuelle.</p>
+<p>Dans cette situation, les deux processus sont définitivement bloqués.</p>
+<p>La commande <em>shell</em> <code>free</code> permet d’afficher l’utilisation de la mémoire, l’option <code>-m</code> convertit les mesures en megaoctets (Mo). Dans l’exemple ci-dessous, la mémoire vive disponible est de 3856 Mo, 618 Mo sont utilisés pour les buffers/cache et 254 sont libres soit un total de 3856 - 618 - 254 = 2984 Mo utilisés. La seconde ligne concerne un espace du disque dur, nommé <a href="https://doc.ubuntu-fr.org/swap">swap</a>, utilisé par le système pour étendre la mémoire vive en mémoire virtuelle.</p>
 <pre><code>junier@fredportable:~/bac$ free -m
             total       utilisé      libre     partagé tamp/cache   disponible
 Mem:           3856        2983         254         302         618         334
