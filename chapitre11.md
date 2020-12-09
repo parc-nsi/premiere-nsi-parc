@@ -16,7 +16,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 ## Cours 
 
 * [Cours version pdf](chapitre11/Cours_11_tris.pdf)
-
+* [Exercices supplémentaires](chapitre11/Cours_11_exo_sup.pdf)
 
 
 ## Tutoriels vidéo 
