@@ -42,6 +42,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 ![Comment choisir son OS ?](chapitre9/cours-systeme/choix-os.jpg)
 
 
-## Tutoriel vidéo 
+## Tutoriels vidéo 
 
-[Comprendre ce qu’est un système d’exploitation](https://youtu.be/SpCP2oaCx8A)
+* [Comprendre ce qu’est un système d’exploitation](https://youtu.be/SpCP2oaCx8A)
+* [Présentation par Pierre Marquestaut](https://peertube.lyceeconnecte.fr/videos/watch/f5663ffb-5605-46f8-85af-b058852d9f44)
