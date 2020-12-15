@@ -27,6 +27,14 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 * [Memento shell version markdown](chapitre9/memento-shell/memento-shell-git.md)
 * [Matériel  pour les exemples du memento](chapitre9/memento-shell/sandbox.zip)
 
+## TP 2
+
+* [Enoncé TP2 version pdf](chapitre9/TP2/NSI-TP2-systeme-.pdf)
+* [Enoncé TP2 version markdown](chapitre9/TP2/NSI-TP2-systeme-git.md)
+* [tour-du-monde-80-jours.zip](chapitre9/TP2/ressources/tour-du-monde-80-jours.zip)
+* [contacts-1000.csv](chapitre9/TP2/ressources/contacts-1000.csv)
+* [corrigé exo tour du monde](chapitre9/TP2/ressources/corrige_exo_tour_du_monde.pdf)
+* [corrigé exo carnet](chapitre9/TP2/ressources/corrige_exo_carnet.md)
 
 ## Cours 
 

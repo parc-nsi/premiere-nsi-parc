@@ -207,3 +207,61 @@ Parmi les assertions suivantes laquelle reste vraie à chaque itération de la b
 * __Réponse B :__  la sous-liste `L[0:i+1]` contient les `i` plus grandes valeurs de `L` triées par ordre croissant
 * __Réponse C :__  la sous-liste `L[0:i+1]` contient les i plus petites valeurs de `L` triées par ordre décroissant
 * __Réponse D :__ la sous-liste `L[0:i+1]` contient les i plus petites valeurs de L triées par ordre croissant
+
+
+## Automatisme 11
+
+* Compléter la fonction Python ci-dessous pour que  la spécification et les postconditions soient satisfaites.
+* Combient de comparaisons sont faites lors de l'appel `un_doublon(list(range(100)))` ?
+
+
+~~~python
+def un_doublon(t):
+    """
+    Paramètre : t un tableau de nombres
+    Valeur renvoyée : un booléen 
+        True si t comporte au moins un doublon
+        False sinon
+    """
+    #à compléter
+
+assert un_doublon([1, 2, 3]) == False
+assert un_doublon([1, 2, 2]) == True
+assert un_doublon([1, 2, 4, 2]) == True
+assert un_doublon([]) == False
+~~~
+
+## Automatisme 12
+
+* Compléter la fonction Python ci-dessous pour que  la spécification et les postconditions soient satisfaites.
+
+~~~python
+def index_premiere_occurence_dicho(x, t):
+    """
+    Paramètre : 
+        t un tableau de nombres trié dans l'ordre croissant
+        x un nombre 
+    Valeur renvoyée : 
+        l'index de la première de x dans t si x est dans t
+        -1 sinon
+    """
+    a = 0
+    b = len(t) - 1
+    while a <= b:
+        m = (a + b) // 2
+        if t[m] < x:
+            "à compléter"
+        elif t[m] > x:
+            "à compléter"
+        else:
+            "à compléter"
+            return "à compléter"
+    return -1
+
+assert index_premiere_occurence_dicho(10, [10, 10, 11, 12, 13]) == 10
+assert index_premiere_occurence_dicho(10, [9, 10, 11, 12, 13]) == 1
+assert index_premiere_occurence_dicho(10, [9, 9, 11, 12, 13]) == -1
+assert index_premiere_occurence_dicho(10, [7, 8, 9, 10]) == 3 
+assert index_premiere_occurence_dicho(10, [7, 10, 10,  10, 10]) == 1 
+assert index_premiere_occurence_dicho(10, []) == -1
+~~~

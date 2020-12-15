@@ -15,3 +15,9 @@ layout: parc
   * [Inscription](https://cloud-lyon.beta.education.fr/s/CZQ256P9zNbAbN7)
   * [Sujet](Projets/BullsCows/PremiereNSI-DM-BullsCows-2021V1.pdf)
   * [Matériel](Projets/BullsCows/ProjetBullsCows.zip)
+
+
+# Projet 3
+
+* Projet de génération de labyrinthe parfait avec `turtle` :  le [sujet](Projets/Labyrinthe/Projet_Laby.pdf)
+
