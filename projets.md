@@ -19,5 +19,7 @@ layout: parc
 
 # Projet 3
 
-* Projet de génération de labyrinthe parfait avec `turtle` :  le [sujet](Projets/Labyrinthe/Projet_Laby.pdf)
+* Projet de génération de labyrinthe parfait avec `turtle` :   
+  *  le [sujet](Projets/Labyrinthe/Projet_Laby.pdf)
+  *  [un squelette de code](Projets/Labyrinthe/squelette_laby.py)
 
