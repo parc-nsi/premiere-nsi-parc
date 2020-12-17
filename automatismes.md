@@ -11,6 +11,7 @@ layout: parc
 [![Dragon](rotation-dragon-2.gif "dragon-hokusai")](https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg)
 
 
+__[Corrigé des automatismes](automatismes/automatismes.py)__
 
 ## Automatisme 1
 
@@ -258,7 +259,7 @@ def index_premiere_occurence_dicho(x, t):
             return "à compléter"
     return -1
 
-assert index_premiere_occurence_dicho(10, [10, 10, 11, 12, 13]) == 10
+assert index_premiere_occurence_dicho(10, [10, 10, 11, 12, 13]) == 1
 assert index_premiere_occurence_dicho(10, [9, 10, 11, 12, 13]) == 1
 assert index_premiere_occurence_dicho(10, [9, 9, 11, 12, 13]) == -1
 assert index_premiere_occurence_dicho(10, [7, 8, 9, 10]) == 3 
