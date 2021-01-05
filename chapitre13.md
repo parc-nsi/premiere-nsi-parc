@@ -25,4 +25,4 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 _XKCD 730 Diagram_
 
-[![XKCD(https://imgs.xkcd.com/comics/circuit_diagram.png)](https://xkcd.com/730/)
+[![XKCD](https://imgs.xkcd.com/comics/circuit_diagram.png)](https://xkcd.com/730/)
