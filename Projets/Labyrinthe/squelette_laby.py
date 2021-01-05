@@ -9,13 +9,13 @@ hideturtle()
 
 # --- Question 1 ---
 
-MursH = # à completer
-MursV = # à completer
+MursH = "à completer"
+MursV = "à completer"
 
 # --- Question 2 ---
 
 def dim_laby(Laby):
-    # à completer
+    "à completer"
 
 # --- Question 3 ---
 
@@ -130,7 +130,7 @@ def genere_laby(n, p):
         if len(Directions) == 0:  # Impasse
             Chemin.pop()
         else:
-            # à compléter
+            "à compléter"
             
     return Laby
 
@@ -148,3 +148,6 @@ Laby2 = ([[True, True, True, True, True], [False, True, True, False, True],
                                                                                                                                              
 
 # getcanvas().postscript(file="laby_40x40.eps")
+
+#pour fermer proprement la fenetre de la tortue en cliquant sur la croix
+exitonclick()
