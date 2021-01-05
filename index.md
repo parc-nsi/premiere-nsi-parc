@@ -37,4 +37,5 @@ layout: parc
 * [Chapitre 10 : recherche séquentielle ou dichotomique](chapitre10.md)
 * [Chapitre 11 : algorithmes de tri](chapitre11.md)
 * [Chapitre 12 : codage des caractères](chapitre12.md)
+* [Chapitre 13 : circuits logiques et fonctions booléennes](chapitre13.md)
 
