@@ -4,10 +4,10 @@ TARGET=$(FILE:source.md=.pdf) $(FILE:source.md=.tex) $(FILE:source.md=git.md)  $
 all: $(TARGET)
 
 %.pdf: %source.md
-	pandoc -s $< --listings --template="/home/fjunier/Pandoc/template-pandocV1.tex" --filter ~/Pandoc/filtre.py -V colorlinks -f markdown+table_captions+link_attributes+multiline_tables --toc -V toc-title:"Table des matières" -o $@
+	pandoc -s $< --listings --template="../Pandoc/template-pandocV1.tex" --filter ../Pandoc/filtre.py -V colorlinks -f markdown+table_captions+link_attributes+multiline_tables --toc -V toc-title:"Table des matières" -o $@
 	
 %.tex: %source.md
-	pandoc -s $< --listings --template="/home/fjunier/Pandoc/template-pandocV1.tex" --filter ~/Pandoc/filtre.py -V colorlinks -f markdown+table_captions+link_attributes+multiline_tables --toc -V toc-title:"Table des matières" -o $@
+	pandoc -s $< --listings --template="../Pandoc/template-pandocV1.tex" --filter ../Pandoc/filtre.py -V colorlinks -f markdown+table_captions+link_attributes+multiline_tables --toc -V toc-title:"Table des matières" -o $@
 	
 %.html: %source.md
 	pandoc -s   -c "../Pandoc/style_nsi.css"  --mathjax --toc  -V toc-title:"Table des matières" -f markdown+table_captions+link_attributes+multiline_tables $< -o $@

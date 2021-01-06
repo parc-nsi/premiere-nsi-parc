@@ -22,7 +22,6 @@
       - [Décodeur avec 2 bits d’entrées](#décodeur-avec-2-bits-dentrées)
       - [Demi-additionneur et additionneur 1
         bit](#demi-additionneur-et-additionneur-1-bit)
-      - [Simuler le hasard](#simuler-le-hasard)
   - [Opérations bit à bit en `Python` (hors programme de première
     NSI)](#opérations-bit-à-bit-en-python-hors-programme-de-première-nsi)
 
@@ -44,10 +43,10 @@ Brattain](https://fr.wikipedia.org/wiki/Transistor) inventent le
 comporte comme un interrupteur. Les transistors, plus petits et
 dissipant moins de chaleur, vont supplanter les tubes électriques : en
 1954 le *germanium* est remplacé par le *silicium*, en 1955 apparaissent
-les premiers ordinteurs entièrement transistorisés, en 1960 le
+les premiers ordinateurs entièrement transistorisés, en 1960 le
 transistor à effet de champ permet l’intégration de dizaines composants
 dans un centimètre carré. Les transistors sont ensuite directement
-gravés dans une plaque de *silicium* constitutant un **cicrcuit
+gravés dans une plaque de *silicium* constituant un **cicrcuit
 intégré**. En 1965 Gordon Moore futur directeur d’Intel énonce la [loi
 empirique](https://fr.wikipedia.org/wiki/Loi_de_Moore) portant son nom
 qui fixe une feuille de route à l’industrie des mircroprocesseurs : le
@@ -79,8 +78,8 @@ Une **fonction logique** prend un ou plusieurs bits en entrée et
 retourne un ou plusieurs bits en sortie. Une **porte logique** est un
 circuit électronique représentant une **fonction logique**.
 
-Une **table logique** représente toutes les sorties produites par une
-fonction logique pour toutes les entrées possibles.
+Une **table logique** représente les sorties produites par une fonction
+logique pour toutes les entrées possibles.
 
 Un transistor représente une fonction logique dont le bit d’entrée est
 l’état de tension de la grille et le bit de sortie, l’état de tension
@@ -105,6 +104,9 @@ logiques, une européenne et une américaine.**
 ![porte NOT européeenne](images/porte_not_european.png)  
 & ![porte NOT américaine](images/porte_not_american.png)  
 
+[Tutoriel video Logisim : le
+transistor](videos/transistor-definition1.mp4)
+
 ## D’autres portes logiques
 
 ### Transistors en série ou en parallèle
@@ -117,7 +119,7 @@ On donne ci-dessous les représentations de deux portes logiques :
   - La **porte NOR** constituée de deux transistors en parallèle
 
 Chacune de ces portes logiques comportent deux bits d’entrée : A pour la
-grille du transistor 1 et B pourla grille du transistor 2 et un bit de
+grille du transistor 1 et B pour la grille du transistor 2 et un bit de
 sortie.
 
 Compléter leurs tables logiques.
@@ -125,6 +127,10 @@ Compléter leurs tables logiques.
 Vérifier avec [Logisim](http://www.cburch.com/logisim/) et les fichiers
 [porte\_NAND.circ](circuits_logisim/porte_NAND.circ) et
 [porte\_NOR.circ](circuits_logisim/porte_NOR.circ).
+
+[Tutoriel video Logisim : porte NAND](videos/porteNAND.mp4)
+
+[Tutoriel video Logisim : porte NOR](videos/porteNOR.mp4)
 
 | A | B | NAND(A, B) |
 | :-: | - | ---------- |
@@ -182,6 +188,8 @@ Fichier de test [Logisim](http://www.cburch.com/logisim/) :
 | 1 | 0 |             |
 | 1 | 1 |             |
 
+[Tutoriel video Logisim : exercice 2](videos/exercice2.mp4)
+
 **Exercice 3**
 
 Fichier de test [Logisim](http://www.cburch.com/logisim/) :
@@ -210,6 +218,8 @@ Fichier de test [Logisim](http://www.cburch.com/logisim/) :
 | 1 | 0 |             |
 | 1 | 1 |             |
 
+[Tutoriel video Logisim : exercice 3](videos/exercice3.mp4)
+
 **Voici les représentations symboliques des portes logiques `AND` et
 `OR` :**
 
@@ -230,6 +240,8 @@ Ainsi chacune des portes, `NAND` ou `NOR` permet de construire les
 portes `NOT`, `OR`, `AND`. Toute porte logique pouvant s’exprimer à
 l’aide de ces trois portes, les portes `NAND` et `NOR` sont dites
 *universelles*.
+
+[Tutoriel video Logisim : exercice 4](videos/exercice4.mp4)
 
 # Fonctions booléennes
 
@@ -297,6 +309,8 @@ In [4]: table_verite_2bits(bool.__or__)
 |    0     |    0     |       0       |
 ```
 
+[Tutoriel video : exercice 5](videos/exercice5.mp4)
+
 **Propriété 1**
 
 On peut exprimer toute fonction booléenne à l’aide de trois fonctions
@@ -337,7 +351,7 @@ booléennes élémentaires :
     ou ![x + y](https://latex.codecogs.com/png.latex?x%20%2B%20y
     "x + y").  
     Si `x` et `y` sont des booléens, leur *disjonction* est `x or y` en
-    `Python`
+    `Python`.
 
 | ![x](https://latex.codecogs.com/png.latex?x "x") | ![y](https://latex.codecogs.com/png.latex?y "y") | ![x \\vee y](https://latex.codecogs.com/png.latex?x%20%5Cvee%20y "x \\vee y") |
 | :----------------------------------------------: | ------------------------------------------------ | ----------------------------------------------------------------------------- |
@@ -492,24 +506,7 @@ booléennes élémentaires :
 
 <!-- end list -->
 
-4.  Choisir une expression booléenne pour la variable S qui satisfait la
-    table de vérité suivante.
-
-| A | B | f(A, B) |
-| :-: | - | ------- |
-| 0 | 0 | 1       |
-| 0 | 1 | 0       |
-| 1 | 0 | 1       |
-| 1 | 1 | 1       |
-
-  - **Réponse A :** `A ou (non B)`
-  - **Réponse B :** `(non A) ou B`
-  - **Réponse C :** `(non A) ou (non B)`
-  - **Réponse D :** `non (A ou B)`
-
-<!-- end list -->
-
-5.  Si A et B sont des variables booléennes, laquelle de ces expressions
+4.  Si A et B sont des variables booléennes, laquelle de ces expressions
     booléennes est équivalente  
     à `(not A) or B` ?
 
@@ -522,7 +519,7 @@ booléennes élémentaires :
 
 <!-- end list -->
 
-6.  Choisir une expression booléenne pour la variable S qui satisfait la
+5.  Choisir une expression booléenne pour la variable S qui satisfait la
     table de vérité suivante.
 
 | A | B | S |
@@ -539,7 +536,7 @@ booléennes élémentaires :
 
 <!-- end list -->
 
-7.  On considère une formule booléenne form des variables booléennes `a`
+6.  On considère une formule booléenne form des variables booléennes `a`
     et `b` dont voici la table de vérité.
 
 | a     | b     | form  |
@@ -549,12 +546,14 @@ booléennes élémentaires :
 | True  | False | True  |
 | False | False | False |
 
-Quelle est cette formule booléenne form ?
+Quelle est cette formule booléenne ?
 
   - **Réponse A :** `a and b`
   - **Réponse B :** `a or b`
   - **Réponse C :** `a and not(b)`
   - **Réponse D :** `not(a) or b`
+
+[Tutoriel video : exercice 6](videos/exercice6.mp4)
 
 ## Pour aller plus loin (hors programme de première NSI)
 
@@ -659,7 +658,7 @@ est donnée ci-dessous :
 |                        1                         | 0                                                | 0                                                                          |
 |                        1                         | 1                                                | 1                                                                          |
 
-1.  En utilisant la méthode exposée dans l’exercice 7, déterminer une
+1.  En utilisant la méthode exposée dans l’exercice 8, déterminer une
     expression booléenne de la fonction
     ![f](https://latex.codecogs.com/png.latex?f "f").
 
@@ -671,6 +670,8 @@ est donnée ci-dessous :
         `OR` ou `XOR`.
       - En n’utilisant que des portes logiques `NOT`, `AND` ou `OR`.
       - En n’utilisant que des portes logiques `NOR`.
+
+[Tutoriel video : exercice 9](videos/exercice9.mp4)
 
 ## Décodeur avec 2 bits d’entrées
 
@@ -688,8 +689,8 @@ quatre sorties ![s\_{0}](https://latex.codecogs.com/png.latex?s_%7B0%7D
 La sortie indexée par le nombre dont le bit de poids faible est
 ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") et le
 bit de poids fort
-![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}") est
-postionnée à ![1](https://latex.codecogs.com/png.latex?1 "1") et les
+![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}"), est
+positionnée à ![1](https://latex.codecogs.com/png.latex?1 "1") et les
 autres sorties à ![0](https://latex.codecogs.com/png.latex?0 "0"). Ce
 circuit est ainsi appelé **décodeur
 ![2](https://latex.codecogs.com/png.latex?2 "2") bits**.
@@ -764,6 +765,8 @@ sortante, lorsqu’on additionne les deux bits d’entrée
 5.  Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/) et
     construire un circuit combinatoire représentant un
     **demi-additionneur binaire 1 bit**.
+
+[Tutoriel video : exercice 11](videos/exercice11.mp4)
 
 **Exercice 12**
 
@@ -842,7 +845,7 @@ possède :
         ![r\_{3}](https://latex.codecogs.com/png.latex?r_%7B3%7D
         "r_{3}") s’obtient à partir de la retenue sortante
         ![r\_{1}](https://latex.codecogs.com/png.latex?r_%7B1%7D
-        "r_{1}") du premier demi-additionneur et de la rentenue sortante
+        "r_{1}") du premier demi-additionneur et de la retenue sortante
         ![r\_{2}](https://latex.codecogs.com/png.latex?r_%7B2%7D
         "r_{2}") du second. Donner une expression booléenne de
         ![r\_{3}](https://latex.codecogs.com/png.latex?r_%7B3%7D
@@ -873,75 +876,7 @@ possède :
         **additionneur binaire 1 bit**. Compléter le circuit pour
         obtenir un **additionneur binaire 2 bits**.
 
-## Simuler le hasard
-
-**Exercice 13**
-
-Dans cet exercice, on veut réaliser un circuit logique qui simule un dé
-électronique à diodes (LED).
-
-Les différentes combinaisons d’affichage du dé électronique sont
-représentées dans la figure ci-dessous :
-
-![Faces du dé (LED)](images/faces_de.png)  
-
-Par exemple, si on veut afficher 3, il faut allumer les diodes a, d et
-g. Pour les combinaisons d’entrée (x,y,z)= (0,0,0,) et (X,Y,Z)=(1,1,1)
-aucune diode ne doit être allumée.
-
-Il s’agit d’une forme de **transcodeur 3 bits vers 8 bits**. Les
-![3](https://latex.codecogs.com/png.latex?3 "3") bits d’entrée
-représentent le codage d’un nombre sur
-![3](https://latex.codecogs.com/png.latex?3 "3") bits en notation
-positionnelle et les ![8](https://latex.codecogs.com/png.latex?8 "8")
-bits de sortie représentent le codage de ce même nombre en notation
-additive. Par exemple si (x,y,z) = (1,0,1) en entrée, le nombre est ![1
-\\times 2^{2} + 0 \\times 2^{1} + 1
-\\times 2^{0}=5](https://latex.codecogs.com/png.latex?1%20%5Ctimes%202%5E%7B2%7D%20%2B%200%20%5Ctimes%202%5E%7B1%7D%20%2B%201%20%5Ctimes%202%5E%7B0%7D%3D5
-"1 \\times 2^{2} + 0 \\times 2^{1} + 1 \\times 2^{0}=5") et il est
-représenté par cinq bits de sortie positionnés à
-![1](https://latex.codecogs.com/png.latex?1 "1"). Pour simuler un dé à 6
-faces, deux entrées, (x,y,z) = (0,0,0) et (x,y,z) = (1,1,1),
-correspondent à la même sortie (tous les bits de sortie à 0), c’est
-pourquoi on peut réduire le nombre de sorties de
-![8](https://latex.codecogs.com/png.latex?8 "8") à
-![7](https://latex.codecogs.com/png.latex?7 "7").
-
-Le circuit à réaliser doit donc comporter 7 sorties, soit une sortie par
-diode (a, b, c, d, e, f, g) et 3 entrées x, y, z.
-
-![Circuit dé 6 faces](images/circuit-de.png)  
-
-1.  Compléter la table de vérité de ce circuit :
-
-| x | y | z | a | b | c | d | e | f | g |
-| :-: | - | - | - | - | - | - | - | - | - |
-| 0 | 0 | 0 |   |   |   |   |   |   |   |
-| 0 | 0 | 1 |   |   |   |   |   |   |   |
-| 0 | 1 | 0 |   |   |   |   |   |   |   |
-| 0 | 1 | 1 |   |   |   |   |   |   |   |
-| 1 | 0 | 0 |   |   |   |   |   |   |   |
-| 1 | 0 | 1 |   |   |   |   |   |   |   |
-| 1 | 1 | 0 |   |   |   |   |   |   |   |
-| 1 | 1 | 1 |   |   |   |   |   |   |   |
-
-2.  Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/). Aller
-    dans `Windows - Combinational - Analysis` :
-      - dans l’onglet `Input` , indiquer les variables d’entrée du
-        transcodeur ( x , x , z ) ;
-      - dans l’onglet `Output`, indiquer les variables de sortie ( a ,….
-        , g ) ;
-      - dans `Table` , saisir la table de vérité de chaque sortie ;
-      - dans `Expression` , on peut obtenir une expression booléenne
-        pour chaque de sortie, et dans `Minimized` une expression
-        simplifiée.
-      - construire le circuit avec le bouton `Build circuit` et le
-        nommer `de6faces`
-      - compléter le circuit avec des `Random Generator` (outils
-        `Memory`) en entrée et des `LED` (outils `Input - Output`) en
-        sortie comme dans la figure ci-dessous.
-
-![Circuit dé 6 faces](images/de_6_faces.png)  
+[Tutoriel video : exercice 12](videos/exercice12.mp4)
 
 # Opérations bit à bit en `Python` (hors programme de première NSI)
 
@@ -997,7 +932,7 @@ Exemples d’utilisation d’opérateurs bit à bit :
 69
 ```
 
-**Exercice 14**
+**Exercice 13**
 
 Dans un réseau `IP` l’adresse `IP` d’une machine est constituée d’un
 préfixe correspondant à l’adresse du réseau (commune à toutes les
@@ -1057,15 +992,15 @@ efficaces que les opérations mathématiques équivalentes :
     par ![2^{n}](https://latex.codecogs.com/png.latex?2%5E%7Bn%7D
     "2^{n}") et s’écrit `nombre >> n`.
 
-**Exercice 15**
+**Exercice 14**
 
 Dans l’algorithme de recherche dichotomique, après division en deux de
 la zone de recherche, l’algorithme s’appelle lui-même sur l’une des deux
-moitiés. C’est un algorithme de type  qui peut se programmer
-récursivement comme nous le verrons dans le chapitre sur la
-récursivité.
+moitiés. C’est un algorithme de type *Diviser pour régner* qui peut se
+programmer récursivement comme nous le verrons en terminale dans le
+chapitre sur la récursivité.
 
-Si on note  la taille de la liste, une autre implémentation, non
+Si on note *n* la taille de la liste, une autre implémentation, non
 récursive, est la suivante :
 
   - on commence la recherche au début de la liste et on avance avec un
@@ -1073,15 +1008,15 @@ récursive, est la suivante :
     supérieur à l’élément cherché ;
 
   - on repart de l’élément précédent le point d’arrêt et on avance
-    désormais avec un pas
+    désormais avec un pas divisé par 2 soit :
     
     `pas = pas >> 1` ;
 
   - on répète en boucle ces instructions jusqu’à ce que le pas atteigne
     ![1](https://latex.codecogs.com/png.latex?1 "1").
 
-A la fin de de la boucle, on détermine si l’élément sur lequel on s’est
-arrêté est l’élément recherché.
+A la fin de de la boucle, on détermine si l’élément précédent le dernier
+point d’arrêt est l’élément recherché.
 
 Compléter le code de la fonction `recherche_dicho2` qui implémente cet
 algorithme.

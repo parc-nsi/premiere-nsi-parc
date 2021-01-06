@@ -83,49 +83,49 @@
     <wire from="(350,500)" to="(390,500)"/>
     <wire from="(350,560)" to="(390,560)"/>
     <wire from="(350,580)" to="(390,580)"/>
-    <comp lib="0" loc="(300,240)" name="Pin">
-      <a name="tristate" val="false"/>
+    <comp lib="6" loc="(335,178)" name="Text">
+      <a name="text" val="Exercice 2 question 1"/>
     </comp>
-    <comp lib="1" loc="(620,530)" name="NOR Gate"/>
-    <comp lib="6" loc="(316,555)" name="Text">
-      <a name="text" val="B"/>
-    </comp>
-    <comp lib="1" loc="(450,570)" name="NOR Gate"/>
-    <comp lib="0" loc="(330,570)" name="Pin">
-      <a name="tristate" val="false"/>
-    </comp>
+    <comp lib="1" loc="(420,240)" name="NAND Gate"/>
     <comp lib="0" loc="(650,530)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="tristate" val="false"/>
     </comp>
-    <comp lib="0" loc="(440,240)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
+    <comp lib="0" loc="(330,570)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="6" loc="(316,555)" name="Text">
+      <a name="text" val="B"/>
+    </comp>
+    <comp lib="0" loc="(330,490)" name="Pin">
       <a name="tristate" val="false"/>
     </comp>
     <comp lib="6" loc="(313,442)" name="Text">
       <a name="text" val="Exercice 2 question 2"/>
     </comp>
-    <comp lib="6" loc="(316,479)" name="Text">
-      <a name="text" val="A"/>
-    </comp>
-    <comp lib="1" loc="(420,240)" name="NOR Gate"/>
-    <comp lib="6" loc="(335,178)" name="Text">
-      <a name="text" val="Exercice 2 question 1"/>
-    </comp>
     <comp lib="6" loc="(449,215)" name="Text">
       <a name="text" val="B"/>
     </comp>
-    <comp lib="6" loc="(656,504)" name="Text">
-      <a name="text" val="C"/>
+    <comp lib="1" loc="(450,490)" name="NAND Gate"/>
+    <comp lib="0" loc="(440,240)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
     </comp>
     <comp lib="6" loc="(285,217)" name="Text">
       <a name="text" val="A"/>
     </comp>
-    <comp lib="1" loc="(450,490)" name="NOR Gate"/>
-    <comp lib="0" loc="(330,490)" name="Pin">
+    <comp lib="6" loc="(316,479)" name="Text">
+      <a name="text" val="A"/>
+    </comp>
+    <comp lib="0" loc="(300,240)" name="Pin">
       <a name="tristate" val="false"/>
     </comp>
+    <comp lib="6" loc="(656,504)" name="Text">
+      <a name="text" val="C"/>
+    </comp>
+    <comp lib="1" loc="(450,570)" name="NAND Gate"/>
+    <comp lib="1" loc="(620,530)" name="NAND Gate"/>
   </circuit>
 </project>

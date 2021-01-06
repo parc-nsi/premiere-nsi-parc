@@ -100,7 +100,7 @@ Première NSI Lycée du Parc
 </div>
 <div id="préambule" class="slide section level1 unnumbered">
 <h1 class="unnumbered">Préambule</h1>
-<p>Les circuits d’une ordinateur manipulent uniquement des 0 ou des 1 représentés en interne par des tensions hautes ou basses. Les premiers ordinateurs construits dans la période 1945-1950 sont basés sur une technologie de tube à vide ou tube électrique. En 1947, aux laboratoires Bell, <a href="https://fr.wikipedia.org/wiki/Transistor">Shockley, Bardeen et Brattain</a> inventent le <strong>transistor</strong> au <em>germanium</em> un petit composant électronique qui se comporte comme un interrupteur. Les transistors, plus petits et dissipant moins de chaleur, vont supplanter les tubes électriques : en 1954 le <em>germanium</em> est remplacé par le <em>silicium</em>, en 1955 apparaissent les premiers ordinteurs entièrement transistorisés, en 1960 le transistor à effet de champ permet l’intégration de dizaines composants dans un centimètre carré. Les transistors sont ensuite directement gravés dans une plaque de <em>silicium</em> constitutant un <strong>cicrcuit intégré</strong>. En 1965 Gordon Moore futur directeur d’Intel énonce la <a href="https://fr.wikipedia.org/wiki/Loi_de_Moore">loi empirique</a> portant son nom qui fixe une feuille de route à l’industrie des mircroprocesseurs : le doublement de la densité d’intégration des transistors tous les deux ans. Cette loi s’est vérifiée jusqu’à présent avec une finesse de gravure d’environ 5 nanomètres en 2020. Le <a href="https://en.wikipedia.org/wiki/Moore%27s_law#/media/File:Moore&#39;s_Law_Transistor_Count_1971-2018.png">graphique</a> ci-dessous représente l’évolution du nombre de transistors par circuit intégré.</p>
+<p>Les circuits d’une ordinateur manipulent uniquement des 0 ou des 1 représentés en interne par des tensions hautes ou basses. Les premiers ordinateurs construits dans la période 1945-1950 sont basés sur une technologie de tube à vide ou tube électrique. En 1947, aux laboratoires Bell, <a href="https://fr.wikipedia.org/wiki/Transistor">Shockley, Bardeen et Brattain</a> inventent le <strong>transistor</strong> au <em>germanium</em> un petit composant électronique qui se comporte comme un interrupteur. Les transistors, plus petits et dissipant moins de chaleur, vont supplanter les tubes électriques : en 1954 le <em>germanium</em> est remplacé par le <em>silicium</em>, en 1955 apparaissent les premiers ordinateurs entièrement transistorisés, en 1960 le transistor à effet de champ permet l’intégration de dizaines composants dans un centimètre carré. Les transistors sont ensuite directement gravés dans une plaque de <em>silicium</em> constituant un <strong>cicrcuit intégré</strong>. En 1965 Gordon Moore futur directeur d’Intel énonce la <a href="https://fr.wikipedia.org/wiki/Loi_de_Moore">loi empirique</a> portant son nom qui fixe une feuille de route à l’industrie des mircroprocesseurs : le doublement de la densité d’intégration des transistors tous les deux ans. Cette loi s’est vérifiée jusqu’à présent avec une finesse de gravure d’environ 5 nanomètres en 2020. Le <a href="https://en.wikipedia.org/wiki/Moore%27s_law#/media/File:Moore&#39;s_Law_Transistor_Count_1971-2018.png">graphique</a> ci-dessous représente l’évolution du nombre de transistors par circuit intégré.</p>
 <div class="center">
 <p><img src="images/640px-Moores_Law_Transistor_Count_1971-2018.png" style="width:90.0%" alt="Loi de Moore Source : Wikipedia" /><br />
 </p>
@@ -112,7 +112,7 @@ Première NSI Lycée du Parc
 <div class="definition">
 <p>Un <strong>transistor</strong> possède trois broches : la grille, la sortie (ou drain) et la source soumis à des états de tension haute ou basse qu’on peut assimiler aux valeurs binaires 1 et 0 d’un <strong>bit</strong>. Si la tension appliquée sur la grille est haute (bit à 1) alors le transitor laisse passer le courant entre la source d’énergie et la sortie et cette dernière passe à l’état de tension basse (bit à 0), sinon la sortie reste en tension haute (bit 1).</p>
 <p>Une <strong>fonction logique</strong> prend un ou plusieurs bits en entrée et retourne un ou plusieurs bits en sortie. Une <strong>porte logique</strong> est un circuit électronique représentant une <strong>fonction logique</strong>.</p>
-<p>Une <strong>table logique</strong> représente toutes les sorties produites par une fonction logique pour toutes les entrées possibles.</p>
+<p>Une <strong>table logique</strong> représente les sorties produites par une fonction logique pour toutes les entrées possibles.</p>
 <p>Un transistor représente une fonction logique dont le bit d’entrée est l’état de tension de la grille et le bit de sortie, l’état de tension de la sortie. La <strong>table logique</strong> (table 1) associée est celle du <strong>NON logique</strong> ou <strong>Inverseur</strong>.</p>
 <p>Fichier de test <a href="http://www.cburch.com/logisim/">Logisim</a> : <a href="circuits_logisim/transistor.circ">transistor.circ</a>.</p>
 </div>
@@ -145,6 +145,7 @@ Première NSI Lycée du Parc
 &amp; <img src="images/porte_not_american.png" alt="porte NOT américaine" /><br />
 </p>
 </div>
+<p><a href="videos/transistor-definition1.mp4">Tutoriel video Logisim : le transistor</a></p>
 <h2 id="dautres-portes-logiques">D’autres portes logiques</h2>
 <h3 id="transistors-en-série-ou-en-parallèle">Transistors en série ou en parallèle</h3>
 <div class="exercice">
@@ -153,9 +154,11 @@ Première NSI Lycée du Parc
 <li>La <strong>porte NAND</strong> constituée de deux transistors en série</li>
 <li>La <strong>porte NOR</strong> constituée de deux transistors en parallèle</li>
 </ul>
-<p>Chacune de ces portes logiques comportent deux bits d’entrée : A pour la grille du transistor 1 et B pourla grille du transistor 2 et un bit de sortie.</p>
+<p>Chacune de ces portes logiques comportent deux bits d’entrée : A pour la grille du transistor 1 et B pour la grille du transistor 2 et un bit de sortie.</p>
 <p>Compléter leurs tables logiques.</p>
 <p>Vérifier avec <a href="http://www.cburch.com/logisim/">Logisim</a> et les fichiers <a href="circuits_logisim/porte_NAND.circ">porte_NAND.circ</a> et <a href="circuits_logisim/porte_NOR.circ">porte_NOR.circ</a>.</p>
+<p><a href="videos/porteNAND.mp4">Tutoriel video Logisim : porte NAND</a></p>
+<p><a href="videos/porteNOR.mp4">Tutoriel video Logisim : porte NOR</a></p>
 <table>
 <thead>
 <tr class="header">
@@ -297,6 +300,7 @@ Première NSI Lycée du Parc
 </tr>
 </tbody>
 </table>
+<p><a href="videos/exercice2.mp4">Tutoriel video Logisim : exercice 2</a></p>
 </div>
 <div class="exercice">
 <p>Fichier de test <a href="http://www.cburch.com/logisim/">Logisim</a> : <a href="circuits_logisim/exercice3.circ">exercice3.circ</a>.</p>
@@ -359,6 +363,7 @@ Première NSI Lycée du Parc
 </tr>
 </tbody>
 </table>
+<p><a href="videos/exercice3.mp4">Tutoriel video Logisim : exercice 3</a></p>
 </div>
 <p><strong>Voici les représentations symboliques des portes logiques <code>AND</code> et <code>OR</code> :</strong></p>
 <div class="minipage" center="true">
@@ -377,6 +382,7 @@ Première NSI Lycée du Parc
 <li>Construire un circuit représentant une porte <code>AND</code> uniquement avec des portes <code>NAND</code>.</li>
 </ol>
 <p>Ainsi chacune des portes, <code>NAND</code> ou <code>NOR</code> permet de construire les portes <code>NOT</code>, <code>OR</code>, <code>AND</code>. Toute porte logique pouvant s’exprimer à l’aide de ces trois portes, les portes <code>NAND</code> et <code>NOR</code> sont dites <em>universelles</em>.</p>
+<p><a href="videos/exercice4.mp4">Tutoriel video Logisim : exercice 4</a></p>
 </div>
 </div>
 <div id="fonctions-booléennes" class="slide section level1">
@@ -409,6 +415,7 @@ Première NSI Lycée du Parc
 <span id="cb2-4"><a href="#cb2-4"></a><span class="op">|</span>    <span class="dv">1</span>     <span class="op">|</span>    <span class="dv">0</span>     <span class="op">|</span>       <span class="dv">1</span>       <span class="op">|</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a><span class="op">|</span>    <span class="dv">0</span>     <span class="op">|</span>    <span class="dv">1</span>     <span class="op">|</span>       <span class="dv">1</span>       <span class="op">|</span></span>
 <span id="cb2-6"><a href="#cb2-6"></a><span class="op">|</span>    <span class="dv">0</span>     <span class="op">|</span>    <span class="dv">0</span>     <span class="op">|</span>       <span class="dv">0</span>       <span class="op">|</span></span></code></pre></div>
+<p><a href="videos/exercice5.mp4">Tutoriel video : exercice 5</a></p>
 </div>
 <div class="propriete">
 <p>On peut exprimer toute fonction booléenne à l’aide de trois fonctions booléennes élémentaires :</p>
@@ -471,7 +478,7 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>conjonction</em
 </table>
 <ul>
 <li>La <em>disconjonction</em> de <span class="math inline">\(x\)</span> et <span class="math inline">\(y\)</span> est une fonction à 2 bits d’entrée (binaire) notée <span class="math inline">\(x \vee y\)</span> ou <span class="math inline">\(x + y\)</span>.<br />
-Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em> est <code>x or y</code> en <code>Python</code></li>
+Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em> est <code>x or y</code> en <code>Python</code>.</li>
 </ul>
 <table>
 <thead>
@@ -555,46 +562,6 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <li><strong>Réponse D :</strong> <code>a  = False b = True  c = True</code></li>
 </ul>
 <ol start="4" style="list-style-type: decimal">
-<li>Choisir une expression booléenne pour la variable S qui satisfait la table de vérité suivante.</li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th align="center">A</th>
-<th>B</th>
-<th>f(A, B)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td align="center">0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td align="center">1</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Réponse A :</strong> <code>A ou (non B)</code></li>
-<li><strong>Réponse B :</strong> <code>(non A) ou B</code></li>
-<li><strong>Réponse C :</strong> <code>(non A) ou (non B)</code></li>
-<li><strong>Réponse D :</strong> <code>non (A ou B)</code></li>
-</ul>
-<ol start="5" style="list-style-type: decimal">
 <li>Si A et B sont des variables booléennes, laquelle de ces expressions booléennes est équivalente<br />
 à <code>(not A) or B</code> ?</li>
 </ol>
@@ -604,7 +571,7 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <li><strong>Réponse C :</strong> <code>(not A and B) or (not A and not B)</code></li>
 <li><strong>Réponse D :</strong> <code>(A and B) or (not A and not B)</code></li>
 </ul>
-<ol start="6" style="list-style-type: decimal">
+<ol start="5" style="list-style-type: decimal">
 <li>Choisir une expression booléenne pour la variable S qui satisfait la table de vérité suivante.</li>
 </ol>
 <table>
@@ -644,7 +611,7 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <li><strong>Réponse C :</strong> (non A) ou (non B)</li>
 <li><strong>Réponse D :</strong> non (A ou B)</li>
 </ul>
-<ol start="7" style="list-style-type: decimal">
+<ol start="6" style="list-style-type: decimal">
 <li>On considère une formule booléenne form des variables booléennes <code>a</code> et <code>b</code> dont voici la table de vérité.</li>
 </ol>
 <table>
@@ -678,13 +645,14 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 </tr>
 </tbody>
 </table>
-<p>Quelle est cette formule booléenne form ?</p>
+<p>Quelle est cette formule booléenne ?</p>
 <ul>
 <li><strong>Réponse A :</strong> <code>a and b</code></li>
 <li><strong>Réponse B :</strong> <code>a or b</code></li>
 <li><strong>Réponse C :</strong> <code>a and not(b)</code></li>
 <li><strong>Réponse D :</strong> <code>not(a) or b</code></li>
 </ul>
+<p><a href="videos/exercice6.mp4">Tutoriel video : exercice 6</a></p>
 </div>
 <h2 id="pour-aller-plus-loin-hors-programme-de-première-nsi">Pour aller plus loin (hors programme de première NSI)</h2>
 <h3 id="dresser-la-table-de-vérité-dune-fonction-booléenne">Dresser la table de vérité d’une fonction booléenne</h3>
@@ -791,7 +759,7 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 </tbody>
 </table>
 <ol style="list-style-type: decimal">
-<li><p>En utilisant la méthode exposée dans l’exercice 7, déterminer une expression booléenne de la fonction <span class="math inline">\(f\)</span>.</p></li>
+<li><p>En utilisant la méthode exposée dans l’exercice 8, déterminer une expression booléenne de la fonction <span class="math inline">\(f\)</span>.</p></li>
 <li><p>Ouvrir le logiciel <a href="http://www.cburch.com/logisim/">Logisim</a> et construire un circuit combinatoire représentant cette fonction booléenne :</p>
 <ul>
 <li>En utilisant les portes logiques <code>NOT</code>, <code>NOR</code>, <code>NAND</code>, <code>AND</code>, <code>OR</code> ou <code>XOR</code>.</li>
@@ -799,11 +767,12 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <li>En n’utilisant que des portes logiques <code>NOR</code>.</li>
 </ul></li>
 </ol>
+<p><a href="videos/exercice9.mp4">Tutoriel video : exercice 9</a></p>
 </div>
 <h2 id="décodeur-avec-2-bits-dentrées">Décodeur avec 2 bits d’entrées</h2>
 <div class="exercice">
 <p>On considère un circuit combinatoire qui possède deux entrées <span class="math inline">\(e_{0}\)</span> et <span class="math inline">\(e_{1}\)</span> et quatre sorties <span class="math inline">\(s_{0}\)</span>, <span class="math inline">\(s_{1}\)</span>, <span class="math inline">\(s_{2}\)</span> et <span class="math inline">\(s_{3}\)</span>.</p>
-<p>La sortie indexée par le nombre dont le bit de poids faible est <span class="math inline">\(e_{0}\)</span> et le bit de poids fort <span class="math inline">\(e_{1}\)</span> est postionnée à <span class="math inline">\(1\)</span> et les autres sorties à <span class="math inline">\(0\)</span>. Ce circuit est ainsi appelé <strong>décodeur <span class="math inline">\(2\)</span> bits</strong>.</p>
+<p>La sortie indexée par le nombre dont le bit de poids faible est <span class="math inline">\(e_{0}\)</span> et le bit de poids fort <span class="math inline">\(e_{1}\)</span>, est positionnée à <span class="math inline">\(1\)</span> et les autres sorties à <span class="math inline">\(0\)</span>. Ce circuit est ainsi appelé <strong>décodeur <span class="math inline">\(2\)</span> bits</strong>.</p>
 <ol style="list-style-type: decimal">
 <li>Compléter la table de vérité de ce circuit combinatoire.</li>
 </ol>
@@ -916,6 +885,7 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <ol start="5" style="list-style-type: decimal">
 <li>Ouvrir le logiciel <a href="http://www.cburch.com/logisim/">Logisim</a> et construire un circuit combinatoire représentant un <strong>demi-additionneur binaire 1 bit</strong>.</li>
 </ol>
+<p><a href="videos/exercice11.mp4">Tutoriel video : exercice 11</a></p>
 </div>
 <div class="exercice">
 <p>Un <strong>additionneur binaire 1 bit</strong> est un circuit combinatoire qui possède :</p>
@@ -1037,7 +1007,7 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <ul>
 <li>Le premier <strong>demi-additionneur binaire 1 bit</strong> prend en entrée les bits d’opérande <span class="math inline">\(e_{0}\)</span> et <span class="math inline">\(e_{1}\)</span> et retourne en sortie un bit de résultat intermédiaire <span class="math inline">\(s_{1}\)</span> et un bit de retenue sortante intermédiaire <span class="math inline">\(r_{1}\)</span>. Donner une expression booléenne de <span class="math inline">\(s_{1}\)</span> et <span class="math inline">\(r_{1}\)</span> en fonction de <span class="math inline">\(e_{0}\)</span> et <span class="math inline">\(e_{1}\)</span>.</li>
 <li>Le second <strong>demi-additionneur binaire 1 bit</strong> prend en entrée le bit de résultat <span class="math inline">\(s_{1}\)</span> et le bit de retenue entrante <span class="math inline">\(r_{0}\)</span> et retourne en sortie le bit de résultat final <span class="math inline">\(s_{2}\)</span> et un bit de retenue sortante intermédiaire <span class="math inline">\(r_{2}\)</span>. Donner une expression booléenne de <span class="math inline">\(s_{2}\)</span> et <span class="math inline">\(r_{2}\)</span> en fonction de <span class="math inline">\(s_{1}\)</span> et <span class="math inline">\(r_{0}\)</span>.</li>
-<li>Enfin, la retenue sortante <span class="math inline">\(r_{3}\)</span> s’obtient à partir de la retenue sortante <span class="math inline">\(r_{1}\)</span> du premier demi-additionneur et de la rentenue sortante <span class="math inline">\(r_{2}\)</span> du second. Donner une expression booléenne de <span class="math inline">\(r_{3}\)</span> en fonction de <span class="math inline">\(r_{1}\)</span> et <span class="math inline">\(r_{2}\)</span>.</li>
+<li>Enfin, la retenue sortante <span class="math inline">\(r_{3}\)</span> s’obtient à partir de la retenue sortante <span class="math inline">\(r_{1}\)</span> du premier demi-additionneur et de la retenue sortante <span class="math inline">\(r_{2}\)</span> du second. Donner une expression booléenne de <span class="math inline">\(r_{3}\)</span> en fonction de <span class="math inline">\(r_{1}\)</span> et <span class="math inline">\(r_{2}\)</span>.</li>
 </ul>
 <p>Compléter les colonnes <span class="math inline">\(s_{1}\)</span>, <span class="math inline">\(r_{1}\)</span> et <span class="math inline">\(r_{2}\)</span> puis <span class="math inline">\(s_{2}\)</span> et <span class="math inline">\(r_{3}\)</span> de la table de vérité de l’<strong>additionneur binaire à 1 bit</strong>.</p></li>
 <li><p>Avec le logiciel <a href="http://www.cburch.com/logisim/">Logisim</a> ouvrir le fichier contenant le demi-additionneur de l’exercice précédent.</p>
@@ -1046,149 +1016,8 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <li>Ajouter un nouveau circuit avec <code>Add a circuit</code> , le nommer <code>additionneur2bits</code> puis copier/coller dedans le circuit de l’ <strong>additionneur binaire 1 bit</strong>. Compléter le circuit pour obtenir un <strong>additionneur binaire 2 bits</strong>.</li>
 </ul></li>
 </ol>
+<p><a href="videos/exercice12.mp4">Tutoriel video : exercice 12</a></p>
 </div>
-<h2 id="simuler-le-hasard">Simuler le hasard</h2>
-<div class="exercice">
-<p>Dans cet exercice, on veut réaliser un circuit logique qui simule un dé électronique à diodes (LED).</p>
-<p>Les différentes combinaisons d’affichage du dé électronique sont représentées dans la figure ci-dessous :</p>
-<p><img src="images/faces_de.png" style="width:80.0%" alt="Faces du dé (LED)" /><br />
-</p>
-<p>Par exemple, si on veut afficher 3, il faut allumer les diodes a, d et g. Pour les combinaisons d’entrée (x,y,z)= (0,0,0,) et (X,Y,Z)=(1,1,1) aucune diode ne doit être allumée.</p>
-<p>Il s’agit d’une forme de <strong>transcodeur 3 bits vers 8 bits</strong>. Les <span class="math inline">\(3\)</span> bits d’entrée représentent le codage d’un nombre sur <span class="math inline">\(3\)</span> bits en notation positionnelle et les <span class="math inline">\(8\)</span> bits de sortie représentent le codage de ce même nombre en notation additive. Par exemple si (x,y,z) = (1,0,1) en entrée, le nombre est <span class="math inline">\(1 \times 2^{2} + 0 \times 2^{1} + 1 \times 2^{0}=5\)</span> et il est représenté par cinq bits de sortie positionnés à <span class="math inline">\(1\)</span>. Pour simuler un dé à 6 faces, deux entrées, (x,y,z) = (0,0,0) et (x,y,z) = (1,1,1), correspondent à la même sortie (tous les bits de sortie à 0), c’est pourquoi on peut réduire le nombre de sorties de <span class="math inline">\(8\)</span> à <span class="math inline">\(7\)</span>.</p>
-<p>Le circuit à réaliser doit donc comporter 7 sorties, soit une sortie par diode (a, b, c, d, e, f, g) et 3 entrées x, y, z.</p>
-<p><img src="images/circuit-de.png" style="width:60.0%" alt="Circuit dé 6 faces" /><br />
-</p>
-<ol style="list-style-type: decimal">
-<li>Compléter la table de vérité de ce circuit :</li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th align="center">x</th>
-<th>y</th>
-<th>z</th>
-<th>a</th>
-<th>b</th>
-<th>c</th>
-<th>d</th>
-<th>e</th>
-<th>f</th>
-<th>g</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td>0</td>
-<td>0</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td align="center">0</td>
-<td>0</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td align="center">0</td>
-<td>1</td>
-<td>0</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td align="center">0</td>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td align="center">1</td>
-<td>0</td>
-<td>0</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td>0</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td align="center">1</td>
-<td>1</td>
-<td>0</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol start="2" style="list-style-type: decimal">
-<li>Ouvrir le logiciel <a href="http://www.cburch.com/logisim/">Logisim</a>. Aller dans <code>Windows - Combinational - Analysis</code> :
-<ul>
-<li>dans l’onglet <code>Input</code> , indiquer les variables d’entrée du transcodeur ( x , x , z ) ;</li>
-<li>dans l’onglet <code>Output</code>, indiquer les variables de sortie ( a ,…. , g ) ;</li>
-<li>dans <code>Table</code> , saisir la table de vérité de chaque sortie ;</li>
-<li>dans <code>Expression</code> , on peut obtenir une expression booléenne pour chaque de sortie, et dans <code>Minimized</code> une expression simplifiée.</li>
-<li>construire le circuit avec le bouton <code>Build circuit</code> et le nommer <code>de6faces</code></li>
-<li>compléter le circuit avec des <code>Random Generator</code> (outils <code>Memory</code>) en entrée et des <code>LED</code> (outils <code>Input - Output</code>) en sortie comme dans la figure ci-dessous.</li>
-</ul></li>
-</ol>
-</div>
-<p><img src="images/de_6_faces.png" style="width:45.0%" alt="Circuit dé 6 faces" /><br />
-</p>
 </div>
 <div id="opérations-bit-à-bit-en-python-hors-programme-de-première-nsi" class="slide section level1">
 <h1>Opérations bit à bit en <code>Python</code> (hors programme de première NSI)</h1>
@@ -1303,15 +1132,15 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 </ul>
 </div>
 <div class="exercice">
-<p>Dans l’algorithme de recherche dichotomique, après division en deux de la zone de recherche, l’algorithme s’appelle lui-même sur l’une des deux moitiés. C’est un algorithme de type  qui peut se programmer récursivement comme nous le verrons dans le chapitre sur la récursivité.</p>
-<p>Si on note  la taille de la liste, une autre implémentation, non récursive, est la suivante :</p>
+<p>Dans l’algorithme de recherche dichotomique, après division en deux de la zone de recherche, l’algorithme s’appelle lui-même sur l’une des deux moitiés. C’est un algorithme de type <em>Diviser pour régner</em> qui peut se programmer récursivement comme nous le verrons en terminale dans le chapitre sur la récursivité.</p>
+<p>Si on note <em>n</em> la taille de la liste, une autre implémentation, non récursive, est la suivante :</p>
 <ul>
 <li><p>on commence la recherche au début de la liste et on avance avec un pas <code>pas = n // 2</code> ou <code>pas = n &gt;&gt; 1</code> jusqu’au premier élément supérieur à l’élément cherché ;</p></li>
-<li><p>on repart de l’élément précédent le point d’arrêt et on avance désormais avec un pas</p>
+<li><p>on repart de l’élément précédent le point d’arrêt et on avance désormais avec un pas divisé par 2 soit :</p>
 <p><code>pas = pas &gt;&gt; 1</code> ;</p></li>
 <li><p>on répète en boucle ces instructions jusqu’à ce que le pas atteigne <span class="math inline">\(1\)</span>.</p></li>
 </ul>
-<p>A la fin de de la boucle, on détermine si l’élément sur lequel on s’est arrêté est l’élément recherché.</p>
+<p>A la fin de de la boucle, on détermine si l’élément précédent le dernier point d’arrêt est l’élément recherché.</p>
 <p>Compléter le code de la fonction <code>recherche_dicho2</code> qui implémente cet algorithme.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> recherche_dicho2(L, e):</span>
 <span id="cb7-2"><a href="#cb7-2"></a>    x, n  <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(L)</span>

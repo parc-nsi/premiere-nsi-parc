@@ -15,9 +15,9 @@ geometry:
  
 _Ce cours est largement inspiré du chapitre 22 du manuel NSI de la collection Tortue chez Ellipsen auteurs : Ballabonski, Conchon, Filliatre, N'Guyen._
       
-# Préambule {-}
+# Préambule {-} 
 
-Les circuits d'une ordinateur manipulent uniquement des 0 ou des 1 représentés en interne par des tensions hautes ou basses. Les premiers ordinateurs construits dans la période 1945-1950 sont basés sur une technologie de tube à vide ou tube électrique. En 1947, aux laboratoires Bell, [Shockley, Bardeen et Brattain](https://fr.wikipedia.org/wiki/Transistor) inventent le __transistor__ au _germanium_ un petit composant électronique qui se comporte comme un interrupteur.  Les transistors, plus petits et dissipant moins de chaleur, vont supplanter les tubes électriques : en 1954 le _germanium_ est remplacé par le _silicium_, en 1955 apparaissent les premiers ordinteurs entièrement transistorisés, en 1960 le transistor à effet de champ permet l'intégration de dizaines composants dans un centimètre carré. Les transistors sont ensuite directement gravés dans une plaque de _silicium_ constitutant un __cicrcuit intégré__. En 1965 Gordon Moore futur directeur d'Intel énonce la [loi empirique](https://fr.wikipedia.org/wiki/Loi_de_Moore) portant son nom qui fixe une feuille de route à l'industrie des mircroprocesseurs :  le doublement de la densité d'intégration des transistors tous les deux ans. Cette loi s'est vérifiée jusqu'à présent avec une finesse de gravure d'environ 5 nanomètres en 2020.  Le [graphique](https://en.wikipedia.org/wiki/Moore%27s_law#/media/File:Moore's_Law_Transistor_Count_1971-2018.png) ci-dessous représente l'évolution du  nombre de transistors par circuit intégré.
+Les circuits d'une ordinateur manipulent uniquement des 0 ou des 1 représentés en interne par des tensions hautes ou basses. Les premiers ordinateurs construits dans la période 1945-1950 sont basés sur une technologie de tube à vide ou tube électrique. En 1947, aux laboratoires Bell, [Shockley, Bardeen et Brattain](https://fr.wikipedia.org/wiki/Transistor) inventent le __transistor__ au _germanium_ un petit composant électronique qui se comporte comme un interrupteur.  Les transistors, plus petits et dissipant moins de chaleur, vont supplanter les tubes électriques : en 1954 le _germanium_ est remplacé par le _silicium_, en 1955 apparaissent les premiers ordinateurs entièrement transistorisés, en 1960 le transistor à effet de champ permet l'intégration de dizaines composants dans un centimètre carré. Les transistors sont ensuite directement gravés dans une plaque de _silicium_ constituant un __cicrcuit intégré__. En 1965 Gordon Moore futur directeur d'Intel énonce la [loi empirique](https://fr.wikipedia.org/wiki/Loi_de_Moore) portant son nom qui fixe une feuille de route à l'industrie des mircroprocesseurs :  le doublement de la densité d'intégration des transistors tous les deux ans. Cette loi s'est vérifiée jusqu'à présent avec une finesse de gravure d'environ 5 nanomètres en 2020.  Le [graphique](https://en.wikipedia.org/wiki/Moore%27s_law#/media/File:Moore's_Law_Transistor_Count_1971-2018.png) ci-dessous représente l'évolution du  nombre de transistors par circuit intégré.
 
 :::center
 ![Loi de Moore Source : Wikipedia](images/640px-Moores_Law_Transistor_Count_1971-2018.png){width=90%}\
@@ -60,6 +60,7 @@ Table: __Table logique  d'une porte NON__
 :::
 
 
+[Tutoriel video Logisim  : le transistor](videos/transistor-definition1.mp4)
  
 ## D'autres portes logiques
 
@@ -73,9 +74,16 @@ On donne ci-dessous les représentations de deux portes logiques :
 
 Chacune de  ces portes logiques comportent deux   bits d'entrée : A pour  la grille du transistor 1 et B pour la grille du transistor 2 et un bit de sortie.
 
+
+
+
 Compléter leurs tables logiques.
 
 Vérifier avec [Logisim](http://www.cburch.com/logisim/) et les fichiers [porte_NAND.circ](circuits_logisim/porte_NAND.circ) et [porte_NOR.circ](circuits_logisim/porte_NOR.circ).
+
+[Tutoriel video Logisim  : porte NAND](videos/porteNAND.mp4)
+
+[Tutoriel video Logisim  : porte NOR](videos/porteNOR.mp4)
 
 | A      | B    | NAND(A, B) |
 |:------:|------|------------|
@@ -139,6 +147,8 @@ Fichier de test [Logisim](http://www.cburch.com/logisim/) : [exercice2.circ](cir
 | 1      | 0    |            |
 | 1      | 1    |            |
 
+
+[Tutoriel video Logisim  : exercice 2](videos/exercice2.mp4)
 :::
 
 :::exercice
@@ -164,6 +174,7 @@ Fichier de test [Logisim](http://www.cburch.com/logisim/) : [exercice3.circ](cir
 | 1      | 0    |            |
 | 1      | 1    |            |
 
+[Tutoriel video Logisim  : exercice 3](videos/exercice3.mp4)
 :::
 
 
@@ -188,6 +199,10 @@ Fichier de test [Logisim](http://www.cburch.com/logisim/) : [exercice3.circ](cir
 2. Construire un circuit représentant une porte `AND` uniquement avec des portes `NAND`.
 
 Ainsi chacune des portes, `NAND` ou `NOR` permet de construire les portes `NOT`, `OR`, `AND`. Toute porte logique  pouvant s'exprimer à l'aide de ces trois portes, les portes `NAND` et `NOR` sont dites *universelles*.
+
+[Tutoriel video Logisim  : exercice 4](videos/exercice4.mp4)
+
+
 :::
 
 
@@ -227,6 +242,9 @@ In [4]: table_verite_2bits(bool.__or__)
 |    0     |    1     |       1       |
 |    0     |    0     |       0       |
 ~~~
+
+
+[Tutoriel video : exercice 5](videos/exercice5.mp4)
 :::
 
 :::propriete
@@ -242,7 +260,7 @@ Si `x` est un booléen, sa _négation_ est `not x` en `Python`.
 | 1 |          |
 
 * La _conjonction_ de $x$ et $y$  est une fonction à 2 bits d'entrée (binaire) notée $x \wedge y$ ou $x . y$.  
-Si `x` et `y` sont des booléens, leur  _conjonction_ est `x and y` en `Python`. 
+Si `x` et `y` sont des booléens, leur  _conjonction_ est `x and y` en `Python`.
 
 | $x$ | $y$ | $x \wedge y$ |
 |:---:|-----|--------------|
@@ -252,7 +270,7 @@ Si `x` et `y` sont des booléens, leur  _conjonction_ est `x and y` en `Python`.
 | 1   | 1   |              |
 
 * La _disconjonction_ de $x$ et $y$  est une fonction à 2 bits d'entrée (binaire) notée $x \vee y$ ou $x + y$.  
-Si `x` et `y` sont des booléens, leur  _disjonction_ est `x or y` en `Python`
+Si `x` et `y` sont des booléens, leur  _disjonction_ est `x or y` en `Python`.
 
 | $x$ | $y$ | $x \vee y$ |
 |:---:|-----|--------------|
@@ -308,22 +326,8 @@ __Il est recommandé de mettre des parenthèses plutôt que d'appliquer les règ
 * **Réponse C :** `a  = False b = False c = True`
 * **Réponse D :** `a  = False b = True  c = True`
 
-4. Choisir une expression booléenne pour la variable S qui satisfait la table de vérité suivante.
 
-| A      | B    | f(A, B)    |
-|:------:|------|------------|
-| 0      | 0    |   1        |
-| 0      | 1    |   0        |
-| 1      | 0    |   1        |
-| 1      | 1    |   1        |
-
-* **Réponse A :** `A ou (non B)`
-* **Réponse B :** `(non A) ou B`
-* **Réponse C :** `(non A) ou (non B)`
-* **Réponse D :**  `non (A ou B)`
-
-
-5. Si A et B sont des variables booléennes, laquelle de ces expressions booléennes est équivalente  
+4. Si A et B sont des variables booléennes, laquelle de ces expressions booléennes est équivalente  
 à `(not A) or B` ?
 
 * **Réponse A :** `(A and B) or (not A and B)`
@@ -332,7 +336,7 @@ __Il est recommandé de mettre des parenthèses plutôt que d'appliquer les règ
 * **Réponse D :** `(A and B) or (not A and not B)`
 
 
-6. Choisir une expression booléenne pour la variable S qui satisfait la
+5. Choisir une expression booléenne pour la variable S qui satisfait la
 table de vérité suivante.
 
   A   B   S
@@ -348,7 +352,7 @@ table de vérité suivante.
 * **Réponse C :** (non A) ou (non B)
 * **Réponse D :** non (A ou B)
 
-7. On considère une formule booléenne form des variables booléennes `a` et `b` dont voici la table de vérité. 
+6. On considère une formule booléenne form des variables booléennes `a` et `b` dont voici la table de vérité. 
 
 a     b      form
 ---   ----   ----
@@ -357,12 +361,15 @@ False True   False
 True  False  True 
 False False  False 
 
-Quelle est cette formule booléenne form ?
+Quelle est cette formule booléenne  ?
 
 * **Réponse A :**  `a and b`
 * **Réponse B :** `a or b`
 * **Réponse C :** `a and not(b)`
 * **Réponse D :** `not(a) or b`
+
+
+[Tutoriel video  : exercice 6](videos/exercice6.mp4)
 
 :::
 
@@ -435,12 +442,14 @@ On considère la fonction booléeenne $f$ dont la table de vérité est donnée 
 | 1   | 0   |      0      |
 | 1   | 1   |      1      |
 
-1. En utilisant la méthode exposée dans l'exercice 7, déterminer une expression booléenne de la fonction $f$.
+1. En utilisant la méthode exposée dans l'exercice 8, déterminer une expression booléenne de la fonction $f$.
 2. Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/) et construire un circuit combinatoire  représentant cette fonction booléenne : 
 
    * En utilisant les portes logiques `NOT`, `NOR`, `NAND`, `AND`, `OR` ou `XOR`.
    * En n'utilisant que des portes logiques `NOT`, `AND` ou  `OR`.
    * En n'utilisant que des portes logiques  `NOR`.
+
+[Tutoriel video  : exercice 9](videos/exercice9.mp4)
 
 :::
 
@@ -450,7 +459,7 @@ On considère la fonction booléeenne $f$ dont la table de vérité est donnée 
 
 On considère un circuit combinatoire qui  possède deux entrées $e_{0}$ et $e_{1}$ et quatre sorties $s_{0}$, $s_{1}$, $s_{2}$ et $s_{3}$.
 
-La sortie indexée par le nombre dont le bit de poids faible est $e_{0}$ et le bit de poids fort $e_{1}$ est postionnée à $1$ et les autres sorties à $0$. Ce circuit est ainsi appelé __décodeur $2$ bits__.
+La sortie indexée par le nombre dont le bit de poids faible est $e_{0}$ et le bit de poids fort $e_{1}$, est positionnée à $1$ et les autres sorties à $0$. Ce circuit est ainsi appelé __décodeur $2$ bits__.
 
 1. Compléter la table de vérité de ce circuit combinatoire.
 
@@ -496,6 +505,8 @@ La sortie $s$ prend pour valeur le bit des unités et la sortie $r$ le bit de re
 ![Demi-additionneur binaire](images/demi_additionneur.png){width="50%"}\
 
 5. Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/) et construire un circuit combinatoire  représentant un __demi-additionneur binaire 1 bit__.
+
+[Tutoriel video  : exercice 11](videos/exercice11.mp4)
 :::
 
 
@@ -522,60 +533,18 @@ Un __additionneur binaire   1 bit__ est  un circuit combinatoire qui  possède :
 
    * Le premier __demi-additionneur binaire 1 bit__ prend en entrée les bits d'opérande $e_{0}$ et $e_{1}$ et retourne en sortie un bit de résultat intermédiaire $s_{1}$ et un bit de retenue sortante intermédiaire $r_{1}$. Donner une expression booléenne de $s_{1}$ et $r_{1}$ en fonction de $e_{0}$ et $e_{1}$.
    * Le second __demi-additionneur binaire 1 bit__ prend en entrée le bit de résultat $s_{1}$ et le bit de retenue entrante $r_{0}$ et retourne en sortie le bit de résultat  final $s_{2}$ et un bit de retenue sortante intermédiaire $r_{2}$. Donner une expression booléenne de $s_{2}$ et $r_{2}$ en fonction de $s_{1}$ et $r_{0}$.
-   * Enfin, la retenue sortante $r_{3}$ s'obtient à partir  de la retenue sortante $r_{1}$ du premier demi-additionneur et de la rentenue sortante $r_{2}$ du second. Donner une expression booléenne de $r_{3}$ en fonction de $r_{1}$ et $r_{2}$.
+   * Enfin, la retenue sortante $r_{3}$ s'obtient à partir  de la retenue sortante $r_{1}$ du premier demi-additionneur et de la retenue sortante $r_{2}$ du second. Donner une expression booléenne de $r_{3}$ en fonction de $r_{1}$ et $r_{2}$.
 
     Compléter les colonnes $s_{1}$, $r_{1}$ et $r_{2}$ puis $s_{2}$ et $r_{3}$ de la table de vérité de l'__additionneur binaire à  1 bit__.
 
 3. Avec le logiciel [Logisim](http://www.cburch.com/logisim/) ouvrir le fichier contenant le demi-additionneur de l'exercice précédent.  
     * Ajouter un nouveau circuit avec `Add a circuit` , le nommer `additionneur1bit` puis copier/coller dedans le circuit du __demi-additionneur binaire 1 bit__. Compléter le  circuit  pour obtenir  un __additionneur binaire 1 bit__.
     * Ajouter un nouveau circuit avec `Add a circuit` , le nommer `additionneur2bits` puis copier/coller dedans le circuit de l' __additionneur binaire 1 bit__. Compléter le  circuit   pour obtenir  un __additionneur binaire 2 bits__.
-:::
 
-
-
-## Simuler le hasard
-
-:::exercice
-Dans cet exercice, on veut réaliser un circuit logique qui simule un dé électronique à diodes (LED).
-
-Les différentes combinaisons d’affichage du dé électronique sont représentées dans la
-figure ci-dessous :
-
-![Faces du dé (LED)](images/faces_de.png){width="80%"}\
-
-Par exemple, si on veut afficher 3, il faut allumer les diodes a, d et g. Pour les combinaisons d'entrée (x,y,z)= (0,0,0,) et (X,Y,Z)=(1,1,1) aucune diode ne doit être allumée.
-
-Il s'agit d'une forme de __transcodeur 3 bits vers 8 bits__. Les $3$ bits d'entrée  représentent le codage d'un nombre sur $3$ bits en notation positionnelle et les $8$ bits de sortie représentent le codage de ce même nombre en notation additive. Par exemple si (x,y,z) = (1,0,1) en entrée, le nombre est $1 \times 2^{2} + 0 \times 2^{1} + 1 \times 2^{0}=5$ et il est représenté par cinq bits de sortie positionnés à $1$. Pour simuler un dé à 6 faces, deux entrées,   (x,y,z) = (0,0,0) et (x,y,z) = (1,1,1),  correspondent à la même  sortie (tous les bits de sortie à 0), c'est pourquoi on peut réduire le nombre de sorties de $8$ à $7$.
-
-Le circuit à réaliser doit donc comporter 7 sorties, soit une sortie par diode (a, b, c, d, e, f, g) et 3 entrées x, y, z.
-
-![Circuit dé 6 faces](images/circuit-de.png){width="60%"}\
-
-
-1. Compléter la table de vérité de ce circuit :
-   
-| x | y | z | a | b | c | d | e | f | g |
-|:-:|---|---|---|---|---|---|---|---|---|
-| 0 | 0 | 0 |   |   |   |   |   |   |   |
-| 0 | 0 | 1 |   |   |   |   |   |   |   |
-| 0 | 1 | 0 |   |   |   |   |   |   |   |
-| 0 | 1 | 1 |   |   |   |   |   |   |   |
-| 1 | 0 | 0 |   |   |   |   |   |   |   |
-| 1 | 0 | 1 |   |   |   |   |   |   |   |
-| 1 | 1 | 0 |   |   |   |   |   |   |   |
-| 1 | 1 | 1 |   |   |   |   |   |   |   |
-
-2. Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/). Aller dans `Windows - Combinational - Analysis` :
-    * dans l'onglet `Input` , indiquer les variables d'entrée du transcodeur ( x , x , z ) ;
-    * dans l'onglet `Output`, indiquer les variables de sortie ( a ,.... , g ) ;
-    * dans `Table` , saisir la table de vérité de chaque sortie ;
-    * dans `Expression` , on peut obtenir une expression booléenne  pour chaque de sortie, et dans `Minimized` une expression simplifiée.
-    * construire le circuit  avec le bouton `Build circuit`  et le  nommer `de6faces`
-    * compléter le circuit avec des `Random Generator` (outils `Memory`) en entrée et des `LED` (outils `Input - Output`) en sortie comme dans la figure ci-dessous.
+[Tutoriel video  : exercice 12](videos/exercice12.mp4)
 
 :::
 
-![Circuit dé 6 faces](images/de_6_faces.png){width="45%"}\
 
 # Opérations bit à bit en `Python` (hors programme de première NSI)
 
@@ -682,18 +651,18 @@ Voici un exemple de résultat attendu :
 
 
 :::exercice
-Dans l'algorithme de recherche dichotomique, après  division en deux de  la zone de recherche, l'algorithme  s'appelle lui-même sur l'une des deux moitiés. C'est un algorithme de type \textit{Diviser pour régner} qui peut se programmer récursivement comme nous le verrons dans le chapitre sur la récursivité.
+Dans l'algorithme de recherche dichotomique, après  division en deux de  la zone de recherche, l'algorithme  s'appelle lui-même sur l'une des deux moitiés. C'est un algorithme de type _Diviser pour régner_ qui peut se programmer récursivement comme nous le verrons en terminale dans le chapitre sur la récursivité.
 
-Si on note   \lstinline+n+ la taille de la liste, une autre implémentation, non récursive, est la suivante : 
+Si on note   _n_ la taille de la liste, une autre implémentation, non récursive, est la suivante : 
 
 * on commence la recherche au début de la liste et on avance avec un pas `pas = n // 2`   ou `pas = n >> 1` jusqu'au premier élément supérieur à l'élément cherché ;
-* on repart de l'élément précédent le point d'arrêt  et on avance désormais avec un pas   
+* on repart de l'élément précédent le point d'arrêt  et on avance désormais avec un pas divisé par 2 soit :
   
    `pas = pas >> 1` ;
 
 * on répète en boucle ces instructions jusqu'à ce que le pas atteigne $1$.
 
-A la fin de de la boucle, on détermine si l'élément sur lequel on s'est arrêté est l'élément recherché.
+A la fin de de la boucle, on détermine si l'élément précédent le dernier point d'arrêt est l'élément recherché.
 
 Compléter le code de la fonction `recherche_dicho2` qui implémente cet algorithme.
 

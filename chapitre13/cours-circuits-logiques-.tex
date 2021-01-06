@@ -374,6 +374,14 @@ xleftmargin=1cm,xrightmargin=1cm,
  \par \bigskip }
 
 
+\newenvironment{synthese}
+{\par \medskip   \noindent   
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bccle, marge=4]{~\textbf{Synthèse}   }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+ 
 \newcounter{rque}
 \newenvironment{remarque}
 {\par \medskip    \addtocounter{rque}{1} \noindent  
@@ -804,12 +812,12 @@ et Brattain} inventent le \textbf{transistor} au \emph{germanium} un
 petit composant électronique qui se comporte comme un interrupteur. Les
 transistors, plus petits et dissipant moins de chaleur, vont supplanter
 les tubes électriques : en 1954 le \emph{germanium} est remplacé par le
-\emph{silicium}, en 1955 apparaissent les premiers ordinteurs
+\emph{silicium}, en 1955 apparaissent les premiers ordinateurs
 entièrement transistorisés, en 1960 le transistor à effet de champ
 permet l'intégration de dizaines composants dans un centimètre carré.
 Les transistors sont ensuite directement gravés dans une plaque de
-\emph{silicium} constitutant un \textbf{cicrcuit intégré}. En 1965
-Gordon Moore futur directeur d'Intel énonce la
+\emph{silicium} constituant un \textbf{cicrcuit intégré}. En 1965 Gordon
+Moore futur directeur d'Intel énonce la
 \href{https://fr.wikipedia.org/wiki/Loi_de_Moore}{loi empirique} portant
 son nom qui fixe une feuille de route à l'industrie des
 mircroprocesseurs : le doublement de la densité d'intégration des
@@ -846,8 +854,8 @@ Une \textbf{fonction logique} prend un ou plusieurs bits en entrée et
 retourne un ou plusieurs bits en sortie. Une \textbf{porte logique} est
 un circuit électronique représentant une \textbf{fonction logique}.
 
-Une \textbf{table logique} représente toutes les sorties produites par
-une fonction logique pour toutes les entrées possibles.
+Une \textbf{table logique} représente les sorties produites par une
+fonction logique pour toutes les entrées possibles.
 
 Un transistor représente une fonction logique dont le bit d'entrée est
 l'état de tension de la grille et le bit de sortie, l'état de tension de
@@ -901,6 +909,9 @@ portes logiques, une européenne et une américaine.}
 
 \end{center}
 
+\href{videos/transistor-definition1.mp4}{Tutoriel video Logisim : le
+transistor}
+
 \hypertarget{dautres-portes-logiques}{%
 \subsection{D'autres portes logiques}\label{dautres-portes-logiques}}
 
@@ -921,7 +932,7 @@ On donne ci-dessous les représentations de deux portes logiques :
 \end{itemize}
 
 Chacune de ces portes logiques comportent deux bits d'entrée : A pour la
-grille du transistor 1 et B pourla grille du transistor 2 et un bit de
+grille du transistor 1 et B pour la grille du transistor 2 et un bit de
 sortie.
 
 Compléter leurs tables logiques.
@@ -929,6 +940,10 @@ Compléter leurs tables logiques.
 Vérifier avec \href{http://www.cburch.com/logisim/}{Logisim} et les
 fichiers \href{circuits_logisim/porte_NAND.circ}{porte\_NAND.circ} et
 \href{circuits_logisim/porte_NOR.circ}{porte\_NOR.circ}.
+
+\href{videos/porteNAND.mp4}{Tutoriel video Logisim : porte NAND}
+
+\href{videos/porteNOR.mp4}{Tutoriel video Logisim : porte NOR}
 
 \begin{longtable}[]{@{}cll@{}}
 \toprule
@@ -1066,6 +1081,8 @@ A & B & C = g(A, B)\tabularnewline
 \bottomrule
 \end{longtable}
 
+\href{videos/exercice2.mp4}{Tutoriel video Logisim : exercice 2}
+
 \end{exercice}
 
 \begin{exercice}{}
@@ -1116,6 +1133,8 @@ A & B & C = g(A, B)\tabularnewline
 1 & 1 &\tabularnewline
 \bottomrule
 \end{longtable}
+
+\href{videos/exercice3.mp4}{Tutoriel video Logisim : exercice 3}
 
 \end{exercice}
 
@@ -1179,6 +1198,8 @@ Ainsi chacune des portes, \passthrough{\lstinline!NAND!} ou
 \passthrough{\lstinline!AND!}. Toute porte logique pouvant s'exprimer à
 l'aide de ces trois portes, les portes \passthrough{\lstinline!NAND!} et
 \passthrough{\lstinline!NOR!} sont dites \emph{universelles}.
+
+\href{videos/exercice4.mp4}{Tutoriel video Logisim : exercice 4}
 
 \end{exercice}
 
@@ -1259,6 +1280,8 @@ In [4]: table_verite_2bits(bool.__or__)
 |    0     |    0     |       0       |
 \end{lstlisting}
 
+\href{videos/exercice5.mp4}{Tutoriel video : exercice 5}
+
 \end{exercice}
 
 \begin{propriete}{}
@@ -1314,7 +1337,7 @@ booléennes élémentaires :
   d'entrée (binaire) notée \(x \vee y\) ou \(x + y\).\\
   Si \passthrough{\lstinline!x!} et \passthrough{\lstinline!y!} sont des
   booléens, leur \emph{disjonction} est \passthrough{\lstinline!x or y!}
-  en \passthrough{\lstinline!Python!}
+  en \passthrough{\lstinline!Python!}.
 \end{itemize}
 
 \begin{longtable}[]{@{}cll@{}}
@@ -1482,39 +1505,6 @@ booléennes élémentaires :
 \setcounter{enumi}{3}
 \tightlist
 \item
-  Choisir une expression booléenne pour la variable S qui satisfait la
-  table de vérité suivante.
-\end{enumerate}
-
-\begin{longtable}[]{@{}cll@{}}
-\toprule
-A & B & f(A, B)\tabularnewline
-\midrule
-\endhead
-0 & 0 & 1\tabularnewline
-0 & 1 & 0\tabularnewline
-1 & 0 & 1\tabularnewline
-1 & 1 & 1\tabularnewline
-\bottomrule
-\end{longtable}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Réponse A :} \passthrough{\lstinline!A ou (non B)!}
-\item
-  \textbf{Réponse B :} \passthrough{\lstinline!(non A) ou B!}
-\item
-  \textbf{Réponse C :} \passthrough{\lstinline!(non A) ou (non B)!}
-\item
-  \textbf{Réponse D :} \passthrough{\lstinline!non (A ou B)!}
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
-\item
   Si A et B sont des variables booléennes, laquelle de ces expressions
   booléennes est équivalente\\
   à \passthrough{\lstinline!(not A) or B!} ?
@@ -1538,7 +1528,7 @@ A & B & f(A, B)\tabularnewline
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
+\setcounter{enumi}{4}
 \tightlist
 \item
   Choisir une expression booléenne pour la variable S qui satisfait la
@@ -1571,7 +1561,7 @@ A & B & S\tabularnewline
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{6}
+\setcounter{enumi}{5}
 \tightlist
 \item
   On considère une formule booléenne form des variables booléennes
@@ -1591,7 +1581,7 @@ False & False & False\tabularnewline
 \bottomrule
 \end{longtable}
 
-Quelle est cette formule booléenne form ?
+Quelle est cette formule booléenne ?
 
 \begin{itemize}
 \tightlist
@@ -1604,6 +1594,8 @@ Quelle est cette formule booléenne form ?
 \item
   \textbf{Réponse D :} \passthrough{\lstinline!not(a) or b!}
 \end{itemize}
+
+\href{videos/exercice6.mp4}{Tutoriel video : exercice 6}
 
 \end{exercice}
 
@@ -1754,7 +1746,7 @@ donnée ci-dessous :
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  En utilisant la méthode exposée dans l'exercice 7, déterminer une
+  En utilisant la méthode exposée dans l'exercice 8, déterminer une
   expression booléenne de la fonction \(f\).
 \item
   Ouvrir le logiciel \href{http://www.cburch.com/logisim/}{Logisim} et
@@ -1778,6 +1770,8 @@ donnée ci-dessous :
   \end{itemize}
 \end{enumerate}
 
+\href{videos/exercice9.mp4}{Tutoriel video : exercice 9}
+
 \end{exercice}
 
 \hypertarget{duxe9codeur-avec-2-bits-dentruxe9es}{%
@@ -1791,7 +1785,7 @@ et \(e_{1}\) et quatre sorties \(s_{0}\), \(s_{1}\), \(s_{2}\) et
 \(s_{3}\).
 
 La sortie indexée par le nombre dont le bit de poids faible est
-\(e_{0}\) et le bit de poids fort \(e_{1}\) est postionnée à \(1\) et
+\(e_{0}\) et le bit de poids fort \(e_{1}\), est positionnée à \(1\) et
 les autres sorties à \(0\). Ce circuit est ainsi appelé \textbf{décodeur
 \(2\) bits}.
 
@@ -1899,6 +1893,8 @@ le bit de retenue sortante, lorsqu'on additionne les deux bits d'entrée
   construire un circuit combinatoire représentant un
   \textbf{demi-additionneur binaire 1 bit}.
 \end{enumerate}
+
+\href{videos/exercice11.mp4}{Tutoriel video : exercice 11}
 
 \end{exercice}
 
@@ -2111,7 +2107,7 @@ possède :
   \item
     Enfin, la retenue sortante \(r_{3}\) s'obtient à partir de la
     retenue sortante \(r_{1}\) du premier demi-additionneur et de la
-    rentenue sortante \(r_{2}\) du second. Donner une expression
+    retenue sortante \(r_{2}\) du second. Donner une expression
     booléenne de \(r_{3}\) en fonction de \(r_{1}\) et \(r_{2}\).
   \end{itemize}
 
@@ -2140,105 +2136,9 @@ possède :
   \end{itemize}
 \end{enumerate}
 
-\end{exercice}
-
-\hypertarget{simuler-le-hasard}{%
-\subsection{Simuler le hasard}\label{simuler-le-hasard}}
-
-\begin{exercice}{}
-
-Dans cet exercice, on veut réaliser un circuit logique qui simule un dé
-électronique à diodes (LED).
-
-Les différentes combinaisons d'affichage du dé électronique sont
-représentées dans la figure ci-dessous :
-
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/faces_de.png}\\
-
-Par exemple, si on veut afficher 3, il faut allumer les diodes a, d et
-g. Pour les combinaisons d'entrée (x,y,z)= (0,0,0,) et (X,Y,Z)=(1,1,1)
-aucune diode ne doit être allumée.
-
-Il s'agit d'une forme de \textbf{transcodeur 3 bits vers 8 bits}. Les
-\(3\) bits d'entrée représentent le codage d'un nombre sur \(3\) bits en
-notation positionnelle et les \(8\) bits de sortie représentent le
-codage de ce même nombre en notation additive. Par exemple si (x,y,z) =
-(1,0,1) en entrée, le nombre est
-\(1 \times 2^{2} + 0 \times 2^{1} + 1 \times 2^{0}=5\) et il est
-représenté par cinq bits de sortie positionnés à \(1\). Pour simuler un
-dé à 6 faces, deux entrées, (x,y,z) = (0,0,0) et (x,y,z) = (1,1,1),
-correspondent à la même sortie (tous les bits de sortie à 0), c'est
-pourquoi on peut réduire le nombre de sorties de \(8\) à \(7\).
-
-Le circuit à réaliser doit donc comporter 7 sorties, soit une sortie par
-diode (a, b, c, d, e, f, g) et 3 entrées x, y, z.
-
-\includegraphics[width=0.6\textwidth,height=\textheight]{images/circuit-de.png}\\
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Compléter la table de vérité de ce circuit :
-\end{enumerate}
-
-\begin{longtable}[]{@{}clllllllll@{}}
-\toprule
-x & y & z & a & b & c & d & e & f & g\tabularnewline
-\midrule
-\endhead
-0 & 0 & 0 & & & & & & &\tabularnewline
-0 & 0 & 1 & & & & & & &\tabularnewline
-0 & 1 & 0 & & & & & & &\tabularnewline
-0 & 1 & 1 & & & & & & &\tabularnewline
-1 & 0 & 0 & & & & & & &\tabularnewline
-1 & 0 & 1 & & & & & & &\tabularnewline
-1 & 1 & 0 & & & & & & &\tabularnewline
-1 & 1 & 1 & & & & & & &\tabularnewline
-\bottomrule
-\end{longtable}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Ouvrir le logiciel \href{http://www.cburch.com/logisim/}{Logisim}.
-  Aller dans
-  \passthrough{\lstinline!Windows - Combinational - Analysis!} :
-
-  \begin{itemize}
-  \tightlist
-  \item
-    dans l'onglet \passthrough{\lstinline!Input!} , indiquer les
-    variables d'entrée du transcodeur ( x , x , z ) ;
-  \item
-    dans l'onglet \passthrough{\lstinline!Output!}, indiquer les
-    variables de sortie ( a ,\ldots. , g ) ;
-  \item
-    dans \passthrough{\lstinline!Table!} , saisir la table de vérité de
-    chaque sortie ;
-  \item
-    dans \passthrough{\lstinline!Expression!} , on peut obtenir une
-    expression booléenne pour chaque de sortie, et dans
-    \passthrough{\lstinline!Minimized!} une expression simplifiée.
-  \item
-    construire le circuit avec le bouton
-    \passthrough{\lstinline!Build circuit!} et le nommer
-    \passthrough{\lstinline!de6faces!}
-  \item
-    compléter le circuit avec des
-    \passthrough{\lstinline!Random Generator!} (outils
-    \passthrough{\lstinline!Memory!}) en entrée et des
-    \passthrough{\lstinline!LED!} (outils
-    \passthrough{\lstinline!Input - Output!}) en sortie comme dans la
-    figure ci-dessous.
-  \end{itemize}
-\end{enumerate}
+\href{videos/exercice12.mp4}{Tutoriel video : exercice 12}
 
 \end{exercice}
-
-\includegraphics[width=0.45\textwidth,height=\textheight]{images/de_6_faces.png}\\
 
 \hypertarget{opuxe9rations-bit-uxe0-bit-en-python-hors-programme-de-premiuxe8re-nsi}{%
 \section{\texorpdfstring{Opérations bit à bit en \texttt{Python} (hors
@@ -2453,12 +2353,12 @@ les bits d'un nombre, plus efficaces que les opérations mathématiques
 
 Dans l'algorithme de recherche dichotomique, après division en deux de
 la zone de recherche, l'algorithme s'appelle lui-même sur l'une des deux
-moitiés. C'est un algorithme de type \textit{Diviser pour régner} qui
-peut se programmer récursivement comme nous le verrons dans le chapitre
-sur la récursivité.
+moitiés. C'est un algorithme de type \emph{Diviser pour régner} qui peut
+se programmer récursivement comme nous le verrons en terminale dans le
+chapitre sur la récursivité.
 
-Si on note \lstinline+n+ la taille de la liste, une autre
-implémentation, non récursive, est la suivante :
+Si on note \emph{n} la taille de la liste, une autre implémentation, non
+récursive, est la suivante :
 
 \begin{itemize}
 \item
@@ -2468,7 +2368,7 @@ implémentation, non récursive, est la suivante :
   supérieur à l'élément cherché ;
 \item
   on repart de l'élément précédent le point d'arrêt et on avance
-  désormais avec un pas
+  désormais avec un pas divisé par 2 soit :
 
   \passthrough{\lstinline!pas = pas >> 1!} ;
 \item
@@ -2476,8 +2376,8 @@ implémentation, non récursive, est la suivante :
   \(1\).
 \end{itemize}
 
-A la fin de de la boucle, on détermine si l'élément sur lequel on s'est
-arrêté est l'élément recherché.
+A la fin de de la boucle, on détermine si l'élément précédent le dernier
+point d'arrêt est l'élément recherché.
 
 Compléter le code de la fonction
 \passthrough{\lstinline!recherche\_dicho2!} qui implémente cet
