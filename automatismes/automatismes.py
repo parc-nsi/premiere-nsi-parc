@@ -348,3 +348,50 @@ assert index_premiere_occurence_dicho(10, [7, 8, 9, 10]) == 3
 assert index_premiere_occurence_dicho(10, [7, 10, 10,  10, 10]) == 1 
 assert index_premiere_occurence_dicho(10, []) == -1
 print("Tests unitaires réussis pour la fonction index_premiere_occurence_dicho")
+
+
+#%% Automatisme 13
+
+def est_decroissant(t):
+    """
+    Paramètre : 
+        t un tableau de nombres 
+    Valeur renvoyée : 
+        booléen indiquant si t dans l'ordre décroissant
+    """
+    for i in range(0, len(t) - 1):
+        if t[i] < t[i + 1]:
+            return False
+    return True
+
+
+def recherche_dicho_decroissant(x, t):
+    """
+    Paramètre : 
+        t un tableau de nombres trié dans l'ordre décroissant
+        x un nombre 
+    Valeur renvoyée : 
+        index de x dans t si x dans t
+        None si x pas dans t
+    """
+    a = 0
+    b = len(t) - 1
+    while a <= b:
+        m = (a + b) // 2
+        if t[m] > x:
+            a = m + 1
+        elif t[m] < x:
+            b = m - 1
+        else:
+            return m
+    return None
+
+assert est_decroissant([k ** 2 for k in range(10)]) == False
+assert est_decroissant([]) == True
+t1 = list(range(10, -1, -1))
+assert est_decroissant(t1) == True
+assert recherche_dicho_decroissant(8, t1) == 2
+assert recherche_dicho_decroissant(10, t1) == 0
+assert recherche_dicho_decroissant(0, t1) == 10
+assert recherche_dicho_decroissant(4.5, t1) == None
+print("Test unitaires réussis pour l'automatisme 13 : recherche_dicho_decroissant et est_decroissant")

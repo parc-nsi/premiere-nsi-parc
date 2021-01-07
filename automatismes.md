@@ -266,3 +266,66 @@ assert index_premiere_occurence_dicho(10, [7, 8, 9, 10]) == 3
 assert index_premiere_occurence_dicho(10, [7, 10, 10,  10, 10]) == 1 
 assert index_premiere_occurence_dicho(10, []) == -1
 ~~~
+
+
+## Automatisme 13
+
+* Compléter la fonction Python ci-dessous pour que  la spécification et les postconditions soient satisfaites.
+
+~~~python
+def est_decroissant(t):
+    """
+    Paramètre : 
+        t un tableau de nombres 
+    Valeur renvoyée : 
+        booléen indiquant si t dans l'ordre décroissant
+    """
+    "à compléter"
+
+
+def recherche_dicho_decroissant(x, t):
+    """
+    Paramètre : 
+        t un tableau de nombres trié dans l'ordre décroissant
+        x un nombre 
+    Valeur renvoyée : 
+        index de x dans t si x dans t
+        None si x pas dans t
+    """
+    a = 0
+    b = len(t) - 1
+    while a <= b:
+        m = (a + b) // 2
+        "à compléter"
+    return -1
+
+assert est_decroissant([k ** 2 for k in range(10)]) == False
+assert est_decroissant([]) == False
+t1 = list(range(10, -1, -1))
+assert est_decroissant(t1) == True
+assert recherche_dicho_decroissant(8, t1) == 2
+assert recherche_dicho_decroissant(10, t1) == 0
+assert recherche_dicho_decroissant(0, t1) == 9
+assert recherche_dicho_decroissant(4.5, t1) == None
+~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
