@@ -33,7 +33,7 @@ Filliatre, N’Guyen.*
 
 # Préambule
 
-Les circuits d’une ordinateur manipulent uniquement des 0 ou des 1
+Les circuits d’un ordinateur manipulent uniquement des 0 ou des 1
 représentés en interne par des tensions hautes ou basses. Les premiers
 ordinateurs construits dans la période 1945-1950 sont basés sur une
 technologie de tube à vide ou tube électrique. En 1947, aux laboratoires

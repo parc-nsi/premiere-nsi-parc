@@ -297,16 +297,17 @@ def recherche_dicho_decroissant(x, t):
     while a <= b:
         m = (a + b) // 2
         "à compléter"
-    return -1
+    return None
 
 assert est_decroissant([k ** 2 for k in range(10)]) == False
-assert est_decroissant([]) == False
+assert est_decroissant([]) == True
 t1 = list(range(10, -1, -1))
 assert est_decroissant(t1) == True
 assert recherche_dicho_decroissant(8, t1) == 2
 assert recherche_dicho_decroissant(10, t1) == 0
-assert recherche_dicho_decroissant(0, t1) == 9
+assert recherche_dicho_decroissant(0, t1) == 10
 assert recherche_dicho_decroissant(4.5, t1) == None
+print("Test unitaires réussis pour l'automatisme 13 : recherche_dicho_decroissant et est_decroissant")
 ~~~
 
 
