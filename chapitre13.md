@@ -23,7 +23,8 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 * [Corrigés des exercices de programmation du cours (en HTML)](chapitre13/notebook/Circuits_logiques_2020.html)
 * [Corrigés des exercices de programmation du cours (en version notebook)](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre13/notebook/Circuits_logiques_2020.ipynb)
 
-
+* Un article très intéressant de Laurent Bloch sur l'industrie des semi-conducteurs : <https://laurentbloch.net/MySpip3/Industrie-des-semi-conducteurs>.
+* 
 _XKCD 730 Diagram_
 
 [![XKCD](https://imgs.xkcd.com/comics/circuit_diagram.png)](https://xkcd.com/730/)
