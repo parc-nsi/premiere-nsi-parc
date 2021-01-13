@@ -10,3 +10,4 @@ title:  Séances
 5. [Séance du 10/12/2020](seances/seance-2020-12-10.md)
 6. [Séance du 17/12/2020](seances/seance-2020-12-17.md)
 7. [Séance du 07/01/2021](seances/seance-2021-01-07.md)
+8. [Séance du 14/01/2021](seances/seance-2021-01-14.md)
