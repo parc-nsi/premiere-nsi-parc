@@ -28,7 +28,6 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 * [materiel.zip](chapitre15/TP/materiel.zip)
 
 
-
 <!--
 [Corrigé du TP version python](chapitre15/TP/corrige/TP_puplets_Corrigé.py)
 [Corrigé du TP version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre15/TP/corrige/TP_puplets_Corrigé.ipynb)
