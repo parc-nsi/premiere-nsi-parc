@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Première NSI, Lycée du Parc" />
+  <title>Cours sur les p-uplets</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../Pandoc/style_nsi.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Cours sur les p-uplets</h1>
+<p class="subtitle">Thème types construits</p>
+<p class="author">Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a></p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table des matières</h2>
+<ul>
+<li><a href="#crédits">Crédits</a></li>
+<li><a href="#p-uplets-en-python">p-uplets en Python</a></li>
+<li><a href="#qcm-de-type-e3c2">QCM de type E3C2</a></li>
+<li><a href="#synthèse">Synthèse</a></li>
+</ul>
+</nav>
+<!-- Définition des hyperliens  -->
+<h1 class="unnumbered" id="crédits" class="unnumbered">Crédits</h1>
+<p><em>Ce cours est inspiré du chapitre 14 du manuel NSI de la collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N’Guyen. J’ai également consulté le prepabac Première NSI de Guillaume Connan chez Hatier, le <a href="https://cache.media.eduscol.education.fr/file/NSI/77/7/RA_Lycee_G_NSI_repd_types_construits_1170777.pdf">document ressource eduscol sur les types construits</a> et le livre <strong>Fluent Python</strong>.</em></p>
+<!-- Définition des hyperliens  -->
+<h1 id="p-uplets-en-python">p-uplets en Python</h1>
+<div class="definition">
+<p>Un objet de type <strong>tuple</strong>, un <strong>p-uplet</strong>, est une suite ordonnée d’éléments qui peuvent être chacun de n’importe quel type. On parlera indifféremment de <strong>p-uplet</strong> ou de <strong>tuple</strong>.</p>
+<p>Un <strong>p-uplet</strong> est utilisé comme <strong>enregistrement</strong> de données hétérogènes qui sont liées entre elles, par exemple pour une ville : (nom, code postal, latitude, longitude).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> (<span class="st">&#39;lyon&#39;</span>, <span class="dv">69000</span>, <span class="fl">45.75</span>, <span class="fl">4.85</span>)</span></code></pre></div>
+</div>
+<div class="propriete">
+<p>En <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, un <strong>p-uplet</strong> est un objet de type <code>tuple</code>. Pour le définir, on entoure de parenthèses la séquence ordonnée d’éléments qu’il contient.</p>
+<p>Un objet de type <code>tuple</code> partage de nombreuses propriétés avec les objets de type <code>list</code> que nous avons utilisés pour implémenter les tableaux homogènes. En particulier, sa valeur est une <strong>référence</strong> vers la zone mémoire où est stockée la séquence d’objets (propriété d’aliasing).</p>
+<p><img src="images/aliasing.png" style="width:80.0%" alt="aliasing" /><br />
+</p>
+<p>Les objets de type <code>tuple</code> diffèrent de ceux de type <code>list</code> car ils ne peuvent être modifiés une fois qu’ils sont créés : on dit qu’ils sont <strong>immutables</strong>. Cette propriété, partagée avec les chaînes de caractères de type <code>str</code> est importante car elle facilite la gestion en mémoire des données qui ne doivent pas changer, la démonstration de propiétés des programmes et elle permet leur utilisation comme clef dans les tableaux associatifs ou <a href="https://fr.wikipedia.org/wiki/Table_de_hachage">tables de hachage</a>. Ces derniers sont implémentés par un autre type construit très important en <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, celui des <strong>dictionnaires</strong>.</p>
+<p>A part les propriétés de modification, les autres propriétés du type <code>list</code> sont disponibles pour le type <code>tuple</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> (<span class="st">&#39;lyon&#39;</span>, <span class="dv">69000</span>, <span class="fl">45.75</span>, <span class="fl">4.85</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">type</span>(a)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="op">&lt;</span><span class="kw">class</span> <span class="st">&#39;tuple&#39;</span><span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="op">&gt;&gt;&gt;</span> a[<span class="dv">0</span>]</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">&#39;lyon&#39;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">len</span>(a)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="dv">4</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="op">&gt;&gt;&gt;</span> a[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;St-Etienne&#39;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>Traceback (most recent call last):</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="pp">TypeError</span>: <span class="st">&#39;tuple&#39;</span> <span class="bu">object</span> does <span class="kw">not</span> support item assignment</span></code></pre></div>
+</div>
+<div class="methode">
+<p>Présentons les principales opérations sur les <strong>tuples</strong> en <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>. Le type <strong>tuple</strong> implémente toutes les méthodes du type <strong>list</strong> sauf celles d’ajout ou de modification d’élément. Pour obtenir la liste de ces méthodes, on peut évaluer <code>dir(tuple)</code>dans une console.</p>
+<ul>
+<li><strong>Construction :</strong>
+<ul>
+<li><em>Par extension</em>, on définit un <strong>tuple</strong> en séparant ses éléments par une virgule. En particulier, s’il ne contient qu’un seul élément, il faut le faire suivre d’une virgule. Les parenthèses ne sont pas obligatoires mais sont nécessaires si on imbrique des <strong>tuples</strong>. On peut aussi convertir en <strong>tuple</strong> un autre itérable (<code>list</code>, <code>str</code>, <code>range</code>) avec le constructeur <code>tuple</code> .</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;&gt;&gt;</span> notes <span class="op">=</span> (<span class="st">&#39;paul&#39;</span>,<span class="dv">10</span>, <span class="dv">12</span>,<span class="dv">18</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;&gt;&gt;</span> telephone <span class="op">=</span> <span class="st">&#39;paul&#39;</span>, <span class="st">&#39;0606060606&#39;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="op">&gt;&gt;&gt;</span> telephone</span>
+<span id="cb3-4"><a href="#cb3-4"></a>(<span class="st">&#39;paul&#39;</span>, <span class="st">&#39;0606060606&#39;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="op">&gt;&gt;&gt;</span> singleton <span class="op">=</span> <span class="st">&#39;Solo&#39;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="op">&gt;&gt;&gt;</span> singleton</span>
+<span id="cb3-7"><a href="#cb3-7"></a>(<span class="st">&#39;Solo&#39;</span>,)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="op">&gt;&gt;&gt;</span> s <span class="op">=</span> (<span class="st">&#39;solo&#39;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="op">&gt;&gt;&gt;</span> s</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">&#39;solo&#39;</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="op">&gt;&gt;&gt;</span> los_angeles <span class="op">=</span> (<span class="st">&#39;Lax aiport&#39;</span>, (<span class="fl">33.9425</span>, <span class="fl">-118.408056</span>))</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">tuple</span>([<span class="dv">1</span>,<span class="dv">2</span>])</span>
+<span id="cb3-13"><a href="#cb3-13"></a>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">tuple</span>(<span class="bu">range</span>(<span class="dv">3</span>))</span>
+<span id="cb3-15"><a href="#cb3-15"></a>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<ul>
+<li><em>Par compréhension</em>, la syntaxe est la même que pour les tableaux de type <code>list</code>, mais attention, il faut utiliser le constructeur <code>tuple</code>, sinon on construit un <strong>générateur</strong> (distributeur d’objets comme <code>range</code>). En général on construit plutôt une structure imbriquée avec un tableau de <strong>tuples</strong>.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;&gt;&gt;</span> m <span class="op">=</span> (k <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>))</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="op">&gt;&gt;&gt;</span> m</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="op">&lt;</span>generator <span class="bu">object</span> <span class="op">&lt;</span>genexpr<span class="op">&gt;</span> at <span class="bn">0x7f26afa0ef90</span><span class="op">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">tuple</span>(m)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="op">&gt;&gt;&gt;</span> famille <span class="op">=</span> [<span class="st">&#39;trefle&#39;</span>, <span class="st">&#39;pique&#39;</span>, <span class="st">&#39;carreau&#39;</span>, <span class="st">&#39;coeur&#39;</span>]</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="op">&gt;&gt;&gt;</span> hauteur <span class="op">=</span> [<span class="st">&#39;V&#39;</span>, <span class="st">&#39;R&#39;</span>, <span class="st">&#39;D&#39;</span>]</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="op">&gt;&gt;&gt;</span> valets <span class="op">=</span> [(h,f) <span class="cf">for</span> f <span class="kw">in</span> famille <span class="cf">for</span> h <span class="kw">in</span> hauteur <span class="cf">if</span> h <span class="op">==</span> <span class="st">&#39;V&#39;</span>]</span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="op">&gt;&gt;&gt;</span> valets</span>
+<span id="cb4-10"><a href="#cb4-10"></a>[(<span class="st">&#39;V&#39;</span>, <span class="st">&#39;trefle&#39;</span>), (<span class="st">&#39;V&#39;</span>, <span class="st">&#39;pique&#39;</span>), (<span class="st">&#39;V&#39;</span>, <span class="st">&#39;carreau&#39;</span>), (<span class="st">&#39;V&#39;</span>, <span class="st">&#39;coeur&#39;</span>)]</span></code></pre></div></li>
+<li><strong>Accès en lecture :</strong> Seul l’accès en lecture est permis, on utilise les index (de 0 à <code>len(tuple)-1</code>) comme pour les objets de type <code>list</code>. Une propriété très utilisée est le <em>tuple unpacking</em> qui permet de déballer les éléments d’un <strong>tuple</strong> à droite d’un symbole d’affectation <code>=</code> pour les assigner à un <strong>tuple</strong> d’identifiants à gauche du <code>=</code>. On peut ainsi échanger des variables en une seule instruction. Cela fonctionne aussi sur les autres objets itérables comme ceux de type <code>list</code>.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;&gt;&gt;</span> paul <span class="op">=</span> (<span class="st">&#39;identifiant&#39;</span>, <span class="st">&#39;01011970&#39;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">len</span>(paul)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="dv">2</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">&gt;&gt;&gt;</span> paul[<span class="dv">1</span>] <span class="op">=</span> <span class="st">&#39;31122000&#39;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>Traceback (most recent call last):</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="pp">TypeError</span>: <span class="st">&#39;tuple&#39;</span> <span class="bu">object</span> does <span class="kw">not</span> support item assignment</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="op">&gt;&gt;&gt;</span> login, password <span class="op">=</span> paul</span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="op">&gt;&gt;&gt;</span> login</span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">&#39;identifiant&#39;</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="op">&gt;&gt;&gt;</span> password</span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">&#39;01011970&#39;</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="op">&gt;&gt;&gt;</span> login, password <span class="op">=</span> password, login  <span class="co">#échange de variables par tuple unpacking</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="op">&gt;&gt;&gt;</span> login, password</span>
+<span id="cb5-15"><a href="#cb5-15"></a>(<span class="st">&#39;01011970&#39;</span>, <span class="st">&#39;identifiant&#39;</span>)</span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="op">&gt;&gt;&gt;</span> paul</span>
+<span id="cb5-17"><a href="#cb5-17"></a>(<span class="st">&#39;identifiant&#39;</span>, <span class="st">&#39;01011970&#39;</span>)</span></code></pre></div>
+<ul>
+<li><strong>Parcours :</strong> Comme pour les objets de type <code>list</code> et les itérables en général, on peut parcourir un <strong>tuple</strong> par index ou par éléments. Pour un tableau de <strong>tuple</strong>, on peut déballer directement dans la boucle <code>for</code> avec le <em>tuple unpacking</em>.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">&gt;&gt;&gt;</span> notes</span>
+<span id="cb6-2"><a href="#cb6-2"></a>(<span class="st">&#39;paul&#39;</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">18</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(notes)):</span>
+<span id="cb6-4"><a href="#cb6-4"></a>...     <span class="bu">print</span>(<span class="st">&#39;Index : &#39;</span>, k, <span class="st">&#39;Valeur : &#39;</span>, notes[k])</span>
+<span id="cb6-5"><a href="#cb6-5"></a>... </span>
+<span id="cb6-6"><a href="#cb6-6"></a>Index :  <span class="dv">0</span> Valeur :  paul</span>
+<span id="cb6-7"><a href="#cb6-7"></a>Index :  <span class="dv">1</span> Valeur :  <span class="dv">10</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>Index :  <span class="dv">2</span> Valeur :  <span class="dv">12</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>Index :  <span class="dv">3</span> Valeur :  <span class="dv">18</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="op">&gt;&gt;&gt;</span> <span class="cf">for</span> element <span class="kw">in</span> notes:</span>
+<span id="cb6-11"><a href="#cb6-11"></a>...     <span class="bu">print</span>(element)</span>
+<span id="cb6-12"><a href="#cb6-12"></a>... </span>
+<span id="cb6-13"><a href="#cb6-13"></a>paul</span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="dv">10</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="dv">12</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="dv">18</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="op">&gt;&gt;&gt;</span> passeports <span class="op">=</span> [(<span class="st">&#39;USA&#39;</span>, <span class="st">&#39;31195855&#39;</span>), (<span class="st">&#39;BRA&#39;</span>, <span class="st">&#39;CE342567&#39;</span>), (<span class="st">&#39;FRA&#39;</span>, <span class="st">&#39;XDA502856&#39;</span>)]</span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="op">&gt;&gt;&gt;</span> <span class="cf">for</span> pays, numero <span class="kw">in</span> passeports:</span>
+<span id="cb6-19"><a href="#cb6-19"></a>...     <span class="bu">print</span>(pays, numero)</span>
+<span id="cb6-20"><a href="#cb6-20"></a>... </span>
+<span id="cb6-21"><a href="#cb6-21"></a>USA <span class="dv">31195855</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a>BRA CE342567</span>
+<span id="cb6-23"><a href="#cb6-23"></a>FRA XDA502856</span></code></pre></div>
+<ul>
+<li><strong>Concaténation :</strong> On peut concaténer deux <strong>tuples</strong> et on créé alors un nouveau <strong>tuple</strong>. On peut l’observer en affichant l’identité du <strong>tuple</strong> avec la fonction <code>id</code> : l’entier affiché représente l’identifiant mémoire de l’objet. On ne peut pas ajouter des éléments à un <strong>tuple</strong> comme pour un tableau avec la méthode <code>append</code>. On peut factoriser l’opération de concaténation avec l’opérateur <code>*</code>.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> (<span class="st">&#39;Limoges&#39;</span>,)    <span class="co">#attention tuple avec u nseul élément</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">id</span>(a)               <span class="co">#identifiant de a </span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="dv">139804156798144</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="op">&gt;&gt;&gt;</span> b <span class="op">=</span> (<span class="fl">45.85</span>, <span class="fl">1.25</span>)   <span class="co"># latitude et longitude</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="op">&gt;&gt;&gt;</span> a</span>
+<span id="cb7-7"><a href="#cb7-7"></a>(<span class="st">&#39;Limoges&#39;</span>, <span class="fl">45.85</span>, <span class="fl">1.25</span>)</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">id</span>(a)  <span class="co">#l&#39;identifiant de a est changé, un nouveau tuple a été créé</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="dv">139804132207488</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="op">&gt;&gt;&gt;</span> population <span class="op">=</span> <span class="dv">132175</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="op">&gt;&gt;&gt;</span> a.append(population)</span>
+<span id="cb7-12"><a href="#cb7-12"></a>Traceback (most recent call last):</span>
+<span id="cb7-13"><a href="#cb7-13"></a>  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="pp">AttributeError</span>: <span class="st">&#39;tuple&#39;</span> <span class="bu">object</span> has no attribute <span class="st">&#39;append&#39;</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="op">&gt;&gt;&gt;</span> d <span class="op">=</span> (<span class="st">&#39;paris&#39;</span>,)</span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">3</span> <span class="op">*</span> d</span>
+<span id="cb7-17"><a href="#cb7-17"></a>(<span class="st">&#39;paris&#39;</span>, <span class="st">&#39;paris&#39;</span>, <span class="st">&#39;paris&#39;</span>)</span></code></pre></div>
+<ul>
+<li><strong>Test d’appartenance, comparaison :</strong> On peut tester l’appartenance d’un élément à un <strong>tuple</strong> avec l’opérateur <code>in</code> et comparer deux <strong>tuples</strong> avec <code>==</code>, <code>&lt;</code>, <code>&gt;</code>. La comparaison de deux <strong>tuples</strong> s’effectue de gauche à droite selon <em>l’ordre lexicographique</em>.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">&gt;&gt;&gt;</span> b <span class="op">=</span> (<span class="st">&#39;Lyon&#39;</span>, <span class="dv">516092</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> (<span class="st">&#39;Lyon&#39;</span>, <span class="dv">516092</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">id</span>(a), <span class="bu">id</span>(b)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>(<span class="dv">139804132208448</span>, <span class="dv">139804132156672</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="op">&gt;&gt;&gt;</span> a <span class="kw">is</span> b</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="va">False</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">==</span> b</span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="va">True</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;Lyon&#39;</span> <span class="kw">in</span> a</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="va">True</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;St-Etienne&#39;</span> <span class="kw">not</span> <span class="kw">in</span> a</span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="va">True</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="op">&gt;&gt;&gt;</span> (<span class="st">&#39;adama&#39;</span>, <span class="dv">10</span>, <span class="dv">6</span>) <span class="op">&lt;</span> (<span class="st">&#39;adam&#39;</span>, <span class="dv">10</span>)</span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="va">False</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="op">&gt;&gt;&gt;</span> (<span class="st">&#39;adama&#39;</span>, <span class="dv">10</span>, <span class="dv">6</span>) <span class="op">&gt;</span> (<span class="st">&#39;adama&#39;</span>, <span class="dv">10</span>)</span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="va">True</span></span></code></pre></div>
+<ul>
+<li><strong>Recherche, dénombrement :</strong> On peut rechercher l’index de la première occurence d’un élément dans un <strong>tuple</strong> avec la méthode <code>index</code>, ou compter le nombre d’occurences d’une valeur avec <code>count</code>.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> random <span class="im">import</span> randint</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="op">&gt;&gt;&gt;</span> e <span class="op">=</span> <span class="bu">tuple</span>([randint(<span class="dv">1</span>,<span class="dv">6</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)])</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="op">&gt;&gt;&gt;</span> e</span>
+<span id="cb9-4"><a href="#cb9-4"></a>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="op">&gt;&gt;&gt;</span> e.index(<span class="dv">5</span>)</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="dv">4</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="op">&gt;&gt;&gt;</span> e.index(<span class="dv">1</span>)</span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="dv">2</span></span></code></pre></div>
+</div>
+<div class="exercice">
+<p>Dans le plan muni d’un repère orthonormé, chaque point est représenté par un <strong>tuple</strong> de coordonnées :</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&gt;&gt;&gt;</span> M <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="op">&gt;&gt;&gt;</span> N <span class="op">=</span> (<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="op">&gt;&gt;&gt;</span> P <span class="op">=</span> (<span class="dv">9</span>,<span class="dv">8</span>)</span></code></pre></div>
+<ol type="1">
+<li>Compléter la fonction Python ci-dessous pour que <code>milieu(A, B)</code> retourne le <strong>tuple</strong> de coordonnées du milieu du segment reliant les points <code>A</code> et <code>B</code> passés en paramètres.</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> milieu(A, B):</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  xA, yA <span class="op">=</span> A</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  xB, yB <span class="op">=</span> B</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="co"># à compléter</span></span></code></pre></div>
+<ol start="2" type="1">
+<li>Écrire une fonction <code>longueurs(A, B, C)</code> qui prend en paramètres trois points <code>A, B, C</code> et retourne le triplet de longueurs des côtés du triangle <code>ABC</code>. On rappelle la formule de la distance entre deux points <span class="math inline">\(A(x_{A}, y_{A})\)</span>, <span class="math inline">\(B(x_{B}, y_{B})\)</span> : <span class="math inline">\(AB=\sqrt{(x_{B}-x_{A})^{2}+(y_{B}-y_{A})^{2}}\)</span>. On importera la fonction racine carrée depuis le module <code>math</code> avec <code>from math import sqrt</code> et on pourra écrire aussi une fonction de signature <code>distance(A, B)</code> qui renvoie la distance entre les points A et B.</li>
+</ol>
+</div>
+<h1 id="qcm-de-type-e3c2">QCM de type E3C2</h1>
+<div class="exercice">
+<ol type="1">
+<li><strong>Question 1 :</strong> On définit :</li>
+</ol>
+<p>tab = [ ('Léa', 14), ('Guillaume', 12), ('Anthony', 16), ('Anne', 15) ]</p>
+<p>Quelle est la valeur de l'expression [x[0] for x in tab if x[1]&gt;=15] ?</p>
+<p><strong>Réponses</strong></p>
+<p>A [('Anthony', 16), ('Anne', 15)]</p>
+<p>B ['Anthony', 'Anne']</p>
+<p>C [16, 15]</p>
+<p>D TypeError : 'tuple' object is not callable</p>
+<ol start="2" type="1">
+<li><strong>Question 2 :</strong> Une table d’un fichier client contient le nom, le prénom et l’identifiant des clients sous la forme :</li>
+</ol>
+<p>clients = [ ("Dupont", "Paul", 1),("Durand", "Jacques", 2),("Dutronc", "Jean", 3),...]</p>
+<p>En supposant que plusieurs clients se prénomment Jean, que vaut la liste x après l’exécution du code suivant ?</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="op">=</span> []</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(clients)):</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="cf">if</span> clients[i][j] <span class="op">==</span> <span class="st">&quot;Jean&quot;</span>:</span>
+<span id="cb12-4"><a href="#cb12-4"></a>  x <span class="op">=</span> clients[i]</span></code></pre></div>
+<p><strong><em>Réponses</em></strong></p>
+<p>A Une liste de tuples des noms, prénoms et numéros de tous les clients prénommés Jean</p>
+<p>B Une liste des numéros de tous les clients prénommés Jean</p>
+<p>C Un tuple avec le nom, prénom et numéro du premier client prénommé Jean</p>
+<p>D Un tuple avec le nom, prénom et numéro du dernier client prénommé Jean</p>
+<ol start="3" type="1">
+<li><strong>Question 3 :</strong> Quel est le type de l’expression <code>f(4)</code> si la fonction <code>f</code>est définie par :</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="cf">return</span> (x, x<span class="op">**</span><span class="dv">2</span>)</span></code></pre></div>
+<p><strong>Réponses</strong></p>
+<p>A un entier</p>
+<p>B un flottant</p>
+<p>C une liste</p>
+<p>D un tuple</p>
+</div>
+<h1 id="synthèse">Synthèse</h1>
+<div class="memo">
+<ul>
+<li>Un <strong>p-uplet</strong> ou <strong>tuple</strong> est une séquence ordonnée d’éléments qui peuvent être de type hétérogènes.</li>
+<li>La séquence d’informations rassemblée dans un <strong>tuple</strong> est un <strong>enregistrement</strong>.</li>
+<li>En <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, les <strong>tuples</strong> sont de type <code>tuple</code> et sont <strong>immutables</strong>. Ils partagent les mêmes opérations que les tableaux de type <code>list</code> sauf les opérations de modification et d’ajout.</li>
+</ul>
+</div>
+</body>
+</html>
