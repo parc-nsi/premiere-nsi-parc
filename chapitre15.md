@@ -19,7 +19,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 * [Cours version pdf](chapitre15/Cours/puplets-cours-.pdf)
 * [Cours version markdown](chapitre15/Cours/puplets-cours-.md)
 * [Corrigé de l'exercice 2 du cours](chapitre15/Cours/corrige/corrige_cours_tuple.py)
-* Référence : <https://www.bigocheatsheet.com/>
+
 
 
 ## TP
