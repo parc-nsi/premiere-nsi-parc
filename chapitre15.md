@@ -34,4 +34,4 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 -->
 
 
-![XKCD 353 Python](https://imgs.xkcd.com/comics/python.p)
+![XKCD 353 Python](https://imgs.xkcd.com/comics/python.png)
