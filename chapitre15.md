@@ -35,4 +35,4 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 _XKCD 353 Python_
 
-[![XKCD 353 Python](https://imgs.xkcd.com/comics/python.png)](https://imgs.xkcd.com/comics/python.png)
+[![XKCD 353 Python](https://imgs.xkcd.com/comics/python.png)](https://www.explainxkcd.com/wiki/index.php/353:_Python)
