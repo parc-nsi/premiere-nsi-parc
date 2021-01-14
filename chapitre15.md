@@ -26,12 +26,9 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 * [TP version pdf](chapitre15/TP/NSI-Puplets-TP-2020V1.pdf)
 * [materiel.zip](chapitre15/TP/materiel.zip)
+* [Corrigé du TP version python](chapitre15/TP/corrige/TP_puplets_Corrigé.py)
+* [Corrigé du TP version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre15/TP/corrige/TP_puplets_Corrigé.ipynb)
 
-
-<!--
-[Corrigé du TP version python](chapitre15/TP/corrige/TP_puplets_Corrigé.py)
-[Corrigé du TP version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre15/TP/corrige/TP_puplets_Corrigé.ipynb)
--->
 
 _XKCD 353 Python_
 
