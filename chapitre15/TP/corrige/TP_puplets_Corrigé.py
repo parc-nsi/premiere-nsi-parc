@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Prétraitement du fichier airports.csv
+# # Prétraitement du fichier airports.csv
 
-# In[1]:
+#%%
 
 
 import csv
@@ -21,10 +21,10 @@ f.close()
 csv_airports.close()
 
 
-# ## Exercice 1
+# ## Exercice 1
 
-# In[1]:
 
+#%%
 
 # ouverture du fichier
 f = open('communes69.csv')
@@ -35,7 +35,7 @@ for ligne in f:
 f.close()
 
 
-# In[2]:
+#%%
 
 
 def fichier_vers_tab_tuple(fichier, separateur):
@@ -65,31 +65,20 @@ tab_tuple_communes = fichier_vers_tab_tuple('communes69.csv', ',')
 assert (len(tab_tuple_communes), tab_tuple_communes[:2]) == (296, [('Affoux', '340', '3', '343'), ('Aigueperse', '246', '1', '247')])
 
 
-# In[4]:
+#%%
 
 
 tab_tuple_airports = fichier_vers_tab_tuple('airports-reduit.csv', ';')
 assert (len(tab_tuple_airports), tab_tuple_airports[:2]) == (57302,
- [('Total Rf Heliport', '40.07080078125', '-74.93360137939453', '11', 'US'),
- ('Aero B Ranch Airport', '38.704022', '-101.473911', '3435', 'US')])
+       [('Total Rf Heliport', '40.07080078125', '-74.93360137939453', '11', 'US'),
+  ('Aero B Ranch Airport', '38.704022', '-101.473911', '3435', 'US')])
 
 
-# In[ ]:
-
-
-
-
-
-# ## Exercice 2
-
-# In[5]:
-
+#%%Exercice 2
 
 tab_tuple_photos = fichier_vers_tab_tuple('photos.txt', ' ')
 tab_tuple_photos[0:2]
 
-
-# In[6]:
 
 
 import re
@@ -117,53 +106,13 @@ def fichier_vers_tab_tuple1(fichier, separateur, regex = False):
     return tab
 
 
-# In[7]:
-
-
 tab_tuple_communes = fichier_vers_tab_tuple1('communes69.csv', ',')
 tab_tuple_photos = fichier_vers_tab_tuple1('photos.txt', '\s+',regex=True)
 tab_tuple_airports = fichier_vers_tab_tuple1('airports-reduit.csv', ';')
 
 
-# In[8]:
+#%% Exercice 3
 
-
-commune1, commune2 = tab_tuple_communes[:2]
-
-
-# In[9]:
-
-
-commune1, commune2
-
-
-# In[15]:
-
-
-nom, pop_int, pop_ext, pop_tot = commune1
-
-
-# In[16]:
-
-
-pop_int, pop_ext
-
-
-# In[17]:
-
-
-pop_int + pop_ext
-
-
-# In[18]:
-
-
-int(pop_int) + int(pop_ext)
-
-
-# ## Exercice 3
-
-# In[10]:
 
 
 def population_minimale(tab):
@@ -180,19 +129,18 @@ def population_minimale(tab):
         pop_tot = int(pop_tot)
         if pop_tot < pop_min:
             tab_villes_min = [ville]
-            pop_max = pop_tot
+            pop_min = pop_tot
         elif pop_tot == pop_min:
             tab_villes_min.append(ville)
     return (pop_min, tab_villes_min)        
 
 
-# In[11]:
 
 
-assert(population_minimale(tab_tuple_communes)) == (343, ['Vernay'])
+assert(population_minimale(tab_tuple_communes)) == (63, ['Saint-Mamert'])
 
+#%%
 
-# In[12]:
 
 
 def population_cumul(tab):
@@ -218,7 +166,7 @@ def population_cumul(tab):
 assert population_cumul(tab_tuple_communes) == (1762866, 32797, 1795663)
 
 
-# In[14]:
+#%%
 
 
 def population_moyenne(tab):
@@ -238,7 +186,7 @@ def population_moyenne(tab):
 assert population_moyenne(tab_tuple_communes) == (5955.628378378378, 110.80067567567568, 6066.429054054054)
 
 
-# In[18]:
+#%%
 
 
 def population_maximale(tab):
@@ -267,8 +215,7 @@ def population_maximale(tab):
 assert(population_maximale(tab_tuple_communes)) == (147940, ['Villeurbanne'])
 
 
-# In[22]:
-
+#%%
 
 def population_lyon(tab):
     """Prend en paramètres :
@@ -292,7 +239,7 @@ def population_lyon(tab):
 assert(population_lyon(tab_tuple_communes)) == 505094
 
 
-# ## Exercice 4
+#%% Exercice 4
 
 # In[24]:
 
