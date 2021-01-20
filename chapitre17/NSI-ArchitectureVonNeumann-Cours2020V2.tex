@@ -1705,7 +1705,7 @@ Visionner le cours d'architecture disponible sur la plateforme Lumni  entre les 
 
 
 
-
+ 
 \begin{center}
 \includegraphics[scale=0.3]{images/miniaturisation.png}
 \end{center}
@@ -2148,11 +2148,11 @@ HALT
 
 \item A quoi correspond le mot de $32$ bits contenu en mémoire à l'adresse $0$ : \texttt{11100011 10100000 00000000 00001010} ?
 
-\item Repérer les  mots mémoires de $32$ bits stockant le programme et le mot mémoire stockant la donnée $12$.
+\item  Repérer les  mots mémoires de $32$ bits stockant le programme et le mot mémoire stockant la donnée $12$.
 
-\item Exécuter le programme pas à pas (\texttt{step})  en vitesse lente (\texttt{options} puis \texttt{def slow}).
+\item Sélectionner l'affichage \texttt{Unsigned}. Exécuter le programme pas à pas (\texttt{step})  en vitesse lente (\texttt{options} puis \texttt{def slow}).
 
-Décrire l'enchaînement d'opérations élémentaires lors de l'exécution des instructions de transfert de mémoire \texttt{MOV R0,\#10} puis \texttt{LDR R1,10}. Observer l'évolution des registres PC (Compteur de programme), CIR (Registre d'instructions), MAR (adresse d'écriture/lecture en mémoire) et MBR (donnée à lire/écrire). Pour quelle instruction, l'\textbf{ALU} est-elle sollicitée ?
+Décrire l'enchaînement d'opérations élémentaires lors de l'exécution des instructions de transfert de mémoire \texttt{MOV R0,\#10} puis \texttt{LDR R1,10}. Observer l'évolution des registres PC (Compteur de programme), CIR (Registre d'instructions), MAR (adresse d'écriture/lecture en mémoire) et MBR (donnée à lire/écrire). Pour quelle(s) instruction(s), l'\textbf{ALU} est-elle sollicitée ?
      
 
 
@@ -2241,7 +2241,7 @@ a = a - b   #changement de valeur à l'adresse 20
 Dans le programme assembleur ci-dessous, on introduit de nouveaux symboles :
 
 \begin{itemize}[label=\ding{43}]
-	\item \texttt{INP R0,2} est une \textbf{instruction d'entrée}, qui lit un entier saisi dans le champ Input et le charge dans le registre \texttt{R1}.
+	\item \texttt{INP R1,2} est une \textbf{instruction d'entrée}, qui lit un entier  saisi dans le champ Input et le charge dans le registre \texttt{R1}.
 	\item \texttt{OUT R1,4} est une \textbf{instruction de sortie}, qui affiche le contenu du registre \texttt{R1} dans le champ Output.
 	\item \texttt{else:} et \texttt{fin:} sont des \textbf{étiquettes} qui jouent le rôle de repères / points de chute,  dans les instructions de branchement / saut. Une étiquette est un mot suivi du symbole colonne \texttt{:}
 	\item \texttt{CMP R0,\#0} est une instruction de comparaison qui compare le contenu du registre \texttt{R0} au nombre $0$.   Elle est suivie d'une instruction de \textbf{branchement (ou saut) conditionnel}   \texttt{BLT else} : le programme se poursuit soit à partir de l'étiquette \texttt{else} si \texttt{R0} est plus petit que $0$, sinon  avec l'instruction de la ligne suivante (comportement par défaut).
@@ -2345,7 +2345,7 @@ print()
 \begin{enumerate}
 	\item Modifier le programme \texttt{ascii} pour qu'il affiche tous les caractères dont le code ascii est compris entre $126$ et $32$ dans l'ordre décroissant du code.
 	
-	\item Modifier le programme de l'exercice 4, pour qu'il stocke en mémoire à partir de l'adresse $20$, les $30$ premiers termes de cette suite célèbre.
+	\item Modifier le programme de l'exercice 7, pour qu'il stocke en mémoire à partir de l'adresse $20$, les $30$ premiers termes de cette suite célèbre.
 	
 	\item Traduire en assembleur le programme \texttt{Python} ci-dessous. On peut utiliser uniquement des registres.
 	
