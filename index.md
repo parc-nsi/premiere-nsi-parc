@@ -40,3 +40,5 @@ layout: parc
 * [Chapitre 13 : circuits logiques et fonctions booléennes](chapitre13.md)
 * [Chapitre 14 : complexité](chapitre14.md)
 * [Chapitre 15 : p-uplets](chapitre15.md)
+* [Chapitre 16 : flottants](chapitre16.md)
+* [Chapitre 17 : architecture de von neumann](chapitre17.md)
