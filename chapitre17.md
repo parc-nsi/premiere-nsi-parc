@@ -18,4 +18,14 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 * [Cours version pdf](chapitre17/NSI-ArchitectureVonNeumann-Cours2020V2.pdf)
 * [Emulateur Aqua](http://www.peterhigginson.co.uk/AQA/)
+* Ressources :
+  * [Archive avec les programmes pour l'exercice 5](chapitre17/ressources/exemple5.zip)
+  * [Archive avec les corrigés des programmes d'assembleur](chapitre17/ressources/programmes_assembleur.zip)
 
+## Video
+
+
+* Le cours d'architecture en video sur la plateforme Lumni est très bien :  
+
+    * La video : <https://www.lumni.fr/video/une-histoire-de-l-architecture-des-ordinateurs>
+    * Le support de cours : <https://medias2ftv.akamaized.net/videosread/education/PDF/NSI-archi.pdf>
