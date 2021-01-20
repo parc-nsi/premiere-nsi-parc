@@ -1,0 +1,14 @@
+      MOV R2,#32
+LOOP1:
+      MOV R3, #10
+LOOP2:
+      OUT R2,7
+      SUB R3,R3, #1
+      CMP R3, #0
+      BGT LOOP2
+      MOV R1, #10
+      OUT R1, 7
+      ADD R2, R2, #1
+      CMP R2, #127
+      BLT LOOP1
+      HALT

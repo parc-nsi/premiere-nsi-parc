@@ -1,0 +1,11 @@
+      //initialisation
+      MOV R0, #0
+      MOV R1, #1
+LOOP:
+      ADD R0, R1, R0
+      ADD R1, R1, #1
+      CMP R1, #101
+      BLT LOOP
+      //fin
+      OUT R0, 4
+      HALT

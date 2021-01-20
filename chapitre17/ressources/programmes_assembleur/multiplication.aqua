@@ -1,0 +1,10 @@
+      INP R0, 2
+      INP R1, 2
+      MOV R2, #0
+LOOP:
+      ADD R2, R2, R0
+      SUB R1, R1, #1
+      CMP R1, #0
+      BGT LOOP
+      OUT R2, 4
+      HALT

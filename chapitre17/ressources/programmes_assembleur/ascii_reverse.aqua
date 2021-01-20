@@ -1,0 +1,10 @@
+      MOV R2,#126
+LOOP:
+      OUT R2,7
+      SUB R2,R2,#1
+      CMP R2,#31
+      BGT LOOP
+      MOV R2,#10
+      OUT R2,7
+      HALT
+      // Output all the ASCII print characters

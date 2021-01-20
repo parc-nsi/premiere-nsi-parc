@@ -1,0 +1,207 @@
+<html>
+<head> 
+  <link rel="stylesheet" href="../../style.css" type="text/css">
+  <title>TP1 - Assembleur avec AQA</title>
+
+<style>
+ol > li { padding-bottom:0.3cm; }
+</style>
+ 
+</head>
+<body>
+
+<h1>Programmes assembleur avec AQA</h1>
+
+<p>L'assembleur est le langage de programmation le plus bas niveau que
+sait directement executer un processeur. Le but d'un compilateur, comme
+GCC pour le langage C par exemple, est de traduire du code de
+haut-niveau en du code assembleur exécutable par un processeur.</p>
+
+<p>Un langage d'assembleur est spécifique à chaque architecture de
+processeur mais ils ont tous des caractéristiques assez similaires :</p>
+<ul>
+<li>On ne peut pas définir de variables. Les données manipulées sont
+soient stockées à un endroit précis en mémoire soit dans un
+registre. Il y a un nombre fixe et limité de registres
+disponibles. Dit autrement, on aura un nombre fixe de variables pour
+écrire un programme.</li>
+<li>Il n'existe pas de structure de contrôle conditionnelle comme le
+"if ... then ... else" ou les boucles "while", "for", ...</li>
+<li>Les instructions sont exécutées en séquence et on peut marquer des
+points dans une séquence. On pourra grâce à cela rompre la séquence en
+faisant des sauts à une branche marquée par un point : soit un saut
+direct, soit un saut en fonction d'une comparaison entre deux
+valeurs.</li>
+<li>Dans les processeurs de type RISC, comme pour l'assembleur que
+l'on utilisera ici, les calculs ne se ne font que via des
+registres. <code>ADD R3, R2, R1</code> mettra dans le registre R3 le
+résultat de l'addition du contenu du registre R1 et du registre R2. Si
+on veut additionner deux valeurs en mémoire, il faudra d'abord faire
+une lecture en mémoire qui placera le contenu lu dans un registre (une
+opération d'écriture fait l'inverse).</li>
+</ul>
+
+<p>Nous utiliserons dans ce TP le simulateur AQA
+: <a href="http://www.peterhigginson.co.uk/AQA/">http://www.peterhigginson.co.uk/AQA/</a>
+dont <a href="http://peterhigginson.co.uk/AQA/info.html">la
+documentation est ici</a>.
+
+<h2>Jeu d'instruction</h2>
+
+<p>Le jeu d'instruction est précisé dans la documentation et se limite
+globalement à des :
+<ul>
+<li>Opérations de calculs (addition, soustraction) ou
+décalage/comparaisons de valeurs.</li>
+<li>Opérations de lecture (<code>LDR</code>) en mémoire vers un
+registre et d'écriture (<code>STR</code>) d'un registre vers la
+mémoire. Pour préciser une adresse, on utilisera les crochets. Par
+exemple <code>LDR R2, [R5]</code> place dans le registre R2 la valeur
+à l'adresse précisée dans le registre R5.</li>
+<li>Opérations de saut direct ou en fonction de la dernière
+comparaison (<code>B</code>, <code>BEQ</code>...).</li>
+<li>Une opération de fin de programme : <code>HALT</code></li>
+<li>Des opérations d'entrée-sortie: <code>INP R1, 2</code> pour lire
+un entier signé (type 2) dans le registre R1 ou <code>OUT R1, 4</code>
+pour en afficher le contenu.</li>
+</li>
+<li>On peut utiliser des constantes numériques avec # pour faire un
+calcul ou faire une affectation avec l'opérateur <code>MOV</code>, par
+exemple <code>MOV R2, #5</code></li>
+</ul>
+
+<h2>Exemples</h2>
+
+<p>Si l'on voulait exécuter le programme suivant écrit en pseudo-code :</p>
+
+<p class="code">
+lire la valeur de A<br />
+lire la valeur de B<br />
+si A > B alors afficher A<br />
+sinon afficher B<br />
+fin<br />
+</p>
+
+<p>On utilisera les registres R0 et R1 pour lire A et B et le code assembleur sera le suivant :<p>
+
+<p class="code">
+INP R0,2<br />
+INP R1,2<br />
+// on compare R0 et R1<br />
+CMP R0,R1<br />
+// si R0 >  R1 on fait<br > 
+// le saut à plugrand<br />
+BGT plusgrand<br />
+// saut non fait<br />
+// donc R0 <= R1<br />
+// on affiche R1<br />
+OUT R1,4<br />
+// on saute à la fin<br />
+B fin<br />
+plusgrand:<br />
+// branche R0 > R1<br />
+// on affiche R0<br />
+OUT R0,4<br />
+fin:<br />
+// fin du programme</br />
+HALT<br />
+</p>
+
+<p>La partie droite de la fenêtre est le contenu de la mémoire qui
+contient à la fois le code des instructions et des données placées en
+mémoire. Par défaut, les instructions sont codées à partir de
+l'adresse 0. Pour placer des données traitées par un programme, le
+plus simple est de les placer au début de la mémoire avec
+l'instruction <code>DAT</code>. Mais pour éviter que ce contennu soit
+confondu avec des instructions, il faudra dire au programme que le
+code commence après la séquence de données.</p>
+
+<p>Le code ci-dessous place une séquence d'entiers (exprimés en
+héxadécimal) au début de la mémoire (à partir de l'adresse 1). Cette
+séquence se termine par la valeur particulière 0. Le programme ensuite
+fait la somme des entiers de la séquence :</p>
+
+<p class="code">
+// donnees<br />
+// debut = @1<br /> 
+B code<br />
+dat 0x12<br />
+dat 0x20<br />
+dat 0x3<br />
+dat 0x11<br />
+dat 0x0<br />
+code:<br />
+// R0: adresse à lire<br />
+// R1: valeur courante<br />
+// R2: sommme<br />
+MOV R0,#1<br />
+MOV R2,#0<br />
+boucle:<br />
+LDR R1,[R0]<br />
+ADD R2, R2, R1<br />
+ADD R0, R0, #1<br />
+CMP R1, #0<br />
+BNE boucle<br />
+OUT R2,4<br />
+HALT<br />
+</p>
+
+<h2>Détail de l'interface</h2>
+
+<p>L'interface représente le chemin de données d'un pseudo-processeur
+et simule de manière simplifiée l'exécution d'un programme assembleur
+:</p>
+<ul>
+<li>La partie gauche permet d'écrire le code assembleur. On le valide
+par "submit" puis le lance par "assemble" et "run". On peut accélérer
+la vitesse d'exécution du programme avec le bouton "speed".</li>
+<li>La partie droite est la mémoire qui contient le code compilé du
+programme (à partir de l'adresse 0) et aussi les données du
+programme.</li>
+<li>Au milieu en haut, il y a les registres avec leur contenu. Les
+registres R0 à R12 sont les registres généraux qui sont utilisés par
+les programmes. Le registre PC (Program Counter) est un registre
+particulier qui contient l'adresse de la prochaine instruction à aller
+chercher en mémoire avant de l'exécuter. Le PC est automatiquement
+incrémenté de 1 pour lire la prochaine instruction de la séquence ou
+modifié par un branchement à un autre endroit du programme.</li>
+<li>MAR et MBR sont des registres qui servent à transférer des données
+entre la mémoire et les registres : MAR contient l'adresse où l'on
+veut lire ou écrire et MBR la valeur lue ou à écrire.</li>
+<li>En rouge au centre, l'unité de contrôle va décoder la prochaine
+instruction et ensuite guider son exécution. Pour cela, le contenu de
+l'instruction à exécuter, lu en mémoire dans le registre MBR, est
+recopié dans CIR pour être décodé. On peut voir pendant l'exécution
+que le nom de l'opération à exécuter s'affiche sur cette unité de
+contrôle.</li>
+<li>L'unité de calcul arithmétique et logique fait les calculs et les
+comparaisons. Elle possède un registre d'état qui, sous la forme d'un
+bit chacun, contient des drapeaux en rapport avec la dernière
+opération exécutée : Z pour Zéro (le dernièr calcul a donné zéro ou
+les nombres comparés sont identiques), C pour carry (une retenue a été
+générée et pourra être utilisée pour complèter le résultat du calcul),
+N pour Négative (permet notamment la comparaison de deux nombres) et O
+pour Overflow (le calcul a débordé et le résultat n'est pas
+utilisable, par exemple l'addition de deux positifs donne un
+négatif).</li>
+<li>Un ensemble de bus relient tous ces éléments et pendant
+l'exécution d'un programme, vous verrez les données transiter le long
+de ces bus.</li>
+</ul>
+
+<h2>Travail à réaliser</h2>
+
+<p>Après avoir testé les deux programmes ci-dessus en observant les
+données transitant entre les différents éléments du pseudo-processeur,
+vous implémenterez trois programmes en assembleur :</p>
+<ol>
+<li>Un programme qui demande un nombre en entrée et calcule la somme
+des nombres de 1 à ce nombre (ex pour 5 : 5 + 4 + 3 + 2 + 1)</li>
+<li>Un programme qui affiche la valeur maximum d'une série d'entiers
+placés en mémoire</li>
+<li>Pour les plus sportifs : un programme qui trie en mémoire une
+série d'entiers par un tri à bulles par exemple</li>
+</ol>
+
+</body>
+</html>
