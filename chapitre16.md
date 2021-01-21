@@ -17,6 +17,8 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 ## Cours 
 
 * [Cours version pdf](chapitre16/Cours_16_Flottants.pdf)
-
+* [Corrigé de certains exemples du cours version pdf](chapitre16/Corrige_Chapitre16_Flottants.pdf)
+* [Corrigé de certains exemples du cours version python](chapitre16/Corrige_Chapitre16_Flottants.py)
+* [Corrigé de certains exemples du cours version .ipynb](chapitre16/Corrige_Chapitre16_Flottants.py)
 
 

@@ -311,7 +311,49 @@ print("Test unitaires réussis pour l'automatisme 13 : recherche_dicho_decroissa
 ~~~
 
 
+## Automatisme 14
 
+* Convertir en flottant au format simple précision (mantisse sur 8 bits et exposant sur 23 bits), le nombre  d'écriture décimale $9,78125$.
+* Convertir en flottant au format simple précision (mantisse sur 8 bits et exposant sur 23 bits), le nombre  d'écriture décimale $0,1$.
+* Vérifier avec le convertisseur en ligne <https://www.h-schmidt.net/FloatConverter/IEEE754.html> ou la fonction donnée ci-dessous :
+
+~~~python
+def decimal_vers_IEE754(x, taille_exposant, taille_mantisse):
+    #print("détermination du signe")
+    if x > 0:
+        print("Bit de signe  : 0")
+    elif x <0:
+        print("Bit de signe : 1")
+    else:
+        print("O valeur particulière")
+    if x != 0:
+        #print("détermination de l'exposant")
+        exposant = 0
+        if x < 1:
+            while int(x) == 0:
+                x = x * 2
+                exposant = exposant - 1
+        else:
+            while int(x) > 1:
+                x = x / 2
+                exposant = exposant + 1
+        decalage = 2 ** (taille_exposant - 1) - 1
+        print("Exposant en décimal : ", exposant)
+        print(f"Exposant décalé  de  + {decalage} : ", exposant + decalage)
+        print(f"Exposant décalé de + {decalage}  : codage binaire sur 11 bits : ", bin(exposant + decalage).lstrip('0b').zfill(taille_exposant))
+        #print("détermination des bits de mantisse")
+        x = x - 1
+        nbits = 0
+        mantisse = []
+        while nbits < taille_mantisse:
+            x = x * 2
+            partie_entiere = int(x)
+            mantisse.append(str(partie_entiere))
+            if partie_entiere == 1:
+                x = x - partie_entiere
+            nbits = nbits + 1
+        print("Mantisse : ", ''.join(mantisse))
+~~~
 
 
 
