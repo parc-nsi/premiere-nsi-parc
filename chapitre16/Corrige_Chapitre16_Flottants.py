@@ -72,10 +72,8 @@ assert ChaineBinDec2('101,001') == 5.125
 # * Ensuite on multiplie successivement par $2$ pour décaler les bits vers la gauche :
 #   
 
-# In[92]:
+# In[110]:
 
-
-x = 0.01203125
 
 def decimal_vers_IEE754(x, taille_exposant, taille_mantisse):
     #print("détermination du signe")
@@ -88,14 +86,12 @@ def decimal_vers_IEE754(x, taille_exposant, taille_mantisse):
     if x != 0:
         #print("détermination de l'exposant")
         exposant = 0
-        if x < 1:
-            while int(x) == 0:
-                x = x * 2
-                exposant = exposant - 1
-        else:
-            while int(x) > 1:
-                x = x / 2
-                exposant = exposant + 1
+        while int(x) >= 1:
+            x = x / 2
+            exposant = exposant + 1
+        while int(x) == 0:
+            x = x * 2
+            exposant = exposant - 1           
         decalage = 2 ** (taille_exposant - 1) - 1
         print("Exposant en décimal : ", exposant)
         print(f"Exposant décalé  de  + {decalage} : ", exposant + decalage)
@@ -116,7 +112,7 @@ def decimal_vers_IEE754(x, taille_exposant, taille_mantisse):
 
 # Le développement binaire de $0.01203125$ est illimité !
 
-# In[102]:
+# In[111]:
 
 
 # en binary32  : 8 bits d'exposant et 23 bits de mantisse
@@ -159,7 +155,7 @@ decimal_vers_IEE754(1/2 + 1/2**2 + 1/2**22, 8,23)
 decimal_vers_IEE754(0.1, 11, 52)
 
 
-# In[95]:
+# In[112]:
 
 
 decimal_vers_IEE754(14.5, 8, 23)
@@ -176,4 +172,38 @@ decimal_vers_IEE754(14.5, 8, 23)
 
 
 decimal_vers_IEE754(2021 + 21 / 365, 8, 23)
+
+
+# In[107]:
+
+
+decimal_vers_IEE754(9 + 1/2 + 1/2 ** 2 + 1/2 ** 5, 11, 52)
+
+
+# In[108]:
+
+
+9 + 1/2 + 1/2 ** 2 + 1/2 ** 5
+
+
+# In[113]:
+
+
+decimal_vers_IEE754(9 + 1/2 + 1/2 ** 2 + 1/2 ** 5, 11, 52)
+
+
+# In[118]:
+
+
+x = 9
+exposant = 0
+while int(x) >= 1:
+    x = x / 2
+    exposant = exposant + 1
+
+
+# In[119]:
+
+
+exposant
 
