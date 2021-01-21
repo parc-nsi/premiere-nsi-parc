@@ -331,14 +331,14 @@ D TypeError : 'tuple' object is not callable
 clients = \[ ("Dupont", "Paul", 1),("Durand", "Jacques", 2),("Dutronc",
 "Jean", 3),...\]
 
-En supposant que plusieurs clients se prénomment Jean, que vaut la liste
-x après l’exécution du code suivant ?
+En supposant que plusieurs clients se prénomment Jean, que vaut la
+variable x après l’exécution du code suivant ?
 
 ``` python
 x = []
 for i in range(len(clients)):
-if clients[i][j] == "Jean":
-  x = clients[i]
+  if clients[i][1] == "Jean":
+    x = clients[i]
 ```
 
 ***Réponses***
