@@ -354,19 +354,245 @@ def decimal_vers_IEE754(x, taille_exposant, taille_mantisse):
 ~~~
 
 
+## Automatisme 15 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+
+Écrire une fonction `recherche` qui prend en paramètres `elt` un nombre entier et `tab`
+un tableau de nombres entiers, et qui renvoie l’indice de la première occurrence de `elt`
+dans tab si elt est dans tab et -1 sinon.
+
+Exemples :
+
+~~~python
+>>> recherche(1, [2, 3, 4])
+-1
+>>> recherche(1, [10, 12, 1, 56])
+2
+>>> recherche(50, [1, 50, 1])
+1
+>>> recherche(15, [8, 9, 10, 15])
+3
+~~~
+
+## Automatisme 16 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+
+Écrire une fonction maxi qui prend en paramètre une liste tab de nombres entiers et
+renvoie un couple donnant le plus grand élément de cette liste, ainsi que l’indice de la
+première apparition de ce maximum dans la liste.
+
+Exemple :
+
+~~~python
+>>> maxi([1,5,6,9,1,2,3,7,9,8])
+(9,3)
+~~~
+
+## Automatisme 17 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+
+
+On considère la fonction `insere` ci-dessous qui prend en argument un entier `a` et un
+tableau `tab` d'entiers triés par ordre croissant. Cette fonction insère la valeur `a` dans le tableau et renvoie le nouveau tableau. Les tableaux seront représentés sous la forme de
+listes python.
+
+Compléter la fonction `insere` ci-dessous.
+
+~~~python
+def insere(a, tab):
+    l = list(tab) #l contient les mêmes éléments que tab
+    l.append(a)
+    i = ...
+    while a < ... : 
+      l[i+1] = ...
+      l[i] = a
+      i = ...
+    return l
+~~~
 
 
 
 
+Exemples :
+
+~~~python
+>>> insere(3,[1,2,4,5])
+[1, 2, 3, 4, 5]
+>>> insere(10,[1,2,7,12,14,25])
+[1, 2, 7, 10, 12, 14, 25]
+>>> insere(1,[2,3,4])
+[1,2,3,4]
+~~~
 
 
 
 
+## Automatisme 18 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+
+
+Compléter sous Python la fonction suivante en respectant la spécification. 
+
+
+~~~python
+def dichotomie(tab, x):
+    """
+        tab : tableau d’entiers trié dans l’ordre croissant
+        x : nombre entier
+        La fonction renvoie True si tab contient x et False sinon
+    """
+
+    debut = 0 
+    fin = len(tab) - 1
+    while debut <= fin:
+        m = ...
+        if x == tab[m]:
+            return ...
+        if x > tab[m]:
+            debut = m + 1
+        else:
+             fin = ...			
+    return ...
+~~~
+
+Exemples :
+~~~python
+>>> dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],28)
+True
+>>> dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],27)
+False
+~~~
+
+
+
+## Automatisme 19 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+
+
+Écrire une fonction `tri_selection` qui prend en paramètre une liste tab de nombres entiers et qui renvoie le tableau trié par ordre croissant.
+
+On utilisera l’algorithme suivant :
+
+* on recherche le plus petit élément du tableau, et on l'échange avec l'élément d'indice
+0 ;
+* on recherche le second plus petit élément du tableau, et on l'échange avec l'élément
+d'indice 1 ;
+* on continue de cette façon jusqu'à ce que le tableau soit entièrement trié dans l'ordre croissant.
+
+
+Exemples de postconditions :
+
+~~~python
+>>> assert tri_selection([1,52,6,-9,12]) == [-9, 1, 6, 12, 52]
+>>> assert tri_selection([]) == []
+>>> assert tri_selection([1, 4, 8]) == [1, 4, 8]
+>>> assert tri_selection([8, 4, 1]) == [1, 4, 8]
+~~~
+
+
+## Automatisme 20 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+
+Un mot palindrome peut se lire de la même façon de gauche à droite ou de droite à
+gauche : bob, radar, et non sont des mots palindromes.
+
+De même certains nombres sont eux aussi des palindromes : 33, 121, 345543.
+
+L’objectif de cet exercice est d’obtenir un programme Python permettant de tester si un
+nombre est un nombre palindrome.
+
+Pour remplir cette tâche, on vous demande de compléter le code des trois fonctions ci-
+dessous sachant que la fonction est_nbre_palindrome s’appuiera sur la fonction
+`est_palindrome` qui elle-même s’appuiera sur la fonction `inverse_chaine`.
+
+
+La fonction `inverse_chaine` inverse l'ordre des caractères d'une chaîne de caractères
+chaine et renvoie la chaîne inversée.
+La fonction `est_palindrome` teste si une chaine de caractères chaine est un
+palindrome. Elle renvoie `True` si c’est le cas et `False` sinon. Cette fonction s’appuie sur
+la fonction précédente.
+La fonction `est_nbre_palindrome` teste si un nombre nbre est un palindrome. Elle
+renvoie True si c’est le cas et False sinon. Cette fonction s'appuie sur la fonction
+précédente.
 
 
 
 
+## Automatisme 21 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 
+Compléter le code des trois fonctions ci-dessous.
 
 
+~~~python
+def inverse_chaine(chaine):
+    result = ...
+    for caractere in chaine:
+       result = ...
+    return result
+
+def est_palindrome(chaine):
+    inverse = inverse_chaine(chaine)
+    return ...
+    
+def est_nbre_palindrome(nbre):
+    chaine = ...
+    return est_palindrome(chaine)
+~~~
+
+
+Exemples :
+
+~~~python
+>>> inverse_chaine('bac')
+'cab'
+>>> est_palindrome('NSI')
+False
+>>> est_palindrome('ISN-NSI')
+True
+>>>est_nbre_palindrome(214312)
+False
+>>>est_nbre_palindrome(213312)
+True
+~~~
+
+
+## Automatisme 22 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+
+Compléter la fonction `separe` ci-dessous qui prend en argument un tableau tab dont
+les éléments sont des 0 et des 1 et qui sépare les 0 des 1 en plaçant les 0 en début de
+tableau et les 1 à la suite.
+
+~~~python
+def separe(tab):
+    i = 0
+    j = ...
+    while i < j :
+        if tab[i] == 0 :
+            i = ...
+        else :
+            tab[i], tab[j] = ...
+            j = ...
+    return tab
+~~~
+
+
+Exemples :
+
+~~~python
+>>> separe([1, 0, 1, 0, 1, 0, 1, 0])
+[0, 0, 0, 0, 1, 1, 1, 1]
+>>> separe([1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0])
+[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+~~~
+
+
+## Automatisme 23 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+
+Écrire une fonction `RechercheMin` qui prend en paramètre un tableau de nombres non
+trié `tab`, et qui renvoie l'indice de la première occurrence du minimum de ce tableau. Les
+tableaux seront représentés sous forme de liste Python.
+
+~~~python
+Exemples :
+>>> indice_du_min([5])
+0
+>>> indice_du_min([2, 4, 1])
+2
+>>> indice_du_min([5, 3, 2, 2, 4])
+2
+~~~
