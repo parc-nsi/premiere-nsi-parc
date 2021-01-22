@@ -583,8 +583,8 @@ Exemples :
 trié `tab`, et qui renvoie l'indice de la première occurrence du minimum de ce tableau. Les
 tableaux seront représentés sous forme de liste Python.
 
-~~~python
 Exemples :
+~~~python
 >>> indice_du_min([5])
 0
 >>> indice_du_min([2, 4, 1])
