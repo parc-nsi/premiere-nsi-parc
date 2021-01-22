@@ -511,10 +511,6 @@ précédente.
 
 
 
-
-## Automatisme 21 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
-
-
 Compléter le code des trois fonctions ci-dessous.
 
 
@@ -551,7 +547,7 @@ True
 ~~~
 
 
-## Automatisme 22 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 21 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 Compléter la fonction `separe` ci-dessous qui prend en argument un tableau tab dont
 les éléments sont des 0 et des 1 et qui sépare les 0 des 1 en plaçant les 0 en début de
@@ -581,7 +577,7 @@ Exemples :
 ~~~
 
 
-## Automatisme 23 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 22 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 Écrire une fonction `indice_du_min` qui prend en paramètre un tableau de nombres non
 trié `tab`, et qui renvoie l'indice de la première occurrence du minimum de ce tableau. Les
