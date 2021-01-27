@@ -395,7 +395,7 @@ def boucle1():
 * **Réponse C :** `(True, 52)`
 * **Réponse D :** la boucle ne se termine pas car d'après une formule du cours de mathématiques sur la somme des termes consécutifs d'une suite géométrique :
  
-pour tout entier naturel $n$ on a $1+1/2+1/2^2+...+1/2^n = (1-1/2^{n+1})/(1-1/2)=2(1-1/2^{n+1})<2$.
+pour tout entier naturel n on a <a href="https://www.codecogs.com/eqnedit.php?latex=1&plus;1/2&plus;1/2^2&plus;...&plus;1/2^n&space;=&space;(1-1/2^{n&plus;1})/(1-1/2)=2(1-1/2^{n&plus;1})<2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?1&plus;1/2&plus;1/2^2&plus;...&plus;1/2^n&space;=&space;(1-1/2^{n&plus;1})/(1-1/2)=2(1-1/2^{n&plus;1})<2" title="1+1/2+1/2^2+...+1/2^n = (1-1/2^{n+1})/(1-1/2)=2(1-1/2^{n+1})<2" /></a>
 
 
 
