@@ -393,7 +393,9 @@ def boucle1():
 * **Réponse A :**  `(False, 53)`
 * **Réponse B :** `(True, 53)`
 * **Réponse C :** `(True, 52)`
-* **Réponse D :** la boucle ne se termine pas, d'après une formule du cours de mathématiques sur la somme des termes consécutifs d'une suite géométrique, pour tout entier n on a `1+1/2+1/2**2+...+1/2**n = (1-1/2**(n+1))/(1-1/2)`
+* **Réponse D :** la boucle ne se termine pas car d'après une formule du cours de mathématiques sur la somme des termes consécutifs d'une suite géométrique :
+ 
+pour tout entier naturel $n$ on a $1+1/2+1/2^2+...+1/2^n = (1-1/2^{n+1})/(1-1/2)=2(1-1/2^{n+1})$.
 
 
 
