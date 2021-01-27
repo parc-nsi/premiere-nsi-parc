@@ -358,12 +358,12 @@ def decimal_vers_IEE754(x, taille_exposant, taille_mantisse):
 On considère une formule booléenne form des variables booléennes `a` et `b` dont voici la table de vérité. 
 
 
-a     b      form
----   ----   ----
-True  True   False 
-False True   True
-True  False  True 
-False False  False 
+| a     | b     | form  |
+|-------|-------|-------|
+| True  | True  | False |
+| False | True  | True  |
+| True  | False | True  |
+| False | False | False |
 
 
 Quelle est cette formule booléenne  ?
@@ -395,7 +395,7 @@ def boucle1():
 * **Réponse C :** `(True, 52)`
 * **Réponse D :** la boucle ne se termine pas car d'après une formule du cours de mathématiques sur la somme des termes consécutifs d'une suite géométrique :
  
-pour tout entier naturel $n$ on a $1+1/2+1/2^2+...+1/2^n = (1-1/2^{n+1})/(1-1/2)=2(1-1/2^{n+1})$.
+pour tout entier naturel $n$ on a $1+1/2+1/2^2+...+1/2^n = (1-1/2^{n+1})/(1-1/2)=2(1-1/2^{n+1})<2$.
 
 
 
