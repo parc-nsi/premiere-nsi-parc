@@ -357,12 +357,14 @@ def decimal_vers_IEE754(x, taille_exposant, taille_mantisse):
 
 On considère une formule booléenne form des variables booléennes `a` et `b` dont voici la table de vérité. 
 
+
 a     b      form
 ---   ----   ----
 True  True   False 
 False True   True
 True  False  True 
 False False  False 
+
 
 Quelle est cette formule booléenne  ?
 
