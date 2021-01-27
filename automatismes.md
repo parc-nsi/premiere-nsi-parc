@@ -353,8 +353,49 @@ def decimal_vers_IEE754(x, taille_exposant, taille_mantisse):
         print("Mantisse : ", ''.join(mantisse))
 ~~~
 
+## Automatisme 15
 
-## Automatisme 15 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+On considère une formule booléenne form des variables booléennes `a` et `b` dont voici la table de vérité. 
+
+a     b      form
+---   ----   ----
+True  True   False 
+False True   True
+True  False  True 
+False False  False 
+
+Quelle est cette formule booléenne  ?
+
+* **Réponse A :**  `a and b`
+* **Réponse B :** `a or b`
+* **Réponse C :** `((not(a)) and b) or (a and  (not(b)))`
+* **Réponse D :** `(not(a)) or (not(b))`
+
+
+## Automatisme 16
+
+Quel est le tuple renvoyé par `boucle1()` ? Explication ?
+
+~~~python
+def boucle1():
+    x = 1
+    h = 1
+    c = 0
+    while x < 2:
+        h = h / 2
+        x = x + h
+        c = c + 1
+    return x == 2, c
+~~~
+
+* **Réponse A :**  `(False, 53)`
+* **Réponse B :** `(True, 53)`
+* **Réponse C :** `(True, 52)`
+* **Réponse D :** la boucle ne se termine pas, d'après une formule du cours de mathématiques sur la somme des termes consécutifs d'une suite géométrique, pour tout entier n on a `1+1/2+1/2**2+...+1/2**n = (1-1/2**(n+1))/(1-1/2)`
+
+
+
+## Automatisme 17 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 Écrire une fonction `recherche` qui prend en paramètres `elt` un nombre entier et `tab`
 un tableau de nombres entiers, et qui renvoie l’indice de la première occurrence de `elt`
@@ -373,7 +414,7 @@ Exemples :
 3
 ~~~
 
-## Automatisme 16 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 18 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 Écrire une fonction maxi qui prend en paramètre une liste tab de nombres entiers et
 renvoie un couple donnant le plus grand élément de cette liste, ainsi que l’indice de la
@@ -386,7 +427,7 @@ Exemple :
 (9,3)
 ~~~
 
-## Automatisme 17 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 19 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 
 On considère la fonction `insere` ci-dessous qui prend en argument un entier `a` et un
@@ -424,7 +465,7 @@ Exemples :
 
 
 
-## Automatisme 18 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 20 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 
 Compléter sous Python la fonction suivante en respectant la spécification. 
@@ -461,7 +502,7 @@ False
 
 
 
-## Automatisme 19 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 21 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 
 Écrire une fonction `tri_selection` qui prend en paramètre une liste tab de nombres entiers et qui renvoie le tableau trié par ordre croissant.
@@ -485,7 +526,7 @@ Exemples de postconditions :
 ~~~
 
 
-## Automatisme 20 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 22 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 Un mot palindrome peut se lire de la même façon de gauche à droite ou de droite à
 gauche : bob, radar, et non sont des mots palindromes.
@@ -547,7 +588,7 @@ True
 ~~~
 
 
-## Automatisme 21 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 23 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 Compléter la fonction `separe` ci-dessous qui prend en argument un tableau tab dont
 les éléments sont des 0 et des 1 et qui sépare les 0 des 1 en plaçant les 0 en début de
@@ -577,7 +618,7 @@ Exemples :
 ~~~
 
 
-## Automatisme 22 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
+## Automatisme 24 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 Écrire une fonction `indice_du_min` qui prend en paramètre un tableau de nombres non
 trié `tab`, et qui renvoie l'indice de la première occurrence du minimum de ce tableau. Les

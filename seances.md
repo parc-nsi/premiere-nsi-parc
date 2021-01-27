@@ -12,3 +12,4 @@ title:  Séances
 7. [Séance du 07/01/2021](seances/seance-2021-01-07.md)
 8. [Séance du 14/01/2021](seances/seance-2021-01-14.md)
 9. [Séance du 21/01/2021](seances/seance-2021-01-21.md)
+10. [Séance du 28/01/2021](seances/seance-2021-01-28.md)
