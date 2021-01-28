@@ -9,7 +9,7 @@
 import csv
 #j'ai remplacé tous les caractères ';' par des ',' dans le fichier source 
 #le séparateur de champ est  ',' et il y a des ';' et ',' dans certaines valeurs de champs
-csv_airports = open('airports.csv')
+csv_airports = open('airports.csv', encoding='utf8')
 airports_reader = csv.DictReader(csv_airports, delimiter=',')
 f = open('airports-reduit.csv','w')
 #c = 0
@@ -27,7 +27,7 @@ csv_airports.close()
 #%%
 
 # ouverture du fichier
-f = open('communes69.csv')
+f = open('communes69.csv', encoding='utf8')
 # lecture du fichier ligne par ligne
 for ligne in f:
     print(ligne)
@@ -40,12 +40,12 @@ f.close()
 
 def fichier_vers_tab_tuple(fichier, separateur):
     """Prend en paramètres :
-    - fichier de type str représentant un chemin d'accès à un fichier texte
+    - fichier de type str représentant un chemin d'accès à un fichier texte encodé en utf8
     - separateur de type str désignant le séparateur de champs sur une ligne du fichier
     Retourne un tableau de tuples, chaque tuple contenant les différents champs
     d'une ligne du fichier"""
     #on ouvre le fichier en lecture
-    f = open(fichier)
+    f = open(fichier, encoding='utf8')
     tab = []
     for ligne in f:
         #on nettoie la fin de ligne
@@ -226,7 +226,6 @@ def population_lyon(tab):
     pop_lyon = 0
     for tuple_ligne in tab:
         ville, pop_int, pop_ext, pop_tot = tuple_ligne 
-        pop_tot = tuple_ligne[-1]
         ville_mots = ville.split(' ')
         if "Lyon" in ville_mots and "Arrondissement" in ville_mots:
             pop_lyon = pop_lyon + int(pop_tot)

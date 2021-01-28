@@ -20,7 +20,7 @@ def fichier_vers_tab_tuple(fichier, separateur):
     Retourne un tableau de tuples, chaque tuple contenant les différents champs
     d'une ligne du fichier"""
     #on ouvre le fichier en lecture
-    f = open(fichier)
+    f = open(fichier, encoding = 'utf8')
     tab = []
     for ligne in f:
         #on nettoie la fin de ligne
