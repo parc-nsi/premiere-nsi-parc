@@ -395,3 +395,170 @@ assert recherche_dicho_decroissant(10, t1) == 0
 assert recherche_dicho_decroissant(0, t1) == 10
 assert recherche_dicho_decroissant(4.5, t1) == None
 print("Test unitaires réussis pour l'automatisme 13 : recherche_dicho_decroissant et est_decroissant")
+
+
+#%% Automatisme 17 
+
+def recherche(elt, tab):
+    """Écrire une fonction `recherche` qui prend en paramètres `elt` un nombre entier et `tab`
+un tableau de nombres entiers, et qui renvoie l’indice de la première occurrence de `elt`
+dans tab si elt est dans tab et -1 sinon."""
+    for k in range(len(tab)):
+        if tab[k] == elt:
+            return k
+    return -1
+
+assert recherche(10, [14,10,10]) == 1
+assert recherche(11, [14,10,10]) == -1
+
+#%% Automatisme 18 
+
+
+def maxi(tab):
+    """Écrire une fonction maxi qui prend en paramètre une liste tab de nombres entiers et
+renvoie un couple donnant le plus grand élément de cette liste, ainsi que l’indice de la
+première apparition de ce maximum dans la liste."""
+    assert len(tab) > 0
+    ind_maxi = 0
+    maxi = tab[0]
+    for k in range(1, len(tab)):
+        if tab[k] > maxi:
+            maxi = tab[k]
+            ind_maxi = k
+    return (maxi, ind_maxi)
+
+assert maxi([1,5,6,9,1,2,3,7,9,8]) == (9, 3)
+
+#%% Automatisme 19
+
+def insere(a, tab):
+    l = list(tab) #l contient les mêmes éléments que tab
+    l.append(a)
+    i = len(l) - 2
+    while i >= 0 and a < l[i]: 
+      l[i+1] = l[i]
+      l[i] = a
+      i = i - 1
+    return l
+
+assert insere(3,[1,2,4,5]) == [1, 2, 3, 4, 5]
+assert insere(10,[1,2,7,12,14,25]) == [1, 2, 7, 10, 12, 14, 25]
+assert insere(1,[2,3,4]) == [1,2,3,4]
+
+
+
+# %% Automatisme 20
+
+def dichotomie(tab, x):
+    """
+        tab : tableau d’entiers trié dans l’ordre croissant
+        x : nombre entier
+        La fonction renvoie True si tab contient x et False sinon
+    """
+    debut = 0 
+    fin = len(tab) - 1
+    while debut <= fin:
+        m = (debut + fin) // 2
+        if x == tab[m]:
+            return True
+        if x > tab[m]:
+            debut = m + 1
+        else:
+             fin = m - 1			
+    return False
+
+assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],28) == True
+assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],27) == False
+
+#%% Automatisme 21
+
+def tri_selection(tab):
+    """Écrire une fonction `tri_selection` qui prend en paramètre 
+    un tableau tab de nombres entiers
+     et qui renvoie le tableau trié par ordre croissant.
+    On utilisera l’algorithme suivant :
+
+    * on recherche le plus petit élément du tableau, et on l'échange avec l'élément d'indice
+    0 ;
+    * on recherche le second plus petit élément du tableau, et on l'échange avec l'élément
+    d'indice 1 ;
+    * on continue de cette façon jusqu'à ce que le tableau soit entièrement trié dans l'ordre croissant.
+    """
+    for i in range(0, len(tab)):
+        imin = i
+        for j in range(i + 1, len(tab)):
+            if tab[j] < tab[imin]:
+                imin = j
+        tab[imin], tab[j] = tab[j], tab[imin]
+    return tab
+
+assert tri_selection([1,52,6,-9,12]) == [-9, 1, 6, 12, 52]
+assert tri_selection([]) == []
+assert tri_selection([1, 4, 8]) == [1, 4, 8]
+assert tri_selection([8, 4, 1]) == [1, 4, 8] 
+
+#%% Automatisme 22
+
+def inverse_chaine(chaine):
+    result = ""
+    for caractere in chaine:
+       result = caractere + result
+    return result
+
+def est_palindrome(chaine):
+    inverse = inverse_chaine(chaine)
+    return inverse == chaine
+    
+def est_nbre_palindrome(nbre):
+    chaine = str(nbre)
+    return est_palindrome(chaine)
+
+assert inverse_chaine('bac') == 'cab'
+assert est_palindrome('NSI') == False
+assert est_palindrome('ISN-NSI') == True
+assert est_nbre_palindrome(214312) == False
+assert est_nbre_palindrome(213312) == True
+#%% Automatisme 23
+
+Compléter la fonction `separe` ci-dessous qui prend en argument un tableau tab dont
+les éléments sont des 0 et des 1 et qui sépare les 0 des 1 en plaçant les 0 en début de
+tableau et les 1 à la suite.
+
+def separe(tab):
+    """prend en argument un tableau tab dont
+    les éléments sont des 0 et des 1 et qui sépare les 0 des 1 
+    en plaçant les 0 en début de tableau et les 1 à la suite.
+    """
+    i = 0
+    j = len(tab) - 1
+    while i < j :
+        if tab[i] == 0 :
+            i = i + 1
+        else :
+            tab[i], tab[j] = tab[j], tab[i]
+            j = j - 1
+    return tab
+
+
+assert separe([1, 0, 1, 0, 1, 0, 1, 0]) == [0, 0, 0, 0, 1, 1, 1, 1]
+assert separe([1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0]) == [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+#%% Automatisme 24
+
+def indice_du_min(tab):
+    """prend en paramètre un tableau de nombres non
+    trié `tab`, et qui renvoie l'indice de la première occurrence du minimum de ce tableau. Les
+    tableaux seront représentés sous forme de liste Python."""
+    assert len(tab) > 0
+    ind_mini = 0
+    mini = tab[0]
+    for k in range(1, len(tab)):
+        if tab[k] < mini:
+            mini = tab[k]
+            ind_mini = k
+    return ind_mini
+
+assert  indice_du_min([5])  == 0
+assert indice_du_min([2, 4, 1]) == 2
+assert indice_du_min([5, 3, 2, 2, 4]) == 2
+

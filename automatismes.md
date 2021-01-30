@@ -445,7 +445,7 @@ def insere(a, tab):
     l = list(tab) #l contient les mêmes éléments que tab
     l.append(a)
     i = ...
-    while i <= 0 and a < ... : 
+    while i >= 0 and a < ... : 
       l[i+1] = ...
       l[i] = a
       i = ...
@@ -509,7 +509,7 @@ False
 ## Automatisme 21 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
 
-Écrire une fonction `tri_selection` qui prend en paramètre une liste tab de nombres entiers et qui renvoie le tableau trié par ordre croissant.
+Écrire une fonction `tri_selection` qui prend en paramètre un tableau tab de nombres entiers et qui renvoie le tableau trié par ordre croissant.
 
 On utilisera l’algorithme suivant :
 
