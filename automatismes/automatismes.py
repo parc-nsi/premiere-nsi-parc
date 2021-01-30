@@ -547,7 +547,7 @@ assert separe([1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0]) == [0, 0, 0, 0, 
 
 def indice_du_min(tab):
     """prend en paramètre un tableau de nombres non
-    trié `tab`, et qui renvoie l'indice de la première occurrence du minimum de ce tableau. Les
+    trié tab, et qui renvoie l'indice de la première occurrence du minimum de ce tableau. Les
     tableaux seront représentés sous forme de liste Python."""
     assert len(tab) > 0
     ind_mini = 0
@@ -562,3 +562,5 @@ assert  indice_du_min([5])  == 0
 assert indice_du_min([2, 4, 1]) == 2
 assert indice_du_min([5, 3, 2, 2, 4]) == 2
 
+
+# %%
