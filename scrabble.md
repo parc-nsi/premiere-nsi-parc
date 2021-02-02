@@ -8,7 +8,7 @@ layout: parc
 
 * [Présentation video par Pierre Marquestaut](https://peertube.lyceeconnecte.fr/videos/watch/86be0059-a3c1-41ec-952a-79dea6310c87)
 
-* En Python la structure de données __dictionnaire__ est implémentée par le type `dict`. Voici un  exemple d'implémentation avec les opérations de base : définition, accès en lecture / écriture,test d'appartenance, parcours.
+* En Python la structure de données __dictionnaire__ est implémentée par le type `dict`. Voici un  exemple de construction de dictionnaire en Python et de manipulation avec les opérations de base : définition, accès en lecture / écriture,test d'appartenance, parcours.
 
 
 <pre data-executable>
@@ -37,7 +37,7 @@ for clef, valeur in annuaire.items():
 2. Pour résoudre ce problème on propose de compléter le code ci-dessous :
    * dans`spyder`, compléter chaque fonction   en respectant sa spécifications des fonctions et en vérifiant  les tests unitaires qui l'accompagnent. 
    * compléter le code du programme principal
-   * soummettre son code aux validateurs sur la page <https://www.codingame.com/ide/puzzle/scrabble>.
+   * soumettre son code aux validateurs sur la page <https://www.codingame.com/ide/puzzle/scrabble>.
 
 
 ~~~python
