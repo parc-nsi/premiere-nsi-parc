@@ -27,5 +27,5 @@ for clef, valeur in annuaire.items():
 
 
 
-  <script src="https://github.com/parc-nsi/premiere-nsi/blob/master/assets/js/juniper.min.js"></script>
+  <script src="https://raw.githubusercontent.com/parc-nsi/premiere-nsi/master/assets/js/juniper.min.js"></script>
   <script>new Juniper({ repo: 'parc-nsi/premiere-nsi', isolateCells: false , theme: 'monokai'})</script>
