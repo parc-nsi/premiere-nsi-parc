@@ -440,7 +440,7 @@ listes python.
 
 Compléter la fonction `insere` ci-dessous.
 
-~~~python
+<pre data-executable>
 def insere(a, tab):
     l = list(tab) #l contient les mêmes éléments que tab
     l.append(a)
@@ -455,7 +455,7 @@ assert insere(3,[1,2,4,5]) == [1, 2, 3, 4, 5]
 assert insere(10,[1,2,7,12,14,25]) == [1, 2, 7, 10, 12, 14, 25]
 assert insere(1,[2,3,4]) == [1,2,3,4]
 print('Tests réussis')
-~~~
+</pre>
 
 ## Automatisme 20 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
@@ -463,7 +463,7 @@ print('Tests réussis')
 Compléter sous Python la fonction suivante en respectant la spécification. 
 
 
-~~~python
+<pre data-executable>
 def dichotomie(tab, x):
     """
         tab : tableau d’entiers trié dans l’ordre croissant
@@ -486,7 +486,7 @@ def dichotomie(tab, x):
 assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],28) == True
 assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],27) == False
 print('Tests réussis')
-~~~
+</pre>
 
 
 
