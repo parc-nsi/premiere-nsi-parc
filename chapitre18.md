@@ -19,7 +19,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 ## Cours 
 
 * [Cours version pdf](chapitre18/Cours/dictionnaires-cours-.pdf)
-* [Cours version markdown](chapitre18/dictionnaires-cours-git.md)
+* [Cours version markdown](chapitre18/Cours/dictionnaires-cours-git.md)
   
 ## Video
 
