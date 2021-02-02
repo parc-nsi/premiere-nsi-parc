@@ -608,16 +608,3 @@ Exemples :
 2
 ~~~
 
-
-
-
-print('hello world!')
-y = 2
-</pre>
-
-<pre data-executable>
-def f(x):
-    return x**2
-
-print(f(y))
-</pre>
