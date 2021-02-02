@@ -29,9 +29,3 @@ for clef, valeur in annuaire.items():
     print("Clef : ", clef, " Valeur : ", valeur)
 </pre>
 
-
-
-
-
-  <script src="https://github.com/parc-nsi/premiere-nsi/assets/js/juniper.min.js"></script>
-  <script>new Juniper({ repo: 'parc-nsi/premiere-nsi', isolateCells: false , theme: 'monokai'})</script>
