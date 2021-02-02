@@ -1,0 +1,36 @@
+Type de conteneur dict
+--------------------
+Taille de la meule de foin :     1000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000104 s
+--------------------
+Taille de la meule de foin :    10000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000196 s
+--------------------
+Taille de la meule de foin :   100000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000252 s
+--------------------
+Taille de la meule de foin :  1000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000399 s
+--------------------
+Taille de la meule de foin : 10000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000483 s
+--------------------
+
+
+Type de conteneur list
+--------------------
+Taille de la meule de foin :     1000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.008002 s
+--------------------
+Taille de la meule de foin :    10000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.078902 s
+--------------------
+Taille de la meule de foin :   100000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.812977 s
+--------------------
+Taille de la meule de foin :  1000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 8.554425 s
+--------------------
+Taille de la meule de foin : 10000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 84.754335 s
+--------------------
