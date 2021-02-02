@@ -1,9 +1,3 @@
----
-title:  TP scrabble
-layout: parc
----
-
-
 ## Présentation de la structure de données dictionnaires
 
 * [Présentation par Pierre Marquestaut](https://peertube.lyceeconnecte.fr/videos/watch/86be0059-a3c1-41ec-952a-79dea6310c87)
