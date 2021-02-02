@@ -14,7 +14,7 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 ## TP 
 
-* [TP Scrabble](chapitre18/scrabble.md)
+* [TP Scrabble](chapitre18/TP/scrabble.md)
 
 ## Cours 
 
