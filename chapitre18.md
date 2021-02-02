@@ -14,7 +14,8 @@ Tous les documents sur ce site sont   placés sous licence [Creative Commons Att
 
 ## TP 
 
-* [TP Scrabble](scrabble.md)
+* [TP Scrabble (introduction ludique)](scrabble.md)
+* [TP dictionnaires](chapitre18/TP/TP-Dictionnaires-1.pdf)
 
 ## Cours 
 
