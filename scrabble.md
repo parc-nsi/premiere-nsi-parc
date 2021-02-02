@@ -41,7 +41,7 @@ for clef, valeur in annuaire.items():
 
 
 ~~~python
-#dictionnaire des valeurs des lettres au scrabble
+#dictionnaire des valeurs des lettres minuscules au scrabble
 valeur = {
     'a' : 1,
     'e' : 1,
@@ -115,7 +115,7 @@ smax = -1
 mot_max = ""
 # boucle sur les mots du dictionnaire
 for mot in dico:
-    "à compléter
+    "à compléter"
 
 
 print(mot_max)
