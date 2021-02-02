@@ -561,17 +561,17 @@ Compléter le code des trois fonctions ci-dessous.
 
 <pre data-executable>
 def inverse_chaine(chaine):
-    result = ...
+    result = "à compléter"
     for caractere in chaine:
-       result = ...
+       result = "à compléter"
     return result
 
 def est_palindrome(chaine):
     inverse = inverse_chaine(chaine)
-    return ...
+    return "à compléter"
     
 def est_nbre_palindrome(nbre):
-    chaine = ...
+    chaine = "à compléter"
     return est_palindrome(chaine)
 
 assert inverse_chaine('bac') == 'cab'
