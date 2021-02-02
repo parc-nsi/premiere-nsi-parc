@@ -637,3 +637,17 @@ Exemples :
 >>> indice_du_min([5, 3, 2, 2, 4])
 2
 ~~~
+
+
+
+<pre data-executable>
+print('hello world!')
+y = 2
+</pre>
+
+<pre data-executable>
+def f(x):
+    return x**2
+
+print(f(y))
+</pre>
