@@ -376,9 +376,10 @@ Quelle est cette formule booléenne  ?
 
 ## Automatisme 16
 
-Quel est le tuple renvoyé par `boucle1()` ? Explication ?
+Pouvez-vous deviner  ce qui va se passer si on exécute le code ci-dessous  ? Vérifiez. Explication ?
 
-~~~python
+
+<pre data-executable>
 def boucle1():
     x = 1
     h = 1
@@ -388,7 +389,9 @@ def boucle1():
         x = x + h
         c = c + 1
     return x == 2, c
-~~~
+
+boucle1()
+</pre>
 
 * **Réponse A :**  `(False, 53)`
 * **Réponse B :** `(True, 53)`
