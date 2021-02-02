@@ -444,30 +444,18 @@ Compléter la fonction `insere` ci-dessous.
 def insere(a, tab):
     l = list(tab) #l contient les mêmes éléments que tab
     l.append(a)
-    i = ...
-    while i >= 0 and a < ... : 
+    i = "à compléter"
+    while i >= 0 and a < "à compléter" : 
       l[i+1] = ...
       l[i] = a
-      i = ...
+      i = "à compléter"
     return l
+
+assert insere(3,[1,2,4,5]) == [1, 2, 3, 4, 5]
+assert insere(10,[1,2,7,12,14,25]) == [1, 2, 7, 10, 12, 14, 25]
+assert insere(1,[2,3,4]) == [1,2,3,4]
+print('Tests réussis')
 ~~~
-
-
-
-
-Exemples :
-
-~~~python
->>> insere(3,[1,2,4,5])
-[1, 2, 3, 4, 5]
->>> insere(10,[1,2,7,12,14,25])
-[1, 2, 7, 10, 12, 14, 25]
->>> insere(1,[2,3,4])
-[1,2,3,4]
-~~~
-
-
-
 
 ## Automatisme 20 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
@@ -486,23 +474,20 @@ def dichotomie(tab, x):
     debut = 0 
     fin = len(tab) - 1
     while debut <= fin:
-        m = ...
+        m = "à compléter"
         if x == tab[m]:
-            return ...
+            return "à compléter"
         if x > tab[m]:
             debut = m + 1
         else:
-             fin = ...			
-    return ...
+             fin = "à compléter"			
+    return "à compléter"
+
+assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],28) == True
+assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],27) == False
+print('Tests réussis')
 ~~~
 
-Exemples :
-~~~python
->>> dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],28)
-True
->>> dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],27)
-False
-~~~
 
 
 
@@ -579,6 +564,7 @@ assert est_palindrome('NSI') == False
 assert est_palindrome('ISN-NSI') == True
 assert est_nbre_palindrome(214312) == False
 assert est_nbre_palindrome(213312) == True
+print("Tests réussis")
 </pre>
 
 ## Automatisme 23 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
@@ -601,6 +587,7 @@ def separe(tab):
 
 assert separe([1, 0, 1, 0, 1, 0, 1, 0]) == [0, 0, 0, 0, 1, 1, 1, 1]
 assert separe([1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0]) == [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+print("Tests réussis")
 </pre>
 
 
