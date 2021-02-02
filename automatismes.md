@@ -559,7 +559,7 @@ précédente.
 Compléter le code des trois fonctions ci-dessous.
 
 
-~~~python
+<pre data-executable>
 def inverse_chaine(chaine):
     result = ...
     for caractere in chaine:
@@ -573,24 +573,13 @@ def est_palindrome(chaine):
 def est_nbre_palindrome(nbre):
     chaine = ...
     return est_palindrome(chaine)
-~~~
 
-
-Exemples :
-
-~~~python
->>> inverse_chaine('bac')
-'cab'
->>> est_palindrome('NSI')
-False
->>> est_palindrome('ISN-NSI')
-True
->>>est_nbre_palindrome(214312)
-False
->>>est_nbre_palindrome(213312)
-True
-~~~
-
+assert inverse_chaine('bac') == 'cab'
+assert est_palindrome('NSI') == False
+assert est_palindrome('ISN-NSI') == True
+assert est_nbre_palindrome(214312) == False
+assert est_nbre_palindrome(213312) == True
+</pre>
 
 ## Automatisme 23 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
 
@@ -598,28 +587,22 @@ Compléter la fonction `separe` ci-dessous qui prend en argument un tableau tab 
 les éléments sont des 0 et des 1 et qui sépare les 0 des 1 en plaçant les 0 en début de
 tableau et les 1 à la suite.
 
-~~~python
+<pre data-executable>
 def separe(tab):
     i = 0
-    j = ...
+    j = "à compléter"
     while i < j :
         if tab[i] == 0 :
-            i = ...
+            i = "à compléter"
         else :
-            tab[i], tab[j] = ...
-            j = ...
+            tab[i], tab[j] = "à compléter"
+            j = "à compléter"
     return tab
-~~~
 
+assert separe([1, 0, 1, 0, 1, 0, 1, 0]) == [0, 0, 0, 0, 1, 1, 1, 1]
+assert separe([1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0]) == [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+</pre>
 
-Exemples :
-
-~~~python
->>> separe([1, 0, 1, 0, 1, 0, 1, 0])
-[0, 0, 0, 0, 1, 1, 1, 1]
->>> separe([1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0])
-[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-~~~
 
 
 ## Automatisme 24 ([banque d'épreuve pratique 2021](http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81))
@@ -640,7 +623,7 @@ Exemples :
 
 
 
-<pre data-executable>
+
 print('hello world!')
 y = 2
 </pre>
