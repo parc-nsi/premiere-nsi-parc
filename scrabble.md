@@ -4,7 +4,7 @@ layout: parc
 ---
 
 
-## Présentation de la structure de données dictionnaires
+## Présentation de la structure de données _dictionnaires_
 
 * [Présentation video par Pierre Marquestaut](https://peertube.lyceeconnecte.fr/videos/watch/86be0059-a3c1-41ec-952a-79dea6310c87)
 
@@ -70,7 +70,7 @@ def signature(mot):
         "à compléter"
     return sig
 
-#Tests unitaire de la fonction signature
+#Tests unitaires de la fonction signature
 assert signature("") == {}
 assert signature("ananas") == {'a': 3, 'n': 2, 's': 1}
 assert signature("abcd") == {'a': 1, 'b': 1, 'c': 1, 'd': 1}
@@ -84,10 +84,10 @@ def score_mot(mot, valeur):
     "à compléter"
     return s
 
-#Tests unitaire de la fonction signature
+#Tests unitaires de la fonction signature
 assert score_mot("") == 0
 assert score_mot("zazou") == 23
-assert signature("ananas") == 6
+assert score_mot("ananas") == 6
 
 
 def mot_possible(mot, sig_lettres):
@@ -99,7 +99,7 @@ def mot_possible(mot, sig_lettres):
     "à compléter"
 
 
-#Tests unitaire de la fonction mot_possible
+#Tests unitaires de la fonction mot_possible
 assert mot_possible("zazou", {"a" : 1, "b" : 1, "o" : 2, "u" : 1, "z" : 2}) == True
 assert mot_possible("zazou", {"b" : 1, "o" : 1, "u" : 1, "z" : 2}) == False
 assert mot_possible("zazou", {"a" : 1, "o" : 2, "u" : 3, "z" : 1}) == False
