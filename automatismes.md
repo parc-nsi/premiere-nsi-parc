@@ -446,7 +446,7 @@ def insere(a, tab):
     l.append(a)
     i = "à compléter"
     while i >= 0 and a < "à compléter" : 
-      l[i+1] = ...
+      l[i+1] = "à compléter"
       l[i] = a
       i = "à compléter"
     return l
