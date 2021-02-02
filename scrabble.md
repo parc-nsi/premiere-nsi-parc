@@ -6,13 +6,14 @@ layout: parc
 
 ## Présentation de la structure de données dictionnaires
 
-* [Présentation par Pierre Marquestaut](https://peertube.lyceeconnecte.fr/videos/watch/86be0059-a3c1-41ec-952a-79dea6310c87)
+* [Présentation video par Pierre Marquestaut](https://peertube.lyceeconnecte.fr/videos/watch/86be0059-a3c1-41ec-952a-79dea6310c87)
 
 * En Python la structure de données __dictionnaire__ est implémentée par le type `dict`. Voici un  exemple d'implémentation avec les opérations de base : définition, accès en lecture / écriture,test d'appartenance, parcours.
 
 
 <pre data-executable>
-annuaire = { 'Victor' : '06 44 44 44 44'}
+annuaire = {}  #initialisation d'un dictionnaire vide
+annuaire = { 'Victor' : '06 44 44 44 44'} #on peut aussi initialiser un dictionnaire par extension
 print("Lecture du numéro de téléphone de Victor dans le dictionnaire annuaire ", annuaire['Victor'])
 print("Modification du numéro de Victor dans le dictionnaire annuaire ")
 annuaire['Victor'] = '06 33 33 33 33'
@@ -29,3 +30,93 @@ for clef, valeur in annuaire.items():
     print("Clef : ", clef, " Valeur : ", valeur)
 </pre>
 
+
+## Une première utilisation des dictionnaires : résolution d'un problème sur CodinGame
+
+1. Lire l'énoncé du problème sur la page <https://www.codingame.com/ide/puzzle/scrabble>.
+2. Pour résoudre ce problème on propose de compléter le code ci-dessous :
+   * dans`spyder`, compléter chaque fonction   en respectant sa spécifications des fonctions et en vérifiant  les tests unitaires qui l'accompagnent. 
+   * compléter le code du programme principal
+   * soummettre son code aux validateurs sur la page <https://www.codingame.com/ide/puzzle/scrabble>.
+
+
+~~~python
+#dictionnaire des valeurs des lettres au scrabble
+valeur = {
+    'a' : 1,
+    'e' : 1,
+    'i' : 1,
+    'o' : 1,
+    'n' : 1,
+    'r' : 1,
+    't' : 1,
+    'l' : 1,
+    's' : 1,
+    'u' : 1,
+    'd' : 2,
+    'g' : 2,
+    'b' : 3, 'c' : 3, 'm' : 3, 'p' : 3,
+    'f' : 4, 'h' : 4, 'v' : 4, 'w' : 4, 'y' : 4,
+    'k' : 5, 
+    'j' : 8, 'x' : 8,
+    'q' : 10, 'z' : 10}
+
+def signature(mot):
+    """Paramètre : mot de type str
+    Valeur renvoyée : un dictionnaire représentant le nombre d'occurences
+    de chaque lettre minuscule de l'alphabet dans mot""" 
+    sig  = {}  #dictionnaire vide
+    for c in mot:
+        "à compléter"
+    return sig
+
+#Tests unitaire de la fonction signature
+assert signature("") == {}
+assert signature("ananas") == {'a': 3, 'n': 2, 's': 1}
+assert signature("abcd") == {'a': 1, 'b': 1, 'c': 1, 'd': 1}
+
+
+def score_mot(mot, valeur):
+    """Paramètre : mot de type str, 
+    valeur de type dict associe à chaque lettre minuscule sa valeur au scrabble
+    Valeur renvoyée : score du mot au scrabble""" 
+    s = 0
+    "à compléter"
+    return s
+
+#Tests unitaire de la fonction signature
+assert score_mot("") == 0
+assert score_mot("zazou") == 23
+assert signature("ananas") == 6
+
+
+def mot_possible(mot, sig_lettres):
+    """Paramètre : mot de type str
+    sig_lettres de type dict représente la signature des lettres disponibles
+    Valeur renvoyée : un booléen indiquant si sig_mot compatible avec  sig_lettres
+    et donc si le mot peut être composé avec les lettres fournies"""
+    sig_mot = signature(mot)
+    "à compléter"
+
+
+#Tests unitaire de la fonction mot_possible
+assert mot_possible("zazou", {"a" : 1, "b" : 1, "o" : 2, "u" : 1, "z" : 2}) == True
+assert mot_possible("zazou", {"b" : 1, "o" : 1, "u" : 1, "z" : 2}) == False
+assert mot_possible("zazou", {"a" : 1, "o" : 2, "u" : 3, "z" : 1}) == False
+
+#Programme principal
+# saisie du nombre de mots du dictionnaire
+n = int(input())
+# saisie des mots du dictionnaire dans une liste
+dico = [input().rstrip() for _ in range(n)]
+letters = input().rstrip()
+sig_lettres = signature(letters)
+smax = -1
+mot_max = ""
+# boucle sur les mots du dictionnaire
+for mot in dico:
+    "à compléter
+
+
+print(mot_max)
+~~~
