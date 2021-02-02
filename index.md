@@ -42,3 +42,4 @@ layout: parc
 * [Chapitre 15 : p-uplets](chapitre15.md)
 * [Chapitre 16 : flottants](chapitre16.md)
 * [Chapitre 17 : architecture de Von Neumann](chapitre17.md)
+* [Chapitre 18 : les dictionnaires](chapitre18.md)
