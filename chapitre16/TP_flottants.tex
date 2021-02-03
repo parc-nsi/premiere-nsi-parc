@@ -1,0 +1,217 @@
+\include{MeijeCours}
+\usepackage{tikz-cd} 
+\newboolean{versionprof}  % Cette variable booléenne permet le contrôle de la compilation selon la version professeur (avec les preuves, commentaires pédagogiques etc...) si true ou selon la version élève (de ''base'') si false.
+\setboolean{versionprof}{false}
+
+% =============================================================================================
+%                                                                                      Début du texte 
+% =============================================================================================
+
+\author{Informatique}  % Pour spécifier l'auteur qui sera affiché sous le titre
+\title{}  % Titre 
+\date{Année 2020-2021} %en utilisant \today on obtiendra la date courante lors de la production du document
+\renewcommand{\thesection}{\Roman{section}}  % permet de numéroter les sections en chiffres romains
+\pagestyle{fancy}
+
+\lhead{NSI - Première}   %  Indiquer la classe ici  
+\rhead{TP - Flottants}		% Indiquer la date pour rendre le devoir ici
+
+
+\fancyfoot[C]{\thepage} % bas de page : centre par exemple:  - \thepage\ -
+\fancyfoot[L]{} % bas de page : gauche
+\fancyfoot[R]{} % bas de page : droite
+
+
+\begin{document}
+\rule[0pt]{0pt}{0pt}
+\vspace{0.5cm}
+%\maketitle  %produit le titre conformément aux instructions données par \author, \date ...etc
+\begin{center}
+{\LARGE\bf TP - Les flottants} 
+\end{center}
+\thispagestyle{empty}
+% ------------------------------------------------   Introduction   -------------------------------------------
+\vskip 1cm
+%\renewcommand{\abstractname}{Introduction\hfill}
+%\begin{abstract} 
+% 
+%
+%\end{abstract}    
+
+\exercice{: Vers $+/- \infty$}
+
+\begin{lstlisting}
+def infini_pos():
+    x = 1.
+    n = 0
+    while x != 2*x:
+        n = n + 1
+        x = x*2
+    return n, x
+\end{lstlisting}
+
+Exécuter la fonction ci-dessus.
+
+Expliquer le résultat.
+
+Que se passe-t-il si on remplace \verb+x = 1.+ par \verb+x = 1+ à la ligne 2 ? Expliquer.
+
+Prévoir ce qui se passe si on remplace \verb+x = 1.+ par \verb+x = -1.+ à la ligne 2. Vérifier.
+\lignes{10}
+\exercice{: Vers zéro}
+\medskip
+
+
+\begin{lstlisting}
+def vers_zero():
+    x = 1.
+    n = 0
+    while x >0:
+        n = n + 1
+        x = x/2
+    return n, x
+
+\end{lstlisting}
+
+Exécuter la fonction ci-dessus puis expliquer le résultat. 
+
+Pourquoi ce résultat n'est pas celui attendu pour la valeur entière obtenu ?
+
+Faire une rapide recherche (wikipédia) sur les nombres dénormalisés. 
+
+\lignes{6}
+\eject
+\exercice{: Quelques difficultés usuelles}
+\medskip
+
+
+Reproduire et expliquer : 
+
+\begin{lstlisting}
+>>> x = 1e200
+>>> x*x
+inf
+>>> (x*x)*0
+nan
+>>> 0.5+10**400
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    0.5+10**400
+OverflowError: int too large to convert to float
+\end{lstlisting}
+
+\lignes{6}
+
+\exercice{: Erreurs de calcul, utilisation de =\,=}
+\medskip
+
+Reproduire et expliquer : 
+
+\begin{lstlisting}
+>>> 0.1*3
+0.30000000000000004
+>>> 0.1
+0.1
+>>> 0.1*2
+0.2
+\end{lstlisting}
+\lignes{4}
+
+Prévoir le résultat : 
+
+\begin{lstlisting}[escapeinside =;;]
+>>> 0.1*3 =;\,;= 0.3
+\end{lstlisting}
+\lignes{3}
+
+Que penser de l'utilisation de \verb+==+ avec les flottants ?
+
+\lignes{3}
+\eject
+
+\exercice{: Propriétés usuelles de l'addition et de la multiplication}
+\medskip
+
+Dans la console, faire les deux calculs suivants : 
+
+\verb!(0.1 + 0.9) + 0.7! \ \ et \ \ \verb!0.1 + (0.9 + 0.7)!
+
+Conclusion ?
+
+\lignes{3}
+
+Dans la console, faire les deux calculs suivants : 
+
+\verb!1.4*3.2 + 1.4*1.6! \ \ et \ \ \verb!1.4*(3.2 + 1.6)!
+
+Conclusion ?
+
+\lignes{3}
+
+\exercice{}
+
+On considère la fonction suivante : 
+
+\begin{lstlisting}
+def div_mult(n):
+    x = 1.1
+    for k in range(n):
+        x = 1 + (x - 1)/3
+    for k in range(n):
+        x = 1 + (x - 1)*3
+    return x
+
+\end{lstlisting}
+
+\begin{enumerate}[1.]
+  \item \`A l'aide d'un tableau d'état et en supposant que le calculs se font de manière exactes (ce qui n'est pas la cas), déterminer le résultat attendu.
+  \item Expérimenter. Expliquer.
+
+\end{enumerate}
+\lignes{18}
+
+\exercice{: Mauvaise boucle}
+
+Pour résoudre un exercice (où il faut compléter le code d'après la docstring) un élève propose le code suivant : 
+
+\begin{lstlisting}[escapeinside =;;]
+def subdivision(a, b, n):
+    """ Renvoie une liste de n flottants r;é;guli;è;rement
+    r;é;partis entre a (compris) et b (non compris) """
+    
+    L = [a]
+    x = a
+    pas = (b - a)/n
+    
+    while x != b:
+        x = x + pas
+        L.append(x)
+
+    return L
+
+\end{lstlisting}
+
+Que va-t-il se passer lors de l'exécution de \verb+subdivision(0, 1, 10)+ ?
+
+Expliquer 
+
+Comment modifier le code ?
+
+\lignes{18}
+
+\exercice{: Un exemple d'amplification d'erreur}
+
+Faire afficher le résultat de la fonction pour n allant de 0 à 100.
+
+\begin{lstlisting}
+def suite(n):
+    (a, b) = (0.2, 0.1)
+    for k in range(n):
+        (a, b) = (b, 2.5*b -a)
+    return a
+
+\end{lstlisting}
+
+ \'Ecouter les explications.
+
+\end{document}
