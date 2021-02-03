@@ -23,3 +23,9 @@ layout: parc
   *  le [sujet](Projets/Labyrinthe/Projet_Laby.pdf)
   *  [un squelette de code](Projets/Labyrinthe/squelette_laby.py)
 
+# Projet 4
+
+* Projet sur le thème de la compression.
+    * le [sujet](Projets/Compression/PremiereNSI-DM-Compression-2021V2.pdf)
+    * [un squelette de code](Projets/Compression/materiel_compression_eleve.zip)
+* Pour aller plus loin, les plus motivés peuvent traiter la deuxième partie qui était proposée dans la version initiale du sujet avec l'implémentation l'algorithme de compression par dictionnaire LZW.  [ancienne version du sujet](Projets/Compression/PremiereNSI-DM-Compression-2021V1.pdf). Les ressources se trouvent dans le dossier `Projets/Compression` du dépôt.
