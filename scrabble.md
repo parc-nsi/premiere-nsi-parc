@@ -30,10 +30,12 @@ for clef, valeur in annuaire.items():
     print("Clef : ", clef, " Valeur : ", valeur)
 </pre>
 
-Si Binder ne se lance pas, un autre snippet sur [glot.io](https://glot.io/snippets/fvk5o67xl0) :
+Si Binder ne se lance pas, le _snippet_ sur [glot.io](https://glot.io/snippets/fvk5o67xl0) :
+
 
 <iframe src='https://glot.io/snippets/fvk5o67xl0/embed' frameborder='0' scrolling='no' sandbox='allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts' width='800' height='600'></iframe>
 
+Le même _snippet_ mais sur [basthon](https://console.basthon.fr/?script=eJyVUk1rwkAQvQv-hyEeNgEpRaUHoQfptYUeSi_Fw5KMdUrcDfshheIP8nf4xzqbmE0ULTUsIdl9-96bNyOV8pIMwiP87ABGpMiRLMlKR1pBITy_KA8_qsZtqcDhQPaugXhngDYC5iDuH2A2i0vsYMQsFXoH0ltLEPnRwDl1JQ3gt0NleWs4qAwplybPmDvPp4UH5TeHvdFQILjDvjzsq7VWGH4bB1BIZaHEU9roNRnH74_W8zKLQi-6oBXlx8JP1P5Hn3W5dPycUAhlOo1LRMXFl-ZgzrUkF2YIb1M7Xop6k0lcPb0V17eWn3WYF2mTLo43tI77LytuC_dEqrxOupSQl7gCsVBOk0LBjb3CNe6BSMX9_0vEqv7U6FAXRV6lybU39mrN9dwFQQsp5cSRW55YYxmHNoN5yGSlG0hfYj4cAD9HmadwOg8zFnBjSEIj0ZtmL3YqHC5vNed8xXOQNsTbmjZrvKat0XE7QtmZ4_ZC3_kdOdzYNLulgqPsL_DAbG8)
 
 ## Une première utilisation des dictionnaires : résolution d'un problème sur CodinGame
 
