@@ -32,7 +32,7 @@ for clef, valeur in annuaire.items():
 
 Si Binder ne se lance pas, un autre snippet sur [glot.io](https://glot.io/snippets/fvk5o67xl0) :
 
-<iframe src='https://glot.io/snippets/fvk5o67xl0/embed' frameborder='0' scrolling='no' sandbox='allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts' width='600' height='400'></iframe>
+<iframe src='https://glot.io/snippets/fvk5o67xl0/embed' frameborder='0' scrolling='no' sandbox='allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts' width='800' height='600'></iframe>
 
 
 ## Une première utilisation des dictionnaires : résolution d'un problème sur CodinGame
