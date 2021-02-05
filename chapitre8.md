@@ -1,11 +1,10 @@
 ---
-title:  Chapitre 7  tableaux à deux dimensions, images
+title:  Chapitre 8  représentation des entiers
 layout: parc
 ---
 
 
 
-# Chapitre 8: représentation des entiers
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
 
