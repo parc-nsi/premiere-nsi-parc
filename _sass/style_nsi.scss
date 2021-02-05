@@ -14,7 +14,7 @@ h2:before{
     
     
 
-img {
+img:not([href^="https://latex.codecogs.com"]) {
 	display: block;
 	border: 1px dashed #17A2B8;
 	margin: 5px auto;
@@ -23,6 +23,7 @@ img {
 	max-width: 85%;
 	text-align: center;
 	}
+
 	
     
 
