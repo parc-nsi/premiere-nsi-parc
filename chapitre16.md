@@ -5,7 +5,7 @@ layout: parc
 
 
 
-# Chapitre 16 : flottants
+
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
 

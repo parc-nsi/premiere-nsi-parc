@@ -5,7 +5,6 @@ layout: parc
 
 
 
-# Chapitre 15 : p-uplets
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
 

@@ -4,7 +4,7 @@ layout: parc
 ---
 
 
-# Chapitre 2 : pages web HTML/CSS
+
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html).
 

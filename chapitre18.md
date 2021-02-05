@@ -4,7 +4,6 @@ layout: parc
 ---
 
 
-# Chapitre 18 : dictionnaires
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
 

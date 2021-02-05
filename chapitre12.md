@@ -5,7 +5,7 @@ layout: parc
 
 
 
-# Chapitre 12 : codage des caractères
+
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
 
