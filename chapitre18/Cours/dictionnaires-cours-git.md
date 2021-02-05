@@ -1,3 +1,9 @@
+---
+title:  Chapitre 18 : cours sur les dictionnaires
+layout: parc
+---
+
+
 <!-- Définition des hyperliens  -->
 
 # Crédits
