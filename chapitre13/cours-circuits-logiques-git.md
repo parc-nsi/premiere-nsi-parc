@@ -1,29 +1,48 @@
-  - [Crédits](#crédits)
-  - [Préambule](#préambule)
-  - [Portes logiques](#portes-logiques)
-      - [Le transistor porte logique de
-        base](#le-transistor-porte-logique-de-base)
-      - [D’autres portes logiques](#dautres-portes-logiques)
-          - [Transistors en série ou en
-            parallèle](#transistors-en-série-ou-en-parallèle)
-          - [Portes logiques et fonctions logiques
-            élémentaires](#portes-logiques-et-fonctions-logiques-élémentaires)
-  - [Fonctions booléennes](#fonctions-booléennes)
-      - [Fonctions booléennes](#fonctions-booléennes-1)
-      - [QCM types E3C](#qcm-types-e3c)
-      - [Pour aller plus loin (hors programme de première
-        NSI)](#pour-aller-plus-loin-hors-programme-de-première-nsi)
-          - [Dresser la table de vérité d’une fonction
-            booléenne](#dresser-la-table-de-vérité-dune-fonction-booléenne)
-          - [Exprimer une fonction booléenne à partir de sa table de
-            vérité](#exprimer-une-fonction-booléenne-à-partir-de-sa-table-de-vérité)
-  - [Circuits combinatoires](#circuits-combinatoires)
-      - [Définition](#définition)
-      - [Décodeur avec 2 bits d’entrées](#décodeur-avec-2-bits-dentrées)
-      - [Demi-additionneur et additionneur 1
-        bit](#demi-additionneur-et-additionneur-1-bit)
-  - [Opérations bit à bit en `Python` (hors programme de première
-    NSI)](#opérations-bit-à-bit-en-python-hors-programme-de-première-nsi)
+---
+title:  Chapitre 13  circuits logiques et expressions booléennes
+layout: parc
+---
+
+- [Crédits](#crédits)
+- [Préambule](#préambule)
+- [Portes logiques](#portes-logiques)
+  - [Le transistor porte logique de base](#le-transistor-porte-logique-de-base)
+  - [D’autres portes logiques](#dautres-portes-logiques)
+    - [Transistors en série ou en parallèle](#transistors-en-série-ou-en-parallèle)
+    - [Portes logiques et fonctions logiques élémentaires](#portes-logiques-et-fonctions-logiques-élémentaires)
+- [Fonctions booléennes](#fonctions-booléennes)
+  - [Fonctions booléennes](#fonctions-booléennes-1)
+  - [QCM types E3C](#qcm-types-e3c)
+  - [Pour aller plus loin (hors programme de première NSI)](#pour-aller-plus-loin-hors-programme-de-première-nsi)
+    - [Dresser la table de vérité d’une fonction booléenne](#dresser-la-table-de-vérité-dune-fonction-booléenne)
+    - [Exprimer une fonction booléenne à partir de sa table de vérité](#exprimer-une-fonction-booléenne-à-partir-de-sa-table-de-vérité)
+- [Circuits combinatoires](#circuits-combinatoires)
+  - [Définition](#définition)
+  - [Décodeur avec 2 bits d’entrées](#décodeur-avec-2-bits-dentrées)
+  - [Demi-additionneur et additionneur 1 bit](#demi-additionneur-et-additionneur-1-bit)
+- [Opérations bit à bit en `Python` (hors programme de première NSI)](#opérations-bit-à-bit-en-python-hors-programme-de-première-nsi)
+      base](#le-transistor-porte-logique-de-base)
+    - [D’autres portes logiques](#dautres-portes-logiques)
+        - [Transistors en série ou en
+          parallèle](#transistors-en-série-ou-en-parallèle)
+        - [Portes logiques et fonctions logiques
+          élémentaires](#portes-logiques-et-fonctions-logiques-élémentaires)
+- [Fonctions booléennes](#fonctions-booléennes)
+    - [Fonctions booléennes](#fonctions-booléennes-1)
+    - [QCM types E3C](#qcm-types-e3c)
+    - [Pour aller plus loin (hors programme de première
+      NSI)](#pour-aller-plus-loin-hors-programme-de-première-nsi)
+        - [Dresser la table de vérité d’une fonction
+          booléenne](#dresser-la-table-de-vérité-dune-fonction-booléenne)
+        - [Exprimer une fonction booléenne à partir de sa table de
+          vérité](#exprimer-une-fonction-booléenne-à-partir-de-sa-table-de-vérité)
+- [Circuits combinatoires](#circuits-combinatoires)
+    - [Définition](#définition)
+    - [Décodeur avec 2 bits d’entrées](#décodeur-avec-2-bits-dentrées)
+    - [Demi-additionneur et additionneur 1
+      bit](#demi-additionneur-et-additionneur-1-bit)
+- [Opérations bit à bit en `Python` (hors programme de première
+  NSI)](#opérations-bit-à-bit-en-python-hors-programme-de-première-nsi)
 
 # Crédits
 
