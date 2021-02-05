@@ -1,0 +1,151 @@
+I"�<h1 id="qui-suis-je-">Qui suis-je ?</h1>
+
+<ul>
+  <li>
+    <p>Nom :  ………..</p>
+  </li>
+  <li>
+    <p>Prénom :  ………..</p>
+  </li>
+  <li>
+    <p>Classe : …………</p>
+  </li>
+  <li>
+    <p>Courriel (optionnel) :  ………..</p>
+  </li>
+  <li>
+    <p>Temps de trajet pour se rendre au lycée :   ………..</p>
+  </li>
+</ul>
+
+<h1 id="linformatique-et-moi">L’informatique et moi</h1>
+
+<ul>
+  <li>
+    <p>Je peux accéder l’ENT  <a href="https://le-parc.ent.auvergnerhonealpes.fr/">https://le-parc.ent.auvergnerhonealpes.fr/</a>  :    OUI    NON    <em>entourez la réponse</em></p>
+  </li>
+  <li>
+    <p>Je peux accéder à un ordinateur de type PC à la maison :    OUI    NON    <em>entourez la réponse</em></p>
+
+    <ul>
+      <li>
+        <p>Si OUI :</p>
+
+        <ul>
+          <li>Il s’agit d’un ordinateur :  FIXE      PORTABLE        <em>entourez la réponse</em></li>
+        </ul>
+      </li>
+      <li>
+        <p>Sinon :</p>
+
+        <ul>
+          <li>
+            <p>Je peux accéder au Web à l’aide d’une tablette :  OUI    NON    <em>entourez la réponse</em></p>
+          </li>
+          <li>
+            <p>Je peux accéder au Web à l’aide d’un ordiphone :  OUI    NON    <em>entourez la réponse</em></p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>J’ai déjà programmé ou réalisé des pages Web en dehors des activités scolaires.  OUI    NON    <em>entourez la réponse</em></p>
+
+    <ul>
+      <li>
+        <p>Si OUI, <em>Précisez le langage et  le cadre (projet personnel, plateforme en ligne …)</em></p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...............
+...............
+...............
+...............
+...............
+...............
+...............
+...............
+...............
+...............
+...............
+...............
+...............
+...............
+...............
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Quelles motivations vous ont poussé à choisir la spécialité NSI ?</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="mes-projets-dorientation">Mes projets d’orientation</h1>
+
+<ul>
+  <li>
+    <p>Avez-vous une idée précise de vos choix de spécialité de terminale ?  OUI    NON    <em>entourez la réponse</em></p>
+
+    <ul>
+      <li>Si OUI :
+        <ul>
+          <li>
+            <p>Quels éléments ont guidé votre réflexion (sites webs, articles de journaux, salons …) ?</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>................
+................
+................
+................
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>En Terminale, envisagez-vous de conserver la spécialité NSI : OUI    NON    <em>entourez la réponse</em></p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Quels sont vos projet d’orientation ?</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="autres">Autres</h1>
+
+<ul>
+  <li>
+    <p>Vous pouvez porter ici à la connaissance des professeurs des éléments qui n’entrent pas dans les catégories précédentes.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+  ...............
+</code></pre></div>    </div>
+  </li>
+</ul>
+:ET

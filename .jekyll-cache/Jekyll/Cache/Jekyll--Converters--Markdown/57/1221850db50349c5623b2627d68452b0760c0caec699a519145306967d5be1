@@ -1,0 +1,44 @@
+I"@<blockquote>
+  <p>L’image <code class="language-plaintext highlighter-rouge">gif</code> ci-dessous présente  différentes étapes du déroulement d’un algorithme de rotation d’images inspiré d’un travail présenté par Laurent Abbal du lycée français de Tokyo. Le  programme assez court peut être réalisé par un élève  de terminale (récursivité, approche <em>diviser pour régner</em>).
+L’image source représente l’oeuvre <em>Matsuri Yatai Dragon</em> du peintre japonais <a href="https://en.wikipedia.org/wiki/en:Hokusai">Hokusai</a>. Elle est dans le domaine public et disponible sur <a href="https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg">https://commons.wikimedia.org</a>.</p>
+</blockquote>
+
+<p><a href="https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg"><img src="rotation-dragon-2.gif" alt="Dragon" title="dragon-hokusai" /></a></p>
+
+<h2 id="présentation">Présentation</h2>
+
+<ul>
+  <li>Voir notre <a href="presentation_parc_2021/presentation_spe_nsi.html">présentation de la spécialité NSI</a>.</li>
+</ul>
+
+<h2 id="programme">Programme</h2>
+
+<ul>
+  <li>Le  <a href="Programme/PPL18_Numerique-sciences-informatiques_SPE_1eGen_1025707.pdf">programme officiel</a></li>
+  <li><a href="Programme/PremièreNSI.jpg">Carte mentale du programme</a></li>
+</ul>
+
+<h2 id="progression">Progression</h2>
+
+<ul>
+  <li><a href="chapitre1.md">Chapitre 1 : variables et affectations en Python</a></li>
+  <li><a href="chapitre2.md">Chapitre 2 : HTML/CSS</a></li>
+  <li><a href="chapitre3.md">Chapitre 3 : boucles inconditionnelles en Python</a> avec en TP une approche de l’entrée du programme <em>IHM et périphériques d’entrée/sortie</em> à travers la plateforme <a href="https://amazon.quick-pi.org/">Quickpi</a> et une <a href="IHM-peripheriques/NSI-IHM-Cours2020V1.pdf">synthèse de cours</a> sur la partie capteurs/actionneurs du thème IHM.</li>
+  <li><a href="chapitre4.md">Chapitre 4 : boucles conditionnelles et tests</a></li>
+  <li><a href="chapitre5.md">Chapitre 5 : fonctions et portée d’une variable</a></li>
+  <li><a href="chapitre6.md">Chapitre 6 : tableaux à une dimension</a></li>
+  <li><a href="chapitre7.md">Chapitre 7 : tableaux à deux dimensions</a></li>
+  <li><a href="chapitre8.md">Chapitre 8 : représentation des entiers</a></li>
+  <li><a href="chapitre9.md">Chapitre 9 : système d’exploitation et ligne de commandes</a></li>
+  <li><a href="chapitre10.md">Chapitre 10 : recherche séquentielle ou dichotomique</a></li>
+  <li><a href="chapitre11.md">Chapitre 11 : algorithmes de tri</a></li>
+  <li><a href="chapitre12.md">Chapitre 12 : codage des caractères</a></li>
+  <li><a href="chapitre13.md">Chapitre 13 : circuits logiques et fonctions booléennes</a></li>
+  <li><a href="chapitre14.md">Chapitre 14 : complexité</a></li>
+  <li><a href="chapitre15.md">Chapitre 15 : p-uplets</a></li>
+  <li><a href="chapitre16.md">Chapitre 16 : flottants</a></li>
+  <li><a href="chapitre17.md">Chapitre 17 : architecture de Von Neumann</a></li>
+  <li><a href="chapitre18.md">Chapitre 18 : les dictionnaires</a></li>
+  <li><a href="scrabble.md">scrabble</a></li>
+</ul>
+:ET

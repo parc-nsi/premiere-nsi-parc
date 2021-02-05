@@ -1,0 +1,28 @@
+I"�<p><a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d’accueil</a></p>
+
+<h2 id="cours">Cours</h2>
+
+<ul>
+  <li><a href="chapitre1/cours/Intro_var.pdf">Pdf du cours</a></li>
+  <li><a href="chapitre1/cours/Corrigé_Ent_C1.pdf">Correction des entraînements</a></li>
+</ul>
+
+<h2 id="tp">TP</h2>
+
+<ul>
+  <li>TP1 :
+    <ul>
+      <li><a href="chapitre1/TP1/1NSI-Chap1-Variables-TP1-git.md">version Markdown</a></li>
+      <li><a href="chapitre1/TP1/1NSI-Chap1-Variables-TP1-.pdf">version PDF</a></li>
+      <li><a href="chapitre1/TP1/corrigé-TP1.pdf">corrigé version PDF</a></li>
+      <li><a href="https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre1/TP1/corrigé-TP1.ipynb">corrigé version ipynb</a></li>
+    </ul>
+  </li>
+  <li>QCM :
+    <ul>
+      <li><a href="https://genumsi.inria.fr/qcm.php?h=e74b6446b2fb9380f06fe87ff3289bf4">QCM1 Genumsi</a></li>
+    </ul>
+  </li>
+</ul>
+
+:ET

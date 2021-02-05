@@ -1,0 +1,60 @@
+I"�
+<p><a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d’accueil</a></p>
+
+<p>Tous les documents sur ce site sont   placés sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.</p>
+
+<h2 id="tp-1">TP 1</h2>
+
+<ul>
+  <li><a href="chapitre9/TP1/NSI-TP1-systeme-2020-.pdf">Enoncé TP1 version pdf</a></li>
+  <li><a href="chapitre9/TP1/NSI-TP1-systeme-2020-git.md">Enoncé TP1 version markdown</a></li>
+  <li><a href="chapitre9/TP1/materiel/sandbox.zip">Matériel TP1</a></li>
+  <li>Corrigés du TP1 :
+    <ul>
+      <li><a href="https://tube.ac-lyon.fr/videos/watch/playlist/273385c8-9e8e-464a-9662-12577455cb9a?videoId=70d46929-8772-4882-a606-ac7f9949f066">Corrigés en video</a></li>
+      <li><a href="chapitre9/TP1/corrige.zip">archive zip</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="memento-shell">Memento shell</h2>
+
+<ul>
+  <li><a href="chapitre9/memento-shell/memento-shell-.pdf">Memento shell version pdf</a></li>
+  <li><a href="chapitre9/memento-shell/memento-shell-git.md">Memento shell version markdown</a></li>
+  <li><a href="chapitre9/memento-shell/sandbox.zip">Matériel  pour les exemples du memento</a></li>
+</ul>
+
+<h2 id="tp-2">TP 2</h2>
+
+<ul>
+  <li><a href="chapitre9/TP2/NSI-TP2-systeme-.pdf">Enoncé TP2 version pdf</a></li>
+  <li><a href="chapitre9/TP2/NSI-TP2-systeme-git.md">Enoncé TP2 version markdown</a></li>
+  <li><a href="chapitre9/TP2/ressources/tour-du-monde-80-jours.zip">tour-du-monde-80-jours.zip</a></li>
+  <li><a href="chapitre9/TP2/ressources/contacts-1000.csv">contacts-1000.csv</a></li>
+  <li><a href="chapitre9/TP2/ressources/corrige_exo_tour_du_monde.pdf">corrigé exo tour du monde</a></li>
+  <li><a href="chapitre9/TP2/ressources/corrige_exo_carnet.md">corrigé exo carnet</a></li>
+</ul>
+
+<h2 id="cours">Cours</h2>
+
+<ul>
+  <li><a href="chapitre9/cours-systeme/systeme-cours-.pdf">Cours version pdf</a></li>
+  <li><a href="chapitre9/cours-systeme/systeme-cours-git.md">Cours version markdown</a></li>
+</ul>
+
+<h2 id="exposé-de-lou-bogdan-et-alexandre-sur-les-systèmes-dexploitation">Exposé de Lou, Bogdan et Alexandre sur les systèmes d’exploitation</h2>
+
+<ul>
+  <li><a href="chapitre9/ProjetHTML_LouAlexandreBogdan/Premiere_page.html">Page d’accueil</a></li>
+</ul>
+
+<p><img src="chapitre9/cours-systeme/choix-os.jpg" alt="Comment choisir son OS ?" /></p>
+
+<h2 id="tutoriels-vidéo">Tutoriels vidéo</h2>
+
+<ul>
+  <li><a href="https://youtu.be/SpCP2oaCx8A">Comprendre ce qu’est un système d’exploitation</a></li>
+  <li><a href="https://peertube.lyceeconnecte.fr/videos/watch/f5663ffb-5605-46f8-85af-b058852d9f44">Présentation par Pierre Marquestaut</a></li>
+</ul>
+:ET

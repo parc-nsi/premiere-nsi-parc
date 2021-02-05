@@ -1,0 +1,32 @@
+I"�<h1 id="chapitre-17--architecture-de-von-neumann">Chapitre 17 : architecture de Von Neumann</h1>
+
+<p><a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d’accueil</a></p>
+
+<p>Tous les documents sur ce site sont   placés sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.</p>
+
+<h2 id="cours">Cours</h2>
+
+<ul>
+  <li><a href="chapitre17/NSI-ArchitectureVonNeumann-Cours2020V2.pdf">Cours version pdf</a></li>
+  <li><a href="http://www.peterhigginson.co.uk/AQA/">Emulateur Aqua</a> :</li>
+  <li>Ressources :
+    <ul>
+      <li><a href="chapitre17/ressources/exemple5.zip">Archive avec les programmes pour l’exercice 5</a></li>
+      <li><a href="chapitre17/ressources/programmes_assembleur.zip">Archive avec les corrigés des programmes d’assembleur</a></li>
+      <li><a href="https://cloud-lyon.beta.education.fr/s/QjqqgLdAsm54x6B">Correction video de l’exercice 7</a></li>
+      <li><a href="https://cloud-lyon.beta.education.fr/s/6FgtQQaqbZfZrb3">Correction video de l’exercice 10</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="video">Video</h2>
+
+<ul>
+  <li>Le cours d’architecture en video sur la plateforme Lumni est très bien :
+    <ul>
+      <li>La video : <a href="https://www.lumni.fr/video/une-histoire-de-l-architecture-des-ordinateurs">https://www.lumni.fr/video/une-histoire-de-l-architecture-des-ordinateurs</a></li>
+      <li>Le support de cours : <a href="https://medias2ftv.akamaized.net/videosread/education/PDF/NSI-archi.pdf">https://medias2ftv.akamaized.net/videosread/education/PDF/NSI-archi.pdf</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

@@ -1,0 +1,25 @@
+I"�<p><a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d’accueil</a></p>
+
+<p>Tous les documents sur ce site sont   placés sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.</p>
+
+<h2 id="cours">Cours</h2>
+
+<ul>
+  <li><a href="chapitre4/Cours_3_tests et while.pdf">Pdf du cours sur les boucles conditionnelles et les tests</a></li>
+  <li><a href="chapitre4/Corrige_Ent_C4.pdf">Corrigé des entraînements</a></li>
+  <li><a href="chapitre4/TestBouclesConditionnelles-Correction.pdf">Corrigés des exemples du cours en version pdf</a></li>
+  <li><a href="chapitre4/TestBouclesConditionnelles-Correction.html">Corrigés des exemples du cours en version html</a></li>
+  <li>
+    <p><a href="https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre4/TestBouclesConditionnelles-Correction.ipynb">Corrigés des exemples du cours en version jupyter notebook</a></p>
+  </li>
+  <li>Tests et opérateurs booléens sur la chaîne YouTube du <a href="https://www.youtube.com/channel/UCIlUBOXnXjxdjmL_atU53kA">Cours Python 3 d’Arnaud Legout</a>:</li>
+</ul>
+
+<iframe width="1239" height="697" src="https://www.youtube.com/embed/0JXc48GXZrU?list=PL2CXLryTKuwwhivE1UO4Jg5DhU-ALAoXc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ul>
+  <li>Boucles <code class="language-plaintext highlighter-rouge">while</code> sur la chaîne YouTube du <a href="https://www.youtube.com/channel/UCIlUBOXnXjxdjmL_atU53kA">Cours Python 3 d’Arnaud Legout</a>:</li>
+</ul>
+
+<iframe width="1239" height="697" src="https://www.youtube.com/embed/gUZFAeM3VCc?list=PL2CXLryTKuwwhivE1UO4Jg5DhU-ALAoXc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+:ET

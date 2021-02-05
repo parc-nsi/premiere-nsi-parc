@@ -1,0 +1,683 @@
+I"��<!-- Définition des hyperliens  -->
+
+<h1 id="crédits">Crédits</h1>
+
+<p><em>Ce cours est inspiré du chapitre 14 du manuel NSI de la collection
+Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N’Guyen.
+J’ai également consulté le prepabac Première NSI de Guillaume Connan
+chez Hatier, le <a href="https://cache.media.eduscol.education.fr/file/NSI/77/7/RA_Lycee_G_NSI_repd_types_construits_1170777.pdf">document ressource eduscol sur les types
+construits</a>
+et le livre <strong>Fluent Python</strong>.</em></p>
+
+<h1 id="p-uplets-nommés-et-dictionnaires"><code class="language-plaintext highlighter-rouge">p-uplets</code> nommés et dictionnaires</h1>
+
+<p><strong>Exemple 1</strong></p>
+
+<p>Dans le TP sur les <strong>p-uplets</strong> (nommés aussi <strong>tuples</strong>) on a travaillé
+sur un fichier <code class="language-plaintext highlighter-rouge">airports-reduit.csv</code> qui contient les enregistrements
+<code class="language-plaintext highlighter-rouge">nom;latitude;longitude;altitude;code_pays</code> pour 57302 aéroports et on a
+extrait cette série dans un tableau de <strong>tuples</strong>. Par exemple le
+<strong>tuple</strong> correspondant à l’aéroport Saint-Exupéry est :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">p_uplet</span> <span class="o">=</span> <span class="n">tab_tuple_airports</span><span class="p">[</span><span class="mi">32478</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p_uplet</span>
+<span class="p">(</span><span class="s">'Lyon Saint-Exupéry Airport'</span><span class="p">,</span> <span class="s">'45.725556'</span><span class="p">,</span> <span class="s">'5.081111'</span><span class="p">,</span> <span class="s">'821'</span><span class="p">,</span> <span class="s">'FR'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p_uplet</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="s">'45.725556'</span>
+</code></pre></div></div>
+
+<p>Pour traiter cette information, il faut connaître la signification de
+chaque élément (appelé aussi <em>champ</em>) du <strong>tuple</strong> puisqu’on y accède
+par son index entier : 0 pour le ‘nom’, 1 pour la latitude etc ….</p>
+
+<p>Il serait plus lisible de disposer d’un <strong>tuple</strong> à <em>champs nommés</em> et
+de pouvoir accéder à la valeur d’un champ par son nom. C’est le dernier
+<strong>type construit</strong> de données que nous allons étudier.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">p_uplet_nomme</span> <span class="o">=</span> <span class="n">tab_dico_airports</span><span class="p">[</span><span class="mi">32478</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p_uplet_nomme</span>
+<span class="p">{</span><span class="s">'nom'</span><span class="p">:</span> <span class="s">'Lyon Saint-Exupéry Airport'</span><span class="p">,</span> <span class="s">'latitude'</span><span class="p">:</span> <span class="s">'45.725556'</span><span class="p">,</span> <span class="s">'longitude'</span><span class="p">:</span> <span class="s">'5.081111'</span><span class="p">,</span> <span class="s">'altitude'</span><span class="p">:</span> <span class="s">'821'</span><span class="p">,</span> <span class="s">'code_pays'</span><span class="p">:</span> <span class="s">'FR'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p_uplet_nomme</span><span class="p">[</span><span class="s">'latitude'</span><span class="p">]</span>
+<span class="s">'45.725556'</span>
+</code></pre></div></div>
+
+<p><strong>Définition 1</strong></p>
+
+<p>Un <strong>p-uplet nommé</strong> (ou <strong>tuple nommé</strong>) est un <strong>p-uplet</strong> dont chaque
+<strong>élément</strong> (ou <strong>champ</strong>) est repérée par un nom et non pas par un
+entier. Ces <strong>noms</strong> sont appelés <strong>clefs</strong> ou <strong>descripteurs</strong> du
+<strong>p-uplet</strong>, qui s’écrit entre accolades avec une virgule séparant
+chaque paire constitué de la clef et de la valeur de la composante
+séparées par le symbole <code class="language-plaintext highlighter-rouge">:</code>.</p>
+
+<p>En <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, les
+<strong>p-uplets nommés</strong> sont implémentés par les <strong>dictionnaires</strong> de type
+<code class="language-plaintext highlighter-rouge">dict</code>. Par la suite nous parlerons de <strong>dictionnaire</strong> plutôt que de
+<strong>p-uplet nommé</strong>.</p>
+
+<p>Comme l’accès aux valeurs s’effectue par les noms/clefs, comme dans un
+dictionnaire où chaque nom est associé à sa définition, on parle aussi
+de <strong>tableaux associatifs</strong>.</p>
+
+<p>Un dictionnaire n’est pas une séquence ordonnée d’éléments, l’accès
+s’effectue uniquement par clef.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">python</span> <span class="o">=</span> <span class="p">{</span><span class="s">'apparition'</span> <span class="p">:</span> <span class="mi">1993</span><span class="p">,</span> <span class="s">'version'</span> <span class="p">:</span> <span class="s">'3.8'</span><span class="p">,</span> <span class="s">'createur'</span> <span class="p">:</span> <span class="s">'Guido Van Rossum'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">python</span><span class="p">[</span><span class="s">'createur'</span><span class="p">]</span>
+<span class="s">'Guido Van Rossum'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">python</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">python</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">KeyError</span><span class="p">:</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<h1 id="un-exemple-de-dictionnaire--les-metadonnées-exif-dune-photo-numérique">Un exemple de dictionnaire : les metadonnées EXIF d’une photo numérique</h1>
+
+<p>Les photos prises avec un appareil numérique contiennent de nombreuses
+informations. Dans le fichier image, par exemple au format <code class="language-plaintext highlighter-rouge">jpeg</code>, sont
+stockées des données non seulement sur l’image elle-même mais aussi sur
+l’appareil, le logiciel utilisé, et en particulier des données
+<a href="https://fr.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a>
+(Exchangeable Image File Format). Une partie est accessible dans les
+propriétés de fichier ou avec un logiciel de traitement d’images. Les
+spécifications sont gérées par un organisme japonais, le JEITA, qui
+définit différents dictionnaires de référence permettant d’accéder à
+ces données. Les clés (les tags) et les valeurs sont des nombres écrits
+dans l’entête du fichier. Les dictionnaires donnent l’interprétation de
+ces clés. Par exemple la clé 256 a pour valeur ‘Width’ , la largeur de
+l’image en pixel, la clé 257 a pour valeur ‘Length’ , la hauteur de
+l’image en pixel.</p>
+
+<p><img src="images/exif.png" alt="données exif" /></p>
+
+<p><em>Source :
+<a href="https://commons.wikimedia.org/wiki/File:DigiKam_EXIF_information_screenshot.png">https://commons.wikimedia.org/wiki/File:DigiKam_EXIF_information_screenshot.png</a></em></p>
+
+<p><strong>Exercice 1</strong></p>
+
+<p>On peut extraite les données EXIF avec le logiciel
+<a href="https://exiftool.org/">exiftool</a> ou sous forme de dictionnaire
+<a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> avec le
+module <a href="https://smarnach.githeub.io/pyexiftool/">pyexiftool</a>. La
+fonction ci-dessous permet par exemple d’extraire les données
+<a href="https://fr.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a>
+d’un fichier image sous forme de dictionnaire.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">exiftool</span>
+
+<span class="k">def</span> <span class="nf">extraire_exif</span><span class="p">(</span><span class="n">fichier</span><span class="p">):</span>
+    <span class="n">et</span> <span class="o">=</span> <span class="n">exiftool</span><span class="p">.</span><span class="n">ExifTool</span><span class="p">()</span>
+    <span class="n">et</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">et</span><span class="p">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">fichier</span><span class="p">)</span>
+    <span class="n">et</span><span class="p">.</span><span class="n">terminate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">metadata</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Télécharger la photo
+<a href="http://frederic-junier.org/SNT/images/20181230_162625.jpg">http://frederic-junier.org/SNT/images/20181230_162625.jpg</a>.</li>
+  <li>Extraire ses données
+<a href="https://fr.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a>
+avec <a href="https://exiftool.org/">exiftool</a> ou le script
+<a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>,
+puis retrouver la commune où elle a été prise. Voici une partie du
+dictionnaire obtenu :</li>
+</ol>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">extraire_exif</span><span class="p">(</span><span class="s">'20181230_162625.jpg'</span><span class="p">)</span>
+<span class="p">{...,</span> <span class="s">'EXIF:Make'</span><span class="p">:</span> <span class="s">'samsung'</span><span class="p">,</span> <span class="s">'EXIF:Model'</span><span class="p">:</span> <span class="s">'SM-G930F'</span><span class="p">,</span> <span class="s">'EXIF:Orientation'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'EXIF:XResolution'</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span>
+ <span class="s">'EXIF:YResolution'</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span> <span class="s">'EXIF:ResolutionUnit'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'EXIF:Software'</span><span class="p">:</span> <span class="s">'G930FXXU3ERL3'</span><span class="p">,</span> <span class="s">'EXIF:ModifyDate'</span><span class="p">:</span> <span class="s">'2018:12:30 16:26:24'</span><span class="p">,</span> <span class="s">'EXIF:YCbCrPositioning'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'EXIF:ExposureTime'</span><span class="p">:</span> <span class="mf">0.0005733944954</span><span class="p">,</span> <span class="s">'EXIF:FNumber'</span><span class="p">:</span> <span class="mf">1.7</span><span class="p">,</span> <span class="s">'EXIF:ExposureProgram'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'EXIF:ISO'</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+ <span class="s">'EXIF:ExifVersion'</span><span class="p">:</span> <span class="s">'0220'</span><span class="p">,</span> <span class="s">'EXIF:DateTimeOriginal'</span><span class="p">:</span> <span class="s">'2018:12:30 16:26:24'</span><span class="p">,</span> <span class="s">'EXIF:CreateDate'</span><span class="p">:</span> <span class="s">'2018:12:30 16:26:24'</span><span class="p">,</span> <span class="s">'EXIF:ComponentsConfiguration'</span><span class="p">:</span> <span class="s">'1 2 3 0'</span><span class="p">,</span> <span class="s">'EXIF:ShutterSpeedValue'</span><span class="p">:</span> <span class="s">'0.000572673315054629'</span><span class="p">,</span> <span class="s">'EXIF:ApertureValue'</span><span class="p">:</span> <span class="mf">1.6993699982773</span><span class="p">,</span> <span class="s">'EXIF:BrightnessValue'</span><span class="p">:</span> <span class="mf">8.36</span><span class="p">,</span>
+ <span class="s">'EXIF:ExposureCompensation'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'EXIF:MaxApertureValue'</span><span class="p">:</span> <span class="mf">1.6993699982773</span><span class="p">,</span> <span class="s">'EXIF:MeteringMode'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+ <span class="s">'EXIF:Flash'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'EXIF:FocalLength'</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span> <span class="s">'EXIF:UserComment'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span> <span class="s">'EXIF:SubSecTime'</span><span class="p">:</span> <span class="s">'0999'</span><span class="p">,</span>
+ <span class="p">....,</span> <span class="s">'EXIF:FlashpixVersion'</span><span class="p">:</span> <span class="s">'0100'</span><span class="p">,</span> <span class="s">'EXIF:ColorSpace'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'EXIF:ExifImageWidth'</span><span class="p">:</span> <span class="mi">4032</span><span class="p">,</span> <span class="s">'EXIF:ExifImageHeight'</span><span class="p">:</span> <span class="mi">3024</span><span class="p">,</span> <span class="p">...,</span> <span class="s">'EXIF:GPSVersionID'</span><span class="p">:</span> <span class="s">'2 2 0 0'</span><span class="p">,</span> <span class="s">'EXIF:GPSLatitudeRef'</span><span class="p">:</span> <span class="s">'N'</span><span class="p">,</span>
+ <span class="s">'EXIF:GPSLatitude'</span><span class="p">:</span> <span class="mf">42.4947222222222</span><span class="p">,</span> <span class="s">'EXIF:GPSLongitudeRef'</span><span class="p">:</span> <span class="s">'E'</span><span class="p">,</span> <span class="s">'EXIF:GPSLongitude'</span><span class="p">:</span> <span class="mf">3.13</span><span class="p">,</span>
+ <span class="s">'EXIF:GPSAltitudeRef'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'EXIF:GPSAltitude'</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s">'EXIF:GPSTimeStamp'</span><span class="p">:</span> <span class="s">'15:26:35'</span><span class="p">,</span><span class="s">'EXIF:GPSDateStamp'</span><span class="p">:</span> <span class="s">'2018:12:30'</span><span class="p">,</span> <span class="p">....</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="création-de-dictionnaire">Création de dictionnaire</h1>
+
+<p>Il existe plusieurs façons de construire un dictionnaire :</p>
+
+<ul>
+  <li><strong>Par extension :</strong> On peut utiliser la forme littérale avec les
+accolades <code class="language-plaintext highlighter-rouge">{</code> et <code class="language-plaintext highlighter-rouge">}</code> qui entourent la série des paires <code class="language-plaintext highlighter-rouge">clef :
+valeur</code> ou le constructeur <code class="language-plaintext highlighter-rouge">dict</code> qui peut convertir en dictionnaire
+une séquence de <code class="language-plaintext highlighter-rouge">tuple</code> de la forme <code class="language-plaintext highlighter-rouge">(clef, valeur)</code>.</li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">processeur1</span> <span class="o">=</span> <span class="p">{</span><span class="s">'annee'</span> <span class="p">:</span> <span class="mi">1974</span><span class="p">,</span> <span class="s">'fabricant'</span> <span class="p">:</span> <span class="s">'Intel'</span><span class="p">,</span> <span class="s">'Frequence'</span> <span class="p">:</span> <span class="s">'2 MHz'</span><span class="p">,</span><span class="s">'gravure'</span> <span class="p">:</span> <span class="s">'6000 nm'</span><span class="p">,</span> <span class="s">'architecture'</span> <span class="p">:</span> <span class="s">'8080'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">processeur2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="s">'annee'</span><span class="p">,</span> <span class="mi">1978</span><span class="p">),</span> <span class="p">(</span><span class="s">'fabricant'</span><span class="p">,</span> <span class="s">'Intel'</span><span class="p">),(</span><span class="s">'Frequence'</span><span class="p">,</span><span class="s">'5 MHz'</span><span class="p">),(</span><span class="s">'gravure'</span><span class="p">,</span><span class="s">'3 micrometres'</span><span class="p">),(</span><span class="s">'architecture'</span><span class="p">,</span><span class="s">'8086'</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">processeur2</span>
+<span class="p">{</span><span class="s">'annee'</span><span class="p">:</span> <span class="mi">1978</span><span class="p">,</span> <span class="s">'fabricant'</span><span class="p">:</span> <span class="s">'Intel'</span><span class="p">,</span> <span class="s">'Frequence'</span><span class="p">:</span> <span class="s">'5 MHz'</span><span class="p">,</span> <span class="s">'gravure'</span><span class="p">:</span> <span class="s">'3000 nm'</span><span class="p">,</span> <span class="s">'architecture'</span><span class="p">:</span> <span class="s">'8086'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">processeur1</span><span class="p">[</span><span class="s">'gravure'</span><span class="p">]</span>
+<span class="s">'6000 nm'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">processeur2</span><span class="p">[</span><span class="s">'gravure'</span><span class="p">]</span>
+<span class="s">'3000 nm'</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Par compréhension :</strong> La syntaxe est la même que pour les tableaux
+de type <code class="language-plaintext highlighter-rouge">list</code> en remplaçant les parenthèses par des accolades. On
+peut récupérer les paires <code class="language-plaintext highlighter-rouge">clef : valeur</code> en parcourant un tableau
+de <code class="language-plaintext highlighter-rouge">tuple</code>.</li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">tab_tuple</span> <span class="o">=</span> <span class="p">[(</span><span class="s">'annee'</span><span class="p">,</span> <span class="mi">1989</span><span class="p">),</span> <span class="p">(</span><span class="s">'fabricant'</span><span class="p">,</span> <span class="s">'Intel'</span><span class="p">),(</span><span class="s">'Frequence'</span><span class="p">,</span><span class="s">'25 MHz'</span><span class="p">),(</span><span class="s">'gravure'</span><span class="p">,</span><span class="s">'600 nm'</span><span class="p">),(</span><span class="s">'architecture'</span><span class="p">,</span><span class="s">'80486'</span><span class="p">)]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">processeur3</span> <span class="o">=</span> <span class="p">{</span> <span class="n">clef</span> <span class="p">:</span> <span class="n">valeur</span> <span class="k">for</span> <span class="n">clef</span><span class="p">,</span> <span class="n">valeur</span> <span class="ow">in</span> <span class="n">tab_tuple</span> <span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">processeur3</span>
+<span class="p">{</span><span class="s">'annee'</span><span class="p">:</span> <span class="mi">1989</span><span class="p">,</span> <span class="s">'fabricant'</span><span class="p">:</span> <span class="s">'Intel'</span><span class="p">,</span> <span class="s">'Frequence'</span><span class="p">:</span> <span class="s">'25 MHz'</span><span class="p">,</span> <span class="s">'gravure'</span><span class="p">:</span> <span class="s">'600 nm'</span><span class="p">,</span> <span class="s">'architecture'</span><span class="p">:</span> <span class="s">'80486'</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Exercice 2</strong></p>
+
+<p>La fonction <code class="language-plaintext highlighter-rouge">ord</code> associe à un caractère son point de code
+<a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> et sa réciproque est la
+fonction <code class="language-plaintext highlighter-rouge">chr</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">ord</span><span class="p">(</span><span class="s">'a'</span><span class="p">),</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">97</span><span class="p">,</span> <span class="s">'a'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">97</span><span class="p">,</span> <span class="mi">97</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'f'</span><span class="p">,</span> <span class="s">'g'</span><span class="p">,</span> <span class="s">'h'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'j'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Donner des expressions qui permettent de définir les dictionnaires
+ci-dessous par compréhension :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">ordinal</span>
+<span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="mi">97</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span> <span class="s">'d'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="s">'f'</span><span class="p">:</span> <span class="mi">102</span><span class="p">,</span> <span class="s">'g'</span><span class="p">:</span> <span class="mi">103</span><span class="p">,</span> <span class="s">'h'</span><span class="p">:</span> <span class="mi">104</span><span class="p">,</span> <span class="s">'i'</span><span class="p">:</span> <span class="mi">105</span><span class="p">,</span> <span class="s">'j'</span><span class="p">:</span> <span class="mi">106</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">caractere</span>
+<span class="p">{</span><span class="mi">97</span><span class="p">:</span> <span class="s">'a'</span><span class="p">,</span> <span class="mi">98</span><span class="p">:</span> <span class="s">'b'</span><span class="p">,</span> <span class="mi">99</span><span class="p">:</span> <span class="s">'c'</span><span class="p">,</span> <span class="mi">100</span><span class="p">:</span> <span class="s">'d'</span><span class="p">,</span> <span class="mi">101</span><span class="p">:</span> <span class="s">'e'</span><span class="p">,</span> <span class="mi">102</span><span class="p">:</span> <span class="s">'f'</span><span class="p">,</span> <span class="mi">103</span><span class="p">:</span> <span class="s">'g'</span><span class="p">,</span> <span class="mi">104</span><span class="p">:</span> <span class="s">'h'</span><span class="p">,</span> <span class="mi">105</span><span class="p">:</span> <span class="s">'i'</span><span class="p">,</span> <span class="mi">106</span><span class="p">:</span> <span class="s">'j'</span><span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="accès-ajout-suppression-délément-dans-un-dictionnaire">Accès, ajout, suppression d’élément dans un dictionnaire</h1>
+
+<ul>
+  <li>L’accès, la modification, l’ajout d’un élément se fait avec
+l’opérateur crochet : <code class="language-plaintext highlighter-rouge">dico[clef]</code> retourne la valeur appairée
+avec la clef donnée dans le dictionnaire <code class="language-plaintext highlighter-rouge">dico</code>. Le nombre
+d’éléments est donné par la fonction <code class="language-plaintext highlighter-rouge">len</code>, mais les éléments
+sont indexés par les clefs et non par des entiers : <em>il n’y a pas de
+notion d’ordre dans un dictionnaire.</em> Comme les tableaux de type
+<code class="language-plaintext highlighter-rouge">list</code> et contrairement aux <strong>p-uplets</strong> de type <code class="language-plaintext highlighter-rouge">tuple</code>, les
+dictionnaires de type <code class="language-plaintext highlighter-rouge">dict</code> sont modifiables après modification ,
+on dit qu’ils sont <strong>mutables</strong>. Un dictionnaire peut être construit
+par ajout successif de paires <code class="language-plaintext highlighter-rouge">clef : valeur</code> à partir du
+dictionnaire vide <code class="language-plaintext highlighter-rouge">{}</code>. Enfin, on peut supprimer un élément si on
+connaît sa <code class="language-plaintext highlighter-rouge">clef</code> avec <code class="language-plaintext highlighter-rouge">del dico[clef]</code>.</li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span><span class="p">[</span><span class="s">'Littérature'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Peter Handke'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span>
+<span class="p">{</span><span class="s">'Littérature'</span><span class="p">:</span> <span class="s">'Peter Handke'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span><span class="p">[</span><span class="s">'Paix'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Kim Joon Hyun'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span>
+<span class="p">{</span><span class="s">'Littérature'</span><span class="p">:</span> <span class="s">'Peter Handke'</span><span class="p">,</span> <span class="s">'Paix'</span><span class="p">:</span> <span class="s">'Kim Joon Hyun'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span><span class="p">[</span><span class="s">'Paix'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Abiy Ahmed'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span>
+<span class="p">{</span><span class="s">'Littérature'</span><span class="p">:</span> <span class="s">'Peter Handke'</span><span class="p">,</span> <span class="s">'Paix'</span><span class="p">:</span> <span class="s">'Abiy Ahmed'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span><span class="p">[</span><span class="s">'Maths'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Cédric Villani'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span>
+<span class="p">{</span><span class="s">'Littérature'</span><span class="p">:</span> <span class="s">'Peter Handke'</span><span class="p">,</span> <span class="s">'Paix'</span><span class="p">:</span> <span class="s">'Abiy Ahmed'</span><span class="p">,</span> <span class="s">'Maths'</span><span class="p">:</span> <span class="s">'Cédric Villani'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">nobel2019</span><span class="p">[</span><span class="s">'Maths'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nobel2019</span>
+<span class="p">{</span><span class="s">'Littérature'</span><span class="p">:</span> <span class="s">'Peter Handke'</span><span class="p">,</span> <span class="s">'Paix'</span><span class="p">:</span> <span class="s">'Abiy Ahmed'</span><span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Parce qu’un dictionnaire est implémenté par une <a href="https://fr.wikipedia.org/wiki/Table_de_hachage">table de
+hachage</a>, ses
+<strong>clefs</strong> doivent, nécessairement être <strong>immutables</strong> (plus
+précisément récursivement immutables s’il s’agit de structures
+imbriquées et encore plus précisément
+<a href="https://docs.python.org/3/glossary.html">hachables</a>). Une valeur
+est <strong>immutable</strong> si elle ne peut pas être modifiée après sa
+création. Les types de base <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">bool</code> et les types
+construits <code class="language-plaintext highlighter-rouge">tuple</code>, <code class="language-plaintext highlighter-rouge">str</code> sont <strong>immutables</strong> mais pas les types
+<code class="language-plaintext highlighter-rouge">list</code> et <code class="language-plaintext highlighter-rouge">dict</code> (un dictionnaire ne peut pas être une clef de
+dictionnaire).</li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">jouet</span> <span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jouet</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">'clef de type int'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jouet</span><span class="p">[</span><span class="bp">True</span><span class="p">]</span> <span class="o">=</span> <span class="s">'clef de type bool'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jouet</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="s">'clef de type tuple'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jouet</span>
+<span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="s">'clef de type int'</span><span class="p">,</span> <span class="bp">True</span><span class="p">:</span> <span class="s">'clef de type bool'</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="s">'clef de type tuple'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jouet</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="s">'clef de type list -&gt; impossible'</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">TypeError</span><span class="p">:</span> <span class="n">unhashable</span> <span class="nb">type</span><span class="p">:</span> <span class="s">'list'</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Une dictionnaire ne peut pas être une clef, mais peut être une
+valeur dans un autre dictionnaire. On peut définir toutes sortes de
+structures imbriquées comme des tableaux de dictionnaires …</li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">vols</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Lisbonne'</span><span class="p">:</span> <span class="p">{</span><span class="s">'heure'</span><span class="p">:</span> <span class="s">'21:10'</span><span class="p">,</span><span class="s">'num'</span><span class="p">:</span> <span class="s">'EJU7674'</span><span class="p">,</span><span class="s">'compagnie'</span><span class="p">:</span> <span class="s">'EASYJET'</span><span class="p">},</span>
+<span class="p">...</span> <span class="s">'Vienne'</span><span class="p">:</span> <span class="p">{</span><span class="s">'heure'</span><span class="p">:</span> <span class="s">'21:25'</span><span class="p">,</span><span class="s">'num'</span><span class="p">:</span> <span class="s">'OS430'</span><span class="p">,</span><span class="s">'compagnie'</span><span class="p">:</span> <span class="s">'AUSTRIAN AIRLINES'</span><span class="p">},</span>
+<span class="p">...</span> <span class="s">'Londres'</span><span class="p">:</span> <span class="p">{</span><span class="s">'heure'</span><span class="p">:</span> <span class="s">'21:55'</span><span class="p">,</span><span class="s">'num'</span><span class="p">:</span> <span class="s">'BA357'</span><span class="p">,</span><span class="s">'compagnie'</span><span class="p">:</span> <span class="s">'BRITISH AIRWAYS'</span><span class="p">}}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">vols</span><span class="p">[</span><span class="s">'Londres'</span><span class="p">]</span>
+<span class="p">{</span><span class="s">'heure'</span><span class="p">:</span> <span class="s">'21:55'</span><span class="p">,</span> <span class="s">'num'</span><span class="p">:</span> <span class="s">'BA357'</span><span class="p">,</span> <span class="s">'compagnie'</span><span class="p">:</span> <span class="s">'BRITISH AIRWAYS'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tab_dico_airports</span>
+<span class="p">[{</span><span class="s">'nom'</span><span class="p">:</span> <span class="s">'Total Rf Heliport'</span><span class="p">,</span><span class="s">'latitude'</span><span class="p">:</span> <span class="s">'40.07080078125'</span><span class="p">,</span> <span class="s">'longitude'</span><span class="p">:</span> <span class="s">'-74.93360137939453'</span><span class="p">,</span>
+  <span class="s">'altitude'</span><span class="p">:</span> <span class="s">'11'</span><span class="p">,</span>  <span class="s">'code_pays'</span><span class="p">:</span> <span class="s">'US'</span><span class="p">},</span>
+   <span class="p">{</span><span class="s">'nom'</span><span class="p">:</span> <span class="s">'Aero B Ranch Airport'</span><span class="p">,</span>  <span class="s">'latitude'</span><span class="p">:</span> <span class="s">'38.704022'</span><span class="p">,</span>  <span class="s">'longitude'</span><span class="p">:</span> <span class="s">'-101.473911'</span><span class="p">,</span>
+  <span class="s">'altitude'</span><span class="p">:</span> <span class="s">'3435'</span><span class="p">,</span>  <span class="s">'code_pays'</span><span class="p">:</span> <span class="s">'US'</span><span class="p">}]</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Avec l’opérateur crochet, si une clef n’appartient à un
+dictionnaire, une exception (erreur en
+<a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>)
+est levée. La méthode <code class="language-plaintext highlighter-rouge">get</code> permet de retourner la valeur <code class="language-plaintext highlighter-rouge">None</code> par
+défaut si on ne veut pas d’erreur.</li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">prix_turing2006</span> <span class="o">=</span> <span class="p">{</span><span class="s">'nom'</span> <span class="p">:</span> <span class="s">'Frances Allen'</span><span class="p">,</span> <span class="s">'sujet'</span> <span class="p">:</span> <span class="s">'Optimisation des compilateurs'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prix_turing2006</span><span class="p">[</span><span class="s">'pays'</span><span class="p">]</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">KeyError</span><span class="p">:</span> <span class="s">'pays'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prix_turing2006</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'pays'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Exercice 3</strong></p>
+
+<p><em>QCM de type E3C 2</em>.</p>
+
+<ol>
+  <li><strong>Question 1</strong> Comment peut-on accéder à la valeur associée à une
+clé dans un dictionnaire ?</li>
+</ol>
+
+<p><strong><em>Réponses</em></strong></p>
+
+<p><strong>A)</strong> il faut parcourir le dictionnaire avec une boucle à la recherche
+de la clé</p>
+
+<p><strong>B)</strong> on peut y accéder directement à partir de la clé</p>
+
+<p><strong>C)</strong> on ne peut pas accéder à une valeur contenue dans un dictionnaire
+à partir d’une clé</p>
+
+<p><strong>D)</strong> il faut d’abord déchiffrer la clé pour accéder à un dictionnaire</p>
+
+<ol>
+  <li><strong>Question 2</strong> On a défini un dictionnaire :</li>
+</ol>
+
+<p>contacts = {‘Paul’: ‘0601010182’, ‘Jacques’: ‘0602413824’, ‘Claire’:
+‘0632451153’}</p>
+
+<p>Quelle instruction écrire pour ajouter à ce dictionnaire un nouveau
+contact nommé Juliette avec le numéro de téléphone 0603040506 ?</p>
+
+<p><strong>Réponses</strong></p>
+
+<p><strong>A)</strong> ‘Juliette’: ‘0603040506’</p>
+
+<p><strong>B)</strong> contacts.append(‘Juliette’: ‘0603040506’)</p>
+
+<p><strong>C)</strong> contacts[‘Juliette’] = ‘0603040506’</p>
+
+<p><strong>D)</strong> contacts.append(‘Juliette’, ‘0603040506’)</p>
+
+<ol>
+  <li><strong>Question 3</strong> Considérons le dictionnaire suivant :</li>
+</ol>
+
+<p>resultats = {‘Paul’:5 , ‘Amina’:1 , ‘Léon’ : 9 , ‘Benoit’:3}</p>
+
+<p>Quelle affirmation est correcte ?</p>
+
+<p><strong>Réponses</strong></p>
+
+<p><strong>A)</strong> resultats[‘Amina’] vaut 1</p>
+
+<p><strong>B)</strong> resultats[1] vaut ‘Amina’</p>
+
+<p><strong>C)</strong> ‘Paul’ est une valeur de ce dictionnaire</p>
+
+<p><strong>D)</strong> 9 est une clé de ce dictionnaire</p>
+
+<ol>
+  <li><strong>Question 4</strong> Pour gérer certaines données EXIF de photographies,
+on a utilisé le code suivant pour stocker dans une liste L de
+dictionnaires quelques données :</li>
+</ol>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">L</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="s">'marque'</span><span class="p">:</span> <span class="s">'Canon'</span><span class="p">,</span> <span class="s">'modele'</span><span class="p">:</span> <span class="s">'EOS 7D'</span><span class="p">,</span> <span class="s">'focale'</span><span class="p">:</span>
+<span class="s">'19mm'</span><span class="p">,</span> <span class="s">'flash'</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">L</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="s">'marque'</span><span class="p">:</span> <span class="s">'Nikon'</span><span class="p">,</span> <span class="s">'modele'</span><span class="p">:</span> <span class="s">'CoolPix A1000'</span><span class="p">,</span>
+<span class="s">'focale'</span><span class="p">:</span> <span class="s">'19mm'</span><span class="p">,</span> <span class="s">'flash'</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
+<span class="n">L</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="s">'marque'</span><span class="p">:</span> <span class="s">'Sony'</span><span class="p">,</span> <span class="s">'modele'</span><span class="p">:</span> <span class="s">'HK 350'</span><span class="p">,</span> <span class="s">'focale'</span><span class="p">:</span>
+<span class="s">'24mm'</span><span class="p">,</span> <span class="s">'flash'</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">L</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="s">'marque'</span><span class="p">:</span> <span class="s">'Sony'</span><span class="p">,</span> <span class="s">'modele'</span><span class="p">:</span> <span class="s">'HK 350'</span><span class="p">,</span> <span class="s">'focale'</span><span class="p">:</span>
+<span class="s">'19mm'</span><span class="p">,</span> <span class="s">'flash'</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
+</code></pre></div></div>
+
+<p>…… et ainsi de suite, d’autres informations ont été ajoutées ……</p>
+
+<p>On veut extraire de ces informations la liste Z des photographies
+obtenues avec un Canon ou un Nikon et une distance focale de 19 mm.</p>
+
+<p>Quelle instruction permet de réaliser cette extraction ?</p>
+
+<p><strong><em>Réponses</em></strong></p>
+
+<p><strong>A)</strong> Z = [ p for p in L if (p[‘marque’] == ‘Canon’ or p[‘focale’]
+== ‘19mm’) and (p[‘marque’] == ’Nikon’ or p[‘focale’] == ‘19mm’) ]</p>
+
+<p><strong>B)</strong> Z = [ p for p in L if (p[‘marque’] == ‘Canon’ and
+p[‘focale’] == ‘19mm’) and (p[‘marque’] == ’Nikon’
+ and p[‘focale’] == ‘19mm’) ]</p>
+
+<p><strong>C)</strong> Z = [ p for p in L if (p[‘marque’] == ‘Canon’ or p[‘focale’]
+== ‘19mm’) or (p[‘marque’] == ’Nikon’ or p[‘focale’] == ‘19mm’) ]</p>
+
+<p><strong>D)</strong> Z = [ p for p in L if (p[‘marque’] == ‘Canon’ and
+p[‘focale’] == ‘19mm’) or (p[‘marque’] == ’Nikon’ and </p>
+
+<p>p[‘focale’] == ‘19mm’) ]</p>
+
+<ol>
+  <li><strong>Question 5</strong> On définit le dictionnaire d = {‘a’: 1, ‘b’: 2, ‘c’:
+3, ‘z’: 26}. Quelle expression permet de récupérer la valeur de la
+clé ‘z’ ?</li>
+</ol>
+
+<p><strong>Réponses</strong></p>
+
+<p><strong>A)</strong> d[4] <strong>B)</strong> d[26] <strong>C)</strong> d[z] <strong>D)</strong> d[‘z’]</p>
+
+<ol>
+  <li><strong>Question 6</strong> On définit ainsi une variable t :</li>
+</ol>
+
+<p>t = [ {‘id’:1, ‘age’:23, ‘sejour’:’PEKIN’},<br />
+{‘id’:2, ‘age’:27, ‘sejour’:’ISTANBUL’},<br />
+{‘id’:3, ‘age’:53, ‘sejour’:’LONDRES’},<br />
+{‘id’:4, ‘age’:41, ‘sejour’:’ISTANBUL’},<br />
+{‘id’:5, ‘age’:62, ‘sejour’:’RIO’},<br />
+{‘id’:6, ‘age’:28, ‘sejour’:’ALGER’}]</p>
+
+<p>Quelle affirmation est correcte ?</p>
+
+<p><strong><em>Réponses</em></strong></p>
+
+<p><strong>A)</strong> t est une liste de listes <strong>B)</strong> t est une liste de dictionnaires</p>
+
+<p><strong>C)</strong> t est un dictionnaire de listes <strong>D)</strong> t est une liste de tuples</p>
+
+<h1 id="parcours-de-dictionnaire">Parcours de dictionnaire</h1>
+
+<p>Il existe trois façons de parcourir un dictionnaire. Dans les exemples,
+on utilisera un dictionnaire qui représente un annuaire :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">dico</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'Paul'</span> <span class="p">:</span> <span class="s">'0640507080'</span><span class="p">,</span> <span class="s">'Marie'</span> <span class="p">:</span> <span class="s">'0742516483'</span><span class="p">,</span> <span class="s">'Hicham'</span> <span class="p">:</span> <span class="s">'0987416543'</span><span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><strong>Parcours par clefs :</strong></p>
+
+    <ul>
+      <li>Comme pour les types <code class="language-plaintext highlighter-rouge">list</code>, <code class="language-plaintext highlighter-rouge">str</code> et <code class="language-plaintext highlighter-rouge">tuple</code>, les dictionnaires
+sont itérables avec la syntaxe <code class="language-plaintext highlighter-rouge">for clef in dico</code> de type <code class="language-plaintext highlighter-rouge">list</code>
+ou <code class="language-plaintext highlighter-rouge">tuple</code>, mais on ne parcourt ainsi que les clefs. On peut
+aussi utiliser la méthode <code class="language-plaintext highlighter-rouge">keys</code>. <em>À partir des clefs on peut
+retrouver les valeurs.</em></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">clef</span> <span class="ow">in</span> <span class="n">dico</span><span class="p">:</span>
+<span class="p">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"Clef -&gt; "</span><span class="p">,</span> <span class="n">clef</span><span class="p">)</span>
+<span class="p">...</span> 
+<span class="n">Clef</span> <span class="o">-&gt;</span>  <span class="n">Paul</span>
+<span class="n">Clef</span> <span class="o">-&gt;</span>  <span class="n">Marie</span>
+<span class="n">Clef</span> <span class="o">-&gt;</span>  <span class="n">Hicham</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">clef</span> <span class="ow">in</span> <span class="n">dico</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="p">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"Clef -&gt;"</span><span class="p">,</span> <span class="n">clef</span><span class="p">,</span> <span class="s">" Valeur -&gt;"</span><span class="p">,</span> <span class="n">dico</span><span class="p">[</span><span class="n">clef</span><span class="p">])</span>
+<span class="p">...</span> 
+<span class="n">Clef</span> <span class="o">-&gt;</span> <span class="n">Paul</span>  <span class="n">Valeur</span> <span class="o">-&gt;</span> <span class="mi">0640507080</span>
+<span class="n">Clef</span> <span class="o">-&gt;</span> <span class="n">Marie</span>  <span class="n">Valeur</span> <span class="o">-&gt;</span> <span class="mi">0742516483</span>
+<span class="n">Clef</span> <span class="o">-&gt;</span> <span class="n">Hicham</span>  <span class="n">Valeur</span> <span class="o">-&gt;</span> <span class="mi">0987416543</span>
+</code></pre></div></div>
+
+<ul>
+  <li><em>L’ordre de parcours n’est pas forcément l’ordre d’insertion car un
+dictionnaire n’est pas ordonné</em> Ainsi, on ne peut pas parcourir un
+dictionnaire par index avec <code class="language-plaintext highlighter-rouge">for k in range(len(dico))</code>.</li>
+</ul>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dico</span><span class="p">)):</span>
+<span class="p">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">dico</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<span class="p">...</span> 
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">KeyError</span><span class="p">:</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Parcours par valeurs :</strong></li>
+</ul>
+
+<p>On peut parcourir un dictionnaire par valeurs avec sa méthode <code class="language-plaintext highlighter-rouge">values</code>.
+<em>À partir des valeurs on ne peut cependant pas retrouver les clefs.</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dico</span><span class="p">.</span><span class="n">values</span><span class="p">():</span>
+<span class="p">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"Valeur -&gt; "</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="p">...</span> 
+<span class="n">Valeur</span> <span class="o">-&gt;</span>  <span class="mi">0640507080</span>
+<span class="n">Valeur</span> <span class="o">-&gt;</span>  <span class="mi">0742516483</span>
+<span class="n">Valeur</span> <span class="o">-&gt;</span>  <span class="mi">0987416543</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Parcours par paires (clef, valeur) :</strong></li>
+</ul>
+
+<p>On peut parcourir un dictionnaire par paires (clef, valeur) valeurs avec
+sa méthode <code class="language-plaintext highlighter-rouge">items</code>. On utilise le mécanisme de <em>tuple unpacking</em> dans la
+boucle <code class="language-plaintext highlighter-rouge">for</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="p">(</span><span class="n">clef</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">dico</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+<span class="p">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"Clef -&gt;"</span><span class="p">,</span> <span class="n">clef</span><span class="p">,</span> <span class="s">" Valeur -&gt;"</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="p">...</span> 
+<span class="n">Clef</span> <span class="o">-&gt;</span> <span class="n">Paul</span>  <span class="n">Valeur</span> <span class="o">-&gt;</span> <span class="mi">0640507080</span>
+<span class="n">Clef</span> <span class="o">-&gt;</span> <span class="n">Marie</span>  <span class="n">Valeur</span> <span class="o">-&gt;</span> <span class="mi">0742516483</span>
+<span class="n">Clef</span> <span class="o">-&gt;</span> <span class="n">Hicham</span>  <span class="n">Valeur</span> <span class="o">-&gt;</span> <span class="mi">0987416543</span>
+</code></pre></div></div>
+
+<p><strong>Exercice 4</strong></p>
+
+<p>On considère le dictionnaire :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dico</span> <span class="o">=</span> <span class="p">{</span><span class="s">"a"</span> <span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">"b"</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"c"</span> <span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Quels sont les affichages possibles lors de l’exécution du code
+suivant ?</li>
+</ol>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">clef</span> <span class="ow">in</span> <span class="n">dico</span><span class="p">.</span><span class="n">keys</span><span class="p">()</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">clef</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">" "</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong><em>Réponses</em></strong></p>
+
+<p><strong>A)</strong> <code class="language-plaintext highlighter-rouge">a b c</code> <strong>B)</strong> <code class="language-plaintext highlighter-rouge">True False True</code> <strong>C)</strong> <code class="language-plaintext highlighter-rouge">(a, True) (b, False) (c,
+True)</code></p>
+
+<ol>
+  <li>Quels sont les affichages possibles lors de l’exécution du code
+suivant ?</li>
+</ol>
+
+<!-- end list -->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">dico</span><span class="p">.</span><span class="n">items</span><span class="p">()</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">clef</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">" "</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>A)</strong> <code class="language-plaintext highlighter-rouge">a b c</code> <strong>B)</strong> <code class="language-plaintext highlighter-rouge">True False True</code> <strong>C)</strong> <code class="language-plaintext highlighter-rouge">(a, True) (b, False) (c,
+True)</code></p>
+
+<h1 id="références-partagées-et-mutabilité">Références partagées et mutabilité</h1>
+
+<p>Une variable de type <code class="language-plaintext highlighter-rouge">dict</code> n’est qu’une référence, un <strong>alias</strong> vers la
+zone mémoire où sont stockées les données. Comme pour les tableaux de
+type <code class="language-plaintext highlighter-rouge">list</code> il faut prêter attention aux effets non maîtrisées des
+références partagées.</p>
+
+<ul>
+  <li>Les dictionnaires étant des valeurs <strong>mutables</strong>, ils peuvent être
+modifiés par <strong>effet de bord</strong> lorsqu’ils sont transmis à une
+fonction.</li>
+  <li>Pour copier une structure imbriquée avec des dictionnaires il faut
+réaliser une copie profonde avec la fonction <code class="language-plaintext highlighter-rouge">deepcopy</code> du module
+<code class="language-plaintext highlighter-rouge">copy</code>.</li>
+</ul>
+
+<p>On donne ci-dessous un programme et deux visualisations de son
+environnement : avant et après l’exécution de la dernière instruction.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">contact_ami</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'Paul'</span> <span class="p">:</span> <span class="s">'0640507080'</span><span class="p">,</span> <span class="s">'Marie'</span> <span class="p">:</span> <span class="s">'0742516483'</span><span class="p">}</span>
+<span class="n">contact_travail</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'Adam'</span> <span class="p">:</span> <span class="s">'0666666666'</span><span class="p">,</span> <span class="s">'Eve'</span> <span class="p">:</span> <span class="s">'0777777777'</span><span class="p">}</span>
+<span class="n">contact_tous</span> <span class="o">=</span> <span class="p">{</span><span class="s">'amis'</span> <span class="p">:</span> <span class="n">contact_ami</span><span class="p">,</span> <span class="s">'travail'</span> <span class="p">:</span> <span class="n">contact_travail</span><span class="p">}</span>
+<span class="n">contact_copie</span> <span class="o">=</span> <span class="n">contact_tous</span>
+
+<span class="k">def</span> <span class="nf">ajout</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">numero</span><span class="p">):</span>
+    <span class="n">contact</span><span class="p">[</span><span class="n">nom</span><span class="p">]</span> <span class="o">=</span> <span class="n">numero</span>
+
+<span class="n">ajout</span><span class="p">(</span><span class="n">contact_ami</span><span class="p">,</span> <span class="s">'Napoleon'</span><span class="p">,</span> <span class="s">'0618001814'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="images/attention.png" alt="Attention 1" /><br />
+&amp; <img src="images/attention2.png" alt="Attention 2" /></p>
+
+<h1 id="performance">Performance</h1>
+
+<p><strong>Propriété 1</strong></p>
+
+<p>Les dictionnaires de type <code class="language-plaintext highlighter-rouge">dict</code> sont implémentés en
+<a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> par des
+<a href="https://fr.wikipedia.org/wiki/Table_de_hachage">tables de hachage</a> qui
+est une structure de données très efficace pour le test d’appartenance,
+la recherche ou l’insertion d’élément. On peut considérer que ces
+opérations se font en temps quasiment constant, c’est-à-dire
+indépendant de la taille du dictionnaire alors que la recherche et le
+test d’appartenance s’effectue en temps linéaire en moyenne
+(proportionnel à la taille du tableau) pour les tableaux de type <code class="language-plaintext highlighter-rouge">list</code>
+ou les <code class="language-plaintext highlighter-rouge">tuple</code>. Cet optimisation des performances en temps se fait au
+détriment de l’occupation en espace, les dictionnaires étant plus
+gourmands en mémoire que les tableaux.</p>
+
+<p>On donne ci-dessous un comparatif de temps d’exécutions pour la
+recherche de 1000 flottants d’un tableau <code class="language-plaintext highlighter-rouge">needle</code> (aiguilles) de taille
+500, dans des tableaux de flottants <code class="language-plaintext highlighter-rouge">haystack</code> (meule de foin) de taille
+croissante <img src="https://latex.codecogs.com/png.latex?10%5E%7Bk%7D" alt="10^{k}" title="10^{k}" /> avec <img src="https://latex.codecogs.com/png.latex?k%20%5Cin%20%5C%7B3%2C4%2C5%2C6%2C7%5C%7D" alt="k \in
+\{3,4,5,6,7\}" title="k \\in \\{3,4,5,6,7\\}" />. Pour chaque test, les éléments de <code class="language-plaintext highlighter-rouge">haystack</code>
+et <code class="language-plaintext highlighter-rouge">needle</code>sont tous distincts et la moitié de <code class="language-plaintext highlighter-rouge">needle</code> est dans
+<code class="language-plaintext highlighter-rouge">haystack</code>.</p>
+
+<p>Le code de cet exemple, tiré de l’ouvrage Python Fluent de Luciano
+Ramalho, est disponible avec nos commentaires dans l’archive
+<a href="https://gitlab.com/frederic-junier/nsi/-/blob/master/TypesConstruits/Dictionnaires/Cours/ressources/test_performance_in.zip">test_performance_in.zip</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Type de conteneur dict
+--------------------
+Taille de la meule de foin :     1000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000104s
+--------------------
+Taille de la meule de foin :    10000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000196s
+--------------------
+Taille de la meule de foin :   100000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000252s
+--------------------
+Taille de la meule de foin :  1000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000399s
+--------------------
+Taille de la meule de foin : 10000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000483s
+--------------------
+
+Type de conteneur list
+--------------------
+Taille de la meule de foin :     1000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.008002s
+--------------------
+Taille de la meule de foin :    10000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.078902s
+--------------------
+Taille de la meule de foin :   100000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.812977s
+--------------------
+Taille de la meule de foin :  1000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 8.554425s
+--------------------
+Taille de la meule de foin : 10000000
+Temps minimum de recherche de 1000 aiguilles (sur 5 recherches):84.754335s
+--------------------
+</code></pre></div></div>
+
+<h1 id="synthèse">Synthèse</h1>
+
+<p><strong>À retenir</strong></p>
+
+<ul>
+  <li>Le type construit <strong>p-uplet nommé</strong> est une séquence non ordonnée
+d’éléments qui sont des paires <code class="language-plaintext highlighter-rouge">(clef, valeur)</code> ou <code class="language-plaintext highlighter-rouge">clef :
+valeur</code>. Chaque <code class="language-plaintext highlighter-rouge">valeur</code> est indexée par sa <code class="language-plaintext highlighter-rouge">clef</code> et non par un
+index entier comme dans <strong>p-uplet</strong>.</li>
+  <li>En <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>
+un <strong>p-uplet nommé</strong> est un <strong>dictionnaire</strong> de type <code class="language-plaintext highlighter-rouge">dict</code>
+implémenté par une table de hachage qui permet des opérations très
+performantes en temps constant.</li>
+  <li>L’accès, l’ajout, la modification d’un dictionnaire s’effectue avec
+l’opérateur crochet et la syntaxe <code class="language-plaintext highlighter-rouge">dico[clef] = valeur</code>.</li>
+  <li>Une variable de type <code class="language-plaintext highlighter-rouge">dict</code> est une <strong>référence</strong> et elle peut être
+modifiée par effet de bord car c’est une valeur <strong>mutable</strong>.</li>
+  <li>Trois méthodes permettent le parcours de dictionnaire :
+    <ul>
+      <li>par clefs avec <code class="language-plaintext highlighter-rouge">for clef in doc.keys()</code></li>
+      <li>par valeurs avec <code class="language-plaintext highlighter-rouge">for clef in doc.values()</code></li>
+      <li>par paires <code class="language-plaintext highlighter-rouge">(clef, valeur)</code> avec <code class="language-plaintext highlighter-rouge">for (clef, valeur) in
+doc.items()</code></li>
+    </ul>
+  </li>
+</ul>
+:ET

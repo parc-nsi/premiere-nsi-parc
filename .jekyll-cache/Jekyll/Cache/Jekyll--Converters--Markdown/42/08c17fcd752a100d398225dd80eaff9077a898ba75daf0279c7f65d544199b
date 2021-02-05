@@ -1,0 +1,42 @@
+I"�<h1 id="séance-du-07012021">Séance du 07/01/2021</h1>
+
+<p><a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d’accueil</a></p>
+
+<h2 id="automatismes">Automatismes</h2>
+
+<ul>
+  <li>Traiter l’  <a href="https://parc-nsi.github.io/premiere-nsi/automatismes.html">automatisme 13</a></li>
+</ul>
+
+<p><strong><a href="automatismes/automatismes.py">Corrigé des automatismes</a></strong></p>
+
+<h2 id="chapitre-13--circuis-logiques-et-fonctions-booléennes">Chapitre 13 : circuis logiques et fonctions booléennes</h2>
+
+<ul>
+  <li>
+    <p>Déroulement de la séance :</p>
+
+    <ul>
+      <li>Matériel :
+        <ul>
+          <li><a href="../chapitre13/cours-circuits-logiques-git.md">Cours version markdown</a></li>
+          <li><a href="../chapitre13/circuits_logisim.zip">Archive avec les circuits logisim</a></li>
+        </ul>
+      </li>
+      <li>Point de cours : préambule sur l’histoire des transistors et des circuits intégrés et présentation avec Logisim d’une porte NON (Définition 1, un transistor) et des portes NAND et NOR (Exercice 1, deux transistors)</li>
+      <li>Travail en autonomie avec Logisim sur les exercices 2, 3 et 4 (des tutoriels video sont accessibles depuis le cours en ligne)</li>
+      <li>Un point de cours sur les <strong>fonctions booléennes</strong> (Définition 2 , Exercice 5 et propriétés 1 et 2)</li>
+      <li>En autonomie l’exercice 6 (QCM E3C) puis correction collective.</li>
+      <li>Point de cours sur les _circuits combinatoires__ (définition 3) et Exercice 9 en autonomie avec Logisim.</li>
+      <li>Pour les plus avancés : exercices 11 et 12 (demi-additionneur et additionneur binaire)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="travail-à-faire">Travail à faire</h2>
+
+<ul>
+  <li>La semaine prochaine : DS sur les chapitres Recherche séquentielle et dichotomique, Tris, Systèmes d’exploitation et ligne de commandes.</li>
+</ul>
+
+:ET
