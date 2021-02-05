@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 11 : algorithmes de tri
+title:  Chapitre 11  algorithmes de tri
 layout: parc
 ---
 

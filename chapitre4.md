@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 4 : boucles conditionnelles et tests
+title:  Chapitre 4  boucles conditionnelles et tests
 layout: parc
 ---
 

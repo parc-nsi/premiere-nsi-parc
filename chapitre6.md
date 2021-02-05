@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 6 : tableaux
+title:  Chapitre 6  tableaux
 layout: parc
 ---
 

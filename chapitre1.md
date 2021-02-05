@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 1 : variables et affectations
+title:  Chapitre 1  variables et affectations
 layout: parc
 ---
 

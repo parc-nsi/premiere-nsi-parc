@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 10 : recherches séquentielle et dichotomique
+title:  Chapitre 10  recherches séquentielle et dichotomique
 layout: parc
 ---
 

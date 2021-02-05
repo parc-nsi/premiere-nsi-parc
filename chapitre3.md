@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 3 : boucles inconditionnelles
+title:  Chapitre 3  boucles inconditionnelles
 layout: parc
 ---
 

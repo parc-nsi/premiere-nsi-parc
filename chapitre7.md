@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 7 : tableaux à deux dimensions, images
+title:  Chapitre 7  tableaux à deux dimensions, images
 layout: parc
 ---
 

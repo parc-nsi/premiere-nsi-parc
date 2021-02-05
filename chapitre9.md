@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 9 : système d'exploitation et ligne de commandes
+title:  Chapitre 9  système d'exploitation et ligne de commandes
 layout: parc
 ---
 

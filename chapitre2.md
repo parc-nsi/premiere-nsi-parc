@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 2 : pages web HTML/CSS
+title:  Chapitre 2  pages web HTML/CSS
 layout: parc
 ---
 
