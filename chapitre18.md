@@ -2,10 +2,6 @@
 title:  Chapitre 18 : dictionnaires
 layout: parc
 ---
----
-title:  Chapitre 18 : dictionnaires
-layout: parc
----
 
 
 # Chapitre 18 : dictionnaires
