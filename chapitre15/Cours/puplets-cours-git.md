@@ -1,7 +1,12 @@
-  - [Crédits](#crédits)
-  - [p-uplets en Python](#p-uplets-en-python)
-  - [QCM de type E3C2](#qcm-de-type-e3c2)
-  - [Synthèse](#synthèse)
+---
+title:  Chapitre 15  p-uplets
+layout: parc
+---
+
+- [Crédits](#crédits)
+- [p-uplets en Python](#p-uplets-en-python)
+- [QCM de type E3C2](#qcm-de-type-e3c2)
+- [Synthèse](#synthèse)
 
 <!-- Définition des hyperliens  -->
 

@@ -5,7 +5,6 @@ layout: parc
 
 
 
-#  Chapitre 10 : recherches séquentielle et dichotomique
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
 
