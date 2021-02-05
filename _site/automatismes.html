@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<!-- Début en-tête -->
+<head>
+
+  <title>Automatismes </title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+<!-- Bootstrap -->
+         <!-- Latest compiled and minified CSS -->
+         <link rel="stylesheet" href="/assets/js/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+         <style>
+          /* Make the image fully responsive */
+          .carousel-inner img {
+              width: 100%;
+              height: 100%;
+            }
+        </style>
+    <!-- jQuery library -->
+    <script src="/assets/js/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+<script src="/assets/js/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    
+<script src="/assets/js/bootstrap-4.3.1-dist/js/bootstrap.min.js"> </script> 
+
+
+
+    <!-- Code Mirror coloration syntaxique du code -->
+
+    <link rel="stylesheet" href="/assets/js/codemirror-5.47.0/theme/monokai.css">
+
+    <script src="assets/js/codemirror-5.47.0/lib/codemirror.js"></script>  
+    <script src="assets/js/codemirror-5.47.0/mode/python/python.js"></script>
+	<script src="assets/js/codemirror-5.47.0/mode/xml/xml.js"></script>
+	<script src="assets/js/codemirror-5.47.0/mode/javascript/javascript.js"></script>
+	<script src="assets/js/codemirror-5.47.0/mode/css/css.js"></script>
+	<script src="assets/js/codemirror-5.47.0/mode/htmlmixed/htmlmixed.js"></script>
+	<script src="assets/js/codemirror-5.47.0/addon/edit/matchbrackets.js"></script>
+
+
+    
+ 
+    
+      <!-- Prism theme coy -->
+      <script src="assets/js/prism.js"></script>
+    
+
+    <!-- Feuille de style principale  -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+</head>
+<!-- Fin en-tête -->
+
+<!-- Début corps -->    
+<body class="bg-light">
+
+    
+    
+<div class="container-fluid">
+    
+    <nav class="navbar navbar-expand-sm bg-info navbar-dark fixed-top">
+        
+  <a class="navbar-brand" href="https://lyceeduparc.fr/">
+          <img src="/assets/images/logo-parc.png" alt="Logo" style="width:80px;">
+    </a>
+        
+        
+     <!-- Navbar text-->
+  <span class="navbar-text">
+    Première NSI 2020/2021
+  </span>
+        
+        
+
+</nav>
+    
+
+
+    <div class="jumbotron" style="margin-top:10%;">
+      <h1>Automatismes </h1>
+                      
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/">Progression</a></li>
+    <li class="page-item"><a   class="page-link"  href="/outils">Outils</a></li>
+    <li class="page-item"><a  class="page-link"  href="/ressources.html">Ressources</a></li>
+    <li class="page-item"><a  class="page-link"  href="/qcm.html">QCM</a></li>
+    <li class="page-item"><a  class="page-link"  href="/projets.html">Projets</a></li>
+    <li class="page-item"><a  class="page-link"  href="/automatismes.html">Automatismes</a></li>
+    <li class="page-item"><a  class="page-link"  href="/seances.html">Séances</a></li>
+    <li class="page-item"><a  class="page-link"  href="https://github.com/parc-nsi/premiere-nsi">Github</a></li>
+  </ul>
+    
+</div>
+ 
+        
+    <article>
+      <p>Bienvenue sur le site de la classe de  Première NSI du <a href="https://lyceeduparc.fr/ldp/">lycée du Parc</a> à Lyon.</p>
+        <p>Tous les documents sur ce site sont   placés sous licence 
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"> 
+            Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).</a>
+            </p>
+            
+        </article>
+  
+
+   
+
+
+  <section>  
+   <blockquote>
+  <p>L’image <code class="language-plaintext highlighter-rouge">gif</code> ci-dessous présente  différentes étapes du déroulement d’un algorithme de rotation d’images inspiré d’un travail présenté par Laurent Abbal du lycée français de Tokyo. Le  programme assez court peut être réalisé par un élève  de terminale (récursivité, approche <em>diviser pour régner</em>).
+L’image source représente l’oeuvre <em>Matsuri Yatai Dragon</em> du peintre japonais <a href="https://en.wikipedia.org/wiki/en:Hokusai">Hokusai</a>. Elle est dans le domaine public et disponible sur <a href="https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg">https://commons.wikimedia.org</a>.</p>
+</blockquote>
+
+<p><a href="https://commons.wikimedia.org/wiki/File:Hokusai_Dragon.jpg"><img src="rotation-dragon-2.gif" alt="Dragon" title="dragon-hokusai" /></a></p>
+
+<p><strong><a href="automatismes/automatismes.py">Corrigé des automatismes</a></strong></p>
+
+<h2 id="automatisme-1">Automatisme 1</h2>
+
+<p>Programmer la fonction dont on donne la spécification :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">index_min</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : t un tableau de nombres (int ou float)
+    Précondition : t non vide
+    Valeur renvoyée : un tableau contenant les positions (index) où le minimum de t est atteint
+    """</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-2">Automatisme 2</h2>
+
+<p>Programmer la fonction dont on donne la spécification :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">au_moins_un_zero</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : t un tableau de nombres (int ou float)
+    Précondition : t non vide
+    Valeur renvoyée : un booléen indiquant si t contient au moins un zéro
+    """</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-3">Automatisme 3</h2>
+
+<p>Représenter en binaire le nombre d’écriture décimale 49.</p>
+
+<h2 id="automatisme-4">Automatisme 4</h2>
+
+<p>Représenter en base dix, le nombre dont l’écriture en base deux est <code class="language-plaintext highlighter-rouge">1010110</code> puis le nombre dont l’écriture en base 16 est <code class="language-plaintext highlighter-rouge">A4</code>.</p>
+
+<h2 id="automatisme-5">Automatisme 5</h2>
+
+<p>Déterminer le successeur  des entiers dont l’écriture en base deux est :</p>
+
+<ul>
+  <li>111</li>
+  <li>10011</li>
+  <li>10111</li>
+</ul>
+
+<h2 id="automatisme-6">Automatisme 6</h2>
+
+<p>Pour déterminer la liste des chiffres en base dix d’un entier naturel, un élève a écrit la fonction ci-dessous :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">liste_chiffres</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">10</span>
+        <span class="n">L</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">L</span>
+</code></pre></div></div>
+
+<p>Malheureusement sa fonction ne retourne pas le résultat attendu pour l’entier 730 :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; liste_chiffres(730)
+[0, 7, 3, 0]
+</code></pre></div></div>
+
+<p>Proposer une version corrigée de la fonction <code class="language-plaintext highlighter-rouge">liste_chiffres</code>.</p>
+
+<h2 id="automatisme-7">Automatisme 7</h2>
+
+<p>On travaille sur des tableaux à deux dimensions qui représentent des images binaires : un pixel a pour valeur un entier : 0 pour un pixel noir et 1 pour un pixel blanc.</p>
+
+<p>Compléter les fonctions ci-dessous en respectant leurs spécifications, les postconditions doivent être vérifiées.</p>
+
+<p><a href="https://python.infobrisson.fr/?script=def%2520image_noire%2528largeur%252C%2520hauteur%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520Param%25C3%25A8tre%2520%253A%2520%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520largeur%2520et%2520hauteur%2520deux%2520entiers%2520non%2520nuls%250D%250A%2520%2520%2520%2520Valeur%2520renvoy%25C3%25A9e%2520%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520un%2520tableau%2520%25C3%25A0%25202%2520dimensions%2520repr%25C3%25A9sentant%2520une%2520image%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520binaire%2520de%2520dimensions%2520%2528largeur%252C%2520hauteur%2529%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520rempli%2520de%25200%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520%2523%2520%25C3%25A0%2520compl%25C3%25A9ter%2520avec%2520un%2520tableau%2520en%2520compr%25C3%25A9hension%250D%250A%2520%2520%2520%2520%250D%250Adef%2520dimensions%2528tab%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520Param%25C3%25A8tre%2520%253A%2520%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520un%2520tableau%2520%25C3%25A0%2520deux%2520dimensions%2520d%27entiers%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520repr%25C3%25A9sentant%2520une%2520image%2520binaire%2520rectangulaire%250D%250A%2520%2520%2520%2520Valeur%2520renvoy%25C3%25A9e%2520%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520un%2520tableau%2520de%2520deux%2520entiers%2520%255Blargeur%252C%2520hauteur%255D%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520repr%25C3%25A9sentant%2520les%2520dimensions%2520de%2520l%27image%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520%2523%2520%25C3%25A0%2520compl%25C3%25A9ter%250D%250A%2520%2520%2520%2520%250D%250Adef%2520nombre_blancs%2528tab%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520Param%25C3%25A8tre%2520%253A%2520%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520un%2520tableau%2520%25C3%25A0%2520deux%2520dimensions%2520d%27entiers%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520repr%25C3%25A9sentant%2520une%2520image%2520binaire%2520rectangulaire%250D%250A%2520%2520%2520%2520Valeur%2520renvoy%25C3%25A9e%2520%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520un%2520entier%2520repr%25C3%25A9sentant%2520le%2520nombre%2520de%2520pixels%2520%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520blancs%2520%2528valeur%25201%2529%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520%2523%2520%25C3%25A0%2520compl%25C3%25A9ter%250D%250A%250D%250A%2523postconditions%2520pour%2520la%2520fonction%2520image_noire%2520%250D%250Aassert%2520image_noire%25282%252C1%2529%2520%253D%253D%2520%255B%255B0%252C0%255D%255D%250D%250Aassert%2520image_noire%25281%252C2%2529%2520%253D%253D%2520%255B%255B0%255D%252C%2520%255B0%255D%255D%250D%250Aassert%2520image_noire%25283%252C2%2529%2520%253D%253D%2520%255B%255B0%252C0%252C0%255D%252C%2520%255B0%252C0%252C0%255D%255D%250D%250A%250D%250A%250D%250A%2523postconditions%2520pour%2520la%2520fonction%2520dimensions%2520%250D%250Aassert%2520dimensions%2528%255B%255B%255D%252C%2520%255B%255D%255D%2529%2520%253D%253D%2520%255B0%252C2%255D%250D%250Aassert%2520dimensions%2528%255B%255B0%252C1%252C2%255D%252C%2520%255B3%252C4%252C5%255D%255D%2529%2520%253D%253D%2520%255B3%252C2%255D%250D%250A%250D%250A%2523postconditions%2520pour%2520la%2520fonction%2520nombre_blancs%250D%250Aassert%2520nombre_blancs%2528%255B%255B0%252C0%255D%252C%2520%255B0%252C0%255D%255D%2529%2520%253D%253D%25200%250D%250Aassert%2520nombre_blancs%2528%255B%255B0%252C1%252C1%255D%252C%2520%255B0%252C1%252C0%255D%255D%2529%2520%253D%253D%25203%250D%250Aassert%2520nombre_blancs%2528%255B%255B%255D%252C%2520%255B%255D%255D%2529%2520%253D%253D%25200">Lien vers Basthon pour tester en ligne</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">image_noire</span><span class="p">(</span><span class="n">largeur</span><span class="p">,</span> <span class="n">hauteur</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : 
+        largeur et hauteur deux entiers non nuls
+    Valeur renvoyée :
+        un tableau à 2 dimensions représentant une image
+        binaire de dimensions (largeur, hauteur)
+        rempli de 0
+    """</span>
+    <span class="c1"># à compléter avec un tableau en compréhension
+</span>    
+<span class="k">def</span> <span class="nf">dimensions</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : 
+        tab un tableau à deux dimensions d'entiers
+        représentant une image binaire rectangulaire
+    Valeur renvoyée :
+        un tableau de deux entiers [largeur, hauteur]
+        représentant les dimensions de l'image
+    """</span>
+    <span class="c1"># à compléter
+</span>    
+<span class="k">def</span> <span class="nf">nombre_blancs</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : 
+        tab un tableau à deux dimensions d'entiers
+        représentant une image binaire rectangulaire
+    Valeur renvoyée :
+        un entier représentant le nombre de pixels 
+        blancs (valeur 1)
+    """</span>
+    <span class="c1"># à compléter
+</span>
+<span class="c1">#postconditions pour la fonction image_noire 
+</span><span class="k">assert</span> <span class="n">image_noire</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+<span class="k">assert</span> <span class="n">image_noire</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="k">assert</span> <span class="n">image_noire</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+
+
+<span class="c1">#postconditions pour la fonction dimensions 
+</span><span class="k">assert</span> <span class="n">dimensions</span><span class="p">([[],</span> <span class="p">[]])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">dimensions</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="c1">#postconditions pour la fonction nombre_blancs
+</span><span class="k">assert</span> <span class="n">nombre_blancs</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">dimensions</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">dimensions</span><span class="p">([[],</span> <span class="p">[]])</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-8">Automatisme 8</h2>
+
+<p>Modifier les expressions “à modifier”  dans la fonction Python ci-dessous pour que la spécification soit vérifiée.</p>
+
+<p>Tester le code dans <a href="https://python.infobrisson.fr/?script=%2523%2520Fonction%2520de%2520tri%2520dans%2520l%27ordre%2520croissant%2520par%2520s%25C3%25A9lection%2520du%2520maximum%250D%250A%250D%250Adef%2520indice_maximum%2528tab%252C%2520debut%252C%2520fin%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520Param%25C3%25A8tres%2520%253A%2520%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520un%2520tableau%2520d%27entiers%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520debut%2520un%2520entier%2520indice%2520du%2520d%25C3%25A9but%2520de%2520la%2520plage%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520fin%2520un%2520entier%2520indice%2520de%2520la%2520fin%2520de%2520la%2520plage%2520%2528inclus%2529%250D%250A%2520%2520%2520%2520Valeur%2520renvoy%25C3%25A9e%2520%253A%2520l%27indice%2520de%2520la%2520premi%25C3%25A8re%2520occurence%2520du%2520maximum%2520de%2520tab%2520%250D%250A%2520%2520%2520%2520dans%2520la%2520plage%2520%2520de%2520valeurs%2520entre%2520les%2520indice%2520et%2520debut%2520et%2520fin%2520%2528inclus%2529%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520imax%2520%253D%2520%2522%25C3%25A0%2520modifier%2522%250D%250A%2520%2520%2520%2520for%2520i%2520in%2520range%2528debut%2520%252B%25201%252C%2520fin%2520%252B%25201%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520if%2520%2522%25C3%25A0%2520modifier%2522%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520imax%2520%253D%2520%2522%25C3%25A0%2520modifier%2522%250D%250A%2520%2520%2520%2520return%2520imax%250D%250A%2520%2520%2520%2520%250D%250A%2520%2520%2520%2520%250D%250Adef%2520tri_selection%2528tab%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520Param%25C3%25A8tre%2520%253A%2520tab%2520un%2520tableau%2520de%2520nombres%250D%250A%2520%2520%2520%2520Valeur%2520renvoy%25C3%25A9e%2520%253A%2520tab%250D%250A%2520%2520%2520%2520Postcondition%2520%253A%2520valeur%2520renvoy%25C3%25A9e%2520de%2520tab%2520tri%25C3%25A9e%2520dans%2520l%27ordre%2520croissant%250D%250A%2520%2520%2520%2520%2522%2522%2522%250D%250A%2520%2520%2520%2520i%2520%253D%2520len%2528tab%2529%2520-%25201%250D%250A%2520%2520%2520%2520while%2520i%2520%253E%253D%25201%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520imax%2520%253D%2520indice_maximum%2528tab%252C%2520%2522%25C3%25A0%2520modifier%2522%252C%2520%2522%25C3%25A0%2520modifier%2522%2529%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%255Bi%255D%252C%2520tab%255Bimax%255D%2520%253D%2520%2520%2522%25C3%25A0%2520modifier%2522%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2523%2520assertion%2520qui%2520doit%2520%25C3%25AAtre%2520v%25C3%25A9rifi%25C3%25A9e%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520max%2528tab%255B%253Ai%252B1%255D%2529%2520%253D%253D%2520tab%255Bi%255D%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520i%2520%253D%2520%2522%25C3%25A0%2520modifier%2522%250D%250A%2520%2520%2520%2520return%2520tab%2520%250D%250A%2520%2520%2520%2520%250D%250A%2523%2520Tests%2520unitaires%250D%250A%250D%250Aimport%2520random%250D%250A%250D%250A%250D%250Adef%2520test_indice_maximum%2528fonction_indice_maximum%2529%253A%250D%250A%2520%2520%2520%2520%2523tableaux%2520al%25C3%25A9atoires%250D%250A%2520%2520%2520%2520for%2520size%2520in%2520range%25281%252C%252010%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520%253D%2520%255Brandom.randint%25280%252C%2520100%2529%2520for%2520_%2520in%2520range%2528size%2529%255D%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520fonction_indice_maximum%2528tab%252C%25200%252C%2520len%2528tab%2529%2520-%25201%2529%2520%253D%253D%2520tab.index%2528max%2528tab%2529%2529%250D%250A%2520%2520%2520%2520print%2528f%2522Tests%2520unitaires%2520r%25C3%25A9ussis%2520pour%2520%257Bfonction_indice_maximum.__name__%257D%2522%2529%250D%250A%2520%2520%2520%2520%250D%250Adef%2520test_tri%2528fonction_tri%2529%253A%250D%250A%2520%2520%2520%2520%2522%2522%2522Test%2520unitaire%2520d%27une%2520fonction%2520de%2520tri%2522%2522%2522%250D%250A%2520%2520%2520%2520%2523tableaux%2520d%25C3%25A9j%25C3%25A0%2520tri%25C3%25A9s%250D%250A%2520%2520%2520%2520for%2520size%2520in%2520range%25280%252C%252010%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520%253D%2520list%2528range%25280%252C%2520size%2529%2529%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520fonction_tri%2528tab%2529%2520%253D%253D%2520sorted%2528tab%2529%252C%2520f%2522echec%2520sur%2520%257Btab%257D%2522%250D%250A%2520%2520%2520%2520%2523tableaus%2520tri%25C3%25A9s%2520dans%2520l%27ordre%2520inverse%250D%250A%2520%2520%2520%2520for%2520size%2520in%2520range%25280%252C%252011%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520%253D%2520list%2528range%25289%2520-%2520size%252C%2520-1%252C%2520-1%2529%2529%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520fonction_tri%2528tab%2529%2520%253D%253D%2520sorted%2528tab%2529%252C%2520f%2522echec%2520sur%2520%257Btab%257D%2522%250D%250A%2520%2520%2520%2520%2523tableaux%2520al%25C3%25A9atoires%250D%250A%2520%2520%2520%2520for%2520size%2520in%2520range%25280%252C%252010%2529%253A%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520tab%2520%253D%2520%255Brandom.randint%25280%252C%2520100%2529%2520for%2520_%2520in%2520range%2528size%2529%255D%250D%250A%2520%2520%2520%2520%2520%2520%2520%2520assert%2520fonction_tri%2528tab%2529%2520%253D%253D%2520sorted%2528tab%2529%252C%2520f%2522echec%2520sur%2520%257Btab%257D%2522%250D%250A%2520%2520%2520%2520print%2528f%2522Tests%2520unitaires%2520r%25C3%25A9ussis%2520pour%2520%257Bfonction_tri.__name__%257D%2522%2529%250D%250A%250D%250A%2523d%25C3%25A9sactiver%2520pour%2520effectuer%2520les%2520tests%2520unitaire%2520%2520%2520%2520%2520%2520%250D%250A%2523test_indice_maximum%2528indice_maximum%2529%250D%250A%2523test_tri%2528tri_selection%2529">Basthon</a></p>
+
+<p>Décommenter  <code class="language-plaintext highlighter-rouge">#test_indice_maximum(indice_maximum)</code>  en ligne 63 pour soumettre votre fonction au test unitaire.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">indice_maximum</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètres : 
+        tab un tableau d'entiers
+        debut un entier indice du début de la plage
+        fin un entier indice de la fin de la plage (inclus)
+    Valeur renvoyée : l'indice de la première occurence du maximum de tab 
+    dans la plage  de valeurs entre les indice et debut et fin (inclus)
+    """</span>
+    <span class="n">imax</span> <span class="o">=</span> <span class="s">"à modifier"</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">imax</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s">"à modifier"</span><span class="p">:</span>
+            <span class="n">imax</span> <span class="o">=</span> <span class="s">"à modifier"</span>
+    <span class="k">return</span> <span class="n">imax</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-9">Automatisme 9</h2>
+
+<p>Modifier les expressions “à modifier” dans la fonction <code class="language-plaintext highlighter-rouge">tri_selection</code> ci-dessous pour que la spécification et l’assertion placée à la fin de la boucle externe soient vérifiés.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">tri_selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : tab un tableau de nombres
+    Valeur renvoyée : tab
+    Postcondition : valeur renvoyée de tab triée dans l'ordre croissant
+    """</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">imax</span> <span class="o">=</span> <span class="n">indice_maximum</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="s">"à modifier"</span><span class="p">,</span> <span class="s">"à modifier"</span><span class="p">)</span>
+        <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">tab</span><span class="p">[</span><span class="n">imax</span><span class="p">]</span> <span class="o">=</span>  <span class="s">"à modifier"</span>
+        <span class="c1"># assertion qui doit être vérifiée
+</span>        <span class="k">assert</span> <span class="nb">max</span><span class="p">(</span><span class="n">tab</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="s">"à modifier"</span>
+    <span class="k">return</span> <span class="n">tab</span> 
+</code></pre></div></div>
+
+<p>Décommenter  <code class="language-plaintext highlighter-rouge">#test_tri(tri_selection)</code>  en ligne 64 pour soumettre votre fonction au test unitaire.</p>
+
+<h2 id="automatisme-10">Automatisme 10</h2>
+
+<p>Un algorithme de tri d’une liste d’entiers est implémenté  de la façon suivante :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">trier</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="p">:</span> 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)):</span> 
+        <span class="n">indice_min</span> <span class="o">=</span> <span class="n">i</span> 
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)):</span> 
+            <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="p">:</span> 
+                <span class="n">indice_min</span> <span class="o">=</span> <span class="n">j</span> 
+        <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="n">indice_min</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">indice_min</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+        <span class="c1"># assertion vraie à cet endroit 
+</span>    <span class="k">return</span> <span class="n">L</span> 
+</code></pre></div></div>
+
+<p>Parmi les assertions suivantes laquelle reste vraie à chaque itération de la boucle, à l’endroit indiqué ci-dessus ?</p>
+
+<ul>
+  <li><strong>Réponse A :</strong> la sous-liste <code class="language-plaintext highlighter-rouge">L[0:i+1]</code> contient les <code class="language-plaintext highlighter-rouge">i</code> plus grandes valeurs de <code class="language-plaintext highlighter-rouge">L</code> triées par ordre décroissant</li>
+  <li><strong>Réponse B :</strong>  la sous-liste <code class="language-plaintext highlighter-rouge">L[0:i+1]</code> contient les <code class="language-plaintext highlighter-rouge">i</code> plus grandes valeurs de <code class="language-plaintext highlighter-rouge">L</code> triées par ordre croissant</li>
+  <li><strong>Réponse C :</strong>  la sous-liste <code class="language-plaintext highlighter-rouge">L[0:i+1]</code> contient les i plus petites valeurs de <code class="language-plaintext highlighter-rouge">L</code> triées par ordre décroissant</li>
+  <li><strong>Réponse D :</strong> la sous-liste <code class="language-plaintext highlighter-rouge">L[0:i+1]</code> contient les i plus petites valeurs de L triées par ordre croissant</li>
+</ul>
+
+<h2 id="automatisme-11">Automatisme 11</h2>
+
+<ul>
+  <li>Compléter la fonction Python ci-dessous pour que  la spécification et les postconditions soient satisfaites.</li>
+  <li>Combient de comparaisons sont faites lors de l’appel <code class="language-plaintext highlighter-rouge">un_doublon(list(range(100)))</code> ?</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">un_doublon</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : t un tableau de nombres
+    Valeur renvoyée : un booléen 
+        True si t comporte au moins un doublon
+        False sinon
+    """</span>
+    <span class="c1">#à compléter
+</span>
+<span class="k">assert</span> <span class="n">un_doublon</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="bp">False</span>
+<span class="k">assert</span> <span class="n">un_doublon</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="k">assert</span> <span class="n">un_doublon</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="k">assert</span> <span class="n">un_doublon</span><span class="p">([])</span> <span class="o">==</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-12">Automatisme 12</h2>
+
+<ul>
+  <li>Compléter la fonction Python ci-dessous pour que  la spécification et les postconditions soient satisfaites.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">index_premiere_occurence_dicho</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : 
+        t un tableau de nombres trié dans l'ordre croissant
+        x un nombre 
+    Valeur renvoyée : 
+        l'index de la première de x dans t si x est dans t
+        -1 sinon
+    """</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="s">"à compléter"</span>
+        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="s">"à compléter"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="s">"à compléter"</span>
+            <span class="k">return</span> <span class="s">"à compléter"</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">assert</span> <span class="n">index_premiere_occurence_dicho</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">index_premiere_occurence_dicho</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">index_premiere_occurence_dicho</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">])</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">assert</span> <span class="n">index_premiere_occurence_dicho</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span> 
+<span class="k">assert</span> <span class="n">index_premiere_occurence_dicho</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span> 
+<span class="k">assert</span> <span class="n">index_premiere_occurence_dicho</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[])</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-13">Automatisme 13</h2>
+
+<ul>
+  <li>Compléter la fonction Python ci-dessous pour que  la spécification et les postconditions soient satisfaites.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_decroissant</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : 
+        t un tableau de nombres 
+    Valeur renvoyée : 
+        booléen indiquant si t dans l'ordre décroissant
+    """</span>
+    <span class="s">"à compléter"</span>
+
+
+<span class="k">def</span> <span class="nf">recherche_dicho_decroissant</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètre : 
+        t un tableau de nombres trié dans l'ordre décroissant
+        x un nombre 
+    Valeur renvoyée : 
+        index de x dans t si x dans t
+        None si x pas dans t
+    """</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="s">"à compléter"</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">assert</span> <span class="n">est_decroissant</span><span class="p">([</span><span class="n">k</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span> <span class="o">==</span> <span class="bp">False</span>
+<span class="k">assert</span> <span class="n">est_decroissant</span><span class="p">([])</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">est_decroissant</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="k">assert</span> <span class="n">recherche_dicho_decroissant</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">recherche_dicho_decroissant</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">recherche_dicho_decroissant</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span>
+<span class="k">assert</span> <span class="n">recherche_dicho_decroissant</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="bp">None</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Test unitaires réussis pour l'automatisme 13 : recherche_dicho_decroissant et est_decroissant"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-14">Automatisme 14</h2>
+
+<ul>
+  <li>Convertir en flottant au format simple précision (mantisse sur 8 bits et exposant sur 23 bits), le nombre  d’écriture décimale 9,78125.</li>
+  <li>Convertir en flottant au format simple précision (mantisse sur 8 bits et exposant sur 23 bits), le nombre  d’écriture décimale 0,1.</li>
+  <li>Vérifier avec le convertisseur en ligne <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">https://www.h-schmidt.net/FloatConverter/IEEE754.html</a> ou la fonction donnée ci-dessous :</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">decimal_vers_IEE754</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">taille_exposant</span><span class="p">,</span> <span class="n">taille_mantisse</span><span class="p">):</span>
+    <span class="c1">#print("détermination du signe")
+</span>    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Bit de signe  : 0"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Bit de signe : 1"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"O valeur particulière"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1">#print("détermination de l'exposant")
+</span>        <span class="n">exposant</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="n">exposant</span> <span class="o">=</span> <span class="n">exposant</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+            <span class="n">exposant</span> <span class="o">=</span> <span class="n">exposant</span> <span class="o">-</span> <span class="mi">1</span>           
+        <span class="n">decalage</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">taille_exposant</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Exposant en décimal : "</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">f"Exposant décalé  de  + </span><span class="si">{</span><span class="n">decalage</span><span class="si">}</span><span class="s"> : "</span><span class="p">,</span> <span class="n">exposant</span> <span class="o">+</span> <span class="n">decalage</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">f"Exposant décalé de + </span><span class="si">{</span><span class="n">decalage</span><span class="si">}</span><span class="s">  : codage binaire sur 11 bits : "</span><span class="p">,</span> <span class="nb">bin</span><span class="p">(</span><span class="n">exposant</span> <span class="o">+</span> <span class="n">decalage</span><span class="p">).</span><span class="n">lstrip</span><span class="p">(</span><span class="s">'0b'</span><span class="p">).</span><span class="n">zfill</span><span class="p">(</span><span class="n">taille_exposant</span><span class="p">))</span>
+        <span class="c1">#print("détermination des bits de mantisse")
+</span>        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">nbits</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mantisse</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">nbits</span> <span class="o">&lt;</span> <span class="n">taille_mantisse</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+            <span class="n">partie_entiere</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">mantisse</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">partie_entiere</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">partie_entiere</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">partie_entiere</span>
+            <span class="n">nbits</span> <span class="o">=</span> <span class="n">nbits</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Mantisse : "</span><span class="p">,</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">mantisse</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-15">Automatisme 15</h2>
+
+<p>On considère une formule booléenne form des variables booléennes <code class="language-plaintext highlighter-rouge">a</code> et <code class="language-plaintext highlighter-rouge">b</code> dont voici la table de vérité.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>a</th>
+      <th>b</th>
+      <th>form</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Quelle est cette formule booléenne  ?</p>
+
+<ul>
+  <li><strong>Réponse A :</strong>  <code class="language-plaintext highlighter-rouge">a and b</code></li>
+  <li><strong>Réponse B :</strong> <code class="language-plaintext highlighter-rouge">a or b</code></li>
+  <li><strong>Réponse C :</strong> <code class="language-plaintext highlighter-rouge">((not(a)) and b) or (a and  (not(b)))</code></li>
+  <li><strong>Réponse D :</strong> <code class="language-plaintext highlighter-rouge">(not(a)) or (not(b))</code></li>
+</ul>
+
+<h2 id="automatisme-16">Automatisme 16</h2>
+
+<p>Pouvez-vous deviner  ce qui va se passer si on exécute le code ci-dessous  ? Vérifiez. Explication ?</p>
+
+<pre data-executable="">
+def boucle1():
+    x = 1
+    h = 1
+    c = 0
+    while x &lt; 2:
+        h = h / 2
+        x = x + h
+        c = c + 1
+    return x == 2, c
+
+boucle1()
+</pre>
+
+<ul>
+  <li><strong>Réponse A :</strong>  <code class="language-plaintext highlighter-rouge">(False, 53)</code></li>
+  <li><strong>Réponse B :</strong> <code class="language-plaintext highlighter-rouge">(True, 53)</code></li>
+  <li><strong>Réponse C :</strong> <code class="language-plaintext highlighter-rouge">(True, 52)</code></li>
+  <li><strong>Réponse D :</strong> la boucle ne se termine pas car d’après une formule du cours de mathématiques sur la somme des termes consécutifs d’une suite géométrique, pour tout entier naturel n on a :</li>
+</ul>
+
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=1&plus;1/2&plus;1/2^2&plus;...&plus;1/2^n&space;=&space;(1-1/2^{n&plus;1})/(1-1/2)=2(1-1/2^{n&plus;1})&lt;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?1&plus;1/2&plus;1/2^2&plus;...&plus;1/2^n&space;=&space;(1-1/2^{n&plus;1})/(1-1/2)=2(1-1/2^{n&plus;1})&lt;2" title="1+1/2+1/2^2+...+1/2^n = (1-1/2^{n+1})/(1-1/2)=2(1-1/2^{n+1})&lt;2" /></a></p>
+
+<h2 id="automatisme-17-banque-dépreuve-pratique-2021">Automatisme 17 (<a href="http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81">banque d’épreuve pratique 2021</a>)</h2>
+
+<p>Écrire une fonction <code class="language-plaintext highlighter-rouge">recherche</code> qui prend en paramètres <code class="language-plaintext highlighter-rouge">elt</code> un nombre entier et <code class="language-plaintext highlighter-rouge">tab</code>
+un tableau de nombres entiers, et qui renvoie l’indice de la première occurrence de <code class="language-plaintext highlighter-rouge">elt</code>
+dans tab si elt est dans tab et -1 sinon.</p>
+
+<p>Exemples :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">recherche</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">recherche</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">56</span><span class="p">])</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">recherche</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">recherche</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<span class="mi">3</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-18-banque-dépreuve-pratique-2021">Automatisme 18 (<a href="http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81">banque d’épreuve pratique 2021</a>)</h2>
+
+<p>Écrire une fonction maxi qui prend en paramètre une liste tab de nombres entiers et
+renvoie un couple donnant le plus grand élément de cette liste, ainsi que l’indice de la
+première apparition de ce maximum dans la liste.</p>
+
+<p>Exemple :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">maxi</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-19-banque-dépreuve-pratique-2021">Automatisme 19 (<a href="http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81">banque d’épreuve pratique 2021</a>)</h2>
+
+<p>On considère la fonction <code class="language-plaintext highlighter-rouge">insere</code> ci-dessous qui prend en argument un entier <code class="language-plaintext highlighter-rouge">a</code> et un
+tableau <code class="language-plaintext highlighter-rouge">tab</code> d’entiers triés par ordre croissant. Cette fonction insère la valeur <code class="language-plaintext highlighter-rouge">a</code> dans le tableau et renvoie le nouveau tableau. Les tableaux seront représentés sous la forme de
+listes python.</p>
+
+<p>Compléter la fonction <code class="language-plaintext highlighter-rouge">insere</code> ci-dessous.</p>
+
+<pre data-executable="">
+def insere(a, tab):
+    l = list(tab) #l contient les mêmes éléments que tab
+    l.append(a)
+    i = "à compléter"
+    while i &gt;= 0 and a &lt; "à compléter" : 
+      l[i+1] = "à compléter"
+      l[i] = a
+      i = "à compléter"
+    return l
+
+assert insere(3,[1,2,4,5]) == [1, 2, 3, 4, 5]
+assert insere(10,[1,2,7,12,14,25]) == [1, 2, 7, 10, 12, 14, 25]
+assert insere(1,[2,3,4]) == [1,2,3,4]
+print('Tests réussis')
+</pre>
+
+<h2 id="automatisme-20-banque-dépreuve-pratique-2021">Automatisme 20 (<a href="http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81">banque d’épreuve pratique 2021</a>)</h2>
+
+<p>Compléter sous Python la fonction suivante en respectant la spécification.</p>
+
+<pre data-executable="">
+def dichotomie(tab, x):
+    """
+        tab : tableau d’entiers trié dans l’ordre croissant
+        x : nombre entier
+        La fonction renvoie True si tab contient x et False sinon
+    """
+
+    debut = 0 
+    fin = len(tab) - 1
+    while debut &lt;= fin:
+        m = "à compléter"
+        if x == tab[m]:
+            return "à compléter"
+        if x &gt; tab[m]:
+            debut = m + 1
+        else:
+             fin = "à compléter"			
+    return "à compléter"
+
+assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],28) == True
+assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33],27) == False
+print('Tests réussis')
+</pre>
+
+<h2 id="automatisme-21-banque-dépreuve-pratique-2021">Automatisme 21 (<a href="http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81">banque d’épreuve pratique 2021</a>)</h2>
+
+<p>Écrire une fonction <code class="language-plaintext highlighter-rouge">tri_selection</code> qui prend en paramètre un tableau tab de nombres entiers et qui renvoie le tableau trié par ordre croissant.</p>
+
+<p>On utilisera l’algorithme suivant :</p>
+
+<ul>
+  <li>on recherche le plus petit élément du tableau, et on l’échange avec l’élément d’indice
+0 ;</li>
+  <li>on recherche le second plus petit élément du tableau, et on l’échange avec l’élément
+d’indice 1 ;</li>
+  <li>on continue de cette façon jusqu’à ce que le tableau soit entièrement trié dans l’ordre croissant.</li>
+</ul>
+
+<p>Exemples de postconditions :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">assert</span> <span class="n">tri_selection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">52</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">assert</span> <span class="n">tri_selection</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">assert</span> <span class="n">tri_selection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">assert</span> <span class="n">tri_selection</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h2 id="automatisme-22-banque-dépreuve-pratique-2021">Automatisme 22 (<a href="http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81">banque d’épreuve pratique 2021</a>)</h2>
+
+<p>Un mot palindrome peut se lire de la même façon de gauche à droite ou de droite à
+gauche : bob, radar, et non sont des mots palindromes.</p>
+
+<p>De même certains nombres sont eux aussi des palindromes : 33, 121, 345543.</p>
+
+<p>L’objectif de cet exercice est d’obtenir un programme Python permettant de tester si un
+nombre est un nombre palindrome.</p>
+
+<p>Pour remplir cette tâche, on vous demande de compléter le code des trois fonctions ci-
+dessous sachant que la fonction est_nbre_palindrome s’appuiera sur la fonction
+<code class="language-plaintext highlighter-rouge">est_palindrome</code> qui elle-même s’appuiera sur la fonction <code class="language-plaintext highlighter-rouge">inverse_chaine</code>.</p>
+
+<p>La fonction <code class="language-plaintext highlighter-rouge">inverse_chaine</code> inverse l’ordre des caractères d’une chaîne de caractères
+chaine et renvoie la chaîne inversée.
+La fonction <code class="language-plaintext highlighter-rouge">est_palindrome</code> teste si une chaine de caractères chaine est un
+palindrome. Elle renvoie <code class="language-plaintext highlighter-rouge">True</code> si c’est le cas et <code class="language-plaintext highlighter-rouge">False</code> sinon. Cette fonction s’appuie sur
+la fonction précédente.
+La fonction <code class="language-plaintext highlighter-rouge">est_nbre_palindrome</code> teste si un nombre nbre est un palindrome. Elle
+renvoie True si c’est le cas et False sinon. Cette fonction s’appuie sur la fonction
+précédente.</p>
+
+<p>Compléter le code des trois fonctions ci-dessous.</p>
+
+<pre data-executable="">
+def inverse_chaine(chaine):
+    result = "à compléter"
+    for caractere in chaine:
+       result = "à compléter"
+    return result
+
+def est_palindrome(chaine):
+    inverse = inverse_chaine(chaine)
+    return "à compléter"
+    
+def est_nbre_palindrome(nbre):
+    chaine = "à compléter"
+    return est_palindrome(chaine)
+
+assert inverse_chaine('bac') == 'cab'
+assert est_palindrome('NSI') == False
+assert est_palindrome('ISN-NSI') == True
+assert est_nbre_palindrome(214312) == False
+assert est_nbre_palindrome(213312) == True
+print("Tests réussis")
+</pre>
+
+<h2 id="automatisme-23-banque-dépreuve-pratique-2021">Automatisme 23 (<a href="http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81">banque d’épreuve pratique 2021</a>)</h2>
+
+<p>Compléter la fonction <code class="language-plaintext highlighter-rouge">separe</code> ci-dessous qui prend en argument un tableau tab dont
+les éléments sont des 0 et des 1 et qui sépare les 0 des 1 en plaçant les 0 en début de
+tableau et les 1 à la suite.</p>
+
+<pre data-executable="">
+def separe(tab):
+    i = 0
+    j = "à compléter"
+    while i &lt; j :
+        if tab[i] == 0 :
+            i = "à compléter"
+        else :
+            tab[i], tab[j] = "à compléter"
+            j = "à compléter"
+    return tab
+
+assert separe([1, 0, 1, 0, 1, 0, 1, 0]) == [0, 0, 0, 0, 1, 1, 1, 1]
+assert separe([1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0]) == [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+print("Tests réussis")
+</pre>
+
+<h2 id="automatisme-24-banque-dépreuve-pratique-2021">Automatisme 24 (<a href="http://nsi.enseigne.ac-lyon.fr/spip/spip.php?article81">banque d’épreuve pratique 2021</a>)</h2>
+
+<p>Écrire une fonction <code class="language-plaintext highlighter-rouge">indice_du_min</code> qui prend en paramètre un tableau de nombres non
+trié <code class="language-plaintext highlighter-rouge">tab</code>, et qui renvoie l’indice de la première occurrence du minimum de ce tableau. Les
+tableaux seront représentés sous forme de liste Python.</p>
+
+<p>Exemples :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">indice_du_min</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">indice_du_min</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">indice_du_min</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="mi">2</span>
+</code></pre></div></div>
+
+
+   
+   </section>
+  
+   <hr>
+
+   <footer>
+    <p>Binder Jupyter Notebook du site : 
+      <a href="https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/HEAD"> 
+        <img src="https://mybinder.org/badge_logo.svg" alt="Binder"> </a>
+        </p>
+    <p>
+    <a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d'accueil</a>
+    </p>
+  </footer>
+
+<!-- Fin de la balise container bootstrap -->
+  </div>
+
+
+  <script src="assets/js/juniper.min.js"></script>
+  <script>new Juniper({ repo: 'parc-nsi/premiere-nsi', isolateCells: false , theme: 'monokai'})</script>
+</body>
+</html> 

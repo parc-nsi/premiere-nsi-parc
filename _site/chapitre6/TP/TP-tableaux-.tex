@@ -1,0 +1,1436 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  10pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{
+\usepackage{hyperref}
+}
+\hypersetup{
+  pdftitle={TP sur les tableaux},
+  pdfauthor={Première NSI, Lycée du Parc},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=Blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[top=20mm,left=20mm,right=20mm,heightrounded]{geometry}
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+\title{TP sur les tableaux}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Thème types construits}
+\author{Première NSI, \href{https://frederic-junier.org/}{Lycée du
+Parc}}
+\date{}
+
+%%%jolis boites
+
+\usepackage{fancybox, graphicx}
+
+
+
+%%%%%%%%%%%%%%%%Packages et Macros Frederic%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%Insertion de liens hypertextes %%%%
+
+            
+%%%%%%%%%%PSTricks%%%%%%%%%%%%
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math,pstricks-add,pst-xkey,pst-eucl}
+
+
+%%%%%%%Tikz%%%%%%%%%%%%%%%
+\usepackage{pgf,tikz,tkz-tab}
+% Pour les tableaux de signes ou de variations avec tkz-tab voir https://zestedesavoir.com/tutoriels/439/des-tableaux-de-variations-et-de-signes-avec-latex/#1-13389_tikz-un-package-qui-en-a-dans-le-ventre
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{petri}
+\usetikzlibrary{decorations}
+\usetikzlibrary{arrows}
+\usetikzlibrary{math}
+ %Variables must be declared in a tikzmath environment but
+       % can be used outside
+%       \tikzmath{int \n; \n = 508; \x1 = 1; \y1 =1; 
+%                   %computations are also possible
+%                    \x2 = \x1 + 1; \y2 =\y1 +3; } 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%Commandes Tikz Perso%%%%%%%%%%%%%%%
+
+% Définition des nouvelles options xmin, xmax, ymin, ymax
+% Valeurs par défaut : -3, 3, -3, 3
+\tikzset{
+xmin/.store in=\xmin, xmin/.default=-3, xmin=-3,
+xmax/.store in=\xmax, xmax/.default=3, xmax=3,
+ymin/.store in=\ymin, ymin/.default=-3, ymin=-3,
+ymax/.store in=\ymax, ymax/.default=3, ymax=3,
+}
+% Commande qui trace la grille entre (xmin,ymin) et (xmax,ymax)
+\newcommand {\grille}[2]
+{\draw[help lines,black, thick] (\xmin,\ymin) grid[xstep=#1, ystep=#2] (\xmax,\ymax);}
+% Commande \axes
+\newcommand {\axes} {
+\draw[->,very thick] (\xmin,0) -- (\xmax,0);
+\draw[->,very thick] (0,\ymin) -- (0,\ymax);
+\draw (0.95*\xmax, 0) node[above] {};
+\draw (0, 0.95*\ymax) node[left] {};
+}
+% Commande qui limite l?affichage à (xmin,ymin) et (xmax,ymax)
+\newcommand {\fenetre}
+{\clip (\xmin,\ymin) rectangle (\xmax,\ymax);}
+
+%Exemple d'utilisation
+
+%\begin{center}
+%\begin{tikzpicture} [xmin=-2,xmax=2,ymin=0,ymax=5]
+%\grille{1} \axes \fenetre
+%\draw plot[smooth] (\x,\x^2);
+%\end{tikzpicture}
+%\end{center}
+
+%style pour la perspective cavalière française
+%voir Tikz pour l'impatient page 68
+\tikzset{math3d/.style=
+{x= {(-0.353cm,-0.353cm)}, z={(0cm,1cm)},y={(1cm,0cm)}}}
+
+%%%%%%%Symbole pour code calculatrice%%%%%%
+
+%Flèche remplie pour défilement de menu
+
+\newcommand{\flechefillright}{
+\begin{tikzpicture}[scale=0.15] \fill (0,0)--(2,1)--(0,2)--cycle;
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%Symboles pour calculatrice Casio%%%%
+\newcommand{\execasio}{\Pisymbol{psy}{191}} %Retour chariot
+\newcommand{\dispcasio}{\begin{pspicture}(.1,.1)\pspolygon*(.1,0)(.1,.1)\end{pspicture}} %Triangle Â« Disp Â»
+\newcommand{\dispcasiotikz}{\begin{tikzpicture}[scale=0.2]
+\fill (0,0) -- (1,0) -- (1,1) -- cycle;
+\end{tikzpicture}} %Triangle Â« Disp Â»
+%
+
+%Fleche entre deux lignes, d'apres 'un bon petit' : http://forum.mathematex.net/latex-f6/fleches-entre-deux-lignes-pour-resolution-d-equation-t10283.html#p99817
+\newcommand\addnode[1]{\Rnode{#1}{}}
+\newcommand\linknode[3]{\ncbar[angleA=0,angleB=0,nodesep=1ex,arm=10ex,offset=-2pt]{->}{#1}{#2}\Aput{\vphantom{x}#3}}
+
+
+%%Commande pour touche de calculatrice
+
+\newcommand\tc[1]{%
+{
+\begin{tikzpicture}
+\node[draw,rectangle,rounded corners=3pt] (P) at (0,0){#1};
+\end{tikzpicture}
+}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%Fin Commandes Tikz%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%Specifiques%%%%%%%%%%%
+\usepackage{wrapfig}
+%pour insérer une figure à droite ou à gauche d'un texte
+%\begin{wrapfigure}[nb lignes]{placement l,r,c,i(inside),o(outside)}[overhang]{width}
+%ce package fonctionne mal à proximité des listes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%Environnements et symboles spéciaux pour faire joli%%%%%%
+
+%%%Bclogo, pour des environnements + jolis avec insertion de logo%%%%
+%Dépendances de  bclogo
+\usepackage{xkeyval}  
+\usepackage{etoolbox}
+\usepackage{ifpdf}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[tikz]{bclogo}
+
+%\newcommand\bcpython{\includegraphics[width=17pt]{/home/fjunier/Maths/python-logo.eps}}
+\newcommand\bcpython{\includegraphics[width=17pt]{/home/fjunier/Maths/python-logo.png}}
+%\newcommand\bcpython{\includegraphics[width=17pt]{/home/frederic/Maths/python-logo.png}}
+
+%% Framed
+\usepackage{framed}  %Le package « framed» Crée 3 nouveaux environnements, qui se comportent comme des minipage de largeur \linewidth, mais permettant en plus de se casser entre plusieurs pages.     * framed : avec un cadre autour;     * shaded : avec un fonc coloré (il faut définir la couleur shadecolor);     * leftbar : avec une barre le long du côté gauche.
+
+%%%%%%%%%%%%%%%%%%%Présentation de codes sources%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+%On utilise l?environnement lstlisting pour insérer
+%un code source.
+%En plus de l?environnement lstlisting, on peut également utiliser la
+%commande \lstinline qui fonctionne comme la commande \verb, en ce
+%sens qu?on peut utiliser n?importe quel caractère comme délimiteur. Enfin,
+%la commande \lstinputlisting permet de charger un code source depuis
+%un fichier externe.
+%Il y a deux manières de préciser des options : soit via l?option de l?envi-
+%ronnement ou de la commande, soit en utilisant la commande \lstset
+%qui permet de définir des options de manière globale.
+
+\lstset{ %
+  language=Python,                % the language of the code
+  basicstyle=\ttfamily,           % the size of the fonts that are used for the code
+  %numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny,  % the style that is used for the line-numbers
+  %stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  %numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  tabsize=4,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  %title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  breakindent=1cm,
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{red},       % comment style
+  %stringstyle=\ttfamily\color{green},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  morekeywords={*,...},              % if you want to add more keywords to the set
+  deletekeywords={...}              % if you want to delete keywords from the given language
+  upquote=true,columns=flexible,
+xleftmargin=1cm,xrightmargin=1cm,
+ inputencoding=utf8,			%Les lignes qui suivent sont pour le codage utf8
+  extendedchars=true,
+  literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a} }}1
+            {î}{{\^{i}}}1
+            {ô}{{\^{o}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1
+}
+
+\lstdefinestyle{rond}{
+  numbers=none,
+  backgroundcolor=\color{gristclair},
+  frameround =tttt
+}
+
+\lstdefinestyle{compil}{
+  numbers=none,
+  backgroundcolor=\color{gristclair}
+}
+%\lstset{language=Python,basicstyle=\small , frame=single,tabsize=4,showspaces=false,showtabs=false,showstringspaces=false,numbers=left,numberstyle=\tiny , extendedchars=true}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%Environnements persos%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Syntaxe :
+%\newenvironment{nom}[nombre d'args][defaut]{definitions initiales}{definitions finales}
+%definitions intiales sont les commandes appelées par \begin{nom}
+%Definitions finales sont les commandes appelées par \end{nom}
+
+%%%%%%%%%%%%%%%%Définitions des environnemts persostheoreme, exemple ..%%%%
+%%%% Exercice avec encadré %%%%
+\newcounter{exo}
+\newenvironment{exercice}[1]
+{\par \medskip   \addtocounter{exo}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bccrayon, marge=4]{~\textbf{Exercice} \textbf{\theexo} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+%%Axiomes, Theoremes, Propriété, Définition, Methode, Preuve
+
+
+\newenvironment{axiome}[1]
+{\par \medskip   \begin{leftbar} \noindent \underline{\textbf{Axiome}}\hspace{0.5cm}{\itshape #1}   \vspace*{10pt} \par }
+{\end{leftbar}  \par \medskip }
+
+
+\newcounter{thme}
+\newenvironment{theoreme}[1]
+{\par \medskip  \addtocounter{thme}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Théorème} \textbf{\thethme} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip}
+
+ \newenvironment{theoremedef}[1]
+{\par \medskip   \addtocounter{thme}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Théorème-Définition} \textbf{\thethme} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{prop}
+\newenvironment{propriete}[1]
+{\par \medskip   \addtocounter{prop}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Propriété} \textbf{\theprop} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newenvironment{corollaire}[1]
+{\par \medskip   \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Corollaire} {\itshape #1} } \par }
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newenvironment{demo}[1]
+{\par \medskip   \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=zigzag, noborder = true, logo=\bcloupe, marge=0]{~\textbf{Démonstration} {\itshape #1} } \par \vspace{10pt}}
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{activite}
+\newenvironment{activite}[1]
+{\par \medskip   \noindent   \addtocounter{activite}{1}
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bcvelo, marge=4]{~\textbf{Activité} \textbf{\theactivite} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newcounter{rque}
+\newenvironment{remarque}
+{\par \medskip    \addtocounter{rque}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=snake, noborder = true, logo=\bcinfo, marge=0]{~\textbf{Remarque} \textbf{\therque}}  \par }
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{def}
+\newenvironment{definition}[1]
+{\par \medskip   \addtocounter{def}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Définition} \textbf{\thedef} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+ 
+ \newcounter{cours}
+\newenvironment{cours}[1]
+{\par \medskip   \addtocounter{cours}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Point de cours} \textbf{\thecours} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+ 
+
+\newenvironment{introduction}
+{\par \medskip    \noindent  
+ \begin {bclogo}[couleur = blue!5 , arrondi =0.1,logo=\bcrosevents, marge=4] {~\textbf{Introduction}    }
+ \par }
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newenvironment{memo}[1]
+{\par \medskip    \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bccle, marge=4]{~\textbf{À retenir}  {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{exple}
+\newenvironment{exemple}[1]
+{\par \medskip   \addtocounter{exple}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bclampe, marge=4]{~\textbf{Exemple} \textbf{\theexple} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+
+
+\newcounter{alg}
+\newenvironment{algorithme}[1]
+{\par \medskip   \addtocounter{alg}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bcpython, marge=4] {~\textbf{Algorithmique} \textbf{\thealg} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{prog}
+\newenvironment{programme}[1]
+{\par \medskip   \addtocounter{prog}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bcpython, marge=4] {~\textbf{Programme} \textbf{\theprog} {\itshape #1} }  \par  \bigskip}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{logi}
+\newenvironment{logique}[1]
+{\par \medskip   \addtocounter{logi}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bclampe, marge=4] {~\textbf{Logique} \textbf{\thelogi} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newenvironment{methode}[1]
+{\par \medskip    \noindent  
+ \begin {bclogo}[arrondi =0.1,logo=\bcoutil, marge=4,noborder = true] {~\textbf{Méthode}   {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newcounter{histo}
+\newenvironment{histoire}[1]
+{\par \medskip   \addtocounter{histo}{1} \noindent  
+ \begin {bclogo}[couleur = blue!10 , arrondi =0.1,logo=\bchorloge, marge=4] {~\textbf{Histoire} \textbf{\thehisto} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+
+
+%Environnement contenu pour un document présentant une progression annuelle
+\newenvironment{contenu}
+{\par \medskip   \begin {bclogo}[ noborder = true,logo=\bccrayon] \noindent {\large \textbf{Contenu de la séance}} \vspace*{10pt} \par  }
+{\end{bclogo}  \par \medskip }
+
+%Environnement programme pour un document présentant une progression annuelle
+%\newenvironment{programme}
+%{\par \medskip   \begin {bclogo}[ noborder = true, barre=zigzag,logo=\bcinfo] \noindent {\large \textbf{Programme officiel}} \vspace*{10pt} \par  }
+%{\end{bclogo}  \par \medskip }
+
+%Environnement programme pour un document présentant une progression annuelle
+\newenvironment{ressource}
+{\par \medskip   \begin {bclogo}[ noborder = true,logo=\bcbook] \noindent {\large \textbf{Ressources}}\\vspace*{10pt} \par }
+{\end{bclogo}  \par \medskip }
+
+
+
+
+%%%%%%%%%%%%%%%%%%Maths divers%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%Nombres%%%%%%%%%%%%%%%%
+
+%Ensemble prive de...
+%\newcommand{\prive}{\boi}%{\backslash}
+
+%Ensembles de nombres%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\C}{\mathbb{C}}
+\newcommand{\df}{~\ensuremath{]0;+\infty[}~}
+\newcommand{\K}{\mathbb{K}}
+
+%%%%%%%%Arithmetique%%%%%%%%%%
+%PGCD, PPCM
+\newcommand{\PGCD}{\mathop{\rm PGCD}\nolimits}
+\newcommand{\PPCM}{\mathop{\rm PPCM}\nolimits}
+
+%Intervalles
+\newcommand{\interoo}[2]{]#1\, ;\, #2[}
+\newcommand{\Interoo}[2]{\left]#1\, ;\, #2\right[}
+\newcommand{\interof}[2]{]#1\, ;\, #2]}
+\newcommand{\Interof}[2]{\left]#1\, ;\, #2\right]}
+\newcommand{\interfo}[2]{[#1\, ;\, #2[}
+\newcommand{\Interfo}[2]{\left[#1\, ;\, #2\right[}
+\newcommand{\interff}[2]{[#1\, ;\, #2]}
+\newcommand{\Interff}[2]{\left[#1\, ;\, #2\right]}
+%\newcommand\interentiers #1#2{[\! [#1\, ;\, #2]\! ]}
+\newcommand{\interentiers}[2]{\llbracket #1\, ;\, #2\rrbracket}
+%
+
+
+%%%%%%%%%%%%%%Nombres complexes%%%%%
+
+\newcommand{\ic}{\text{i}}
+%\newcommand{\I}{\text{i}}
+\newcommand{\im}[1]{\text{Im}\left(#1\right)}
+\newcommand{\re}[1]{\text{Re}\left(#1\right)}
+\newcommand{\Arg}[1]{\text{arg}\left(#1\right)}
+\newcommand{\Mod}[1]{\left[#1\right]}
+%Parties entiÃ¨re, rÃ©elle, imaginaire, nombre i
+\newcommand{\ent}[1]{\text{E}\left(#1\right)}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+\renewcommand{\i}{\textrm{i}}
+
+%%%%%%%%%%%Probabilites et statistiques%%%%%
+\newcommand{\loibinom}[2]{\mathcal{B}\left(#1\ ; \ #2 \right)}
+\newcommand{\loinorm}[2]{\mathcal{N}\left(#1\ ; \ #2 \right)}
+\newcommand{\loiexp}[1]{\mathcal{E}\left(#1\right)}
+\newcommand{\proba}[1]{\mathbb{P}\big(#1\big)}
+\newcommand{\probacond}[2]{\mathbb{P}_{#2}\big(#1\big)}
+\newcommand{\esperance}[1]{\mathbb{E}\left(#1\right)}
+\newcommand{\variance}[1]{\mathbb{V}\left(#1\right)}
+\newcommand{\ecart}[1]{\sigma\left(#1\right)}
+\newcommand{\dnormx}{\frac{1}{\sqrt{2\pi}} \text{e}^{-\frac{x^2}{2}}}
+\newcommand{\dnormt}{\frac{1}{\sqrt{2\pi}} \text{e}^{-\frac{t^2}{2}}}
+
+%Covariance
+\newcommand{\cov}{\mathop{\rm cov}\nolimits}
+%
+
+
+%%%%%%%%%%Analyse%%%%%%%%%%%
+
+%%%%%%%%%%%Courbe%%%%%%%%%%%%
+\newcommand{\courbe}[1]{\ensuremath{\mathcal{C}_{#1}}}
+
+%%%%%%%Fonction exponentielle%%%%%
+\newcommand{\fe}{~fonction exponentielle~}
+\newcommand{\e}{\text{e}}
+
+%Fonction cotangente
+\newcommand{\cotan}{\mathop{\rm cotan}\nolimits}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Fonctions hyperboliques
+\newcommand{\ch}{\mathop{\rm ch}\nolimits}
+\newcommand{\sh}{\mathop{\rm sh}\nolimits}
+
+
+%%%%%%%%%%%%%%Limites%%%%%%
+\newcommand{\limite}[2]{\lim\limits
+_{x \to #1} #2}
+\newcommand{\limitesuite}[1]{\lim\limits
+_{n \to +\infty} #1}
+\newcommand{\limiteg}[2]{\lim\limits
+_{\substack{x \to #1 \\ x < #1 }} #2}
+\newcommand{\limited}[2]{\lim\limits
+_{\substack{x \to #1 \\ x > #1 }} #2}
+
+%%%%%%%%%%Continuité%%%%%%%%%%%
+\newcommand{\TVI}{théorème des valeurs intermédiaires}
+
+%%%%%%%%%%%Suites%%%%%%%%%%%%
+\newcommand{\suite}[1]{\ensuremath{\left(#1_{n}\right)}}
+\newcommand{\Suite}[2]{\ensuremath{\left(#1\right)_{#2}}}
+%
+
+%%%%%%%%%%%%%%%Calcul intégral%%%%%%
+\newcommand{\dx}{\ensuremath{\text{d}x}}		% dx
+\newcommand{\dt}{\ensuremath{\text{d}t}}		% dt
+\newcommand{\dtheta}{\ensuremath{\text{d}\theta}}		% dtheta
+\newcommand{\dy}{\ensuremath{\text{d}y}}		% dy
+\newcommand{\dq}{\ensuremath{\text{d}q}}		% dq
+
+%%%Intégrale%%%
+\newcommand{\integralex}[3]{\int_{#1}^{#2} #3 \ \dx}
+\newcommand{\integralet}[3]{\int_{#1}^{#2} #3 \ \dt}
+\newcommand{\integraletheta}[3]{\int_{#1}^{#2} #3 \ \dtheta}
+
+%%%%%Equivalent%%
+\newcommand{\equivalent}[1]{\build\sim_{#1}^{}}
+
+%o et O%%%%
+\renewcommand{\o}[2]{\build o_{#1\to #2}^{}}
+\renewcommand{\O}[2]{\build O_{#1\to #2}^{}}
+
+
+
+%%%%%%%%%%%%%%%Geometrie%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%Reperes%%%%%%%%%%%%%%
+\def\Oij{\ensuremath{\left(\text{O},~\vect{\imath},~\vect{\jmath}\right)}}
+\def\Oijk{\ensuremath{\left(\text{O},~\vect{\imath},~ \vect{\jmath},~ \vect{k}\right)}}
+\def\Ouv{\ensuremath{\left(\text{O},~\vect{u},~\vect{v}\right)}}
+\renewcommand{\ij}{(\vec\imath\, ;\vec\jmath\,)}
+\newcommand{\ijk}{(\vec\imath\, ;\vec\jmath\, ;\vec k\,)}
+\newcommand{\OIJ}{(O\,;\, I\,;\, J\,)}
+\newcommand{\repere}[3]{\big(#1\, ;\,\vect{#2} ;\vect{#3}\big)}
+\newcommand{\reperesp}[4]{\big(#1\, ;\,\vect{#2} ;\vect{#3} ;\vect{#4}\big)}
+
+%%%%%%%%%Coordonnees%%%%%%%%%%%%%%
+\newcommand{\coord}[2]{(#1\, ;\, #2)}
+\newcommand{\bigcoord}[2]{\big(#1\, ;\, #2\big)}
+\newcommand{\Coord}[2]{\left(#1\, ;\, #2\right)}
+\newcommand{\coordesp}[3]{(#1\, ;\, #2\, ;\, #3)}
+\newcommand{\bigcoordesp}[3]{\big(#1\, ;\, #2\, ;\, #3\big)}
+\newcommand{\Coordesp}[3]{\left(#1\, ;\, #2\, ;\, #3\right)}
+\newcommand{\Vcoord}[3]{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}
+%Symboles entre droites
+%\newcommand{\paral}{\sslash}
+\newcommand{\paral}{\mathop{/\!\! /}}
+%
+
+%%%%%%%%%Produit scalaire, Angles%%%%%%%%%%
+\newcommand{\scal}[2]{\vect{#1} \, \cdot \, \vect{#2}}
+\newcommand{\Angle}[2]{\left(\vect{#1} \, , \, \vect{#2}\right)}
+\newcommand{\Anglegeo}[2]{\left(\widehat{\vect{#1} \, ; \, \vect{#2}}\right)}
+\renewcommand{\angle}[1]{\widehat{#1}}
+\newcommand{\anglevec}[2]{\left(\vect {#1}\, ,\,\vect {#2} \right)}
+\newcommand{\anglevecteur}[2]{(#1\, , \, #2)}
+\newcommand{\Anglevec}[2]{(\vecteur{#1}\, ,\,\vecteur{#2})}
+\newcommand{\prodscal}[2]{#1 \, \cdot \, #2}
+%
+
+
+%Arc
+%\newcommand{\arc}[1]{\wideparen{#1}}
+\newcommand{\arcoriente}[1]{\overset{\curvearrowright}{#1}}
+%
+%
+
+
+%%%%%%%%%%%%%%%Normes%%%%%%%%%%%%%%%%
+\newcommand{\norme}[1]{\left\| #1\right\|}
+\newcommand{\normebis}[1]{\delim{2pt}{\|}{9pt}\! #1\delim{2pt}{\|}{9pt}}
+\newcommand{\normetriple}[1]{\left |\kern -.07em\left\| #1\right |\kern -.07em\right\|}
+\newcommand{\valabs}[1]{\big| \, #1 \, \big|}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%Degré%%%%%%
+%\newcommand{\Degre}{\ensuremath{^\circ}}
+%La commande \degre est déjà définie dans le package babel
+
+%%%%%%%%%%Vecteurs%%%%%%%%%%%
+\newcommand{\vect}[1]{\mathchoice%
+{\overrightarrow{\displaystyle\mathstrut#1\,\,}}%
+{\overrightarrow{\textstyle\mathstrut#1\,\,}}%
+{\overrightarrow{\scriptstyle\mathstrut#1\,\,}}%
+{\overrightarrow{\scriptscriptstyle\mathstrut#1\,\,}}}
+
+
+
+%%%%%%%%%%%%%Algebre%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%Systemes%%%%%%%%%%%
+%Systemes
+\newcommand{\sys}[2]{
+\left\lbrace
+ \begin{array}{l}
+  \negthickspace\negthickspace #1\\
+  \negthickspace\negthickspace #2\\
+ \end{array}
+\right.\negthickspace\negthickspace}
+\newcommand{\Sys}[3]{
+\left\lbrace
+ \begin{array}{l}
+  #1\\
+  #2\\
+  #3\\
+ \end{array}
+\right.}
+\newcommand{\Sysq}[4]{
+\left\lbrace
+ \begin{array}{l}
+  #1\\
+  #2\\
+  #3\\
+  #4\\
+ \end{array}
+\right.}
+%
+%
+
+%%%%%%%%%%%%%%%%Matrices%%%%%%%%%%%%%%%%%%
+%Comatrice
+\newcommand{\com}{\mathop{\rm com}\nolimits}
+%
+%
+%Trace
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+%
+%
+%Transposee
+\newcommand{\transposee}[1]{{\vphantom{#1}}^t\negmedspace #1}
+%
+%
+%Noyau
+\newcommand{\Ker}{\mathop{\rm Ker}\nolimits}
+%
+%
+
+%
+%Matrices
+\newcommand{\Mn}{\mathcal M_n}
+\newcommand{\matrice}[4]{
+\left(
+ \begin{array}{cc}
+  #1 & #2 \\
+  #3 & #4
+ \end{array}
+\right)}
+
+\newcommand{\Matrice}[9]{
+\left(
+ \begin{array}{ccc}
+  #1 & #2 & #3\\
+  #4 & #5 & #6\\
+  #7 & #8 & #9
+ \end{array}
+\right)}
+\newcommand{\Vect}[3]{
+\left(\negmedspace
+ \begin{array}{c}
+  #1\\
+  #2\\
+  #3
+ \end{array}\negmedspace
+\right)}
+\newcommand{\Ideux}{\matrice{1}{0}{0}{1}}
+\newcommand{\Itrois}{\Matrice{1}{0}{0}{0}{1}{0}{0}{0}{1}}
+%
+%
+%Determinants
+\newcommand{\determinant}[4]{
+\left|
+ \begin{array}{cc}
+  #1 & #2 \\
+  #3 & #4
+ \end{array}
+\right|}
+\newcommand{\Determinant}[9]{
+\left|
+ \begin{array}{ccc}
+  #1 & #2 & #3\\
+  #4 & #5 & #6\\
+  #7 & #8 & #9
+ \end{array}
+\right|}
+
+\begin{document}
+\maketitle
+
+\emph{On désigne par tableaux, les objets de type
+\passthrough{\lstinline!list!} du langage
+\href{https://docs.python.org/3/tutorial/datastructures.html}{Python}.
+Dans les exercices, comme dans les QCM d'E3C, on rencontrera parfois
+l'appellation Python liste pour désigner la structure de données
+tableau}.
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Télécharger le matériel de TP depuis
+  \url{https://parc-nsi.github.io/premiere-nsi/chapitre6/TP/eleves.zip}
+\item
+  Extraire l'archive dans un dossier pertinent de son répertoire
+  personnel.
+\item
+  Ouvrir le fichier \passthrough{\lstinline!TP-Tableaux-Eleve.py!} avec
+  \passthrough{\lstinline!Spyder!}. Le fichier est prérempli avec des
+  cellules contenant les codes à compléter suivis de tests unitaires
+  pour tester les fonctions que vous aurez écrites.
+\item
+  Chaque cellule est préfixée par le commentaire spécial
+  \passthrough{\lstinline!\#\%\%!} et peut être exécutée avec
+  \passthrough{\lstinline!CTRL + Return!}.
+\item
+  Écrivez d'abord la fonction avant de la tester avec les tests
+  unitaires s'ils sont disponibles : il faut les sélectionner puis les
+  décommenter avec \passthrough{\lstinline!CTRL + 1!}.
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+QCM type E3C
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  On exécute le code suivant :
+
+\begin{lstlisting}[language=Python]
+t = [1,2,3,4,5,6,7,8,9]
+
+v = [c for c in t if c%3 == 0]
+\end{lstlisting}
+\end{enumerate}
+
+Quelle est la valeur de la variable \passthrough{\lstinline!v!} à la fin
+de cette exécution ?
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Réponse A :} 18 \textbf{Réponse B :}
+  \passthrough{\lstinline![1,4,7]!}
+\item
+  \textbf{Réponse C :} \passthrough{\lstinline![3,6,9]!} \textbf{Réponse
+  D :} \passthrough{\lstinline![1,2,3,4,5,6,7,8,9]!}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  On définit :
+  \passthrough{\lstinline!resultat = [ i*2 for i in range(10) ]!}.
+\end{enumerate}
+
+Quelle est la valeur de \passthrough{\lstinline!resultat!} ?
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Réponse A :}
+  \passthrough{\lstinline![0, 1, 2, 3, 4, 5, 6, 7, 8, 9]!}
+\item
+  \textbf{Réponse B :}
+  \passthrough{\lstinline![0, 2, 4, 6, 8, 10, 12, 14, 16, 18]!}
+\item
+  \textbf{Réponse C :}
+  \passthrough{\lstinline![0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]!}
+\item
+  \textbf{Réponse D :}
+  \passthrough{\lstinline![2, 4, 6, 8, 10, 12, 14, 16, 18]!}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  On considère la fonction suivante :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def somme(tab):
+    s = 0
+    for i in range(len(tab)):
+        .....
+    return s
+\end{lstlisting}
+
+Par quelle instruction faut-il remplacer les points de suspension pour
+que l'appel \passthrough{\lstinline!somme([10,11,12,13,14])!} renvoie 60
+?
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Réponse A :} \passthrough{\lstinline!s = tab[i]!}
+  \textbf{Réponse B :} \passthrough{\lstinline!s = s + tab[i]!}
+\item
+  \textbf{Réponse C :} \passthrough{\lstinline!tab[i] = tab[i] + s!}
+  \textbf{Réponse D :} \passthrough{\lstinline!s = s + i!}
+\end{itemize}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  La fonction suivante doit calculer la moyenne d'un tableau de nombres,
+  passé en paramètre. Avec quelles expressions faut-il remplacer les
+  points de suspension pour que la fonction soit correcte ? \emph{Auteur
+  Sylvie Genre}
+
+\begin{lstlisting}[language=Python]
+def moyenne(tableau):
+    total = ...
+    for valeur in tableau:
+        total = total + valeur
+    return total / ...
+\end{lstlisting}
+\item
+  Donner la valeur des expressions Python suivantes :
+
+\begin{lstlisting}[language=Python]
+>>> [1, 2, 3] + [4, 5, 6]
+>>> 2 * [1, 2, 3]
+\end{lstlisting}
+\end{enumerate}
+
+\end{exercice}
+
+\begin{methode}{}
+
+À partir de cet exercice, on précisera pour chaque fonction sa
+\textbf{spécification}, dans une chaîne de documentation (ou
+\emph{docstring}) multiligne placée juste après l'en-tête de la fonction
+entre triples quotes ou guillemets.
+
+Celle-ci est constituée :
+
+\begin{itemize}
+\tightlist
+\item
+  du ou des \textbf{type(s)} du ou des paramètre(s), en précisant si la
+  fonction ne prend pas de paramètre
+\item
+  de la ou des \textbf{précondition(s)} que doivent vérifier ces
+  paramètres
+\item
+  du ou des \textbf{type(s)} de la (ou les) valeur(s) renvoyée(s), en
+  précisant si la fonction ne renvoie rien
+  (\passthrough{\lstinline!None!} par défaut en Python)
+\item
+  de la ou des \textbf{postcondition(s)} que doivent vérifier la ou les
+  valeur(s) renvoyée(s)
+\end{itemize}
+
+Pour vérifier les préconditions on utilise l'instruction
+\passthrough{\lstinline!assert!} qui permet de vérifier l'assertion (à
+valeur booléenne) qu'elle préfixe : si l'assertion est vraie,
+l'exécution continue sinon une exception
+\passthrough{\lstinline!AssertionError!} est levée et l'exécution
+s'interrompt. On peut passer un message d'erreur personnalisée en le
+séparant de l'assertion par une virgule :
+
+\begin{lstlisting}[language=Python]
+>>> assert (1 + 1) % 2 == 0, 'attention on calcule modulo 2'
+>>> assert (1 + 1) % 2 == 2, 'attention on calcule modulo 2'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AssertionError: attention on calcule modulo 2
+\end{lstlisting}
+
+Voici un exemple de rédaction pour la deuxième fonction de l'exercice 4
+:
+
+\begin{lstlisting}[language=Python]
+def vsom(tab1, tab2):
+    """
+    Paramètres :
+        tab1 et tab2 des tableaux de type list contenant des  nombres de type int ou float
+    Préconditions :
+        tab1 non vide et len(tab1) == len(tab2)
+    Valeur renvoyée :
+        un tableau de type list contenant des  nombres de type int ou float
+    Postcondition :
+        le tableau renvoyé est constitué des sommes
+        terme à terme des éléments de tab1 et tab2        
+    """
+    assert len(tab1) > 0 and len(tab1) == len(tab2); "tab1 et tab2 doivent être de même longueur"
+    return ................. #à compléter
+\end{lstlisting}
+
+\end{methode}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Écrire une fonction Python \passthrough{\lstinline!smul!} à deux
+  paramètres, un nombre et une liste de nombres, qui multiplie chaque
+  élément de la liste par le nombre et renvoie une nouvelle liste :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> smul(2, [1, 2, 3])
+[2, 4, 6]
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Écrire une fonction Python \passthrough{\lstinline!vsom!} qui prend en
+  paramètre deux listes de nombres de même longueur et qui renvoie une
+  nouvelle liste constituée de la somme terme à terme de ces deux listes
+  :
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> vsom([1, 2, 3], [4, 5, 6])
+[5, 7, 9]
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Écrire une fonction
+  \href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+  \passthrough{\lstinline!vdif!} qui prend en paramètre deux listes de
+  nombres de même longueur et qui renvoie une nouvelle liste constituée
+  de la différence terme à terme de ces deux listes (la deuxième moins
+  la première).
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> vdif([1, 2, 3], [4, 5, 6])
+[3, 3, 3]
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Écrire une fonction Python \passthrough{\lstinline!vprod!} qui prend
+  en paramètre deux listes de nombres de même longueur et qui retourne
+  une nouvelle liste constituée des produits terme à terme de ces deux
+  listes.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+>>> vprod([1, 2, 3], [4, 5, 6]) 
+[4, 10, 18]
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Écrire une fonction \passthrough{\lstinline!produit(tab)!} qui
+  retourne le produit des éléments d'un tableau de nombres
+  \passthrough{\lstinline!tab!}.
+\item
+  Écrire une fonction \passthrough{\lstinline!all\_positive(tab)!} qui
+  retourne un booléen indiquant si tous les éléments du tableau de
+  nombres \passthrough{\lstinline!tab!} sont strictement positifs.
+\item
+  Écrire une fonction \passthrough{\lstinline!any\_positive(tab)!} qui
+  retourne un booléen indiquant si au moins un élément du tableau de
+  nombres \passthrough{\lstinline!tab!} est strictement positif.
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Écrire une fonction
+  \passthrough{\lstinline!tableau\_aleatoire(n, a, b)!} qui renvoie un
+  tableau de \passthrough{\lstinline!n!} entiers tirés aléatoirement
+  entre les entiers \passthrough{\lstinline!a!} et
+  \passthrough{\lstinline!b!} inclus. On utilisera la fonction
+  \passthrough{\lstinline!randint!} du module
+  \passthrough{\lstinline!random!}.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+Help on method randint in module random:
+
+randint(a, b) method of random.Random instance
+    Return random integer in range [a, b], including both end points.
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Écrire une fonction
+  \passthrough{\lstinline!histo\_echantillon(nbexp)!} qui renvoie un
+  tableau de taille 6 comptant le nombre d'occurences de chaque face
+  numérotée de 1 à 6 sur un échantillon de
+  \passthrough{\lstinline!nbexp!} lancers d'un dé cubique équilibré.
+\item
+  On donne ci-dessous une fonction qui prend en paramètre un tableau et
+  renvoie un élément extrait au hasard du tableau. Elle permet par
+  exemple de simuler un tirage sans remise d'une boule dans une urne.
+
+\begin{lstlisting}[language=Python]
+from random import randint
+def tirage_sans_remise(urne):
+    """ 
+    Paramètres :
+        urne un tableau homogène type list
+    Précondition :
+        urne non vide
+    Valeur renvoyée :
+        un élément du même type que ceux dans urne
+    Postcondition :
+        l'élement renvoyée a été extrait aléatoirement de urne
+        urne a été modifiée
+    """
+    return urne.pop(randint(0, .......))
+\end{lstlisting}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Compléter les pointillés pour respecter la spécification de la
+    fonction.
+  \item
+    Écrire une fonction
+    \passthrough{\lstinline!echantillon\_tirage\_sans\_remise!}
+    respectant la spécification ci-dessous. Les
+    \href{https://docs.python.org/fr/3/tutorial/controlflow.html\#function-annotations}{annotations
+    de type} sont des métadonnées optionnelles décrivant les types des
+    paramètres et des valeurs renvoyées.
+  \end{itemize}
+
+\begin{lstlisting}[language=Python]
+def echantillon_tirage_sans_remise(urne:list, nbtirage:int) -> list:
+    """ 
+    Paramètres :
+        urne un tableau homogène type list
+        nbtirage un entier de type int
+    Préconditions :
+        nbtirage >= 0
+        urne non vide
+    Valeur renvoyée :
+        un tableau d'entiers de type list
+    Postcondition :
+        le tableau renvoyé est un échantillon extrait
+        aléatoirement de l'urne sans remise
+    """
+\end{lstlisting}
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+\begin{itemize}
+\tightlist
+\item
+  La fonction \passthrough{\lstinline!ord!} prend en paramètre un
+  caractère de type \passthrough{\lstinline!string!} et renvoie son
+  point de code dans le jeu de caractères
+  \href{https://fr.wikipedia.org/wiki/Unicode}{Unicode}.
+\item
+  La fonction \passthrough{\lstinline!chr!} prend en paramètre un point
+  de code Unicode et renvoie le caractère correspondant.
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+>>> ord('a')
+97
+>>> chr(97)
+'a'
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Construire un tableau \passthrough{\lstinline!alphabet!} qui contient
+  toutes les lettres minuscules de l'alphabet romain.
+\item
+  Construire un tableau \passthrough{\lstinline!consonne!} qui contient
+  toutes les consonnes dans \passthrough{\lstinline!alphabet!}.
+\item
+  Écrire une fonction \passthrough{\lstinline!occurences(chaine)!} qui
+  prend en paramètre une chaîne de caractère et renvoie un tableau de
+  taille 26 avec le nombre d'occurences dans
+  \passthrough{\lstinline!chaine!} des 26 lettres de l'alphabet romain.
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+\emph{Exercice du manuel de NSI de Thibault Balabonski chez Ellipses}
+
+En mathématiques, la
+\href{http://images.math.cnrs.fr/Mysteres-arithmetiques-de-la-suite-de-Fibonacci.html}{suite
+de Fibonacci} est une séquence d'entiers définie ainsi : on part des
+entiers 0 et 1 puis on construit à chaque fois l'entier suivant comme la
+somme des deux précédents : \[0, 1, 1, 2, 3, 5 ....\]
+
+Compléter la fonction \passthrough{\lstinline!fibonacci(n)!} ci-dessous
+pour qu'elle renvoie un tableau contenant les
+\passthrough{\lstinline!n!} premiers termes de la suite de Fibonacci
+avec \passthrough{\lstinline!n!} entier supposé supérieur ou égal à 2.
+Les deux assertions proposées en tests unitaires, doivent être
+vérifiées.
+
+\begin{lstlisting}[language=Python]
+def fibonacci(n):
+    #à compléter
+
+# Tests unitaires (vérification de postconditions)
+f6 = fibonacci(6)
+assert f6 == [0,1, 1, 2,3,5]
+f30 = fibonacci(30)
+assert f30[29] == 514229
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{methode}{}
+
+Pour stocker de façon persistante (sur le disque et pas seulement en
+mémoire vive) des informations lisibles par un humain, on utilise un
+\textbf{fichier texte} qui est une simple séquence de caractères. Le
+contenu du fichier doit respecter un \textbf{format} qui fixe des
+contraintes pour que les informations soient interprétables lors de la
+lecture. Par exemple le code source d'un programme
+\href{https://docs.python.org/3/tutorial/datastructures.html}{Python} ou
+d'une page Web en HTML, un fichier de mesures au format
+\href{https://fr.wikipedia.org/wiki/Comma-separated_values}{CSV}, sont
+des fichiers textes.
+
+Tester les séquences d'instructions suivantes dans une console
+\href{https://docs.python.org/3/tutorial/datastructures.html}{Python}
+pour découvrir des manipulations de base de fichiers textes.
+
+\begin{itemize}
+\tightlist
+\item
+  Création d'un fichier \passthrough{\lstinline!test.txt!} dans le
+  répertoire de travail
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+>>> f = open('test.txt', 'w')   # ouverture du fichier en écriture
+>>> f.write('10\n')   #  ligne 1 : '\n'  est un caractère de saut de ligne
+3
+>>> f.write('11 12\n')  #ligne 2  avec 6 caractères 
+6
+>>> f.write('13 14 15\n')  #ligne 3 avec 9 caractères
+9
+>>> f.close()   #fermeture du fichier
+\end{lstlisting}
+
+\begin{itemize}
+\tightlist
+\item
+  Lecture et traitement ligne par ligne du fichier
+  \passthrough{\lstinline!test.txt!} :
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+>>> g = open('test.txt', 'r')  #ouverture du fichier
+>>> ligne1 = g.readline()  #lecture de ligne 1
+>>> ligne1
+'10\n'
+>>> ligne1.rstrip() #nettoyage du caractère de fin de ligne
+'10'
+>>> int(ligne1.rstrip()) #conversion de chaine vers entier
+10
+>>> ligne2 = g.readline()  #lecture de ligne 2
+>>> ligne2
+'11 12\n'
+>>> ligne2.rstrip()  #nettoyage du caractère de fin de ligne
+'11 12'
+>>> ligne2.rstrip().split(' ')  #découpage de ligne 2 selon le caractère par défaut de séparation ' ', on peut écrire juste split() 
+['11', '12']
+>>> [int(c) for c in ligne2.rstrip().split()]  #conversion en entier
+[11, 12]
+>>> g.close()   #fermeture du fichier
+\end{lstlisting}
+
+\end{methode}
+
+\begin{exercice}{}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Énoncé :}
+\end{itemize}
+
+Comme le disait le grand-père de Joseph Marchand, « Le plus beau voyage
+est celui qu'on n'a pas encore fait ». New York était dans la tête de
+Joseph depuis plusieurs années maintenant, et il a décidé aujourd'hui
+d'acheter son billet d'avion. Quelques secondes avant de cliquer sur le
+bouton « Acheter ! », son amie Haruhi lui envoie une liste de prix
+qu'elle a trouvés sur Internet. Joseph est curieux de voir si ces
+derniers sont moins chers que le billet qu'il s'apprêtait à acheter.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Entrée :}
+\end{itemize}
+
+Sur la première ligne le prix initial du billet de Joseph. Sur la
+deuxième ligne un entier N , correspondant au nombre de billets envoyés
+par Haruhi. La ligne suivante contient les N prix trouvés par Haruhi.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Sortie :}
+\end{itemize}
+
+Si Haruhi a trouvé au moins 3 prix strictement moins chers que celui de
+Joseph, affichez « ARNAQUE ! » pour l'avertir. Sinon « Ok bon voyage,
+bisous, n'oublie pas de m'envoyer des photos ! ».
+
+\begin{itemize}
+\item
+  Exemple 1 :
+
+  \begin{itemize}
+  \item
+    Entrée :
+
+\begin{lstlisting}
+570
+4
+495 1200 540 450
+\end{lstlisting}
+  \item
+    Sortie :
+
+\begin{lstlisting}
+ARNAQUE !
+\end{lstlisting}
+  \end{itemize}
+\item
+  Exemple 2:
+
+  \begin{itemize}
+  \item
+    Entrée :
+
+\begin{lstlisting}
+820
+5
+580 2000 970 1050 820
+\end{lstlisting}
+  \item
+    Sortie :
+  \end{itemize}
+
+\begin{lstlisting}
+Ok bon voyage, bisous, n'oublie pas de m'envoyer des photos !
+\end{lstlisting}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Récupérer les fichiers textes
+  \passthrough{\lstinline!arnaque-exemple1.txt!} et
+  \passthrough{\lstinline!arnaque-exemple2.txt!} avec les entrées des
+  deux exemples.
+\item
+  En s'inspirant de la méthode de lecture de fichier texte présentée
+  précédemment, compléter la fonction ci-dessous pour qu'elle résolve le
+  problème. Les deux assertions doivent être vérifiées.
+\item
+  Se créer un compte sur le site
+  \href{https://prologin.org/user/register?next=\%2F}{Prologin} et
+  soumettre sa solution au juge en ligne sur
+  \url{https://prologin.org/train/2019/qualification/arnaque_aerienne}.
+
+  Avant de soumettre, remplacer dans la fonction l'instruction
+  \passthrough{\lstinline!f = open(inputfile)!} par
+  \passthrough{\lstinline!f = inputfile!} et le code du programme
+  principal par :
+
+\begin{lstlisting}[language=Python]
+import sys
+arnaque(sys.stdin)
+\end{lstlisting}
+
+  \passthrough{\lstinline!sys.stdin!} est
+  \href{https://docs.python.org/fr/3/library/sys.html\#sys.stdin}{l'entrée
+  standard} de l'interpréteur Python.
+\item
+  Sur la même plateforme, résoudre cet autre problème du même type :
+  \url{https://prologin.org/train/2018/qualification/faites_place}
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def arnaque(inputfile):
+    """Résolution du problème 
+    https://prologin.org/train/2019/qualification/arnaque_aerienne"""
+    f = open(inputfile)  #ouverture du  fichier d'entrée
+    # TO DO à compléter
+    f.close() 
+    c = 0
+    # TO DO à compléter
+    if c >= 3:
+        print("ARNAQUE !")
+        return 1
+    else:
+        print("Ok bon voyage, bisous, n'oublie pas de m'envoyer des photos !")
+        return 0
+
+# Tests unitaires        
+assert arnaque('arnaque-exemple1.txt') == 1
+assert arnaque('arnaque-exemple2.txt') == 0
+print("Tests unitaires réussis !")
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{exercice}{}
+
+Écrire une fonction \passthrough{\lstinline!maximum\_intervalle(t, n)!}
+qui prend en paramètres un tableau d'entiers \passthrough{\lstinline!t!}
+et un entier \passthrough{\lstinline!n!} supposé inférieur ou égal à la
+longueur de \passthrough{\lstinline!t!} et qui retourne la somme
+maximale sur tous les sous-tableaux de longueur
+\passthrough{\lstinline!n!} inclus dans \passthrough{\lstinline!t!} .
+
+\begin{lstlisting}[language=Python]
+>>> maximum_intervalle([4,1,10,2,8,5], 3)
+20
+\end{lstlisting}
+
+\end{exercice}
+
+\end{document}

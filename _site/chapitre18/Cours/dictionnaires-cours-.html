@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Première NSI, Lycée du Parc" />
+  <title>Cours sur les dictionnaires</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../Pandoc/style_nsi.css" />
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Cours sur les dictionnaires</h1>
+<p class="subtitle">Thème types construits</p>
+<p class="author">Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a></p>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#crédits">Crédits</a></li>
+<li><a href="#p-uplets-nommés-et-dictionnaires"><code>p-uplets</code> nommés et dictionnaires</a></li>
+<li><a href="#un-exemple-de-dictionnaire-les-metadonnées-exif-dune-photo-numérique">Un exemple de dictionnaire : les metadonnées EXIF d’une photo numérique</a></li>
+<li><a href="#création-de-dictionnaire">Création de dictionnaire</a></li>
+<li><a href="#accès-ajout-suppression-délément-dans-un-dictionnaire">Accès, ajout, suppression d’élément dans un dictionnaire</a></li>
+<li><a href="#parcours-de-dictionnaire">Parcours de dictionnaire</a></li>
+<li><a href="#références-partagées-et-mutabilité">Références partagées et mutabilité</a></li>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#synthèse">Synthèse</a></li>
+</ul>
+</nav>
+<!-- Définition des hyperliens  -->
+<h1 id="crédits" class="unnumbered">Crédits</h1>
+<p><em>Ce cours est inspiré du chapitre 14 du manuel NSI de la collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N’Guyen. J’ai également consulté le prepabac Première NSI de Guillaume Connan chez Hatier, le <a href="https://cache.media.eduscol.education.fr/file/NSI/77/7/RA_Lycee_G_NSI_repd_types_construits_1170777.pdf">document ressource eduscol sur les types construits</a> et le livre <strong>Fluent Python</strong>.</em></p>
+<h1 id="p-uplets-nommés-et-dictionnaires"><code>p-uplets</code> nommés et dictionnaires</h1>
+<div class="exemple">
+<p>Dans le TP sur les <strong>p-uplets</strong> (nommés aussi <strong>tuples</strong>) on a travaillé sur un fichier <code>airports-reduit.csv</code> qui contient les enregistrements <code>nom;latitude;longitude;altitude;code_pays</code> pour 57302 aéroports et on a extrait cette série dans un tableau de <strong>tuples</strong>. Par exemple le <strong>tuple</strong> correspondant à l’aéroport Saint-Exupéry est :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;&gt;&gt;</span> p_uplet <span class="op">=</span> tab_tuple_airports[<span class="dv">32478</span>]</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="op">&gt;&gt;&gt;</span> p_uplet</a>
+<a class="sourceLine" id="cb1-3" title="3">(<span class="st">&#39;Lyon Saint-Exupéry Airport&#39;</span>, <span class="st">&#39;45.725556&#39;</span>, <span class="st">&#39;5.081111&#39;</span>, <span class="st">&#39;821&#39;</span>, <span class="st">&#39;FR&#39;</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="op">&gt;&gt;&gt;</span> p_uplet[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">&#39;45.725556&#39;</span></a></code></pre></div>
+<p>Pour traiter cette information, il faut connaître la signification de chaque élément (appelé aussi <em>champ</em>) du <strong>tuple</strong> puisqu’on y accède par son index entier : 0 pour le ‘nom’, 1 pour la latitude etc ….</p>
+<p>Il serait plus lisible de disposer d’un <strong>tuple</strong> à <em>champs nommés</em> et de pouvoir accéder à la valeur d’un champ par son nom. C’est le dernier <strong>type construit</strong> de données que nous allons étudier.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="op">&gt;&gt;&gt;</span> p_uplet_nomme <span class="op">=</span> tab_dico_airports[<span class="dv">32478</span>]</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="op">&gt;&gt;&gt;</span> p_uplet_nomme</a>
+<a class="sourceLine" id="cb2-3" title="3">{<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;Lyon Saint-Exupéry Airport&#39;</span>, <span class="st">&#39;latitude&#39;</span>: <span class="st">&#39;45.725556&#39;</span>, <span class="st">&#39;longitude&#39;</span>: <span class="st">&#39;5.081111&#39;</span>, <span class="st">&#39;altitude&#39;</span>: <span class="st">&#39;821&#39;</span>, <span class="st">&#39;code_pays&#39;</span>: <span class="st">&#39;FR&#39;</span>}</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="op">&gt;&gt;&gt;</span> p_uplet_nomme[<span class="st">&#39;latitude&#39;</span>]</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">&#39;45.725556&#39;</span></a></code></pre></div>
+</div>
+<div class="definition">
+<p>Un <strong>p-uplet nommé</strong> (ou <strong>tuple nommé</strong>) est un <strong>p-uplet</strong> dont chaque <strong>élément</strong> (ou <strong>champ</strong>) est repérée par un nom et non pas par un entier. Ces <strong>noms</strong> sont appelés <strong>clefs</strong> ou <strong>descripteurs</strong> du <strong>p-uplet</strong>, qui s’écrit entre accolades avec une virgule séparant chaque paire constitué de la clef et de la valeur de la composante séparées par le symbole <code>:</code>.</p>
+<p>En <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, les <strong>p-uplets nommés</strong> sont implémentés par les <strong>dictionnaires</strong> de type <code>dict</code>. Par la suite nous parlerons de <strong>dictionnaire</strong> plutôt que de <strong>p-uplet nommé</strong>.</p>
+<p>Comme l’accès aux valeurs s’effectue par les noms/clefs, comme dans un dictionnaire où chaque nom est associé à sa définition, on parle aussi de <strong>tableaux associatifs</strong>.</p>
+<p>Un dictionnaire n’est pas une séquence ordonnée d’éléments, l’accès s’effectue uniquement par clef.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;&gt;&gt;</span> python <span class="op">=</span> {<span class="st">&#39;apparition&#39;</span> : <span class="dv">1993</span>, <span class="st">&#39;version&#39;</span> : <span class="st">&#39;3.8&#39;</span>, <span class="st">&#39;createur&#39;</span> : <span class="st">&#39;Guido Van Rossum&#39;</span>}</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="op">&gt;&gt;&gt;</span> python[<span class="st">&#39;createur&#39;</span>]</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">&#39;Guido Van Rossum&#39;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="op">&gt;&gt;&gt;</span> <span class="bu">len</span>(python)</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="dv">3</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="op">&gt;&gt;&gt;</span> python[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb3-7" title="7">Traceback (most recent call last):</a>
+<a class="sourceLine" id="cb3-8" title="8">  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="pp">KeyError</span>: <span class="dv">2</span></a></code></pre></div>
+</div>
+<h1 id="un-exemple-de-dictionnaire-les-metadonnées-exif-dune-photo-numérique">Un exemple de dictionnaire : les metadonnées EXIF d’une photo numérique</h1>
+<p>Les photos prises avec un appareil numérique contiennent de nombreuses informations. Dans le fichier image, par exemple au format <code>jpeg</code>, sont stockées des données non seulement sur l’image elle-même mais aussi sur l’appareil, le logiciel utilisé, et en particulier des données <a href="https://fr.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> (Exchangeable Image File Format). Une partie est accessible dans les propriétés de fichier ou avec un logiciel de traitement d’images. Les spécifications sont gérées par un organisme japonais, le JEITA, qui définit différents dictionnaires de référence permettant d’accéder à ces données. Les clés (les tags) et les valeurs sont des nombres écrits dans l’entête du fichier. Les dictionnaires donnent l’interprétation de ces clés. Par exemple la clé 256 a pour valeur ‘Width’ , la largeur de l’image en pixel, la clé 257 a pour valeur ‘Length’ , la hauteur de l’image en pixel.</p>
+<p><img src="images/exif.png" alt="données exif" style="width:50.0%" /><br />
+</p>
+<p><em>Source : <a href="https://commons.wikimedia.org/wiki/File:DigiKam_EXIF_information_screenshot.png" class="uri">https://commons.wikimedia.org/wiki/File:DigiKam_EXIF_information_screenshot.png</a></em></p>
+<div class="exercice">
+<p>On peut extraite les données EXIF avec le logiciel <a href="https://exiftool.org/">exiftool</a> ou sous forme de dictionnaire <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> avec le module <a href="https://smarnach.githeub.io/pyexiftool/">pyexiftool</a>. La fonction ci-dessous permet par exemple d’extraire les données <a href="https://fr.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> d’un fichier image sous forme de dictionnaire.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="im">import</span> exiftool</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">def</span> extraire_exif(fichier):</a>
+<a class="sourceLine" id="cb4-4" title="4">    et <span class="op">=</span> exiftool.ExifTool()</a>
+<a class="sourceLine" id="cb4-5" title="5">    et.start()</a>
+<a class="sourceLine" id="cb4-6" title="6">    metadata <span class="op">=</span> et.get_metadata(fichier)</a>
+<a class="sourceLine" id="cb4-7" title="7">    et.terminate()</a>
+<a class="sourceLine" id="cb4-8" title="8">    <span class="cf">return</span> metadata</a></code></pre></div>
+<ol type="1">
+<li>Télécharger la photo <a href="http://frederic-junier.org/SNT/images/20181230_162625.jpg" class="uri">http://frederic-junier.org/SNT/images/20181230_162625.jpg</a>.</li>
+<li>Extraire ses données <a href="https://fr.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> avec <a href="https://exiftool.org/">exiftool</a> ou le script <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, puis retrouver la commune où elle a été prise. Voici une partie du dictionnaire obtenu :</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="op">&gt;&gt;&gt;</span> metadata <span class="op">=</span> extraire_exif(<span class="st">&#39;20181230_162625.jpg&#39;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2">{..., <span class="st">&#39;EXIF:Make&#39;</span>: <span class="st">&#39;samsung&#39;</span>, <span class="st">&#39;EXIF:Model&#39;</span>: <span class="st">&#39;SM-G930F&#39;</span>, <span class="st">&#39;EXIF:Orientation&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;EXIF:XResolution&#39;</span>: <span class="dv">72</span>,</a>
+<a class="sourceLine" id="cb5-3" title="3"> <span class="st">&#39;EXIF:YResolution&#39;</span>: <span class="dv">72</span>, <span class="st">&#39;EXIF:ResolutionUnit&#39;</span>: <span class="dv">2</span>, <span class="st">&#39;EXIF:Software&#39;</span>: <span class="st">&#39;G930FXXU3ERL3&#39;</span>, <span class="st">&#39;EXIF:ModifyDate&#39;</span>: <span class="st">&#39;2018:12:30 16:26:24&#39;</span>, <span class="st">&#39;EXIF:YCbCrPositioning&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;EXIF:ExposureTime&#39;</span>: <span class="fl">0.0005733944954</span>, <span class="st">&#39;EXIF:FNumber&#39;</span>: <span class="fl">1.7</span>, <span class="st">&#39;EXIF:ExposureProgram&#39;</span>: <span class="dv">2</span>, <span class="st">&#39;EXIF:ISO&#39;</span>: <span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb5-4" title="4"> <span class="st">&#39;EXIF:ExifVersion&#39;</span>: <span class="st">&#39;0220&#39;</span>, <span class="st">&#39;EXIF:DateTimeOriginal&#39;</span>: <span class="st">&#39;2018:12:30 16:26:24&#39;</span>, <span class="st">&#39;EXIF:CreateDate&#39;</span>: <span class="st">&#39;2018:12:30 16:26:24&#39;</span>, <span class="st">&#39;EXIF:ComponentsConfiguration&#39;</span>: <span class="st">&#39;1 2 3 0&#39;</span>, <span class="st">&#39;EXIF:ShutterSpeedValue&#39;</span>: <span class="st">&#39;0.000572673315054629&#39;</span>, <span class="st">&#39;EXIF:ApertureValue&#39;</span>: <span class="fl">1.6993699982773</span>, <span class="st">&#39;EXIF:BrightnessValue&#39;</span>: <span class="fl">8.36</span>,</a>
+<a class="sourceLine" id="cb5-5" title="5"> <span class="st">&#39;EXIF:ExposureCompensation&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;EXIF:MaxApertureValue&#39;</span>: <span class="fl">1.6993699982773</span>, <span class="st">&#39;EXIF:MeteringMode&#39;</span>: <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb5-6" title="6"> <span class="st">&#39;EXIF:Flash&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;EXIF:FocalLength&#39;</span>: <span class="fl">4.2</span>, <span class="st">&#39;EXIF:UserComment&#39;</span>: <span class="st">&#39;&#39;</span>, <span class="st">&#39;EXIF:SubSecTime&#39;</span>: <span class="st">&#39;0999&#39;</span>,</a>
+<a class="sourceLine" id="cb5-7" title="7"> ...., <span class="st">&#39;EXIF:FlashpixVersion&#39;</span>: <span class="st">&#39;0100&#39;</span>, <span class="st">&#39;EXIF:ColorSpace&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;EXIF:ExifImageWidth&#39;</span>: <span class="dv">4032</span>, <span class="st">&#39;EXIF:ExifImageHeight&#39;</span>: <span class="dv">3024</span>, ..., <span class="st">&#39;EXIF:GPSVersionID&#39;</span>: <span class="st">&#39;2 2 0 0&#39;</span>, <span class="st">&#39;EXIF:GPSLatitudeRef&#39;</span>: <span class="st">&#39;N&#39;</span>,</a>
+<a class="sourceLine" id="cb5-8" title="8"> <span class="st">&#39;EXIF:GPSLatitude&#39;</span>: <span class="fl">42.4947222222222</span>, <span class="st">&#39;EXIF:GPSLongitudeRef&#39;</span>: <span class="st">&#39;E&#39;</span>, <span class="st">&#39;EXIF:GPSLongitude&#39;</span>: <span class="fl">3.13</span>,</a>
+<a class="sourceLine" id="cb5-9" title="9"> <span class="st">&#39;EXIF:GPSAltitudeRef&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;EXIF:GPSAltitude&#39;</span>: <span class="dv">123</span>, <span class="st">&#39;EXIF:GPSTimeStamp&#39;</span>: <span class="st">&#39;15:26:35&#39;</span>,<span class="st">&#39;EXIF:GPSDateStamp&#39;</span>: <span class="st">&#39;2018:12:30&#39;</span>, ....</a>
+<a class="sourceLine" id="cb5-10" title="10"> }</a></code></pre></div>
+</div>
+<h1 id="création-de-dictionnaire">Création de dictionnaire</h1>
+<div class="methode">
+<p>Il existe plusieurs façons de construire un dictionnaire :</p>
+<ul>
+<li><strong>Par extension :</strong> On peut utiliser la forme littérale avec les accolades <code>{</code> et <code>}</code> qui entourent la série des paires <code>clef : valeur</code> ou le constructeur <code>dict</code> qui peut convertir en dictionnaire une séquence de <code>tuple</code> de la forme <code>(clef, valeur)</code>.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="op">&gt;&gt;&gt;</span> processeur1 <span class="op">=</span> {<span class="st">&#39;annee&#39;</span> : <span class="dv">1974</span>, <span class="st">&#39;fabricant&#39;</span> : <span class="st">&#39;Intel&#39;</span>, <span class="st">&#39;Frequence&#39;</span> : <span class="st">&#39;2 MHz&#39;</span>,<span class="st">&#39;gravure&#39;</span> : <span class="st">&#39;6000 nm&#39;</span>, <span class="st">&#39;architecture&#39;</span> : <span class="st">&#39;8080&#39;</span>}</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="op">&gt;&gt;&gt;</span> processeur2 <span class="op">=</span> <span class="bu">dict</span>([(<span class="st">&#39;annee&#39;</span>, <span class="dv">1978</span>), (<span class="st">&#39;fabricant&#39;</span>, <span class="st">&#39;Intel&#39;</span>),(<span class="st">&#39;Frequence&#39;</span>,<span class="st">&#39;5 MHz&#39;</span>),(<span class="st">&#39;gravure&#39;</span>,<span class="st">&#39;3 micrometres&#39;</span>),(<span class="st">&#39;architecture&#39;</span>,<span class="st">&#39;8086&#39;</span>)])</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="op">&gt;&gt;&gt;</span> processeur2</a>
+<a class="sourceLine" id="cb6-4" title="4">{<span class="st">&#39;annee&#39;</span>: <span class="dv">1978</span>, <span class="st">&#39;fabricant&#39;</span>: <span class="st">&#39;Intel&#39;</span>, <span class="st">&#39;Frequence&#39;</span>: <span class="st">&#39;5 MHz&#39;</span>, <span class="st">&#39;gravure&#39;</span>: <span class="st">&#39;3000 nm&#39;</span>, <span class="st">&#39;architecture&#39;</span>: <span class="st">&#39;8086&#39;</span>}</a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="op">&gt;&gt;&gt;</span> processeur1[<span class="st">&#39;gravure&#39;</span>]</a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">&#39;6000 nm&#39;</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="op">&gt;&gt;&gt;</span> processeur2[<span class="st">&#39;gravure&#39;</span>]</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">&#39;3000 nm&#39;</span></a></code></pre></div>
+<ul>
+<li><strong>Par compréhension :</strong> La syntaxe est la même que pour les tableaux de type <code>list</code> en remplaçant les parenthèses par des accolades. On peut récupérer les paires <code>clef : valeur</code> en parcourant un tableau de <code>tuple</code>.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="op">&gt;&gt;&gt;</span> tab_tuple <span class="op">=</span> [(<span class="st">&#39;annee&#39;</span>, <span class="dv">1989</span>), (<span class="st">&#39;fabricant&#39;</span>, <span class="st">&#39;Intel&#39;</span>),(<span class="st">&#39;Frequence&#39;</span>,<span class="st">&#39;25 MHz&#39;</span>),(<span class="st">&#39;gravure&#39;</span>,<span class="st">&#39;600 nm&#39;</span>),(<span class="st">&#39;architecture&#39;</span>,<span class="st">&#39;80486&#39;</span>)]</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="op">&gt;&gt;&gt;</span> processeur3 <span class="op">=</span> { clef : valeur <span class="cf">for</span> clef, valeur <span class="kw">in</span> tab_tuple }</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="op">&gt;&gt;&gt;</span> processeur3</a>
+<a class="sourceLine" id="cb7-4" title="4">{<span class="st">&#39;annee&#39;</span>: <span class="dv">1989</span>, <span class="st">&#39;fabricant&#39;</span>: <span class="st">&#39;Intel&#39;</span>, <span class="st">&#39;Frequence&#39;</span>: <span class="st">&#39;25 MHz&#39;</span>, <span class="st">&#39;gravure&#39;</span>: <span class="st">&#39;600 nm&#39;</span>, <span class="st">&#39;architecture&#39;</span>: <span class="st">&#39;80486&#39;</span>}</a></code></pre></div>
+</div>
+<div class="exercice">
+<p>La fonction <code>ord</code> associe à un caractère son point de code <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> et sa réciproque est la fonction <code>chr</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="bu">ord</span>(<span class="st">&#39;a&#39;</span>), <span class="bu">chr</span>(<span class="dv">97</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2">(<span class="dv">97</span>, <span class="st">&#39;a&#39;</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="op">&gt;&gt;&gt;</span> [<span class="bu">chr</span>(k) <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">97</span>, <span class="dv">97</span> <span class="op">+</span> <span class="dv">10</span>)]</a>
+<a class="sourceLine" id="cb8-4" title="4">[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;g&#39;</span>, <span class="st">&#39;h&#39;</span>, <span class="st">&#39;i&#39;</span>, <span class="st">&#39;j&#39;</span>]</a></code></pre></div>
+<p>Donner des expressions qui permettent de définir les dictionnaires ci-dessous par compréhension :</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&gt;&gt;&gt;</span> ordinal</a>
+<a class="sourceLine" id="cb9-2" title="2">{<span class="st">&#39;a&#39;</span>: <span class="dv">97</span>, <span class="st">&#39;b&#39;</span>: <span class="dv">98</span>, <span class="st">&#39;c&#39;</span>: <span class="dv">99</span>, <span class="st">&#39;d&#39;</span>: <span class="dv">100</span>, <span class="st">&#39;e&#39;</span>: <span class="dv">101</span>, <span class="st">&#39;f&#39;</span>: <span class="dv">102</span>, <span class="st">&#39;g&#39;</span>: <span class="dv">103</span>, <span class="st">&#39;h&#39;</span>: <span class="dv">104</span>, <span class="st">&#39;i&#39;</span>: <span class="dv">105</span>, <span class="st">&#39;j&#39;</span>: <span class="dv">106</span>}</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="op">&gt;&gt;&gt;</span> caractere</a>
+<a class="sourceLine" id="cb9-4" title="4">{<span class="dv">97</span>: <span class="st">&#39;a&#39;</span>, <span class="dv">98</span>: <span class="st">&#39;b&#39;</span>, <span class="dv">99</span>: <span class="st">&#39;c&#39;</span>, <span class="dv">100</span>: <span class="st">&#39;d&#39;</span>, <span class="dv">101</span>: <span class="st">&#39;e&#39;</span>, <span class="dv">102</span>: <span class="st">&#39;f&#39;</span>, <span class="dv">103</span>: <span class="st">&#39;g&#39;</span>, <span class="dv">104</span>: <span class="st">&#39;h&#39;</span>, <span class="dv">105</span>: <span class="st">&#39;i&#39;</span>, <span class="dv">106</span>: <span class="st">&#39;j&#39;</span>}</a></code></pre></div>
+</div>
+<h1 id="accès-ajout-suppression-délément-dans-un-dictionnaire">Accès, ajout, suppression d’élément dans un dictionnaire</h1>
+<div class="methode">
+<ul>
+<li>L’accès, la modification, l’ajout d’un élément se fait avec l’opérateur crochet : <code>dico[clef]</code> retourne la valeur appairée avec la clef donnée dans le dictionnaire <code>dico</code>. Le nombre d’éléments est donné par la fonction <code>len</code>, mais les éléments sont indexés par les clefs et non par des entiers : <em>il n’y a pas de notion d’ordre dans un dictionnaire.</em> Comme les tableaux de type <code>list</code> et contrairement aux <strong>p-uplets</strong> de type <code>tuple</code>, les dictionnaires de type <code>dict</code> sont modifiables après modification , on dit qu’ils sont <strong>mutables</strong>. Un dictionnaire peut être construit par ajout successif de paires <code>clef : valeur</code> à partir du dictionnaire vide <code>{}</code>. Enfin, on peut supprimer un élément si on connaît sa <code>clef</code> avec <code>del dico[clef]</code>.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1"><span class="op">&gt;&gt;&gt;</span> nobel2019 <span class="op">=</span> {}</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="op">&gt;&gt;&gt;</span> nobel2019[<span class="st">&#39;Littérature&#39;</span>] <span class="op">=</span> <span class="st">&#39;Peter Handke&#39;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="op">&gt;&gt;&gt;</span> nobel2019</a>
+<a class="sourceLine" id="cb10-4" title="4">{<span class="st">&#39;Littérature&#39;</span>: <span class="st">&#39;Peter Handke&#39;</span>}</a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="op">&gt;&gt;&gt;</span> nobel2019[<span class="st">&#39;Paix&#39;</span>] <span class="op">=</span> <span class="st">&#39;Kim Joon Hyun&#39;</span></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="op">&gt;&gt;&gt;</span> nobel2019</a>
+<a class="sourceLine" id="cb10-7" title="7">{<span class="st">&#39;Littérature&#39;</span>: <span class="st">&#39;Peter Handke&#39;</span>, <span class="st">&#39;Paix&#39;</span>: <span class="st">&#39;Kim Joon Hyun&#39;</span>}</a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="op">&gt;&gt;&gt;</span> nobel2019[<span class="st">&#39;Paix&#39;</span>] <span class="op">=</span> <span class="st">&#39;Abiy Ahmed&#39;</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="op">&gt;&gt;&gt;</span> nobel2019</a>
+<a class="sourceLine" id="cb10-10" title="10">{<span class="st">&#39;Littérature&#39;</span>: <span class="st">&#39;Peter Handke&#39;</span>, <span class="st">&#39;Paix&#39;</span>: <span class="st">&#39;Abiy Ahmed&#39;</span>}</a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="op">&gt;&gt;&gt;</span> nobel2019[<span class="st">&#39;Maths&#39;</span>] <span class="op">=</span> <span class="st">&#39;Cédric Villani&#39;</span></a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="op">&gt;&gt;&gt;</span> nobel2019</a>
+<a class="sourceLine" id="cb10-13" title="13">{<span class="st">&#39;Littérature&#39;</span>: <span class="st">&#39;Peter Handke&#39;</span>, <span class="st">&#39;Paix&#39;</span>: <span class="st">&#39;Abiy Ahmed&#39;</span>, <span class="st">&#39;Maths&#39;</span>: <span class="st">&#39;Cédric Villani&#39;</span>}</a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="op">&gt;&gt;&gt;</span> <span class="kw">del</span> nobel2019[<span class="st">&#39;Maths&#39;</span>]</a>
+<a class="sourceLine" id="cb10-15" title="15"><span class="op">&gt;&gt;&gt;</span> nobel2019</a>
+<a class="sourceLine" id="cb10-16" title="16">{<span class="st">&#39;Littérature&#39;</span>: <span class="st">&#39;Peter Handke&#39;</span>, <span class="st">&#39;Paix&#39;</span>: <span class="st">&#39;Abiy Ahmed&#39;</span>}</a></code></pre></div>
+<ul>
+<li>Parce qu’un dictionnaire est implémenté par une <a href="https://fr.wikipedia.org/wiki/Table_de_hachage">table de hachage</a>, ses <strong>clefs</strong> doivent, nécessairement être <strong>immutables</strong> (plus précisément récursivement immutables s’il s’agit de structures imbriquées et encore plus précisément <a href="https://docs.python.org/3/glossary.html">hachables</a>). Une valeur est <strong>immutable</strong> si elle ne peut pas être modifiée après sa création. Les types de base <code>int</code>, <code>float</code>, <code>bool</code> et les types construits <code>tuple</code>, <code>str</code> sont <strong>immutables</strong> mais pas les types <code>list</code> et <code>dict</code> (un dictionnaire ne peut pas être une clef de dictionnaire).</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" title="1"><span class="op">&gt;&gt;&gt;</span> jouet <span class="op">=</span><span class="bu">dict</span>()</a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="op">&gt;&gt;&gt;</span> jouet[<span class="dv">2</span>] <span class="op">=</span> <span class="st">&#39;clef de type int&#39;</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="op">&gt;&gt;&gt;</span> jouet[<span class="va">True</span>] <span class="op">=</span> <span class="st">&#39;clef de type bool&#39;</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="op">&gt;&gt;&gt;</span> jouet[(<span class="dv">1</span>,<span class="dv">2</span>)] <span class="op">=</span> <span class="st">&#39;clef de type tuple&#39;</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="op">&gt;&gt;&gt;</span> jouet</a>
+<a class="sourceLine" id="cb11-6" title="6">{<span class="dv">2</span>: <span class="st">&#39;clef de type int&#39;</span>, <span class="va">True</span>: <span class="st">&#39;clef de type bool&#39;</span>, (<span class="dv">1</span>, <span class="dv">2</span>): <span class="st">&#39;clef de type tuple&#39;</span>}</a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="op">&gt;&gt;&gt;</span> jouet[[<span class="dv">1</span>,<span class="dv">2</span>]] <span class="op">=</span> <span class="st">&#39;clef de type list -&gt; impossible&#39;</span></a>
+<a class="sourceLine" id="cb11-8" title="8">Traceback (most recent call last):</a>
+<a class="sourceLine" id="cb11-9" title="9">  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="pp">TypeError</span>: unhashable <span class="bu">type</span>: <span class="st">&#39;list&#39;</span></a></code></pre></div>
+<ul>
+<li>Une dictionnaire ne peut pas être une clef, mais peut être une valeur dans un autre dictionnaire. On peut définir toutes sortes de structures imbriquées comme des tableaux de dictionnaires …</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1"><span class="op">&gt;&gt;&gt;</span> vols <span class="op">=</span> {<span class="st">&#39;Lisbonne&#39;</span>: {<span class="st">&#39;heure&#39;</span>: <span class="st">&#39;21:10&#39;</span>,<span class="st">&#39;num&#39;</span>: <span class="st">&#39;EJU7674&#39;</span>,<span class="st">&#39;compagnie&#39;</span>: <span class="st">&#39;EASYJET&#39;</span>},</a>
+<a class="sourceLine" id="cb12-2" title="2">... <span class="st">&#39;Vienne&#39;</span>: {<span class="st">&#39;heure&#39;</span>: <span class="st">&#39;21:25&#39;</span>,<span class="st">&#39;num&#39;</span>: <span class="st">&#39;OS430&#39;</span>,<span class="st">&#39;compagnie&#39;</span>: <span class="st">&#39;AUSTRIAN AIRLINES&#39;</span>},</a>
+<a class="sourceLine" id="cb12-3" title="3">... <span class="st">&#39;Londres&#39;</span>: {<span class="st">&#39;heure&#39;</span>: <span class="st">&#39;21:55&#39;</span>,<span class="st">&#39;num&#39;</span>: <span class="st">&#39;BA357&#39;</span>,<span class="st">&#39;compagnie&#39;</span>: <span class="st">&#39;BRITISH AIRWAYS&#39;</span>}}</a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="op">&gt;&gt;&gt;</span> vols[<span class="st">&#39;Londres&#39;</span>]</a>
+<a class="sourceLine" id="cb12-5" title="5">{<span class="st">&#39;heure&#39;</span>: <span class="st">&#39;21:55&#39;</span>, <span class="st">&#39;num&#39;</span>: <span class="st">&#39;BA357&#39;</span>, <span class="st">&#39;compagnie&#39;</span>: <span class="st">&#39;BRITISH AIRWAYS&#39;</span>}</a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="op">&gt;&gt;&gt;</span> tab_dico_airports</a>
+<a class="sourceLine" id="cb12-7" title="7">[{<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;Total Rf Heliport&#39;</span>,<span class="st">&#39;latitude&#39;</span>: <span class="st">&#39;40.07080078125&#39;</span>, <span class="st">&#39;longitude&#39;</span>: <span class="st">&#39;-74.93360137939453&#39;</span>,</a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="st">&#39;altitude&#39;</span>: <span class="st">&#39;11&#39;</span>,  <span class="st">&#39;code_pays&#39;</span>: <span class="st">&#39;US&#39;</span>},</a>
+<a class="sourceLine" id="cb12-9" title="9">   {<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;Aero B Ranch Airport&#39;</span>,  <span class="st">&#39;latitude&#39;</span>: <span class="st">&#39;38.704022&#39;</span>,  <span class="st">&#39;longitude&#39;</span>: <span class="st">&#39;-101.473911&#39;</span>,</a>
+<a class="sourceLine" id="cb12-10" title="10">  <span class="st">&#39;altitude&#39;</span>: <span class="st">&#39;3435&#39;</span>,  <span class="st">&#39;code_pays&#39;</span>: <span class="st">&#39;US&#39;</span>}]</a></code></pre></div>
+<ul>
+<li>Avec l’opérateur crochet, si une clef n’appartient à un dictionnaire, une exception (erreur en <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>) est levée. La méthode <code>get</code> permet de retourner la valeur <code>None</code> par défaut si on ne veut pas d’erreur.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" title="1"><span class="op">&gt;&gt;&gt;</span> prix_turing2006 <span class="op">=</span> {<span class="st">&#39;nom&#39;</span> : <span class="st">&#39;Frances Allen&#39;</span>, <span class="st">&#39;sujet&#39;</span> : <span class="st">&#39;Optimisation des compilateurs&#39;</span>}</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="op">&gt;&gt;&gt;</span> prix_turing2006[<span class="st">&#39;pays&#39;</span>]</a>
+<a class="sourceLine" id="cb13-3" title="3">Traceback (most recent call last):</a>
+<a class="sourceLine" id="cb13-4" title="4">  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="pp">KeyError</span>: <span class="st">&#39;pays&#39;</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="op">&gt;&gt;&gt;</span> prix_turing2006.get(<span class="st">&#39;pays&#39;</span>)</a></code></pre></div>
+</div>
+<div class="exercice">
+<p><em>QCM de type E3C 2</em>.</p>
+<ol type="1">
+<li><strong>Question 1</strong> Comment peut-on accéder à la valeur associée à une clé dans un dictionnaire ?</li>
+</ol>
+<p><strong><em>Réponses</em></strong></p>
+<p><strong>A)</strong> il faut parcourir le dictionnaire avec une boucle à la recherche de la clé</p>
+<p><strong>B)</strong> on peut y accéder directement à partir de la clé</p>
+<p><strong>C)</strong> on ne peut pas accéder à une valeur contenue dans un dictionnaire à partir d’une clé</p>
+<p><strong>D)</strong> il faut d’abord déchiffrer la clé pour accéder à un dictionnaire</p>
+<ol start="2" type="1">
+<li><strong>Question 2</strong> On a défini un dictionnaire :</li>
+</ol>
+<p>contacts = {'Paul': '0601010182', 'Jacques': '0602413824', 'Claire': '0632451153'}</p>
+<p>Quelle instruction écrire pour ajouter à ce dictionnaire un nouveau contact nommé Juliette avec le numéro de téléphone 0603040506 ?</p>
+<p><strong>Réponses</strong></p>
+<p><strong>A)</strong> 'Juliette': '0603040506'</p>
+<p><strong>B)</strong> contacts.append('Juliette': '0603040506')</p>
+<p><strong>C)</strong> contacts['Juliette'] = '0603040506'</p>
+<p><strong>D)</strong> contacts.append('Juliette', '0603040506')</p>
+<ol start="3" type="1">
+<li><strong>Question 3</strong> Considérons le dictionnaire suivant :</li>
+</ol>
+<p>resultats = {'Paul':5 , 'Amina':1 , 'Léon' : 9 , 'Benoit':3}</p>
+<p>Quelle affirmation est correcte ?</p>
+<p><strong>Réponses</strong></p>
+<p><strong>A)</strong> resultats['Amina'] vaut 1</p>
+<p><strong>B)</strong> resultats[1] vaut 'Amina'</p>
+<p><strong>C)</strong> 'Paul' est une valeur de ce dictionnaire</p>
+<p><strong>D)</strong> 9 est une clé de ce dictionnaire</p>
+<ol start="4" type="1">
+<li><strong>Question 4</strong> Pour gérer certaines données EXIF de photographies, on a utilisé le code suivant pour stocker dans une liste L de dictionnaires quelques données :</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" title="1">L <span class="op">=</span> []</a>
+<a class="sourceLine" id="cb14-2" title="2">L.append({<span class="st">&#39;marque&#39;</span>: <span class="st">&#39;Canon&#39;</span>, <span class="st">&#39;modele&#39;</span>: <span class="st">&#39;EOS 7D&#39;</span>, <span class="st">&#39;focale&#39;</span>:</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="st">&#39;19mm&#39;</span>, <span class="st">&#39;flash&#39;</span>: <span class="va">False</span>})</a>
+<a class="sourceLine" id="cb14-4" title="4">L.append({<span class="st">&#39;marque&#39;</span>: <span class="st">&#39;Nikon&#39;</span>, <span class="st">&#39;modele&#39;</span>: <span class="st">&#39;CoolPix A1000&#39;</span>,</a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="st">&#39;focale&#39;</span>: <span class="st">&#39;19mm&#39;</span>, <span class="st">&#39;flash&#39;</span>: <span class="va">True</span>})</a>
+<a class="sourceLine" id="cb14-6" title="6">L.append({<span class="st">&#39;marque&#39;</span>: <span class="st">&#39;Sony&#39;</span>, <span class="st">&#39;modele&#39;</span>: <span class="st">&#39;HK 350&#39;</span>, <span class="st">&#39;focale&#39;</span>:</a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="st">&#39;24mm&#39;</span>, <span class="st">&#39;flash&#39;</span>: <span class="va">False</span>})</a>
+<a class="sourceLine" id="cb14-8" title="8">L.append({<span class="st">&#39;marque&#39;</span>: <span class="st">&#39;Sony&#39;</span>, <span class="st">&#39;modele&#39;</span>: <span class="st">&#39;HK 350&#39;</span>, <span class="st">&#39;focale&#39;</span>:</a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="st">&#39;19mm&#39;</span>, <span class="st">&#39;flash&#39;</span>: <span class="va">True</span>})</a></code></pre></div>
+<p>…… et ainsi de suite, d'autres informations ont été ajoutées ……</p>
+<p>On veut extraire de ces informations la liste Z des photographies obtenues avec un Canon ou un Nikon et une distance focale de 19 mm.</p>
+<p>Quelle instruction permet de réaliser cette extraction ?</p>
+<p><strong><em>Réponses</em></strong></p>
+<p><strong>A)</strong> Z = [ p for p in L if (p['marque'] == 'Canon' or p['focale'] == '19mm') and (p['marque'] == 'Nikon' or p['focale'] == '19mm') ]</p>
+<p><strong>B)</strong> Z = [ p for p in L if (p['marque'] == 'Canon' and p['focale'] == '19mm') and (p['marque'] == 'Nikon'  and p['focale'] == '19mm') ]</p>
+<p><strong>C)</strong> Z = [ p for p in L if (p['marque'] == 'Canon' or p['focale'] == '19mm') or (p['marque'] == 'Nikon' or p['focale'] == '19mm') ]</p>
+<p><strong>D)</strong> Z = [ p for p in L if (p['marque'] == 'Canon' and p['focale'] == '19mm') or (p['marque'] == 'Nikon' and </p>
+<p>p['focale'] == '19mm') ]</p>
+<ol start="5" type="1">
+<li><strong>Question 5</strong> On définit le dictionnaire d = {'a': 1, 'b': 2, 'c': 3, 'z': 26}. Quelle expression permet de récupérer la valeur de la clé 'z' ?</li>
+</ol>
+<p><strong>Réponses</strong></p>
+<p><strong>A)</strong> d[4] <strong>B)</strong> d[26] <strong>C)</strong> d[z] <strong>D)</strong> d['z']</p>
+<ol start="6" type="1">
+<li><strong>Question 6</strong> On définit ainsi une variable t :</li>
+</ol>
+<p>t = [ {'id':1, 'age':23, 'sejour':'PEKIN'},<br />
+{'id':2, 'age':27, 'sejour':'ISTANBUL'},<br />
+{'id':3, 'age':53, 'sejour':'LONDRES'},<br />
+{'id':4, 'age':41, 'sejour':'ISTANBUL'},<br />
+{'id':5, 'age':62, 'sejour':'RIO'},<br />
+{'id':6, 'age':28, 'sejour':'ALGER'}]</p>
+<p>Quelle affirmation est correcte ?</p>
+<p><strong><em>Réponses</em></strong></p>
+<p><strong>A)</strong> t est une liste de listes <strong>B)</strong> t est une liste de dictionnaires</p>
+<p><strong>C)</strong> t est un dictionnaire de listes <strong>D)</strong> t est une liste de tuples</p>
+</div>
+<h1 id="parcours-de-dictionnaire">Parcours de dictionnaire</h1>
+<div class="methode">
+<p>Il existe trois façons de parcourir un dictionnaire. Dans les exemples, on utilisera un dictionnaire qui représente un annuaire :</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1"><span class="op">&gt;&gt;&gt;</span> dico <span class="op">=</span> { <span class="st">&#39;Paul&#39;</span> : <span class="st">&#39;0640507080&#39;</span>, <span class="st">&#39;Marie&#39;</span> : <span class="st">&#39;0742516483&#39;</span>, <span class="st">&#39;Hicham&#39;</span> : <span class="st">&#39;0987416543&#39;</span>}</a></code></pre></div>
+<ul>
+<li><p><strong>Parcours par clefs :</strong></p>
+<ul>
+<li>Comme pour les types <code>list</code>, <code>str</code> et <code>tuple</code>, les dictionnaires sont itérables avec la syntaxe <code>for clef in dico</code> de type <code>list</code> ou <code>tuple</code>, mais on ne parcourt ainsi que les clefs. On peut aussi utiliser la méthode <code>keys</code>. <em>À partir des clefs on peut retrouver les valeurs.</em></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="cf">for</span> clef <span class="kw">in</span> dico:</a>
+<a class="sourceLine" id="cb16-2" title="2">...     <span class="bu">print</span>(<span class="st">&quot;Clef -&gt; &quot;</span>, clef)</a>
+<a class="sourceLine" id="cb16-3" title="3">... </a>
+<a class="sourceLine" id="cb16-4" title="4">Clef <span class="op">-&gt;</span>  Paul</a>
+<a class="sourceLine" id="cb16-5" title="5">Clef <span class="op">-&gt;</span>  Marie</a>
+<a class="sourceLine" id="cb16-6" title="6">Clef <span class="op">-&gt;</span>  Hicham</a>
+<a class="sourceLine" id="cb16-7" title="7"><span class="op">&gt;&gt;&gt;</span> <span class="cf">for</span> clef <span class="kw">in</span> dico.keys():</a>
+<a class="sourceLine" id="cb16-8" title="8">...     <span class="bu">print</span>(<span class="st">&quot;Clef -&gt;&quot;</span>, clef, <span class="st">&quot; Valeur -&gt;&quot;</span>, dico[clef])</a>
+<a class="sourceLine" id="cb16-9" title="9">... </a>
+<a class="sourceLine" id="cb16-10" title="10">Clef <span class="op">-&gt;</span> Paul  Valeur <span class="op">-&gt;</span> <span class="dv">0640507080</span></a>
+<a class="sourceLine" id="cb16-11" title="11">Clef <span class="op">-&gt;</span> Marie  Valeur <span class="op">-&gt;</span> <span class="dv">0742516483</span></a>
+<a class="sourceLine" id="cb16-12" title="12">Clef <span class="op">-&gt;</span> Hicham  Valeur <span class="op">-&gt;</span> <span class="dv">0987416543</span></a></code></pre></div>
+<ul>
+<li><em>L’ordre de parcours n’est pas forcément l’ordre d’insertion car un dictionnaire n’est pas ordonné</em> Ainsi, on ne peut pas parcourir un dictionnaire par index avec <code>for k in range(len(dico))</code>.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dico)):</a>
+<a class="sourceLine" id="cb17-2" title="2">...     <span class="bu">print</span>(dico[k])</a>
+<a class="sourceLine" id="cb17-3" title="3">... </a>
+<a class="sourceLine" id="cb17-4" title="4">Traceback (most recent call last):</a>
+<a class="sourceLine" id="cb17-5" title="5">  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">2</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="pp">KeyError</span>: <span class="dv">0</span></a></code></pre></div>
+<ul>
+<li><strong>Parcours par valeurs :</strong></li>
+</ul>
+<p>On peut parcourir un dictionnaire par valeurs avec sa méthode <code>values</code>. <em>À partir des valeurs on ne peut cependant pas retrouver les clefs.</em></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="cf">for</span> val <span class="kw">in</span> dico.values():</a>
+<a class="sourceLine" id="cb18-2" title="2">...     <span class="bu">print</span>(<span class="st">&quot;Valeur -&gt; &quot;</span>, val)</a>
+<a class="sourceLine" id="cb18-3" title="3">... </a>
+<a class="sourceLine" id="cb18-4" title="4">Valeur <span class="op">-&gt;</span>  <span class="dv">0640507080</span></a>
+<a class="sourceLine" id="cb18-5" title="5">Valeur <span class="op">-&gt;</span>  <span class="dv">0742516483</span></a>
+<a class="sourceLine" id="cb18-6" title="6">Valeur <span class="op">-&gt;</span>  <span class="dv">0987416543</span></a></code></pre></div>
+<ul>
+<li><strong>Parcours par paires (clef, valeur) :</strong></li>
+</ul>
+<p>On peut parcourir un dictionnaire par paires (clef, valeur) valeurs avec sa méthode <code>items</code>. On utilise le mécanisme de <em>tuple unpacking</em> dans la boucle <code>for</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb19-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="cf">for</span> (clef, val) <span class="kw">in</span> dico.items():</a>
+<a class="sourceLine" id="cb19-2" title="2">...     <span class="bu">print</span>(<span class="st">&quot;Clef -&gt;&quot;</span>, clef, <span class="st">&quot; Valeur -&gt;&quot;</span>, val)</a>
+<a class="sourceLine" id="cb19-3" title="3">... </a>
+<a class="sourceLine" id="cb19-4" title="4">Clef <span class="op">-&gt;</span> Paul  Valeur <span class="op">-&gt;</span> <span class="dv">0640507080</span></a>
+<a class="sourceLine" id="cb19-5" title="5">Clef <span class="op">-&gt;</span> Marie  Valeur <span class="op">-&gt;</span> <span class="dv">0742516483</span></a>
+<a class="sourceLine" id="cb19-6" title="6">Clef <span class="op">-&gt;</span> Hicham  Valeur <span class="op">-&gt;</span> <span class="dv">0987416543</span></a></code></pre></div>
+</div>
+<div class="exercice">
+<p>On considère le dictionnaire :</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" title="1">dico <span class="op">=</span> {<span class="st">&quot;a&quot;</span> : <span class="va">True</span>, <span class="st">&quot;b&quot;</span> : <span class="va">False</span>, <span class="st">&quot;c&quot;</span> : <span class="va">True</span>}</a></code></pre></div>
+<ol type="1">
+<li>Quels sont les affichages possibles lors de l’exécution du code suivant ?</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb21-1" title="1"><span class="cf">for</span> clef <span class="kw">in</span> dico.keys()</a>
+<a class="sourceLine" id="cb21-2" title="2">  <span class="bu">print</span>(clef, end<span class="op">=</span><span class="st">&quot; &quot;</span>)</a></code></pre></div>
+<p><strong><em>Réponses</em></strong></p>
+<p><strong>A)</strong> <code>a b c</code> <strong>B)</strong> <code>True False True</code> <strong>C)</strong> <code>(a, True) (b, False)  (c, True)</code></p>
+<ol start="2" type="1">
+<li>Quels sont les affichages possibles lors de l’exécution du code suivant ?</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb22-1" title="1"><span class="cf">for</span> var <span class="kw">in</span> dico.items()</a>
+<a class="sourceLine" id="cb22-2" title="2">  <span class="bu">print</span>(clef, end<span class="op">=</span><span class="st">&quot; &quot;</span>)</a></code></pre></div>
+<p><strong>A)</strong> <code>a b c</code> <strong>B)</strong> <code>True False True</code> <strong>C)</strong> <code>(a, True) (b, False)  (c, True)</code></p>
+</div>
+<h1 id="références-partagées-et-mutabilité">Références partagées et mutabilité</h1>
+<div class="methode">
+<p>Une variable de type <code>dict</code> n’est qu’une référence, un <strong>alias</strong> vers la zone mémoire où sont stockées les données. Comme pour les tableaux de type <code>list</code> il faut prêter attention aux effets non maîtrisées des références partagées.</p>
+<ul>
+<li>Les dictionnaires étant des valeurs <strong>mutables</strong>, ils peuvent être modifiés par <strong>effet de bord</strong> lorsqu’ils sont transmis à une fonction.</li>
+<li>Pour copier une structure imbriquée avec des dictionnaires il faut réaliser une copie profonde avec la fonction <code>deepcopy</code> du module <code>copy</code>.</li>
+</ul>
+<p>On donne ci-dessous un programme et deux visualisations de son environnement : avant et après l’exécution de la dernière instruction.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb23-1" title="1">contact_ami <span class="op">=</span> { <span class="st">&#39;Paul&#39;</span> : <span class="st">&#39;0640507080&#39;</span>, <span class="st">&#39;Marie&#39;</span> : <span class="st">&#39;0742516483&#39;</span>}</a>
+<a class="sourceLine" id="cb23-2" title="2">contact_travail <span class="op">=</span> { <span class="st">&#39;Adam&#39;</span> : <span class="st">&#39;0666666666&#39;</span>, <span class="st">&#39;Eve&#39;</span> : <span class="st">&#39;0777777777&#39;</span>}</a>
+<a class="sourceLine" id="cb23-3" title="3">contact_tous <span class="op">=</span> {<span class="st">&#39;amis&#39;</span> : contact_ami, <span class="st">&#39;travail&#39;</span> : contact_travail}</a>
+<a class="sourceLine" id="cb23-4" title="4">contact_copie <span class="op">=</span> contact_tous</a>
+<a class="sourceLine" id="cb23-5" title="5"></a>
+<a class="sourceLine" id="cb23-6" title="6"><span class="kw">def</span> ajout(contact, nom, numero):</a>
+<a class="sourceLine" id="cb23-7" title="7">    contact[nom] <span class="op">=</span> numero</a>
+<a class="sourceLine" id="cb23-8" title="8"></a>
+<a class="sourceLine" id="cb23-9" title="9">ajout(contact_ami, <span class="st">&#39;Napoleon&#39;</span>, <span class="st">&#39;0618001814&#39;</span>)</a></code></pre></div>
+</div>
+<div class="minipage" data-centre="true">
+<p><img src="images/attention.png" alt="Attention 1" /><br />
+&amp; <img src="images/attention2.png" alt="Attention 2" /><br />
+</p>
+</div>
+<h1 id="performance">Performance</h1>
+<div class="propriete">
+<p>Les dictionnaires de type <code>dict</code> sont implémentés en <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> par des <a href="https://fr.wikipedia.org/wiki/Table_de_hachage">tables de hachage</a> qui est une structure de données très efficace pour le test d’appartenance, la recherche ou l’insertion d’élément. On peut considérer que ces opérations se font en temps quasiment constant, c’est-à-dire indépendant de la taille du dictionnaire alors que la recherche et le test d’appartenance s’effectue en temps linéaire en moyenne (proportionnel à la taille du tableau) pour les tableaux de type <code>list</code> ou les <code>tuple</code>. Cet optimisation des performances en temps se fait au détriment de l’occupation en espace, les dictionnaires étant plus gourmands en mémoire que les tableaux.</p>
+<p>On donne ci-dessous un comparatif de temps d’exécutions pour la recherche de 1000 flottants d’un tableau <code>needle</code> (aiguilles) de taille 500, dans des tableaux de flottants <code>haystack</code> (meule de foin) de taille croissante <span class="math inline">\(10^{k}\)</span> avec <span class="math inline">\(k \in \{3,4,5,6,7\}\)</span>. Pour chaque test, les éléments de <code>haystack</code> et <code>needle</code>sont tous distincts et la moitié de <code>needle</code> est dans <code>haystack</code>.</p>
+<p>Le code de cet exemple, tiré de l’ouvrage Python Fluent de Luciano Ramalho, est disponible avec nos commentaires dans l’archive <a href="https://gitlab.com/frederic-junier/nsi/-/blob/master/TypesConstruits/Dictionnaires/Cours/ressources/test_performance_in.zip">test_performance_in.zip</a>.</p>
+<pre><code>Type de conteneur dict
+--------------------
+Taille de la meule de foin :     1000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000104s
+--------------------
+Taille de la meule de foin :    10000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000196s
+--------------------
+Taille de la meule de foin :   100000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000252s
+--------------------
+Taille de la meule de foin :  1000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000399s
+--------------------
+Taille de la meule de foin : 10000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.000483s
+--------------------
+
+Type de conteneur list
+--------------------
+Taille de la meule de foin :     1000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.008002s
+--------------------
+Taille de la meule de foin :    10000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.078902s
+--------------------
+Taille de la meule de foin :   100000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 0.812977s
+--------------------
+Taille de la meule de foin :  1000000
+Temps minimum de recherche de 1000 aiguilles  (sur 5 recherches): 8.554425s
+--------------------
+Taille de la meule de foin : 10000000
+Temps minimum de recherche de 1000 aiguilles (sur 5 recherches):84.754335s
+--------------------</code></pre>
+</div>
+<h1 id="synthèse">Synthèse</h1>
+<div class="memo">
+<ul>
+<li>Le type construit <strong>p-uplet nommé</strong> est une séquence non ordonnée d’éléments qui sont des paires <code>(clef, valeur)</code> ou <code>clef : valeur</code>. Chaque <code>valeur</code> est indexée par sa <code>clef</code> et non par un index entier comme dans <strong>p-uplet</strong>.</li>
+<li>En <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> un <strong>p-uplet nommé</strong> est un <strong>dictionnaire</strong> de type <code>dict</code> implémenté par une table de hachage qui permet des opérations très performantes en temps constant.</li>
+<li>L’accès, l’ajout, la modification d’un dictionnaire s’effectue avec l’opérateur crochet et la syntaxe <code>dico[clef] = valeur</code>.</li>
+<li>Une variable de type <code>dict</code> est une <strong>référence</strong> et elle peut être modifiée par effet de bord car c’est une valeur <strong>mutable</strong>.</li>
+<li>Trois méthodes permettent le parcours de dictionnaire :
+<ul>
+<li>par clefs avec <code>for clef in doc.keys()</code></li>
+<li>par valeurs avec <code>for clef in doc.values()</code></li>
+<li>par paires <code>(clef, valeur)</code> avec <code>for (clef, valeur) in doc.items()</code></li>
+</ul></li>
+</ul>
+</div>
+</body>
+</html>

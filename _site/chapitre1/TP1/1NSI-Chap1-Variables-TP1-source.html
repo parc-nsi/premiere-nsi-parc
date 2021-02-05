@@ -1,0 +1,384 @@
+<!-- Définition des hyperliens  -->
+
+<h1 id="crédits--">Crédits {-}</h1>
+
+<p><em>Ce cours est inspiré du chapitre 1 du manuel NSI de la collection Tortue chez Ellipse,  auteurs : Ballabonski, Conchon, Filliatre, N’Guyen.</em></p>
+
+<!-- Définition des hyperliens  -->
+
+<h1 id="utiliser-le-mode-interactif">Utiliser le mode interactif</h1>
+
+<p>:::methode
+Pour installer sur votre machine l’environnement Idle de programmation en <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, on peut  le télécharger depuis le site officiel <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>.</p>
+
+<p>Au lycée dans une session Windows, un raccourci sur le bureau doit permettre de lancer Idle, et dans une session Ubuntu, il suffit d’ouvrir un terminal de commande avec <code class="language-plaintext highlighter-rouge">CTRL + ALT + T</code>  et de saisir la commande <code class="language-plaintext highlighter-rouge">idle-python3.x</code>  ou <code class="language-plaintext highlighter-rouge">x</code>  est le numéro de version de <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> (la touche de tabulation permet d’obtenir l’autocomplétion après avoir saisi <code class="language-plaintext highlighter-rouge">idle-python3</code>).
+:::</p>
+
+<p>:::exercice</p>
+
+<ol>
+  <li>Écrire les expressions suivantes avec un  parenthésage  explicite permettant d’indiquer l’ordre de priorité des opérations :</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">4</span> 
+<span class="o">-</span><span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="mf">0.125</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span><span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="mf">0.125</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span><span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="mf">2.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="mi">18</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="mi">512</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">34</span> <span class="o">//</span> <span class="mi">3</span> <span class="o">%</span> <span class="mi">4</span> 
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">5</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">4</span>
+<span class="mi">5</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Écrire les expressions suivantes avec le moins de parenthèses possibles :</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">5</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-</span> <span class="p">((</span><span class="mi">6</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">5</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> 
+</code></pre></div></div>
+<p>:::</p>
+
+<p>:::exercice</p>
+
+<p>Prédire la valeur affichée dans l’interprète <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> après les séquences d’instructions suivantes.</p>
+
+<ol>
+  <li>Séquence 1 :</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Séquence 2 :</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Séquence 3 :</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">#entier aléatoire entre 1 et 100
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">#entier aléatoire entre 1 et 100
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+<p>:::</p>
+
+<h1 id="premiers-programmes-et-premières-erreurs">Premiers programmes et premières erreurs</h1>
+
+<p>:::exercice</p>
+<ol>
+  <li>Dans son espace personnel, créer un répertoire <code class="language-plaintext highlighter-rouge">Chapitre1</code> avec un sous-répertoire <code class="language-plaintext highlighter-rouge">TP1</code>.</li>
+  <li>Le prix d’une matière première est de 873 euros la tonne au début de l’année. Ce prix subit des variations saisonnières : au premier trimestre il augmente de 347 euros, au second trimestre il augmente de 25 %, au troisième trimestre il subit une baisse de 50 % et enfin il diminue de 100 euros.</li>
+</ol>
+
+<ul>
+  <li>
+    <p>Créer un nouveau programme avec  l’éditeur d’Idle et l’enregistrer dans <code class="language-plaintext highlighter-rouge">Chapitre1/TP1</code> sous le nom <code class="language-plaintext highlighter-rouge">prix.py</code>.</p>
+  </li>
+  <li>
+    <p>Saisir dans ce fichier le code ci-dessous en le complétant afin qu’il calcule les valeurs successives de la variable <code class="language-plaintext highlighter-rouge">prix</code>.</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prix</span> <span class="o">=</span> <span class="mi">873</span>       <span class="c1">#prix au début de l'année
+</span><span class="n">prix</span> <span class="o">=</span> <span class="p">....</span>      <span class="c1">#prix à la fin du premier trimestre
+</span><span class="n">prix</span> <span class="o">=</span> <span class="p">....</span>      <span class="c1">#prix à la fin du second trimestre
+</span><span class="n">prix</span> <span class="o">=</span> <span class="p">....</span>      <span class="c1">#prix à la fin du troisième trimestre
+</span><span class="n">prix</span> <span class="o">=</span> <span class="p">....</span>      <span class="c1">#prix à la fin de l'année
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Prix final :"</span><span class="p">,</span> <span class="n">prix</span><span class="p">)</span>
+</code></pre></div></div>
+<p>:::</p>
+
+<p>:::exercice
+La température $f$ en degrés  Fahrenheit s’obtient à partir de la température $c$ en degrés Celsius par la formule de conversion $f=1,8 * c + 32$.</p>
+
+<p>On veut écrire un programme qui réponde à la <strong>spécification</strong> suivante : <em>convertir une mesure de température de l’échelle  Celsius vers l’échelle Fahrenheit.</em></p>
+
+<ol>
+  <li>Dans l’éditeur  d’Idle, créer un programme <code class="language-plaintext highlighter-rouge">temperature.py</code> et saisir  le code ci-dessous  :</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Température en degrés Celsius ? "</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">8</span> <span class="o">*</span> <span class="n">f</span> <span class="o">+</span> <span class="mi">32</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"La température en degrés Fahrenheit est de "</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Exécuter le code, on doit obtenir un message d’erreur indiquant une erreur de Syntaxe. Un curseur indique dans le code la position où l’interpréteur <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> s’est interrompu dans la lecture du code. Si le curseur est en début de ligne, il faut souvent chercher l’erreur à la fin de la ligne précédente …</p>
+
+    <p>Corriger l’erreur de syntaxe.</p>
+  </li>
+</ol>
+
+<p><img src="images/syntax_error.png" alt="erreur de syntaxe" />{width=50%}\</p>
+
+<ol>
+  <li>Exécuter de nouveau le code, on doit obtenir un message d’erreur indiquant que <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> ne peut réaliser l’opération demandée. On dit que l’interpréteur <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> a levé une <a href="https://docs.python.org/3.5/tutorial/errors.html">exception</a>.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">TypeError</span><span class="p">:</span> <span class="n">can</span> <span class="n">only</span> <span class="n">concatenate</span> <span class="nb">str</span> <span class="p">(</span><span class="ow">not</span> <span class="s">"int"</span><span class="p">)</span> <span class="n">to</span> <span class="nb">str</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Insérer l’instruction <code class="language-plaintext highlighter-rouge">print(type(f))</code> en ligne 2, exécuter de nouveau. Que représente la valeur affichée avant le message d’erreur ?</p>
+  </li>
+  <li>
+    <p>Remplacer la première instruction par <code class="language-plaintext highlighter-rouge">float(input("Température en degrés Celsius ? "))</code> puis exécuter.</p>
+
+    <p>Quel est l’effet de la fonction <code class="language-plaintext highlighter-rouge">float</code> ? Afficher sa documentation dans l’interpréteur avec l’instruction <code class="language-plaintext highlighter-rouge">help(float)</code>.</p>
+  </li>
+  <li>
+    <p>Si on teste le programme pour une température de 45 degrés Celsisus on doit obtenir l’affichage ci-dessous.</p>
+
+    <p>Est-ce que la spécification du programme est vérifiée ? Corriger le programme.</p>
+  </li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Température</span> <span class="n">en</span> <span class="n">degrés</span> <span class="n">Celsius</span> <span class="err">?</span> <span class="mi">45</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">float</span><span class="s">'&gt;
+La température en degrés Fahrenheit est de  (1, 392.0)
+</span></code></pre></div></div>
+<p>:::</p>
+
+<p>:::remarque
+À propose des différents types d’erreurs possibles en <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, on pourra lire le premier paragraphe de cette page de la documentation <a href="https://docs.python.org/fr/3.5/tutorial/errors.html">https://docs.python.org/fr/3.5/tutorial/errors.html</a>.
+:::</p>
+
+<h1 id="etat-dun-programme-effets-de-bord">Etat d’un programme, effets de bord</h1>
+
+<p>:::exercice</p>
+
+<p>On veut écrire un programme vérifiant la <strong>spécification</strong> suivant : <em>le programme doit permuter les valeurs de deux variables <code class="language-plaintext highlighter-rouge">a</code> et <code class="language-plaintext highlighter-rouge">b</code> de type entier saisies en entrée</em>.</p>
+
+<p>Avec l’éditeur Idle, créer dans le répertoire <code class="language-plaintext highlighter-rouge">TP1</code> un nouveau programme <code class="language-plaintext highlighter-rouge">permutation.py</code> et recopier le code ci-dessous</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># entrées
+</span><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'a ?'</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'b ?'</span><span class="p">))</span>
+<span class="c1"># traitement
+</span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> 
+<span class="c1"># sorties
+</span><span class="k">print</span><span class="p">(</span><span class="s">"a = "</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s">" et b = "</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Tester ce programme pour les entrées  605  et 506. La spécification du programme est-elle satisfaite ?</li>
+  <li>Pour représenter l’exécution du programme, compléter le tableau d’état ci-dessous, qui affiche pour chaque ligne d’instruction, les valeurs des variables <code class="language-plaintext highlighter-rouge">a</code> et <code class="language-plaintext highlighter-rouge">b</code> et les éventuelles  interactions avec l’utilisateur.</li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ligne</th>
+      <th>Variable a</th>
+      <th>Variable b</th>
+      <th>Interactions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a =  int ( input ( ‘a ?’ ))</td>
+      <td>734</td>
+      <td> </td>
+      <td><strong>affichage :</strong> ‘a ?’  <strong>saisie</strong> : 734</td>
+    </tr>
+    <tr>
+      <td>b =  int ( input ( ‘b ?’ ))</td>
+      <td>734</td>
+      <td>437</td>
+      <td><strong>affichage :</strong> ‘b ?’  <strong>saisie :</strong> 437</td>
+    </tr>
+    <tr>
+      <td>a = b</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>b = a</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>print ( “a = “ , a,  “ et b =  “ , b)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<ol>
+  <li>
+    <p>Proposer une modification du  programme qui permute les valeurs des variables <code class="language-plaintext highlighter-rouge">a</code> et <code class="language-plaintext highlighter-rouge">b</code> saisies en entrée.</p>
+
+    <p>Démontrer que le programme est correct en complétant un tableau d’état de ce nouveau programme qui utilise des valeurs indéterminées <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> pour les variables <code class="language-plaintext highlighter-rouge">a</code> et <code class="language-plaintext highlighter-rouge">b</code> en entrée.</p>
+  </li>
+  <li>
+    <p>Proposer une modification du  programme qui permute les valeurs des variables <code class="language-plaintext highlighter-rouge">a</code> et <code class="language-plaintext highlighter-rouge">b</code> saisies en entrée, sans utiliser de variable supplémentaire.
+:::</p>
+  </li>
+</ol>
+
+<h1 id="utiliser-une-bibliothèque">Utiliser une bibliothèque</h1>
+
+<p>:::cours</p>
+
+<ol>
+  <li>
+    <p>Le coeur du langage <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> est constitué d’une grammaire, de mots clefs et d’une bibliothèque <code class="language-plaintext highlighter-rouge">built-in</code> rassemblant des instructions qui sont toujours disponibles : comme <code class="language-plaintext highlighter-rouge">max, print, abs</code> etc … Par ailleurs, des <strong>bibliothèques</strong>, appelées <strong>modules</strong> en <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>, constituent des boîtes outils d’instructions  que le programmeur peut réutiliser en important le module. La distribution standard de <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> est livrée avec un ensemble de modules constituant sa bibliothèque standard.</p>
+  </li>
+  <li>
+    <p>Lorsqu’on a besoin d’utiliser une fonction de bibliothèque, on commence par explorer la bibliothèque standard dont les modules sont listés et documentés sur le site officiel <a href="https://www.python.org/">https://www.python.org/</a>.
+Une fois qu’on a déterminé le module qui nous intéresse, par exemple <code class="language-plaintext highlighter-rouge">math</code>, on dispose de plusieurs façons d’importer des instructions :</p>
+    <ul>
+      <li>Si on a besoin juste d’une instruction comme <code class="language-plaintext highlighter-rouge">sqrt</code>, pour la fonction racine carrée, on peut écrire avant de l’appeler :
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Si on a besoin de plusieurs instructions, mais en nombre limité, comme <code class="language-plaintext highlighter-rouge">sqrt, cos</code> et <code class="language-plaintext highlighter-rouge">sin</code>, on peut écrire avant de les appeler :
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Si on a besoin de beaucoup d’instructions du module, on peut utiliser le joker <code class="language-plaintext highlighter-rouge">*</code> et écrire avant de les appeler :
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>Cette méthode peut sembler pratique mais elle est dangereuse si on importe plusieurs modules, qui contiennent des instructions avec les mêmes noms. Pour cloisonner les espaces de nommage, on préférera la méthode suivante.</p>
+
+<ul>
+  <li>Une autre méthode consiste à importer juste le module, puis on peut accéder à chacune des instructions ou constantes qu’il contient en les préfixant du nom du module en notation pointée :
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">racine3</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>Cette méthode alourdit la syntaxe mais permet un meilleur cloisonnement des noms utilisés par les différents modules utilisés dans un même programme.</p>
+  </li>
+</ul>
+
+<p>:::</p>
+
+<p>:::center
+<img src="images/Repere_Turtle.png" alt="repère" />{width=25%}<br />
+:::</p>
+
+<p>:::methode 
+ Le module graphique <code class="language-plaintext highlighter-rouge">turtle</code> permet de piloter un «crayon» afin de tracer dynamiquement des figures géométriques.</p>
+
+<p>Les dessins sont réalisés dans un repère orthonormé virtuel centré sur la fenêtre d’affichage. L’unité des axes est le pixel. Le repère n’est pas visible à l’écran.</p>
+
+<p>La forme par défaut du crayon de tracé est une flèche «orientée», placé au départ à l’origine du repère. Le crayon est situé à la pointe, la flèche montre le sens du tracé en cours ou à venir.</p>
+
+<p>La liste complète des fonctions disponibles grâce au module turtle est disponible sur la <a href="http://www.frederic-junier.org/PythonSeconde/Python_Seconde_Parc/tortue/doc/turtleDoc.html">documentation officielle</a>.
+On pourra aussi télécharger un petit résumé au format .pdf en <a href="http://www.frederic-junier.org/PythonSeconde/Python_Seconde_Parc/fichiers_python_2nde/Resume_Turtle.pdf">cliquant ici</a>.</p>
+
+<p>On donne ci-dessous un exemple de programme permettant de tracer un carré de côté 100 pixels.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Carré programme 1
+</span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">up</span><span class="p">()</span>       <span class="c1">#lever le crayon
+</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">down</span><span class="p">()</span>     <span class="c1">#poser le crayon
+</span><span class="n">goto</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">goto</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">exitonclick</span><span class="p">()</span>  <span class="c1">#permet de fermer la fenêtre de tracé proprement
+</span></code></pre></div></div>
+
+<p>:::</p>
+
+<p>:::exercice</p>
+
+<ol>
+  <li>Avec l’éditeur d’Idle, créer dans le répertoire <code class="language-plaintext highlighter-rouge">TP1</code> un nouveau programme <code class="language-plaintext highlighter-rouge">tortue-polygones.py</code> et importer toutes les fonctions du module <code class="language-plaintext highlighter-rouge">turtle</code> avec <code class="language-plaintext highlighter-rouge">from turtle import *</code>.</li>
+  <li>Écrire un programme qui trace un carré de côté 100 pixels en utilisant  les instructions <code class="language-plaintext highlighter-rouge">forward</code>  et <code class="language-plaintext highlighter-rouge">left</code>.</li>
+  <li>Écrire un programme qui trace un triangle équilatéral de côté 100 pixels.</li>
+  <li>Écrire un programme qui trace un hexagone régulier de côté 100 pixels.
+:::</li>
+</ol>
+
+<p>:::exercice</p>
+
+<ol>
+  <li>Avec l’éditeur d’Idle, créer dans le répertoire <code class="language-plaintext highlighter-rouge">TP1</code> un nouveau programme <code class="language-plaintext highlighter-rouge">tortue-clef.py</code> et importer toutes les fonctions du module <code class="language-plaintext highlighter-rouge">turtle</code> avec <code class="language-plaintext highlighter-rouge">from turtle import *</code>.</li>
+  <li>Exécuter puis dans le du mode interactif la documentation de l’instruction <code class="language-plaintext highlighter-rouge">circle</code> avec <code class="language-plaintext highlighter-rouge">help(circle)</code>.</li>
+  <li>Saisir dans le programme la séquence d’instructions suivante, exécuter puis observer.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">circle</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">exitonclick</span><span class="p">()</span> 
+</code></pre></div></div>
+
+<ol>
+  <li>Compléter le programme pour afficher la figure de gauche.
+:::</li>
+</ol>
+
+<p>:::{.minipage width=”0.5\linewidth” center=”true”}
+<img src="images/clef.png" alt="clef" />{width=40%}<br />
+&amp;
+<img src="images/triangle_pyramide.png" alt="clef" />{width=40%}<br />
+:::</p>
+
+<p>:::exercice</p>
+<ol>
+  <li>Avec l’éditeur d’Idle, créer dans le répertoire <code class="language-plaintext highlighter-rouge">TP1</code> un nouveau programme <code class="language-plaintext highlighter-rouge">tortue-triangles.py</code>.</li>
+  <li>Le programme ci-dessous permet de tracer un triangle équilatéral noir de côté 100 pixels. Compléter le code pour tracer la figure de droite avec la pyramide de triangles.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin_fill</span><span class="p">()</span>
+<span class="n">fillcolor</span><span class="p">(</span><span class="s">"black"</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">end_fill</span><span class="p">()</span>
+</code></pre></div></div>
+<p>:::</p>
+
+<p>:::exercice</p>
+<ol>
+  <li>Avec l’éditeur d’Idle, créer dans le répertoire <code class="language-plaintext highlighter-rouge">TP1</code> un nouveau programme <code class="language-plaintext highlighter-rouge">tortue-drapeau.py</code>.</li>
+  <li>Écrire un programme qui dessine le drapeau français.
+:::</li>
+</ol>

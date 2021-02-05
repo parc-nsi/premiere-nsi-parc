@@ -1,0 +1,25 @@
+digraph G { 
+    rankdir = TB;   
+    edge [dir = none];    
+    0 [label = "~/TP-SHELL", shape = rectangle];
+    1[label= "Europe", shape=rectangle];
+    2[label="France", shape=rectangle];
+    3[label="Prusse", shape=rectangle];
+    4[label="Berlin", shape=oval];
+    5[label="Alsace", shape=rectangle];
+    6[label="Aquitaine", shape=rectangle];
+    7[label="Strasbourg", shape=oval];
+    8[label="Belfort", shape=oval];
+    9[label="Bordeaux", shape=oval];
+    10[label="Pau", shape=oval];
+    0 -> 1 ;
+    1 -> 2;
+    1 -> 3;
+    2 -> 5;
+    5 -> 7;
+    5 -> 8;
+    2 -> 6;
+    6 -> 9;
+    6 -> 10;
+    3 -> 4;
+}

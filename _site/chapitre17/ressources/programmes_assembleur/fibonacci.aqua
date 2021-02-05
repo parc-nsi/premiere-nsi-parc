@@ -1,0 +1,28 @@
+//initialisation
+MOV R0, #25
+MOV R1, #1
+STR R1, [R0]
+ADD R0, R0, #1
+MOV R2, #1
+//itération 1
+STR R2, [R0]
+ADD R2, R2, R1
+LDR R1, [R0]
+ADD R0, R0, #1
+//itération 2
+STR R2, [R0]
+ADD R2, R2, R1
+LDR R1, [R0]
+ADD R0, R0, #1
+//itération 3
+STR R2, [R0]
+ADD R2, R2, R1
+LDR R1, [R0]
+ADD R0, R0, #1
+//itération 4
+STR R2, [R0]
+ADD R2, R2, R1
+LDR R1, [R0]
+ADD R0, R0, #1
+//fin
+HALT

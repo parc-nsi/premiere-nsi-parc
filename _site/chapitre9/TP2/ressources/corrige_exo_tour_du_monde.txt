@@ -1,0 +1,145 @@
+
+Le projet Gutenberg met à disposition des utilisateurs des textes du domaine public en format numérique (`txt`, `epub` ...)
+ sous licence libre (voir [The Gutenberg License](https://www.gutenberg.org/wiki/Gutenberg:The_Project_Gutenberg_License)).
+
+Le texte brut du "Tour du monde en 80 jours" écrit par Jules Verne est disponible à partir de l'[URL][URL]  <http://www.gutenberg.org/ebooks/800.txt.utf-8>.
+
+1. Ouvrir un terminal *shell* et choisir comme répertoire courant ̀`~/TP-SHELL`. 
+
+~~~
+junier@fredportable:~$ mkdir TP-SHELL
+junier@fredportable:~$ cd TP-SHELL/
+~~~
+
+2. Créer un un répertoire `Phileas` puis entrer dans ce répertoire.
+3. Consulter l'aide de la commande `wget` avec `wget --help` ou `man wget` puis télécharger le fichier contenant le texte du "Tour du monde en 80 jours" au format `txt`.
+
+    junier@fredportable:~/TP-SHELL/Phileas$ ls
+    800.txt.utf-8
+
+4. Renommer le fichier en `tour-du-monde-80-jours.txt`.
+
+    junier@fredportable:~/TP-SHELL/Phileas$ ls
+    tour-du-monde-80-jours.txt
+
+5. Afficher le nombre de lignes, le nombre de mots, le nombre de caractères et le nombre d'octets de `tour-du-monde-80-jours.txt` avec des options bien choisies de la commande `wc`. Comment peut-on expliquer que le nombre de caractères est inférieur au nombre d'octets ? Vérifier l'encodage du fichier avec la commande `file tour-du-monde-80-jours.txt`.
+6. Les commandes `du` et `zip` permettent respectivement d'afficher la taille d'un fichier et de compresser un fichier. Consulter leurs pages de manuel  avec `man du | less` et `man zip | less`. La commande  `less` est un *pager* qui permet d'afficher une page à la fois dans le terminal.
+  * Afficher la taille du fichier en kilo-octets avec la commande `du -h tour-du-monde-80-jours.txt`.
+  * Compresser la fichier avec la commande `zip`.Quel est le taux de compression ?
+  * Avec la commande `head`, afficher les dix premières lignes des fichiers `tour-du-monde-80-jours.txt` et `tour-du-monde-80-jours.zip`. Que peut-on remarquer ?
+7. Consulter la page de manuel de la commande `tac` avec `man | less tac`.  En une seule commande, créer un fichier `tour-du-monde-80-jours-inverse.txt`  où toutes les lignes du fichier initial sont recopiées à l'envers.
+7.  Dans `tour-du-monde-80-jours.txt`, avec la commande `grep` et des options bien choisies :
+  * Compter le nombre d'occurences du mot `phileas`. On doit trouver 330.
+  * Afficher le numéro de ligne du fragment de texte "*** START OF". Vérifier avec un éditeur de textes.
+  * Afficher le numéro de ligne du fragment de texte "*** END OF". Vérifier avec un éditeur de textes.
+9. En une seule ligne de commandes, créer un fichier texte `tour-du-monde-80-jours-brut.txt` qui contient toutes les lignes comprises entre celles commençant par `*** START OF` et `*** END OF`, les deux bornes exclues.
+
+
+
+junier@fredportable:~/TP-SHELL$ mkdir Phileas
+junier@fredportable:~/TP-SHELL$ cd Phileas
+junier@fredportable:~/TP-SHELL/Phileas$ wget http://www.gutenberg.org/ebooks/800.txt.utf-8
+--2020-08-18 10:54:47--  http://www.gutenberg.org/ebooks/800.txt.utf-8
+Résolution de www.gutenberg.org (www.gutenberg.org)… 152.19.134.47, 2610:28:3090:3000:0:bad:cafe:47
+Connexion à www.gutenberg.org (www.gutenberg.org)|152.19.134.47|:80… connecté.
+requête HTTP transmise, en attente de la réponse… 302 Found
+Emplacement : http://www.gutenberg.org/cache/epub/800/pg800.txt [suivant]
+--2020-08-18 10:54:48--  http://www.gutenberg.org/cache/epub/800/pg800.txt
+Réutilisation de la connexion existante à www.gutenberg.org:80.
+requête HTTP transmise, en attente de la réponse… 200 OK
+Taille : 461968 (451K) [text/plain]
+Enregistre : «800.txt.utf-8»
+
+800.txt.utf-8                       100%[=================================================================>] 451,14K   253KB/s    ds 1,8s    
+
+2020-08-18 10:54:50 (253 KB/s) - «800.txt.utf-8» enregistré [461968/461968]
+
+junier@fredportable:~/TP-SHELL/Phileas$ ls
+800.txt.utf-8
+junier@fredportable:~/TP-SHELL/Phileas$ mv 800.txt.utf-8 tour-du-monde-80-jours.txt
+junier@fredportable:~/TP-SHELL/Phileas$ ls
+tour-du-monde-80-jours.txt
+junier@fredportable:~/TP-SHELL/Phileas$ echo "Nombre de lignes " ; wc -l tour-du-monde-80-jours.txt 
+Nombre de lignes 
+9660 tour-du-monde-80-jours.txt
+junier@fredportable:~/TP-SHELL/Phileas$ echo "Nombre de mots" ; wc -w tour-du-monde-80-jours.txt 
+Nombre de mots
+70443 tour-du-monde-80-jours.txt
+junier@fredportable:~/TP-SHELL/Phileas$ echo "Nombre de caractères" ; wc -c tour-du-monde-80-jours.txt 
+Nombre de caractères
+461968 tour-du-monde-80-jours.txt
+junier@fredportable:~/TP-SHELL/Phileas$ echo "Nombre d'octets" ; wc -m tour-du-monde-80-jours.txt 
+Nombre d'octets
+450383 tour-du-monde-80-jours.txt
+junier@fredportable:~/TP-SHELL/Phileas$ file tour-du-monde-80-jours.txt 
+tour-du-monde-80-jours.txt: UTF-8 Unicode (with BOM) text, with CRLF line terminators
+junier@fredportable:~/TP-SHELL/Phileas$ zip --help
+Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+Zip 3.0 (July 5th 2008). Usage:
+zip [-options] [-b path] [-t mmddyyyy] [-n suffixes] [zipfile list] [-xi list]
+  The default action is to add or replace zipfile entries from list, which
+  can include the special name - to compress standard input.
+  If zipfile and list are omitted, zip compresses stdin to stdout.
+  -f   freshen: only changed files  -u   update: only changed or new files
+  -d   delete entries in zipfile    -m   move into zipfile (delete OS files)
+  -r   recurse into directories     -j   junk (don't record) directory names
+  -0   store only                   -l   convert LF to CR LF (-ll CR LF to LF)
+  -1   compress faster              -9   compress better
+  -q   quiet operation              -v   verbose operation/print version info
+  -c   add one-line comments        -z   add zipfile comment
+  -@   read names from stdin        -o   make zipfile as old as latest entry
+  -x   exclude the following names  -i   include only the following names
+  -F   fix zipfile (-FF try harder) -D   do not add directory entries
+  -A   adjust self-extracting exe   -J   junk zipfile prefix (unzipsfx)
+  -T   test zipfile integrity       -X   eXclude eXtra file attributes
+  -y   store symbolic links as the link instead of the referenced file
+  -e   encrypt                      -n   don't compress these suffixes
+  -h2  show more help
+  
+junier@fredportable:~/TP-SHELL/Phileas$ man zip
+junier@fredportable:~/TP-SHELL/Phileas$ zip tour-du-monde-80-jours.zip tour-du-monde-80-jours.txt 
+  adding: tour-du-monde-80-jours.txt (deflated 63%)
+junier@fredportable:~/TP-SHELL/Phileas$ ls -l
+total 620
+-rw-rw-r-- 1 junier junier 461968 août   1 10:43 tour-du-monde-80-jours.txt
+-rw-rw-r-- 1 junier junier 171746 août  18 11:02 tour-du-monde-80-jours.zip
+
+junier@fredportable:~/TP-SHELL/Phileas$ tac tour-du-monde-80-jours.txt > tour-du-monde-80-jours-inverse.txt
+
+
+junier@fredportable:~/TP-SHELL/Phileas$ head -n5 tour-du-monde-80-jours.txt
+The Project Gutenberg EBook of Le Tour du Monde en 80 Jours, by Jules Verne
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+junier@fredportable:~/TP-SHELL/Phileas$ head -n5 tour-du-monde-80-jours.zip
+PlUQ�Ҳ���
+         �tour-du-monde-80-jours.txtUT	++%_#�;_ux
+                                                  ����Ms$ٕ�]������%4�,Vf���;�A�{
+                                                                               �[Z(
+3�N5UP�tĪvS�E�fӻ��$�!���M
+�m���jg7������o�?�nF�Ǯ�j=L;�ݦ�S��~������al��خw��O՟���44��xTU�e��m}g_����ݪ�joGU��~;�O���!nj������f�Nx�ݣ�|֮����ݼi6O�������m��k{>����������0^�/�.�A�_U/�]��z7�]��������P�o����?��'���'o�������_��\�w����?�#.uV�Ws}e�jl����?���P��;~��z�U��W��՛��}��]���w'��<y��-�ׯS��T�^�[�x_�|���Iu�o`�;��2�z6��`Y4����X��v7��<}����]���߽=9�������u'|��~�O��������jcW�ֻ��/�^�����s{�߾?9��������������N�7���'o��_�W�?~��^�]�����Om�[/�g{������_�<�^���L������������z}�.o`�Ͼ��������f�gձ��W���wo_���:��:}qr|�k�"�'��>���z��8y{~���5F�zcc���~o���z�+�����xS^������oN�:=Y<�ϲ|��5�4���g6q��������c|�s���zsv����:�}{���f9)6�_c̿:��#�K��|c/y�ʾ����}���w�/� 62x�w�~����W��W�m�ڭޜ������z�����>f?����~k+����'/�����-�����q��ESΡ���V�9y�?���w<����]�d�����;��8�6 /m~l�m���oNx!{�Ի��X�6���[{Z�/&��9��;�����w?>_�W��}�owy�vn�����������M~d�ؤ<�I��z��<~������g�>�)����׸.������&�Z�Ԟ��קoy�o�B�����_������N8Pv���E���k�X<���]�������nsv����}�9��zup�a�#�b������#r�0����S��f������L9V�_PW�5�兛�
+�z����
+      E�W\[��>�
+�l2�i   �[�k�w��Ɛ�А��;?�3���ə��-�j�@ٛ�������`�����m��l��x�㯾���19}d��y�9|�J��ӯl/�E��x
+                             ������w�,�=
+                                        �ʆ������Pop�����UoOϱ~�x��m�Ѵ��R����V�ٺbM��sɖ�;�X���)w«w�o^�*_Ŝ�y���C�f��X���[�p�¹-��v��̽��'�+�{��=;�ƨ^�Q?1C��y��k�0�']��������������|l��v�Wq|�.��O�W<6*ۧ؍�6�����\H�ů��z~z���
+��5�3{''�N}��n�{��W��������/�ϱ�l4^�r>�:����`?fð�VZ2��oN��0�����B���pSh����閽80��M��[����?rK,%�vf�Oi�����q�����/�2�w��������'��w1qr�`#�:}����&V}u3����Uj�����8T�hAWu^߶]��ß���r-0�����Ǎ����~�Mm�{W�qn��չE�����<����~��"��v�E���E�ã��c��Ex[}5\]��f��=���+�k��U�(o��¿�b��f��}�~_�Ͷ�8����m.�q{���/�&g��UV�EkO������Bv����]ucQ������jw����g�7Ո_֭��s[���mWջ��<b0w��G��k
+ʍ�����W����                                                        #=3���~3U����lϊ+\�`���>8f׌c���y������y�d3��j��
+���5�j�..��~�䲾�֦9}�������%W��z�P����s��ꮰv'��m��/ڑ�t��[�F�a�������ŴT}��M3���F,艫�fp�/�ơ?<�\ەv��ٓ��'�����v�?݌���!�g<"��m6��V\�x^
+��&M�sl���U�mp�7�/��q3��0��a��?����ˌ��m�#[w�Q�A6��\��7>��7�4j��e{�!-��Vm�Ͷ��ig�:�R��(1��q/�"�B����V�]�vX׻��Q�ջf{ӥ�:k{�h0�}�_�F���뱾ӯ��_�Mm�����~ic[_��ﵢ�_�+$>�Y؆c�+v�g/�v�=�u��F��lI�4���빙v���z1m���D3��c��ݏ��mq��O̶̔�~�=o��̯q�Lf3p���;3����N���.������}�v��ۘ�����ͦ�li��ܕ��Um�}s�FRF�f��s�l�M��3 6x!{�͉�pa�|Q�h�;mW��ۡ�p��.G�Ą�@�H��IŁa�=۔ږ��;���;h�xL�M�}�^AZ<Yyr�Ķ�
+junier@fredportable:~/TP-SHELL/Phileas$ 
+junier@fredportable:~/TP-SHELL/Phileas$ file tour-du-monde-80-jours.zip
+tour-du-monde-80-jours.zip: Zip archive data, at least v2.0 to extract
+junier@fredportable:~/TP-SHELL/Phileas$ grep -c -i "phileas" tour-du-monde-80-jours.txt
+330
+junier@fredportable:~/TP-SHELL/Phileas$ grep -n "*** START" tour-du-monde-80-jours.txt
+19:*** START OF THIS PROJECT GUTENBERG EBOOK LE TOUR DU MONDE EN 80 JOURS ***
+9332:*** START: FULL LICENSE ***
+junier@fredportable:~/TP-SHELL/Phileas$ grep -n "*** START OF" tour-du-monde-80-jours.txt
+19:*** START OF THIS PROJECT GUTENBERG EBOOK LE TOUR DU MONDE EN 80 JOURS ***
+junier@fredportable:~/TP-SHELL/Phileas$ grep -n "*** END OF" tour-du-monde-80-jours.txt
+9302:*** END OF THIS PROJECT GUTENBERG EBOOK LE TOUR DU MONDE EN 80 JOURS ***
+junier@fredportable:~/TP-SHELL/Phileas$ tail -n+20 tour-du-monde-80-jours.txt | head -n-359 > tour-du-monde-80-jours-brut.txt
+

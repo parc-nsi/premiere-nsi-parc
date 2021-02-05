@@ -1,0 +1,11 @@
+p {
+    font-style: normal;
+}
+
+#monsite {
+    font-style: italic;
+}
+
+.titre {
+    border: 2px solid black;
+}

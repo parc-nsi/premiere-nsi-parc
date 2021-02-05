@@ -1,0 +1,361 @@
+<!-- Définition des hyperliens  -->
+
+<h1 id="crédits--">Crédits {-}</h1>
+
+<p><em>Memento directement inspiré des livres <a href="https://www.eyrolles.com/Informatique/Livre/la-ligne-de-commande-par-l-exemple-9782351410721/">La ligne de commande par l’exemple</a> de Vincent Fourmond et <a href="https://www.eyrolles.com/Informatique/Livre/parlez-vous-shell--9782729877590/">Parlez-vous Shell ?</a> de Thomas Hugel.</em></p>
+
+<p>Dans ce memento, nous présentons des commandes du <em>shell</em>   <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">BASH</a> sous licence libre, qui est le <em>shell</em> par défaut sur la plupart des distributions du système d’exploitation libre <a href="https://fr.wikipedia.org/wiki/Linux">Linux</a>. On distinguera parfois fichiers et répertoires mais on rappelle que les répertoires sont juste des fichiers spéciaux, qui contiennent d’autres fichiers.
+Un memento en ligne est disponible sur <a href="https://juliend.github.io/linux-cheatsheet/">https://juliend.github.io/linux-cheatsheet/</a>.</p>
+
+<p><em>Conseils pratiques :</em> pour faciliter la saisie des commandes avec le clavier, <a href="https://fr.wikipedia.org/wiki/Bourne-Again_shell">BASH</a> offre quelques raccourcis clavier bien pratiques :</p>
+
+<ul>
+  <li>
+    <p>la touche de tabulation permet d’appeler la complétion automatique qui propose de compléter la commande avec les choix possibles (fichiers ou commandes existants). Par exemple si on saisit <code class="language-plaintext highlighter-rouge">pw</code>, l’appui sur la touche de tabulation nous propose plusieurs commandes commençant par ce préfixe :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> junier@fredportable:~$ pw
+ pwck      pwconv    pwd       pwdx      pwgen     pwunconv 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>les flèches de direction Haut et Bas permettent de naviguer dans l’historique des commandes.</p>
+  </li>
+  <li>
+    <p>la plupart des commandes du <em>shell</em> sont dotées d’une documentation accessible depuis l’interpréteur avec la commande <code class="language-plaintext highlighter-rouge">man</code>. Par exemple pour afficher l’aide de la commande <code class="language-plaintext highlighter-rouge">ls</code>, on écrira <code class="language-plaintext highlighter-rouge">man ls</code>.</p>
+  </li>
+</ul>
+
+<h1 id="un-premier-exemple-de-commande">Un premier exemple de commande</h1>
+
+<p>Une commande <em>shell</em> est constituée du nom de la commande suivi d’un ou plusieurs arguments. Des options  précédées peuvent modifier le comportement de la commande :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nom_commande -option1 -option2 ... arg1 arg2 arg3 ... 
+</code></pre></div></div>
+
+<p>Ainsi, la commande <code class="language-plaintext highlighter-rouge">ls</code> permet d’afficher des informations sur répertoire ou un fichier  :</p>
+
+<ul>
+  <li>
+    <p>Sans argument, ni option <code class="language-plaintext highlighter-rouge">ls</code> liste le contenu du répertoire courant :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  junier@fredportable:~/sandbox$ ls
+  fichier1  fichier2  fichier3  fichier4  rep1  rep2  
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Avec l’option <code class="language-plaintext highlighter-rouge">-l</code> elle affiche des informations détaillées sur chacun des fichiers contenus dans le répertoire :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  junier@fredportable:~/sandbox$ ls -l
+  total 8
+  -rw-rw-r-- 1 junier junier    0 août  16 21:43 fichier1
+  ...........
+  drwxrwxr-x 2 junier junier 4096 août  16 21:44 rep1
+  drwxrwxr-x 2 junier junier 4096 août  16 21:44 rep2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>L’option <code class="language-plaintext highlighter-rouge">-a</code>  affiche les fichiers (ou répertoires cachés) et l’option <code class="language-plaintext highlighter-rouge">-h</code> convertit les tailles de fichiers (en octets par défaut) en des multiples plus lisibles. On peut écrire <code class="language-plaintext highlighter-rouge">ls -l -a -h</code> ou regrouper les options <code class="language-plaintext highlighter-rouge">ls -lah</code>. L’ordre des options n’a pas d’importance :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  junier@fredportable:~/sandbox$ ls -lah
+  total 16K
+  drwxrwxr-x  4 junier junier 4,0K août  16 21:49 .
+  drwxr-xr-x 50 junier junier 4,0K août  16 21:43 ..
+  -rw-rw-r--  1 junier junier    0 août  16 21:49 .cache_cache
+  -rw-rw-r--  1 junier junier    0 août  16 21:43 fichier1
+  ..............
+  drwxrwxr-x  2 junier junier 4,0K août  16 21:44 rep1
+  drwxrwxr-x  2 junier junier 4,0K août  16 22:10 rep2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Si on passe un répertoire en argument à la commande, elle affiche son contenu  et si on souhaite une information globale sur le répertoire, on passe l’option <code class="language-plaintext highlighter-rouge">-d</code> :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  junier@fredportable:~/sandbox$ ls -l rep1
+  total 0
+  -rw-rw-r-- 1 junier junier 0 août  16 21:44 photo1.jpg
+  -rw-rw-r-- 1 junier junier 0 août  16 21:44 photo2.jpg
+  junier@fredportable:~/sandbox$ ls -ld rep1
+  drwxrwxr-x 2 junier junier 4096 août  16 21:44 rep1
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>On peut afficher l’aide détaillée de <code class="language-plaintext highlighter-rouge">ls</code>  avec l’option longue (double tiret) <code class="language-plaintext highlighter-rouge">--help</code></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  junier@fredportable:~/sandbox$ ls --help
+  Utilisation : ls [OPTION]... [FICHIER]...
+  Afficher des renseignements sur les FICHIERs (du répertoire actuel par défaut).
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><em>Remarque : L’aide s’obtient avec l’option <code class="language-plaintext highlighter-rouge">--help</code> ou avec <code class="language-plaintext highlighter-rouge">man nom_commande</code>.</em></p>
+
+<h1 id="naviguer-dans-larborescence-du-système-de-fichiers">Naviguer dans l’arborescence du système de fichiers</h1>
+
+<ol>
+  <li>La commande <code class="language-plaintext highlighter-rouge">tree</code> permet d’afficher l’arborescence du système de fichiers
+ à partir du répertoire passé en argument (le répertoire courant par défaut). Ci-dessous, une partie de l’affichage de l’arborescence d’un <em>système de fichiers</em> (répertoires seulement) depuis le <em>répertoire  racine</em> <code class="language-plaintext highlighter-rouge">/</code>. Le <em>chemin absolu</em> du répertoire <code class="language-plaintext highlighter-rouge">grub</code>  est <code class="language-plaintext highlighter-rouge">/boot/grub</code>.</li>
+</ol>
+
+<p><img src="https://gitlab.com/frederic-junier/nsi-public/-/raw/master/Premiere/Systeme/images/tree-racine.png" alt="arborescence racine" />{width=35%}</p>
+
+<ol>
+  <li>
+    <p>La commande <code class="language-plaintext highlighter-rouge">pwd</code> pour <code class="language-plaintext highlighter-rouge">print work directory</code> permet d’afficher le <em>répertoire courant dit de travail</em>.  Le symbole tilde <code class="language-plaintext highlighter-rouge">~</code> est un raccourci pour désigner le répertoire personnel de l’utilisateur, en général <code class="language-plaintext highlighter-rouge">/home/utilisateur</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> junier@fredportable:~/sandbox$ pwd
+ /home/junier/sandbox
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>La commande <code class="language-plaintext highlighter-rouge">tree</code> sans argument permet alors d’afficher toute l’arborescence depuis le répertoire courant qui est représenté par un <code class="language-plaintext highlighter-rouge">.</code>.  Le <em>chemin relatif</em> du fichier <code class="language-plaintext highlighter-rouge">photo1.jpg</code> par rapport au répertoire courant <code class="language-plaintext highlighter-rouge">sandbox</code> est <code class="language-plaintext highlighter-rouge">./rep1/photo1.jpg</code> ou <code class="language-plaintext highlighter-rouge">rep1/photo1.jpg</code> et son chemin absolu par rapport au répertoire racine s’obtient en le faisant précéder par le chemin absolu de <code class="language-plaintext highlighter-rouge">sandbox</code>, c’est donc <code class="language-plaintext highlighter-rouge">/home/junier/sandbox/rep1/photo1.jpg</code>.</p>
+  </li>
+</ol>
+
+<p><img src="https://gitlab.com/frederic-junier/nsi-public/-/raw/master/Premiere/Systeme/images/tree-sandbox.png" alt="arborescence relative" />{width=35%}</p>
+
+<ol>
+  <li>
+    <p>La commande <code class="language-plaintext highlighter-rouge">cd</code> pour <code class="language-plaintext highlighter-rouge">change directory</code> permet de changer de répertoire courant.</p>
+
+    <ul>
+      <li>
+        <p>Sans argument ou avec <code class="language-plaintext highlighter-rouge">cd ~</code> elle ramène l’utlisateur dans son répertoire personnel <code class="language-plaintext highlighter-rouge">/home/utilisateur</code>.  <code class="language-plaintext highlighter-rouge">cd -</code> ramène dans le répertoire précédent</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      junier@fredportable:~/sandbox$ cd
+      junier@fredportable:~$ pwd
+      /home/junier
+      junier@fredportable:~$ cd -
+      /home/junier/sandbox
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">cd ..</code> permet de remonter dans le répertoire parent :</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     junier@fredportable:~/sandbox$ pwd
+     /home/junier/sandbox
+     junier@fredportable:~/sandbox$ cd ..
+     junier@fredportable:~$ pwd
+     /home/junier
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>On peut fournir à <code class="language-plaintext highlighter-rouge">cd</code> un chemin absolu ou relatif  mais il faut que le chemin soit uniquement constitué de répertoires !</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      junier@fredportable:~/sandbox$ cd /home/junier/sandbox/rep1
+      junier@fredportable:~/sandbox/rep1$ cd ..
+      junier@fredportable:~/sandbox$ cd rep1
+      junier@fredportable:~/sandbox/rep1$ cd photo1.jpg
+      bash: cd: photo1.jpg: N'est pas un dossier  
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="copier-supprimer-déplacer-un-fichier">Copier, supprimer, déplacer un fichier</h1>
+
+<ol>
+  <li>
+    <p>La commande <code class="language-plaintext highlighter-rouge">mv</code> pour <code class="language-plaintext highlighter-rouge">move</code> sert à déplacer ou renommer des fichiers ou des répertoires. Elle prend deux arguments <em>source</em> et <em>cible</em> : si la <em>cible</em> est un répertoire, alors la <em>cible</em> est copiée dedans sinon elle est renommée.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> junier@fredportable:~/sandbox$ ls
+ fichier1  fichier2  fichier3  fichier4  rep1  rep2  rep3
+ junier@fredportable:~/sandbox$ mv fichier1 fichier1-copie
+ junier@fredportable:~/sandbox$ ls
+ fichier1-copie  fichier2  fichier3  fichier4  rep1  rep2  rep3
+ junier@fredportable:~/sandbox$ ls rep1
+ photo1.jpg  photo2.jpg
+ junier@fredportable:~/sandbox$ mv fichier1-copie rep1
+ junier@fredportable:~/sandbox$ ls rep1
+ fichier1-copie  photo1.jpg  photo2.jpg
+ junier@fredportable:~/sandbox$ mv rep1 rep2
+ junier@fredportable:~/sandbox$ ls rep2
+ rep1  son1.jpg  son2.jpg
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>La commande <code class="language-plaintext highlighter-rouge">cp</code> permet de copier des fichiers. Elle s’utilise comme <code class="language-plaintext highlighter-rouge">mv</code>, sauf que le fichier <em>source</em> n’est pas supprimé. Par défaut <code class="language-plaintext highlighter-rouge">cp</code> ne copie que des fichiers, pour copier un répertoire et son contenu, il faut lui passer l’option <code class="language-plaintext highlighter-rouge">-R</code> pour <code class="language-plaintext highlighter-rouge">recursive</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> junier@fredportable:~/sandbox$ ls
+ fichier2  fichier3  fichier4  rep2  rep3
+ junier@fredportable:~/sandbox$ ls rep2
+ rep1  son1.jpg  son2.jpg
+ junier@fredportable:~/sandbox$ cp fichier2 rep2
+  junier@fredportable:~/sandbox$ ls rep2
+ fichier2  rep1  son1.jpg  son2.jpg
+ junier@fredportable:~/sandbox$ cp rep2 rep3
+ cp: -r non spécifié ; omission du répertoire 'rep2'
+ junier@fredportable:~/sandbox$ cp -R rep2 rep3
+ junier@fredportable:~/sandbox$ ls rep3
+ rep2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>La commande <code class="language-plaintext highlighter-rouge">rm</code> permet de supprimer les fichiers qu’on lui passe en argument. Pour supprimer un répertoire et son contenu, il faut lui passer l’option <code class="language-plaintext highlighter-rouge">-R</code> comme pour <code class="language-plaintext highlighter-rouge">cp</code>. <em>Attention,  <code class="language-plaintext highlighter-rouge">rm</code> ne déplace pas les fichiers vers une corbeille, ils sont supprimés définitivement !</em></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> junier@fredportable:~/sandbox$ ls
+ fichier2  fichier3  fichier4  rep2  rep3
+ junier@fredportable:~/sandbox$ rm fichier2
+ junier@fredportable:~/sandbox$ ls
+ fichier3  fichier4  rep2  rep3
+ junier@fredportable:~/sandbox$ rm rep3
+ rm: impossible de supprimer 'rep3': est un dossier
+ junier@fredportable:~/sandbox$ rm -r rep3
+ junier@fredportable:~/sandbox$ ls
+ fichier2  fichier3  fichier4  rep2
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="expansion-des-noms-de-fichiers-et-globbing">Expansion des noms de fichiers et <em>globbing</em></h1>
+
+<p>On peut agir en masse sur des  fichiers grace aux mécanismes d’expansion de la ligne de commandes : certains caractères spéciaux indiquent au <em>shell</em> qu’il   peut les remplacer par des ensembles de caractères. On peut ainsi décrire des motifs (ou <em>pattern</em>) pour décrire des ensembles de  noms de fichiers.</p>
+
+<p>Pour les exemples, on  considère un répertoire <code class="language-plaintext highlighter-rouge">rep3</code> qui contient plusieurs fichiers :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    junier@fredportable:~/sandbox/rep3$ ls
+    image1.jpeg  image1.jpg  image1.png  image2.jpeg  image2.jpg  image2.png  image3.jpeg  image3.jpg  image3.png  image4.jpeg
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Le caractère spécial <code class="language-plaintext highlighter-rouge">*</code> représente n’importe quelle suite de caractères. Par exemple pour lister les fichiers dont le nom de base se termine par 1 et l’extension par <code class="language-plaintext highlighter-rouge">g</code> on peut écrire :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       junier@fredportable:~/sandbox/rep3$ ls *1.*g
+       image1.jpeg  image1.jpg  image1.png
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Le caractère spécial <code class="language-plaintext highlighter-rouge">?</code>  représente un caractère unique quelconque. Par exemple pour lister les fichiers dont le nom de base se termine par 1 et l’extension comporte trois caractères et se termine par <code class="language-plaintext highlighter-rouge">g</code> on peut écrire :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       junier@fredportable:~/sandbox/rep3$ ls *1.??g
+       image1.jpg  image1.png
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Dans un nom de fichier existant<code class="language-plaintext highlighter-rouge">{a..z}</code>  représente un caractère  entre <code class="language-plaintext highlighter-rouge">a</code> et <code class="language-plaintext highlighter-rouge">z</code>. Par exemple pour lister les fichiers <code class="language-plaintext highlighter-rouge">image1.png</code>, <code class="language-plaintext highlighter-rouge">image2.png</code> et <code class="language-plaintext highlighter-rouge">image3.png</code> on peut écrire :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        junier@fredportable:~/sandbox/rep3$ ls image{1..3}.png
+        image1.png  image2.png  image3.png
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="gestion-des-droits-sur-les-fichiers">Gestion des droits sur les fichiers</h1>
+
+<p>Considérons le contenu  du répertoire <code class="language-plaintext highlighter-rouge">~/sandbox</code> affiché de façon détaillée avec la commande <code class="language-plaintext highlighter-rouge">ls -l</code> :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    junier@fredportable:~/sandbox$ ls -l
+    total 8
+    -rwxrw-r-- 1 junier junier    0 août  16 21:43 fichier3
+    -rw-rw-r-- 1 junier junier    0 août  16 21:43 fichier4
+    drwxrwxr-x 3 junier junier 4096 août  16 23:29 rep2
+    drwxrwxr-x 2 junier junier 4096 août  16 23:33 rep3
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Les 10 premiers caractère d’une ligne représentent  les droits sur le fichier (ou le répertoire) :</p>
+
+    <ul>
+      <li>Pour <code class="language-plaintext highlighter-rouge">fichier3</code> on a <code class="language-plaintext highlighter-rouge">-rw-rw-r--</code> :
+        <ul>
+          <li>le premier caractère <code class="language-plaintext highlighter-rouge">-</code> indique qu’il s’agit d’un fichier</li>
+          <li>le premier bloc de trois caractères <code class="language-plaintext highlighter-rouge">rwx</code> représente les droits pour le <em>propriétaire (u)</em> du fichier :  <em>lecture (r)</em>, <em>écriture (w)</em> et <em>exécution (x)</em>.</li>
+          <li>le second bloc de trois caractères <code class="language-plaintext highlighter-rouge">rw-</code> représente les droits pour le <em>groupe (g)</em> du fichier :  <em>lecture (r)</em>, <em>écriture (w)</em> et un tiret <code class="language-plaintext highlighter-rouge">-</code> qui marque l’absence de droit d’exécution</li>
+          <li>le dernier bloc de trois caractères <code class="language-plaintext highlighter-rouge">rw-</code> représente les droits pour les <em>autres (o)</em> utilisateurs du fichier : ce sont les mêmes que pour le <em>groupe</em>.</li>
+        </ul>
+      </li>
+      <li>Pour <code class="language-plaintext highlighter-rouge">rep2</code> on a <code class="language-plaintext highlighter-rouge">drwxrwxr-x</code> :
+        <ul>
+          <li>le premier caractère <code class="language-plaintext highlighter-rouge">d</code> indique qu’il s’agit d’un répertoire</li>
+          <li>les trois blocs de trois caractères suivants énumèrent les droits en <em>lecture (r)</em>, <em>écriture (w)</em>, <em>exécution (x)</em> des trois types d’utilisateurs du répertoire : <em>propriétaire</em>, <em>groupe</em> et <em>autres</em>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Le propriétaire d’un fichier ou le superutilisateur <code class="language-plaintext highlighter-rouge">root</code> peut changer les droits d’un fichier ou d’un répertoire avec la commande <code class="language-plaintext highlighter-rouge">chmod</code> dont la syntaxe est :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> chmod [-R] [ugoa][+-=][rwx] fichier
+</code></pre></div>    </div>
+
+    <ul>
+      <li>Les options entre crochets désignent :
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">u</code> : le propriétaire</li>
+          <li><code class="language-plaintext highlighter-rouge">g</code> : le groupe</li>
+          <li><code class="language-plaintext highlighter-rouge">o</code> : les autres utilisateurs</li>
+          <li><code class="language-plaintext highlighter-rouge">a</code> : tous les utilisateurs</li>
+          <li><code class="language-plaintext highlighter-rouge">+</code> : ajouter le(s) droit(s)</li>
+          <li><code class="language-plaintext highlighter-rouge">-</code> : enlever le(s) droit(s)</li>
+          <li><code class="language-plaintext highlighter-rouge">=</code> : positionner le(s) droit(s)</li>
+          <li><code class="language-plaintext highlighter-rouge">r</code> : droit de lecture</li>
+          <li><code class="language-plaintext highlighter-rouge">w</code> : droit d’écriture</li>
+          <li><code class="language-plaintext highlighter-rouge">x</code> : droit d’exécution</li>
+          <li><code class="language-plaintext highlighter-rouge">-R</code> : récursivement (nécessaire pour agir sur un répertoire)</li>
+        </ul>
+      </li>
+      <li>Quelques exemples :
+        <ul>
+          <li>
+            <p>Fixer les droits à -x (écriture seule) pour tous les utilisateurs  sur <code class="language-plaintext highlighter-rouge">fichier3</code> :</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    junier@fredportable:~/sandbox$ chmod a=x fichier3
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>Donner le droit d’écriture aux autres utilisateurs sur <code class="language-plaintext highlighter-rouge">fichier4</code>:</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    junier@fredportable:~/sandbox$ chmod o+w fichier4
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>Enlever le droit de lecture à tous les utilisateurs sur <code class="language-plaintext highlighter-rouge">fichier4</code> :</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    junier@fredportable:~/sandbox$ chmod ugo-r fichier4
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>Enlever le droit de lecture au groupe sur le répertoire <code class="language-plaintext highlighter-rouge">rep2</code> :</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    junier@fredportable:~/sandbox$ chmod -R g-w rep2
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>Affichage des droits après les modifications précédentes :</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    junier@fredportable:~/sandbox$ ls -l
+    total 8
+    ---x--x--x 1 junier junier    0 août  16 21:43 fichier3
+    --w--w--w- 1 junier junier    0 août  16 21:43 fichier4
+    drwxrwxr-x 3 junier junier 4096 août  16 23:29 rep2
+    drwxrwxr-x 2 junier junier 4096 août  16 23:33 rep3
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Le superutilisateur <code class="language-plaintext highlighter-rouge">root</code> peut modifier le propriétaire d’un fichier avec la commande <code class="language-plaintext highlighter-rouge">chown</code>.
+Il faut passer l’option <code class="language-plaintext highlighter-rouge">-R</code> pour modifier le propriétaire d’un répertoire.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> junier@fredportable:~/sandbox$ sudo chown root fichier3
+ [sudo] Mot de passe de junier : 
+ junier@fredportable:~/sandbox$ ls -l fichier3
+ ---x--x--x 1 root   junier    0 août  16 21:43 fichier3
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Le superutilisateur <code class="language-plaintext highlighter-rouge">root</code> peut modifier le groupe d’un fichier avec la commande <code class="language-plaintext highlighter-rouge">chgrp</code>.
+Il faut passer l’option <code class="language-plaintext highlighter-rouge">-R</code> pour modifier le groupe d’un répertoire.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> junier@fredportable:~/sandbox$ sudo chgrp root fichier3
+ junier@fredportable:~/sandbox$ ls -l fichier3
+ ---x--x--x 1 root   root      0 août  16 21:43 fichier3
+</code></pre></div>    </div>
+  </li>
+</ol>
+

@@ -1,0 +1,14 @@
+      INP R0, 2
+      INP R1, 2
+      SUB R3, R0, R1
+      CMP R3, #0
+      BLT else
+      MOV R2, R0
+      B fin
+else:
+      MOV R2, R1
+fin:
+      STR R2, 20
+      OUT R2, 4
+      HALT
+

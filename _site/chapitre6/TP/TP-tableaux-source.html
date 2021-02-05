@@ -1,0 +1,425 @@
+<!-- Définition des hyperliens  -->
+
+<p><em>On désigne par tableaux, les objets de type <code class="language-plaintext highlighter-rouge">list</code> du langage <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a>. Dans les exercices, comme dans les QCM d’E3C, on rencontrera parfois l’appellation Python liste pour désigner la structure de données tableau</em>.</p>
+
+<p>:::exercice</p>
+
+<ol>
+  <li>Télécharger le matériel de TP depuis <a href="https://parc-nsi.github.io/premiere-nsi/chapitre6/TP/eleves.zip">https://parc-nsi.github.io/premiere-nsi/chapitre6/TP/eleves.zip</a></li>
+  <li>Extraire l’archive dans un dossier pertinent de son répertoire personnel.</li>
+  <li>Ouvrir le fichier <code class="language-plaintext highlighter-rouge">TP-Tableaux-Eleve.py</code> avec <code class="language-plaintext highlighter-rouge">Spyder</code>. Le fichier est prérempli avec des cellules contenant les codes à compléter suivis de tests unitaires pour tester les fonctions que vous aurez écrites.</li>
+  <li>Chaque cellule est préfixée par le commentaire spécial <code class="language-plaintext highlighter-rouge">#%%</code>  et peut être exécutée avec <code class="language-plaintext highlighter-rouge">CTRL + Return</code>.</li>
+  <li>Écrivez d’abord la fonction avant de la tester avec les tests unitaires s’ils sont disponibles : il faut les sélectionner puis les décommenter avec <code class="language-plaintext highlighter-rouge">CTRL + 1</code>. 
+:::</li>
+</ol>
+
+<p>:::exercice</p>
+
+<p>QCM type E3C</p>
+
+<ol>
+  <li>
+    <p>On exécute le code suivant :</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+
+ <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">t</span> <span class="k">if</span> <span class="n">c</span><span class="o">%</span><span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Quelle est la valeur de la variable <code class="language-plaintext highlighter-rouge">v</code> à la fin de cette exécution ?</p>
+
+<ul>
+  <li><strong>Réponse A :</strong> 18    <strong>Réponse B :</strong> <code class="language-plaintext highlighter-rouge">[1,4,7]</code></li>
+  <li><strong>Réponse C :</strong>  <code class="language-plaintext highlighter-rouge">[3,6,9]</code>  <strong>Réponse D :</strong>  <code class="language-plaintext highlighter-rouge">[1,2,3,4,5,6,7,8,9]</code></li>
+</ul>
+
+<ol>
+  <li>On définit : <code class="language-plaintext highlighter-rouge">resultat = [ i*2 for i in range(10) ]</code>.</li>
+</ol>
+
+<p>Quelle est la valeur de <code class="language-plaintext highlighter-rouge">resultat</code> ?</p>
+
+<ul>
+  <li><strong>Réponse A :</strong>  <code class="language-plaintext highlighter-rouge">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></li>
+  <li><strong>Réponse B :</strong> <code class="language-plaintext highlighter-rouge">[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code></li>
+  <li><strong>Réponse C :</strong> <code class="language-plaintext highlighter-rouge">[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</code></li>
+  <li><strong>Réponse D :</strong> <code class="language-plaintext highlighter-rouge">[2, 4, 6, 8, 10, 12, 14, 16, 18]</code></li>
+</ul>
+
+<ol>
+  <li>On considère la fonction suivante :</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">somme</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+        <span class="p">.....</span>
+    <span class="k">return</span> <span class="n">s</span>
+</code></pre></div></div>
+
+<p>Par quelle instruction faut-il remplacer les points de suspension pour
+que l’appel <code class="language-plaintext highlighter-rouge">somme([10,11,12,13,14])</code> renvoie 60 ?</p>
+
+<ul>
+  <li><strong>Réponse A :</strong>  <code class="language-plaintext highlighter-rouge">s = tab[i]</code>  <strong>Réponse B :</strong>   <code class="language-plaintext highlighter-rouge">s = s + tab[i]</code></li>
+  <li><strong>Réponse C :</strong> <code class="language-plaintext highlighter-rouge">tab[i] = tab[i] + s</code>   <strong>Réponse D :</strong> <code class="language-plaintext highlighter-rouge">s = s + i</code></li>
+</ul>
+
+<p>:::</p>
+
+<p>:::exercice</p>
+
+<ol>
+  <li>
+    <p>La fonction suivante doit calculer la moyenne d’un tableau de nombres, passé en paramètre. Avec quelles expressions faut-il remplacer les points de suspension pour que la fonction soit correcte ? <em>Auteur Sylvie Genre</em></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">moyenne</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+     <span class="n">total</span> <span class="o">=</span> <span class="p">...</span>
+     <span class="k">for</span> <span class="n">valeur</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
+         <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">valeur</span>
+     <span class="k">return</span> <span class="n">total</span> <span class="o">/</span> <span class="p">...</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Donner la valeur des expressions Python suivantes :</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>:::</p>
+
+<p>:::methode
+À partir de cet exercice, on précisera pour chaque fonction sa <strong>spécification</strong>, dans une chaîne de documentation (ou <em>docstring</em>) multiligne placée juste après l’en-tête de la fonction entre triples quotes ou guillemets.</p>
+
+<p>Celle-ci est constituée  :</p>
+
+<ul>
+  <li>du ou des  <strong>type(s)</strong> du ou des paramètre(s), en précisant si la fonction ne prend pas de paramètre</li>
+  <li>de la ou des <strong>précondition(s)</strong> que doivent vérifier ces paramètres</li>
+  <li>du ou des <strong>type(s)</strong> de la (ou les) valeur(s) renvoyée(s), en précisant si la fonction ne renvoie rien (<code class="language-plaintext highlighter-rouge">None</code> par défaut en Python)</li>
+  <li>de la ou des <strong>postcondition(s)</strong> que doivent vérifier  la ou les valeur(s) renvoyée(s)</li>
+</ul>
+
+<p>Pour vérifier les préconditions on utilise l’instruction <code class="language-plaintext highlighter-rouge">assert</code> qui permet de vérifier l’assertion (à valeur booléenne) qu’elle préfixe : si l’assertion est vraie, l’exécution continue sinon une exception <code class="language-plaintext highlighter-rouge">AssertionError</code> est levée et l’exécution s’interrompt. On peut passer un message d’erreur personnalisée en le séparant de l’assertion par une virgule :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'attention on calcule modulo 2'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">assert</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'attention on calcule modulo 2'</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">AssertionError</span><span class="p">:</span> <span class="n">attention</span> <span class="n">on</span> <span class="n">calcule</span> <span class="n">modulo</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<p>Voici un exemple de rédaction pour la deuxième fonction de l’exercice 4 :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">vsom</span><span class="p">(</span><span class="n">tab1</span><span class="p">,</span> <span class="n">tab2</span><span class="p">):</span>
+    <span class="s">"""
+    Paramètres :
+        tab1 et tab2 des tableaux de type list contenant des  nombres de type int ou float
+    Préconditions :
+        tab1 non vide et len(tab1) == len(tab2)
+    Valeur renvoyée :
+        un tableau de type list contenant des  nombres de type int ou float
+    Postcondition :
+        le tableau renvoyé est constitué des sommes
+        terme à terme des éléments de tab1 et tab2        
+    """</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab2</span><span class="p">);</span> <span class="s">"tab1 et tab2 doivent être de même longueur"</span>
+    <span class="k">return</span> <span class="p">.................</span> <span class="c1">#à compléter
+</span></code></pre></div></div>
+
+<p>:::</p>
+
+<p>:::exercice</p>
+
+<ol>
+  <li>Écrire une fonction Python   <code class="language-plaintext highlighter-rouge">smul</code> à deux paramètres, un nombre et une liste de nombres, qui multiplie chaque élément de la liste par le nombre et renvoie une nouvelle liste :
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">smul</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Écrire une fonction Python <code class="language-plaintext highlighter-rouge">vsom</code>  qui prend en paramètre deux listes de nombres de même longueur et qui renvoie une nouvelle liste constituée de la somme terme à terme de ces deux listes :
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">vsom</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Écrire une fonction  <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> <code class="language-plaintext highlighter-rouge">vdif</code> qui prend en paramètre deux listes de nombres de même longueur et qui renvoie une nouvelle liste constituée de la différence terme à terme de ces deux listes (la deuxième  moins la première).
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">vdif</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Écrire une fonction Python <code class="language-plaintext highlighter-rouge">vprod</code> qui prend en paramètre deux listes de nombres de même longueur et qui retourne une nouvelle liste constituée des produits terme à terme de ces deux listes.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">vprod</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span> 
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+</code></pre></div>    </div>
+    <p>:::</p>
+  </li>
+</ol>
+
+<p>:::exercice</p>
+<ol>
+  <li>Écrire une  fonction <code class="language-plaintext highlighter-rouge">produit(tab)</code> qui retourne le produit  des éléments d’un tableau de nombres <code class="language-plaintext highlighter-rouge">tab</code>.</li>
+  <li>Écrire une fonction   <code class="language-plaintext highlighter-rouge">all_positive(tab)</code>  qui retourne un booléen indiquant si tous les éléments du tableau de nombres <code class="language-plaintext highlighter-rouge">tab</code>  sont strictement positifs.</li>
+  <li>Écrire une fonction   <code class="language-plaintext highlighter-rouge">any_positive(tab)</code>  qui retourne un booléen indiquant si  au moins un élément du tableau de nombres <code class="language-plaintext highlighter-rouge">tab</code>  est strictement positif.
+:::</li>
+</ol>
+
+<p>:::exercice</p>
+
+<ol>
+  <li>Écrire une fonction <code class="language-plaintext highlighter-rouge">tableau_aleatoire(n, a, b)</code> qui renvoie un tableau de <code class="language-plaintext highlighter-rouge">n</code> entiers tirés aléatoirement entre les entiers <code class="language-plaintext highlighter-rouge">a</code> et <code class="language-plaintext highlighter-rouge">b</code> inclus. On utilisera la fonction <code class="language-plaintext highlighter-rouge">randint</code>  du module <code class="language-plaintext highlighter-rouge">random</code>.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Help</span> <span class="n">on</span> <span class="n">method</span> <span class="n">randint</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">random</span><span class="p">:</span>
+
+<span class="n">randint</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="n">method</span> <span class="n">of</span> <span class="n">random</span><span class="p">.</span><span class="n">Random</span> <span class="n">instance</span>
+    <span class="n">Return</span> <span class="n">random</span> <span class="n">integer</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">including</span> <span class="n">both</span> <span class="n">end</span> <span class="n">points</span><span class="p">.</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Écrire une fonction <code class="language-plaintext highlighter-rouge">histo_echantillon(nbexp)</code> qui renvoie un tableau de taille 6 comptant le nombre d’occurences de chaque face numérotée de 1 à 6 sur un échantillon de <code class="language-plaintext highlighter-rouge">nbexp</code> lancers d’un dé cubique équilibré.</p>
+  </li>
+  <li>
+    <p>On donne ci-dessous une fonction qui prend en paramètre un tableau et renvoie un élément extrait au hasard  du tableau. Elle permet par exemple de simuler un tirage sans remise d’une boule dans une urne.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+ <span class="k">def</span> <span class="nf">tirage_sans_remise</span><span class="p">(</span><span class="n">urne</span><span class="p">):</span>
+     <span class="s">""" 
+     Paramètres :
+         urne un tableau homogène type list
+     Précondition :
+         urne non vide
+     Valeur renvoyée :
+         un élément du même type que ceux dans urne
+     Postcondition :
+         l'élement renvoyée a été extrait aléatoirement de urne
+         urne a été modifiée
+     """</span>
+     <span class="k">return</span> <span class="n">urne</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">.......))</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>Compléter les pointillés pour respecter la spécification de la fonction.</li>
+      <li>Écrire une fonction <code class="language-plaintext highlighter-rouge">echantillon_tirage_sans_remise</code> respectant la spécification ci-dessous. Les <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#function-annotations">annotations de type</a> sont des métadonnées optionnelles décrivant les types des paramètres et des valeurs renvoyées.</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">echantillon_tirage_sans_remise</span><span class="p">(</span><span class="n">urne</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">nbtirage</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+     <span class="s">""" 
+     Paramètres :
+         urne un tableau homogène type list
+         nbtirage un entier de type int
+     Préconditions :
+         nbtirage &gt;= 0
+         urne non vide
+     Valeur renvoyée :
+         un tableau d'entiers de type list
+     Postcondition :
+         le tableau renvoyé est un échantillon extrait
+         aléatoirement de l'urne sans remise
+     """</span>
+</code></pre></div>    </div>
+    <p>:::</p>
+  </li>
+</ol>
+
+<p>:::exercice</p>
+
+<ul>
+  <li>La fonction <code class="language-plaintext highlighter-rouge">ord</code> prend en paramètre un caractère de type <code class="language-plaintext highlighter-rouge">string</code> et renvoie son point de code dans le jeu de caractères <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a>.</li>
+  <li>La fonction <code class="language-plaintext highlighter-rouge">chr</code> prend en paramètre un point de code Unicode et renvoie le caractère correspondant.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">ord</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span>
+<span class="mi">97</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">)</span>
+<span class="s">'a'</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Construire un tableau  <code class="language-plaintext highlighter-rouge">alphabet</code> qui contient toutes les lettres minuscules de l’alphabet romain.</li>
+  <li>Construire un tableau <code class="language-plaintext highlighter-rouge">consonne</code> qui contient toutes les consonnes dans <code class="language-plaintext highlighter-rouge">alphabet</code>.</li>
+  <li>Écrire une fonction <code class="language-plaintext highlighter-rouge">occurences(chaine)</code> qui prend en paramètre une chaîne de caractère et renvoie un tableau de taille 26 avec le nombre d’occurences dans <code class="language-plaintext highlighter-rouge">chaine</code> des 26 lettres de l’alphabet romain.
+:::</li>
+</ol>
+
+<p>:::exercice</p>
+
+<p><em>Exercice du manuel de NSI de Thibault Balabonski  chez Ellipses</em></p>
+
+<p>En mathématiques, la <a href="http://images.math.cnrs.fr/Mysteres-arithmetiques-de-la-suite-de-Fibonacci.html">suite de Fibonacci</a> est une séquence d’entiers définie ainsi : on part des entiers 0 et 1 puis on construit à chaque fois l’entier suivant comme la somme des deux précédents :
+\(0, 1, 1, 2, 3, 5 ....\)</p>
+
+<p>Compléter la fonction <code class="language-plaintext highlighter-rouge">fibonacci(n)</code> ci-dessous pour qu’elle renvoie un tableau contenant les <code class="language-plaintext highlighter-rouge">n</code>  premiers termes de la suite de Fibonacci avec <code class="language-plaintext highlighter-rouge">n</code> entier supposé supérieur ou égal à 2. Les deux assertions proposées en tests unitaires, doivent être vérifiées.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1">#à compléter
+</span>
+<span class="c1"># Tests unitaires (vérification de postconditions)
+</span><span class="n">f6</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">f6</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">f30</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">f30</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">==</span> <span class="mi">514229</span>
+</code></pre></div></div>
+<p>:::</p>
+
+<p>:::methode
+Pour stocker  de façon persistante (sur le disque et pas seulement en mémoire vive) des informations  lisibles par un humain, on utilise un <strong>fichier texte</strong> qui est une simple séquence de caractères. Le contenu du fichier doit respecter un  <strong>format</strong> qui fixe  des contraintes pour que les informations soient interprétables lors de la  lecture.  Par exemple le code source d’un programme <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> ou d’une page Web en HTML, un fichier de mesures au format <a href="https://fr.wikipedia.org/wiki/Comma-separated_values">CSV</a>,  sont  des fichiers textes.</p>
+
+<p>Tester les séquences  d’instructions suivantes dans une console <a href="https://docs.python.org/3/tutorial/datastructures.html">Python</a> pour découvrir des manipulations de base de fichiers textes.</p>
+
+<ul>
+  <li>Création d’un fichier <code class="language-plaintext highlighter-rouge">test.txt</code> dans le répertoire de travail</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>   <span class="c1"># ouverture du fichier en écriture
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'10</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>   <span class="c1">#  ligne 1 : '\n'  est un caractère de saut de ligne
+</span><span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'11 12</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>  <span class="c1">#ligne 2  avec 6 caractères 
+</span><span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'13 14 15</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>  <span class="c1">#ligne 3 avec 9 caractères
+</span><span class="mi">9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>   <span class="c1">#fermeture du fichier
+</span></code></pre></div></div>
+
+<ul>
+  <li>Lecture et traitement ligne par ligne du fichier  <code class="language-plaintext highlighter-rouge">test.txt</code> :</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">g</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>  <span class="c1">#ouverture du fichier
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">ligne1</span> <span class="o">=</span> <span class="n">g</span><span class="p">.</span><span class="n">readline</span><span class="p">()</span>  <span class="c1">#lecture de ligne 1
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">ligne1</span>
+<span class="s">'10</span><span class="se">\n</span><span class="s">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ligne1</span><span class="p">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="c1">#nettoyage du caractère de fin de ligne
+</span><span class="s">'10'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">ligne1</span><span class="p">.</span><span class="n">rstrip</span><span class="p">())</span> <span class="c1">#conversion de chaine vers entier
+</span><span class="mi">10</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ligne2</span> <span class="o">=</span> <span class="n">g</span><span class="p">.</span><span class="n">readline</span><span class="p">()</span>  <span class="c1">#lecture de ligne 2
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">ligne2</span>
+<span class="s">'11 12</span><span class="se">\n</span><span class="s">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ligne2</span><span class="p">.</span><span class="n">rstrip</span><span class="p">()</span>  <span class="c1">#nettoyage du caractère de fin de ligne
+</span><span class="s">'11 12'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ligne2</span><span class="p">.</span><span class="n">rstrip</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>  <span class="c1">#découpage de ligne 2 selon le caractère par défaut de séparation ' ', on peut écrire juste split() 
+</span><span class="p">[</span><span class="s">'11'</span><span class="p">,</span> <span class="s">'12'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ligne2</span><span class="p">.</span><span class="n">rstrip</span><span class="p">().</span><span class="n">split</span><span class="p">()]</span>  <span class="c1">#conversion en entier
+</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">g</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>   <span class="c1">#fermeture du fichier
+</span></code></pre></div></div>
+
+<p>:::</p>
+
+<p>:::exercice</p>
+
+<ul>
+  <li><strong>Énoncé :</strong></li>
+</ul>
+
+<p>Comme le disait le grand-père de Joseph Marchand, « Le plus beau voyage est celui qu’on n’a pas encore fait ». New York était dans la tête de Joseph depuis plusieurs années maintenant, et il a décidé aujourd’hui d’acheter son billet d’avion. 
+Quelques secondes avant de cliquer sur le bouton « Acheter ! », son amie Haruhi lui envoie une liste de prix qu’elle a trouvés sur Internet. Joseph est curieux de voir si ces derniers sont moins chers que le billet qu’il s’apprêtait à acheter.</p>
+
+<ul>
+  <li><strong>Entrée :</strong></li>
+</ul>
+
+<p>Sur la première ligne le prix initial du billet de Joseph.
+Sur la deuxième ligne un entier N , correspondant au nombre de billets envoyés par Haruhi. La ligne suivante contient les N prix trouvés par Haruhi.</p>
+
+<ul>
+  <li><strong>Sortie :</strong></li>
+</ul>
+
+<p>Si Haruhi a trouvé au moins 3 prix strictement moins chers que celui de Joseph, affichez « ARNAQUE ! » pour l’avertir. Sinon « Ok bon voyage, bisous, n’oublie pas de m’envoyer des photos ! ».</p>
+
+<ul>
+  <li>
+    <p>Exemple 1 :</p>
+
+    <ul>
+      <li>
+        <p>Entrée :</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  570
+  4
+  495 1200 540 450
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Sortie :</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ARNAQUE !
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Exemple 2:</p>
+    <ul>
+      <li>
+        <p>Entrée :</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>820
+5
+580 2000 970 1050 820
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Sortie :</p>
+      </li>
+    </ul>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Ok bon voyage, bisous, n'oublie pas de m'envoyer des photos !
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<ol>
+  <li>Récupérer les fichiers textes <code class="language-plaintext highlighter-rouge">arnaque-exemple1.txt</code>  et <code class="language-plaintext highlighter-rouge">arnaque-exemple2.txt</code> avec les entrées des deux exemples.</li>
+  <li>En s’inspirant de la méthode de lecture de fichier texte présentée précédemment, compléter la fonction ci-dessous pour qu’elle résolve le problème. Les deux assertions doivent être vérifiées.</li>
+  <li>
+    <p>Se créer un compte sur le site <a href="https://prologin.org/user/register?next=%2F">Prologin</a> et soumettre sa solution au juge en ligne sur <a href="https://prologin.org/train/2019/qualification/arnaque_aerienne">https://prologin.org/train/2019/qualification/arnaque_aerienne</a>.</p>
+
+    <p>Avant de soumettre, remplacer dans la fonction l’instruction <code class="language-plaintext highlighter-rouge">f = open(inputfile)</code> par <code class="language-plaintext highlighter-rouge">f = inputfile</code> et le code du programme principal par :</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">import</span> <span class="nn">sys</span>
+ <span class="n">arnaque</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">sys.stdin</code> est <a href="https://docs.python.org/fr/3/library/sys.html#sys.stdin">l’entrée standard</a> de l’interpréteur Python.</p>
+  </li>
+  <li>Sur la même plateforme, résoudre  cet autre problème du même type : <a href="https://prologin.org/train/2018/qualification/faites_place">https://prologin.org/train/2018/qualification/faites_place</a></li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">arnaque</span><span class="p">(</span><span class="n">inputfile</span><span class="p">):</span>
+    <span class="s">"""Résolution du problème 
+    https://prologin.org/train/2019/qualification/arnaque_aerienne"""</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">inputfile</span><span class="p">)</span>  <span class="c1">#ouverture du  fichier d'entrée
+</span>    <span class="c1"># TO DO à compléter
+</span>    <span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">()</span> 
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># TO DO à compléter
+</span>    <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"ARNAQUE !"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Ok bon voyage, bisous, n'oublie pas de m'envoyer des photos !"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="c1"># Tests unitaires        
+</span><span class="k">assert</span> <span class="n">arnaque</span><span class="p">(</span><span class="s">'arnaque-exemple1.txt'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">arnaque</span><span class="p">(</span><span class="s">'arnaque-exemple2.txt'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Tests unitaires réussis !"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>:::</p>
+
+<p>:::exercice
+Écrire une fonction <code class="language-plaintext highlighter-rouge">maximum_intervalle(t, n)</code> qui prend en paramètres un tableau d’entiers <code class="language-plaintext highlighter-rouge">t</code>  et un entier <code class="language-plaintext highlighter-rouge">n</code> supposé inférieur ou égal à la longueur de <code class="language-plaintext highlighter-rouge">t</code> et qui retourne la somme maximale sur tous les sous-tableaux de longueur <code class="language-plaintext highlighter-rouge">n</code>  inclus dans <code class="language-plaintext highlighter-rouge">t</code> .</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">maximum_intervalle</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+<span class="mi">20</span>
+</code></pre></div></div>
+<p>:::</p>
+
