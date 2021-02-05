@@ -1,4 +1,5 @@
 ---
+layout: parc
 title : Cours sur les dictionnaires
 subtitle: Thème types construits
 author : Première NSI,  [Lycée du Parc](https://frederic-junier.org/)
