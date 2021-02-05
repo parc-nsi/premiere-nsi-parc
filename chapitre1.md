@@ -3,7 +3,7 @@ title:  Chapitre 1  variables et affectations
 layout: parc
 ---
 
-# Chapitre 1 : variables et affectations
+
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
 
