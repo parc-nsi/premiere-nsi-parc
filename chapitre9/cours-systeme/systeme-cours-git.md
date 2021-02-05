@@ -1,34 +1,39 @@
-  - [Crédits](#crédits)
-  - [Chronologie des systèmes
-    d’exploitation](#chronologie-des-systèmes-dexploitation)
-  - [Définition d’un système
-    d’exploitation](#définition-dun-système-dexploitation)
-  - [Interface utilisateur d’un système d’exploitation : le
-    shell](#interface-utilisateur-dun-système-dexploitation-le-shell)
-  - [Attributs du système d’exploitation : le mode
-    noyau](#attributs-du-système-dexploitation-le-mode-noyau)
-  - [Attributs du système d’exploitation : le contrôle de l’activité des
-    programmes](#attributs-du-système-dexploitation-le-contrôle-de-lactivité-des-programmes)
-  - [Attributs du système d’exploitation : le contrôle d’accès aux
-    ressources](#attributs-du-système-dexploitation-le-contrôle-daccès-aux-ressources)
-  - [Attributs du système d’exploitation : le contrôle du système de
-    fichiers](#attributs-du-système-dexploitation-le-contrôle-du-système-de-fichiers)
-      - [Système de fichiers](#système-de-fichiers)
-      - [Gestion des droits et
-        permissions](#gestion-des-droits-et-permissions)
-          - [Utilisateurs et permissions](#utilisateurs-et-permissions)
-          - [Exemples de lectures de
-            permissions](#exemples-de-lectures-de-permissions)
-          - [Modification des droits /
-            permissions](#modification-des-droits-permissions)
-  - [Licence logicielle et système
-    d’exploitation](#licence-logicielle-et-système-dexploitation)
-      - [Contexte historique](#contexte-historique)
-      - [Les différents types de licences
-        logicielles](#les-différents-types-de-licences-logicielles)
-      - [Licences de logiciels libres](#licences-de-logiciels-libres)
-      - [Exemple des systèmes
-        d’exploitation](#exemple-des-systèmes-dexploitation)
+---
+title:  Chapitre  9  système et ligne de commandes
+layout: parc
+---
+
+- [Crédits](#crédits)
+- [Chronologie des systèmes
+  d’exploitation](#chronologie-des-systèmes-dexploitation)
+- [Définition d’un système
+  d’exploitation](#définition-dun-système-dexploitation)
+- [Interface utilisateur d’un système d’exploitation : le
+  shell](#interface-utilisateur-dun-système-dexploitation-le-shell)
+- [Attributs du système d’exploitation : le mode
+  noyau](#attributs-du-système-dexploitation-le-mode-noyau)
+- [Attributs du système d’exploitation : le contrôle de l’activité des
+  programmes](#attributs-du-système-dexploitation-le-contrôle-de-lactivité-des-programmes)
+- [Attributs du système d’exploitation : le contrôle d’accès aux
+  ressources](#attributs-du-système-dexploitation-le-contrôle-daccès-aux-ressources)
+- [Attributs du système d’exploitation : le contrôle du système de
+  fichiers](#attributs-du-système-dexploitation-le-contrôle-du-système-de-fichiers)
+    - [Système de fichiers](#système-de-fichiers)
+    - [Gestion des droits et
+      permissions](#gestion-des-droits-et-permissions)
+        - [Utilisateurs et permissions](#utilisateurs-et-permissions)
+        - [Exemples de lectures de
+          permissions](#exemples-de-lectures-de-permissions)
+        - [Modification des droits /
+          permissions](#modification-des-droits-permissions)
+- [Licence logicielle et système
+  d’exploitation](#licence-logicielle-et-système-dexploitation)
+    - [Contexte historique](#contexte-historique)
+    - [Les différents types de licences
+      logicielles](#les-différents-types-de-licences-logicielles)
+    - [Licences de logiciels libres](#licences-de-logiciels-libres)
+    - [Exemple des systèmes
+      d’exploitation](#exemple-des-systèmes-dexploitation)
 
 <!-- Définition des hyperliens  -->
 

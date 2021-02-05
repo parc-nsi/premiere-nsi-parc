@@ -1,17 +1,22 @@
-  - [Crédits](#crédits)
-  - [Situation d’accroche](#situation-daccroche)
-  - [Définition d’un tableau](#définition-dun-tableau)
-  - [Tableaux en Python](#tableaux-en-python)
-  - [Accès aux éléments d’un tableau](#accès-aux-éléments-dun-tableau)
-  - [Construction d’un tableau](#construction-dun-tableau)
-  - [Opérations sur les tableaux](#opérations-sur-les-tableaux)
-  - [Parcours d’un tableau](#parcours-dun-tableau)
-  - [Aliasing](#aliasing)
-      - [Aliasing et copie de tableau](#aliasing-et-copie-de-tableau)
-      - [Aliasing et passage de tableau en paramètre d’une
-        fonction](#aliasing-et-passage-de-tableau-en-paramètre-dune-fonction)
-  - [Méthodes de tableau dynamique en
-    Python](#méthodes-de-tableau-dynamique-en-python)
+---
+title:  Chapitre  6  tableaux
+layout: parc
+---
+- [Crédits](#crédits)
+- [Situation d’accroche](#situation-daccroche)
+- [Définition d’un tableau](#définition-dun-tableau)
+- [Tableaux en Python](#tableaux-en-python)
+- [Accès aux éléments d’un tableau](#accès-aux-éléments-dun-tableau)
+- [Construction d’un tableau](#construction-dun-tableau)
+- [Opérations sur les tableaux](#opérations-sur-les-tableaux)
+- [Parcours d’un tableau](#parcours-dun-tableau)
+- [Aliasing](#aliasing)
+  - [Aliasing et copie de tableau](#aliasing-et-copie-de-tableau)
+  - [Aliasing et passage de tableau en paramètre d’une fonction](#aliasing-et-passage-de-tableau-en-paramètre-dune-fonction)
+- [Méthodes de tableau dynamique en Python](#méthodes-de-tableau-dynamique-en-python)
+      fonction](#aliasing-et-passage-de-tableau-en-paramètre-dune-fonction)
+- [Méthodes de tableau dynamique en
+  Python](#méthodes-de-tableau-dynamique-en-python)
 
 <!-- Définition des hyperliens  -->
 
