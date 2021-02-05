@@ -5,7 +5,7 @@ h2:nth-child(1n+1) { counter-increment: num_partie; /* mise à jour du compteur 
 
 h2:before { content: counter(num_partie) " - "; /* mise en forme du compteur num_partie */ }
 
-img:not(img[href^="https://latex.codecogs.com"]) { display: block; border: 1px dashed #17A2B8; margin: 5px auto; border-radius: 6px; padding: 5px; max-width: 85%; text-align: center; }
+img:not([src^="https://latex.codecogs.com"]) { display: block; border: 1px dashed #17A2B8; margin: 5px auto; border-radius: 6px; padding: 5px; max-width: 85%; text-align: center; }
 
 iframe { display: block; border: 1px dashed #17A2B8; margin: 5px auto; border-radius: 6px; padding: 5px; }
 
