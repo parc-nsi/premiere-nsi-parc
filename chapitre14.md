@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 14 : complexité
+title:  Chapitre 14  complexité
 layout: parc
 ---
 

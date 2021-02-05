@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 12 : codage des caractères
+title:  Chapitre 12  codage des caractères
 layout: parc
 ---
 

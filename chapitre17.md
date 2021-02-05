@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 17 : architecture de Von Neumann
+title:  Chapitre 17  architecture de Von Neumann
 layout: parc
 ---
 

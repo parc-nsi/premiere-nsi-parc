@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 16 : flottants
+title:  Chapitre 16  flottants
 layout: parc
 ---
 

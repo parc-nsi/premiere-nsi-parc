@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 13 : circuits logiques et fonctions booléennes
+title:  Chapitre 13  circuits logiques et fonctions booléennes
 layout: parc
 ---
 

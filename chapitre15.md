@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 15 : p-uplets
+title:  Chapitre 15  p-uplets
 layout: parc
 ---
 
