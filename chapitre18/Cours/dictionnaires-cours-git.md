@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 18 : cours sur les dictionnaires
+title:  Chapitre 18, cours sur les dictionnaires
 layout: parc
 ---
 
