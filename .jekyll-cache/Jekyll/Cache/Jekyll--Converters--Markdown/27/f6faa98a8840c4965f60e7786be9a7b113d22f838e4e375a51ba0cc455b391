@@ -1,0 +1,42 @@
+I"A<h1 id="séance-du-26112020">Séance du 26/11/2020</h1>
+
+<p><a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d’accueil</a></p>
+
+<h2 id="automatismes-">Automatismes :</h2>
+
+<p>Faire l’automatisme 7 sur <a href="https://parc-nsi.github.io/premiere-nsi/automatismes.html">https://parc-nsi.github.io/premiere-nsi/automatismes.html</a>.</p>
+
+<p><strong><a href="automatismes/automatismes.py">Corrigé des automatismes</a></strong></p>
+
+<h2 id="chapitre-9--systèmes">Chapitre 9 : systèmes</h2>
+
+<p>Lien vers la page du chapitre :  <a href="https://parc-nsi.github.io/premiere-nsi/chapitre9.html">https://parc-nsi.github.io/premiere-nsi/chapitre9.html</a>.</p>
+
+<h3 id="exemples-du-memento-shell-">Exemples du memento shell :</h3>
+
+<p>Vous devez traiter tous les exemples décrits dans le <a href="../chapitre9/memento-shell/memento-shell-git.md">Memento shell</a> à partir du dossier jouet fourni dans cette <a href="../chapitre9/memento-shell/sandbox.zip">archive sandbox.zip</a></p>
+
+<h3 id="distribution-du-cours-sur-les-systèmes-dexploitation-">Distribution du cours sur les systèmes d’exploitation :</h3>
+
+<ul>
+  <li><a href="../chapitre9/cours-systeme/systeme-cours-git.md">Cours version markdown</a></li>
+</ul>
+
+<h3 id="travail-à-faire">Travail à faire</h3>
+
+<ul>
+  <li>Pour jeudi 3 décembre :
+    <ul>
+      <li>Lire le <a href="../chapitre9/cours-systeme/systeme-cours-git.md">cours sur les systèmes d’exploitation</a> et répondre au seul exercice.</li>
+      <li>Regarder cette video de présentation des systèmes d’exploitations : <a href="https://www.lumni.fr/video/comprendre-ce-qu-est-un-systeme-d-exploitation">https://www.lumni.fr/video/comprendre-ce-qu-est-un-systeme-d-exploitation</a></li>
+      <li>Faire le QCM sur les système d’exploitations et la ligne de commandes :
+        <ul>
+          <li>Énoncé : <a href="https://genumsi.inria.fr/qcm.php?h=629a91f29647762dda098d895fcb2d33">https://genumsi.inria.fr/qcm.php?h=629a91f29647762dda098d895fcb2d33</a></li>
+          <li>Corrigé :</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+:ET

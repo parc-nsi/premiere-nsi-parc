@@ -1,0 +1,44 @@
+I"{	<h1 id="séance-du-28012021">Séance du 28/01/2021</h1>
+
+<p><a href="https://parc-nsi.github.io/premiere-nsi/index.html">Retour à la page d’accueil</a></p>
+
+<h2 id="automatismes">Automatismes</h2>
+
+<ul>
+  <li><a href="https://parc-nsi.github.io/premiere-nsi/automatismes.html">automatismes 15 et 16</a> sur les tables de vérité et les flottants</li>
+</ul>
+
+<h2 id="types-construits--les-p-uplets">Types construits : les <code class="language-plaintext highlighter-rouge">p-uplets</code></h2>
+
+<ul>
+  <li>Retour sur l’exercice 3  du <a href="../chapitre15/TP/NSI-Puplets-TP-2020V1.pdf">TP sur les tuplets</a></li>
+  <li>Lien pour télécharger le fichier <a href="../chapitre15/TP/materiel/communes69.csv">communes69.csv</a></li>
+  <li>Lien pour télécharger le fichier <a href="../chapitre15/TP/materiel/TP-puplets-eleves2.py">TP-puplets-eleves2.py</a></li>
+  <li><a href="../chapitre15.md">Lien vers le chapitre 15 p-uplets</a></li>
+</ul>
+
+<h2 id="préparation-du-ds-5">Préparation du DS 5</h2>
+
+<ul>
+  <li>Exemples d’exercices issus de la banque de l’épreuve pratique du bac 2021 :
+    <ul>
+      <li><a href="https://parc-nsi.github.io/premiere-nsi/automatismes.html">automatismes 17 à 24</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="travail-à-faire-pour-le-jeudi-402">Travail à faire pour le jeudi 4/02</h2>
+
+<ul>
+  <li>DS d’une heure sur les chapitres suivants :
+    <ul>
+      <li>algorithmes de tri et de recherche séquentielle ou dichotomique (revoir le cours, le DS précédent et  les automatismes 16 à 23)</li>
+      <li>tables de vérité et expressions booléennes (en QCM) : revoir l’exercice 6 du cours sur les circuits logiques et les expressions booléennes : <a href="https://parc-nsi.github.io/premiere-nsi/chapitre13/cours-circuits-logiques-git.html">https://parc-nsi.github.io/premiere-nsi/chapitre13/cours-circuits-logiques-git.html</a>  =&gt; pas de circuits logiques dans le DS</li>
+      <li>flottants =&gt; une question simple en QCM</li>
+      <li>complexité =&gt; un exercice simple</li>
+      <li>architecture de Von Neumann (en QCM), revoir les points histoire 1 à 5 et les points essentiels du cours 1 et 2 du <a href="https://parc-nsi.github.io/premiere-nsi/chapitre17/NSI-ArchitectureVonNeumann-Cours2020V2.pdf">https://parc-nsi.github.io/premiere-nsi/chapitre17/NSI-ArchitectureVonNeumann-Cours2020V2.pdf</a>. Pas d’assembleur dans le DS.</li>
+    </ul>
+  </li>
+</ul>
+
+:ET
