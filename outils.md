@@ -1,7 +1,6 @@
 ---
 layout: parc
 title:  "Outils et ressources techniques pour le cours de NSI"
-permalink: /:basename
 ---
 
 
