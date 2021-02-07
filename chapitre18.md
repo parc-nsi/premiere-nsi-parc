@@ -1,5 +1,5 @@
 ---
-title:  Chapitre 18 : dictionnaires
+title:  Chapitre 18,  dictionnaires
 layout: parc
 ---
 
