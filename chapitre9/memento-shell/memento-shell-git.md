@@ -1,13 +1,21 @@
-  - [Crédits](#crédits)
-  - [Un premier exemple de commande](#un-premier-exemple-de-commande)
-  - [Naviguer dans l’arborescence du système de
-    fichiers](#naviguer-dans-larborescence-du-système-de-fichiers)
-  - [Copier, supprimer, déplacer un
-    fichier](#copier-supprimer-déplacer-un-fichier)
-  - [Expansion des noms de fichiers et
-    *globbing*](#expansion-des-noms-de-fichiers-et-globbing)
-  - [Gestion des droits sur les
-    fichiers](#gestion-des-droits-sur-les-fichiers)
+---
+title: Memento shell
+layout: parc
+---
+
+- [Crédits](#crédits)
+- [Un premier exemple de commande](#un-premier-exemple-de-commande)
+- [Naviguer dans l’arborescence du système de fichiers](#naviguer-dans-larborescence-du-système-de-fichiers)
+- [Copier, supprimer, déplacer un fichier](#copier-supprimer-déplacer-un-fichier)
+- [Expansion des noms de fichiers et *globbing*](#expansion-des-noms-de-fichiers-et-globbing)
+- [Gestion des droits sur les fichiers](#gestion-des-droits-sur-les-fichiers)
+  fichiers](#naviguer-dans-larborescence-du-système-de-fichiers)
+- [Copier, supprimer, déplacer un
+  fichier](#copier-supprimer-déplacer-un-fichier)
+- [Expansion des noms de fichiers et
+  *globbing*](#expansion-des-noms-de-fichiers-et-globbing)
+- [Gestion des droits sur les
+  fichiers](#gestion-des-droits-sur-les-fichiers)
 
 <!-- Définition des hyperliens  -->
 
