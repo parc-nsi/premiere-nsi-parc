@@ -29,4 +29,5 @@ layout: parc
     * le [sujet](Projets/Compression/PremiereNSI-DM-Compression-2021V2.pdf)
     * le [matériel](Projets/Compression/materiel_compression_eleve.zip)
     * le [bac à sable](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=Projets/Compression/sandbox_PIL.ipynb) pour ceux qui ne réussiraient pas à installer PIL
+    * [notebook basthon](https://frama.link/ExemplesOperationsBytes2)   avec des exemples de manipulations de `bytes`. 
 * Pour aller plus loin, les plus motivés peuvent traiter la deuxième partie qui était proposée dans la version initiale du sujet avec l'implémentation l'algorithme de compression par dictionnaire LZW.  [ancienne version du sujet](Projets/Compression/PremiereNSI-DM-Compression-2021V1.pdf). Les ressources se trouvent dans le dossier `Projets/Compression` du dépôt.
