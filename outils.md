@@ -39,7 +39,7 @@ Il est indispensable d'installer un éditeur de textes sur sa plateforme, pour �
 ## Plateformes d'entraînement 
 
 * [France IOI](http://www.france-ioi.org/) : l'inscription est fortement recommandée, nous avons créé un groupe ParcPremiereNSI.
-   <iframe width="400" height="225" sandbox="allow-same-origin allow-scripts allow-popups" src="presentation-franceioi.mp4" frameborder="0" allowfullscreen></iframe>
+   <iframe width="400" height="169" sandbox="allow-same-origin allow-scripts allow-popups" src="presentation-franceioi.mp4" frameborder="0" allowfullscreen></iframe>
 
 * Pour s'entraîner sur les constructions élémentaires (boucles, tests, variables, procédures, listes), France IOI propose désormais un parcours en ligne avec le module `turtle`  : <http://www.france-ioi.org/progresser/>
 
