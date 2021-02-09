@@ -27,7 +27,7 @@ title:  "Ressources pour le cours de NSI"
 
     [Captation vidéo de la conférence](https://tube.ac-lyon.fr/videos/watch/2f7065e3-13c7-432c-80cc-94e769d38272)
 
-<iframe width="3400" height="169" sandbox="allow-same-origin allow-scripts allow-popups" src="https://tube.ac-lyon.fr/videos/embed/2f7065e3-13c7-432c-80cc-94e769d38272" frameborder="0" allowfullscreen></iframe>
+<iframe width="300" height="169" sandbox="allow-same-origin allow-scripts allow-popups" src="https://tube.ac-lyon.fr/videos/embed/2f7065e3-13c7-432c-80cc-94e769d38272" frameborder="0" allowfullscreen></iframe>
 
 * [Conférence de Gérard Berry sur l'importance des langages en informatique (à partie de la minute 12)](https://www.college-de-france.fr/site/gerard-berry/course-2015-11-04-16h00.htm)
 
