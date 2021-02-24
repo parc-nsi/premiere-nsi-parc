@@ -1,5 +1,4 @@
 ---
-layout: parc
 title : Cours sur les dictionnaires
 subtitle: Thème types construits
 author : Première NSI,  [Lycée du Parc](https://frederic-junier.org/)
@@ -21,6 +20,7 @@ geometry:
  
 _Ce cours est inspiré du chapitre 14 du manuel NSI de la collection Tortue chez Ellipse,  auteurs : Ballabonski, Conchon, Filliatre, N'Guyen. J'ai également consulté le prepabac Première NSI de Guillaume Connan chez Hatier, le [document ressource  eduscol sur les types construits](https://cache.media.eduscol.education.fr/file/NSI/77/7/RA_Lycee_G_NSI_repd_types_construits_1170777.pdf) et le livre __Fluent Python__._
 
+_Tous les exemples du cours peuvent être testés dans le fichier [exemples_cours_dictionnaires_eleves.py](exemples_cours_dictionnaires_eleves.py)._
 
 
 #  `p-uplets` nommés et dictionnaires
@@ -51,7 +51,7 @@ Il serait plus lisible de disposer d'un __tuple__ à _champs nommés_  et de pou
 
 
 :::definition
-Un __p-uplet nommé__ (ou __tuple nommé__) est un __p-uplet__ dont chaque __élément__ (ou __champ__) est repérée par un nom et non pas par un entier. Ces __noms__ sont appelés __clefs__ ou __descripteurs__ du __p-uplet__, qui s'écrit entre accolades  avec une virgule séparant chaque paire  constitué de la clef et de la valeur de la composante séparées par le symbole `:`.   
+Un __p-uplet nommé__ (ou __tuple nommé__) est un __p-uplet__ dont chaque __élément__ (ou __champ__) est repéré par un nom et non  par un entier. Ces __noms__ sont appelés __clefs__ ou __descripteurs__ du __p-uplet nommé__. Celui-ci s'écrit entre accolades  avec une virgule séparant chaque paire  constituée de la clef et de la valeur de la composante séparées par le symbole `:`.   
 
 En [Python][Python], les __p-uplets nommés__  sont implémentés par les __dictionnaires__ de type `dict`. Par la suite nous parlerons de __dictionnaire__ plutôt que de __p-uplet nommé__.
 
@@ -75,8 +75,8 @@ KeyError: 2
 # Un exemple  de dictionnaire : les metadonnées EXIF d'une photo numérique
 
 
-Les photos prises avec un appareil numérique contiennent de nombreuses informations. Dans le fichier image, par exemple au format `jpeg`, sont stockées des données non seulement sur l’image elle-même mais aussi sur l’appareil, le logiciel utilisé, et en particulier des données [EXIF](https://fr.wikipedia.org/wiki/Exchangeable_image_file_format) (Exchangeable Image File Format). Une partie est accessible dans les propriétés de fichier ou avec un logiciel de traitement d’images.
-Les spécifications sont gérées par un organisme japonais, le JEITA, qui définit différents dictionnaires de référence permettant d’accéder à ces données. Les clés (les tags) et les valeurs sont des nombres écrits dans l’entête du fichier. Les dictionnaires donnent l’interprétation de ces clés. Par exemple la clé 256 a pour valeur 'Width' , la largeur de l’image en pixel, la clé 257 a pour
+Les photos prises avec un appareil numérique contiennent de nombreuses informations. Dans un fichier image, par exemple au format `jpeg`, sont stockées des données non seulement sur l’image elle-même mais aussi  des __metadonnées__ sur l’appareil, le logiciel utilisé, et en particulier des données [EXIF](https://fr.wikipedia.org/wiki/Exchangeable_image_file_format) (Exchangeable Image File Format). Une partie est accessible dans les propriétés de fichier ou avec un logiciel de traitement d’images.
+Les spécifications sont gérées par un organisme japonais, le JEITA, qui définit différents dictionnaires de référence permettant d’accéder à ces données. Les clés (les tags) et les valeurs sont des nombres écrits dans l’entête du fichier. Les dictionnaires donnent l’interprétation de ces clés. Par exemple la clé 256 a pour valeur 'Width' , la largeur de l’image en pixel et la clé 257 a pour
 valeur 'Length' , la hauteur de l'image en pixel. 
 
 ![données exif](images/exif.png){width=50%}\
@@ -84,10 +84,13 @@ valeur 'Length' , la hauteur de l'image en pixel.
 _Source : <https://commons.wikimedia.org/wiki/File:DigiKam_EXIF_information_screenshot.png>_
 
 :::exercice
-On peut extraite les données EXIF avec le logiciel [exiftool](https://exiftool.org/) ou sous forme de dictionnaire [Python][Python] avec le module  [pyexiftool](https://smarnach.githeub.io/pyexiftool/).
-La fonction ci-dessous permet par exemple d'extraire les données [EXIF](https://fr.wikipedia.org/wiki/Exchangeable_image_file_format) d'un fichier image sous forme de dictionnaire.
+On peut extraite les données EXIF avec le logiciel [exiftool](https://exiftool.org/), le plugin Firefox [exifviewer](https://addons.mozilla.org/fr/firefox/addon/exif-viewer/) ou sous forme de dictionnaire [Python][Python] avec le module  [pyexiftool](https://smarnach.githeub.io/pyexiftool/).
+Le script Python `exiftool_test.py` ci-dessous contient une fonction qui extrait les données [EXIF](https://fr.wikipedia.org/wiki/Exchangeable_image_file_format) d'un fichier image passé en paramètre,  sous la forme de dictionnaire.
 
 ~~~python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import sys
 import exiftool
 
 def extraire_exif(fichier):
@@ -96,12 +99,22 @@ def extraire_exif(fichier):
     metadata = et.get_metadata(fichier)
     et.terminate()
     return metadata
+
+#code client exécuté si script exécuté directement
+if __name__ == "__main__": 
+    #extrait les données exif du fichier passé en paramètre
+    print(extraire_exif(sys.argv[1]))
 ~~~
 
 1. Télécharger la photo <http://frederic-junier.org/SNT/images/20181230_162625.jpg>.
 2. Extraire ses données [EXIF](https://fr.wikipedia.org/wiki/Exchangeable_image_file_format) avec [exiftool](https://exiftool.org/) ou le script [Python][Python], puis retrouver la commune où elle  a été prise. Voici une partie du dictionnaire obtenu :
 ~~~python
->>> metadata = extraire_exif('20181230_162625.jpg')
+fjunier@fjunier:~/sandbox$ sudo apt install libimage-exiftool-perl
+fjunier@fjunier:~/sandbox$ pip3 install --user pyexiftool
+fjunier@fjunier:~/sandbox$ chmod +x exiftool_test.py 
+fjunier@fjunier:~/sandbox$ ls -l exiftool_test.py 
+-rwxrwxr-x 1 fjunier fjunier 355 févr. 24 21:50 exiftool_test.py
+fjunier@fjunier:~/sandbox$ ./exiftool_test.py image_mystere.jpg 
 {..., 'EXIF:Make': 'samsung', 'EXIF:Model': 'SM-G930F', 'EXIF:Orientation': 1, 'EXIF:XResolution': 72,
  'EXIF:YResolution': 72, 'EXIF:ResolutionUnit': 2, 'EXIF:Software': 'G930FXXU3ERL3', 'EXIF:ModifyDate': '2018:12:30 16:26:24', 'EXIF:YCbCrPositioning': 1, 'EXIF:ExposureTime': 0.0005733944954, 'EXIF:FNumber': 1.7, 'EXIF:ExposureProgram': 2, 'EXIF:ISO': 50,
  'EXIF:ExifVersion': '0220', 'EXIF:DateTimeOriginal': '2018:12:30 16:26:24', 'EXIF:CreateDate': '2018:12:30 16:26:24', 'EXIF:ComponentsConfiguration': '1 2 3 0', 'EXIF:ShutterSpeedValue': '0.000572673315054629', 'EXIF:ApertureValue': 1.6993699982773, 'EXIF:BrightnessValue': 8.36,
@@ -168,7 +181,7 @@ Donner des expressions qui permettent de définir les dictionnaires ci-dessous p
 
 :::methode
 
-* L'accès, la modification, l'ajout d'un élément se fait avec l'opérateur crochet :  `dico[clef]` retourne la valeur appairée avec la clef donnée dans le dictionnaire `dico`. 
+* L'accès, la modification, l'ajout d'un élément se fait avec l'opérateur crochet :  `dico[clef]` renvoie la valeur appairée avec la clef donnée dans le dictionnaire `dico`. 
 Le nombre d'éléments est donné par la fonction `len`, mais les éléments sont indexés par les clefs et non par des entiers : _il n'y a pas de notion d'ordre dans un dictionnaire._
 Comme les tableaux de type `list` et contrairement aux __p-uplets__  de type `tuple`, les dictionnaires de type `dict` sont  modifiables après modification , on dit qu'ils sont __mutables__.  Un dictionnaire peut être construit par ajout successif de paires `clef : valeur` à partir du dictionnaire vide `{}`. Enfin, on peut supprimer un élément si on connaît sa `clef` avec `del dico[clef]`. 
 
@@ -207,7 +220,7 @@ Traceback (most recent call last):
 TypeError: unhashable type: 'list'
 ~~~
 
-* Une dictionnaire ne peut pas être une clef, mais peut être une valeur dans un autre dictionnaire. On peut définir toutes sortes de  structures imbriquées comme des tableaux de dictionnaires ...
+* Une dictionnaire ne peut pas être une clef, mais peut être une valeur dans un autre dictionnaire. On peut définir toutes sortes de  __structures imbriquées__ comme des tableaux de dictionnaires ...
 
 ~~~python
 >>> vols = {'Lisbonne': {'heure': '21:10','num': 'EJU7674','compagnie': 'EASYJET'},
@@ -222,7 +235,7 @@ TypeError: unhashable type: 'list'
   'altitude': '3435',  'code_pays': 'US'}]
 ~~~
 
-* Avec l'opérateur crochet, si une clef n'appartient à un dictionnaire, une exception (erreur en [Python][Python]) est levée.  La méthode `get` permet de retourner la valeur `None` par défaut si on ne veut pas d'erreur.
+* Avec l'opérateur crochet, si une clef n'appartient pas à un dictionnaire, une exception (erreur en [Python][Python]) est levée.  La méthode `get` permet de retourner la valeur `None` par défaut si on ne veut pas d'erreur.
 
 ~~~python
 >>> prix_turing2006 = {'nom' : 'Frances Allen', 'sujet' : 'Optimisation des compilateurs'}
@@ -260,7 +273,7 @@ contacts = {\'Paul\': \'0601010182\', \'Jacques\': \'0602413824\',
 \'Claire\': \'0632451153\'}
 
 Quelle instruction écrire pour ajouter à ce dictionnaire un nouveau
-contact nommé Juliette avec le numéro de téléphone 0603040506 ?
+contact nommé Juliette avec le numéro de téléphone '0603040506' ?
 
 **Réponses**
 
@@ -388,7 +401,7 @@ Clef -> Paul  Valeur -> 0640507080
 Clef -> Marie  Valeur -> 0742516483
 Clef -> Hicham  Valeur -> 0987416543
 ~~~
-  * _L'ordre de parcours n'est pas forcément l'ordre d'insertion car un dictionnaire n'est pas ordonné_ Ainsi, on ne peut pas parcourir  un dictionnaire par index avec `for k in range(len(dico))`.
+  * _L'ordre de parcours n'est pas forcément l'ordre d'insertion car un dictionnaire n'est pas ordonné_. (même si c'est vrai à partir de Python 3.8). Ainsi, on ne peut pas parcourir  un dictionnaire par index avec `for k in range(len(dico))`.
 ~~~python
 >>> for k in range(len(dico)):
 ...     print(dico[k])
@@ -438,7 +451,7 @@ dico = {"a" : True, "b" : False, "c" : True}
 1. Quels sont les affichages possibles lors de l'exécution du code suivant ?
 
 ~~~python
-for clef in dico.keys()
+for clef in dico.keys():
   print(clef, end=" ")
 ~~~
 
@@ -495,11 +508,11 @@ ajout(contact_ami, 'Napoleon', '0618001814')
 # Performance
 
 :::propriete
-Les dictionnaires de type `dict` sont implémentés en [Python][Python] par des  [tables de hachage](https://fr.wikipedia.org/wiki/Table_de_hachage) qui est une structure de données très efficace pour le test d'appartenance, la recherche ou l'insertion d'élément. On peut considérer que ces opérations se font en temps quasiment constant, c'est-à-dire indépendant de la taille du dictionnaire alors que la recherche et le test d'appartenance s'effectue en temps linéaire en moyenne (proportionnel à la taille du tableau) pour les tableaux de type `list` ou les `tuple`. Cet optimisation des performances en temps se fait au détriment de l'occupation en espace, les dictionnaires étant plus gourmands en mémoire que les tableaux.
+Les dictionnaires de type `dict` sont implémentés en [Python][Python] par des  [tables de hachage](https://fr.wikipedia.org/wiki/Table_de_hachage) qui est une structure de données très efficace pour le test d'appartenance, la recherche ou l'insertion d'élément. On peut considérer que ces opérations se font en __temps quasiment constant__, c'est-à-dire indépendant de la taille du dictionnaire alors que la recherche et le test d'appartenance s'effectue en __temps linéaire en moyenne__ (proportionnel à la taille du tableau) pour les tableaux de type `list` ou les `tuple`. Cet optimisation des performances en temps se fait au détriment de l'occupation en espace, les dictionnaires étant plus gourmands en mémoire que les tableaux.
 
 On donne ci-dessous un comparatif de temps d'exécutions pour la recherche de 1000 flottants d'un tableau `needle` (aiguilles) de taille 500, dans des tableaux de flottants `haystack` (meule de foin)  de  taille croissante $10^{k}$   avec $k \in \{3,4,5,6,7\}$.  Pour chaque test, les éléments de `haystack` et `needle`sont tous distincts et la moitié de `needle` est dans `haystack`.  
 
-Le code de cet exemple, tiré de l'ouvrage Python Fluent  de Luciano Ramalho, est disponible avec nos commentaires dans l'archive [test_performance_in.zip](https://gitlab.com/frederic-junier/nsi/-/blob/master/TypesConstruits/Dictionnaires/Cours/ressources/test_performance_in.zip).
+Le code de cet exemple, tiré de l'ouvrage Python Fluent  de Luciano Ramalho, est disponible avec nos commentaires dans l'archive [test_performance_in.zip](test_performance_in.zip).
 
 ~~~
 Type de conteneur dict
@@ -543,8 +556,8 @@ Temps minimum de recherche de 1000 aiguilles (sur 5 recherches):84.754335s
 # Synthèse
 
 :::memo
-* Le type construit  __p-uplet nommé__ est une séquence non ordonnée d'éléments qui sont des paires `(clef, valeur)` ou `clef : valeur`. Chaque `valeur` est indexée  par sa `clef`  et non par un index entier comme dans __p-uplet__.
-* En [Python][Python] un __p-uplet nommé__ est un __dictionnaire__  de type `dict` implémenté par une table de hachage qui permet des opérations très performantes en temps constant.
+* Le type construit  __p-uplet nommé__ est une séquence non ordonnée d'éléments qui sont des paires `(clef, valeur)` ou `clef : valeur`. Chaque `valeur` est indexée  par sa `clef`  et non par un index entier comme dans un __p-uplet__.
+* En [Python][Python] un __p-uplet nommé__ est un __dictionnaire__  de type `dict` implémenté par une table de hachage qui permet des opérations très performantes en __temps constant__.
 * L'accès, l'ajout, la modification d'un dictionnaire s'effectue avec l'opérateur crochet et la syntaxe `dico[clef] = valeur`.
 * Une variable de type `dict` est une __référence__ et elle peut  être modifiée par effet de bord car 
 c'est une valeur __mutable__.

@@ -1,8 +1,16 @@
----
-title:  Chapitre 18, cours sur les dictionnaires
-layout: parc
----
-
+  - [Crédits](#crédits)
+  - [`p-uplets` nommés et
+    dictionnaires](#p-uplets-nommés-et-dictionnaires)
+  - [Un exemple de dictionnaire : les metadonnées EXIF d’une photo
+    numérique](#un-exemple-de-dictionnaire-les-metadonnées-exif-dune-photo-numérique)
+  - [Création de dictionnaire](#création-de-dictionnaire)
+  - [Accès, ajout, suppression d’élément dans un
+    dictionnaire](#accès-ajout-suppression-délément-dans-un-dictionnaire)
+  - [Parcours de dictionnaire](#parcours-de-dictionnaire)
+  - [Références partagées et
+    mutabilité](#références-partagées-et-mutabilité)
+  - [Performance](#performance)
+  - [Synthèse](#synthèse)
 
 <!-- Définition des hyperliens  -->
 
@@ -14,6 +22,9 @@ J’ai également consulté le prepabac Première NSI de Guillaume Connan
 chez Hatier, le [document ressource eduscol sur les types
 construits](https://cache.media.eduscol.education.fr/file/NSI/77/7/RA_Lycee_G_NSI_repd_types_construits_1170777.pdf)
 et le livre **Fluent Python**.*
+
+*Tous les exemples du cours peuvent être testés dans le fichier
+[exemples\_cours\_dictionnaires\_eleves.py](exemples_cours_dictionnaires_eleves.py).*
 
 # `p-uplets` nommés et dictionnaires
 
@@ -52,10 +63,10 @@ de pouvoir accéder à la valeur d’un champ par son nom. C’est le dernier
 **Définition 1**
 
 Un **p-uplet nommé** (ou **tuple nommé**) est un **p-uplet** dont chaque
-**élément** (ou **champ**) est repérée par un nom et non pas par un
-entier. Ces **noms** sont appelés **clefs** ou **descripteurs** du
-**p-uplet**, qui s’écrit entre accolades avec une virgule séparant
-chaque paire constitué de la clef et de la valeur de la composante
+**élément** (ou **champ**) est repéré par un nom et non par un entier.
+Ces **noms** sont appelés **clefs** ou **descripteurs** du **p-uplet
+nommé**. Celui-ci s’écrit entre accolades avec une virgule séparant
+chaque paire constituée de la clef et de la valeur de la composante
 séparées par le symbole `:`.
 
 En [Python](https://docs.python.org/3/tutorial/datastructures.html), les
@@ -85,9 +96,10 @@ KeyError: 2
 # Un exemple de dictionnaire : les metadonnées EXIF d’une photo numérique
 
 Les photos prises avec un appareil numérique contiennent de nombreuses
-informations. Dans le fichier image, par exemple au format `jpeg`, sont
-stockées des données non seulement sur l’image elle-même mais aussi sur
-l’appareil, le logiciel utilisé, et en particulier des données
+informations. Dans un fichier image, par exemple au format `jpeg`, sont
+stockées des données non seulement sur l’image elle-même mais aussi des
+**metadonnées** sur l’appareil, le logiciel utilisé, et en particulier
+des données
 [EXIF](https://fr.wikipedia.org/wiki/Exchangeable_image_file_format)
 (Exchangeable Image File Format). Une partie est accessible dans les
 propriétés de fichier ou avec un logiciel de traitement d’images. Les
@@ -96,7 +108,7 @@ définit différents dictionnaires de référence permettant d’accéder à
 ces données. Les clés (les tags) et les valeurs sont des nombres écrits
 dans l’entête du fichier. Les dictionnaires donnent l’interprétation de
 ces clés. Par exemple la clé 256 a pour valeur ‘Width’ , la largeur de
-l’image en pixel, la clé 257 a pour valeur ‘Length’ , la hauteur de
+l’image en pixel et la clé 257 a pour valeur ‘Length’ , la hauteur de
 l’image en pixel.
 
 ![données exif](images/exif.png)  
@@ -107,14 +119,20 @@ l’image en pixel.
 **Exercice 1**
 
 On peut extraite les données EXIF avec le logiciel
-[exiftool](https://exiftool.org/) ou sous forme de dictionnaire
+[exiftool](https://exiftool.org/), le plugin Firefox
+[exifviewer](https://addons.mozilla.org/fr/firefox/addon/exif-viewer/)
+ou sous forme de dictionnaire
 [Python](https://docs.python.org/3/tutorial/datastructures.html) avec le
-module [pyexiftool](https://smarnach.githeub.io/pyexiftool/). La
-fonction ci-dessous permet par exemple d’extraire les données
+module [pyexiftool](https://smarnach.githeub.io/pyexiftool/). Le script
+Python `exiftool_test.py` ci-dessous contient une fonction qui extrait
+les données
 [EXIF](https://fr.wikipedia.org/wiki/Exchangeable_image_file_format)
-d’un fichier image sous forme de dictionnaire.
+d’un fichier image passé en paramètre, sous la forme de dictionnaire.
 
 ``` python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import sys
 import exiftool
 
 def extraire_exif(fichier):
@@ -123,6 +141,11 @@ def extraire_exif(fichier):
     metadata = et.get_metadata(fichier)
     et.terminate()
     return metadata
+
+#code client exécuté si script exécuté directement
+if __name__ == "__main__": 
+    #extrait les données exif du fichier passé en paramètre
+    print(extraire_exif(sys.argv[1]))
 ```
 
 1.  Télécharger la photo
@@ -137,7 +160,12 @@ def extraire_exif(fichier):
 <!-- end list -->
 
 ``` python
->>> metadata = extraire_exif('20181230_162625.jpg')
+fjunier@fjunier:~/sandbox$ sudo apt install libimage-exiftool-perl
+fjunier@fjunier:~/sandbox$ pip3 install --user pyexiftool
+fjunier@fjunier:~/sandbox$ chmod +x exiftool_test.py 
+fjunier@fjunier:~/sandbox$ ls -l exiftool_test.py 
+-rwxrwxr-x 1 fjunier fjunier 355 févr. 24 21:50 exiftool_test.py
+fjunier@fjunier:~/sandbox$ ./exiftool_test.py image_mystere.jpg 
 {..., 'EXIF:Make': 'samsung', 'EXIF:Model': 'SM-G930F', 'EXIF:Orientation': 1, 'EXIF:XResolution': 72,
  'EXIF:YResolution': 72, 'EXIF:ResolutionUnit': 2, 'EXIF:Software': 'G930FXXU3ERL3', 'EXIF:ModifyDate': '2018:12:30 16:26:24', 'EXIF:YCbCrPositioning': 1, 'EXIF:ExposureTime': 0.0005733944954, 'EXIF:FNumber': 1.7, 'EXIF:ExposureProgram': 2, 'EXIF:ISO': 50,
  'EXIF:ExifVersion': '0220', 'EXIF:DateTimeOriginal': '2018:12:30 16:26:24', 'EXIF:CreateDate': '2018:12:30 16:26:24', 'EXIF:ComponentsConfiguration': '1 2 3 0', 'EXIF:ShutterSpeedValue': '0.000572673315054629', 'EXIF:ApertureValue': 1.6993699982773, 'EXIF:BrightnessValue': 8.36,
@@ -150,6 +178,8 @@ def extraire_exif(fichier):
 ```
 
 # Création de dictionnaire
+
+**Méthode 1**
 
 Il existe plusieurs façons de construire un dictionnaire :
 
@@ -210,8 +240,10 @@ ci-dessous par compréhension :
 
 # Accès, ajout, suppression d’élément dans un dictionnaire
 
+**Méthode 2**
+
   - L’accès, la modification, l’ajout d’un élément se fait avec
-    l’opérateur crochet : `dico[clef]` retourne la valeur appairée
+    l’opérateur crochet : `dico[clef]` renvoie la valeur appairée
     avec la clef donnée dans le dictionnaire `dico`. Le nombre
     d’éléments est donné par la fonction `len`, mais les éléments
     sont indexés par les clefs et non par des entiers : *il n’y a pas de
@@ -273,7 +305,7 @@ TypeError: unhashable type: 'list'
 
   - Une dictionnaire ne peut pas être une clef, mais peut être une
     valeur dans un autre dictionnaire. On peut définir toutes sortes de
-    structures imbriquées comme des tableaux de dictionnaires …
+    **structures imbriquées** comme des tableaux de dictionnaires …
 
 <!-- end list -->
 
@@ -290,7 +322,7 @@ TypeError: unhashable type: 'list'
   'altitude': '3435',  'code_pays': 'US'}]
 ```
 
-  - Avec l’opérateur crochet, si une clef n’appartient à un
+  - Avec l’opérateur crochet, si une clef n’appartient pas à un
     dictionnaire, une exception (erreur en
     [Python](https://docs.python.org/3/tutorial/datastructures.html))
     est levée. La méthode `get` permet de retourner la valeur `None` par
@@ -332,7 +364,7 @@ contacts = {'Paul': '0601010182', 'Jacques': '0602413824', 'Claire':
 '0632451153'}
 
 Quelle instruction écrire pour ajouter à ce dictionnaire un nouveau
-contact nommé Juliette avec le numéro de téléphone 0603040506 ?
+contact nommé Juliette avec le numéro de téléphone ‘0603040506’ ?
 
 **Réponses**
 
@@ -429,6 +461,8 @@ Quelle affirmation est correcte ?
 
 # Parcours de dictionnaire
 
+**Méthode 3**
+
 Il existe trois façons de parcourir un dictionnaire. Dans les exemples,
 on utilisera un dictionnaire qui représente un annuaire :
 
@@ -462,8 +496,9 @@ Clef -> Hicham  Valeur -> 0987416543
 ```
 
   - *L’ordre de parcours n’est pas forcément l’ordre d’insertion car un
-    dictionnaire n’est pas ordonné* Ainsi, on ne peut pas parcourir un
-    dictionnaire par index avec `for k in range(len(dico))`.
+    dictionnaire n’est pas ordonné*. (même si c’est vrai à partir de
+    Python 3.8). Ainsi, on ne peut pas parcourir un dictionnaire par
+    index avec `for k in range(len(dico))`.
 
 <!-- end list -->
 
@@ -519,7 +554,7 @@ dico = {"a" : True, "b" : False, "c" : True}
 <!-- end list -->
 
 ``` python
-for clef in dico.keys()
+for clef in dico.keys():
   print(clef, end=" ")
 ```
 
@@ -542,6 +577,8 @@ for var in dico.items()
 True)`
 
 # Références partagées et mutabilité
+
+**Méthode 4**
 
 Une variable de type `dict` n’est qu’une référence, un **alias** vers la
 zone mémoire où sont stockées les données. Comme pour les tableaux de
@@ -582,9 +619,9 @@ Les dictionnaires de type `dict` sont implémentés en
 [tables de hachage](https://fr.wikipedia.org/wiki/Table_de_hachage) qui
 est une structure de données très efficace pour le test d’appartenance,
 la recherche ou l’insertion d’élément. On peut considérer que ces
-opérations se font en temps quasiment constant, c’est-à-dire
+opérations se font en **temps quasiment constant**, c’est-à-dire
 indépendant de la taille du dictionnaire alors que la recherche et le
-test d’appartenance s’effectue en temps linéaire en moyenne
+test d’appartenance s’effectue en **temps linéaire en moyenne**
 (proportionnel à la taille du tableau) pour les tableaux de type `list`
 ou les `tuple`. Cet optimisation des performances en temps se fait au
 détriment de l’occupation en espace, les dictionnaires étant plus
@@ -642,16 +679,16 @@ Ramalho, est disponible avec nos commentaires dans l’archive
 
 # Synthèse
 
-**À retenir**
+**Remarque0**
 
   - Le type construit **p-uplet nommé** est une séquence non ordonnée
     d’éléments qui sont des paires `(clef, valeur)` ou `clef :
     valeur`. Chaque `valeur` est indexée par sa `clef` et non par un
-    index entier comme dans **p-uplet**.
+    index entier comme dans un **p-uplet**.
   - En [Python](https://docs.python.org/3/tutorial/datastructures.html)
     un **p-uplet nommé** est un **dictionnaire** de type `dict`
     implémenté par une table de hachage qui permet des opérations très
-    performantes en temps constant.
+    performantes en **temps constant**.
   - L’accès, l’ajout, la modification d’un dictionnaire s’effectue avec
     l’opérateur crochet et la syntaxe `dico[clef] = valeur`.
   - Une variable de type `dict` est une **référence** et elle peut être
