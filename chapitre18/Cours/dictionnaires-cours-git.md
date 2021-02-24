@@ -639,7 +639,7 @@ et `needle`sont tous distincts et la moitié de `needle` est dans
 
 Le code de cet exemple, tiré de l’ouvrage Python Fluent de Luciano
 Ramalho, est disponible avec nos commentaires dans l’archive
-[test\_performance\_in.zip](https://gitlab.com/frederic-junier/nsi/-/blob/master/TypesConstruits/Dictionnaires/Cours/ressources/test_performance_in.zip).
+[test_performance_in.zip](test_performance_in.zip).
 
     Type de conteneur dict
     --------------------
