@@ -18,7 +18,9 @@ layout: parc
 
 * [Cours version pdf](chapitre18/Cours/dictionnaires-cours-.pdf)
 * [Cours version markdown](chapitre18/Cours/dictionnaires-cours-git.md)
+* [Exemples du cours en python](chapitre18/Cours/exemples_cours_dictionnaires_eleves.py)
   
 ## Video
 
 * [Présentation par Pierre Marquestaut](https://peertube.lyceeconnecte.fr/videos/watch/86be0059-a3c1-41ec-952a-79dea6310c87)
+* [Video Lumni de Charles Poulmaire](https://www.lumni.fr/video/les-dictionnaires)
