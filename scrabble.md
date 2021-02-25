@@ -127,5 +127,5 @@ for mot in dico:
 print(mot_max)
 ~~~
 
-Attentio, spoiler !  [solution](solution_scrabble.py)
+Attention, spoiler !  [solution](solution_scrabble.py)
 
