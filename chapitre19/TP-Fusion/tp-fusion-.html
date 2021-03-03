@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Première NSI Lycée du Parc" />
+  <title>TP table de données, fusion</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../Pandoc/style_nsi.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">TP table de données, fusion</h1>
+<p class="subtitle">Traitement de données en tables</p>
+<p class="author">Première NSI Lycée du Parc</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table des matières</h2>
+<ul>
+<li><a href="#crédits">Crédits</a></li>
+<li><a href="#réunion-de-tables">Réunion de tables</a></li>
+<li><a href="#jointure-de-tables">Jointure de tables</a></li>
+<li><a href="#synthèse">Synthèse</a></li>
+</ul>
+</nav>
+<h1 class="unnumbered" id="crédits" class="unnumbered">Crédits</h1>
+<p><em>Ce TP est largement inspiré du chapitres 18 du manuel NSI de la collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N’Guyen ;</em></p>
+<h1 id="réunion-de-tables">Réunion de tables</h1>
+<div class="cours">
+<p>Si on dispose de deux <strong>tables de données</strong> avec la même structure (même nombre d’attributs avec noms et domaines de valeurs identiques), il est possible de les fusionner en construisant leur <strong>réunion</strong> dans une même table en concaténant simplement les lignes / enregistrements.</p>
+<p>L’opérateur <code>+</code> de concaténation de tableaux permet de réaliser très simplement cette opération en Python. On donne ci-dessous un exemple de réunion de tables de notes de différentes classes à un devoir commun de NSI. On observe que si les tables n’ont pas la même structure (attributs différents en noms et en nombre), on peut les concaténer mais on ne peut plus manipuler le résultat comme une table :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;&gt;&gt;</span> premiere1 <span class="op">=</span> [{<span class="st">&#39;élève&#39;</span> : <span class="st">&#39;Donald&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">18</span>},{<span class="st">&#39;élève&#39;</span> : <span class="st">&#39;Ada&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">20</span>}]</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">&gt;&gt;&gt;</span> premiere2 <span class="op">=</span> [{<span class="st">&#39;élève&#39;</span> : <span class="st">&#39;Alan&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">19</span>},{<span class="st">&#39;élève&#39;</span> : <span class="st">&#39;Guido&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">12</span>}]</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">&gt;&gt;&gt;</span> premiere_reunion <span class="op">=</span> premiere1 <span class="op">+</span> premiere2</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="op">&gt;&gt;&gt;</span> premiere_reunion</span>
+<span id="cb1-5"><a href="#cb1-5"></a>[{<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;Donald&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">18</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;Ada&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;Alan&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">19</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;Guido&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">12</span>}]</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="op">&gt;&gt;&gt;</span> premiere3 <span class="op">=</span> [{<span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;Brian&#39;</span>, <span class="st">&#39;nom&#39;</span> :  <span class="st">&#39;Kernighan&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">14</span>},{<span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;Linus&#39;</span>, <span class="st">&#39;nom&#39;</span> : <span class="st">&#39;Torvalds&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">8</span>}]</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="op">&gt;&gt;&gt;</span> premiere_reunion2 <span class="op">=</span> premiere_reunion <span class="op">+</span> premiere3</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="op">&gt;&gt;&gt;</span> prenom <span class="op">=</span> [enreg[<span class="st">&#39;élève&#39;</span>] <span class="cf">for</span> enreg <span class="kw">in</span> premiere_reunion2]</span>
+<span id="cb1-9"><a href="#cb1-9"></a>Traceback (most recent call last):</span>
+<span id="cb1-10"><a href="#cb1-10"></a>......</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="pp">KeyError</span>: <span class="st">&#39;élève&#39;</span></span></code></pre></div>
+</div>
+<div class="exercice">
+<ol type="1">
+<li><p>Télécharger sur la page <a href="https://www.data.gouv.fr/fr/datasets/prenoms-a-rennes/" class="uri">https://www.data.gouv.fr/fr/datasets/prenoms-a-rennes/</a> le fichier <a href="https://www.data.gouv.fr/fr/datasets/r/4b1b72d6-7238-4bda-a5de-ebd72cb058a0"><code>prenoms_gf_rennes_zip</code></a>. Extraire l’archive, elle contient huit fichiers CSV dont le nom suit le format <code>Prénoms2008GF_Rennes.csv</code>, recensant les prénoms donnés aux enfants nés dans la ville de Rennes entre les années 2008 et 2015.</p></li>
+<li><p>Ouvrir un fichier au hasard et lister les attributs de ces tables de données.</p></li>
+<li><p>Ouvrir dans un IDE Python le fichier <code>TP_Fusion_Eleve.py</code> qui contient des fonctions <code>lecture_csv</code> et <code>ecriture_csv</code> de manipulation de fichiers CSV avec le <a href="https://docs.python.org/fr/3/library/csv.html">module <code>csv</code></a> et des codes à compléter.</p>
+<p>Charger les tables contenues dans <code>Prénoms2011GF_Rennes.csv</code> et <code>Prénoms2010GF_Rennes.csv</code> avec l’instruction :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>prenom_11 <span class="op">=</span> lecture_csv(<span class="st">&#39;Prénoms2011GF_Rennes.csv&#39;</span>, <span class="st">&#39;;&#39;</span>, <span class="st">&#39;ISO8859&#39;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>prenom_10 <span class="op">=</span> lecture_csv(<span class="st">&#39;Prénoms2010GF_Rennes.csv&#39;</span>, <span class="st">&#39;;&#39;</span>, <span class="st">&#39;ISO8859&#39;</span>)</span></code></pre></div>
+<p>On peut noter deux paramètres importants dans l’importation d’un fichier CSV : le délimiteur facile à déterminer en éditant le fichier (ici le symbole <code>;</code>) et l’encodage (ici <code>'ISO8859'</code>) qui peut être obtenu avec la commande <code>file</code> sous Linux :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">fjunier@fjunier</span>:~/TP-Fusion/Ressources$ file Prénoms2008GF_Rennes.csv </span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">Pr</span>énoms2008GF_Rennes.csv: ISO-8859 text, with CRLF line terminators</span></code></pre></div>
+<p>Tester un mauvais paramètre d’encodage en remplaçant <code>'ISO8859'</code> par <code>'utf8'</code> dans <code>lecture_csv</code>.</p></li>
+<li><p>Compléter le code ci-dessous en respectant les spécifications données en <code>docstring</code> ou commentaires. On donne des postconditions pour vérifier les fonctions <code>reunion_table</code> et <code>prenom_max</code>.</p></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> reunion_table(table1, table2):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : deux tables table1 et table2</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">    Valeur renvoyée : table  concaténée de table1 et table2&quot;&quot;&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">return</span> ........................</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">def</span> prenom_max(table):</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="co">&quot;&quot;&quot;Paramètres : table (ou réunion de tables) de prénoms </span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">    Valeur renvoyée : tuple constitué de l&#39;effectif maximum</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">        et du tableau des prénoms  les plus fréquents&quot;&quot;&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>    effectif_max <span class="op">=</span> <span class="bu">int</span>(table[<span class="dv">0</span>][<span class="st">&#39;NBR&#39;</span>])</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    histo <span class="op">=</span> {table[<span class="dv">0</span>][<span class="st">&#39;PRN&#39;</span>] : effectif_max}   </span>
+<span id="cb4-12"><a href="#cb4-12"></a>    tab_max <span class="op">=</span> [table[<span class="dv">0</span>][<span class="st">&#39;PRN&#39;</span>]]</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="cf">for</span> enreg <span class="kw">in</span> table[<span class="dv">1</span>:]:</span>
+<span id="cb4-14"><a href="#cb4-14"></a>        prenom <span class="op">=</span> enreg[<span class="st">&#39;PRN&#39;</span>]</span>
+<span id="cb4-15"><a href="#cb4-15"></a>        effectif <span class="op">=</span> <span class="bu">int</span>(enreg[<span class="st">&#39;NBR&#39;</span>])</span>
+<span id="cb4-16"><a href="#cb4-16"></a>        <span class="cf">if</span> prenom <span class="kw">not</span> <span class="kw">in</span> histo:</span>
+<span id="cb4-17"><a href="#cb4-17"></a>            histo[prenom] <span class="op">=</span> .................</span>
+<span id="cb4-18"><a href="#cb4-18"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-19"><a href="#cb4-19"></a>            histo[prenom] <span class="op">=</span> .................</span>
+<span id="cb4-20"><a href="#cb4-20"></a>        <span class="cf">if</span> histo[prenom] <span class="op">&gt;</span> effectif_max:</span>
+<span id="cb4-21"><a href="#cb4-21"></a>            .......................</span>
+<span id="cb4-22"><a href="#cb4-22"></a>            .......................</span>
+<span id="cb4-23"><a href="#cb4-23"></a>        <span class="cf">elif</span> histo[prenom] <span class="op">==</span> effectif_max:</span>
+<span id="cb4-24"><a href="#cb4-24"></a>            .......................</span>
+<span id="cb4-25"><a href="#cb4-25"></a>            .......................</span>
+<span id="cb4-26"><a href="#cb4-26"></a>    <span class="cf">return</span> (effectif_max, tab_max)      </span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a>prenom_10_11 <span class="op">=</span> reunion_table(prenom_10, prenom_11)</span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="cf">assert</span> <span class="bu">len</span>(prenom_10) <span class="op">+</span> <span class="bu">len</span>(prenom_11) <span class="op">==</span> <span class="bu">len</span>(prenom_10_11)</span>
+<span id="cb4-30"><a href="#cb4-30"></a><span class="co">#filtrer uniquement les prénoms féminins dans prenom_10_11</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>prenom_f_10_11 <span class="op">=</span> [enreg <span class="cf">for</span> enreg <span class="kw">in</span> prenom_10_11 </span>
+<span id="cb4-32"><a href="#cb4-32"></a>                 <span class="cf">if</span> ................................................]</span>
+<span id="cb4-33"><a href="#cb4-33"></a><span class="cf">assert</span> prenom_max(prenom_f_10_11) <span class="op">==</span> (<span class="dv">103</span>, [<span class="st">&#39;Louise&#39;</span>])</span></code></pre></div>
+<ol start="5" type="1">
+<li>Exécuter le code ci-dessous. Quel point de vigilance lors de la réunion de tables est ainsi mis en évidence ?</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#chargement de deux nouvelles tables</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>prenom_08 <span class="op">=</span> lecture_csv(<span class="st">&#39;Prénoms2008GF_Rennes.csv&#39;</span>, <span class="st">&#39;;&#39;</span>, <span class="st">&#39;ISO8859&#39;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>prenom_09 <span class="op">=</span> lecture_csv(<span class="st">&#39;Prénoms2009GF_Rennes.csv&#39;</span>, <span class="st">&#39;;&#39;</span>, <span class="st">&#39;ISO8859&#39;</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>prenom_08_09 <span class="op">=</span> reunion_table(prenom_08, prenom_09)</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="kw">def</span> clef_prenom(enreg):</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="cf">return</span> enreg[<span class="st">&#39;PRN&#39;</span>]</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="kw">def</span> clef_prenom_annee(enreg):</span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="cf">return</span> (enreg[<span class="st">&#39;PRN&#39;</span>], enreg[<span class="st">&#39;ANNAISS&#39;</span>])</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="cf">assert</span> <span class="bu">sorted</span>(prenom_09, key <span class="op">=</span> clef_prenom_annee) <span class="op">==</span> <span class="bu">sorted</span>(prenom_09, key <span class="op">=</span> clef_prenom)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>prenom_08_09_tri <span class="op">=</span> <span class="bu">sorted</span>(prenom_08_09, key <span class="op">=</span> clef_prenom_annee) </span></code></pre></div>
+<ol start="6" type="1">
+<li>Charger les tables des prénoms en 2014 et compléter le code pour sélectionner uniquement les mois de naissance. Que peut-on remarquer ?</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>prenom_14 <span class="op">=</span> lecture_csv(<span class="st">&#39;Prénoms2014GF_ Rennes.csv&#39;</span>, <span class="st">&#39;;&#39;</span>, <span class="st">&#39;ISO8859&#39;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># noter  l&#39;espace malencontreux dans le nom de fichier =&gt;  erreur humaine</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># sélectionner uniquement les mois de naissance en 2014</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>mois_14 <span class="op">=</span> [..........................    <span class="cf">for</span> enreg <span class="kw">in</span> prenom_14]</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="cf">assert</span> mois_14[:<span class="dv">4</span>] <span class="op">==</span> [<span class="st">&#39;&#39;</span>, <span class="st">&#39;&#39;</span>, <span class="st">&#39;&#39;</span>, <span class="st">&#39;&#39;</span>]</span></code></pre></div>
+<ol start="7" type="1">
+<li><p>Exécuter le code ci-dessous. Quel point de vigilance lors de la réunion de tables est ainsi mis en évidence ?</p>
+<p>Peut-on quand même réunir les tables <code>prenom_14</code> et <code>prenom_15</code> dans <code>prenom_14_15</code> et trier cette dernière par prénom puis par année ?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>prenom_15 <span class="op">=</span> lecture_csv(<span class="st">&#39;Prénoms2015GF_Rennes.csv&#39;</span>, <span class="st">&#39;;&#39;</span>, <span class="st">&#39;ISO8859&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>mois_15 <span class="op">=</span> [enreg[<span class="st">&#39;MNAISS&#39;</span>] <span class="cf">for</span> enreg <span class="kw">in</span> prenom_15]</span></code></pre></div></li>
+</ol>
+</div>
+<h1 id="jointure-de-tables">Jointure de tables</h1>
+<div class="cours">
+<p>Si deux tables n’ont pas la même structure (différence sur certains attributs) mais partagent un ou plusieurs attributs (en nom et domaine de valeurs), on peut les fusionner en construisant leur <strong>jointure</strong>. On rapproche les enregistrements des deux tables qui ont la même valeur sur le(s) attibut(s) commun(s).</p>
+<p>On donne ci-dessous un exemple de jointure de deux tables représentant les membres d’une plateforme d’entraînement à la programmation et les résultats d’un concours. La jointure s’obtient avec deux boucles imbriquées : on parcourt tous les couples constitués d’enregistrements de la première puis de la seconde table et on filtre à l’aide d’une conditionnelle. On peut écrire la jointure en une ligne avec un tableau défini en compréhension.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">&gt;&gt;&gt;</span> membre  <span class="op">=</span> [{<span class="st">&#39;nom&#39;</span> : <span class="st">&#39;knuth&#39;</span>, <span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;donald&#39;</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;knuth69&#39;</span>}, {<span class="st">&#39;nom&#39;</span> : <span class="st">&#39;van rossum&#39;</span>, <span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;guido42&#39;</span>}]</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="op">&gt;&gt;&gt;</span> concours <span class="op">=</span> [{<span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;knuth69&#39;</span>, <span class="st">&#39;points&#39;</span> : <span class="dv">120</span>}, {<span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;guido42&#39;</span>, <span class="st">&#39;points&#39;</span> : <span class="dv">10</span>}]</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> fusion_enreg(c, m):</span>
+<span id="cb8-4"><a href="#cb8-4"></a>...     <span class="cf">return</span> {<span class="st">&#39;nom&#39;</span> : m[<span class="st">&#39;nom&#39;</span>], <span class="st">&#39;prénom&#39;</span> : m[<span class="st">&#39;prénom&#39;</span>], <span class="st">&#39;pseudo&#39;</span> : m[<span class="st">&#39;pseudo&#39;</span>], <span class="st">&#39;points&#39;</span> : c[<span class="st">&#39;points&#39;</span>]}</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> fusion_tables(concours, membre):</span>
+<span id="cb8-6"><a href="#cb8-6"></a>...     jointure <span class="op">=</span> []</span>
+<span id="cb8-7"><a href="#cb8-7"></a>...     <span class="cf">for</span> m <span class="kw">in</span> membre:</span>
+<span id="cb8-8"><a href="#cb8-8"></a>...         <span class="cf">for</span> c <span class="kw">in</span> concours:</span>
+<span id="cb8-9"><a href="#cb8-9"></a>...             <span class="cf">if</span> c[<span class="st">&#39;pseudo&#39;</span>] <span class="op">==</span> m[<span class="st">&#39;pseudo&#39;</span>]:</span>
+<span id="cb8-10"><a href="#cb8-10"></a>...                 jointure.append(fusion_enreg(c, m))</span>
+<span id="cb8-11"><a href="#cb8-11"></a>...     <span class="cf">return</span> jointure</span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="op">&gt;&gt;&gt;</span> fusion_tables(concours, membre)</span>
+<span id="cb8-13"><a href="#cb8-13"></a>[{<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;knuth&#39;</span>, <span class="st">&#39;prénom&#39;</span>: <span class="st">&#39;donald&#39;</span>, <span class="st">&#39;pseudo&#39;</span>: <span class="st">&#39;knuth69&#39;</span>, <span class="st">&#39;points&#39;</span>: <span class="dv">120</span>}, {<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;van rossum&#39;</span>, <span class="st">&#39;prénom&#39;</span>: <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;pseudo&#39;</span>: <span class="st">&#39;guido42&#39;</span>, <span class="st">&#39;points&#39;</span>: <span class="dv">10</span>}]</span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> fusion_tables2(concours, membre):</span>
+<span id="cb8-15"><a href="#cb8-15"></a>...     <span class="cf">return</span> [fusion_enreg(c, m) </span>
+<span id="cb8-16"><a href="#cb8-16"></a>                <span class="cf">for</span> m <span class="kw">in</span> membre </span>
+<span id="cb8-17"><a href="#cb8-17"></a>                <span class="cf">for</span> c <span class="kw">in</span> concours </span>
+<span id="cb8-18"><a href="#cb8-18"></a>                <span class="cf">if</span> c[<span class="st">&#39;pseudo&#39;</span>] <span class="op">==</span> m[<span class="st">&#39;pseudo&#39;</span>]]</span></code></pre></div>
+</div>
+<div class="exercice">
+<p>On travaille toujours avec le fichier <code>TP_Fusion_Eleve.py</code> ouvert dans un IDE Python.On fournit deux tables dans les fichiers <code>'films.csv'</code> et ‘<code>realisateurs.csv</code>’ dont on donne les premières lignes ci-dessous.</p>
+<p><strong><code>films.csv</code></strong> recense les films détenus en DVD par un cinéphile.</p>
+<pre><code>titre,réalisateur,année
+La  vie est belle,Capra,1946
+La  vie est belle,Benigni,1997
+Beau-père,Blier,1981</code></pre>
+<p><strong><code>realisateurs.csv</code></strong> recense des informations supplémentaires sur les réalisateurs des films de <code>'films.csv'</code>. Les tables sont séparées pour éviter les redondances car un même réalisateur peut avoir tourné plusieurs films.</p>
+<pre><code>nom,prénom,pays
+Coppola,Sofia,USA
+Coppola,Francis Ford,USA
+Coppola,Roman,USA
+Wilder,Billy,USA</code></pre>
+<ol type="1">
+<li><p>Charger les deux tables dans les variables <code>films</code> et <code>realisateurs</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>films <span class="op">=</span> lecture_csv(<span class="st">&#39;films.csv&#39;</span>, <span class="st">&#39;,&#39;</span>, <span class="st">&#39;utf8&#39;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>realisateurs <span class="op">=</span> lecture_csv(<span class="st">&#39;realisateurs.csv&#39;</span>, <span class="st">&#39;,&#39;</span>, <span class="st">&#39;utf8&#39;</span>)</span></code></pre></div></li>
+<li><p>On veut fusionner les tables films et réalisateurs par jointure sur l’attibut ‘nom’ du réalisateur. Compléter le code ci-dessous en appliquant l’algorithme décrit dans le point de cours 2. On donne une postcondition pour vérifier la correspondance des deux fonctions de fusion.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">def</span> fusion_enregistrements(f, r):</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="cf">return</span> {<span class="st">&#39;titre&#39;</span> : f[<span class="st">&#39;titre&#39;</span>], <span class="st">&#39;année&#39;</span> : f[<span class="st">&#39;année&#39;</span>], </span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="st">&#39;nom réalisateur&#39;</span> : r[<span class="st">&#39;nom&#39;</span>],<span class="st">&#39;prénom réalisateur&#39;</span> : r[<span class="st">&#39;prénom&#39;</span>],</span>
+<span id="cb12-4"><a href="#cb12-4"></a>    <span class="st">&#39;pays réalisateur&#39;</span> : r[<span class="st">&#39;pays&#39;</span>]}</span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="kw">def</span> fusion_tables(films, realisateurs):</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    fusion <span class="op">=</span> []</span>
+<span id="cb12-8"><a href="#cb12-8"></a>    <span class="cf">for</span> f <span class="kw">in</span> films:</span>
+<span id="cb12-9"><a href="#cb12-9"></a>        <span class="cf">for</span> r <span class="kw">in</span> realisateurs:</span>
+<span id="cb12-10"><a href="#cb12-10"></a>            ...................</span>
+<span id="cb12-11"><a href="#cb12-11"></a>            ...................</span>
+<span id="cb12-12"><a href="#cb12-12"></a>    <span class="cf">return</span> fusion</span>
+<span id="cb12-13"><a href="#cb12-13"></a></span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="kw">def</span> fusion_tables_comprehension(films, realisateurs):   </span>
+<span id="cb12-15"><a href="#cb12-15"></a>    <span class="cf">return</span> ..........................................</span>
+<span id="cb12-16"><a href="#cb12-16"></a></span>
+<span id="cb12-17"><a href="#cb12-17"></a>jointure_f_r <span class="op">=</span> fusion_tables(films, realisateurs)</span>
+<span id="cb12-18"><a href="#cb12-18"></a>jointure_f_r2 <span class="op">=</span> fusion_tables_comprehension(films, realisateurs)</span></code></pre></div></li>
+<li><p>Exécuter les instructions ci-dessous. Quelle incohérence peut-on observer ? Explication ?</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="bu">print</span>([enreg <span class="cf">for</span> enreg <span class="kw">in</span> jointure_f_r <span class="cf">if</span> enreg[<span class="st">&#39;titre&#39;</span>] <span class="op">==</span> <span class="st">&#39;CQ&#39;</span>])</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="bu">print</span>(<span class="bu">len</span>(jointure_f_r), <span class="bu">len</span>(films))</span></code></pre></div></li>
+<li><p>Exécuter les instructions ci-dessous. Quelle incohérence peut-on observer ? Explication ?</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="bu">print</span>([enreg <span class="cf">for</span> enreg <span class="kw">in</span> films <span class="cf">if</span> enreg[<span class="st">&#39;titre&#39;</span>] <span class="op">==</span> <span class="st">&#39;Autant en emporte le vent&#39;</span>])</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="bu">print</span>([enreg <span class="cf">for</span> enreg <span class="kw">in</span> jointure_f_r <span class="cf">if</span> enreg[<span class="st">&#39;titre&#39;</span>] <span class="op">==</span> <span class="st">&#39;Autant en emporte le vent&#39;</span>])</span></code></pre></div></li>
+<li><p>Éditer avec un éditeur de texte, les fichiers <code>films_idr.csv</code> et <code>realisateurs_id.csv</code>. On a rajouté dans le fichier des réalisateurs un identifiant unique (le numéro de l’enregistrement) qu’on a reporté dans le fichier des films à la place du nom du réalisateur.</p>
+<p>Les incohérences repérées dans les questions précédentes sont-elles toujours présentes ? Quels sont les avantages de l’identifiant unique ?</p>
+<p>Compléter le code ci-dessous pour réaliser la fusion par jointure des tables chargées dans <code>films_idr</code> et <code>realisateurs_id</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>films_idr <span class="op">=</span> lecture_csv(<span class="st">&#39;films_idr.csv&#39;</span>, <span class="st">&#39;,&#39;</span>, <span class="st">&#39;utf8&#39;</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>realisateurs_id <span class="op">=</span> lecture_csv(<span class="st">&#39;realisateurs_id.csv&#39;</span>, <span class="st">&#39;,&#39;</span>, <span class="st">&#39;utf8&#39;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">def</span> fusion_tables_id(films, realisateurs):   </span>
+<span id="cb15-4"><a href="#cb15-4"></a>    <span class="cf">return</span> ................................</span>
+<span id="cb15-5"><a href="#cb15-5"></a>jointure_f_r3 <span class="op">=</span> fusion_tables_id(films_idr, realisateurs_id)</span></code></pre></div></li>
+</ol>
+</div>
+<div class="cours">
+<p>Reprenons l’exemple du point de cours 2 mais avec une personne supplémentaire dans la table <code>membre</code>, qui n’a pas participé au concours mais possède par hasard le même pseudo que <code>guido van rossum</code>. Si on fusionne les tables <code>membre</code> et <code>concours</code> par jointure sur l’attribut <code>'pseudo'</code> on obtient alors un doublon avec un enregistrement qui ne correspond à rien :</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">&gt;&gt;&gt;</span> concours <span class="op">=</span> [{<span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;knuth69&#39;</span>, <span class="st">&#39;points&#39;</span> : <span class="dv">120</span>}, {<span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;guido42&#39;</span>, <span class="st">&#39;points&#39;</span> : <span class="dv">10</span>}]</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="op">&gt;&gt;&gt;</span> membre  <span class="op">=</span> [{<span class="st">&#39;nom&#39;</span> : <span class="st">&#39;knuth&#39;</span>, <span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;donald&#39;</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;knuth69&#39;</span>}, {<span class="st">&#39;nom&#39;</span> : <span class="st">&#39;van rossum&#39;</span>, <span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;guido42&#39;</span>}, {<span class="st">&#39;nom&#39;</span> : <span class="st">&#39;python&#39;</span>, <span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;guido42&#39;</span>}]</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="op">&gt;&gt;&gt;</span> fusion_tables(concours, membre)[{<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;knuth&#39;</span>, <span class="st">&#39;prénom&#39;</span>: <span class="st">&#39;donald&#39;</span>, <span class="st">&#39;pseudo&#39;</span>: <span class="st">&#39;knuth69&#39;</span>, <span class="st">&#39;points&#39;</span>: <span class="dv">120</span>}, {<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;van rossum&#39;</span>, <span class="st">&#39;prénom&#39;</span>: <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;pseudo&#39;</span>: <span class="st">&#39;guido42&#39;</span>, <span class="st">&#39;points&#39;</span>: <span class="dv">10</span>}, {<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;prénom&#39;</span>: <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;pseudo&#39;</span>: <span class="st">&#39;guido42&#39;</span>, <span class="st">&#39;points&#39;</span>: <span class="dv">10</span>}]</span></code></pre></div>
+<p>Une solution est d’associer un <strong>identifiant unique</strong> à chaque enregistrement de la table <code>membre</code> (ou de ne pas autoriser de doublons dans le domaine de valeurs de l’attribut <code>'pseudo'</code>) et de l’insérer dans la table <code>concours</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">&gt;&gt;&gt;</span> concours <span class="op">=</span> [{<span class="st">&#39;ids&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;knuth69&#39;</span>, <span class="st">&#39;points&#39;</span> : <span class="dv">120</span>}, {<span class="st">&#39;id&#39;</span> : <span class="dv">2</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;guido42&#39;</span>, <span class="st">&#39;points&#39;</span> : <span class="dv">10</span>}]</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="op">&gt;&gt;&gt;</span> membre  <span class="op">=</span> [{<span class="st">&#39;id&#39;</span> : <span class="dv">1</span>, <span class="st">&#39;nom&#39;</span> : <span class="st">&#39;knuth&#39;</span>, <span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;donald&#39;</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;knuth69&#39;</span>}, {<span class="st">&#39;id&#39;</span> : <span class="dv">2</span>, <span class="st">&#39;nom&#39;</span> : <span class="st">&#39;van rossum&#39;</span>, <span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;guido42&#39;</span>}, {<span class="st">&#39;id&#39;</span> : <span class="dv">3</span>, <span class="st">&#39;nom&#39;</span> : <span class="st">&#39;python&#39;</span>, <span class="st">&#39;prénom&#39;</span> : <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;pseudo&#39;</span> : <span class="st">&#39;guido42&#39;</span>}]</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> fusion_tables3(concours, membre):</span>
+<span id="cb17-4"><a href="#cb17-4"></a>...     <span class="cf">return</span> [fusion_enreg(c, m)  <span class="cf">for</span> m <span class="kw">in</span> membre  <span class="cf">for</span> c <span class="kw">in</span> concours </span>
+<span id="cb17-5"><a href="#cb17-5"></a>                <span class="cf">if</span> c[<span class="st">&#39;id&#39;</span>] <span class="op">==</span> m[<span class="st">&#39;id&#39;</span>]]</span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="op">&gt;&gt;&gt;</span> fusion_tables3(concours, membre)[{<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;knuth&#39;</span>, <span class="st">&#39;prénom&#39;</span>: <span class="st">&#39;donald&#39;</span>, <span class="st">&#39;pseudo&#39;</span>: <span class="st">&#39;knuth69&#39;</span>, <span class="st">&#39;points&#39;</span>: <span class="dv">120</span>}, {<span class="st">&#39;nom&#39;</span>: <span class="st">&#39;van rossum&#39;</span>, <span class="st">&#39;prénom&#39;</span>: <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;pseudo&#39;</span>: <span class="st">&#39;guido42&#39;</span>, <span class="st">&#39;points&#39;</span>: <span class="dv">10</span>}]</span></code></pre></div>
+</div>
+<h1 id="synthèse">Synthèse</h1>
+<div class="synthese">
+<p>La <strong>fusion</strong> de tables peut se faire de plusieurs façons. Si les <strong>tables</strong> ont les mêmes <strong>attributs</strong> alors on peut les concaténer. Sinon, si les <strong>tables</strong> ont un ou plusieurs <strong>attributs</strong> communs, on peut réaliser une <strong>jointure</strong> qui rapproche les enregistrements qui ont les mêmes valeurs sur les attributs partagés. Avec les <strong>bases de données</strong>, étudiées en terminale, des opérations de jointure permettront de créer de nouvelles tables pour rassembler des informations issues de plusieurs tables.</p>
+</div>
+<figure>
+<img src="Images/query.png" style="width:70.0%" alt="" /><figcaption><a href="https://www.explainxkcd.com/wiki/index.php/1409:_Query">XKCD 1409</a></figcaption>
+</figure>
+</body>
+</html>
