@@ -19,6 +19,6 @@ layout: parc
 
 ## TP Recherche et tri :
 
-* [TP recherche et tri](chapitre19/Cours/cours-tables-indexation-.pdf)
-* [Cours version markdown](chapitre19/TP-Recherche-Tri/tp-recherche-tri-git.md)
-* [Archive avec les exemples du cours](chapitre19/TP-Recherche-Tri/Ressources.zip)
+* [TP version pdf](chapitre19/TP-Recherche-Tri/tp-recherche-tri-.pdf)
+* [TP version markdown](chapitre19/TP-Recherche-Tri/tp-recherche-tri-git.md)
+* [Ressources pour le TP](chapitre19/TP-Recherche-Tri/Ressources.zip)
