@@ -43,3 +43,4 @@ layout: parc
 * [Chapitre 16 : flottants](chapitre16.md)
 * [Chapitre 17 : architecture de Von Neumann](chapitre17.md)
 * [Chapitre 18 : les dictionnaires](chapitre18.md)
+* [Chapitre19 : traitement de données en table](chapitre19.md)
