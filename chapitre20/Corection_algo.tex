@@ -1,0 +1,493 @@
+\include{MeijeCours}
+
+\newboolean{versionprof}  % Cette variable booléenne permet le contrôle de la compilation selon la version professeur (avec les preuves, commentaires pédagogiques etc...) si true ou selon la version élève (de ''base'') si false.
+\setboolean{versionprof}{false}
+
+% =============================================================================================
+%                                                                                      Début du texte 
+% =============================================================================================
+
+\author{Spé NSI - Lycée du parc}  % Pour spécifier l'auteur qui sera affiché sous le titre
+\title{Correction des algorithmes}  % Titre 
+\date{Année 2020-2021} %en utilisant \today on obtiendra la date courante lors de la production du document
+\renewcommand{\thesection}{\Roman{section}}  % permet de numéroter les sections en chiffres romains
+\pagestyle{fancy}
+
+\lhead{NSI}   %  Indiquer la classe ici  
+\rhead{Correction des algorithmes}		% Indiquer la date pour rendre le devoir ici
+
+
+\fancyfoot[C]{\thepage} % bas de page : centre par exemple:  - \thepage\ -
+\fancyfoot[L]{} % bas de page : gauche
+\fancyfoot[R]{} % bas de page : droite
+\newcommand{\p}[1]{ \left( #1 \right)}   %parenthèse
+\newcommand\abs[1]{|{#1}|}
+
+\begin{document}
+
+\maketitle  %produit le titre conformément aux instructions données par \author, \date ...etc
+\thispagestyle{empty}
+% ------------------------------------------------   Introduction   -------------------------------------------
+\vskip 1cm
+\renewcommand{\abstractname}{Introduction\hfill}
+\begin{abstract} 
+
+On poursuit ici l'étude théorique des algorithmes entreprise dans le chapitre traitant de la complexité.
+
+On se pose maintenant la question de savoir si un algorithme donné répond bien au problème qu'il est censé traité dans sa \emph{spécification}.
+Il se pose alors deux grandes questions : 
+\begin{enumerate}[-]
+  \item Se termine-t-il ? C'est la question de la \emph{terminaison}.
+  \item Résout-il bien le problème qu'il est censé traiter ? C'est la question de la \emph{correction}\footnote{On parle parfois de correction partielle plutôt que de correction. La correction totale étant la conjonction de la terminaison et de la correction partielle. }.
+ 
+\end{enumerate}
+
+Le but de ce chapitre est d'introduire les méthodologies qui permettent de traiter ces problèmes.
+\end{abstract} 
+
+
+\section{Terminaison}
+
+Pour un algorithme ou une partie d'algorithme qui ne comporte pas de boucles ou seulement des boucles inconditionnelles, la question de la terminaison ne se pose, a priori, pas. 
+Le cas des boucles conditionnelles est plus délicat : la condition est censée être vraie au départ (sinon c'est du code mort) et cette même condition doit finir par être fausse sinon les itérations ont lieu indéfiniment.
+
+\exercice{}
+
+Laquelle de ces deux boucles ne se termine pas ?
+
+\begin{minipage}{0.5\linewidth} %début texte
+\begin{minipage}{0.8\linewidth}
+\begin{lstlisting}
+x = 0
+while x >= 0:
+    x += 1
+
+\end{lstlisting}
+\end{minipage}\,
+\begin{minipage}{0.05\linewidth}
+\fbox{\thecode}\addtocounter{code}{1}
+\end{minipage}
+ 
+\end{minipage}% fin texte
+\hfill 
+\begin{minipage}{0.5\linewidth} 
+\begin{minipage}{0.8\linewidth}
+\begin{lstlisting}
+x = 10
+while x >= 0:
+    x = x - 1
+
+\end{lstlisting}
+\end{minipage}\,
+\begin{minipage}{0.05\linewidth}
+\fbox{\thecode}\addtocounter{code}{1}
+\end{minipage}
+
+\end{minipage}
+
+\lignes{8}
+
+\vfill
+
+{\bf Vocabulaire : } On appelle {\bf itération} d'une boucle {\bf une} exécution des instructions qui figure dans le corps de la boucle.
+\medskip
+
+{\bf Démonstration de la terminaison}
+\medskip
+
+Pour démontrer qu'une boucle conditionnelle (\lstinline{while}) se termine, il suffit de déterminer une quantité exprimée à l'aide des variables de l'algorithme qui  {\bf reste positive et entière} tout au long de l'exécution de la boucle et {\bf décroit strictement} à chaque itération.
+Comme il n'existe pas de suite infinie à valeurs dans $\N$ qui soit strictement décroissante cela prouve alors que le nombre d'itérations est fini.
+
+On appelle souvent {\bf variant} de la boucle une telle quantité\footnote{Certain auteurs utilisent aussi \emph{convergent} ou \emph{expression de terminaison}.}.
+
+ 
+ \exercice{} Montrer que l'algorithme de division euclidienne dans $\N$ se termine (avec  $b>0$) :
+ \begin{minipage}{0.5\linewidth}
+ \begin{lstlisting}
+def division_euclidienne(a, b):
+    q = 0
+    r = a
+    while r >= b :
+        r = r - b
+        q = q + 1
+    return (q, r)
+ 
+ \end{lstlisting}
+ \end{minipage}
+ \hskip 1cm\hfill 
+ \begin{minipage}{0.5\linewidth} 
+ \lignespar{7}{80}
+ \end{minipage}
+ \lignes{7}
+ \exercice{} Montrer que l'algorithme de recherche séquentielle dans une liste se termine :
+ \begin{minipage}{0.5\linewidth}
+ \begin{lstlisting}
+def appartient(x, L):
+    n = len(L)
+    i = 0
+
+    while i < n and L[i] != x:
+        i += 1
+
+    return i != n 
+ \end{lstlisting}
+ \end{minipage}
+ \hskip 1cm
+ \hfill 
+ \begin{minipage}{0.5\linewidth} 
+ \lignespar{7}{80}
+ \end{minipage}
+\vskip -0.3cm
+ \lignes{9}
+
+\exercice{}
+
+Les deux fonctions ci-dessous calculent le produit de deux entiers positifs. Justifier qu'elles terminent à l'aide d'un variant.
+
+\begin{minipage}{0.4\linewidth} 
+ \begin{lstlisting}
+def prod1(a, b):
+    S = 0
+    while b > 0:
+        S = S + a
+        b = b - 1
+    return S
+\end{lstlisting}
+
+\end{minipage}
+\hfill 
+\begin{minipage}{0.47\linewidth} 
+\begin{lstlisting}
+def prod2(a, b):
+    S = 0
+    while b > 0:
+        if b%2 == 1:
+            S = S + a
+        b = b//2  # quotient / 2 
+        a = a + a
+    return S
+    
+
+\end{lstlisting}
+
+\end{minipage}
+
+\lignes{10}
+
+\entrainement
+
+Les deux fonctions suivantes calculent le nombre de chiffres de l'écriture décimal de \verb+n+ pour $n>0$. Justifier qu'elles terminent à l'aide d'un variant.
+
+\begin{minipage}{0.45\linewidth} 
+ \begin{lstlisting}
+def nbChiffres1(n):
+    k = 0
+    while n > 0:
+        n = n // 10
+        k = k + 1
+    return k
+\end{lstlisting}
+
+\end{minipage}
+\hfill 
+\begin{minipage}{0.45\linewidth} 
+\begin{lstlisting}
+def nbChiffres2(n):
+    p = 1
+    k = 0
+    while p < n + 1:
+        p = p*10
+        k = k + 1
+    return k
+\end{lstlisting}
+
+\end{minipage}
+
+
+\section{Correction}
+
+Pour montrer la correction d'un algorithme, les difficultés se posent dans les boucles (quel qu'en soit le type, conditionnelles ou inconditionnelles). On utilise un {\bf invariant de boucle} c'est une propriété qui reste vraie tout au long des itérations et qui, à la fin, donne le résultat attendu.
+
+\exercice{} Montrer que la fonction \verb+puissance+ calcule bien $x^{n}$.
+
+\begin{minipage}{0.45\linewidth} %début texte
+\begin{minipage}{0.9\linewidth}
+\begin{lstlisting}
+def puissance(x, n):
+    p = 1
+    for k in range(n):
+        p = p*x
+    return p
+
+\end{lstlisting}
+\end{minipage}
+\hskip 1cm
+ 
+\end{minipage}% fin texte
+\hfill 
+\begin{minipage}{0.5\linewidth} 
+\lignespar{5}{90}
+\end{minipage}
+
+\lignes{6}
+ 
+
+\exercice{} Montrer que l'algorithme de division euclidienne dans $\N$ est correct (avec  $b>0$).
+
+\begin{minipage}{0.5\linewidth} %début texte
+\begin{minipage}{0.9\linewidth}
+\begin{lstlisting}
+def division_euclidienne(a, b):
+    q = 0
+    r = a
+    while r >= b :
+        r = r - b
+        q = q + 1
+    return (q, r)
+\end{lstlisting}
+\end{minipage}\,
+ 
+\end{minipage}% fin texte
+\hfill 
+\begin{minipage}{0.5\linewidth} 
+\lignespar{7}{85}
+\end{minipage}
+
+\lignes{11}
+
+\exercice{}
+
+Montrer que l'algorithme de recherche du maximum dans une liste est correct :
+
+\begin{minipage}{0.5\linewidth} %début texte
+\begin{minipage}{0.9\linewidth}
+\begin{lstlisting}
+def maximum(L):
+    n = len(L)
+    maxi = L[0]
+    for x in L[1:]:
+        if x > maxi: 
+            maxi = x
+    return maxi
+\end{lstlisting}
+\end{minipage}\,
+ 
+\end{minipage}% fin texte
+\hfill 
+\begin{minipage}{0.5\linewidth} 
+\lignespar{7}{85}
+\end{minipage}
+
+\lignes{10}
+\eject
+\exercice{}
+
+Montrer que l'algorithme de recherche séquentielle dans une liste est correct :
+
+\begin{minipage}{0.5\linewidth} %début texte
+\begin{minipage}{0.9\linewidth}
+\begin{lstlisting}
+def appartient(L, x):
+    n = len(L)
+    i = 0
+    while i < n and x != L[i]:
+        i += 1
+    return i < n
+\end{lstlisting}
+\end{minipage}\,
+ 
+\end{minipage}% fin texte
+\hfill 
+\begin{minipage}{0.5\linewidth} 
+\lignespar{6}{85}
+\end{minipage}
+
+\lignes{12}
+\exercice{}
+Les deux fonctions ci-dessous calculent le produit de deux entiers positifs. Justifier leur correction à l'aide d'un invariant.
+
+\begin{minipage}{0.4\linewidth} 
+ \begin{lstlisting}
+def prod1(a, b):
+    S = 0
+    while b > 0:
+        S = S + a
+        b = b - 1
+    return S
+\end{lstlisting}
+
+\end{minipage}
+\hfill 
+\begin{minipage}{0.47\linewidth} 
+\begin{lstlisting}
+def prod2(a, b):
+    S = 0
+    while b > 0:
+        if b%2 == 1:
+            S = S + a
+        b = b//2  # quotient / 2 
+        a = a + a
+    return S
+    
+
+\end{lstlisting}
+
+\end{minipage}
+
+\lignes{15}
+
+
+
+\entrainement{}
+
+\'Ecrire une fonction qui calcule la somme des éléments d'un tableau et montrer sa correction avec un invariant.
+
+\entrainement{}
+
+\begin{minipage}{0.7\linewidth} %début texte
+\medskip
+
+ On consid\`{e}re le tableau ci-contre o\`{u} seul l'\'{e}l\'{e}ment \`{a}
+l'intersection de la premi\`{e}re ligne et de la troisi\`{e}me
+colonne est un signe \og $-$\fg{}, les autres \'{e}l\'{e}ments
+\'{e}tant des signes \og $+$\fg{}.
+On effectue des transformations en changeant tous les signes d'une
+ligne, d'une colonne ou d'une diagonale quelconque. 
+
+Est-il possible
+qu'apr\`{e}s un certain nombre de telles op\'{e}rations on se retrouve avec
+un tableau o\`{u} tous les \'{e}l\'{e}ments sont des \og +\fg{} ?
+
+\end{minipage}% fin texte
+\hfill 
+\begin{minipage}{0.3\linewidth} 
+\begin{center}
+\begin{tabular}[t]{|c|c|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  + & + & $-$ & + \\
+  \hline
+  + & + & + & + \\
+  \hline
+  + & + & + & + \\
+  \hline
+  + & + & + & + \\
+  \hline
+\end{tabular}\\
+\end{center}
+\end{minipage}
+\bigskip
+
+
+
+\section{Retour sur la recherche dichotomique}
+
+
+On rappelle l'algorithme de recherche dichotomique dans une liste triée : 
+
+
+\bigskip
+
+\begin{minipage}{0.9\linewidth}
+\begin{lstlisting}[escapeinside =;;]
+def rech_dicho(L, x):
+    """ La liste L est suppos;\it é;e tri;\it é;e. 
+    Renvoie un indice d'un ;\it é;l;\it é;ment de L de valeur x 
+    si x est pr;\it é;sent dans L et None sinon """
+    
+    g, d = 0, len(L) -1 
+
+    while g <= d:
+        m = (g + d) // 2
+        if L[m] < x:
+            g = m + 1
+        elif L[m] > x:
+            d = m - 1 
+        else:
+            return m
+            
+    return None
+
+\end{lstlisting}
+
+\end{minipage}\,
+\begin{minipage}{0.05\linewidth}
+\fbox{\thecode}\addtocounter{code}{1}
+\end{minipage}
+
+\exercice{}
+
+Faire fonctionner l'algorithme à la main pour :
+\setlength{\columnseprule}{0pt} 
+\begin{multicols}{2}  
+
+\begin{enumerate}[1.]
+  \item \verb+L=[1, 3, 5, 7, 10]+ et \verb+x+ =7. 
+  \item \verb+L=[1, 3, 5, 7, 10, 17]+ et \verb+x+ =2. 
+\end{enumerate}
+\end{multicols} 
+
+
+\lignes{14}
+\exercice{}
+Montrer la terminaison de l'algorithme de recherche dichotomique.
+
+\lignes{22}
+
+\exercice{}
+Montrer la correction de l'algorithme de recherche dichotomique.
+
+\lignes{20}
+
+
+\section{Les tris}
+
+\exercice{}
+
+On rappelle le code du tri par selection\footnote{On dispose d'une fonction {\bf permute(t, i, j)} qui permute les éléments d'indices i et j du tableau t. }.
+
+Justifier sa terminaison et démontrer sa correction.
+\begin{lstlisting}[escapeinside =;;]
+def tri_selection2(t):
+    for i in range(len(t)):
+        j_record = i
+        for j in range(i + 1, len(t)):
+            if t[j] < t[j_record]:
+                j_record = j
+        permute(t, i, j_record)
+
+\end{lstlisting}
+
+\lignes{25}
+
+\exercice
+
+On rappelle le code du tri par insertion. 
+
+Justifier sa terminaison et démontrer sa correction.
+
+\begin{lstlisting}[escapeinside =;;]
+def insere(t, i):
+    """ t est un tableau et i est un indice de t. On suppose
+    que t est tri;\it é; jusqu';\it à; la position i-1. La fonction positionne
+    l';\it é;l;\it é;ment d'indice i ;\it à; sa place (effet de bord) """
+
+    for j in range(i, 0, -1):
+        if t[j - 1] > t[j]:
+            permute(t, j, j-1)
+        else:
+            return
+
+def tri_insertion_en_place(t):
+    for i in range(1, len(t)):
+        insere(t, i)
+
+\end{lstlisting}
+
+
+\lignes{30}
+\end{document}
+
+
+
+
