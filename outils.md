@@ -21,7 +21,7 @@ title:  "Outils et ressources techniques pour le cours de NSI"
 
 - [repl.it](https://repl.it/languages/python3)
 - [Pythontutor](http://pythontutor.com/)  : permet de visualiser l'évolution des variables
-- [basthon](https://python.infobrisson.fr/) => très bien car on peut téléverser un script, télécharger ou partager en lien et sans créer de compte !
+- [basthon (Romain Casati)](https://frederic-junier.org/basthon/) => très bien car on peut téléverser un script, télécharger ou partager en lien et sans créer de compte !
 - [basthon version notebook](https://notebook.basthon.fr/) => comme basthon mais pour les notebook jupyter !
 
 
