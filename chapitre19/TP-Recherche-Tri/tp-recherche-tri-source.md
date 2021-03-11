@@ -106,10 +106,10 @@ def nombre_departement(table, departement):
     return compteur
 
 # postcondition
-assert nombre_departement(table_clients, "département", "69") == 481
+assert nombre_departement(table_clients,  "69") == 481
 ~~~
 
-2. Compléter la fonction `nombre_departement` ci-dessous en respectant sa spécification. Exécuter le test unitaire `test_nombre_occurences(table_clients)`.
+1. Compléter la fonction `nombre_departement` ci-dessous en respectant sa spécification. Exécuter le test unitaire `test_nombre_occurences(table_clients)`.
 
 ~~~python
 def nombre_occurences(table, attribut, valeur):
