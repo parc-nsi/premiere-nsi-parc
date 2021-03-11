@@ -1,0 +1,1748 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{
+\usepackage{hyperref}
+}
+\hypersetup{
+  pdftitle={TP table de données, requêtes et tri},
+  pdfauthor={Première NSI Lycée du Parc},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=Blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[top=20mm,left=20mm,right=20mm,heightrounded]{geometry}
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+\title{TP table de données, requêtes et tri}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Traitement de données en tables}
+\author{Première NSI Lycée du Parc}
+\date{}
+
+%%%jolis boites
+
+\usepackage{fancybox, graphicx}
+
+
+
+%%%%%%%%%%%%%%%%Packages et Macros Frederic%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%Insertion de liens hypertextes %%%%
+
+            
+%%%%%%%%%%PSTricks%%%%%%%%%%%%
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math,pstricks-add,pst-xkey,pst-eucl}
+
+
+%%%%%%%Tikz%%%%%%%%%%%%%%%
+\usepackage{pgf,tikz,tkz-tab}
+% Pour les tableaux de signes ou de variations avec tkz-tab voir https://zestedesavoir.com/tutoriels/439/des-tableaux-de-variations-et-de-signes-avec-latex/#1-13389_tikz-un-package-qui-en-a-dans-le-ventre
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{petri}
+\usetikzlibrary{decorations}
+\usetikzlibrary{arrows}
+\usetikzlibrary{math}
+ %Variables must be declared in a tikzmath environment but
+       % can be used outside
+%       \tikzmath{int \n; \n = 508; \x1 = 1; \y1 =1; 
+%                   %computations are also possible
+%                    \x2 = \x1 + 1; \y2 =\y1 +3; } 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%Commandes Tikz Perso%%%%%%%%%%%%%%%
+
+% Définition des nouvelles options xmin, xmax, ymin, ymax
+% Valeurs par défaut : -3, 3, -3, 3
+\tikzset{
+xmin/.store in=\xmin, xmin/.default=-3, xmin=-3,
+xmax/.store in=\xmax, xmax/.default=3, xmax=3,
+ymin/.store in=\ymin, ymin/.default=-3, ymin=-3,
+ymax/.store in=\ymax, ymax/.default=3, ymax=3,
+}
+% Commande qui trace la grille entre (xmin,ymin) et (xmax,ymax)
+\newcommand {\grille}[2]
+{\draw[help lines,black, thick] (\xmin,\ymin) grid[xstep=#1, ystep=#2] (\xmax,\ymax);}
+% Commande \axes
+\newcommand {\axes} {
+\draw[->,very thick] (\xmin,0) -- (\xmax,0);
+\draw[->,very thick] (0,\ymin) -- (0,\ymax);
+\draw (0.95*\xmax, 0) node[above] {};
+\draw (0, 0.95*\ymax) node[left] {};
+}
+% Commande qui limite l?affichage à (xmin,ymin) et (xmax,ymax)
+\newcommand {\fenetre}
+{\clip (\xmin,\ymin) rectangle (\xmax,\ymax);}
+
+%Exemple d'utilisation
+
+%\begin{center}
+%\begin{tikzpicture} [xmin=-2,xmax=2,ymin=0,ymax=5]
+%\grille{1} \axes \fenetre
+%\draw plot[smooth] (\x,\x^2);
+%\end{tikzpicture}
+%\end{center}
+
+%style pour la perspective cavalière française
+%voir Tikz pour l'impatient page 68
+\tikzset{math3d/.style=
+{x= {(-0.353cm,-0.353cm)}, z={(0cm,1cm)},y={(1cm,0cm)}}}
+
+%%%%%%%Symbole pour code calculatrice%%%%%%
+
+%Flèche remplie pour défilement de menu
+
+\newcommand{\flechefillright}{
+\begin{tikzpicture}[scale=0.15] \fill (0,0)--(2,1)--(0,2)--cycle;
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%Symboles pour calculatrice Casio%%%%
+\newcommand{\execasio}{\Pisymbol{psy}{191}} %Retour chariot
+\newcommand{\dispcasio}{\begin{pspicture}(.1,.1)\pspolygon*(.1,0)(.1,.1)\end{pspicture}} %Triangle Â« Disp Â»
+\newcommand{\dispcasiotikz}{\begin{tikzpicture}[scale=0.2]
+\fill (0,0) -- (1,0) -- (1,1) -- cycle;
+\end{tikzpicture}} %Triangle Â« Disp Â»
+%
+
+%Fleche entre deux lignes, d'apres 'un bon petit' : http://forum.mathematex.net/latex-f6/fleches-entre-deux-lignes-pour-resolution-d-equation-t10283.html#p99817
+\newcommand\addnode[1]{\Rnode{#1}{}}
+\newcommand\linknode[3]{\ncbar[angleA=0,angleB=0,nodesep=1ex,arm=10ex,offset=-2pt]{->}{#1}{#2}\Aput{\vphantom{x}#3}}
+
+
+%%Commande pour touche de calculatrice
+
+\newcommand\tc[1]{%
+{
+\begin{tikzpicture}
+\node[draw,rectangle,rounded corners=3pt] (P) at (0,0){#1};
+\end{tikzpicture}
+}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%Fin Commandes Tikz%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%Specifiques%%%%%%%%%%%
+\usepackage{wrapfig}
+%pour insérer une figure à droite ou à gauche d'un texte
+%\begin{wrapfigure}[nb lignes]{placement l,r,c,i(inside),o(outside)}[overhang]{width}
+%ce package fonctionne mal à proximité des listes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%Environnements et symboles spéciaux pour faire joli%%%%%%
+
+%%%Bclogo, pour des environnements + jolis avec insertion de logo%%%%
+%Dépendances de  bclogo
+\usepackage{xkeyval}  
+\usepackage{etoolbox}
+\usepackage{ifpdf}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[tikz]{bclogo}
+
+%\newcommand\bcpython{\includegraphics[width=17pt]{/home/fjunier/Maths/python-logo.eps}}
+\newcommand\bcpython{\includegraphics[width=17pt]{/home/fjunier/Maths/python-logo.png}}
+%\newcommand\bcpython{\includegraphics[width=17pt]{/home/frederic/Maths/python-logo.png}}
+
+%% Framed
+\usepackage{framed}  %Le package « framed» Crée 3 nouveaux environnements, qui se comportent comme des minipage de largeur \linewidth, mais permettant en plus de se casser entre plusieurs pages.     * framed : avec un cadre autour;     * shaded : avec un fonc coloré (il faut définir la couleur shadecolor);     * leftbar : avec une barre le long du côté gauche.
+
+%%%%%%%%%%%%%%%%%%%Présentation de codes sources%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+%On utilise l?environnement lstlisting pour insérer
+%un code source.
+%En plus de l?environnement lstlisting, on peut également utiliser la
+%commande \lstinline qui fonctionne comme la commande \verb, en ce
+%sens qu?on peut utiliser n?importe quel caractère comme délimiteur. Enfin,
+%la commande \lstinputlisting permet de charger un code source depuis
+%un fichier externe.
+%Il y a deux manières de préciser des options : soit via l?option de l?envi-
+%ronnement ou de la commande, soit en utilisant la commande \lstset
+%qui permet de définir des options de manière globale.
+
+\lstset{ %
+  language=Python,                % the language of the code
+  basicstyle=\ttfamily,           % the size of the fonts that are used for the code
+  %numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny,  % the style that is used for the line-numbers
+  %stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  %numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  tabsize=4,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  %title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  breakindent=1cm,
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{red},       % comment style
+  %stringstyle=\ttfamily\color{green},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  morekeywords={*,...},              % if you want to add more keywords to the set
+  deletekeywords={...}              % if you want to delete keywords from the given language
+  upquote=true,columns=flexible,
+xleftmargin=1cm,xrightmargin=1cm,
+ inputencoding=utf8,			%Les lignes qui suivent sont pour le codage utf8
+  extendedchars=true,
+  literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a} }}1
+            {î}{{\^{i}}}1
+            {ô}{{\^{o}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1
+}
+
+\lstdefinestyle{rond}{
+  numbers=none,
+  backgroundcolor=\color{gristclair},
+  frameround =tttt
+}
+
+\lstdefinestyle{compil}{
+  numbers=none,
+  backgroundcolor=\color{gristclair}
+}
+%\lstset{language=Python,basicstyle=\small , frame=single,tabsize=4,showspaces=false,showtabs=false,showstringspaces=false,numbers=left,numberstyle=\tiny , extendedchars=true}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%Environnements persos%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Syntaxe :
+%\newenvironment{nom}[nombre d'args][defaut]{definitions initiales}{definitions finales}
+%definitions intiales sont les commandes appelées par \begin{nom}
+%Definitions finales sont les commandes appelées par \end{nom}
+
+%%%%%%%%%%%%%%%%Définitions des environnemts persostheoreme, exemple ..%%%%
+%%%% Exercice avec encadré %%%%
+\newcounter{exo}
+\newenvironment{exercice}[1]
+{\par \medskip   \addtocounter{exo}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bccrayon, marge=4]{~\textbf{Exercice} \textbf{\theexo} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+%%Axiomes, Theoremes, Propriété, Définition, Methode, Preuve
+
+
+\newenvironment{axiome}[1]
+{\par \medskip   \begin{leftbar} \noindent \underline{\textbf{Axiome}}\hspace{0.5cm}{\itshape #1}   \vspace*{10pt} \par }
+{\end{leftbar}  \par \medskip }
+
+
+\newcounter{thme}
+\newenvironment{theoreme}[1]
+{\par \medskip  \addtocounter{thme}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Théorème} \textbf{\thethme} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip}
+
+ \newenvironment{theoremedef}[1]
+{\par \medskip   \addtocounter{thme}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Théorème-Définition} \textbf{\thethme} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{prop}
+\newenvironment{propriete}[1]
+{\par \medskip   \addtocounter{prop}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Propriété} \textbf{\theprop} {\itshape #1} }   \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newenvironment{corollaire}[1]
+{\par \medskip   \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Corollaire} {\itshape #1} } \par }
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newenvironment{demo}[1]
+{\par \medskip   \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=zigzag, noborder = true, logo=\bcloupe, marge=0]{~\textbf{Démonstration} {\itshape #1} } \par \vspace{10pt}}
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{activite}
+\newenvironment{activite}[1]
+{\par \medskip   \noindent   \addtocounter{activite}{1}
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bcvelo, marge=4]{~\textbf{Activité} \textbf{\theactivite} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newenvironment{synthese}
+{\par \medskip   \noindent   
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bccle, marge=4]{~\textbf{Synthèse}   }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+ 
+\newcounter{rque}
+\newenvironment{remarque}
+{\par \medskip    \addtocounter{rque}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=snake, noborder = true, logo=\bcinfo, marge=0]{~\textbf{Remarque} \textbf{\therque}}  \par }
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{def}
+\newenvironment{definition}[1]
+{\par \medskip   \addtocounter{def}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Définition} \textbf{\thedef} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+ 
+ \newcounter{cours}
+\newenvironment{cours}[1]
+{\par \medskip   \addtocounter{cours}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bcbook, marge=4]{~\textbf{Point de cours} \textbf{\thecours} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+ 
+
+\newenvironment{introduction}
+{\par \medskip    \noindent  
+ \begin {bclogo}[couleur = blue!5 , arrondi =0.1,logo=\bcrosevents, marge=4] {~\textbf{Introduction}    }
+ \par }
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newenvironment{memo}[1]
+{\par \medskip    \noindent  
+\begin{bclogo}[arrondi =0.1,  ombre = true, barre=none, logo=\bccle, marge=4]{~\textbf{À retenir}  {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{exple}
+\newenvironment{exemple}[1]
+{\par \medskip   \addtocounter{exple}{1} \noindent  
+\begin{bclogo}[arrondi =0.1,   noborder = true, logo=\bclampe, marge=4]{~\textbf{Exemple} \textbf{\theexple} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+
+
+\newcounter{alg}
+\newenvironment{algorithme}[1]
+{\par \medskip   \addtocounter{alg}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bcpython, marge=4] {~\textbf{Algorithmique} \textbf{\thealg} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+\newcounter{prog}
+\newenvironment{programme}[1]
+{\par \medskip   \addtocounter{prog}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bcpython, marge=4] {~\textbf{Programme} \textbf{\theprog} {\itshape #1} }  \par  \bigskip}
+{
+\end{bclogo}
+ \par \bigskip }
+ 
+\newcounter{logi}
+\newenvironment{logique}[1]
+{\par \medskip   \addtocounter{logi}{1} \noindent  
+ \begin {bclogo}[noborder = true, barre=zigzag,logo=\bclampe, marge=4] {~\textbf{Logique} \textbf{\thelogi} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newenvironment{methode}[1]
+{\par \medskip    \noindent  
+ \begin {bclogo}[arrondi =0.1,logo=\bcoutil, marge=4,noborder = true] {~\textbf{Méthode}   {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+\newcounter{histo}
+\newenvironment{histoire}[1]
+{\par \medskip   \addtocounter{histo}{1} \noindent  
+ \begin {bclogo}[couleur = blue!10 , arrondi =0.1,logo=\bchorloge, marge=4] {~\textbf{Histoire} \textbf{\thehisto} {\itshape #1} }  \par}
+{
+\end{bclogo}
+ \par \bigskip }
+
+
+
+
+%Environnement contenu pour un document présentant une progression annuelle
+\newenvironment{contenu}
+{\par \medskip   \begin {bclogo}[ noborder = true,logo=\bccrayon] \noindent {\large \textbf{Contenu de la séance}} \vspace*{10pt} \par  }
+{\end{bclogo}  \par \medskip }
+
+%Environnement programme pour un document présentant une progression annuelle
+%\newenvironment{programme}
+%{\par \medskip   \begin {bclogo}[ noborder = true, barre=zigzag,logo=\bcinfo] \noindent {\large \textbf{Programme officiel}} \vspace*{10pt} \par  }
+%{\end{bclogo}  \par \medskip }
+
+%Environnement programme pour un document présentant une progression annuelle
+\newenvironment{ressource}
+{\par \medskip   \begin {bclogo}[ noborder = true,logo=\bcbook] \noindent {\large \textbf{Ressources}}\\vspace*{10pt} \par }
+{\end{bclogo}  \par \medskip }
+
+
+
+
+%%%%%%%%%%%%%%%%%%Maths divers%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%Nombres%%%%%%%%%%%%%%%%
+
+%Ensemble prive de...
+%\newcommand{\prive}{\boi}%{\backslash}
+
+%Ensembles de nombres%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\C}{\mathbb{C}}
+\newcommand{\df}{~\ensuremath{]0;+\infty[}~}
+\newcommand{\K}{\mathbb{K}}
+
+%%%%%%%%Arithmetique%%%%%%%%%%
+%PGCD, PPCM
+\newcommand{\PGCD}{\mathop{\rm PGCD}\nolimits}
+\newcommand{\PPCM}{\mathop{\rm PPCM}\nolimits}
+
+%Intervalles
+\newcommand{\interoo}[2]{]#1\, ;\, #2[}
+\newcommand{\Interoo}[2]{\left]#1\, ;\, #2\right[}
+\newcommand{\interof}[2]{]#1\, ;\, #2]}
+\newcommand{\Interof}[2]{\left]#1\, ;\, #2\right]}
+\newcommand{\interfo}[2]{[#1\, ;\, #2[}
+\newcommand{\Interfo}[2]{\left[#1\, ;\, #2\right[}
+\newcommand{\interff}[2]{[#1\, ;\, #2]}
+\newcommand{\Interff}[2]{\left[#1\, ;\, #2\right]}
+%\newcommand\interentiers #1#2{[\! [#1\, ;\, #2]\! ]}
+\newcommand{\interentiers}[2]{\llbracket #1\, ;\, #2\rrbracket}
+%
+
+
+%%%%%%%%%%%%%%Nombres complexes%%%%%
+
+\newcommand{\ic}{\text{i}}
+%\newcommand{\I}{\text{i}}
+\newcommand{\im}[1]{\text{Im}\left(#1\right)}
+\newcommand{\re}[1]{\text{Re}\left(#1\right)}
+\newcommand{\Arg}[1]{\text{arg}\left(#1\right)}
+\newcommand{\Mod}[1]{\left[#1\right]}
+%Parties entiÃ¨re, rÃ©elle, imaginaire, nombre i
+\newcommand{\ent}[1]{\text{E}\left(#1\right)}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+\renewcommand{\i}{\textrm{i}}
+
+%%%%%%%%%%%Probabilites et statistiques%%%%%
+\newcommand{\loibinom}[2]{\mathcal{B}\left(#1\ ; \ #2 \right)}
+\newcommand{\loinorm}[2]{\mathcal{N}\left(#1\ ; \ #2 \right)}
+\newcommand{\loiexp}[1]{\mathcal{E}\left(#1\right)}
+\newcommand{\proba}[1]{\mathbb{P}\big(#1\big)}
+\newcommand{\probacond}[2]{\mathbb{P}_{#2}\big(#1\big)}
+\newcommand{\esperance}[1]{\mathbb{E}\left(#1\right)}
+\newcommand{\variance}[1]{\mathbb{V}\left(#1\right)}
+\newcommand{\ecart}[1]{\sigma\left(#1\right)}
+\newcommand{\dnormx}{\frac{1}{\sqrt{2\pi}} \text{e}^{-\frac{x^2}{2}}}
+\newcommand{\dnormt}{\frac{1}{\sqrt{2\pi}} \text{e}^{-\frac{t^2}{2}}}
+
+%Covariance
+\newcommand{\cov}{\mathop{\rm cov}\nolimits}
+%
+
+
+%%%%%%%%%%Analyse%%%%%%%%%%%
+
+%%%%%%%%%%%Courbe%%%%%%%%%%%%
+\newcommand{\courbe}[1]{\ensuremath{\mathcal{C}_{#1}}}
+
+%%%%%%%Fonction exponentielle%%%%%
+\newcommand{\fe}{~fonction exponentielle~}
+\newcommand{\e}{\text{e}}
+
+%Fonction cotangente
+\newcommand{\cotan}{\mathop{\rm cotan}\nolimits}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Fonctions hyperboliques
+\newcommand{\ch}{\mathop{\rm ch}\nolimits}
+\newcommand{\sh}{\mathop{\rm sh}\nolimits}
+
+
+%%%%%%%%%%%%%%Limites%%%%%%
+\newcommand{\limite}[2]{\lim\limits
+_{x \to #1} #2}
+\newcommand{\limitesuite}[1]{\lim\limits
+_{n \to +\infty} #1}
+\newcommand{\limiteg}[2]{\lim\limits
+_{\substack{x \to #1 \\ x < #1 }} #2}
+\newcommand{\limited}[2]{\lim\limits
+_{\substack{x \to #1 \\ x > #1 }} #2}
+
+%%%%%%%%%%Continuité%%%%%%%%%%%
+\newcommand{\TVI}{théorème des valeurs intermédiaires}
+
+%%%%%%%%%%%Suites%%%%%%%%%%%%
+\newcommand{\suite}[1]{\ensuremath{\left(#1_{n}\right)}}
+\newcommand{\Suite}[2]{\ensuremath{\left(#1\right)_{#2}}}
+%
+
+%%%%%%%%%%%%%%%Calcul intégral%%%%%%
+\newcommand{\dx}{\ensuremath{\text{d}x}}		% dx
+\newcommand{\dt}{\ensuremath{\text{d}t}}		% dt
+\newcommand{\dtheta}{\ensuremath{\text{d}\theta}}		% dtheta
+\newcommand{\dy}{\ensuremath{\text{d}y}}		% dy
+\newcommand{\dq}{\ensuremath{\text{d}q}}		% dq
+
+%%%Intégrale%%%
+\newcommand{\integralex}[3]{\int_{#1}^{#2} #3 \ \dx}
+\newcommand{\integralet}[3]{\int_{#1}^{#2} #3 \ \dt}
+\newcommand{\integraletheta}[3]{\int_{#1}^{#2} #3 \ \dtheta}
+
+%%%%%Equivalent%%
+\newcommand{\equivalent}[1]{\build\sim_{#1}^{}}
+
+%o et O%%%%
+\renewcommand{\o}[2]{\build o_{#1\to #2}^{}}
+\renewcommand{\O}[2]{\build O_{#1\to #2}^{}}
+
+
+
+%%%%%%%%%%%%%%%Geometrie%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%Reperes%%%%%%%%%%%%%%
+\def\Oij{\ensuremath{\left(\text{O},~\vect{\imath},~\vect{\jmath}\right)}}
+\def\Oijk{\ensuremath{\left(\text{O},~\vect{\imath},~ \vect{\jmath},~ \vect{k}\right)}}
+\def\Ouv{\ensuremath{\left(\text{O},~\vect{u},~\vect{v}\right)}}
+\renewcommand{\ij}{(\vec\imath\, ;\vec\jmath\,)}
+\newcommand{\ijk}{(\vec\imath\, ;\vec\jmath\, ;\vec k\,)}
+\newcommand{\OIJ}{(O\,;\, I\,;\, J\,)}
+\newcommand{\repere}[3]{\big(#1\, ;\,\vect{#2} ;\vect{#3}\big)}
+\newcommand{\reperesp}[4]{\big(#1\, ;\,\vect{#2} ;\vect{#3} ;\vect{#4}\big)}
+
+%%%%%%%%%Coordonnees%%%%%%%%%%%%%%
+\newcommand{\coord}[2]{(#1\, ;\, #2)}
+\newcommand{\bigcoord}[2]{\big(#1\, ;\, #2\big)}
+\newcommand{\Coord}[2]{\left(#1\, ;\, #2\right)}
+\newcommand{\coordesp}[3]{(#1\, ;\, #2\, ;\, #3)}
+\newcommand{\bigcoordesp}[3]{\big(#1\, ;\, #2\, ;\, #3\big)}
+\newcommand{\Coordesp}[3]{\left(#1\, ;\, #2\, ;\, #3\right)}
+\newcommand{\Vcoord}[3]{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}
+%Symboles entre droites
+%\newcommand{\paral}{\sslash}
+\newcommand{\paral}{\mathop{/\!\! /}}
+%
+
+%%%%%%%%%Produit scalaire, Angles%%%%%%%%%%
+\newcommand{\scal}[2]{\vect{#1} \, \cdot \, \vect{#2}}
+\newcommand{\Angle}[2]{\left(\vect{#1} \, , \, \vect{#2}\right)}
+\newcommand{\Anglegeo}[2]{\left(\widehat{\vect{#1} \, ; \, \vect{#2}}\right)}
+\renewcommand{\angle}[1]{\widehat{#1}}
+\newcommand{\anglevec}[2]{\left(\vect {#1}\, ,\,\vect {#2} \right)}
+\newcommand{\anglevecteur}[2]{(#1\, , \, #2)}
+\newcommand{\Anglevec}[2]{(\vecteur{#1}\, ,\,\vecteur{#2})}
+\newcommand{\prodscal}[2]{#1 \, \cdot \, #2}
+%
+
+
+%Arc
+%\newcommand{\arc}[1]{\wideparen{#1}}
+\newcommand{\arcoriente}[1]{\overset{\curvearrowright}{#1}}
+%
+%
+
+
+%%%%%%%%%%%%%%%Normes%%%%%%%%%%%%%%%%
+\newcommand{\norme}[1]{\left\| #1\right\|}
+\newcommand{\normebis}[1]{\delim{2pt}{\|}{9pt}\! #1\delim{2pt}{\|}{9pt}}
+\newcommand{\normetriple}[1]{\left |\kern -.07em\left\| #1\right |\kern -.07em\right\|}
+\newcommand{\valabs}[1]{\big| \, #1 \, \big|}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%Degré%%%%%%
+%\newcommand{\Degre}{\ensuremath{^\circ}}
+%La commande \degre est déjà définie dans le package babel
+
+%%%%%%%%%%Vecteurs%%%%%%%%%%%
+\newcommand{\vect}[1]{\mathchoice%
+{\overrightarrow{\displaystyle\mathstrut#1\,\,}}%
+{\overrightarrow{\textstyle\mathstrut#1\,\,}}%
+{\overrightarrow{\scriptstyle\mathstrut#1\,\,}}%
+{\overrightarrow{\scriptscriptstyle\mathstrut#1\,\,}}}
+
+
+
+%%%%%%%%%%%%%Algebre%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%Systemes%%%%%%%%%%%
+%Systemes
+\newcommand{\sys}[2]{
+\left\lbrace
+ \begin{array}{l}
+  \negthickspace\negthickspace #1\\
+  \negthickspace\negthickspace #2\\
+ \end{array}
+\right.\negthickspace\negthickspace}
+\newcommand{\Sys}[3]{
+\left\lbrace
+ \begin{array}{l}
+  #1\\
+  #2\\
+  #3\\
+ \end{array}
+\right.}
+\newcommand{\Sysq}[4]{
+\left\lbrace
+ \begin{array}{l}
+  #1\\
+  #2\\
+  #3\\
+  #4\\
+ \end{array}
+\right.}
+%
+%
+
+%%%%%%%%%%%%%%%%Matrices%%%%%%%%%%%%%%%%%%
+%Comatrice
+\newcommand{\com}{\mathop{\rm com}\nolimits}
+%
+%
+%Trace
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+%
+%
+%Transposee
+\newcommand{\transposee}[1]{{\vphantom{#1}}^t\negmedspace #1}
+%
+%
+%Noyau
+\newcommand{\Ker}{\mathop{\rm Ker}\nolimits}
+%
+%
+
+%
+%Matrices
+\newcommand{\Mn}{\mathcal M_n}
+\newcommand{\matrice}[4]{
+\left(
+ \begin{array}{cc}
+  #1 & #2 \\
+  #3 & #4
+ \end{array}
+\right)}
+
+\newcommand{\Matrice}[9]{
+\left(
+ \begin{array}{ccc}
+  #1 & #2 & #3\\
+  #4 & #5 & #6\\
+  #7 & #8 & #9
+ \end{array}
+\right)}
+\newcommand{\Vect}[3]{
+\left(\negmedspace
+ \begin{array}{c}
+  #1\\
+  #2\\
+  #3
+ \end{array}\negmedspace
+\right)}
+\newcommand{\Ideux}{\matrice{1}{0}{0}{1}}
+\newcommand{\Itrois}{\Matrice{1}{0}{0}{0}{1}{0}{0}{0}{1}}
+%
+%
+%Determinants
+\newcommand{\determinant}[4]{
+\left|
+ \begin{array}{cc}
+  #1 & #2 \\
+  #3 & #4
+ \end{array}
+\right|}
+\newcommand{\Determinant}[9]{
+\left|
+ \begin{array}{ccc}
+  #1 & #2 & #3\\
+  #4 & #5 & #6\\
+  #7 & #8 & #9
+ \end{array}
+\right|}
+
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table des matières}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\hypertarget{cruxe9dits}{%
+\section*{Crédits}\label{cruxe9dits}}
+\addcontentsline{toc}{section}{Crédits}
+
+\emph{Ce TP est largement inspiré :}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{des chapitres 16 et 17 du manuel NSI de la collection Tortue
+  chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N'Guyen ;}
+\item
+  \emph{du document d'accompagnement des programmes de NSI disponible
+  sur Eduscol}
+\end{itemize}
+
+\hypertarget{requuxeates-dans-une-table-de-donnuxe9es}{%
+\section{Requêtes dans une table de
+données}\label{requuxeates-dans-une-table-de-donnuxe9es}}
+
+\begin{definition}{}
+
+Dans le cours, on a vu comment charger une \textbf{table de données},
+enregistrée dans un \textbf{fichier CSV}, dans une structure de données
+permettant un accès efficace aux \textbf{enregistrements} et aux valeurs
+de leurs \textbf{attributs}. En Python, une structure de données bien
+adaptée est un \textbf{tableau de dictionnaires}. Les opérations sur les
+tableaux et les dictionnaires déjà étudiées vont nous permettre
+d'interroger une \textbf{table de données} à l'aide d'opération appelées
+\textbf{requêtes} :
+
+\begin{itemize}
+\tightlist
+\item
+  pour tester l'appartenance à la table d'un enregistrement vérifiant
+  une certaine condition sur ses attributs ;
+\item
+  pour calculer une valeur en combinant les valeurs d'attributs de
+  plusieurs enregistrements (\textbf{opération d'agrégation}) ;
+\item
+  pour sélectionner tous les enregistrements vérifiant une certaine
+  condition sur leurs attributs (\textbf{opération de sélection par
+  lignes}) ;
+\item
+  pour projeter les enregistrements sur certains de leurs attributs
+  (\textbf{opération de projection sur des colonnes}) ;
+\item
+  pour trier les enregistrements en fontion d'un ordre prédéfini sur
+  leurs attributs (\textbf{opération de tri}).
+\end{itemize}
+
+\end{definition}
+
+\hypertarget{requuxeates-de-recherche}{%
+\section{Requêtes de recherche}\label{requuxeates-de-recherche}}
+
+\begin{exercice}{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Ouvrir le script
+  \passthrough{\lstinline!'TP\_Recherche\_Tris\_Eleve.py'!} dans un IDE
+  Python
+\item
+  Charger dans une variable \passthrough{\lstinline!table\_clients!} la
+  table contenue dans le fichier \passthrough{\lstinline!'clients.csv'!}
+  à l'aide de la fonction \passthrough{\lstinline!lecture\_csv!} qui est
+  fournie. Il s'agit de la table des clients d'un site marchand que nous
+  avons manipulée dans le cours. Exécuter le test unitaire
+  \passthrough{\lstinline!test\_import\_table\_clients(table\_clients)!}.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+table_clients = lecture_csv('clients.csv', ',')
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!recherche\_attribut!}
+  ci-dessous en respectant sa spécification. Vérifier en exécutant le
+  test unitaire
+  \passthrough{\lstinline!test\_recherche\_attribut\_table\_clients(table\_clients)!}.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def recherche_attribut(table, attribut, valeur):
+    """Paramètres : 
+        table un tableau de dictionnaires, table  de clients.csv
+        attribut de type str  valeur du type d'attribut dans table
+    Valeur renvoyée:
+        Un booléen indiquant si table contient un enregistrement e
+        tel que e[attribut] == valeur"""
+    for enregistrement in table:
+        if .........................:
+            return ............
+    return .........
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Compléter la fonction
+  \passthrough{\lstinline!recherche\_attribut\_et!} ci-dessous en
+  respectant sa spécification. Exécuter le test unitaire
+  \passthrough{\lstinline!test\_recherche\_attributs\_et(table\_clients)!}.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def recherche_attributs_et(table, attribut1, valeur1, attribut2, valeur2):
+    """Paramètres : 
+        table un tableau de dictionnaires, table  de clients.csv
+        attribut1 de type str, valeur1 du type d'attribut1
+        attribut2 de type str, valeur2 du type d'attribut2
+    Valeur renvoyée:
+        Un booléen indiquant si table contient un enregistrement e
+        tel que e[attribut1] == valeur1 et e[attribut2] == valeur2 """
+    for enregistrement in table:
+        if .........................:
+            return ............
+    return .........
+\end{lstlisting}
+
+Proposer une modification de
+\passthrough{\lstinline!recherche\_attributs\_et!} qui prend en
+paramètres deux tableaux \passthrough{\lstinline!attribut!} et
+\passthrough{\lstinline!valeur!} et recherche si la table contient un
+enregistrement pour lequel tous les attributs listés correspondent aux
+valeurs listées puis un enregistrement pour lequel au moins un des
+attributs listés correspond à son homologue dans la liste des valeurs.
+
+\end{exercice}
+
+\hypertarget{requuxeates-avec-opuxe9ration-dagruxe9gation}{%
+\section{Requêtes avec opération
+d'agrégation}\label{requuxeates-avec-opuxe9ration-dagruxe9gation}}
+
+\begin{exercice}{}
+
+On travaille toujours avec la table contenue dans le fichier
+\passthrough{\lstinline!'clients.csv'!} avec le script
+\passthrough{\lstinline!'TP\_Recherche\_Tris\_Eleve.py'!} dans un IDE
+Python.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!nombre\_departement!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def nombre_departement(table, departement):
+    """Paramètres : 
+        table un tableau de dictionnaires, table  de clients.csv
+        departement de type str, un numéro de département
+    Valeur renvoyée :
+        Nombre d'occurences de departement dans table"""
+    compteur = 0
+    for enregistrement in table:
+        if ....................................:
+            compteur = .........................
+    return compteur
+
+# postcondition
+assert nombre_departement(table_clients, "département", "69") == 481
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!nombre\_departement!}
+  ci-dessous en respectant sa spécification. Exécuter le test unitaire
+  \passthrough{\lstinline!test\_nombre\_occurences(table\_clients)!}.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def nombre_occurences(table, attribut, valeur):
+    """Paramètres : 
+        table un tableau de dictionnaires, table  de clients.csv
+        attribut de type str, valeur du type d'attribut dans table
+    Valeur renvoyée :
+        Nombre d'occurences d'attribut avec valeur dans table"""
+    ...........................
+    ...........................
+    ...........................
+    ...........................
+    ...........................
+    ...........................
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!moyenne\_visites!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def moyenne_visites(table):
+    """Paramètres : 
+        table un tableau de dictionnaires, table  de clients.csv
+    Valeur renvoyée :
+        Moyenne des visites par enregistrement de type float"""
+    somme = 0
+    taille = 0
+    for enregistrement in table:
+        .......................
+        .......................
+        .......................
+    return somme / taille
+
+#postcondition
+assert moyenne_visites(table_clients) == 76.2807 
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!minimum\_visites!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def minimum_visites(table):
+    """Paramètres : 
+        table un tableau de dictionnaires, table  de clients.csv
+    Valeur renvoyée :
+        nombre minimum de visites de type int"""    
+    min_visites = int(table[0]['visites'])
+    for enregistrement in table[1:]:
+        ............................
+        ............................
+        ............................
+    return min_visites
+
+#postcondition
+assert minimum_visites(table_clients)  == 2
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Compléter la fonction
+  \passthrough{\lstinline!departement\_max\_occurence!} ci-dessous en
+  respectant sa spécification. On donne une postcondition qui doit être
+  vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def departement_max_occurence(table):
+    """Paramètre : table sous forme de tableau de dictionnaires
+    Valeur renvoyée : tuple formé du nombre d'occurences maximal parmi les départements
+    et du tableau des  départements réalisant ce maximum
+    """
+    ............
+    ............ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+assert departement_max_occurence(table_clients) == (547, ['59'])
+\end{lstlisting}
+
+\end{exercice}
+
+\hypertarget{requuxeates-avec-suxe9lection-de-lignes}{%
+\section{Requêtes avec sélection de
+lignes}\label{requuxeates-avec-suxe9lection-de-lignes}}
+
+\begin{exercice}{}
+
+On travaille toujours avec la table contenue dans le fichier
+\passthrough{\lstinline!'clients.csv'!} avec le script
+\passthrough{\lstinline!'TP\_Recherche\_Tris\_Eleve.py'!} dans un IDE
+Python.
+
+\emph{Un opération de \textbf{sélection} consiste à construire une
+nouvelle table avec les mêmes attributs mais en filtrant les
+enregistrements (ou lignes) selon une condition logique.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!selection\_departement!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def selection_departement(table, departement):
+    """
+    Paramètres : 
+        table une table sous forme de tableau de dictionnaires
+        department une chaine de caractères représentant un département
+    Valeur renvoyée :
+        tableau de dictionnaires contenant les enregistrement de table dont l'attribut "département"  a la valeur passée en paramètre
+    """
+    return [enregistrement
+             for enregistrement in table if ......................................    ]
+
+# postcondition
+assert selection_departement(table_clients, "69")[0]['email'] == 'nnguyen@noos.fr' \
+        and len(selection_departement(table_clients, "69")) == 481
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Compléter la fonction
+  \passthrough{\lstinline!selection\_depart\_visites\_min!} ci-dessous
+  en respectant sa spécification. On donne une postcondition qui doit
+  être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def selection_depart_visites_min(table, departement, visites_min):
+    """Paramètres : 
+        table une table sous forme de tableau de dictionnaires
+        department une chaine de caractères représentant un département
+        visites_min un entier naturel 
+    Valeur renvoyée :
+        tableau de dictionnaires contenant les enregistrement de table dont l'attribut "département"  a la valeur passée en paramètre et l'attribut visites est >= visites_min"""
+    return [enregistrement for enregistrement in table 
+            if ........................................................]         
+
+
+assert len(selection_depart_visites_min(table_clients,"69",100))==171
+\end{lstlisting}
+
+\end{exercice}
+
+\hypertarget{requuxeates-avec-projection-sur-des-colonnes}{%
+\section{Requêtes avec projection sur des
+colonnes}\label{requuxeates-avec-projection-sur-des-colonnes}}
+
+\begin{exercice}{}
+
+On travaille toujours avec la table contenue dans le fichier
+\passthrough{\lstinline!'clients.csv'!} avec le script
+\passthrough{\lstinline!'TP\_Recherche\_Tris\_Eleve.py'!} dans un IDE
+Python.
+
+\emph{Une opération de \textbf{projection} consiste à construire une
+nouvelle table en filtrant les attributs.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!projection\_visites!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def projection_visites(table):
+    """Paramètres : 
+        table une table sous forme de tableau de dictionnaires
+    Valeur renvoyée :
+        tableau des valeurs des attributs "visites" pour les enregistrements de table
+        avec conversion des nombres de visites en entiers
+    """
+    return [ ......................... for enregistrement in table ]
+
+assert projection_visites(table_clients)[:10] == [57, 145, 67, 131, 76, 52, 65, 3, 101, 18]
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!projection\_visites!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def selection_departement_projection_visites(table, departement):
+    """Paramètres : 
+        table une table sous forme de tableau de dictionnaires
+    Valeur renvoyée :
+        tableau des valeurs des attributs "visites" pour les enregistrements de table du département
+        passé en paramètre avec conversion des nombres de visites en entiers"""
+    ...................................................................
+    ...................................................................
+
+assert selection_departement_projection_visites(table_clients, "69")[:10] == [43, 52, 127, 53, 41, 117, 31, 86, 107, 145]
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Compléter la fonction
+  \passthrough{\lstinline!projection\_departement\_age!} ci-dessous en
+  respectant sa spécification. On donne une postcondition qui doit être
+  vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def projection_departement_age(table, annee):
+    """Paramètres : 
+        table une table sous forme de tableau de dictionnaires
+    Valeur renvoyée :
+        tableau de dictionnaires avec deux attributs le département et l'âge du client
+        calculé à partir de sa date de naissance."""
+    return [{'département' : enreg['département'], 
+            'âge' : ................................................} 
+           for enreg in table]
+
+assert projection_departement_age(table_clients, 2021)[:3] == [{'département': '79', 'âge': 61}, {'département': '10', 'âge': 27},
+ {'département': '73', 'âge': 20}]
+\end{lstlisting}
+
+\end{exercice}
+
+\hypertarget{tri-dune-table-de-donnuxe9es}{%
+\section{Tri d'une table de
+données}\label{tri-dune-table-de-donnuxe9es}}
+
+\begin{methode}{}
+
+Pour trier une \textbf{table de données} implémentée sous forme de
+\textbf{tableau de dictionnaires} en Python, il est préférable
+d'utiliser les fonctions de tri de la bibliothèque standard plutôt que
+des tris que nous avons programmés.
+
+D'une part nous avons ainsi la garantie d'une complexité optimale en
+\(O(nlog(n))\), d'autre part les fonctions de tri de bibliothèque
+permettent de paramétrer le critère de tri appelé aussi \textbf{clef de
+tri}.
+
+Il existe deux fonctions de tri dans la bibliothèque standard :
+
+\begin{itemize}
+\item
+  \passthrough{\lstinline!sorted!} s'applique à un tableau
+  \passthrough{\lstinline!tab!} avec la syntaxe
+  \passthrough{\lstinline!sorted(tab, key = clef\_tri)!} et renvoie un
+  nouveau tableau avec les éléments du tableau
+  \passthrough{\lstinline!tab!} triés selon la clef de tri passée en
+  paramètre. Celle-ci est une fonction qui s'applique à un élément du
+  tableau et renvoie une valeur calculée à partir de celle de l'élément.
+  Le tri s'effectue en comparant les valeurs renvoyées par la clef de
+  tri pour chaque élément. Cette valeur peut être un
+  \passthrough{\lstinline!tuple!} puisque dans une table, un élément est
+  un dictionnaire avec éventuellement plusieurs attributs. Dans ce cas,
+  pour comparer deux valeurs, on applique \textbf{l'ordre
+  lexicographique} : on compare les premières composantes, puis les
+  secondes etc \ldots. Par défaut la comparaison s'effectue dans l'ordre
+  croissant, mais avec le paramètre optionnel
+  \passthrough{\lstinline!reverse!} on peut demander un ordre
+  décroissant :
+  \passthrough{\lstinline!sorted(tab, key = clef\_tri, reverse = True)!}.
+\item
+  \passthrough{\lstinline!sort!} est une fonction de tri en place, elle
+  ne renvoie pas un nouveau tableau. Elle s'applique à un tableau
+  \passthrough{\lstinline!tab!} avec la syntaxe
+  \passthrough{\lstinline!tab.sort(key = clef\_tri)!}, les paramètres
+  sont les mêmes que pour \passthrough{\lstinline!sorted!}.
+\end{itemize}
+
+Attention, \passthrough{\lstinline!sorted!} ne renvoie qu'une copie
+superficielle du tableau ! Si ses éléments sont des références et c'est
+le cas de l'implémentation des \textbf{tables de données} sous forme de
+\textbf{tableaux de dictionnaires}, il faut effectuer une copie profonde
+du tableau avec la fonction \passthrough{\lstinline!deepcopy!} du module
+\passthrough{\lstinline!copy!} pour obtenir une vraie copie triée du
+tableau initiale :
+\passthrough{\lstinline!sorted(deepcopy(tab), key = clef\_tri)!}.
+
+On donne ci-dessous quelques exemples. Notons que pour obtenir un tri
+décroissant selon l'attribut `\passthrough{\lstinline!note!}' puis
+croissant selon l'attribut \passthrough{\lstinline!'langage'!}, on ne
+peut pas utiliser une clef de tri qui renvoie le couple d'attributs
+(\passthrough{\lstinline!'note'!}, \passthrough{\lstinline!'langage'!})
+car les ordres ne sont pas les mêmes selon les composantes. On procède
+par composition des tris avec \passthrough{\lstinline!sorted!} dans
+l'ordre inverse des priorités de tri : d'abord selon l'attribut
+\passthrough{\lstinline!note!} puis selon l'attribut
+\passthrough{\lstinline!langage!}.
+
+Une propriété importante des fonctions de tri de bibliothèque
+\passthrough{\lstinline!sorted!} et \passthrough{\lstinline!sort!} est
+la \textbf{stabilité du tri} : si on enchaîne deux tris successifs (par
+ordre lexicographique ou composition de
+\passthrough{\lstinline!sorted!}), deux éléments égaux pour le second
+tri conservent l'ordre du premier tri.
+
+\begin{lstlisting}[language=Python]
+>>> table = [{'élève' : 'guido', 'langage' : 'python', 'note' : 19}, {'élève' : 'monty', 'langage' : 'python', 'note' : 20}, {'élève' : 'brian', 'langage' : 'c', 'note' : 20}]
+>>> def clef_note(enreg):
+...     return enreg['note']
+>>> def clef_langage(enreg):
+...     return enreg['langage']
+>>> def clef_langage_note(enreg):
+...     return (enreg['langage'], enreg['note'])
+>>> def clef_note_langage(enreg):
+...     return (enreg['note'], enreg['langage'])
+>>> sorted(table, key = clef_note)
+[{'élève': 'guido', 'langage': 'python', 'note': 19}, {'élève': 'monty', 'langage': 'python', 'note': 20}, {'élève': 'brian', 'langage': 'c', 'note': 20}]
+>>> sorted(table, key = clef_note, reverse = True)
+[{'élève': 'monty', 'langage': 'python', 'note': 20}, {'élève': 'brian', 'langage': 'c', 'note': 20}, {'élève': 'guido', 'langage': 'python', 'note': 19}]
+>>> sorted(table, key = clef_langage_note)  #ordre lexicographique (langage croissant, note croissant)
+[{'élève': 'brian', 'langage': 'c', 'note': 20}, {'élève': 'guido', 'langage': 'python', 'note': 19}, {'élève': 'monty', 'langage': 'python', 'note': 20}]
+>>> sorted(table, key = clef_note_langage)  #ordre lexicographique (note croissant, langage croissant)
+[{'élève': 'guido', 'langage': 'python', 'note': 19}, {'élève': 'brian', 'langage': 'c', 'note': 20}, {'élève': 'monty', 'langage': 'python', 'note': 20}]
+>>> table_tri_lang_cr = sorted(table, key = clef_langage)   #on va composer les tris avec sorted
+>>> sorted(table_tri_lang_cr, key = clef_note, reverse = True) # équivalent à (note décroissant, langage croissant)
+[{'élève': 'brian', 'langage': 'c', 'note': 20}, {'élève': 'monty', 'langage': 'python', 'note': 20}, {'élève': 'guido', 'langage': 'python', 'note': 19}]
+\end{lstlisting}
+
+\end{methode}
+
+\begin{exercice}{}
+
+On travaille toujours avec la table contenue dans le fichier
+\passthrough{\lstinline!'clients.csv'!} avec le script
+\passthrough{\lstinline!'TP\_Recherche\_Tris\_Eleve.py'!} dans un IDE
+Python.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compléter la clef de tri \passthrough{\lstinline!clef\_departement!}
+  pour que \passthrough{\lstinline!table\_tri\_departement!} soit trié
+  dans l'ordre croissant des numéros de département dans le code
+  ci-dessous. Vérifier la postcondition donnée dans le fichier.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def clef_departement(enreg):
+    return .........................
+
+table_tri_departement = sorted(table_clients, key = clef_departement)
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Compléter la clef de tri \passthrough{\lstinline!clef\_visites!} pour
+  que \passthrough{\lstinline!table\_tri\_visites\_decroissant!} soit
+  trié dans l'ordre décroissant des nombres de visites dans le code
+  ci-dessous. Vérifier la postcondition donnée dans le fichier.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def clef_visites(enreg):
+    return .........................
+
+table_tri_visites_decroissant = sorted(table_clients, key = clef_visites, reverse = True)
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Compléter la clef de tri
+  \passthrough{\lstinline!clef\_departement\_visites!} pour que
+  \passthrough{\lstinline!table\_tri\_dep\_vis\_croissant!} soit trié
+  dans l'ordre croissant des départements puis des nombres de visites
+  dans le code ci-dessous. Vérifier la postcondition donnée dans le
+  fichier.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def clef_departement_visites(enreg):
+    return .........................
+
+table_tri_dep_vis_croissant = sorted(table_clients, key = clef_departement_visites)
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Proposer une instruction qui permette de trier
+  \passthrough{\lstinline!table\_clients!} d'abord par département
+  croissant puis par nombre de visites décroissant. Vérifier la
+  postcondition donnée dans le fichier.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+table_tri_dep_crois_vis_decrois =  ...............
+                                   ...............
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Le fichier \passthrough{\lstinline!transactions.csv!} contient une
+  table de données de nouvelles transactions effectuées sur le site
+  marchand. Chaque transaction est identifiée par deux attributs :
+  \passthrough{\lstinline!'email'!} pour l'email du client et
+  '\passthrough{\lstinline!dépenses'!} pour le montant de la dépense.
+\end{enumerate}
+
+\begin{lstlisting}
+email,dépenses
+wpereira@orange.fr,104.91
+ariviere@tiscali.fr,18.37
+\end{lstlisting}
+
+On souhaite mettre à jour les attributs
+\passthrough{\lstinline!'visites'!} et
+\passthrough{\lstinline!'dépenses'!} de
+\passthrough{\lstinline!table\_clients!} avec les nouvelles
+transactions. On considère que chaque client est identifié de façon
+unique par son email et on peut donc insérer efficacement les valeurs de
+chaque transaction dans \passthrough{\lstinline!table\_clients!} avec
+une recherche dichotomique sur l'attribut
+\passthrough{\lstinline!'email'!}. Bien sûr, il faut d'abord trier
+\passthrough{\lstinline!table\_clients!} selon l'attribut
+\passthrough{\lstinline!'email'!}. Compléter le code ci-dessous.
+Décommenter les postconditions dans le fichier pour vérifier le code et
+contrôler le contenu du fichier de sortie
+\passthrough{\lstinline!'clients\_maj.csv'!}.
+
+\begin{lstlisting}[language=Python]
+from copy import deepcopy #pour réaliser une copie de table
+
+def recherche_dicho_croissant(element, table, attribut):
+    """Paramètres :
+         table un tableau de dictionnaires
+         attribut de type str
+         element une valeur possible pour l'attribut
+    Valeur renovoyée : index de la valeur element de attribut dans table"""
+    debut = 0
+    fin = len(table) - 1
+    while fin - debut >= 0:
+        milieu = (debut + fin) // 2
+        if table[milieu][attribut] < element:
+            debut = .....................
+        elif table[milieu][attribut] > element:
+            fin = .......................
+        else:
+            return ......................
+    return None
+
+def clef_email(enreg):
+    return enreg['email']
+
+def maj_depenses_table(table, transactions): 
+    """Paramètres : table et transactions deux  tables sous forme de tableaux de dictionnaires
+    Valeur renvoyée :
+        table_tri un tableau de dictionnaires mise à jour des attributs 'visites' et 'dépenses'
+        de table par les valeurs de transactions""""       
+    table_tri = sorted(deepcopy(table), key = clef_email)
+    table_cible = []
+    for enreg in transactions:
+        index_email = recherche_dicho_croissant(enreg['email'], table_tri, 'email')
+        if index_email is not None:
+            ..........................................
+            ..........................................
+            ..........................................
+    return table_tri
+                     
+table_clients = lecture_csv('clients.csv', ',')
+transactions = lecture_csv('transactions.csv', ',') 
+table_tri = maj_depenses_table(table_clients, transactions)
+ecriture_csv(table_tri, 'clients_maj.csv', ',')
+\end{lstlisting}
+
+\end{exercice}
+
+\hypertarget{applications-uxe0-un-autre-exemple}{%
+\section{Applications à un autre
+exemple}\label{applications-uxe0-un-autre-exemple}}
+
+\begin{exercice}{}
+
+Nous allons utiliser un fichier nommé
+\passthrough{\lstinline!countries.csv!} qui contient quelques données
+sur les différents pays du monde. En voici les premières lignes : les
+champs sont clairement séparés par des points-virgules.
+
+\begin{lstlisting}
+iso;name;area;population;continent;currency_code;currency_name;capital
+AD;Andorra;468.0;84000;EU;EUR;Euro;6
+AE;United Arab Emirates;82880.0;4975593;AS;AED;Dirham;21
+AF;Afghanistan;647500.0;29121286;AS;AFN;Afghani;81
+\end{lstlisting}
+
+Les données sont issues du site \url{http://www.geonames.org} et ont été
+légèrement simplifiées. La signification des différents champs est
+transparente (\passthrough{\lstinline!currency!} signifie devise), à
+part le dernier champ, nommé capital et dont les valeurs sont des
+numéros d'identifiants de villes que l'on trouvera dans un autre fichier
+nommé \passthrough{\lstinline!cities.csv!} que nous utiliserons dans le
+chapitre sur les fusions de tables.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  On travaille toujours avec le script
+  \passthrough{\lstinline!'TP\_Recherche\_Tris\_Eleve.py'!} dans un IDE
+  Python à la suite des exercices précédents. On commence par charger la
+  table avec la fonction \passthrough{\lstinline!lecture\_csv!},
+  attention le délimiteur de champ n'est pas le symbole
+  \passthrough{\lstinline!,!} mais \passthrough{\lstinline!;!}.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+table_pays = lecture_csv('countries.csv', ';')
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!nombre\_europe!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def nombre_europe(table):
+    """Paramètre : table de countries.csv
+    Valeur renvoyée : compteur de type int représentant le nombre de pays du continent européen
+    """
+    compteur = 0
+    for enregistrement in table:
+        .......................
+        ......................
+    return compteur
+
+assert nombre_europe(table_pays) == 52
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!selection\_europe!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def selection_europe(table):
+    """Paramètre : table de countries.csv
+    Valeur renvoyée : table des enregistrements des pays du continent européen"""
+    return ................................
+
+
+europe = selection_europe(table_pays)
+assert len(europe) == 52 and europe[0]['name'] == 'Andorra'
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Compléter la fonction
+  \passthrough{\lstinline!selection\_europe\_non\_euro!} ci-dessous en
+  respectant sa spécification. On donne une postcondition qui doit être
+  vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def selection_europe_non_euro(table):
+     """Paramètre : table de countries.csv
+    Valeur renvoyée : table des enregistrements des pays du continent européen qui n'ont pas pour monnaie l'euro"""
+    return ................................
+           ................................
+
+europe_non_euro = selection_europe_non_euro(table_pays)
+assert len(europe_non_euro) == 27 and europe_non_euro[0]['name'] == 'Albania'
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Compléter la fonction \passthrough{\lstinline!projection\_aire!}
+  ci-dessous en respectant sa spécification. On donne une postcondition
+  qui doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def projection_aire(table):
+    """Paramètre : table de countries.csv
+    Valeur renvoyée : tableau des aires (type float) de tous les enregistrements"""
+    return ................................
+
+assert  projection_aire(table_pays)[:5]  == [468.0, 82880.0, 647500.0, 443.0, 102.0]
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Compléter la fonction
+  \passthrough{\lstinline!projection\_pays\_densite!} ci-dessous en
+  respectant sa spécification. On donne une postcondition qui doit être
+  vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def projection_pays_densite(table):
+    """Paramètre : table de countries.csv
+    Valeur renvoyée : nouvelle table avec deux attributs 'pays' et 'densité' de population"""
+    return [ {'pays' : enreg['name'], 
+             'densité' : ...............................)}
+            for enreg in table]
+
+assert projection_pays_densite(table_pays)[:3] == [{'pays': 'Andorra', 'densité': 179.48717948717947},
+ {'pays': 'United Arab Emirates', 'densité': 60.033699324324324},
+ {'pays': 'Afghanistan', 'densité': 44.974959073359074}]
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Écrire une fonction \passthrough{\lstinline!maximum\_densite!}
+  respectant la spécification ci-dessous. On donne une postcondition qui
+  doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def maximum_densite(table):
+    """Paramètre : table de countries.csv
+    Valeur renvoyée : tuple avec le nom du pays de densité maximale de population et cette densité maximale"""
+
+
+
+
+
+
+
+
+
+
+
+assert maximum_densite(table_pays) == ('Monaco', 16905.128205128207)
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Écrire une fonction
+  \passthrough{\lstinline!population\_par\_continent!} respectant la
+  spécification ci-dessous. On donne une postcondition qui doit être
+  vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def population_par_continent(table):
+    """Paramètre : table de countries.csv
+    Valeur renvoyée : dictionnaire de clefs les identifiants des continents
+    et de valeurs les populations cumulées des pays leur appartenant"""
+    
+
+
+
+
+
+
+
+
+        
+
+assert population_par_continent(table_pays) == {'EU': 740017414,
+ 'AS': 4119426856,  'NA': 539886359, 'AF': 1018849428, 'SA': 400143568, 
+ 'OC': 36066083}
+\end{lstlisting}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  Écrire une fonction \passthrough{\lstinline!densite\_max\_top5!}
+  respectant la spécification ci-dessous. On donne une postcondition qui
+  doit être vérifiée.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+def densite_max_top5(table):
+     """Paramètre : table de countries.csv
+    Valeur renvoyée : table avec les noms et les densités des 5 pays les plus  densément peuplées dans l'ordre décroissant des densités de population"""
+    
+
+
+
+
+
+
+
+
+
+
+
+
+assert densite_max_top5(table_pays) == [{'pays': 'Monaco', 'densité': 16905.128205128207},
+ {'pays': 'Singapore', 'densité': 6786.5872672152445},
+ {'pays': 'Hong Kong', 'densité': 6317.478021978022},
+ {'pays': 'Gibraltar', 'densité': 4289.846153846154},
+ {'pays': 'Vatican', 'densité': 2093.181818181818}]
+\end{lstlisting}
+
+\end{exercice}
+
+\hypertarget{synthuxe8se}{%
+\section{Synthèse}\label{synthuxe8se}}
+
+\begin{synthese}{}
+
+Lorsqu'une \textbf{table de données} contenue dans un \textbf{fichier
+CSV} est chargée dans une structure de données Python comme un
+\textbf{tableau de dictionnaires}, on peut la manipuler avec des
+requêtes de \textbf{recherche}, \textbf{d'agrégation}, de
+\textbf{sélection sur les lignes} ou de \textbf{projection sur les
+colonnes}. Il est possible également de trier les enregistrements d'une
+table avec la fonction de bibliothèque \passthrough{\lstinline!sorted!}
+en lui passant une fonction clef de tri. Elle garantit la
+\textbf{stabilité du tri} : les éléments égaux conservent leur ordre
+intial. On peut ainsi extraire des informations d'une table ou
+construire de nouvelles tables. En classe de terminale, nous étudierons
+les \textbf{bases de données} dans le modèle relationnel, qui peuvent
+être modélisées par des tables. Les requêtes pour les interroger seront
+similaires mais exprimées dans un langage spécifique, le
+\href{https://pixees.fr/informatiquelycee/n_site/nsi_term_bd_sql.html}{SQL}.
+
+\end{synthese}
+
+\end{document}

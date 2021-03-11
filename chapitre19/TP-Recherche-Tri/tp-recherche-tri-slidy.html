@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Première NSI Lycée du Parc" />
+  <title>TP table de données, requêtes et tri</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="../../Pandoc/style_nsi.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">TP table de données, requêtes et tri</h1>
+  <p class="subtitle">Traitement de données en tables</p>
+  <p class="author">
+Première NSI Lycée du Parc
+  </p>
+</div>
+<div id="crédits" class="slide section level1 unnumbered">
+<h1 class="unnumbered">Crédits</h1>
+<p><em>Ce TP est largement inspiré :</em></p>
+<ul>
+<li><em>des chapitres 16 et 17 du manuel NSI de la collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N’Guyen ;</em></li>
+<li><em>du document d’accompagnement des programmes de NSI disponible sur Eduscol</em></li>
+</ul>
+</div>
+<div id="requêtes-dans-une-table-de-données" class="slide section level1">
+<h1>Requêtes dans une table de données</h1>
+<div class="definition">
+<p>Dans le cours, on a vu comment charger une <strong>table de données</strong>, enregistrée dans un <strong>fichier CSV</strong>, dans une structure de données permettant un accès efficace aux <strong>enregistrements</strong> et aux valeurs de leurs <strong>attributs</strong>. En Python, une structure de données bien adaptée est un <strong>tableau de dictionnaires</strong>. Les opérations sur les tableaux et les dictionnaires déjà étudiées vont nous permettre d’interroger une <strong>table de données</strong> à l’aide d’opération appelées <strong>requêtes</strong> :</p>
+<ul>
+<li>pour tester l’appartenance à la table d’un enregistrement vérifiant une certaine condition sur ses attributs ;</li>
+<li>pour calculer une valeur en combinant les valeurs d’attributs de plusieurs enregistrements (<strong>opération d’agrégation</strong>) ;</li>
+<li>pour sélectionner tous les enregistrements vérifiant une certaine condition sur leurs attributs (<strong>opération de sélection par lignes</strong>) ;</li>
+<li>pour projeter les enregistrements sur certains de leurs attributs (<strong>opération de projection sur des colonnes</strong>) ;</li>
+<li>pour trier les enregistrements en fontion d’un ordre prédéfini sur leurs attributs (<strong>opération de tri</strong>).</li>
+</ul>
+</div>
+</div>
+<div id="requêtes-de-recherche" class="slide section level1">
+<h1>Requêtes de recherche</h1>
+<div class="exercice">
+<ol style="list-style-type: decimal">
+<li>Ouvrir le script <code>'TP_Recherche_Tris_Eleve.py'</code> dans un IDE Python</li>
+<li>Charger dans une variable <code>table_clients</code> la table contenue dans le fichier <code>'clients.csv'</code> à l’aide de la fonction <code>lecture_csv</code> qui est fournie. Il s’agit de la table des clients d’un site marchand que nous avons manipulée dans le cours. Exécuter le test unitaire <code>test_import_table_clients(table_clients)</code>.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>table_clients <span class="op">=</span> lecture_csv(<span class="st">&#39;clients.csv&#39;</span>, <span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Compléter la fonction <code>recherche_attribut</code> ci-dessous en respectant sa spécification. Vérifier en exécutant le test unitaire <code>test_recherche_attribut_table_clients(table_clients)</code>.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> recherche_attribut(table, attribut, valeur):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">        table un tableau de dictionnaires, table  de clients.csv</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">        attribut de type str  valeur du type d&#39;attribut dans table</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">    Valeur renvoyée:</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">        Un booléen indiquant si table contient un enregistrement e</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">        tel que e[attribut] == valeur&quot;&quot;&quot;</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="cf">for</span> enregistrement <span class="kw">in</span> table:</span>
+<span id="cb2-9"><a href="#cb2-9"></a>        <span class="cf">if</span> .........................:</span>
+<span id="cb2-10"><a href="#cb2-10"></a>            <span class="cf">return</span> ............</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="cf">return</span> .........</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Compléter la fonction <code>recherche_attribut_et</code> ci-dessous en respectant sa spécification. Exécuter le test unitaire <code>test_recherche_attributs_et(table_clients)</code>.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> recherche_attributs_et(table, attribut1, valeur1, attribut2, valeur2):</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">        table un tableau de dictionnaires, table  de clients.csv</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">        attribut1 de type str, valeur1 du type d&#39;attribut1</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">        attribut2 de type str, valeur2 du type d&#39;attribut2</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">    Valeur renvoyée:</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">        Un booléen indiquant si table contient un enregistrement e</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">        tel que e[attribut1] == valeur1 et e[attribut2] == valeur2 &quot;&quot;&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>    <span class="cf">for</span> enregistrement <span class="kw">in</span> table:</span>
+<span id="cb3-10"><a href="#cb3-10"></a>        <span class="cf">if</span> .........................:</span>
+<span id="cb3-11"><a href="#cb3-11"></a>            <span class="cf">return</span> ............</span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="cf">return</span> .........</span></code></pre></div>
+<p>Proposer une modification de <code>recherche_attributs_et</code> qui prend en paramètres deux tableaux <code>attribut</code> et <code>valeur</code> et recherche si la table contient un enregistrement pour lequel tous les attributs listés correspondent aux valeurs listées puis un enregistrement pour lequel au moins un des attributs listés correspond à son homologue dans la liste des valeurs.</p>
+</div>
+</div>
+<div id="requêtes-avec-opération-dagrégation" class="slide section level1">
+<h1>Requêtes avec opération d’agrégation</h1>
+<div class="exercice">
+<p>On travaille toujours avec la table contenue dans le fichier <code>'clients.csv'</code> avec le script <code>'TP_Recherche_Tris_Eleve.py'</code> dans un IDE Python.</p>
+<ol style="list-style-type: decimal">
+<li>Compléter la fonction <code>nombre_departement</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> nombre_departement(table, departement):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">        table un tableau de dictionnaires, table  de clients.csv</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">        departement de type str, un numéro de département</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">        Nombre d&#39;occurences de departement dans table&quot;&quot;&quot;</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>    compteur <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>    <span class="cf">for</span> enregistrement <span class="kw">in</span> table:</span>
+<span id="cb4-9"><a href="#cb4-9"></a>        <span class="cf">if</span> ....................................:</span>
+<span id="cb4-10"><a href="#cb4-10"></a>            compteur <span class="op">=</span> .........................</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="cf">return</span> compteur</span>
+<span id="cb4-12"><a href="#cb4-12"></a></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co"># postcondition</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="cf">assert</span> nombre_departement(table_clients, <span class="st">&quot;département&quot;</span>, <span class="st">&quot;69&quot;</span>) <span class="op">==</span> <span class="dv">481</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Compléter la fonction <code>nombre_departement</code> ci-dessous en respectant sa spécification. Exécuter le test unitaire <code>test_nombre_occurences(table_clients)</code>.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> nombre_occurences(table, attribut, valeur):</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">        table un tableau de dictionnaires, table  de clients.csv</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">        attribut de type str, valeur du type d&#39;attribut dans table</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">        Nombre d&#39;occurences d&#39;attribut avec valeur dans table&quot;&quot;&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>    ...........................</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    ...........................</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    ...........................</span>
+<span id="cb5-10"><a href="#cb5-10"></a>    ...........................</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    ...........................</span>
+<span id="cb5-12"><a href="#cb5-12"></a>    ...........................</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Compléter la fonction <code>moyenne_visites</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> moyenne_visites(table):</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">        table un tableau de dictionnaires, table  de clients.csv</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">        Moyenne des visites par enregistrement de type float&quot;&quot;&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>    somme <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>    taille <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="cf">for</span> enregistrement <span class="kw">in</span> table:</span>
+<span id="cb6-9"><a href="#cb6-9"></a>        .......................</span>
+<span id="cb6-10"><a href="#cb6-10"></a>        .......................</span>
+<span id="cb6-11"><a href="#cb6-11"></a>        .......................</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="cf">return</span> somme <span class="op">/</span> taille</span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#postcondition</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="cf">assert</span> moyenne_visites(table_clients) <span class="op">==</span> <span class="fl">76.2807</span> </span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Compléter la fonction <code>minimum_visites</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> minimum_visites(table):</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">        table un tableau de dictionnaires, table  de clients.csv</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">        nombre minimum de visites de type int&quot;&quot;&quot;</span>    </span>
+<span id="cb7-6"><a href="#cb7-6"></a>    min_visites <span class="op">=</span> <span class="bu">int</span>(table[<span class="dv">0</span>][<span class="st">&#39;visites&#39;</span>])</span>
+<span id="cb7-7"><a href="#cb7-7"></a>    <span class="cf">for</span> enregistrement <span class="kw">in</span> table[<span class="dv">1</span>:]:</span>
+<span id="cb7-8"><a href="#cb7-8"></a>        ............................</span>
+<span id="cb7-9"><a href="#cb7-9"></a>        ............................</span>
+<span id="cb7-10"><a href="#cb7-10"></a>        ............................</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="cf">return</span> min_visites</span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#postcondition</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="cf">assert</span> minimum_visites(table_clients)  <span class="op">==</span> <span class="dv">2</span></span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Compléter la fonction <code>departement_max_occurence</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> departement_max_occurence(table):</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="co">&quot;&quot;&quot;Paramètre : table sous forme de tableau de dictionnaires</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">    Valeur renvoyée : tuple formé du nombre d&#39;occurences maximal parmi les départements</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">    et du tableau des  départements réalisant ce maximum</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>    ............</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    ............ </span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a></span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a></span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a></span>
+<span id="cb8-15"><a href="#cb8-15"></a></span>
+<span id="cb8-16"><a href="#cb8-16"></a></span>
+<span id="cb8-17"><a href="#cb8-17"></a></span>
+<span id="cb8-18"><a href="#cb8-18"></a></span>
+<span id="cb8-19"><a href="#cb8-19"></a></span>
+<span id="cb8-20"><a href="#cb8-20"></a></span>
+<span id="cb8-21"><a href="#cb8-21"></a><span class="cf">assert</span> departement_max_occurence(table_clients) <span class="op">==</span> (<span class="dv">547</span>, [<span class="st">&#39;59&#39;</span>])</span></code></pre></div>
+</div>
+</div>
+<div id="requêtes-avec-sélection-de-lignes" class="slide section level1">
+<h1>Requêtes avec sélection de lignes</h1>
+<div class="exercice">
+<p>On travaille toujours avec la table contenue dans le fichier <code>'clients.csv'</code> avec le script <code>'TP_Recherche_Tris_Eleve.py'</code> dans un IDE Python.</p>
+<p><em>Un opération de <strong>sélection</strong> consiste à construire une nouvelle table avec les mêmes attributs mais en filtrant les enregistrements (ou lignes) selon une condition logique.</em></p>
+<ol style="list-style-type: decimal">
+<li>Compléter la fonction <code>selection_departement</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> selection_departement(table, departement):</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">    Paramètres : </span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">        table une table sous forme de tableau de dictionnaires</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">        department une chaine de caractères représentant un département</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">        tableau de dictionnaires contenant les enregistrement de table dont l&#39;attribut &quot;département&quot;  a la valeur passée en paramètre</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>    <span class="cf">return</span> [enregistrement</span>
+<span id="cb9-10"><a href="#cb9-10"></a>             <span class="cf">for</span> enregistrement <span class="kw">in</span> table <span class="cf">if</span> ......................................    ]</span>
+<span id="cb9-11"><a href="#cb9-11"></a></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co"># postcondition</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="cf">assert</span> selection_departement(table_clients, <span class="st">&quot;69&quot;</span>)[<span class="dv">0</span>][<span class="st">&#39;email&#39;</span>] <span class="op">==</span> <span class="st">&#39;nnguyen@noos.fr&#39;</span> \</span>
+<span id="cb9-14"><a href="#cb9-14"></a>        <span class="kw">and</span> <span class="bu">len</span>(selection_departement(table_clients, <span class="st">&quot;69&quot;</span>)) <span class="op">==</span> <span class="dv">481</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Compléter la fonction <code>selection_depart_visites_min</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">def</span> selection_depart_visites_min(table, departement, visites_min):</span>
+<span id="cb10-2"><a href="#cb10-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co">        table une table sous forme de tableau de dictionnaires</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co">        department une chaine de caractères représentant un département</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co">        visites_min un entier naturel </span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co">        tableau de dictionnaires contenant les enregistrement de table dont l&#39;attribut &quot;département&quot;  a la valeur passée en paramètre et l&#39;attribut visites est &gt;= visites_min&quot;&quot;&quot;</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>    <span class="cf">return</span> [enregistrement <span class="cf">for</span> enregistrement <span class="kw">in</span> table </span>
+<span id="cb10-9"><a href="#cb10-9"></a>            <span class="cf">if</span> ........................................................]         </span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="cf">assert</span> <span class="bu">len</span>(selection_depart_visites_min(table_clients,<span class="st">&quot;69&quot;</span>,<span class="dv">100</span>))<span class="op">==</span><span class="dv">171</span></span></code></pre></div>
+</div>
+</div>
+<div id="requêtes-avec-projection-sur-des-colonnes" class="slide section level1">
+<h1>Requêtes avec projection sur des colonnes</h1>
+<div class="exercice">
+<p>On travaille toujours avec la table contenue dans le fichier <code>'clients.csv'</code> avec le script <code>'TP_Recherche_Tris_Eleve.py'</code> dans un IDE Python.</p>
+<p><em>Une opération de <strong>projection</strong> consiste à construire une nouvelle table en filtrant les attributs.</em></p>
+<ol style="list-style-type: decimal">
+<li>Compléter la fonction <code>projection_visites</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> projection_visites(table):</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">        table une table sous forme de tableau de dictionnaires</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">        tableau des valeurs des attributs &quot;visites&quot; pour les enregistrements de table</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">        avec conversion des nombres de visites en entiers</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="cf">return</span> [ ......................... <span class="cf">for</span> enregistrement <span class="kw">in</span> table ]</span>
+<span id="cb11-9"><a href="#cb11-9"></a></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="cf">assert</span> projection_visites(table_clients)[:<span class="dv">10</span>] <span class="op">==</span> [<span class="dv">57</span>, <span class="dv">145</span>, <span class="dv">67</span>, <span class="dv">131</span>, <span class="dv">76</span>, <span class="dv">52</span>, <span class="dv">65</span>, <span class="dv">3</span>, <span class="dv">101</span>, <span class="dv">18</span>]</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Compléter la fonction <code>projection_visites</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">def</span> selection_departement_projection_visites(table, departement):</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="co">        table une table sous forme de tableau de dictionnaires</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co">        tableau des valeurs des attributs &quot;visites&quot; pour les enregistrements de table du département</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="co">        passé en paramètre avec conversion des nombres de visites en entiers&quot;&quot;&quot;</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>    ...................................................................</span>
+<span id="cb12-8"><a href="#cb12-8"></a>    ...................................................................</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="cf">assert</span> selection_departement_projection_visites(table_clients, <span class="st">&quot;69&quot;</span>)[:<span class="dv">10</span>] <span class="op">==</span> [<span class="dv">43</span>, <span class="dv">52</span>, <span class="dv">127</span>, <span class="dv">53</span>, <span class="dv">41</span>, <span class="dv">117</span>, <span class="dv">31</span>, <span class="dv">86</span>, <span class="dv">107</span>, <span class="dv">145</span>]</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Compléter la fonction <code>projection_departement_age</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> projection_departement_age(table, annee):</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    <span class="co">&quot;&quot;&quot;Paramètres : </span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">        table une table sous forme de tableau de dictionnaires</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">        tableau de dictionnaires avec deux attributs le département et l&#39;âge du client</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">        calculé à partir de sa date de naissance.&quot;&quot;&quot;</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="cf">return</span> [{<span class="st">&#39;département&#39;</span> : enreg[<span class="st">&#39;département&#39;</span>], </span>
+<span id="cb13-8"><a href="#cb13-8"></a>            <span class="st">&#39;âge&#39;</span> : ................................................} </span>
+<span id="cb13-9"><a href="#cb13-9"></a>           <span class="cf">for</span> enreg <span class="kw">in</span> table]</span>
+<span id="cb13-10"><a href="#cb13-10"></a></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="cf">assert</span> projection_departement_age(table_clients, <span class="dv">2021</span>)[:<span class="dv">3</span>] <span class="op">==</span> [{<span class="st">&#39;département&#39;</span>: <span class="st">&#39;79&#39;</span>, <span class="st">&#39;âge&#39;</span>: <span class="dv">61</span>}, {<span class="st">&#39;département&#39;</span>: <span class="st">&#39;10&#39;</span>, <span class="st">&#39;âge&#39;</span>: <span class="dv">27</span>},</span>
+<span id="cb13-12"><a href="#cb13-12"></a> {<span class="st">&#39;département&#39;</span>: <span class="st">&#39;73&#39;</span>, <span class="st">&#39;âge&#39;</span>: <span class="dv">20</span>}]</span></code></pre></div>
+</div>
+</div>
+<div id="tri-dune-table-de-données" class="slide section level1">
+<h1>Tri d’une table de données</h1>
+<div class="methode">
+<p>Pour trier une <strong>table de données</strong> implémentée sous forme de <strong>tableau de dictionnaires</strong> en Python, il est préférable d’utiliser les fonctions de tri de la bibliothèque standard plutôt que des tris que nous avons programmés.</p>
+<p>D’une part nous avons ainsi la garantie d’une complexité optimale en <span class="math inline">\(O(nlog(n))\)</span>, d’autre part les fonctions de tri de bibliothèque permettent de paramétrer le critère de tri appelé aussi <strong>clef de tri</strong>.</p>
+<p>Il existe deux fonctions de tri dans la bibliothèque standard :</p>
+<ul>
+<li><p><code>sorted</code> s’applique à un tableau <code>tab</code> avec la syntaxe <code>sorted(tab, key = clef_tri)</code> et renvoie un nouveau tableau avec les éléments du tableau <code>tab</code> triés selon la clef de tri passée en paramètre. Celle-ci est une fonction qui s’applique à un élément du tableau et renvoie une valeur calculée à partir de celle de l’élément. Le tri s’effectue en comparant les valeurs renvoyées par la clef de tri pour chaque élément. Cette valeur peut être un <code>tuple</code> puisque dans une table, un élément est un dictionnaire avec éventuellement plusieurs attributs. Dans ce cas, pour comparer deux valeurs, on applique <strong>l’ordre lexicographique</strong> : on compare les premières composantes, puis les secondes etc …. Par défaut la comparaison s’effectue dans l’ordre croissant, mais avec le paramètre optionnel <code>reverse</code> on peut demander un ordre décroissant : <code>sorted(tab, key = clef_tri, reverse = True)</code>.</p></li>
+<li><p><code>sort</code> est une fonction de tri en place, elle ne renvoie pas un nouveau tableau. Elle s’applique à un tableau <code>tab</code> avec la syntaxe <code>tab.sort(key = clef_tri)</code>, les paramètres sont les mêmes que pour <code>sorted</code>.</p></li>
+</ul>
+<p>Attention, <code>sorted</code> ne renvoie qu’une copie superficielle du tableau ! Si ses éléments sont des références et c’est le cas de l’implémentation des <strong>tables de données</strong> sous forme de <strong>tableaux de dictionnaires</strong>, il faut effectuer une copie profonde du tableau avec la fonction <code>deepcopy</code> du module <code>copy</code> pour obtenir une vraie copie triée du tableau initiale : <code>sorted(deepcopy(tab), key = clef_tri)</code>.</p>
+<p>On donne ci-dessous quelques exemples. Notons que pour obtenir un tri décroissant selon l’attribut ‘<code>note</code>’ puis croissant selon l’attribut <code>'langage'</code>, on ne peut pas utiliser une clef de tri qui renvoie le couple d’attributs (<code>'note'</code>, <code>'langage'</code>) car les ordres ne sont pas les mêmes selon les composantes. On procède par composition des tris avec <code>sorted</code> dans l’ordre inverse des priorités de tri : d’abord selon l’attribut <code>note</code> puis selon l’attribut <code>langage</code>.</p>
+<p>Une propriété importante des fonctions de tri de bibliothèque <code>sorted</code> et <code>sort</code> est la <strong>stabilité du tri</strong> : si on enchaîne deux tris successifs (par ordre lexicographique ou composition de <code>sorted</code>), deux éléments égaux pour le second tri conservent l’ordre du premier tri.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">&gt;&gt;&gt;</span> table <span class="op">=</span> [{<span class="st">&#39;élève&#39;</span> : <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;langage&#39;</span> : <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">19</span>}, {<span class="st">&#39;élève&#39;</span> : <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;langage&#39;</span> : <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span> : <span class="st">&#39;brian&#39;</span>, <span class="st">&#39;langage&#39;</span> : <span class="st">&#39;c&#39;</span>, <span class="st">&#39;note&#39;</span> : <span class="dv">20</span>}]</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> clef_note(enreg):</span>
+<span id="cb14-3"><a href="#cb14-3"></a>...     <span class="cf">return</span> enreg[<span class="st">&#39;note&#39;</span>]</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> clef_langage(enreg):</span>
+<span id="cb14-5"><a href="#cb14-5"></a>...     <span class="cf">return</span> enreg[<span class="st">&#39;langage&#39;</span>]</span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> clef_langage_note(enreg):</span>
+<span id="cb14-7"><a href="#cb14-7"></a>...     <span class="cf">return</span> (enreg[<span class="st">&#39;langage&#39;</span>], enreg[<span class="st">&#39;note&#39;</span>])</span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> clef_note_langage(enreg):</span>
+<span id="cb14-9"><a href="#cb14-9"></a>...     <span class="cf">return</span> (enreg[<span class="st">&#39;note&#39;</span>], enreg[<span class="st">&#39;langage&#39;</span>])</span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">sorted</span>(table, key <span class="op">=</span> clef_note)</span>
+<span id="cb14-11"><a href="#cb14-11"></a>[{<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">19</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;brian&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;c&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}]</span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">sorted</span>(table, key <span class="op">=</span> clef_note, reverse <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb14-13"><a href="#cb14-13"></a>[{<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;brian&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;c&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">19</span>}]</span>
+<span id="cb14-14"><a href="#cb14-14"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">sorted</span>(table, key <span class="op">=</span> clef_langage_note)  <span class="co">#ordre lexicographique (langage croissant, note croissant)</span></span>
+<span id="cb14-15"><a href="#cb14-15"></a>[{<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;brian&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;c&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">19</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}]</span>
+<span id="cb14-16"><a href="#cb14-16"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">sorted</span>(table, key <span class="op">=</span> clef_note_langage)  <span class="co">#ordre lexicographique (note croissant, langage croissant)</span></span>
+<span id="cb14-17"><a href="#cb14-17"></a>[{<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">19</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;brian&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;c&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}]</span>
+<span id="cb14-18"><a href="#cb14-18"></a><span class="op">&gt;&gt;&gt;</span> table_tri_lang_cr <span class="op">=</span> <span class="bu">sorted</span>(table, key <span class="op">=</span> clef_langage)   <span class="co">#on va composer les tris avec sorted</span></span>
+<span id="cb14-19"><a href="#cb14-19"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">sorted</span>(table_tri_lang_cr, key <span class="op">=</span> clef_note, reverse <span class="op">=</span> <span class="va">True</span>) <span class="co"># équivalent à (note décroissant, langage croissant)</span></span>
+<span id="cb14-20"><a href="#cb14-20"></a>[{<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;brian&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;c&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;monty&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">20</span>}, {<span class="st">&#39;élève&#39;</span>: <span class="st">&#39;guido&#39;</span>, <span class="st">&#39;langage&#39;</span>: <span class="st">&#39;python&#39;</span>, <span class="st">&#39;note&#39;</span>: <span class="dv">19</span>}]</span></code></pre></div>
+</div>
+<div class="exercice">
+<p>On travaille toujours avec la table contenue dans le fichier <code>'clients.csv'</code> avec le script <code>'TP_Recherche_Tris_Eleve.py'</code> dans un IDE Python.</p>
+<ol style="list-style-type: decimal">
+<li>Compléter la clef de tri <code>clef_departement</code> pour que <code>table_tri_departement</code> soit trié dans l’ordre croissant des numéros de département dans le code ci-dessous. Vérifier la postcondition donnée dans le fichier.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> clef_departement(enreg):</span>
+<span id="cb15-2"><a href="#cb15-2"></a>    <span class="cf">return</span> .........................</span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a>table_tri_departement <span class="op">=</span> <span class="bu">sorted</span>(table_clients, key <span class="op">=</span> clef_departement)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Compléter la clef de tri <code>clef_visites</code> pour que <code>table_tri_visites_decroissant</code> soit trié dans l’ordre décroissant des nombres de visites dans le code ci-dessous. Vérifier la postcondition donnée dans le fichier.</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> clef_visites(enreg):</span>
+<span id="cb16-2"><a href="#cb16-2"></a>    <span class="cf">return</span> .........................</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a>table_tri_visites_decroissant <span class="op">=</span> <span class="bu">sorted</span>(table_clients, key <span class="op">=</span> clef_visites, reverse <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Compléter la clef de tri <code>clef_departement_visites</code> pour que <code>table_tri_dep_vis_croissant</code> soit trié dans l’ordre croissant des départements puis des nombres de visites dans le code ci-dessous. Vérifier la postcondition donnée dans le fichier.</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> clef_departement_visites(enreg):</span>
+<span id="cb17-2"><a href="#cb17-2"></a>    <span class="cf">return</span> .........................</span>
+<span id="cb17-3"><a href="#cb17-3"></a></span>
+<span id="cb17-4"><a href="#cb17-4"></a>table_tri_dep_vis_croissant <span class="op">=</span> <span class="bu">sorted</span>(table_clients, key <span class="op">=</span> clef_departement_visites)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Proposer une instruction qui permette de trier <code>table_clients</code> d’abord par département croissant puis par nombre de visites décroissant. Vérifier la postcondition donnée dans le fichier.</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>table_tri_dep_crois_vis_decrois <span class="op">=</span>  ...............</span>
+<span id="cb18-2"><a href="#cb18-2"></a>                                   ...............</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Le fichier <code>transactions.csv</code> contient une table de données de nouvelles transactions effectuées sur le site marchand. Chaque transaction est identifiée par deux attributs : <code>'email'</code> pour l’email du client et ’<code>dépenses'</code> pour le montant de la dépense.</li>
+</ol>
+<pre><code>email,dépenses
+wpereira@orange.fr,104.91
+ariviere@tiscali.fr,18.37</code></pre>
+<p>On souhaite mettre à jour les attributs <code>'visites'</code> et <code>'dépenses'</code> de <code>table_clients</code> avec les nouvelles transactions. On considère que chaque client est identifié de façon unique par son email et on peut donc insérer efficacement les valeurs de chaque transaction dans <code>table_clients</code> avec une recherche dichotomique sur l’attribut <code>'email'</code>. Bien sûr, il faut d’abord trier <code>table_clients</code> selon l’attribut <code>'email'</code>. Compléter le code ci-dessous. Décommenter les postconditions dans le fichier pour vérifier le code et contrôler le contenu du fichier de sortie <code>'clients_maj.csv'</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> copy <span class="im">import</span> deepcopy <span class="co">#pour réaliser une copie de table</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="kw">def</span> recherche_dicho_croissant(element, table, attribut):</span>
+<span id="cb20-4"><a href="#cb20-4"></a>    <span class="co">&quot;&quot;&quot;Paramètres :</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="co">         table un tableau de dictionnaires</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="co">         attribut de type str</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co">         element une valeur possible pour l&#39;attribut</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="co">    Valeur renovoyée : index de la valeur element de attribut dans table&quot;&quot;&quot;</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>    debut <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>    fin <span class="op">=</span> <span class="bu">len</span>(table) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>    <span class="cf">while</span> fin <span class="op">-</span> debut <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb20-12"><a href="#cb20-12"></a>        milieu <span class="op">=</span> (debut <span class="op">+</span> fin) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a>        <span class="cf">if</span> table[milieu][attribut] <span class="op">&lt;</span> element:</span>
+<span id="cb20-14"><a href="#cb20-14"></a>            debut <span class="op">=</span> .....................</span>
+<span id="cb20-15"><a href="#cb20-15"></a>        <span class="cf">elif</span> table[milieu][attribut] <span class="op">&gt;</span> element:</span>
+<span id="cb20-16"><a href="#cb20-16"></a>            fin <span class="op">=</span> .......................</span>
+<span id="cb20-17"><a href="#cb20-17"></a>        <span class="cf">else</span>:</span>
+<span id="cb20-18"><a href="#cb20-18"></a>            <span class="cf">return</span> ......................</span>
+<span id="cb20-19"><a href="#cb20-19"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb20-20"><a href="#cb20-20"></a></span>
+<span id="cb20-21"><a href="#cb20-21"></a><span class="kw">def</span> clef_email(enreg):</span>
+<span id="cb20-22"><a href="#cb20-22"></a>    <span class="cf">return</span> enreg[<span class="st">&#39;email&#39;</span>]</span>
+<span id="cb20-23"><a href="#cb20-23"></a></span>
+<span id="cb20-24"><a href="#cb20-24"></a><span class="kw">def</span> maj_depenses_table(table, transactions): </span>
+<span id="cb20-25"><a href="#cb20-25"></a>    <span class="co">&quot;&quot;&quot;Paramètres : table et transactions deux  tables sous forme de tableaux de dictionnaires</span></span>
+<span id="cb20-26"><a href="#cb20-26"></a><span class="co">    Valeur renvoyée :</span></span>
+<span id="cb20-27"><a href="#cb20-27"></a><span class="co">        table_tri un tableau de dictionnaires mise à jour des attributs &#39;visites&#39; et &#39;dépenses&#39;</span></span>
+<span id="cb20-28"><a href="#cb20-28"></a><span class="co">        de table par les valeurs de transactions&quot;&quot;&quot;</span><span class="st">&quot;       </span></span>
+<span id="cb20-29"><a href="#cb20-29"></a><span class="st">    table_tri = sorted(deepcopy(table), key = clef_email)</span></span>
+<span id="cb20-30"><a href="#cb20-30"></a><span class="st">    table_cible = []</span></span>
+<span id="cb20-31"><a href="#cb20-31"></a><span class="st">    for enreg in transactions:</span></span>
+<span id="cb20-32"><a href="#cb20-32"></a><span class="st">        index_email = recherche_dicho_croissant(enreg[&#39;email&#39;], table_tri, &#39;email&#39;)</span></span>
+<span id="cb20-33"><a href="#cb20-33"></a><span class="st">        if index_email is not None:</span></span>
+<span id="cb20-34"><a href="#cb20-34"></a><span class="st">            ..........................................</span></span>
+<span id="cb20-35"><a href="#cb20-35"></a><span class="st">            ..........................................</span></span>
+<span id="cb20-36"><a href="#cb20-36"></a><span class="st">            ..........................................</span></span>
+<span id="cb20-37"><a href="#cb20-37"></a><span class="st">    return table_tri</span></span>
+<span id="cb20-38"><a href="#cb20-38"></a><span class="st">                     </span></span>
+<span id="cb20-39"><a href="#cb20-39"></a><span class="st">table_clients = lecture_csv(&#39;clients.csv&#39;, &#39;,&#39;)</span></span>
+<span id="cb20-40"><a href="#cb20-40"></a><span class="st">transactions = lecture_csv(&#39;transactions.csv&#39;, &#39;,&#39;) </span></span>
+<span id="cb20-41"><a href="#cb20-41"></a><span class="st">table_tri = maj_depenses_table(table_clients, transactions)</span></span>
+<span id="cb20-42"><a href="#cb20-42"></a><span class="st">ecriture_csv(table_tri, &#39;clients_maj.csv&#39;, &#39;,&#39;)</span></span></code></pre></div>
+</div>
+</div>
+<div id="applications-à-un-autre-exemple" class="slide section level1">
+<h1>Applications à un autre exemple</h1>
+<div class="exercice">
+<p>Nous allons utiliser un fichier nommé <code>countries.csv</code> qui contient quelques données sur les différents pays du monde. En voici les premières lignes : les champs sont clairement séparés par des points-virgules.</p>
+<pre><code>iso;name;area;population;continent;currency_code;currency_name;capital
+AD;Andorra;468.0;84000;EU;EUR;Euro;6
+AE;United Arab Emirates;82880.0;4975593;AS;AED;Dirham;21
+AF;Afghanistan;647500.0;29121286;AS;AFN;Afghani;81</code></pre>
+<p>Les données sont issues du site <a href="http://www.geonames.org" class="uri">http://www.geonames.org</a> et ont été légèrement simplifiées. La signification des différents champs est transparente (<code>currency</code> signifie devise), à part le dernier champ, nommé capital et dont les valeurs sont des numéros d’identifiants de villes que l’on trouvera dans un autre fichier nommé <code>cities.csv</code> que nous utiliserons dans le chapitre sur les fusions de tables.</p>
+<ol style="list-style-type: decimal">
+<li>On travaille toujours avec le script <code>'TP_Recherche_Tris_Eleve.py'</code> dans un IDE Python à la suite des exercices précédents. On commence par charger la table avec la fonction <code>lecture_csv</code>, attention le délimiteur de champ n’est pas le symbole <code>,</code> mais <code>;</code>.</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>table_pays <span class="op">=</span> lecture_csv(<span class="st">&#39;countries.csv&#39;</span>, <span class="st">&#39;;&#39;</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Compléter la fonction <code>nombre_europe</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> nombre_europe(table):</span>
+<span id="cb23-2"><a href="#cb23-2"></a>    <span class="co">&quot;&quot;&quot;Paramètre : table de countries.csv</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="co">    Valeur renvoyée : compteur de type int représentant le nombre de pays du continent européen</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>    compteur <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>    <span class="cf">for</span> enregistrement <span class="kw">in</span> table:</span>
+<span id="cb23-7"><a href="#cb23-7"></a>        .......................</span>
+<span id="cb23-8"><a href="#cb23-8"></a>        ......................</span>
+<span id="cb23-9"><a href="#cb23-9"></a>    <span class="cf">return</span> compteur</span>
+<span id="cb23-10"><a href="#cb23-10"></a></span>
+<span id="cb23-11"><a href="#cb23-11"></a><span class="cf">assert</span> nombre_europe(table_pays) <span class="op">==</span> <span class="dv">52</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Compléter la fonction <code>selection_europe</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">def</span> selection_europe(table):</span>
+<span id="cb24-2"><a href="#cb24-2"></a>    <span class="co">&quot;&quot;&quot;Paramètre : table de countries.csv</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="co">    Valeur renvoyée : table des enregistrements des pays du continent européen&quot;&quot;&quot;</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>    <span class="cf">return</span> ................................</span>
+<span id="cb24-5"><a href="#cb24-5"></a></span>
+<span id="cb24-6"><a href="#cb24-6"></a></span>
+<span id="cb24-7"><a href="#cb24-7"></a>europe <span class="op">=</span> selection_europe(table_pays)</span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="cf">assert</span> <span class="bu">len</span>(europe) <span class="op">==</span> <span class="dv">52</span> <span class="kw">and</span> europe[<span class="dv">0</span>][<span class="st">&#39;name&#39;</span>] <span class="op">==</span> <span class="st">&#39;Andorra&#39;</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Compléter la fonction <code>selection_europe_non_euro</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">def</span> selection_europe_non_euro(table):</span>
+<span id="cb25-2"><a href="#cb25-2"></a>     <span class="co">&quot;&quot;&quot;Paramètre : table de countries.csv</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="co">    Valeur renvoyée : table des enregistrements des pays du continent européen qui n&#39;ont pas pour monnaie l&#39;euro&quot;&quot;&quot;</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>    <span class="cf">return</span> ................................</span>
+<span id="cb25-5"><a href="#cb25-5"></a>           ................................</span>
+<span id="cb25-6"><a href="#cb25-6"></a></span>
+<span id="cb25-7"><a href="#cb25-7"></a>europe_non_euro <span class="op">=</span> selection_europe_non_euro(table_pays)</span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="cf">assert</span> <span class="bu">len</span>(europe_non_euro) <span class="op">==</span> <span class="dv">27</span> <span class="kw">and</span> europe_non_euro[<span class="dv">0</span>][<span class="st">&#39;name&#39;</span>] <span class="op">==</span> <span class="st">&#39;Albania&#39;</span></span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Compléter la fonction <code>projection_aire</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">def</span> projection_aire(table):</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    <span class="co">&quot;&quot;&quot;Paramètre : table de countries.csv</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="co">    Valeur renvoyée : tableau des aires (type float) de tous les enregistrements&quot;&quot;&quot;</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>    <span class="cf">return</span> ................................</span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="cf">assert</span>  projection_aire(table_pays)[:<span class="dv">5</span>]  <span class="op">==</span> [<span class="fl">468.0</span>, <span class="fl">82880.0</span>, <span class="fl">647500.0</span>, <span class="fl">443.0</span>, <span class="fl">102.0</span>]</span></code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>Compléter la fonction <code>projection_pays_densite</code> ci-dessous en respectant sa spécification. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">def</span> projection_pays_densite(table):</span>
+<span id="cb27-2"><a href="#cb27-2"></a>    <span class="co">&quot;&quot;&quot;Paramètre : table de countries.csv</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="co">    Valeur renvoyée : nouvelle table avec deux attributs &#39;pays&#39; et &#39;densité&#39; de population&quot;&quot;&quot;</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>    <span class="cf">return</span> [ {<span class="st">&#39;pays&#39;</span> : enreg[<span class="st">&#39;name&#39;</span>], </span>
+<span id="cb27-5"><a href="#cb27-5"></a>             <span class="st">&#39;densité&#39;</span> : ...............................)}</span>
+<span id="cb27-6"><a href="#cb27-6"></a>            <span class="cf">for</span> enreg <span class="kw">in</span> table]</span>
+<span id="cb27-7"><a href="#cb27-7"></a></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="cf">assert</span> projection_pays_densite(table_pays)[:<span class="dv">3</span>] <span class="op">==</span> [{<span class="st">&#39;pays&#39;</span>: <span class="st">&#39;Andorra&#39;</span>, <span class="st">&#39;densité&#39;</span>: <span class="fl">179.48717948717947</span>},</span>
+<span id="cb27-9"><a href="#cb27-9"></a> {<span class="st">&#39;pays&#39;</span>: <span class="st">&#39;United Arab Emirates&#39;</span>, <span class="st">&#39;densité&#39;</span>: <span class="fl">60.033699324324324</span>},</span>
+<span id="cb27-10"><a href="#cb27-10"></a> {<span class="st">&#39;pays&#39;</span>: <span class="st">&#39;Afghanistan&#39;</span>, <span class="st">&#39;densité&#39;</span>: <span class="fl">44.974959073359074</span>}]</span></code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Écrire une fonction <code>maximum_densite</code> respectant la spécification ci-dessous. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">def</span> maximum_densite(table):</span>
+<span id="cb28-2"><a href="#cb28-2"></a>    <span class="co">&quot;&quot;&quot;Paramètre : table de countries.csv</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="co">    Valeur renvoyée : tuple avec le nom du pays de densité maximale de population et cette densité maximale&quot;&quot;&quot;</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a></span>
+<span id="cb28-7"><a href="#cb28-7"></a></span>
+<span id="cb28-8"><a href="#cb28-8"></a></span>
+<span id="cb28-9"><a href="#cb28-9"></a></span>
+<span id="cb28-10"><a href="#cb28-10"></a></span>
+<span id="cb28-11"><a href="#cb28-11"></a></span>
+<span id="cb28-12"><a href="#cb28-12"></a></span>
+<span id="cb28-13"><a href="#cb28-13"></a></span>
+<span id="cb28-14"><a href="#cb28-14"></a></span>
+<span id="cb28-15"><a href="#cb28-15"></a><span class="cf">assert</span> maximum_densite(table_pays) <span class="op">==</span> (<span class="st">&#39;Monaco&#39;</span>, <span class="fl">16905.128205128207</span>)</span></code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Écrire une fonction <code>population_par_continent</code> respectant la spécification ci-dessous. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">def</span> population_par_continent(table):</span>
+<span id="cb29-2"><a href="#cb29-2"></a>    <span class="co">&quot;&quot;&quot;Paramètre : table de countries.csv</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="co">    Valeur renvoyée : dictionnaire de clefs les identifiants des continents</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co">    et de valeurs les populations cumulées des pays leur appartenant&quot;&quot;&quot;</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>    </span>
+<span id="cb29-6"><a href="#cb29-6"></a></span>
+<span id="cb29-7"><a href="#cb29-7"></a></span>
+<span id="cb29-8"><a href="#cb29-8"></a></span>
+<span id="cb29-9"><a href="#cb29-9"></a></span>
+<span id="cb29-10"><a href="#cb29-10"></a></span>
+<span id="cb29-11"><a href="#cb29-11"></a></span>
+<span id="cb29-12"><a href="#cb29-12"></a></span>
+<span id="cb29-13"><a href="#cb29-13"></a></span>
+<span id="cb29-14"><a href="#cb29-14"></a>        </span>
+<span id="cb29-15"><a href="#cb29-15"></a></span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="cf">assert</span> population_par_continent(table_pays) <span class="op">==</span> {<span class="st">&#39;EU&#39;</span>: <span class="dv">740017414</span>,</span>
+<span id="cb29-17"><a href="#cb29-17"></a> <span class="st">&#39;AS&#39;</span>: <span class="dv">4119426856</span>,  <span class="st">&#39;NA&#39;</span>: <span class="dv">539886359</span>, <span class="st">&#39;AF&#39;</span>: <span class="dv">1018849428</span>, <span class="st">&#39;SA&#39;</span>: <span class="dv">400143568</span>, </span>
+<span id="cb29-18"><a href="#cb29-18"></a> <span class="st">&#39;OC&#39;</span>: <span class="dv">36066083</span>}</span></code></pre></div>
+<ol start="9" style="list-style-type: decimal">
+<li>Écrire une fonction <code>densite_max_top5</code> respectant la spécification ci-dessous. On donne une postcondition qui doit être vérifiée.</li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">def</span> densite_max_top5(table):</span>
+<span id="cb30-2"><a href="#cb30-2"></a>     <span class="co">&quot;&quot;&quot;Paramètre : table de countries.csv</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="co">    Valeur renvoyée : table avec les noms et les densités des 5 pays les plus  densément peuplées dans l&#39;ordre décroissant des densités de population&quot;&quot;&quot;</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>    </span>
+<span id="cb30-5"><a href="#cb30-5"></a></span>
+<span id="cb30-6"><a href="#cb30-6"></a></span>
+<span id="cb30-7"><a href="#cb30-7"></a></span>
+<span id="cb30-8"><a href="#cb30-8"></a></span>
+<span id="cb30-9"><a href="#cb30-9"></a></span>
+<span id="cb30-10"><a href="#cb30-10"></a></span>
+<span id="cb30-11"><a href="#cb30-11"></a></span>
+<span id="cb30-12"><a href="#cb30-12"></a></span>
+<span id="cb30-13"><a href="#cb30-13"></a></span>
+<span id="cb30-14"><a href="#cb30-14"></a></span>
+<span id="cb30-15"><a href="#cb30-15"></a></span>
+<span id="cb30-16"><a href="#cb30-16"></a></span>
+<span id="cb30-17"><a href="#cb30-17"></a><span class="cf">assert</span> densite_max_top5(table_pays) <span class="op">==</span> [{<span class="st">&#39;pays&#39;</span>: <span class="st">&#39;Monaco&#39;</span>, <span class="st">&#39;densité&#39;</span>: <span class="fl">16905.128205128207</span>},</span>
+<span id="cb30-18"><a href="#cb30-18"></a> {<span class="st">&#39;pays&#39;</span>: <span class="st">&#39;Singapore&#39;</span>, <span class="st">&#39;densité&#39;</span>: <span class="fl">6786.5872672152445</span>},</span>
+<span id="cb30-19"><a href="#cb30-19"></a> {<span class="st">&#39;pays&#39;</span>: <span class="st">&#39;Hong Kong&#39;</span>, <span class="st">&#39;densité&#39;</span>: <span class="fl">6317.478021978022</span>},</span>
+<span id="cb30-20"><a href="#cb30-20"></a> {<span class="st">&#39;pays&#39;</span>: <span class="st">&#39;Gibraltar&#39;</span>, <span class="st">&#39;densité&#39;</span>: <span class="fl">4289.846153846154</span>},</span>
+<span id="cb30-21"><a href="#cb30-21"></a> {<span class="st">&#39;pays&#39;</span>: <span class="st">&#39;Vatican&#39;</span>, <span class="st">&#39;densité&#39;</span>: <span class="fl">2093.181818181818</span>}]</span></code></pre></div>
+</div>
+</div>
+<div id="synthèse" class="slide section level1">
+<h1>Synthèse</h1>
+<div class="synthese">
+<p>Lorsqu’une <strong>table de données</strong> contenue dans un <strong>fichier CSV</strong> est chargée dans une structure de données Python comme un <strong>tableau de dictionnaires</strong>, on peut la manipuler avec des requêtes de <strong>recherche</strong>, <strong>d’agrégation</strong>, de <strong>sélection sur les lignes</strong> ou de <strong>projection sur les colonnes</strong>. Il est possible également de trier les enregistrements d’une table avec la fonction de bibliothèque <code>sorted</code> en lui passant une fonction clef de tri. Elle garantit la <strong>stabilité du tri</strong> : les éléments égaux conservent leur ordre intial. On peut ainsi extraire des informations d’une table ou construire de nouvelles tables. En classe de terminale, nous étudierons les <strong>bases de données</strong> dans le modèle relationnel, qui peuvent être modélisées par des tables. Les requêtes pour les interroger seront similaires mais exprimées dans un langage spécifique, le <a href="https://pixees.fr/informatiquelycee/n_site/nsi_term_bd_sql.html">SQL</a>.</p>
+</div>
+</div>
+</body>
+</html>
