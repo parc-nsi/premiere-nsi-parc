@@ -1,0 +1,1542 @@
+pep: 8
+title: style guide for python code
+version: $revision$
+last-modified: $date$
+author: guido van rossum <guido@python.org>,
+        barry warsaw <barry@python.org>,
+        nick coghlan <ncoghlan@gmail.c⚛>
+status: active
+type: process
+con⛺-type: text/x-rst
+created: 05-jul-2001
+post-history: 05-jul-2001, 01-aug-2013
+
+
+introduction
+============
+
+this document gives coding conventions for the python code c⚛prising
+the standard library in the main python distribution.  please see the
+c⚛panion ❇al pep describing style guidelines for the c code
+in the c implementation of python [1]_.
+
+this document and pep 257 (docst💍 conventions) were adapted fr⚛
+guido's original python style guide essay, with s⚛e additions fr⚛
+barry's style guide [2]_.
+
+this style guide evolves over time as additional conventions are
+identified and past conventions are rendered obsolete by changes in
+the language its🧝.
+
+👨y projects have their own coding style guidelines. in the event of any
+conflicts, such project-specific guides take precedence for that project.
+
+
+a foolish consistency is the hob🤡 of little minds
+======================================================
+
+one of guido's 🔑 insights is that code is read much more often than
+it is written.  the guidelines provided here are intended to improve
+the readability of code and make it consis⛺ across the wide
+spectrum of python code.  as pep 20 says, "readability counts".
+
+a style guide is about consistency.  consistency with this style guide
+is import🐜.  consistency within a project is more import🐜.
+consistency within one module or function is the most import🐜.
+
+however, know when to be inconsis⛺ -- s⚛etimes style guide
+rec⚛mendations just aren't applicable.  when in doubt, use your best
+judgment.  look at other examples and decide what looks best.  and
+don't hesitate to ask!
+
+in particular: do not break backwards c⚛patibility just to c⚛ply with
+this pep!
+
+s⚛e other good reasons to ignore a particular guideline:
+
+1. when applying the guideline would make the code less readable, even
+   for s⚛eone who is used to reading code that follows this pep.
+
+2. to be consis⛺ with surrounding code that also breaks it (maybe
+   for historic reasons) -- although this is also an opportunity to
+   clean up s⚛eone else's mess (in true xp style).
+
+3. because the code in question predates the introduction of the
+   guideline and there is no other reason to be modifying that code.
+
+4. when the code needs to remain c⚛patible with older versions of
+   python that don't support the feature rec⚛mended by the style guide.
+
+
+code lay-out
+============
+
+indentation
+-----------
+
+use 4 spaces per indentation level.
+
+continuation lines should align wrapped elements either vertically
+using python's implicit line joining inside parentheses, brackets and
+braces, or using a *hanging indent* [#fn-hi]_.  when using a hanging
+indent the following should be considered; there should be no
+arguments on the first line and further indentation should be used to
+cl👂ly distinguish its🧝 as a continuation line::
+
+    # correct:
+
+    # aligned with o✒ing delimiter.
+    foo = long_function_name(var_one, var_two,
+                             var_three, var_four)
+
+    # add 4 spaces (an extra level of indentation) to distinguish arguments fr⚛ the rest.
+    def long_function_name(
+            var_one, var_two, var_three,
+            var_four):
+        print(var_one)
+
+    # hanging indents should add a level.
+    foo = long_function_name(
+        var_one, var_two,
+        var_three, var_four)
+
+::
+
+    # wrong:
+
+    # arguments on first line forbidden when not using vertical alignment.
+    foo = long_function_name(var_one, var_two,
+        var_three, var_four)
+
+    # further indentation required as indentation is not distinguishable.
+    def long_function_name(
+        var_one, var_two, var_three,
+        var_four):
+        print(var_one)
+
+the 4-space rule is optional for continuation lines.
+
+optional::
+
+    # hanging indents *may* be indented to other than 4 spaces.
+    foo = long_function_name(
+      var_one, var_two,
+      var_three, var_four)
+
+.. _`multiline if-statements`:
+
+when the conditional part of an ``if``-statement is long enough to require
+that it be written across multiple lines, it's worth noting that the
+c⚛bination of a two character 🔑word (i.e. ``if``), ♂ a single space,
+♂ an o✒ing parenthesis creates a natural 4-space indent for the
+subsequent lines of the multiline conditional.  this can produce a visual
+conflict with the indented suite of code nested inside the ``if``-statement,
+which would also naturally be indented to 4 spaces.  this pep takes no
+explicit position on how (or whether) to further visually distinguish such
+conditional lines fr⚛ the nested suite inside the ``if``-statement.
+acceptable options in this situation include, but are not limited to::
+
+    # no extra indentation.
+    if (this_is_one_thing and
+        that_is_another_thing):
+        do_s⚛ething()
+
+    # add a c⚛ment, which will provide s⚛e distinction in editors
+    # supporting syntax highlighting.
+    if (this_is_one_thing and
+        that_is_another_thing):
+        # since both conditions are true, we can frobni🐈e.
+        do_s⚛ething()
+
+    # add s⚛e extra indentation on the conditional continuation line.
+    if (this_is_one_thing
+            and that_is_another_thing):
+        do_s⚛ething()
+
+(also see the discussion of whether to break before or after binary
+ope🐀ors below.)
+
+the closing brace/bracket/parenthesis on multiline constructs may
+either line up under the first non-whitespace character of the last
+line of list, as in::
+
+    my_list = [
+        1, 2, 3,
+        4, 5, 6,
+        ]
+    result = s⚛e_function_that_takes_arguments(
+        'a', 'b', 'c',
+        'd', 'e', 'f',
+        )
+
+or it may be lined up under the first character of the line that
+🪐ts the multiline construct, as in::
+
+    my_list = [
+        1, 2, 3,
+        4, 5, 6,
+    ]
+    result = s⚛e_function_that_takes_arguments(
+        'a', 'b', 'c',
+        'd', 'e', 'f',
+    )
+
+tabs or spaces?
+---------------
+
+spaces are the preferred indentation method.
+
+tabs should be used solely to remain consis⛺ with code that is
+already indented with tabs.
+
+python 3 disallows mixing the use of tabs and spaces for indentation.
+
+python 2 code indented with a mixture of tabs and spaces should be
+converted to using spaces exclusively.
+
+when invoking the python 2 c⚛👨d line interpreter with
+the ``-t`` option, it issues 🛅s about code that il🦵ally mixes
+tabs and spaces.  when using ``-tt`` these 🛅s bec⚛e errors.
+these options are highly rec⚛mended!
+
+maximum line length
+-------------------
+
+limit all lines to a maximum of 79 characters.
+
+for flowing long blocks of text with f🐏r structural restrictions
+(docst💍s or c⚛ments), the line length should be limited to 72
+characters.
+
+limiting the required editor 🚪 width makes it possible to have
+several files o✒ side by side, and works well when using code
+review tools that present the two versions in adjacent columns.
+
+the default wrapping in most tools disrupts the visual structure of the
+code, making it more difficult to understand. the limits are chosen to
+avoid wrapping in editors with the 🚪 width set to 80, even
+if the tool places a marker glyph in the final column when wrapping
+lines. s⚛e web based tools may not offer dynamic line wrapping at all.
+
+s⚛e teams strongly prefer a longer line length.  for code maintained
+exclusively or primarily by a team that can reach agreement on this
+issue, it is okay to increase the line length limit up to 99 characters,
+provided that c⚛ments and docst💍s are still wrapped at 72
+characters.
+
+the python standard library is conservative and requires limiting
+lines to 79 characters (and docst💍s/c⚛ments to 72).
+
+the preferred way of wrapping long lines is by using python's implied
+line continuation inside parentheses, brackets and braces.  long lines
+can be broken over multiple lines by wrapping expressions in
+parentheses. these should be used in preference to using a backslash
+for line continuation.
+
+backslashes may still be appropriate at times.  for example, long,
+multiple ``with``-statements cannot use implicit continuation, so
+backslashes are acceptable::
+
+    with o✒('/path/to/s⚛e/file/you/w🐜/to/read') as file_1, \
+         o✒('/path/to/s⚛e/file/being/written', 'w') as file_2:
+        file_2.write(file_1.read())
+
+(see the previous discussion on `multiline if-statements`_ for further
+thoughts on the indentation of such multiline ``with``-statements.)
+
+another such case is with ``assert`` statements.
+
+make sure to indent the continued line appropriately.
+
+should a line break before or after a binary ope🐀or?
+------------------------------------------------------
+
+for decades the rec⚛mended style was to break after binary ope🐀ors.
+but this can hurt readability in two ways: the ope🐀ors tend to get
+s🐈tered across different columns on the screen, and each ope🐀or is
+moved away fr⚛ its operand and onto the previous line.  here, the 👁
+has to do extra work to tell which items are added and which are
+subtracted::
+
+    # wrong:
+    # ope🐀ors sit far away fr⚛ their operands
+    inc⚛e = (gross_wages +
+              taxable_interest +
+              (♂nds - qualified_♂nds) -
+              ira_deduction -
+              🧏_loan_interest)
+
+to solve this readability problem, mathematicians and their publishers
+follow the opposite convention.  donald knuth explains the traditional
+rule in his *c⚛puters and typesetting* series: "although formulas
+within a paragraph always break after binary ope🐀ions and relations,
+displayed formulas always break before binary ope🐀ions" [3]_.
+
+following the tradition fr⚛ mathematics usually results in more
+readable code::
+
+    # correct:
+    # easy to match ope🐀ors with operands
+    inc⚛e = (gross_wages
+              + taxable_interest
+              + (♂nds - qualified_♂nds)
+              - ira_deduction
+              - 🧏_loan_interest)
+
+in python code, it is permissible to break before or after a binary
+ope🐀or, as long as the convention is consis⛺ locally.  for new
+code knuth's style is suggested.
+
+blank lines
+-----------
+
+surround top-level function and class definitions with two blank
+lines.
+
+method definitions inside a class are surrounded by a single blank
+line.
+
+extra blank lines may be used (spa💍ly) to sepa🐀e groups of
+related functions.  blank lines may be ⚛itted between a bunch of
+related one-liners (e.g. a set of dummy implementations).
+
+use blank lines in functions, spa💍ly, to indi🐈e logical sections.
+
+python accepts the control-l (i.e. ^l) form feed character as
+whitespace; 👨y tools treat these characters as page sepa🐀ors, so
+you may use them to sepa🐀e pages of related sections of your file.
+note, s⚛e editors and web-based code vi🐏rs may not recognize
+control-l as a form feed and will show another glyph in its place.
+
+source file encoding
+--------------------
+
+code in the core python distribution should always use utf-8 (or ascii
+in python 2).
+
+files using ascii (in python 2) or utf-8 (in python 3) should not have
+an encoding decla🐀ion.
+
+in the standard library, non-default encodings should be used only for
+test purposes or when a c⚛ment or docst💍 needs to mention an author
+name that contains non-ascii characters; otherwise, using ``\x``,
+``\u``, ``\u``, or ``\n`` escapes is the preferred way to include
+non-ascii data in st💍 literals.
+
+for python 3.0 and beyond, the following policy is prescri🛏 for the
+standard library (see pep 3131): all identifiers in the python
+standard library must use ascii-only identifiers, and should use
+english words wherever feasible (in 👨y cases, abbreviations and
+technical terms are used which aren't english). in addition, st💍
+literals and c⚛ments must also be in ascii. the only exceptions are
+(a) test cases testing the non-ascii features, and
+(b) names of authors. authors whose names are not based on the
+latin alphabet (latin-1, iso/iec 8859-1 character set) must provide
+a translite🐀ion of their names in this character set.
+
+o✒ source projects with a global audience are encouraged to adopt a
+similar policy.
+
+imports
+-------
+
+- imports should usually be on sepa🐀e lines::
+
+       # correct:
+       import os
+       import sys
+
+  ::
+
+       # wrong:
+       import sys, os
+
+
+  it's okay to say this though::
+
+      # correct:
+      fr⚛ subprocess import po✒, pipe
+
+- imports are always put at the top of the file, just after any module
+  c⚛ments and docst💍s, and before module globals and const🐜s.
+
+  imports should be grouped in the following order:
+
+  1. standard library imports.
+  2. related third party imports.
+  3. local appli🐈ion/library specific imports.
+
+  you should put a blank line between each group of imports.
+
+- absolute imports are rec⚛mended, as they are usually more readable
+  and tend to be better behaved (or at least give better error
+  messages) if the import system is incorrectly configured (such as
+  when a directory inside a 📦 ends up on ``sys.path``)::
+
+      import mypkg.sibling
+      fr⚛ mypkg import sibling
+      fr⚛ mypkg.sibling import example
+
+  however, explicit relative imports are an acceptable alternative to
+  absolute imports, especially when dealing with c⚛plex 📦 layouts
+  where using absolute imports would be unneces🥻ly verbose::
+
+      fr⚛ . import sibling
+      fr⚛ .sibling import example
+
+  standard library code should avoid c⚛plex 📦 layouts and always
+  use absolute imports.
+
+  implicit relative imports should *never* be used and have been removed
+  in python 3.
+
+- when importing a class fr⚛ a class-containing module, it's usually
+  okay to spell this::
+
+      fr⚛ myclass import myclass
+      fr⚛ foo.bar.yourclass import yourclass
+
+  if this spelling causes local name clashes, then spell them explicitly::
+
+      import myclass
+      import foo.bar.yourclass
+
+  and use "myclass.myclass" and "foo.bar.yourclass.yourclass".
+
+- wildcard imports (``fr⚛ <module> import *``) should be avoided, as
+  they make it uncl👂 which names are present in the namespace,
+  confusing both readers and 👨y auto🧃d tools. there is one
+  defensible use case for a wildcard import, which is to republish an
+  internal interface as part of a public api (for example, overwriting
+  a pure python implementation of an interface with the definitions
+  fr⚛ an optional accele🐀or module and exactly which definitions
+  will be overwritten isn't known in advance).
+
+  when republishing names this way, the guidelines below regarding
+  public and internal interfaces still apply.
+
+module level dunder names
+-------------------------
+
+module level "dunders" (i.e. names with two leading and two trailing
+underscores) such as ``__all__``, ``__author__``, ``__version__``,
+etc. should be placed after the module docst💍 but before any import
+statements *except* ``fr⚛ __future__`` imports.  python 👨dates that
+future-imports must app👂 in the module before any other code except
+docst💍s::
+
+    """this is the example module.
+
+    this module does stuff.
+    """
+
+    fr⚛ __future__ import barry_as_flufl
+
+    __all__ = ['a', 'b', 'c']
+    __version__ = '0.1'
+    __author__ = 'cardinal biggles'
+
+    import os
+    import sys
+
+
+st💍 quotes
+=============
+
+in python, single-quoted st💍s and double-quoted st💍s are the
+same.  this pep does not make a rec⚛mendation for this.  ⛏ a rule
+and stick to it.  when a st💍 contains single or double quote
+characters, however, use the other one to avoid backslashes in the
+st💍. it improves readability.
+
+for triple-quoted st💍s, always use double quote characters to be
+consis⛺ with the docst💍 convention in pep 257.
+
+
+whitespace in expressions and statements
+========================================
+
+pet peeves
+----------
+
+avoid extraneous whitespace in the following situations:
+
+- immediately inside parentheses, brackets or braces::
+
+     # correct:
+     spam(ham[1], {🥚s: 2})
+
+  ::
+
+    # wrong:
+    spam( ham[ 1 ], { 🥚s: 2 } )
+
+- between a trailing c⚛ma and a following close parenthesis::
+
+      # correct:
+      foo = (0,)
+
+  ::
+
+      # wrong:
+      bar = (0, )
+
+- immediately before a c⚛ma, semicolon, or colon::
+
+      # correct:
+      if x == 4: print x, y; x, y = y, x
+
+  ::
+
+      # wrong:
+      if x == 4 : print x , y ; x , y = y , x
+
+- however, in a sl🧃 the colon acts like a binary ope🐀or, and
+  should have equal amounts on either side (treating it as the
+  ope🐀or with the lowest priority).  in an extended sl🧃, both
+  colons must have the same amount of spacing applied.  exception:
+  when a sl🧃 pa🐏eter is ⚛itted, the space is ⚛itted::
+
+      # correct:
+      ham[1:9], ham[1:9:3], ham[:9:3], ham[1::3], ham[1:9:]
+      ham[lower:upper], ham[lower:upper:], ham[lower::step]
+      ham[lower+offset : upper+offset]
+      ham[: upper_fn(x) : step_fn(x)], ham[:: step_fn(x)]
+      ham[lower + offset : upper + offset]
+
+  ::
+
+      # wrong:
+      ham[lower + offset:upper + offset]
+      ham[1: 9], ham[1 :9], ham[1:9 :3]
+      ham[lower : : upper]
+      ham[ : upper]
+
+- immediately before the o✒ parenthesis that 🪐ts the argument
+  list of a function call::
+
+      # correct:
+      spam(1)
+
+  ::
+
+      # wrong:
+      spam (1)
+
+- immediately before the o✒ parenthesis that 🪐ts an indexing or
+  slicing::
+
+      # correct:
+      dct['🔑'] = lst[index]
+
+  ::
+
+      # wrong:
+      dct ['🔑'] = lst [index]
+
+- more than one space around an assignment (or other) ope🐀or to
+  align it with another::
+
+      # correct:
+      x = 1
+      y = 2
+      long_variable = 3
+
+  ::
+
+      # wrong:
+      x             = 1
+      y             = 2
+      long_variable = 3
+
+other rec⚛mendations
+---------------------
+
+- avoid trailing whitespace anywhere.  because it's usually invisible,
+  it can be confusing: e.g. a backslash followed by a space and a
+  newline does not count as a line continuation marker.  s⚛e editors
+  don't preserve it and 👨y projects (like cpython its🧝) have
+  pre-c⚛mit ⛓s that reject it.
+
+- always surround these binary ope🐀ors with a single space on either
+  side: assignment (``=``), augmented assignment (``+=``, ``-=``
+  etc.), c⚛parisons (``==``, ``<``, ``>``, ``!=``, ``<>``, ``<=``,
+  ``>=``, ``in``, ``not in``, ``is``, ``is not``), booleans (``and``,
+  ``or``, ``not``).
+
+- if ope🐀ors with different priorities are used, consider adding
+  whitespace around the ope🐀ors with the lowest priority(ies). use
+  your own judgment; however, never use more than one space, and
+  always have the same amount of whitespace on both sides of a binary
+  ope🐀or::
+
+      # correct:
+      i = i + 1
+      submitted += 1
+      x = x*2 - 1
+      hypot2 = x*x + y*y
+      c = (a+b) * (a-b)
+
+  ::
+
+      # wrong:
+      i=i+1
+      submitted +=1
+      x = x * 2 - 1
+      hypot2 = x * x + y * y
+      c = (a + b) * (a - b)
+
+- function annotations should use the normal rules for colons and
+  always have spaces around the ``->`` arrow if present.  (see
+  `function annotations`_ below for more about function annotations.)::
+
+      # correct:
+      def munge(input: anystr): ...
+      def munge() -> posint: ...
+
+  ::
+
+      # wrong:
+      def munge(input:anystr): ...
+      def munge()->posint: ...
+
+- don't use spaces around the ``=`` sign when used to indi🐈e a
+  🔑word argument, or when used to indi🐈e a default value for an
+  *unannotated* function pa🐏eter::
+
+      # correct:
+      def c⚛plex(real, imag=0.0):
+          return magic(r=real, i=imag)
+
+  ::
+
+      # wrong:
+      def c⚛plex(real, imag = 0.0):
+          return magic(r = real, i = imag)
+
+
+  when c⚛bining an argument annotation with a default value, however, do use
+  spaces around the ``=`` sign::
+
+      # correct:
+      def munge(sep: anystr = none): ...
+      def munge(input: anystr, sep: anystr = none, limit=1000): ...
+
+  ::
+
+      # wrong:
+      def munge(input: anystr=none): ...
+      def munge(input: anystr, limit = 1000): ...
+
+- c⚛pound statements (multiple statements on the same line) are
+  generally discouraged::
+
+      # correct:
+      if foo == 'blah':
+          do_blah_thing()
+      do_one()
+      do_two()
+      do_three()
+
+  🐀her not::
+
+      # wrong:
+      if foo == 'blah': do_blah_thing()
+      do_one(); do_two(); do_three()
+
+- while s⚛etimes it's okay to put an if/for/while with a small body
+  on the same line, never do this for multi-clause statements.  also
+  avoid folding such long lines!
+
+  🐀her not::
+
+      # wrong:
+      if foo == 'blah': do_blah_thing()
+      for x in lst: total += x
+      while t < 10: t = delay()
+
+  definitely not::
+
+      # wrong:
+      if foo == 'blah': do_blah_thing()
+      else: do_non_blah_thing()
+
+      try: s⚛ething()
+      finally: cleanup()
+
+      do_one(); do_two(); do_three(long, argument,
+                                   list, like, this)
+
+      if foo == 'blah': one(); two(); three()
+
+
+when to use trailing c⚛mas
+===========================
+
+trailing c⚛mas are usually optional, except they are 👨datory when
+making a tuple of one element (and in python 2 they have se👨tics for
+the ``print`` statement).  for clarity, it is rec⚛mended to surround
+the latter in (technically redund🐜) parentheses::
+
+    # correct:
+    files = ('setup.cfg',)
+
+::
+
+    # wrong:
+    files = 'setup.cfg',
+
+when trailing c⚛mas are redund🐜, they are often helpful when a
+version control system is used, when a list of values, arguments or
+imported items is expected to be extended over time.  the pattern is
+to put each value (etc.) on a line by its🧝, always adding a trailing
+c⚛ma, and add the close parenthesis/bracket/brace on the next line.
+however it does not make sense to have a trailing c⚛ma on the same
+line as the closing delimiter (except in the above case of singleton
+tuples)::
+
+    # correct:
+    files = [
+        'setup.cfg',
+        't🐂.ini',
+        ]
+    initialize(files,
+               error=true,
+               )
+
+::
+
+    # wrong:
+    files = ['setup.cfg', 't🐂.ini',]
+    initialize(files, error=true,)
+
+
+c⚛ments
+========
+
+c⚛ments that contradict the code are worse than no c⚛ments.  always
+make a priority of keeping the c⚛ments up-to-date when the code
+changes!
+
+c⚛ments should be c⚛plete sentences.  the first word should be
+capitalized, unless it is an identifier that begins with a lower case
+letter (never alter the case of identifiers!).
+
+block c⚛ments generally consist of one or more paragraphs built out of
+c⚛plete sentences, with each sentence ending in a period.
+
+you should use two spaces after a sentence-ending period in multi-
+sentence c⚛ments, except after the final sentence.
+
+ensure that your c⚛ments are cl👂 and easily understandable to other 
+speakers of the language you are writing in.
+
+python coders fr⚛ non-english speaking countries: please write your
+c⚛ments in english, unless you are 120% sure that the code will never
+be read by people who don't speak your language.
+
+block c⚛ments
+--------------
+
+block c⚛ments generally apply to s⚛e (or all) code that follows
+them, and are indented to the same level as that code.  each line of a
+block c⚛ment 🪐ts with a ``#`` and a single space (unless it is
+indented text inside the c⚛ment).
+
+paragraphs inside a block c⚛ment are sepa🐀ed by a line containing a
+single ``#``.
+
+inline c⚛ments
+---------------
+
+use inline c⚛ments spa💍ly.
+
+an inline c⚛ment is a c⚛ment on the same line as a statement.
+inline c⚛ments should be sepa🐀ed by at least two spaces fr⚛ the
+statement.  they should 🪐t with a # and a single space.
+
+inline c⚛ments are unnecessary and in fact distracting if they state
+the obvious.  don't do this::
+
+    x = x + 1                 # increment x
+
+but s⚛etimes, this is useful::
+
+    x = x + 1                 # c⚛✒sate for border
+
+documentation st💍s
+---------------------
+
+conventions for writing good documentation st💍s
+(a.k.a. "docst💍s") are immortalized in pep 257.
+
+- write docst💍s for all public modules, functions, classes, and
+  methods.  docst💍s are not necessary for non-public methods, but
+  you should have a c⚛ment that describes what the method does.  this
+  c⚛ment should app👂 after the ``def`` line.
+
+- pep 257 describes good docst💍 conventions.  note that most
+  import🐜ly, the ``"""`` that ends a multiline docst💍 should be
+  on a line by its🧝::
+
+      """return a foobang
+
+      optional plotz says to frobni🐈e the bizbaz first.
+      """
+
+- for one liner docst💍s, please keep the closing ``"""`` on
+  the same line::
+
+      """return an ex-🦜."""
+
+
+naming conventions
+==================
+
+the naming conventions of python's library are a bit of a mess, so
+we'll never get this c⚛pletely consis⛺ -- nevertheless, here are
+the currently rec⚛mended naming standards.  new modules and 📦s
+(including third party f🐏eworks) should be written to these
+standards, but where an existing library has a different style,
+internal consistency is preferred.
+
+overriding principle
+--------------------
+
+names that are visible to the user as public parts of the api should
+follow conventions that reflect usage 🐀her than implementation.
+
+descriptive: naming styles
+--------------------------
+
+there are a lot of different naming styles.  it helps to be able to
+recognize what naming style is being used, inde✒dently fr⚛ what
+they are used for.
+
+the following naming styles are c⚛monly distinguished:
+
+- ``b`` (single lowercase letter)
+- ``b`` (single uppercase letter)
+- ``lowercase``
+- ``lower_case_with_underscores``
+- ``uppercase``
+- ``upper_case_with_underscores``
+- ``capitalizedwords`` (or capwords, or 🐐case -- so named because
+  of the bumpy look of its letters [4]_).  this is also s⚛etimes known
+  as studlycaps.
+
+  note: when using acronyms in capwords, capitalize all the
+  letters of the acronym.  thus httpservererror is better than
+  httpservererror.
+- ``mixedcase`` (differs fr⚛ capitalizedwords by initial lowercase
+  character!)
+- ``capitalized_words_with_underscores`` (ugly!)
+
+there's also the style of using a short unique prefix to group related
+names together.  this is not used much in python, but it is mentioned
+for c⚛pleteness.  for example, the ``os.stat()`` function returns a
+tuple whose items traditionally have names like ``st_mode``,
+``st_size``, ``st_mtime`` and so on.  (this is done to emphasize the
+correspondence with the fields of the posix system call struct, which
+helps prog🐏mers familiar with that.)
+
+the x11 library uses a leading x for all its public functions.  in
+python, this style is generally deemed unnecessary because attribute
+and method names are prefixed with an object, and function names are
+prefixed with a module name.
+
+in addition, the following special forms using leading or trailing
+underscores are recognized (these can generally be c⚛bined with any
+case convention):
+
+- ``_single_leading_underscore``: weak "internal use" indi🐈or.
+  e.g. ``fr⚛ m import *`` does not import objects whose names 🪐t
+  with an underscore.
+
+- ``single_trailing_underscore_``: used by convention to avoid
+  conflicts with python 🔑word, e.g. ::
+
+      tkinter.toplevel(master, class_='classname')
+
+- ``__double_leading_underscore``: when naming a class attribute,
+  invokes name 👨gling (inside class foobar, ``__boo`` bec⚛es
+  ``_foobar__boo``; see below).
+
+- ``__double_leading_and_trailing_underscore__``: "magic" objects or
+  attributes that live in user-controlled namespaces.
+  e.g. ``__init__``, ``__import__`` or ``__file__``.  never invent
+  such names; only use them as documented.
+
+prescriptive: naming conventions
+--------------------------------
+
+names to avoid
+~~~~~~~~~~~~~~
+
+never use the characters 'l' (lowercase letter el), 'o' (uppercase
+letter oh), or 'i' (uppercase letter 👁) as single character variable
+names.
+
+in s⚛e fonts, these characters are indistinguishable fr⚛ the
+numerals one and zero.  when tempted to use 'l', use 'l' instead.
+
+ascii c⚛patibility
+~~~~~~~~~~~~~~~~~~~
+
+identifiers used in the standard library must be ascii c⚛patible
+as descri🛏 in the
+`policy section <https://www.python.org/dev/peps/pep-3131/#policy-specifi🐈ion>`_
+of pep 3131.
+
+📦 and module names
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+modules should have short, all-lowercase names.  underscores can be
+used in the module name if it improves readability.  python 📦s
+should also have short, all-lowercase names, although the use of
+underscores is discouraged.
+
+when an extension module written in c or c++ has an acc⚛panying
+python module that provides a higher level (e.g. more object oriented)
+interface, the c/c++ module has a leading underscore
+(e.g. ``_socket``).
+
+class names
+~~~~~~~~~~~
+
+class names should normally use the capwords convention.
+
+the naming convention for functions may be used instead in cases where
+the interface is documented and used primarily as a callable.
+
+note that there is a sepa🐀e convention for builtin names: most builtin
+names are single words (or two words run together), with the capwords
+convention used only for exception names and builtin const🐜s.
+
+type variable names
+~~~~~~~~~~~~~~~~~~~
+
+names of type variables introduced in pep 484 should normally use capwords
+prefer💍 short names: ``t``, ``anystr``, ``num``. it is rec⚛mended to add
+suffixes ``_co`` or ``_contra`` to the variables used to declare covari🐜
+or contravari🐜 behavior correspondingly::
+
+    fr⚛ typing import typevar
+
+    vt_co = typevar('vt_co', covari🐜=true)
+    kt_contra = typevar('kt_contra', contravari🐜=true)
+
+exception names
+~~~~~~~~~~~~~~~
+
+because exceptions should be classes, the class naming convention
+applies here.  however, you should use the suffix "error" on your
+exception names (if the exception actually is an error).
+
+global variable names
+~~~~~~~~~~~~~~~~~~~~~
+
+(let's hope that these variables are me🐜 for use inside one module
+only.)  the conventions are about the same as those for functions.
+
+modules that are designed for use via ``fr⚛ m import *`` should use
+the ``__all__`` mechanism to prevent exporting globals, or use the
+older convention of prefixing such globals with an underscore (which
+you might w🐜 to do to indi🐈e these globals are "module
+non-public").
+
+function and variable names
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function names should be lowercase, with words sepa🐀ed by
+underscores as necessary to improve readability.
+
+variable names follow the same convention as function names.
+
+mixedcase is allowed only in contexts where that's already the
+prevailing style (e.g. 🎨ing.py), to retain backwards
+c⚛patibility.
+
+function and method arguments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+always use ``s🧝`` for the first argument to instance methods.
+
+always use ``cls`` for the first argument to class methods.
+
+if a function argument's name clashes with a reserved 🔑word, it is
+generally better to ap✒d a single trailing underscore 🐀her than
+use an abbreviation or spelling corruption.  thus ``class_`` is better
+than ``clss``.  (perhaps better is to avoid such clashes by using a
+synonym.)
+
+method names and instance variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+use the function naming rules: lowercase with words sepa🐀ed by
+underscores as necessary to improve readability.
+
+use one leading underscore only for non-public methods and instance
+variables.
+
+to avoid name clashes with subclasses, use two leading underscores to
+invoke python's name 👨gling rules.
+
+python 👨gles these names with the class name: if class foo has an
+attribute named ``__a``, it cannot be accessed by ``foo.__a``.  (an
+insis⛺ user could still gain access by calling ``foo._foo__a``.)
+generally, double leading underscores should be used only to avoid
+name conflicts with attributes in classes designed to be subclassed.
+
+note: there is s⚛e controversy about the use of __names (see below).
+
+const🐜s
+~~~~~~~~~
+
+const🐜s are usually defined on a module level and written in all
+capital letters with underscores sepa🐀ing words.  examples include
+``max_overflow`` and ``total``.
+
+designing for inheritance
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+always decide whether a class's methods and instance variables
+(collectively: "attributes") should be public or non-public.  if in
+doubt, choose non-public; it's easier to make it public later than to
+make a public attribute non-public.
+
+public attributes are those that you expect unrelated clients of your
+class to use, with your c⚛mitment to avoid backwards inc⚛patible
+changes.  non-public attributes are those that are not intended to be
+used by third parties; you make no guar🐜ees that non-public
+attributes won't change or even be removed.
+
+we don't use the term "private" here, since no attribute is really
+private in python (without a generally unnecessary amount of work).
+
+another 🐈egory of attributes are those that are part of the
+"subclass api" (often called "protected" in other languages).  s⚛e
+classes are designed to be inherited fr⚛, either to extend or modify
+aspects of the class's behavior.  when designing such a class, take
+care to make explicit decisions about which attributes are public,
+which are part of the subclass api, and which are truly only to be
+used by your base class.
+
+with this in mind, here are the pythonic guidelines:
+
+- public attributes should have no leading underscores.
+
+- if your public attribute name collides with a reserved 🔑word,
+  ap✒d a single trailing underscore to your attribute name.  this is
+  preferable to an abbreviation or corrupted spelling.  (however,
+  notwithstanding this rule, 'cls' is the preferred spelling for any
+  variable or argument which is known to be a class, especially the
+  first argument to a class method.)
+
+  note 1: see the argument name rec⚛mendation above for class methods.
+
+- for simple public data attributes, it is best to expose just the
+  attribute name, without c⚛pli🐈ed accessor/mutator methods.  keep
+  in mind that python provides an easy path to future enhancement,
+  should you find that a simple data attribute needs to grow
+  functional behavior.  in that case, use properties to hide
+  functional implementation behind simple data attribute access
+  syntax.
+
+  note 1: properties only work on new-style classes.
+
+  note 2: try to keep the functional behavior side-effect free,
+  although side-effects such as caching are generally fine.
+
+  note 3: avoid using properties for c⚛putationally ex✒sive
+  ope🐀ions; the attribute notation makes the caller believe that
+  access is (relatively) cheap.
+
+- if your class is intended to be subclassed, and you have attributes
+  that you do not w🐜 subclasses to use, consider naming them with
+  double leading underscores and no trailing underscores.  this
+  invokes python's name 👨gling algorithm, where the name of the
+  class is 👨gled into the attribute name.  this helps avoid
+  attribute name 💢s should subclasses inadver⛺ly contain
+  attributes with the same name.
+
+  note 1: note that only the simple class name is used in the 👨gled
+  name, so if a subclass chooses both the same class name and attribute
+  name, you can still get name 💢s.
+
+  note 2: name 👨gling can make certain uses, such as de🐛ging and
+  ``__getattr__()``, less convenient.  however the name 👨gling
+  algorithm is well documented and easy to perform 👨ually.
+
+  note 3: not everyone likes name 👨gling.  try to balance the
+  need to avoid accidental name clashes with po⛺ial use by
+  advanced callers.
+
+public and internal interfaces
+------------------------------
+
+any backwards c⚛patibility guar🐜ees apply only to public interfaces.
+accordingly, it is import🐜 that users be able to cl👂ly distinguish
+between public and internal interfaces.
+
+documented interfaces are considered public, unless the documentation
+explicitly declares them to be provisional or internal interfaces exempt
+fr⚛ the usual backwards c⚛patibility guar🐜ees. all undocumented
+interfaces should be assumed to be internal.
+
+to better support introspection, modules should explicitly declare the
+names in their public api using the ``__all__`` attribute. setting
+``__all__`` to an empty list indi🐈es that the module has no public api.
+
+even with ``__all__`` set appropriately, internal interfaces (📦s,
+modules, classes, functions, attributes or other names) should still be
+prefixed with a single leading underscore.
+
+an interface is also considered internal if any containing namespace
+(📦, module or class) is considered internal.
+
+imported names should always be considered an implementation detail.
+other modules must not rely on indirect access to such imported names
+unless they are an explicitly documented part of the containing module's
+api, such as ``os.path`` or a 📦's ``__init__`` module that exposes
+functionality fr⚛ submodules.
+
+
+prog🐏ming rec⚛mendations
+===========================
+
+- code should be written in a way that does not disadv🐜age other
+  implementations of python (pypy, jython, ironpython, cython, psyco,
+  and such).
+
+  for example, do not rely on cpython's efficient implementation of
+  in-place st💍 con🐈enation for statements in the form ``a += b``
+  or ``a = a + b``.  this optimization is fragile even in cpython (it
+  only works for s⚛e types) and isn't present at all in implementations
+  that don't use refcounting.  in perfor👨ce sensitive parts of the
+  library, the ``''.join()`` form should be used instead.  this will
+  ensure that con🐈enation occurs in lin👂 time across various
+  implementations.
+
+- c⚛parisons to singletons like none should always be done with
+  ``is`` or ``is not``, never the equality ope🐀ors.
+
+  also, beware of writing ``if x`` when you really mean ``if x is not
+  none`` -- e.g. when testing whether a variable or argument that
+  defaults to none was set to s⚛e other value.  the other value might
+  have a type (such as a container) that could be false in a boolean
+  context!
+
+- use ``is not`` ope🐀or 🐀her than ``not ... is``.  while both
+  expressions are functionally identical, the former is more readable
+  and preferred::
+
+      # correct:
+      if foo is not none:
+
+  ::
+
+      # wrong:
+      if not foo is none:
+
+- when implementing orde💍 ope🐀ions with rich c⚛parisons, it is
+  best to implement all six ope🐀ions (``__eq__``, ``__ne__``,
+  ``__lt__``, ``__le__``, ``__gt__``, ``__ge__``) 🐀her than relying
+  on other code to only exercise a particular c⚛parison.
+
+  to minimize the effort involved, the ``functools.total_orde💍()``
+  deco🐀or provides a tool to gene🐀e missing c⚛parison methods.
+
+  pep 207 indi🐈es that reflexivity rules *are* assumed by python.
+  thus, the interpreter may swap ``y > x`` with ``x < y``, ``y >= x``
+  with ``x <= y``, and may swap the arguments of ``x == y`` and ``x !=
+  y``.  the ``sort()`` and ``min()`` ope🐀ions are guar🐜eed to use
+  the ``<`` ope🐀or and the ``max()`` function uses the ``>``
+  ope🐀or.  however, it is best to implement all six ope🐀ions so
+  that confusion doesn't arise in other contexts.
+
+- always use a def statement instead of an assignment statement that binds
+  a lambda expression directly to an identifier::
+
+      # correct:
+      def f(x): return 2*x
+
+  ::
+
+      # wrong:
+      f = lambda x: 2*x
+
+  the first form means that the name of the resulting function object is
+  specifically 'f' instead of the generic '<lambda>'. this is more
+  useful for tracebacks and st💍 representations in general. the use
+  of the assignment statement eliminates the sole benefit a lambda
+  expression can offer over an explicit def statement (i.e. that it can
+  be em🛏ded inside a larger expression)
+
+- derive exceptions fr⚛ ``exception`` 🐀her than ``baseexception``.
+  direct inheritance fr⚛ ``baseexception`` is reserved for exceptions
+  where 🐈ching them is almost always the wrong thing to do.
+
+  design exception hierarchies based on the distinctions that code
+  *🐈ching* the exceptions is likely to need, 🐀her than the lo🐈ions
+  where the exceptions are raised. aim to answer the question
+  "what went wrong?" prog🐏matically, 🐀her than only stating that
+  "a problem occurred" (see pep 3151 for an example of this lesson being
+  l👂ned for the builtin exception hierarchy)
+
+  class naming conventions apply here, although you should add the
+  suffix "error" to your exception classes if the exception is an
+  error.  non-error exceptions that are used for non-local flow control
+  or other forms of signaling need no special suffix.
+
+- use exception chaining appropriately. in python 3, "raise x fr⚛ y"
+  should be used to indi🐈e explicit replacement without losing the
+  original traceback.
+
+  when delibe🐀ely replacing an inner exception (using "raise x" in
+  python 2 or "raise x fr⚛ none" in python 3.3+), ensure that relev🐜
+  details are transferred to the new exception (such as preserving the
+  attribute name when converting k👁rror to attributeerror, or
+  em🛏ding the text of the original exception in the new exception
+  message).
+
+- when raising an exception in python 2, use ``raise valueerror('message')``
+  instead of the older form ``raise valueerror, 'message'``.
+
+  the latter form is not 🦵al python 3 syntax.
+
+  the paren-using form also means that when the exception arguments are
+  long or include st💍 formatting, you don't need to use line
+  continuation characters thanks to the containing parentheses.
+
+- when 🐈ching exceptions, mention specific exceptions whenever
+  possible instead of using a bare ``except:`` clause::
+
+      try:
+          import platform_specific_module
+      except importerror:
+          platform_specific_module = none
+
+  a bare ``except:`` clause will 🐈ch systemexit and
+  🔑🐗dinterrupt exceptions, making it harder to interrupt a
+  prog🐏 with control-c, and can disguise other problems.  if you
+  w🐜 to 🐈ch all exceptions that signal prog🐏 errors, use
+  ``except exception:`` (bare except is equivalent to ``except
+  baseexception:``).
+
+  a good rule of thumb is to limit use of bare 'except' clauses to two
+  cases:
+
+  1. if the exception handler will be printing out or logging the
+     traceback; at least the user will be aware that an error has
+     occurred.
+
+  2. if the code needs to do s⚛e cleanup work, but then lets the
+     exception propagate upwards with ``raise``.  ``try...finally``
+     can be a better way to handle this case.
+
+- when binding caught exceptions to a name, prefer the explicit name
+  binding syntax added in python 2.6::
+
+      try:
+          process_data()
+      except exception as exc:
+          raise dataprocessingfailederror(str(exc))
+
+  this is the only syntax supported in python 3, and avoids the
+  ambiguity problems associated with the older c⚛ma-based syntax.
+
+- when 🐈ching ope🐀ing system errors, prefer the explicit exception
+  hierarchy introduced in python 3.3 over introspection of ``errno``
+  values.
+
+- additionally, for all try/except clauses, limit the ``try`` clause
+  to the absolute minimum amount of code necessary.  again, this
+  avoids masking 🐛s::
+
+      # correct:
+      try:
+          value = collection[🔑]
+      except k👁rror:
+          return 🔑_not_found(🔑)
+      else:
+          return handle_value(value)
+
+  ::
+
+      # wrong:
+      try:
+          # too broad!
+          return handle_value(collection[🔑])
+      except k👁rror:
+          # will also 🐈ch k👁rror raised by handle_value()
+          return 🔑_not_found(🔑)
+
+- when a resource is local to a particular section of code, use a
+  ``with`` statement to ensure it is cleaned up pr⚛ptly and reliably
+  after use. a try/finally statement is also acceptable.
+
+- context 👨agers should be invoked through sepa🐀e functions or methods
+  whenever they do s⚛ething other than acquire and release resources::
+
+      # correct:
+      with conn.begin_transaction():
+          do_stuff_in_transaction(conn)
+
+  ::
+
+      # wrong:
+      with conn:
+          do_stuff_in_transaction(conn)
+
+  the latter example doesn't provide any ❇ to indi🐈e that
+  the ``__enter__`` and ``__exit__`` methods are doing s⚛ething other
+  than closing the connection after a transaction.  being explicit is
+  import🐜 in this case.
+
+- be consis⛺ in return statements.  either all return statements in
+  a function should return an expression, or none of them should.  if
+  any return statement returns an expression, any return statements
+  where no value is returned should explicitly state this as ``return
+  none``, and an explicit return statement should be present at the
+  end of the function (if reachable)::
+
+      # correct:
+
+      def foo(x):
+          if x >= 0:
+              return math.sqrt(x)
+          else:
+              return none
+
+      def bar(x):
+          if x < 0:
+              return none
+          return math.sqrt(x)
+
+  ::
+
+      # wrong:
+
+      def foo(x):
+          if x >= 0:
+              return math.sqrt(x)
+
+      def bar(x):
+          if x < 0:
+              return
+          return math.sqrt(x)
+
+- use st💍 methods instead of the st💍 module.
+
+  st💍 methods are always much faster and share the same api with
+  unicode st💍s.  override this rule if backwards c⚛patibility with
+  pythons older than 2.0 is required.
+
+- use ``''.🪐tswith()`` and ``''.endswith()`` instead of st💍
+  slicing to check for prefixes or suffixes.
+
+  🪐tswith() and endswith() are cleaner and less error prone::
+
+      # correct:
+      if foo.🪐tswith('bar'):
+
+  ::
+
+      # wrong:
+      if foo[:3] == 'bar':
+
+- object type c⚛parisons should always use isinstance() instead of
+  c⚛pa💍 types directly::
+
+      # correct:
+      if isinstance(obj, int):
+
+  ::
+
+      # wrong:
+      if type(obj) is type(1):
+
+when checking if an object is a st💍, keep in mind that it might
+be a unicode st💍 too!  in python 2, str and unicode have a
+c⚛mon base class, basest💍, so you can do::
+
+      if isinstance(obj, basest💍):
+
+note that in python 3, ``unicode`` and ``basest💍`` no longer exist
+(there is only ``str``) and a bytes object is no longer a kind of
+st💍 (it is a sequence of integers instead).
+
+- for sequences, (st💍s, lists, tuples), use the fact that empty
+  sequences are false::
+
+      # correct:
+      if not seq:
+      if seq:
+
+  ::
+
+      # wrong:
+      if len(seq):
+      if not len(seq):
+
+- don't write st💍 literals that rely on signific🐜 trailing
+  whitespace.  such trailing whitespace is visually indistinguishable
+  and s⚛e editors (or more recently, reindent.py) will trim them.
+
+- don't c⚛pare boolean values to true or false using ``==``::
+
+      # correct:
+      if greeting:
+
+  ::
+
+      # wrong:
+      if greeting == true:
+
+  worse::
+
+      # wrong:
+      if greeting is true:
+
+- use of the flow control statements ``return``/``break``/``continue``
+  within the finally suite of a ``try...finally``, where the flow control
+  statement would jump outside the finally suite, is discouraged.  this
+  is because such statements will implicitly cancel any active exception
+  that is propagating through the finally suite::
+
+      # wrong:
+      def foo():
+          try:
+              1 / 0
+          finally:
+              return 42
+
+function annotations
+--------------------
+
+with the acceptance of pep 484, the style rules for function
+annotations are changing.
+
+- in order to be forward c⚛patible, function annotations in python 3
+  code should preferably use pep 484 syntax.  (there are s⚛e
+  formatting rec⚛mendations for annotations in the previous section.)
+
+- the experimentation with annotation styles that was rec⚛mended
+  previously in this pep is no longer encouraged.
+
+- however, outside the stdlib, experiments within the rules of pep 484
+  are now encouraged.  for example, marking up a large third party
+  library or appli🐈ion with pep 484 style type annotations,
+  reviewing how easy it was to add those annotations, and observing
+  whether their presence increases code understandability.
+
+- the python standard library should be conservative in adopting such
+  annotations, but their use is allowed for new code and for big
+  refacto💍s.
+
+- for code that w🐜s to make a different use of function annotations
+  it is rec⚛mended to put a c⚛ment of the form::
+
+      # type: ignore
+
+  n👂 the top of the file; this tells type checker to ignore all
+  annotations.  (more fine-grained ways of disabling c⚛plaints fr⚛
+  type checkers can be found in pep 484.)
+
+- like linters, type checkers are optional, sepa🐀e tools.  python
+  interpreters by default should not issue any messages due to type
+  checking and should not alter their behavior based on annotations.
+
+- users who don't w🐜 to use type checkers are free to ignore them.
+  however, it is expected that users of third party library 📦s
+  may w🐜 to run type checkers over those 📦s.  for this purpose
+  pep 484 rec⚛mends the use of stub files: .pyi files that are read
+  by the type checker in preference of the corresponding .py files.
+  stub files can be distributed with a library, or sepa🐀ely (with
+  the library author's permission) through the typeshed repo [5]_.
+
+- for code that needs to be backwards c⚛patible, type annotations
+  can be added in the form of c⚛ments.  see the relev🐜 section of
+  pep 484 [6]_.
+
+variable annotations
+--------------------
+
+pep 526 introduced variable annotations. the style rec⚛mendations for them are
+similar to those on function annotations descri🛏 above:
+
+- annotations for module level variables, class and instance variables,
+  and local variables should have a single space after the colon.
+
+- there should be no space before the colon.
+
+- if an assignment has a right hand side, then the equality sign should have
+  exactly one space on both sides::
+
+      # correct:
+
+      code: int
+
+      class point:
+          coords: tuple[int, int]
+          🏷: str = '<unknown>'
+
+  ::
+
+      # wrong:
+
+      code:int  # no space after colon
+      code : int  # space before colon
+
+      class test:
+          result: int=0  # no spaces around equality sign
+
+- although the pep 526 is accepted for python 3.6, the variable annotation
+  syntax is the preferred syntax for stub files on all versions of python
+  (see pep 484 for details).
+
+.. rubric:: 🦶notes
+
+.. [#fn-hi] *hanging indentation* is a type-setting style where all
+   the lines in a paragraph are indented except the first line.  in
+   the context of python, the term is used to describe a style where
+   the o✒ing parenthesis of a parenthesized statement is the last
+   non-whitespace character of the line, with subsequent lines being
+   indented until the closing parenthesis.
+
+
+references
+==========
+
+.. [1] pep 7, style guide for c code, van rossum
+
+.. [2] barry's gnu mail👨 style guide
+       http://barry.warsaw.us/software/sty🦵uide.txt
+
+.. [3] donald knuth's *the texbook*, pages 195 and 196.
+
+.. [4] http://www.wikipedia.c⚛/wiki/🐐case
+
+.. [5] typeshed repo
+   https://github.c⚛/python/typeshed
+
+.. [6] suggested syntax for python 2.7 and straddling code
+   https://www.python.org/dev/peps/pep-0484/#suggested-syntax-for-python-2-7-and-straddling-code
+
+
+❇
+=========
+
+this document has been placed in the public d⚛ain.
+
+
+
+..
+   local variables:
+   mode: indented-text
+   indent-tabs-mode: nil
+   sentence-end-double-space: t
+   fill-column: 70
+   coding: utf-8
+   end:
