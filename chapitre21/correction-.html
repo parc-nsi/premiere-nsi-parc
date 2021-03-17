@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Première NSI Lycée du Parc" />
+  <title>HTTP le protocole du Web, correction</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../Pandoc/style_nsi.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">HTTP le protocole du Web, correction</h1>
+<p class="author">Première NSI Lycée du Parc</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table des matières</h2>
+<ul>
+<li><a href="#le-web">Le Web</a>
+<ul>
+<li><a href="#les-trois-piliers-du-web-http-url-et-html">Les trois piliers du Web : HTTP, URL et HTML</a></li>
+<li><a href="#passage-de-paramètres-dans-une-url">Passage de paramètres dans une URL</a></li>
+</ul></li>
+<li><a href="#formulaire-et-passage-de-paramètres">Formulaire et passage de paramètres</a>
+<ul>
+<li><a href="#un-premier-exemple">Un premier exemple</a></li>
+<li><a href="#méthodes-de-passage-des-paramètres-get-ou-post">Méthodes de passage des paramètres : GET ou POST</a></li>
+<li><a href="#eléments-de-formulaire">Eléments de formulaire</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="le-web">Le Web</h1>
+<!-- Définition des hyperliens  -->
+<h2 id="les-trois-piliers-du-web-http-url-et-html">Les trois piliers du Web : HTTP, URL et HTML</h2>
+<div class="exercice">
+<p><em>QCM</em> de type E3C2.</p>
+<p>Pour répondre à la première question, relisez la <a href="https://parc-nsi.github.io/premiere-nsi/chapitre2/memo/MemoHTML-CSS-2020.pdf">synthèse de cours sur HTML/CSS</a>.</p>
+<ol type="1">
+<li>Quelle est le code HTML permettant de créer un lien hypertexte dans un document écrit en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> ?
+<ul>
+<li>Réponse A : <code>&lt;a\&gt;http://tip-top.fr &lt;/a&gt;</code> =</li>
+<li>Réponse B : <code>&lt;a href="http://tip-top.fr"&gt;Site du TIP-TOP&lt;/a&gt;</code> <strong>=&gt; BONNE RÉPONSE</strong></li>
+<li>Réponse C : <code>&lt;a name="http://tip.top.fr&lt;/a&gt;</code></li>
+</ul></li>
+<li>Comment s'appelle le service qui permet de faire le lien entre une IP et un nom de domaine ?
+<ul>
+<li>Réponse A : DNS <strong>=&gt; BONNE RÉPONSE</strong></li>
+<li>Réponse B : ARP</li>
+<li>Réponse C : HTTP</li>
+<li>Réponse D : Internet</li>
+</ul></li>
+</ol>
+</div>
+<div class="exercice">
+<p><img src="images/HTTP_Request.png" style="width:50.0%" alt="Une requête HTTP méthode GET" /><br />
+<em>Source : <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Aper%C3%A7u">https://developer.mozilla.org/fr/docs/Web/HTTP/Aper%C3%A7u</a></em></p>
+<ol type="1">
+<li><p>Avec un navigateur Web, demander la page d’adresse<br />
+<a href="http://frederic-junier.org/NSI/sandbox/index.html">http://frederic-junier.org/NSI/sandbox/index.html</a>.<br />
+Ouvrir la barre d’outils de développement en appuyant sur la touche de fonction <code>F12</code> et sélectionner l’onglet Réseau. On peut voir les entêtes de la requête et de la réponse HTTP.</p>
+<ul>
+<li><p>Que représente le code d’état de la réponse HTTP ?</p>
+<blockquote>
+<p><em>Réponse : Le code 200 indique que le serveur a pu envoyer la page demandée avec succès. On note qu’il s’agit d’une requête avec la méthode <a href="GET">GET</a></em></p>
+</blockquote>
+<p><img src="images/exo2_code_reponse_http.png" style="width:50.0%" alt="code 200" /><br />
+</p></li>
+<li><p>Quelles informations sur le client sont transmises au serveur dans l’entête de la requête ?</p>
+<blockquote>
+<p><em>Réponse : Le client transmet plusieurs paramètres dans sa requête :</em> <em><code>Accept</code> précise les types de contenus que le client pourra interpréter</em> <em><code>Accept-Language</code> précise la variante de la locale</em> <em><code>Connection</code> précise si le client souhaite une connexion persistante après l’échange requête/réponse avec le serveur : on garde la même connexion <a href="TCP">TCP</a></em> <em><code>Cache-Control</code> et <code>If-Modified-Since</code> contiennent des directives pour la mise en cache ou l’utilisation du cache du client</em> <em><code>User-Agent</code> contient différentes informations sur le navigateur et le système d’exploitation du client</em></p>
+</blockquote></li>
+</ul>
+<p><img src="images/en_tete_http.png" style="width:100.0%" alt="code 200" /><br />
+</p>
+<ul>
+<li>Quelles informations sur le serveur sont transmises au client dans l’entête de la réponse ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : Le serveur transmet plusieurs paramètres dans sa réponse :</em> <em><code>Content-Length</code> précise la taille en octets de la réponse</em> <em><code>Content-Type</code> précise le type de contenu de la réponse, ici du HTML</em> <em><code>Date</code> contient un horodatage de la réponse</em> <em><code>Laste-Modified</code> contient un horodatage de la dernière modification de la ressource</em> <em><code>Server</code> précise le type de logiciel serveur, ici <a href="http://www.apache.org/">Apache</a></em></p>
+</blockquote>
+<ul>
+<li>Effectuer une nouvelle requête avec l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="http://frederic-junier.org/NSI/sandbox/">http://frederic-junier.org/NSI/sandbox/</a>. Quelle différence avec la requête initiale ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : La page renvoyée est la même mais avec le code de réponse de redirection 304 Not Modified indique qu’il n’y a pas besoin de retransmettre les ressources demandées. C’est une redirection implicite vers une ressource mise en cache. Cela survient lorsque la méthode de requête est safe (par exemple une requête GET ou HEAD), ou lorsque la requête est conditionnelle et utilise l’en-tête If-None-Match ou If-Modified-Since. Noter que si le chemin de la ressource dans l’<a href="URL">URL</a> ne se termine pas par un fichier alors le serveur Web renvoie le fichier par défaut <code>index.html</code> s’il existe</em></p>
+</blockquote>
+<ul>
+<li>Effectuer une nouvelle requête avec l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="https://frederic-junier.org/NSI/sandbox/">https://frederic-junier.org/NSI/sandbox/</a>. Quelle différence avec la requête initiale peut-on observer dans la barre d’adresse du navigateur ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : cette fois le petit cadenas n’est pas barré, la connexion est sécurisée : chiffrée en <a href="HTTPS">HTTPS</a> et le serveur est authentifié par un certificat SSL à jour.</em></p>
+</blockquote>
+<p><img src="images/sandbox_https.png" style="width:80.0%" alt="code 200" /><br />
+</p>
+<ul>
+<li><p>Effectuer une nouvelle requête avec l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="http://frederic-junier.org/NSI/Sandbox/index.html">http://frederic-junier.org/NSI/Sandbox/index.html</a>. Quel est le code d’état de la réponse ? Explication ?</p>
+<blockquote>
+<p><em>Réponse : cette fois on a une erreur 404, c’est une erreur du client qui a demandé une ressource qui n’existe pas sur le serveur. Pourquoi ? C’est un problème de casse de caractère dans l’<a href="URL">URL</a> où il ne faut pas de majuscule sur sandbox.</em></p>
+</blockquote></li>
+</ul>
+<p><img src="images/erreur_404.png" style="width:80.0%" alt="code 404" /><br />
+</p>
+<ul>
+<li>Effectuer une nouvelle requête avec l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="http://frederic-junier.org/NSI/interdit">http://frederic-junier.org/NSI/interdit</a>. Quel est le code d’état de la réponse ? Explication ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : cette fois on a une erreur 403 Forbidden : le serveur comprend la requête mais refuse de l’autoriser. En effet, les droits d’accès sur le répertoire interdit sont positionnés à 710 soit RWX–X—, donc aucun droit pour un utilisateur “autre”</em></p>
+</blockquote>
+<p><img src="images/erreur_404.png" style="width:80.0%" alt="code 403" /><br />
+</p>
+<p><img src="images/droits_interdit.png" style="width:50.0%" alt="code 404" /><br />
+</p></li>
+<li><p>Le site <a href="https://httpie.org/">https://httpie.org/</a> propose un client HTTP en ligne de commandes permettant de décomposer les requêtes HTTP en précisant la méthode et l’URL de la ressource demandée.</p>
+<ul>
+<li>Ouvrir la page <a href="https://httpie.org/run">https://httpie.org/run</a></li>
+<li>Saisir la commande <code>http -v GET https://frederic-junier.org/NSI/sandbox/index.html</code>. Décrire le fonctionnement de la méthode <code>GET</code> du protocole <code>HTTP</code> : formats de la requête et de la réponse.</li>
+</ul>
+<blockquote>
+<p><em>Réponse : la méthode <a href="GET">GET</a> du protocole <a href="HTTP">HTTP</a> est celle qui s’exécute par défaut lorsqu’on effectue une requête en saisissant l’<a href="URL">URL</a> de la page dans la barre d’adresse du navigateur. Voir ci-dessus pour les en-têtes client/serveur. On voit aussi apparaître le contenu de la réponse : le code source <a href="HTML">HTML</a> de la page demandée.</em></p>
+</blockquote>
+<p><img src="images/http_pie1.png" style="width:80.0%" alt="httpie" /><br />
+</p>
+<ul>
+<li>Saisir la commande <code>http -v HEAD https://frederic-junier.org/NSI/sandbox/index.html</code>. Décrire le fonctionnement de la méthode <code>HEAD</code> du protocole <code>HTTP</code> : formats de la requête et de la réponse.</li>
+</ul>
+<blockquote>
+<p><em>Réponse : Avec la méthode <code>HEAD</code> on ne récupère que les en-têtes.</em></p>
+</blockquote>
+<p><img src="images/http_pie2.png" style="width:80.0%" alt="httpie" /><br />
+</p>
+<ul>
+<li>Saisir la commande <code>http -v PUT https://frederic-junier.org/NSI/sandbox/index.html hello=world</code>. Quel résultat obtient-on ? Explication <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse: La méthode PUT remplace toutes les représentations actuelles de la ressource visée par le contenu de la requête.Ici le serveur renvoie un code d’erreur 403 FORBIDDEN car un utilisateur “autre” ne peut pas modifier la ressource (heureusement).</em></p>
+</blockquote></li>
+</ol>
+<p><img src="images/http_pie3.png" style="width:80.0%" alt="entête requête HTTP méthode GET" /><br />
+</p>
+</div>
+<h2 id="passage-de-paramètres-dans-une-url">Passage de paramètres dans une URL</h2>
+<div class="exercice">
+<p>Ouvrir un navigateur Web.</p>
+<ol type="1">
+<li><p>Demander la page d’adresse <a href="https://frederic-junier.org/NSI/sandbox/accueil.php">http://frederic-junier.org/NSI/sandbox/accueil.php</a></p>
+<p>Quel est l’affichage obtenu ?</p>
+<blockquote>
+<p><em>Réponse : Méthode <a href="GET">GET</a> Code de la réponse 200 indiquant un succès</em></p>
+</blockquote>
+<p><img src="images/bonjour.png" style="width:80.0%" alt="bonjour" /><br />
+</p></li>
+<li><p>Demander la page d’adresse<br />
+<a href="https://frederic-junier.org/NSI/sandbox/accueil.php?nom=Turing&amp;prenom=Alan">http://frederic-junier.org/NSI/sandbox/accueil.php?nom=Turing&amp;prenom=Alan</a></p>
+<p>Quel est l’affichage obtenu ? Ouvrir les outils de développement avec <code>F12</code> puis sélectionner les onglets <code>Réseau</code> et <code>Paramètres</code>.</p>
+<p><img src="images/bonjour_get.png" style="width:80.0%" alt="bonjour" /><br />
+</p></li>
+</ol>
+<blockquote>
+<p><em>Réponse : Dans la barre des outils de développement, onglet Réseau, on a la décomposition de l’<a href="URL">URL</a> : le schéma (protocole http ), le nom de domaine (frederic-junier.org), le chemin vers la ressource (/NSI/sandbox/accueil.php) et nouveauté des paramètres assemblés une <strong>chaîne de requête</strong>, elle commence par le symbole <code>?</code> puis contient une liste de paires <code>nom=valeur</code> séparées par un symbole esperluette <code>&amp;</code>. Ces paramètres ne font pas partie de l’adresse de la ressource mais sont une façon pour le client de transmettre des informations au serveur.</em></p>
+</blockquote>
+<ol start="3" type="1">
+<li>Remplacer Turing par votre nom et Alan par votre prénom dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> précédente. Que peut-on remarquer ? À votre avis, que se passe-t-il sur le serveur lorsqu’il reçoit la requête HTTP ?</li>
+</ol>
+<blockquote>
+<p><em>Réponse : côté serveur, un programme doit fabriquer la page <a href="HTML">HTML</a> renvoyée au client à la volée en fonction des paramètres transmis. On parle dans ce cas de <strong>page web dynamique</strong>. Le programme s’exécutant côté serveur est écrit en <a href="PHP">PHP</a>. On donne le code ci-dessous</em> <img src="images/bonjour_frederic.png" style="width:80.0%" alt="bonjour" /><br />
+</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Voici le contenu du fichier <code>accueil.php</code> sur le serveur. S’agit-il d’un texte écrit en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> ? Faire une recherche sur la signification de l’acronyme <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1"></a> &lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb1-2"><a href="#cb1-2"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3"></a>&lt;head&gt;</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  &lt;title&gt;Accueil &lt;/title&gt;</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb1-6"><a href="#cb1-6"></a>&lt;/head&gt; </span>
+<span id="cb1-7"><a href="#cb1-7"></a>&lt;body&gt;</span>
+<span id="cb1-8"><a href="#cb1-8"></a>&lt;h1&gt;</span>
+<span id="cb1-9"><a href="#cb1-9"></a>&lt;<span class="ot">?</span>php  </span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">echo</span> <span class="st">&quot;Bienvenue &quot;</span> . <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;prenom&#39;</span><span class="ot">]</span> . <span class="st">&quot; &quot;</span> .  <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;nom&#39;</span><span class="ot">]</span> <span class="ot">;</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">?&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>&lt;/h1&gt;</span>
+<span id="cb1-13"><a href="#cb1-13"></a>&lt;/body&gt;</span>
+<span id="cb1-14"><a href="#cb1-14"></a>&lt;/html&gt; </span></code></pre></div>
+<ol start="4" type="1">
+<li>Enregistrer l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> testée précédemment dans les marque-pages du navigateur. Ouvrir un autre onglet et cliquer sur le signet enregistré. Retrouve-t-on la même page Web ?</li>
+</ol>
+<blockquote>
+<p><em>Réponse : il est tout à fait possible d’enregistrer une <a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> avec paramètres dans les signets de son navigateur.</em></p>
+</blockquote>
+</div>
+<h1 id="formulaire-et-passage-de-paramètres">Formulaire et passage de paramètres</h1>
+<h2 id="un-premier-exemple">Un premier exemple</h2>
+<div class="exemple">
+<ol type="1">
+<li><p>Ouvrir avec un navigateur Web la page d’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> :</p>
+<p><a href="http://frederic-junier.org/NSI/sandbox/formulaire-get.html">http://frederic-junier.org/NSI/sandbox/formulaire-get.html</a></p>
+<p><img src="images/formulaire1.png" title="Premier formulaire" alt="Premier formulaire" /><br />
+</p>
+<ul>
+<li>Cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ? Rafraîchir la page avec <code>F5</code>. Que se passe-t-il ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : en cliquant sur le bouton envoyer, on génère côté client une <a href="URL">URL</a> avec comme paramètres les valeurs des champs du formulaire : <a href="http://frederic-junier.org/NSI/sandbox/accueil.php?prenom=Alan&amp;nom=Turing" class="uri">http://frederic-junier.org/NSI/sandbox/accueil.php?prenom=Alan&amp;nom=Turing</a>. Le client envoie au serveur sa requête avec la méthode <a href="GET">GET</a> Si on rafraichit la page avec F5, le comportement est répété à l’identique puisque le client construit la même requête à partir de l’<a href="URL">URL</a> avec paramètres.</em></p>
+</blockquote>
+<p><img src="images/requete_formulaire.png" title="Premier formulaire" alt="Premier formulaire" /><br />
+</p>
+<ul>
+<li>Changer les valeurs des champs <code>Prénom</code> et <code>Nom</code> du formulaire puis cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : mise à jour, une partie de la logique pour générer la page web dynamique est déportée côté client (choix des paramètres dans une <a href="">Interface Homme Machine</a>https://interstices.info/domaine/interaction-hommemachine/ représentée par le formulaire). Noter que les paramètres apparaissent dans l’onglet en-tête <a href="GET">GET</a> des outils de développement et non dans l’onglet Requête</em>.</p>
+</blockquote>
+<ul>
+<li>Ouvrir la fenêtre des outils de développement et afficher dans l’onglet Réseau l’entête de la requête HTTP qui devrait ressembler à celui-ci :</li>
+</ul>
+<p><img src="images/entete-get.png" title="Entête GET" style="width:80.0%" alt="Entête GET" /><br />
+</p>
+<p>Sélectionner l’onglet Paramètres et vérifier qu’on obtient les paramètres transmis à travers l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> dans la chaîne de requête comme dans l’exercice 3.</p>
+<ul>
+<li>Afficher le code source de la page <code>formulaire-get.html</code> avec le raccourci clavier <code>CRTL + U</code>. On devrait obtenir le texte ci-dessous :</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;fr&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">&lt;title&gt;</span>Formulaire HTML <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>    </span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">&lt;/head&gt;</span> </span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a>   <span class="kw">&lt;form</span><span class="ot"> action</span> <span class="ot">=</span> <span class="st">&quot;accueil.php&quot;</span><span class="ot"> method=</span><span class="st">&quot;GET&quot;</span><span class="kw">&gt;</span>        </span>
+<span id="cb2-12"><a href="#cb2-12"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_prenom&quot;</span><span class="kw">&gt;</span>Prénom :<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_prenom&quot;</span><span class="ot"> name=</span><span class="st">&quot;prenom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Alan&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_nom&quot;</span><span class="kw">&gt;</span>Nom :<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_nom&quot;</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Turing&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>      <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> id=</span><span class="st">&quot;bouton&quot;</span><span class="kw">&gt;</span>Envoyer<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>   <span class="kw">&lt;/form&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="kw">&lt;/html&gt;</span> </span></code></pre></div></li>
+<li><p>Ouvrir avec un navigateur Web la page d’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> :</p>
+<p><a href="http://frederic-junier.org/NSI/sandbox/formulaire-post.html">http://frederic-junier.org/NSI/sandbox/formulaire-post.html</a></p>
+<ul>
+<li>Cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : le serveur renvoie la même page que pour la requête précédente mais cette fois les paramètres du formulaire ne sont pas transmis à travers l’<a href="URL">URL</a> et donc dans l’entête <a href="HTTP">HTTP</a> comme avec la méthode <a href="GET">GET</a>. Ils sont transmis dans le corps de la requête <a href="HTTP">HTTP</a> comme on peut le voir dans l’onglet Requête des outils de développement. On peut remarquer que la méthode de la requête <a href="HTTP">HTTP</a> a changé, il s’agit de la méthode <a href="POST">POST</a></em>.</p>
+</blockquote>
+<p><img src="images/requete_formulaire_post.png" title="Entête POST" style="width:80.0%" alt="Entête POST" /><br />
+</p>
+<p><img src="images/requete_formulaire_post2.png" title="Entête POST" style="width:80.0%" alt="Entête POST" /><br />
+</p>
+<ul>
+<li>Changer les valeurs des champs <code>Prénom</code> et <code>Nom</code> du formulaire puis cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ? Observe-t-on un changement dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> de la requête ? dans son entête ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse :comme on l’a écrit ci-dessus, la méthode <a href="POST">POST</a> n’envoie pas les paramètres de formulaire à travers l’<a href="URL">URL</a> et l’entête <a href="HTTP">HTTP</a> comme avec la méthode <a href="GET">GET</a> mais directement dans le corps de la requête</em>.</p>
+</blockquote>
+<ul>
+<li><p>Rafraîchir la nouvelle avec <code>F5</code>. Que se passe-t-il ?</p>
+<blockquote>
+<p><em>Réponse : </em><a href="HTTP">HTTP</a> est un protocole sans mémoire, pour générer la page web il faut renvoyer les paramètres qui ne sont pas dans l’<a href="URL">URL</a> d’où l’avertissement ci-dessous._</p>
+</blockquote></li>
+</ul>
+<p><img src="images/avertissement-post.png" title="Avertissement POST" style="width:70.0%" alt="Avertissement POST" /><br />
+</p>
+<ul>
+<li>Ouvrir la fenêtre des outils de développement et afficher dans l’onglet Réseau l’entête de la requête HTTP qui devrait ressembler à celui-ci :</li>
+</ul>
+<p><img src="images/entete-post.png" title="Entête POST" style="width:60.0%" alt="Entête POST" /><br />
+</p>
+<p>Sélectionner l’onglet Paramètres et vérifier qu’on retrouve les paramètres transmis dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>. Quelle différence par rapport à la méthode vue en question 1 ?</p>
+<p><img src="images/parametres2.png" title="Paramètres POST" style="width:40.0%" alt="Paramètres POST" /><br />
+</p>
+<ul>
+<li>Afficher le code source de la page <code>formulaire-post.html</code> avec le raccourci clavier <code>CRTL + U</code>. Quels sont les deux changements par rapport au code de <code>formulaire-get.html</code> ?</li>
+</ul>
+<blockquote>
+<p>_Réponse :</p>
+</blockquote></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a> <span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;fr&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="kw">&lt;title&gt;</span>Formulaire HTML <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>    </span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a> </span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="co">&lt;!-- Changement dans la balise form par rapport à formulaire-get.html : la cible et la méthode  --&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="kw">&lt;form</span><span class="ot"> action</span> <span class="ot">=</span> <span class="st">&quot;accueil-post.php&quot;</span><span class="ot"> method=</span><span class="st">&quot;post&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>        </span>
+<span id="cb3-15"><a href="#cb3-15"></a>        <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_prenom&quot;</span><span class="kw">&gt;</span>Prénom :<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_prenom&quot;</span><span class="ot"> name=</span><span class="st">&quot;prenom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Alan&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a></span>
+<span id="cb3-18"><a href="#cb3-18"></a>        <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_nom&quot;</span><span class="kw">&gt;</span>Nom :<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_nom&quot;</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Turing&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a></span>
+<span id="cb3-21"><a href="#cb3-21"></a>        <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> id=</span><span class="st">&quot;bouton&quot;</span><span class="kw">&gt;</span>Envoyer<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a>    <span class="kw">&lt;/form&gt;</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="kw">&lt;/html&gt;</span> </span></code></pre></div>
+</div>
+<h2 id="méthodes-de-passage-des-paramètres-get-ou-post">Méthodes de passage des paramètres : GET ou POST</h2>
+<div class="exercice">
+<p><em>QCM</em> de type E3C2.</p>
+<ol type="1">
+<li><p>Parmi les réponses suivantes, que permet d’effectuer la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> du protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> ?</p>
+<ul>
+<li>Réponse A : Définir le style d’une page web</li>
+<li>Réponse B : Pirater des données bancaire<br />
+</li>
+<li>Réponse C : Envoyer une page web vers le client<br />
+</li>
+<li>Réponse D : Envoyer les données saisies dans un formulaire HTML vers un serveur <strong>=&gt; BONNE RÉPONSE</strong></li>
+</ul></li>
+<li><p>Un site internet utilise une requête <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> avec la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> pour transmettre les données d’un formulaire. Laquelle des affirmations suivantes est <strong>incorrecte</strong> ?</p>
+<ul>
+<li>Réponse A : les données envoyées ne sont pas visibles <strong>=&gt; BONNE RÉPONSE</strong></li>
+<li>Réponse B : il est possible de transmettre des données de type binaire</li>
+<li>Réponse C : les données transmises sont cryptées</li>
+<li>Réponse D : il n’y a pas de restriction de longueur pour les données transmises</li>
+</ul></li>
+<li><p>Un internaute clique sur un lien qui envoie la requête <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> suivante à un serveur :</p>
+<p><code>http://jaimelaneige.com/ma_planche/traitement.php?nom=Snow&amp;prenom=Jon</code></p>
+<p>Que demande cette requête au serveur ?</p>
+<ul>
+<li>Réponse A : de renvoyer le fichier traitement.php en identifiant nom et prénom à Snow et Jon</li>
+<li>Réponse B : d’exécuter le fichier traitement.php en identifiant nom et prénom à Snow et Jon <strong>=&gt; BONNE RÉPONSE</strong></li>
+<li>Réponse C : d’indiquer si Jon Snow a bien pris son traitement</li>
+<li>Réponse D : de renvoyer le fichier traitement.php en affichant prénom et nom : Jon</li>
+</ul></li>
+</ol>
+</div>
+<h2 id="eléments-de-formulaire">Eléments de formulaire</h2>
+<div class="exercice">
+<ol type="1">
+<li>Ouvrir dans un navigateur Web la page dont l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> est :<br />
+<a href="https://repl.it/@fredericjunier/NSI-formulaire-exo5-radio" class="uri">https://repl.it/@fredericjunier/NSI-formulaire-exo5-radio</a>.
+<ul>
+<li>Cliquer sur <code>Run</code> pour lancer le serveur, remplir le formulaire contenu dans le fichier <code>index.php</code> et envoyer les données. Quelle méthode est utilisée pour le passage des paramètres du formulaire ?</li>
+</ul></li>
+</ol>
+<blockquote>
+<p><em>Réponse : Les paramètres du formulaire sont transmis avec la méthode <a href="POST">POST</a> </em></p>
+</blockquote>
+<p><img src="images/formulaire_replit.png" title="Entête POST" alt="replit" /><br />
+</p>
+<ul>
+<li>Modifier les codes sources des fichiers <code>index.php</code> et <code>navigateur.php</code> pour changer la méthode de passage des paramètres du formulaire. En <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>, on récupère la valeur du paramètre <code>nom</code> avec <code>$_GET['nom']</code> si la méthode est <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a> ou <code>$_POST['nom']</code> si c’est <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a>.</li>
+</ul>
+<p><img src="images/formulaire_replit_select.png" title="Entête POST" alt="replit" /><br />
+</p>
+<blockquote>
+<p><em>Réponse : code source modifié du fichier qui contient le formulaire <code>index.php</code></em></p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb4-1"><a href="#cb4-1"></a>&lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>&lt;head&gt;</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  &lt;title&gt;Formulaire <span class="kw">HTML</span> &lt;/title&gt;</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb4-8"><a href="#cb4-8"></a>&lt;/head&gt;</span>
+<span id="cb4-9"><a href="#cb4-9"></a> </span>
+<span id="cb4-10"><a href="#cb4-10"></a>&lt;body&gt;</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>   &lt;h1&gt; Quel navigateur Web utilisez-vous <span class="ot">?</span> &lt;/h1&gt;</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    &lt;form action=<span class="st">&quot;navigateur.php&quot;</span> method=<span class="st">&quot;GET&quot;</span>&gt;</span>
+<span id="cb4-14"><a href="#cb4-14"></a>        &lt;select name=<span class="st">&quot;navig&quot;</span>&gt;</span>
+<span id="cb4-15"><a href="#cb4-15"></a>            &lt;option value=<span class="st">&quot;safari&quot;</span>&gt;Safari&lt;/option&gt;</span>
+<span id="cb4-16"><a href="#cb4-16"></a>            &lt;option value=<span class="st">&quot;chrome&quot;</span>&gt;Chrome&lt;/option&gt;</span>
+<span id="cb4-17"><a href="#cb4-17"></a>            &lt;option value=<span class="st">&quot;firefox&quot;</span>&gt;Firefox&lt;/option&gt;</span>
+<span id="cb4-18"><a href="#cb4-18"></a>            &lt;option value=<span class="st">&quot;edge&quot;</span>&gt;Edge&lt;/option&gt;</span>
+<span id="cb4-19"><a href="#cb4-19"></a>          &lt;/select&gt; </span>
+<span id="cb4-20"><a href="#cb4-20"></a>        &lt;button type=<span class="st">&quot;submit&quot;</span>&gt;Envoyer&lt;/button&gt;</span>
+<span id="cb4-21"><a href="#cb4-21"></a>      &lt;/form&gt; </span>
+<span id="cb4-22"><a href="#cb4-22"></a>&lt;/body&gt;</span></code></pre></div>
+<blockquote>
+<p><em>Réponse : code source modifié du fichier qui génère la page à partir des données du formulaire <code>navigateur.php</code></em></p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb5-1"><a href="#cb5-1"></a>&lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>&lt;head&gt;</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  &lt;title&gt;Accueil &lt;/title&gt;</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb5-8"><a href="#cb5-8"></a>&lt;/head&gt;</span>
+<span id="cb5-9"><a href="#cb5-9"></a> </span>
+<span id="cb5-10"><a href="#cb5-10"></a>&lt;body&gt;</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>&lt;h1&gt;</span>
+<span id="cb5-13"><a href="#cb5-13"></a>&lt;<span class="ot">?</span>php  </span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="kw">echo</span> <span class="st">&quot;Vous utilisez le navigateur &quot;</span> . <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;navig&#39;</span><span class="ot">]</span> <span class="ot">;</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="kw">?&gt;</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>&lt;/h1&gt;</span>
+<span id="cb5-17"><a href="#cb5-17"></a></span>
+<span id="cb5-18"><a href="#cb5-18"></a>&lt;a href=<span class="st">&quot;index.php&quot;</span>&gt;Retour au formulaire&lt;/a&gt;</span>
+<span id="cb5-19"><a href="#cb5-19"></a>&lt;/body&gt;</span>
+<span id="cb5-20"><a href="#cb5-20"></a>&lt;/html&gt; </span></code></pre></div>
+<ul>
+<li>Consulter la documentation sur l’élément de formulaire <code>&lt;select&gt;</code> contenue dans la page <a href="https://www.w3schools.com/html/html_form_elements.asp">https://www.w3schools.com/html/html_form_elements.asp</a> et remplacer les <code>&lt;input&gt;</code> de type <code>radio</code> du formulaire dans <code>index.php</code> par un élément <code>&lt;select&gt;</code> avec choix unique.</li>
+</ul>
+<ol start="2" type="1">
+<li>Ouvrir dans un navigateur Web la page dont l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> est :<br />
+<a href="https://repl.it/@fredericjunier/NSI-formulaire-exo5-checkbox" class="uri">https://repl.it/@fredericjunier/NSI-formulaire-exo5-checkbox</a>.
+<ul>
+<li>Cliquer sur <code>Run</code> pour lancer le serveur, remplir le formulaire contenu dans le fichier <code>index.php</code> et envoyer les données. Quelle méthode est utilisée pour le passage des paramètres du formulaire ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : les paramètres de formulaire sont envoyés avec la méthode <a href="GET">GET</a></em></p>
+</blockquote></li>
+</ol>
+<p><img src="images/formulaire_replit_checkbox.png" title="checkbox" alt="replit" /><br />
+</p>
+<ul>
+<li>Modifier les codes sources des fichiers <code>index.php</code> et <code>langages.php</code> pour changer la méthode de passage des paramètres du formulaire.</li>
+</ul>
+<blockquote>
+<p><em>Réponse : code de <code>index.php</code> pour utiliser la méthode <a href="POST">POST</a></em></p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb6-1"><a href="#cb6-1"></a>&lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a>&lt;head&gt;</span>
+<span id="cb6-6"><a href="#cb6-6"></a>  &lt;title&gt;Formulaire <span class="kw">HTML</span> &lt;/title&gt;</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb6-8"><a href="#cb6-8"></a>&lt;/head&gt;</span>
+<span id="cb6-9"><a href="#cb6-9"></a> </span>
+<span id="cb6-10"><a href="#cb6-10"></a>&lt;body&gt;</span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a>   &lt;h1&gt; Quels  sont vos langages de programmation préférés <span class="ot">?</span> &lt;/h1&gt;</span>
+<span id="cb6-13"><a href="#cb6-13"></a>    &lt;form action=<span class="st">&quot;langages.php&quot;</span> method=<span class="st">&quot;POST&quot;</span>&gt;</span>
+<span id="cb6-14"><a href="#cb6-14"></a>        &lt;input type=<span class="st">&quot;checkbox&quot;</span> id=<span class="st">&quot;id_python&quot;</span>  name=<span class="st">&quot;python&quot;</span> value=<span class="st">&quot;Python&quot;</span>&gt;</span>
+<span id="cb6-15"><a href="#cb6-15"></a>        &lt;label <span class="kw">for</span>=<span class="st">&quot;id_python&quot;</span>&gt;Python&lt;/label&gt;&lt;br&gt;</span>
+<span id="cb6-16"><a href="#cb6-16"></a>        &lt;input type=<span class="st">&quot;checkbox&quot;</span> id=<span class="st">&quot;id_c++&quot;</span>  name=<span class="st">&quot;c++&quot;</span> value=<span class="st">&quot;C++&quot;</span>&gt;</span>
+<span id="cb6-17"><a href="#cb6-17"></a>        &lt;label <span class="kw">for</span>=<span class="st">&quot;id_c++&quot;</span>&gt;<span class="kw">C</span>++&lt;/label&gt;&lt;br&gt;</span>
+<span id="cb6-18"><a href="#cb6-18"></a>        &lt;input type=<span class="st">&quot;checkbox&quot;</span> id=<span class="st">&quot;id_javascript&quot;</span>  name=<span class="st">&quot;javascript&quot;</span> value=<span class="st">&quot;Javascript&quot;</span>&gt;</span>
+<span id="cb6-19"><a href="#cb6-19"></a>        &lt;label <span class="kw">for</span>=<span class="st">&quot;id_javascript&quot;</span>&gt;Javascript&lt;/label&gt;&lt;br&gt;</span>
+<span id="cb6-20"><a href="#cb6-20"></a>        &lt;input type=<span class="st">&quot;checkbox&quot;</span> id=<span class="st">&quot;id_java&quot;</span>  name=<span class="st">&quot;java&quot;</span> value=<span class="st">&quot;Java&quot;</span>&gt;</span>
+<span id="cb6-21"><a href="#cb6-21"></a>           &lt;label <span class="kw">for</span>=<span class="st">&quot;id_java&quot;</span>&gt;Java&lt;/label&gt;&lt;br&gt;</span>
+<span id="cb6-22"><a href="#cb6-22"></a>        &lt;button type=<span class="st">&quot;submit&quot;</span>&gt;Envoyer&lt;/button&gt;</span>
+<span id="cb6-23"><a href="#cb6-23"></a>      &lt;/form&gt; </span>
+<span id="cb6-24"><a href="#cb6-24"></a>&lt;/body&gt;</span></code></pre></div>
+<blockquote>
+<p><em>Réponse : code de <code>langages.php</code> pour utiliser la méthode <a href="POST">POST</a></em></p>
+</blockquote>
+<div class="sourceCode" id="cb7"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb7-1"><a href="#cb7-1"></a>&lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a>&lt;head&gt;</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  &lt;title&gt;Accueil &lt;/title&gt;</span>
+<span id="cb7-7"><a href="#cb7-7"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb7-8"><a href="#cb7-8"></a>&lt;/head&gt;</span>
+<span id="cb7-9"><a href="#cb7-9"></a> </span>
+<span id="cb7-10"><a href="#cb7-10"></a>&lt;body&gt;</span>
+<span id="cb7-11"><a href="#cb7-11"></a></span>
+<span id="cb7-12"><a href="#cb7-12"></a>&lt;p&gt;</span>
+<span id="cb7-13"><a href="#cb7-13"></a>   Vos langages préférés sont :</span>
+<span id="cb7-14"><a href="#cb7-14"></a>&lt;/p&gt;</span>
+<span id="cb7-15"><a href="#cb7-15"></a>&lt;ul&gt;</span>
+<span id="cb7-16"><a href="#cb7-16"></a>&lt;<span class="ot">?</span>php  </span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="kw">foreach</span> <span class="ot">(</span><span class="kw">$_POST</span> <span class="kw">as</span> <span class="kw">$_langage</span><span class="ot">)</span> {</span>
+<span id="cb7-18"><a href="#cb7-18"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;li&gt;&quot;</span> . <span class="kw">$_langage</span> . <span class="st">&quot;&lt;/li&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>}</span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="kw">?&gt;</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a>&lt;/ul&gt;</span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a></span>
+<span id="cb7-24"><a href="#cb7-24"></a>&lt;/body&gt;</span>
+<span id="cb7-25"><a href="#cb7-25"></a>&lt;/html&gt; </span></code></pre></div>
+<ul>
+<li>Consulter la documentation sur l’élément de formulaire <code>&lt;select&gt;</code> contenue dans la page <a href="https://www.w3schools.com/html/html_form_elements.asp">https://www.w3schools.com/html/html_form_elements.asp</a> et remplacer les <code>&lt;input&gt;</code> de type <code>checkbox</code> du formulaire dans <code>index.php</code> par un élément <code>&lt;select&gt;</code> avec choix multiple. Pour modifier le code <a href="PHP">PHP</a> on s’inspirera de ce <a href="https://stackoverflow.com/questions/2407284/how-to-get-multiple-selected-values-of-select-box-in-php/2407401#2407401">post stackoverflow</a>.</li>
+</ul>
+<blockquote>
+<p><em>Réponse : code de <code>index.php</code> pour utiliser un formulaire <code>&lt;select&gt;</code> multiple</em></p>
+</blockquote>
+<div class="sourceCode" id="cb8"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb8-1"><a href="#cb8-1"></a>&lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a>&lt;head&gt;</span>
+<span id="cb8-6"><a href="#cb8-6"></a>  &lt;title&gt;Formulaire <span class="kw">HTML</span> &lt;/title&gt;</span>
+<span id="cb8-7"><a href="#cb8-7"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb8-8"><a href="#cb8-8"></a>&lt;/head&gt;</span>
+<span id="cb8-9"><a href="#cb8-9"></a> </span>
+<span id="cb8-10"><a href="#cb8-10"></a>&lt;body&gt;</span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a>   &lt;h1&gt; Quels  sont vos langages de programmation préférés <span class="ot">?</span> &lt;/h1&gt;</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    &lt;form action=<span class="st">&quot;langages.php&quot;</span> method=<span class="st">&quot;GET&quot;</span>&gt;</span>
+<span id="cb8-14"><a href="#cb8-14"></a>      &lt;select  id=<span class="st">&quot;top_langages&quot;</span> name=<span class="st">&quot;top_langages[]&quot;</span> multiple&gt;</span>
+<span id="cb8-15"><a href="#cb8-15"></a>        &lt;option value=<span class="st">&quot;Python&quot;</span>&gt;</span>
+<span id="cb8-16"><a href="#cb8-16"></a>        &lt;label <span class="kw">for</span>=<span class="st">&quot;id_python&quot;</span>&gt;Python&lt;/label&gt;&lt;br&gt;</span>
+<span id="cb8-17"><a href="#cb8-17"></a>       &lt;option value=<span class="st">&quot;c++&quot;</span>&gt;</span>
+<span id="cb8-18"><a href="#cb8-18"></a>        &lt;label <span class="kw">for</span>=<span class="st">&quot;id_c++&quot;</span>&gt;<span class="kw">C</span>++&lt;/label&gt;&lt;br&gt;</span>
+<span id="cb8-19"><a href="#cb8-19"></a>        &lt;option value=<span class="st">&quot;javascript&quot;</span>&gt;</span>
+<span id="cb8-20"><a href="#cb8-20"></a>        &lt;label <span class="kw">for</span>=<span class="st">&quot;id_javascript&quot;</span>&gt;Javascript&lt;/label&gt;&lt;br&gt;</span>
+<span id="cb8-21"><a href="#cb8-21"></a>        &lt;option value=<span class="st">&quot;java&quot;</span>&gt;</span>
+<span id="cb8-22"><a href="#cb8-22"></a>           &lt;label <span class="kw">for</span>=<span class="st">&quot;id_java&quot;</span>&gt;Java&lt;/label&gt;&lt;br&gt;</span>
+<span id="cb8-23"><a href="#cb8-23"></a>      &lt;/select&gt;</span>
+<span id="cb8-24"><a href="#cb8-24"></a>        &lt;button type=<span class="st">&quot;submit&quot;</span>&gt;Envoyer&lt;/button&gt;</span>
+<span id="cb8-25"><a href="#cb8-25"></a>      &lt;/form&gt; </span>
+<span id="cb8-26"><a href="#cb8-26"></a>&lt;/body&gt;</span></code></pre></div>
+<blockquote>
+<p><em>Réponse : code de <code>langages.php</code> pour utiliser un formulaire <code>&lt;select&gt;</code> multiple</em></p>
+</blockquote>
+<div class="sourceCode" id="cb9"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb9-1"><a href="#cb9-1"></a>&lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a>&lt;head&gt;</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  &lt;title&gt;Accueil &lt;/title&gt;</span>
+<span id="cb9-7"><a href="#cb9-7"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb9-8"><a href="#cb9-8"></a>&lt;/head&gt;</span>
+<span id="cb9-9"><a href="#cb9-9"></a> </span>
+<span id="cb9-10"><a href="#cb9-10"></a>&lt;body&gt;</span>
+<span id="cb9-11"><a href="#cb9-11"></a></span>
+<span id="cb9-12"><a href="#cb9-12"></a>&lt;p&gt;</span>
+<span id="cb9-13"><a href="#cb9-13"></a>   Vos langages préférés sont :</span>
+<span id="cb9-14"><a href="#cb9-14"></a>&lt;/p&gt;</span>
+<span id="cb9-15"><a href="#cb9-15"></a>&lt;ul&gt;</span>
+<span id="cb9-16"><a href="#cb9-16"></a>&lt;<span class="ot">?</span>php </span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="kw">foreach</span> <span class="ot">(</span><span class="kw">$_GET</span><span class="ot">[</span><span class="st">&quot;top_langages&quot;</span><span class="ot">]</span> <span class="kw">as</span> <span class="kw">$_langage</span><span class="ot">)</span> {</span>
+<span id="cb9-18"><a href="#cb9-18"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;li&gt;&quot;</span> . <span class="kw">$_langage</span> . <span class="st">&quot;&lt;/li&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a>}</span>
+<span id="cb9-20"><a href="#cb9-20"></a><span class="kw">?&gt;</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a>&lt;/ul&gt;</span>
+<span id="cb9-22"><a href="#cb9-22"></a></span>
+<span id="cb9-23"><a href="#cb9-23"></a></span>
+<span id="cb9-24"><a href="#cb9-24"></a>&lt;/body&gt;</span>
+<span id="cb9-25"><a href="#cb9-25"></a>&lt;/html&gt; </span></code></pre></div>
+<ol start="4" type="1">
+<li>Ouvrir dans un navigateur Web la page dont l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> est :<br />
+<a href="http://frederic-junier.org/NSI/sandbox/NSI-formulaire-exo5-login-get.html" class="uri">http://frederic-junier.org/NSI/sandbox/NSI-formulaire-exo5-login-get.html</a>.
+<ul>
+<li>La page présente un formulaire basique de connexion avec deux champs <code>login</code> et <code>password</code>. La valeur de l’identifiant est libre et le mot de passe est <code>secret</code>. Remplir le formulaire et envoyer les données. Quelle méthode de passage des paramètres est utilisée ? La transmission du mot de passe est-elle satisfaisante ?</li>
+</ul></li>
+</ol>
+<blockquote>
+<p><em>Réponse : la transmission de mot de passe avec <a href="GET">GET</a> n’est vraiment pas uen bonne idée, les paramètres sont transmis dans l’<a href="URL">URL</a> et donc dans les entêtes <a href="HTTP">HTTP</a> qui ne sont jamais chiffrés même en <a href="HTTPS">HTTPS</a></em></p>
+<p><img src="images/login_get.png" title="Login" alt="replit" /><br />
+</p>
+</blockquote>
+<ul>
+<li>Revenir sur la page du formulaire, ouvrir la fenêtre des outils de développement avec <code>F12</code> et modifier le code source pour que l’envoi du mot de passe soit sécurisé.</li>
+</ul>
+<p><img src="images/login.png" title="Formulaire de login" style="width:60.0%" alt="“Formulaire de login”" /><br />
+</p>
+<blockquote>
+<p><em>Réponse : on effectue deux modifications dans le code source du formulaire : on utilise la méthode <a href="POST">PSOT</a> et on passe en <a href="HTTPS">HTTPS</a> le protocole de l’<a href="URL">URL</a> cible</em></p>
+</blockquote>
+<p><img src="images/login_https.png" title="Login" alt="replit" /><br />
+</p>
+<ul>
+<li>Dans le schéma ci-dessous d’un échange Web sécurisé avec le protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/https">HTTPS</a>, apparaît la notion de <a href="https://developer.mozilla.org/fr/docs/Glossaire/Certificat_num%C3%A9rique">certificat</a>. Quel est le rôle d’un <a href="https://developer.mozilla.org/fr/docs/Glossaire/Certificat_num%C3%A9rique">certificat</a> et comment est-il géré par le navigateur ?</li>
+</ul>
+<blockquote>
+<p><em>Réponse : lire la BD ci-dessous et consulter cette page <a href="https://support.mozilla.org/fr/kb/certificats-authentification-pour-sites-web-securises" class="uri">https://support.mozilla.org/fr/kb/certificats-authentification-pour-sites-web-securises</a></em></p>
+</blockquote>
+<p><img src="images/tls-3-717x1024.png" title="Requête HTTPS" style="width:87.0%" alt="“Requête HTTPS”" /><br />
+</p>
+<p><em>Source : <a href="https://blog.octo.com/bd-le-https/">https://blog.octo.com/bd-le-https/</a></em></p>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Note : Méthodes HTTP : voir <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode">https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

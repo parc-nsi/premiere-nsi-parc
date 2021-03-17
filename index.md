@@ -45,3 +45,4 @@ layout: parc
 * [Chapitre 18 : les dictionnaires](chapitre18.md)
 * [Chapitre 19 : traitement de données en table](chapitre19.md)
 * [Chapitre 20 : correction d'algorithmes](chapitre20.md)
+* [Chapitre 21 : Interface Homme Machine sur le Web partie 1, protocole HTTP et formulaires](chapitre21.md)

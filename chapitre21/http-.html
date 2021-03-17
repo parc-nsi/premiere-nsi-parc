@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Première NSI Lycée du Parc" />
+  <title>HTTP le protocole du Web</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../Pandoc/style_nsi.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">HTTP le protocole du Web</h1>
+<p class="author">Première NSI Lycée du Parc</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table des matières</h2>
+<ul>
+<li><a href="#crédits">Crédits</a></li>
+<li><a href="#le-web">Le Web</a>
+<ul>
+<li><a href="#les-trois-piliers-du-web-http-url-et-html">Les trois piliers du Web : HTTP, URL et HTML</a></li>
+<li><a href="#passage-de-paramètres-dans-une-url">Passage de paramètres dans une URL</a></li>
+</ul></li>
+<li><a href="#formulaire-et-passage-de-paramètres">Formulaire et passage de paramètres</a>
+<ul>
+<li><a href="#un-premier-exemple">Un premier exemple</a></li>
+<li><a href="#méthodes-de-passage-des-paramètres-get-ou-post">Méthodes de passage des paramètres : GET ou POST</a></li>
+<li><a href="#eléments-de-formulaire">Eléments de formulaire</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="unnumbered" id="crédits" class="unnumbered">Crédits</h1>
+<p><em>Ce cours est largement inspiré du chapitre 28 du manuel NSI de la collection Tortue chez Ellipsen auteurs : Ballabonski, Conchon, Filliatre, N’Guyen.</em></p>
+<h1 id="le-web">Le Web</h1>
+<!-- Définition des hyperliens  -->
+<h2 id="les-trois-piliers-du-web-http-url-et-html">Les trois piliers du Web : HTTP, URL et HTML</h2>
+<p>Le Web est une application du réseau Internet qui désigne un réseau de sources d’information reliées par des liens hypertextes. Le Web fonctionne selon <strong>l’architecture client/serveur</strong> : la machine <em>client</em> demande à la machine <em>serveur</em> une ressource identifiée par son adresse <a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>. Aux débuts du Web le client était commandé par un humain mais ce peut être un programme.</p>
+<div class="center">
+<figure>
+<img src="images/client-serveur.png" title="Architecture client serveur" style="width:60.0%" alt="" /><figcaption>Architecture client serveur</figcaption>
+</figure>
+</div>
+<p>Les inventeurs du Web, <a href="https://interstices.info/les-debuts-du-web-sous-loeil-du-w3c/">Tim Berners-Lee</a> et <a href="https://fr.wikipedia.org/wiki/Robert_Cailliau">Robert Caillau</a> ont défini au <a href="https://fr.wikipedia.org/wiki/Organisation_europ%C3%A9enne_pour_la_recherche_nucl%C3%A9aire">CERN</a> entre 1989 et 1991 ses trois piliers <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a>, <a href="URL">URL</a> et <a href="HTML">HTML</a>.</p>
+<div class="cours">
+<ul>
+<li>Dans un échange sur le Web, le <strong>client</strong> envoie une demande ou <strong>requête</strong> à l’aide d’un logiciel appelé <strong>navigateur</strong> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> : le <strong>serveur</strong> est un logiciel installé sur une machine reliée en réseau à la machine du client.</li>
+<li>Le protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a>, acronyme d’<code>Hypertext Transfer Protocol</code>, est un protocole de la couche application qui décrit le format des échanges de données entre un client et un serveur sur le Web. Un échange HTTP s’établit selon le schéma suivant :
+<ul>
+<li>Le client saisit une <a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> dans la barre d’adresse du navigateur, elle est résolue en adresse <a href="https://developer.mozilla.org/fr/docs/Glossaire/IP_Address">IP</a> par le service <a href="https://developer.mozilla.org/fr/docs/Glossaire/DNS">DNS</a>.</li>
+<li>Mise en place d’une connexion <a href="TCP">TCP</a> entre le client et le serveur.</li>
+<li>Le client envoie une requête <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> (format texte lisible par un humain).</li>
+<li>Le serveur retourne une réponse <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a>, lue par le client. S’il y a un contenu, il est affiché par le navigateur du client.</li>
+<li>Fermeture ou réutilisation (paramètre <code>Keep-alive</code>) de la connexion pour les requêtes suivantes.</li>
+</ul></li>
+</ul>
+<p>Le protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> n’est pas sécurisé par défaut, il peut l’être par l’ajout du protocole SSL ou TLS et on désigne par <a href="https://developer.mozilla.org/fr/docs/Glossaire/https">HTTPS</a> sa version sécurisée. <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> est un standard normalisé par l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/IETF">IETF</a> comme les protocoles d’internet <a href="https://developer.mozilla.org/fr/docs/Glossaire/TCP">TCP</a> et <a href="https://developer.mozilla.org/fr/docs/Glossaire/IP_Address">IP</a>.</p>
+<!-- ![Requête HTTPS _source :_ https://wpmarmite.com/wordpress-https/](images/schema-requete-https.jpg "Requête HTTPS")\ -->
+<p><img src="images/HTTP_layers.png" title="Protocole HTTP" style="width:50.0%" alt="Protocole HTTP source : https://developer.mozilla.org/fr/docs/Web/HTTP/Aper%C3%A7u" /><br />
+<em>Source : <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Aper%C3%A7u">https://developer.mozilla.org/fr/docs/Web/HTTP/Aper%C3%A7u</a></em></p>
+<ul>
+<li>Une adresse <a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> pour <code>Uniform Ressource Locator</code> identifie une ressource sur le Web. La syntaxe des <a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> est standardisée, par exemple décomposons :<br />
+<a href="https://www.gnu.org/gnu/linux-and-gnu.fr.html">https://www.gnu.org/gnu/linux-and-gnu.fr.html</a> :
+<ul>
+<li>le protocole est <code>https</code> ;</li>
+<li>le nom de domaine sur Internet du serveur Web est <code>gnu.org</code>.<br />
+<code>www.gnu.org</code> est un sous-domaine servant d’alias pour le dossier public du serveur ;</li>
+<li><code>gnu/linux-and-gnu.fr.html</code> est le chemin vers la ressource sur le serveur : le fichier <code>linux-and-gnu.fr.html</code> qui se trouve dans le dossier public <code>gnu</code>.</li>
+</ul></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> pour <code>Hypertext Markup Language</code> est le langage de description des documents textes disponibles sur le Web qui sont reliées entre eux par des liens hypertextes. Il s’agit d’un langage à balises. En pratique, d’autres types de ressources sont accessibles sur le Web par une <a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> : des images, des fichiers de données (aux formats CSV, JSON …), des videos … Par ailleurs les pages sont désormais réalisées en combinant <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> avec <a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a> pour la mise en forme, le positionnement, certains effets visuels et <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> pour la programmation événementielle nécessaire à l’interactivité côté client.</li>
+</ul>
+<p><img src="images/anatomie-element-html.png" title="Un élément HTML" style="width:100.0%" alt="Un élément HTML" /><br />
+</p>
+<p><em>Source :</em> https://developer.mozilla.org/fr/docs/Glossaire/HTML</p>
+</div>
+<div class="exercice">
+<p><em>QCM</em> de type E3C2.</p>
+<p>Pour répondre à la première question, relisez la <a href="https://parc-nsi.github.io/premiere-nsi/chapitre2/memo/MemoHTML-CSS-2020.pdf">synthèse de cours sur HTML/CSS</a>.</p>
+<ol type="1">
+<li>Quelle est le code HTML permettant de créer un lien hypertexte dans un document écrit en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> ?
+<ul>
+<li>Réponse A : <code>&lt;a\&gt;http://tip-top.fr &lt;/a&gt;</code></li>
+<li>Réponse B : <code>&lt;a href="http://tip-top.fr"&gt;Site du TIP-TOP&lt;/a&gt;</code></li>
+<li>Réponse C : <code>&lt;a name="http://tip.top.fr&lt;/a&gt;</code></li>
+</ul></li>
+<li>Comment s'appelle le service qui permet de faire le lien entre une IP et un nom de domaine ?
+<ul>
+<li>Réponse A : DNS</li>
+<li>Réponse B : ARP</li>
+<li>Réponse C : HTTP</li>
+<li>Réponse D : Internet</li>
+</ul></li>
+</ol>
+</div>
+<div class="exercice">
+<p><img src="images/HTTP_Request.png" style="width:50.0%" alt="Une requête HTTP méthode GET" /><br />
+<em>Source : <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Aper%C3%A7u">https://developer.mozilla.org/fr/docs/Web/HTTP/Aper%C3%A7u</a></em></p>
+<ol type="1">
+<li><p>Avec un navigateur Web, demander la page d’adresse<br />
+<a href="http://frederic-junier.org/NSI/sandbox/index.html">http://frederic-junier.org/NSI/sandbox/index.html</a>.<br />
+Ouvrir la barre d’outils de développement en appuyant sur la touche de fonction <code>F12</code> et sélectionner l’onglet Réseau. On peut voir les entêtes de la requête et de la réponse HTTP.</p>
+<ul>
+<li>Que représente le code d’état de la réponse HTTP ?</li>
+<li>Quelles informations sur le client sont transmises au serveur dans l’entête de la requête ?</li>
+<li>Quelles informations sur le serveur sont transmises au client dans l’entête de la réponse ?</li>
+<li>Effectuer une nouvelle requête avec l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="http://frederic-junier.org/NSI/sandbox/">http://frederic-junier.org/NSI/sandbox/</a>. Quelle différence avec la requête initiale ?</li>
+<li>Effectuer une nouvelle requête avec l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="https://frederic-junier.org/NSI/sandbox/">https://frederic-junier.org/NSI/sandbox/</a>. Quelle différence avec la requête initiale peut-on observer dans la barre d’adresse du navigateur ?</li>
+<li>Effectuer une nouvelle requête avec l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="http://frederic-junier.org/NSI/Sandbox/index.html">http://frederic-junier.org/NSI/Sandbox/index.html</a>. Quel est le code d’état de la réponse ? Explication ?</li>
+<li>Effectuer une nouvelle requête avec l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="http://frederic-junier.org/NSI/interdit">http://frederic-junier.org/NSI/interdit</a>. Quel est le code d’état de la réponse ? Explication ?</li>
+</ul></li>
+<li><p>Le site <a href="https://httpie.org/">https://httpie.org/</a> propose un client HTTP en ligne de commandes permettant de décomposer les requêtes HTTP en précisant la méthode et l’URL de la ressource demandée.</p>
+<ul>
+<li>Ouvrir la page <a href="https://httpie.org/run">https://httpie.org/run</a></li>
+<li>Saisir la commande <code>http -v GET https://frederic-junier.org/NSI/sandbox/index.html</code>. Décrire le fonctionnement de la méthode <code>GET</code> du protocole <code>HTTP</code> : formats de la requête et de la réponse.</li>
+<li>Saisir la commande <code>http -v HEAD https://frederic-junier.org/NSI/sandbox/index.html</code>. Décrire le fonctionnement de la méthode <code>HEAD</code> du protocole <code>HTTP</code> : formats de la requête et de la réponse.</li>
+<li>Saisir la commande <code>http -v PUT https://frederic-junier.org/NSI/sandbox/index.html hello=world</code>. Quel résultat obtient-on ? Explication <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> ?</li>
+</ul></li>
+</ol>
+<p><img src="images/header-http1.png" style="width:50.0%" alt="entête requête HTTP méthode GET" /><br />
+</p>
+</div>
+<h2 id="passage-de-paramètres-dans-une-url">Passage de paramètres dans une URL</h2>
+<div class="exercice">
+<p>Ouvrir un navigateur Web.</p>
+<ol type="1">
+<li><p>Demander la page d’adresse <a href="https://frederic-junier.org/NSI/sandbox/accueil.php">http://frederic-junier.org/NSI/sandbox/accueil.php</a></p>
+<p>Quel est l’affichage obtenu ?</p></li>
+<li><p>Demander la page d’adresse<br />
+<a href="https://frederic-junier.org/NSI/sandbox/accueil.php?nom=Turing&amp;prenom=Alan">http://frederic-junier.org/NSI/sandbox/accueil.php?nom=Turing&amp;prenom=Alan</a></p>
+<p>Quel est l’affichage obtenu ? Ouvrir les outils de développement avec <code>F12</code> puis sélectionner les onglets <code>Réseau</code> et <code>Paramètres</code>.</p>
+<p><strong>La partie <code>?nom=Turing&amp;prenom=Alan</code> de l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> est une <em>chaîne de requête</em>, elle commence par le symbole <code>?</code> puis contient une liste de paires <code>nom=valeur</code> séparées par un symbole esperluette <code>&amp;</code>. Ces paramètres ne font pas partie de l’adresse de la ressource mais sont une façon pour le client de transmettre des informations au serveur.</strong></p>
+<p><img src="images/parametres1.png" title="chaîne de paramètres" style="width:50.0%" alt="chaîne de paramètres" /><br />
+</p></li>
+<li><p>Remplacer Turing par votre nom et Alan par votre prénom dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> précédente. Que peut-on remarquer ? À votre avis, que se passe-t-il sur le serveur lorsqu’il reçoit la requête HTTP ?</p></li>
+<li><p>Voici le contenu du fichier <code>accueil.php</code> sur le serveur. S’agit-il d’un texte écrit en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> ? Faire une recherche sur la signification de l’acronyme <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>.</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1"></a> &lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb1-2"><a href="#cb1-2"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3"></a>&lt;head&gt;</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  &lt;title&gt;Accueil &lt;/title&gt;</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb1-6"><a href="#cb1-6"></a>&lt;/head&gt; </span>
+<span id="cb1-7"><a href="#cb1-7"></a>&lt;body&gt;</span>
+<span id="cb1-8"><a href="#cb1-8"></a>&lt;h1&gt;</span>
+<span id="cb1-9"><a href="#cb1-9"></a>&lt;<span class="ot">?</span>php  </span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">echo</span> <span class="st">&quot;Bienvenue &quot;</span> . <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;prenom&#39;</span><span class="ot">]</span> . <span class="st">&quot; &quot;</span> .  <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;nom&#39;</span><span class="ot">]</span> <span class="ot">;</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">?&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>&lt;/h1&gt;</span>
+<span id="cb1-13"><a href="#cb1-13"></a>&lt;/body&gt;</span>
+<span id="cb1-14"><a href="#cb1-14"></a>&lt;/html&gt; </span></code></pre></div>
+<ol start="4" type="1">
+<li>Enregistrer l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> testée précédemment dans les marque-pages du navigateur. Ouvrir un autre onglet et cliquer sur le signet enregistré. Retrouve-t-on la même page Web ?</li>
+</ol>
+</div>
+<h1 id="formulaire-et-passage-de-paramètres">Formulaire et passage de paramètres</h1>
+<h2 id="un-premier-exemple">Un premier exemple</h2>
+<div class="exemple">
+<ol type="1">
+<li><p>Ouvrir avec un navigateur Web la page d’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> :</p>
+<p><a href="http://frederic-junier.org/NSI/sandbox/formulaire-get.html">http://frederic-junier.org/NSI/sandbox/formulaire-get.html</a></p>
+<p><img src="images/formulaire1.png" title="Premier formulaire" alt="Premier formulaire" /><br />
+</p>
+<ul>
+<li>Cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ? Rafraîchir la page avec <code>F5</code>. Que se passe-t-il ?</li>
+<li>Changer les valeurs des champs <code>Prénom</code> et <code>Nom</code> du formulaire puis cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ?</li>
+<li>Ouvrir la fenêtre des outils de développement et afficher dans l’onglet Réseau l’entête de la requête HTTP qui devrait ressembler à celui-ci :</li>
+</ul>
+<p><img src="images/entete-get.png" title="Entête GET" style="width:80.0%" alt="Entête GET" /><br />
+</p>
+<p>Sélectionner l’onglet Paramètres et vérifier qu’on obtient les paramètres transmis à travers l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> dans la chaîne de requête comme dans l’exercice 3.</p>
+<ul>
+<li>Afficher le code source de la page <code>formulaire-get.html</code> avec le raccourci clavier <code>CRTL + U</code>. On devrait obtenir le texte ci-dessous :</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;fr&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">&lt;title&gt;</span>Formulaire HTML <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>    </span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">&lt;/head&gt;</span> </span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a>   <span class="kw">&lt;form</span><span class="ot"> action</span> <span class="ot">=</span> <span class="st">&quot;accueil.php&quot;</span><span class="ot"> method=</span><span class="st">&quot;GET&quot;</span><span class="kw">&gt;</span>        </span>
+<span id="cb2-12"><a href="#cb2-12"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_prenom&quot;</span><span class="kw">&gt;</span>Prénom :<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_prenom&quot;</span><span class="ot"> name=</span><span class="st">&quot;prenom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Alan&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_nom&quot;</span><span class="kw">&gt;</span>Nom :<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_nom&quot;</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Turing&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>      <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> id=</span><span class="st">&quot;bouton&quot;</span><span class="kw">&gt;</span>Envoyer<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>   <span class="kw">&lt;/form&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="kw">&lt;/html&gt;</span> </span></code></pre></div></li>
+<li><p>Ouvrir avec un navigateur Web la page d’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> :</p>
+<p><a href="http://frederic-junier.org/NSI/sandbox/formulaire-post.html">http://frederic-junier.org/NSI/sandbox/formulaire-post.html</a></p>
+<ul>
+<li>Cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ?</li>
+<li>Changer les valeurs des champs <code>Prénom</code> et <code>Nom</code> du formulaire puis cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ? Observe-t-on un changement dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> de la requête ? dans son entête ?</li>
+<li>Rafraîchir la nouvelle avec <code>F5</code>. Que se passe-t-il ?</li>
+</ul>
+<p><img src="images/avertissement-post.png" title="Avertissement POST" style="width:70.0%" alt="Avertissement POST" /><br />
+</p>
+<ul>
+<li>Ouvrir la fenêtre des outils de développement et afficher dans l’onglet Réseau l’entête de la requête HTTP qui devrait ressembler à celui-ci :</li>
+</ul>
+<p><img src="images/entete-post.png" title="Entête POST" style="width:60.0%" alt="Entête POST" /><br />
+</p>
+<p>Sélectionner l’onglet Paramètres et vérifier qu’on retrouve les paramètres transmis dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>. Quelle différence par rapport à la méthode vue en question 1 ?</p>
+<p><img src="images/parametres2.png" title="Paramètres POST" style="width:40.0%" alt="Paramètres POST" /><br />
+</p>
+<ul>
+<li>Afficher le code source de la page <code>formulaire-post.html</code> avec le raccourci clavier <code>CRTL + U</code>. Quels sont les deux changements par rapport au code de <code>formulaire-get.html</code> ?</li>
+</ul></li>
+</ol>
+</div>
+<h2 id="méthodes-de-passage-des-paramètres-get-ou-post">Méthodes de passage des paramètres : GET ou POST</h2>
+<div class="cours">
+<p>En <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>, un formulaire est un élément qui permet de transmettre des informations à un serveur Web. Il est composé d’un élément <code>&lt;form action="http://domaine/cible" method="GET" &gt;</code> qui contient un ou plusieurs widgets, des éléments <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> permettant de saisir les entrées du client et au moins un élément <code>&lt;button type="submit&gt;Bouton d'envoi&lt;/button&gt;</code>. Un clic sur ce dernier déclenche l’exécution d’une requête <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> qui va transmettre les données saisies selon les valeurs des attributs <code>action</code> et <code>method</code> de l’élément <code>&lt;form&gt;</code> :</p>
+<ul>
+<li><code>action</code> a pour valeur l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> du fichier auquel sera envoyé le formulaire. Ce fichier est un programme écrit dans un langage de script comme <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> ou <a href="https://docs.python.org/3.7/library/cgi.html">Python</a>, qui va prendre en entrée les paramètres du formulaire transmis par le client, les traiter et générer la page Web en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> qui lui sera renvoyée.</li>
+<li><code>method</code> peut prendre deux valeurs <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a> ou <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> (en minuscule ou majuscule), ce sont les deux modes de transmission des paramètres du formulaire qui sont deux méthodes distinctes du protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> :
+<ul>
+<li>avec la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a> , les données du formulaire sont assemblées dans une chaîne de paires <code>nom=valeur</code> séparées par le symbole <code>&amp;</code> qui est ajouté à la fin de l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> après le délimiteur <code>?</code>.</li>
+<li>avec la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> les données du formulaire sont transmises toujours dans le corps de la requête. Les données n’apparaissent donc pas dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>.</li>
+</ul></li>
+</ul>
+<p><img src="images/Php_arch_shema.png" title="Page web dynamique" style="width:80.0%" alt="Page web dynamique" /><br />
+</p>
+<p>Le formulaire du fichier <code>formulaire-get.html</code> de l’exemple 1 contient deux widgets <code>&lt;input&gt;</code>. Chacun va fournir un couple <code>nom=valeur</code>, le nom est désigné par l’attribut <code>name</code> et la valeur par le texte saisi dans l’élément <code>&lt;input&gt;</code>. Chacun est associé par son attribut <code>id</code> à une étiquette contenue dans un élément <code>&lt;label&gt;</code>.</p>
+<p>Caractéristiques de la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a> :</p>
+<ul>
+<li>Toutes les informations transmises, le sont en clair dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>. Celle-ci est limitée en taille donc la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a> ne peut pas être utilisée pour transmettre des informations trop longues.</li>
+<li>Une requête <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a> est constituée uniquement d’un entête, elle n’a pas de corps.</li>
+<li>Elle ne modifie pas l’état du serveur, elle est utilisée uniquement pour demander une ressource. Un exemple classique d’utilisation est la formulation d’une requête à l’aide du formulaire d’un moteur de recherche. L’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> générée peut être utilisée plusieurs fois et conservée comme marque-page.</li>
+</ul>
+<p>Caractéristiques de la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> :</p>
+<ul>
+<li>Les données envoyées peuvent modifier l’état du serveur. Les requêtes <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> sont utilisées pour les modifications de bases de données sur le serveur (achats, réservation, transfert de fichiers …)</li>
+<li>Les données sont transmises dans le corps de la requête, il n’y a pas de restriction de taille. Elles peuvent être de tout type : url-encodées (chaîne de paires <code>nom=valeur</code>), ou binaires. C’est précisé dans le champ <code>Content-type</code> de l’entête comme pour une réponse <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a>.</li>
+<li>Les données n’apparaissent pas dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>, néanmoins, si le protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> est employé sans chiffrement, il suffit d’intercepter la requête pour accéder aux données en clair.</li>
+<li>Pour rafraîchir la page générée grâce au formulaire, il faut renvoyer les paramètres qui ne sont pas dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> comme pour <a href="GET">GET</a> et modifier l’état du serveur. Le protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> étant sans mémoire, une fenêtre d’avertissement apparaît lorsqu’on veut renvoyer les données d’un formulaire avec <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a>.</li>
+</ul>
+</div>
+<div class="exercice">
+<p><em>QCM</em> de type E3C2.</p>
+<ol type="1">
+<li><p>Parmi les réponses suivantes, que permet d’effectuer la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> du protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> ?</p>
+<ul>
+<li>Réponse A : Définir le style d’une page web</li>
+<li>Réponse B : Pirater des données bancaire</li>
+<li>Réponse C : Envoyer une page web vers le client</li>
+<li>Réponse D : Envoyer les données saisies dans un formulaire HTML vers un serveur</li>
+</ul></li>
+<li><p>Un site internet utilise une requête <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> avec la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> pour transmettre les données d’un formulaire. Laquelle des affirmations suivantes est <strong>incorrecte</strong> ?</p>
+<ul>
+<li>Réponse A : les données envoyées ne sont pas visibles</li>
+<li>Réponse B : il est possible de transmettre des données de type binaire</li>
+<li>Réponse C : les données transmises sont cryptées</li>
+<li>Réponse D : il n’y a pas de restriction de longueur pour les données transmises</li>
+</ul></li>
+<li><p>Un internaute clique sur un lien qui envoie la requête <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> suivante à un serveur :</p>
+<p><code>http://jaimelaneige.com/ma_planche/traitement.php?nom=Snow&amp;prenom=Jon</code></p>
+<p>Que demande cette requête au serveur ?</p>
+<ul>
+<li>Réponse A : de renvoyer le fichier traitement.php en identifiant nom et prénom à Snow et Jon</li>
+<li>Réponse B : d’exécuter le fichier traitement.php en identifiant nom et prénom à Snow et Jon</li>
+<li>Réponse C : d’indiquer si Jon Snow a bien pris son traitement</li>
+<li>Réponse D : de renvoyer le fichier traitement.php en affichant prénom et nom : Jon</li>
+</ul></li>
+</ol>
+</div>
+<h2 id="eléments-de-formulaire">Eléments de formulaire</h2>
+<div class="cours">
+<ol type="1">
+<li><p>Le principal élément permettant la saisie de données dans un champ de formulaire <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> est <code>&lt;input&gt;</code>. Son attribut <code>type</code> permet de vérifier que les données saisies correspondent au type attendu.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Exemple de syntaxe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Texte</td>
+<td style="text-align: left;"><code>&lt;input type="text"  name="t"  value="Défaut"&gt;</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Email</td>
+<td style="text-align: left;"><code>&lt;input type="email"  name="a"  value="defaut@defaut.fr"&gt;</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nombre</td>
+<td style="text-align: left;"><code>&lt;input type="number"  name="n"  value="1" min="0" max="10"&gt;</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mot de passe</td>
+<td style="text-align: left;"><code>&lt;input type="password"   name="pwd"&gt;</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cases à cocher</td>
+<td style="text-align: left;"><code>&lt;input type="checkbox"  name="carrots"  value="carrots"&gt;</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bouton radio (choix exclusif)</td>
+<td style="text-align: left;"><code>&lt;input type="radio"  value="soup"  name="meal"&gt;</code></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>L’élément <code>&lt;textarea&gt;</code> permet de saisir un texte de longueur arbitraire et <code>&lt;select&gt;</code> permet de définir une liste déroulante.</p></li>
+<li><p>Le bouton de soumission d’un formulaire est représenté par un élément de la forme <code>&lt;button type="submit"&gt;Envoyer&lt;/button&gt;</code>.</p></li>
+</ol>
+<p>La page <a href="https://developer.mozilla.org/fr/docs/Web/Guide/HTML/Formulaires/Les_blocs_de_formulaires_natifs">https://developer.mozilla.org/fr/docs/Web/Guide/HTML/Formulaires/Les_blocs_de_formulaires_natifs</a> décrit les principaux widgets de formulaire et la page <a href="https://www.w3schools.com/html/html_form_elements.asp">https://www.w3schools.com/html/html_form_elements.asp</a> permet de les tester.</p>
+</div>
+<div class="exercice">
+<ol type="1">
+<li><p>Ouvrir dans un navigateur Web la page dont l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> est :<br />
+<a href="https://repl.it/@fredericjunier/NSI-formulaire-exo5-radio" class="uri">https://repl.it/@fredericjunier/NSI-formulaire-exo5-radio</a>.</p>
+<ul>
+<li>Cliquer sur <code>RUN</code> pour lancer le serveur, remplir le formulaire contenu dans le fichier <code>index.php</code> et envoyer les données. Quelle méthode est utilisée pour le passage des paramètres du formulaire ?</li>
+<li>Modifier les codes sources des fichiers <code>index.php</code> et <code>navigateur.php</code> pour changer la méthode de passage des paramètres du formulaire. En <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>, on récupère la valeur du paramètre <code>nom</code> avec <code>$_GET['nom']</code> si la méthode est <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a> ou <code>$_POST['nom']</code> si c’est <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a>.</li>
+<li>Consulter la documentation sur l’élément de formulaire <code>&lt;select&gt;</code> contenue dans la page <a href="https://www.w3schools.com/html/html_form_elements.asp">https://www.w3schools.com/html/html_form_elements.asp</a> et remplacer les <code>&lt;input&gt;</code> de type <code>radio</code> du formulaire dans <code>index.php</code> par un élément <code>&lt;select&gt;</code> avec choix unique.</li>
+</ul></li>
+<li><p>Ouvrir dans un navigateur Web la page dont l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> est :<br />
+<a href="https://repl.it/@fredericjunier/NSI-formulaire-exo5-checkbox" class="uri">https://repl.it/@fredericjunier/NSI-formulaire-exo5-checkbox</a>.</p>
+<ul>
+<li>Cliquer sur <code>RUN</code> pour lancer le serveur, remplir le formulaire contenu dans le fichier <code>index.php</code> et envoyer les données. Quelle méthode est utilisée pour le passage des paramètres du formulaire ?</li>
+<li>Modifier les codes sources des fichiers <code>index.php</code> et <code>langages.php</code> pour changer la méthode de passage des paramètres du formulaire.</li>
+<li>Consulter la documentation sur l’élément de formulaire <code>&lt;select&gt;</code> contenue dans la page <a href="https://www.w3schools.com/html/html_form_elements.asp">https://www.w3schools.com/html/html_form_elements.asp</a> et remplacer les <code>&lt;input&gt;</code> de type <code>checkbox</code> du formulaire dans <code>index.php</code> par un élément <code>&lt;select&gt;</code> avec choix multiple. Pour modifier le code <a href="PHP">PHP</a> on s’inspirera de ce <a href="https://stackoverflow.com/questions/2407284/how-to-get-multiple-selected-values-of-select-box-in-php/2407401#2407401">post stackoverflow</a>.</li>
+</ul></li>
+<li><p>Ouvrir dans un navigateur Web la page dont l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> est :<br />
+<a href="http://frederic-junier.org/NSI/sandbox/NSI-formulaire-exo5-login-get.html" class="uri">http://frederic-junier.org/NSI/sandbox/NSI-formulaire-exo5-login-get.html</a>.</p>
+<ul>
+<li>La page présente un formulaire basique de connexion avec deux champs <code>login</code> et <code>password</code>. La valeur de l’identifiant est libre et le mot de passe est <code>secret</code>. Remplir le formulaire et envoyer les données. Quelle méthode de passage des paramètres est utilisée ? La transmission du mot de passe est-elle satisfaisante ?</li>
+<li>Revenir sur la page du formulaire, ouvrir la fenêtre des outils de développement avec <code>F12</code> et modifier le code source pour que l’envoi du mot de passe soit sécurisé.</li>
+</ul>
+<p><img src="images/login.png" title="Formulaire de login" style="width:60.0%" alt="“Formulaire de login”" /><br />
+</p>
+<ul>
+<li>Dans le schéma ci-dessous d’un échange Web sécurisé avec le protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/https">HTTPS</a>, apparaît la notion de <a href="https://developer.mozilla.org/fr/docs/Glossaire/Certificat_num%C3%A9rique">certificat</a>. Quel est le rôle d’un <a href="https://developer.mozilla.org/fr/docs/Glossaire/Certificat_num%C3%A9rique">certificat</a> et comment est-il géré par le navigateur ?</li>
+</ul>
+<p><img src="images/tls-3-717x1024.png" title="Requête HTTPS" style="width:87.0%" alt="“Requête HTTPS”" /><br />
+</p>
+<p><em>Source : <a href="https://blog.octo.com/bd-le-https/">https://blog.octo.com/bd-le-https/</a></em></p></li>
+</ol>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Note : Ne pas confondre navigateurs comme Firefox, Edge, Chrome et moteurs de recherche comme Qwant, Google search, Bing<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Note : Méthodes HTTP : voir <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode">https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
