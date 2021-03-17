@@ -371,9 +371,9 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
     
       - Rafraîchir la nouvelle avec `F5`. Que se passe-t-il ?
         
-        > *Réponse : *[HTTP](HTTP) est un protocole sans mémoire, pour
+        > *Réponse : [HTTP](HTTP) est un protocole sans mémoire, pour
         > générer la page web il faut renvoyer les paramètres qui ne
-        > sont pas dans l’[URL](URL) d’où l’avertissement ci-dessous.\_
+        > sont pas dans l’[URL](URL) d’où l’avertissement ci-dessous.*
     
     ![Avertissement POST](images/avertissement-post.png
     "Avertissement POST")  
