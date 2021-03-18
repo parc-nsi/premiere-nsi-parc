@@ -92,6 +92,8 @@ _Source : [https://developer.mozilla.org/fr/docs/Web/HTTP/Aper%C3%A7u](https://d
    *  Quelles informations sur le client sont transmises au serveur dans l'entête de la requête ?
 
         >_Réponse :  Le client transmet plusieurs paramètres dans sa requête :_
+        > _La méthode du protocole [HTTP](HTTP) qui est utilisée, ici [GET](GET) qui permet de demander une ressource_
+        > _La version du protocole [HTTP](HTTP) ici 1.1, c'est important de se mettre d'accord sur les règles du dialogue lorsqu'on communique !_
         > _`Accept` précise les types de contenus que le client pourra interpréter_
         > _`Accept-Language` précise la variante de la locale_
         > _`Connection` précise si le client souhaite une connexion persistante après l'échange requête/réponse avec le serveur : on garde la même connexion [TCP](TCP)_
@@ -175,7 +177,7 @@ Ouvrir un navigateur Web.
 
     Quel est l'affichage obtenu ? 
 
-    >_Réponse :  Méthode [GET](GET) Code de la réponse 200 indiquant un succès_
+    >_Réponse : La requête est envoyée avec la méthode [GET](GET), le code 200 de la réponse du serveur indique un succès_
    
    ![bonjour](images/bonjour.png){width=80%}\
 
@@ -294,7 +296,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
 
     > _Réponse :comme on l'a écrit ci-dessus, la méthode [POST](POST) n'envoie pas les paramètres de formulaire à travers l'[URL](URL) et l'entête [HTTP](HTTP) comme avec la méthode [GET](GET) mais directement dans le corps de la requête_.
 > 
-   * Rafraîchir la nouvelle avec `F5`. Que se passe-t-il ?
+   * Rafraîchir la page avec `F5`. Que se passe-t-il ?
 
      > _Réponse :  [HTTP](HTTP) est un protocole sans mémoire, pour générer la page web il faut renvoyer les paramètres qui ne sont  pas dans l'[URL](URL) d'où l'avertissement ci-dessous._
 

@@ -237,7 +237,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
 
    * Cliquer sur le bouton `Envoyer`. Que se passe-t-il ?
    * Changer les valeurs des champs `Prénom` et `Nom` du formulaire puis cliquer sur le bouton `Envoyer`. Que se passe-t-il ? Observe-t-on  un changement dans l'[URL][URL] de la requête ? dans son entête ?
-   * Rafraîchir la nouvelle avec `F5`. Que se passe-t-il ?
+   * Rafraîchir la  page avec `F5`. Que se passe-t-il ?
 
    ![Avertissement POST](images/avertissement-post.png "Avertissement POST"){width=70%}\
 
@@ -279,10 +279,9 @@ Caractéristiques de la méthode [GET][GET] :
 
 Caractéristiques de la méthode [POST][POST] : 
 
-* Les données envoyées  peuvent modifier l'état du serveur. Les requêtes [POST][POST] sont utilisées pour les modifications de bases de données sur le serveur (achats, réservation, transfert de fichiers ...)
 * Les données sont transmises   dans le corps de la requête, il n'y a pas de restriction de taille. Elles peuvent être de tout type : url-encodées (chaîne de paires `nom=valeur`), ou binaires. C'est précisé dans le champ `Content-type` de l'entête comme pour une réponse [HTTP][HTTP].
 * Les données  n'apparaissent pas dans l'[URL][URL], néanmoins, si le protocole [HTTP][HTTP] est employé sans chiffrement, il suffit d'intercepter la requête pour accéder aux données en clair.
-* Pour rafraîchir la page générée grâce au formulaire, il faut renvoyer les paramètres qui ne sont pas dans l'[URL][URL] comme pour [GET](GET) et modifier l'état du serveur. Le protocole [HTTP][HTTP] étant sans mémoire,  une fenêtre d'avertissement apparaît lorsqu'on veut renvoyer les données d'un formulaire avec [POST][POST].
+* Les données envoyées  peuvent modifier l'état du serveur. Les requêtes [POST][POST] sont utilisées pour les modifications de bases de données sur le serveur (achats, réservation, transfert de fichiers ...). Par conséquent si on veut renvoyer les données du formulaire un message en popup avertit que ce nouvel envoi aura pour effet de bord  modifier l'état du serveur et par exemple d'enregistrer un nouvel achat s'il s'agit d'un formulaire de commande.
 :::
 
 

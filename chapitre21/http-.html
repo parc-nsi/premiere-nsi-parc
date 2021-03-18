@@ -269,7 +269,7 @@ Ouvrir la barre d’outils de développement en appuyant sur la touche de foncti
 <ul>
 <li>Cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ?</li>
 <li>Changer les valeurs des champs <code>Prénom</code> et <code>Nom</code> du formulaire puis cliquer sur le bouton <code>Envoyer</code>. Que se passe-t-il ? Observe-t-on un changement dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> de la requête ? dans son entête ?</li>
-<li>Rafraîchir la nouvelle avec <code>F5</code>. Que se passe-t-il ?</li>
+<li>Rafraîchir la page avec <code>F5</code>. Que se passe-t-il ?</li>
 </ul>
 <p><img src="images/avertissement-post.png" title="Avertissement POST" style="width:70.0%" alt="Avertissement POST" /><br />
 </p>
@@ -308,10 +308,9 @@ Ouvrir la barre d’outils de développement en appuyant sur la touche de foncti
 </ul>
 <p>Caractéristiques de la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> :</p>
 <ul>
-<li>Les données envoyées peuvent modifier l’état du serveur. Les requêtes <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> sont utilisées pour les modifications de bases de données sur le serveur (achats, réservation, transfert de fichiers …)</li>
 <li>Les données sont transmises dans le corps de la requête, il n’y a pas de restriction de taille. Elles peuvent être de tout type : url-encodées (chaîne de paires <code>nom=valeur</code>), ou binaires. C’est précisé dans le champ <code>Content-type</code> de l’entête comme pour une réponse <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a>.</li>
 <li>Les données n’apparaissent pas dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>, néanmoins, si le protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> est employé sans chiffrement, il suffit d’intercepter la requête pour accéder aux données en clair.</li>
-<li>Pour rafraîchir la page générée grâce au formulaire, il faut renvoyer les paramètres qui ne sont pas dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> comme pour <a href="GET">GET</a> et modifier l’état du serveur. Le protocole <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a> étant sans mémoire, une fenêtre d’avertissement apparaît lorsqu’on veut renvoyer les données d’un formulaire avec <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a>.</li>
+<li>Les données envoyées peuvent modifier l’état du serveur. Les requêtes <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> sont utilisées pour les modifications de bases de données sur le serveur (achats, réservation, transfert de fichiers …). Par conséquent si on veut renvoyer les données du formulaire un message en popup avertit que ce nouvel envoi aura pour effet de bord modifier l’état du serveur et par exemple d’enregistrer un nouvel achat s’il s’agit d’un formulaire de commande.</li>
 </ul>
 </div>
 <div class="exercice">

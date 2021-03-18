@@ -1242,7 +1242,7 @@ paramètres}\label{formulaire-et-passage-de-paramuxe8tres}}
     l'\href{https://developer.mozilla.org/fr/docs/Glossaire/URL}{URL} de
     la requête ? dans son entête ?
   \item
-    Rafraîchir la nouvelle avec \passthrough{\lstinline!F5!}. Que se
+    Rafraîchir la page avec \passthrough{\lstinline!F5!}. Que se
     passe-t-il ?
   \end{itemize}
 
@@ -1384,11 +1384,6 @@ Caractéristiques de la méthode
 \begin{itemize}
 \tightlist
 \item
-  Les données envoyées peuvent modifier l'état du serveur. Les requêtes
-  \href{https://developer.mozilla.org/fr/docs/Web/HTTP/M\%C3\%A9thode/POST}{POST}
-  sont utilisées pour les modifications de bases de données sur le
-  serveur (achats, réservation, transfert de fichiers \ldots)
-\item
   Les données sont transmises dans le corps de la requête, il n'y a pas
   de restriction de taille. Elles peuvent être de tout type :
   url-encodées (chaîne de paires \passthrough{\lstinline!nom=valeur!}),
@@ -1404,14 +1399,14 @@ Caractéristiques de la méthode
   employé sans chiffrement, il suffit d'intercepter la requête pour
   accéder aux données en clair.
 \item
-  Pour rafraîchir la page générée grâce au formulaire, il faut renvoyer
-  les paramètres qui ne sont pas dans
-  l'\href{https://developer.mozilla.org/fr/docs/Glossaire/URL}{URL}
-  comme pour \url{GET} et modifier l'état du serveur. Le protocole
-  \href{https://developer.mozilla.org/fr/docs/Glossaire/HTTP}{HTTP}
-  étant sans mémoire, une fenêtre d'avertissement apparaît lorsqu'on
-  veut renvoyer les données d'un formulaire avec
-  \href{https://developer.mozilla.org/fr/docs/Web/HTTP/M\%C3\%A9thode/POST}{POST}.
+  Les données envoyées peuvent modifier l'état du serveur. Les requêtes
+  \href{https://developer.mozilla.org/fr/docs/Web/HTTP/M\%C3\%A9thode/POST}{POST}
+  sont utilisées pour les modifications de bases de données sur le
+  serveur (achats, réservation, transfert de fichiers \ldots). Par
+  conséquent si on veut renvoyer les données du formulaire un message en
+  popup avertit que ce nouvel envoi aura pour effet de bord modifier
+  l'état du serveur et par exemple d'enregistrer un nouvel achat s'il
+  s'agit d'un formulaire de commande.
 \end{itemize}
 
 \end{cours}

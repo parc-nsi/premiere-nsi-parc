@@ -140,7 +140,7 @@ Ouvrir la barre d’outils de développement en appuyant sur la touche de foncti
 </p></li>
 <li><p>Quelles informations sur le client sont transmises au serveur dans l’entête de la requête ?</p>
 <blockquote>
-<p><em>Réponse : Le client transmet plusieurs paramètres dans sa requête :</em> <em><code>Accept</code> précise les types de contenus que le client pourra interpréter</em> <em><code>Accept-Language</code> précise la variante de la locale</em> <em><code>Connection</code> précise si le client souhaite une connexion persistante après l’échange requête/réponse avec le serveur : on garde la même connexion <a href="TCP">TCP</a></em> <em><code>Cache-Control</code> et <code>If-Modified-Since</code> contiennent des directives pour la mise en cache ou l’utilisation du cache du client</em> <em><code>User-Agent</code> contient différentes informations sur le navigateur et le système d’exploitation du client</em></p>
+<p><em>Réponse : Le client transmet plusieurs paramètres dans sa requête :</em> <em>La méthode du protocole <a href="HTTP">HTTP</a> qui est utilisée, ici <a href="GET">GET</a> qui permet de demander une ressource</em> <em>La version du protocole <a href="HTTP">HTTP</a> ici 1.1, c’est important de se mettre d’accord sur les règles du dialogue lorsqu’on communique !</em> <em><code>Accept</code> précise les types de contenus que le client pourra interpréter</em> <em><code>Accept-Language</code> précise la variante de la locale</em> <em><code>Connection</code> précise si le client souhaite une connexion persistante après l’échange requête/réponse avec le serveur : on garde la même connexion <a href="TCP">TCP</a></em> <em><code>Cache-Control</code> et <code>If-Modified-Since</code> contiennent des directives pour la mise en cache ou l’utilisation du cache du client</em> <em><code>User-Agent</code> contient différentes informations sur le navigateur et le système d’exploitation du client</em></p>
 </blockquote></li>
 </ul>
 <p><img src="images/en_tete_http.png" style="width:100.0%" alt="code 200" /><br />
@@ -218,7 +218,7 @@ Ouvrir la barre d’outils de développement en appuyant sur la touche de foncti
 <li><p>Demander la page d’adresse <a href="https://frederic-junier.org/NSI/sandbox/accueil.php">http://frederic-junier.org/NSI/sandbox/accueil.php</a></p>
 <p>Quel est l’affichage obtenu ?</p>
 <blockquote>
-<p><em>Réponse : Méthode <a href="GET">GET</a> Code de la réponse 200 indiquant un succès</em></p>
+<p><em>Réponse : La requête est envoyée avec la méthode <a href="GET">GET</a>, le code 200 de la réponse du serveur indique un succès</em></p>
 </blockquote>
 <p><img src="images/bonjour.png" style="width:80.0%" alt="bonjour" /><br />
 </p></li>
@@ -332,7 +332,7 @@ Ouvrir la barre d’outils de développement en appuyant sur la touche de foncti
 <p><em>Réponse :comme on l’a écrit ci-dessus, la méthode <a href="POST">POST</a> n’envoie pas les paramètres de formulaire à travers l’<a href="URL">URL</a> et l’entête <a href="HTTP">HTTP</a> comme avec la méthode <a href="GET">GET</a> mais directement dans le corps de la requête</em>.</p>
 </blockquote>
 <ul>
-<li><p>Rafraîchir la nouvelle avec <code>F5</code>. Que se passe-t-il ?</p>
+<li><p>Rafraîchir la page avec <code>F5</code>. Que se passe-t-il ?</p>
 <blockquote>
 <p><em>Réponse : <a href="HTTP">HTTP</a> est un protocole sans mémoire, pour générer la page web il faut renvoyer les paramètres qui ne sont pas dans l’<a href="URL">URL</a> d’où l’avertissement ci-dessous.</em></p>
 </blockquote></li>

@@ -332,7 +332,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
         Observe-t-on un changement dans
         l’[URL](https://developer.mozilla.org/fr/docs/Glossaire/URL)
         de la requête ? dans son entête ?
-      - Rafraîchir la nouvelle avec `F5`. Que se passe-t-il ?
+      - Rafraîchir la page avec `F5`. Que se passe-t-il ?
     
     ![Avertissement POST](images/avertissement-post.png
     "Avertissement POST")  
@@ -434,11 +434,6 @@ Caractéristiques de la méthode
 [POST](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST)
 :
 
-  - Les données envoyées peuvent modifier l’état du serveur. Les
-    requêtes
-    [POST](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST)
-    sont utilisées pour les modifications de bases de données sur le
-    serveur (achats, réservation, transfert de fichiers …)
   - Les données sont transmises dans le corps de la requête, il n’y a
     pas de restriction de taille. Elles peuvent être de tout type :
     url-encodées (chaîne de paires `nom=valeur`), ou binaires. C’est
@@ -451,14 +446,15 @@ Caractéristiques de la méthode
     [HTTP](https://developer.mozilla.org/fr/docs/Glossaire/HTTP) est
     employé sans chiffrement, il suffit d’intercepter la requête pour
     accéder aux données en clair.
-  - Pour rafraîchir la page générée grâce au formulaire, il faut
-    renvoyer les paramètres qui ne sont pas dans
-    l’[URL](https://developer.mozilla.org/fr/docs/Glossaire/URL) comme
-    pour [GET](GET) et modifier l’état du serveur. Le protocole
-    [HTTP](https://developer.mozilla.org/fr/docs/Glossaire/HTTP) étant
-    sans mémoire, une fenêtre d’avertissement apparaît lorsqu’on veut
-    renvoyer les données d’un formulaire avec
-    [POST](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST).
+  - Les données envoyées peuvent modifier l’état du serveur. Les
+    requêtes
+    [POST](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST)
+    sont utilisées pour les modifications de bases de données sur le
+    serveur (achats, réservation, transfert de fichiers …). Par
+    conséquent si on veut renvoyer les données du formulaire un message
+    en popup avertit que ce nouvel envoi aura pour effet de bord
+    modifier l’état du serveur et par exemple d’enregistrer un nouvel
+    achat s’il s’agit d’un formulaire de commande.
 
 **Exercice 4**
 

@@ -60,7 +60,11 @@ HTML/CSS](https://parc-nsi.github.io/premiere-nsi/chapitre2/memo/MemoHTML-CSS-20
         dans l’entête de la requête ?
         
         > *Réponse : Le client transmet plusieurs paramètres dans sa
-        > requête :* *`Accept` précise les types de contenus que le
+        > requête :* *La méthode du protocole [HTTP](HTTP) qui est
+        > utilisée, ici [GET](GET) qui permet de demander une ressource*
+        > *La version du protocole [HTTP](HTTP) ici 1.1, c’est important
+        > de se mettre d’accord sur les règles du dialogue lorsqu’on
+        > communique \!* *`Accept` précise les types de contenus que le
         > client pourra interpréter* *`Accept-Language` précise la
         > variante de la locale* *`Connection` précise si le client
         > souhaite une connexion persistante après l’échange
@@ -190,8 +194,8 @@ Ouvrir un navigateur Web.
     
     Quel est l’affichage obtenu ?
     
-    > *Réponse : Méthode [GET](GET) Code de la réponse 200 indiquant un
-    > succès*
+    > *Réponse : La requête est envoyée avec la méthode [GET](GET), le
+    > code 200 de la réponse du serveur indique un succès*
     
     ![bonjour](images/bonjour.png)  
 
@@ -369,7 +373,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
     > et l’entête [HTTP](HTTP) comme avec la méthode [GET](GET) mais
     > directement dans le corps de la requête*.
     
-      - Rafraîchir la nouvelle avec `F5`. Que se passe-t-il ?
+      - Rafraîchir la page avec `F5`. Que se passe-t-il ?
         
         > *Réponse : [HTTP](HTTP) est un protocole sans mémoire, pour
         > générer la page web il faut renvoyer les paramètres qui ne
