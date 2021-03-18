@@ -296,7 +296,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
     
     > *Réponse : mise à jour, une partie de la logique pour générer la
     > page web dynamique est déportée côté client (choix des paramètres
-    > dans une [Interface Homme
+    > dans une [Interaction Homme
     > Machine]()https://interstices.info/domaine/interaction-hommemachine/
     > représentée par le formulaire). Noter que les paramètres
     > apparaissent dans l’onglet en-tête [GET](GET) des outils de

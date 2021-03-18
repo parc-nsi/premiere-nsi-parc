@@ -245,7 +245,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
 
    * Changer les valeurs des champs `Prénom` et `Nom` du formulaire puis cliquer sur le bouton `Envoyer`. Que se passe-t-il ?
 
-    > _Réponse : mise à jour, une partie de la logique pour générer la  page web dynamique est déportée côté client (choix des paramètres dans une [Interface Homme Machine]()https://interstices.info/domaine/interaction-hommemachine/ représentée par le formulaire). Noter que les paramètres apparaissent dans l'onglet en-tête [GET](GET) des outils de développement et non dans l'onglet Requête_.
+    > _Réponse : mise à jour, une partie de la logique pour générer la  page web dynamique est déportée côté client (choix des paramètres dans une [Interaction Homme Machine]()https://interstices.info/domaine/interaction-hommemachine/ représentée par le formulaire). Noter que les paramètres apparaissent dans l'onglet en-tête [GET](GET) des outils de développement et non dans l'onglet Requête_.
 
    * Ouvrir la fenêtre des outils de développement et afficher dans l'onglet Réseau l'entête de la requête HTTP qui devrait ressembler à celui-ci :
    
