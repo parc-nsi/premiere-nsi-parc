@@ -630,7 +630,7 @@ les fonctions :
     
     Chaque fonction est accompagné d'un test unitaire => pour tester, 
     désactiver les commentaires dans le programme principal à partir de la ligne 151
-    Pour les tris il faut aussi compléter le programme principal en lignes 166 et 170
+    Pour les tris il faut aussi compléter le programme principal en lignes 167 et 171
 """
 
 import csv
@@ -766,24 +766,25 @@ def clef_tri_alphabetique_croissant_moyenne_decroissant(enreg):
     return "à compléter"
     
 
-if __name__ == "__main__":
-    table_eleves = lecture_csv('eleves.csv', ',')
-    #Décommenter lorsque moyenne_table est complétée
-    #test_moyenne_table()
-    
-    #Décommenter lorsque generer_table_recompenses est complétée
-    #test_generer_table_recompenses()
-    
-    #Décommenter lorsque decompte_recompenses est complétée
-    #test_decompte_recompenses()
-    
-    #Décommenter e lorsque clef_tri_moyenne_decroissant terminée
-    #table_recompenses = generer_table_recompenses(table_eleves)
-    
-    #Ecrire une instruction qui permet de trier  table_recompenses dans l'ordre décroissant des moyennes
-    #table_tri1 = "à compléter"
-    
-    #Ecrire une instruction qui permet de trier  table_recompenses :
-    #d'abord dans l'ordre alphabétique croissant puis dans l'ordre décroissant des moyennes
-    #table_tri2 = "à compléter"
+#Programme principal
+table_eleves = lecture_csv('eleves.csv', ',')
+#Décommenter lorsque moyenne_table est complétée
+#test_moyenne_table()
+
+#Décommenter lorsque generer_table_recompenses est complétée
+#table_recompenses = generer_table_recompenses(table_eleves)
+#test_generer_table_recompenses()
+
+#Décommenter lorsque decompte_recompenses est complétée
+#test_decompte_recompenses()
+
+#Décommenter e lorsque clef_tri_moyenne_decroissant terminée
+#table_recompenses = generer_table_recompenses(table_eleves)
+
+#Ecrire une instruction qui permet de trier  table_recompenses dans l'ordre décroissant des moyennes
+#table_tri1 = "à compléter"
+
+#Ecrire une instruction qui permet de trier  table_recompenses :
+#d'abord dans l'ordre alphabétique croissant puis dans l'ordre décroissant des moyennes
+#table_tri2 = "à compléter"
 ~~~
