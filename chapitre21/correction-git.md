@@ -297,7 +297,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
     > *Réponse : mise à jour, une partie de la logique pour générer la
     > page web dynamique est déportée côté client (choix des paramètres
     > dans une [Interaction Homme
-    > Machine]()https://interstices.info/domaine/interaction-hommemachine/
+    > Machine](https://interstices.info/domaine/interaction-hommemachine/)
     > représentée par le formulaire). Noter que les paramètres
     > apparaissent dans l’onglet en-tête [GET](GET) des outils de
     > développement et non dans l’onglet Requête*.
@@ -746,7 +746,7 @@ foreach ($_GET["top_langages"] as $_langage) {
 ![“Formulaire de login”](images/login.png "Formulaire de login")  
 
 > *Réponse : on effectue deux modifications dans le code source du
-> formulaire : on utilise la méthode [PSOT](POST) et on passe en
+> formulaire : on utilise la méthode [POST](POST) et on passe en
 > [HTTPS](HTTPS) le protocole de l’[URL](URL) cible*
 
 ![replit](images/login_https.png "Login")  
