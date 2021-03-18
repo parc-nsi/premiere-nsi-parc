@@ -394,7 +394,7 @@ _QCM_ de type E3C2.
    <https://repl.it/@fredericjunier/NSI-formulaire-exo5-radio>.
    * Cliquer sur `Run` pour lancer le serveur, remplir le formulaire contenu dans le fichier `index.php` et envoyer les données. Quelle méthode est utilisée pour le passage des paramètres du formulaire ?
 
-> _Réponse : Les paramètres du formulaire sont transmis avec la méthode [POST](POST)  _
+> _Réponse : Les paramètres du formulaire sont transmis avec la méthode [POST](POST)_  _
 
 
 ![replit](images/formulaire_replit.png "Entête POST")\

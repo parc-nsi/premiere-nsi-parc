@@ -495,7 +495,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
         formulaire ?
 
 > *Réponse : Les paramètres du formulaire sont transmis avec la méthode
-> [POST](POST) *
+> [POST](POST)* \_
 
 ![replit](images/formulaire_replit.png "Entête POST")  
 

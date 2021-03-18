@@ -64,15 +64,7 @@ def ecriture_csv(table, fichier, delimiteur):
 if __name__ == "__main__":
     table_eleves = generer_table_eleves(500)
     ecriture_csv(table_eleves, 'eleves.csv' ,',')
-#%%Extraire un tel fichier dans une table, trier cette table dans l'ordre décroissant des moyennes
-#puis dans l'ordre alphabétique croissant des noms et l'ordre décroissant des moyennes 
 
-#%% Traiter un tel fichier CSV en créant une nouvelle table avec les récompenses
-# compter les récompenses
-# trier les récompenses 
-
-
-#table_eleves = lecture_csv('eleves.csv', ',')
 
     
     

@@ -147,7 +147,6 @@ def clef_tri_alphabetique_croissant_moyenne_decroissant(enreg):
     Attention la valeur de l'attribut 'moyenne' de enreg est de type str"""
     return "à compléter"
     
-
 #Programme principal
 table_eleves = lecture_csv('eleves.csv', ',')
 #Décommenter lorsque moyenne_table est complétée
