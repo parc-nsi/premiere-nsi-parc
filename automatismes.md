@@ -611,3 +611,179 @@ Exemples :
 2
 ~~~
 
+## Automatisme 25 : traitement de données en tables
+
+Code à compléter et tester sur [notre instance Basthon](https://frederic-junier.org/basthon/?script=eJzNWM1u20YQvhvwO0ylAyVAkC03sR0jClA4ObSHIkiLFGgQCGtyJW9LLZVdUo4R5F16jPoaerHO7C7J5a-VuIfoIFvL-Z9vfpbDH04yrU5uhDzhcgub-_Q2kcdHx0eDweA6kVqsJIcrCJP1Jt7vUq6AZSDFluOfiGuA_T8wKJ8Ojo9iPF0mMkwFssPV8RHgx37PxgDr5J5LyRcpu4m5PT4bA5eKrxZsy8OF4iSOS-2e_ohMKy654soyeRTakjwZoy10lrY8fDqGMObLRarEIleO1CoRWjOZWqJzj4jFm1t2w1PxIeOLgq6b135f3zKkLzwHrlNgIdnCVnK_gyjIJKR0mkmRMqE4zF_AJsmUOeVq4gRF-51mKGOLsaZYoog1l4ZDQ8QwpjGHjUpWiuED_E_IUGxYTJnYMJUKhcGAmEFscjd7OrNyX5MqEog-ahAxLFmGJmZaCz-9HcK5tPI0zM4vgKcwu5gZkBBWxHqTqBRCvaVfw5_tzxN49dH841xHjSK8Fajj-re3YNxjoPhGocPkoAkb0XJIMc2k8rWBI4xM3g3iIBImvtLEY3x8FPEl2hymmcJk6e3I6ZggbSzWIuWZGjsQGmtNKBi6t_-SKoI22hbe8rWQZJKmn56Zlv4ti1EM2iq3yf1-57i6jJoA_5gqZmFgU2FIMcoy5RJBkmfRKapZt4Q5JIjg0pV1gmLmEKgAZcswiYRc0e8sXV7ikeR3sZB8HgRjK0FxFqH9c8rI9CXa9sYcjJZlVOipFyGAYYh5YIXNQXLzF2bZSrJSrRNzeEfejkzFCo0xJHSOEfgKqmeAIbX8751j0zBONB8VVmLSXBgJN5RJrC1RpNI8mcBXZ9Qe0eeA3FoyXqSIYN-VWVNfbMWx9E0lrff_rqlCsXNoMg-2BigaMARdyCm1_ppI9G6_I5edegOM3ETqhkDZUyZfUUbNM8qQjOqnFoBVJ2juDgQNS1HRTZZqJIoxiTb8707fT__m93o0dmR3yqEnx9Yf5mC06sIWJZDHkWQUqnmpZtwBOavAVzY1f24thhGqMLRBQ5yYGYQijUSHslYgGme84PuSVXLXgHNdR_W5U7WqAtpCuDLgbBAXPOZb7FZQwrYCWJ8I7Ijgzc7odRLTYNByOrRsU9N8c-90ktEQVmtD0QXnKfyUYkMy0mMbR4eAwDkRoCSMHzKWstP7DYcAIxH0NcdlnKQp1YnnBlUNy-NjDCMzSfN-F--_bPOJ7XvKlEpkJDhNtzMsZrFcUiEyFPpFE9lWqFWWbxJFOWhTx3M4tT_tbpCp8qRASQEOF38PIwPUWVlteh-4dqaSTEYjq_-kUDzBJSfvcTTuF1WU5P2Mac1xYPZBaD6H2Wz65Nwy0IBOR4PfK3sFxq8iATABNOYHFZy2rly2Dvrbqw0b5tgHEyk1fRACyrdM1thjAvenQFMZwvxTIhDBgJGxK48RZJGni6ZKgCHs9TRXKgx0w5RLVrXPdFOqK5lkWx7H1lwrKECL8wgElT7u92tDKaTOlktB2x8WhyjQ_Bwua5Tr_S4SSai4obuE53OPeHZao95g6ilXhnh2WqM-q1FTP88UTiLTjAwPEtWYntSYDGKFx4EkNZbzGssSC1OEwnYgXXH4RUFdoCRMNoKK7pMJLWbDhtHUGp1M8gMsOQOiKbawNY4W-GwFrJG5tbYEtlUKsZcNo-xdJXPvabz5CbLUOImWdbEHCCrz9ygxRWIfJaWW8EfJ8nGQC9L8AMYaGiptz_BQh7PNpfPCVu1m39c87Jln3O8svGqg6yyusRRTtNpVXIXYS6KjrG0p5OgKW-d-h4y0avbdiouia0S4WUP5FdVfuKv3ZG8wdWfOy1Zl3pjO3MnWa-iBMKkMxwYtrqg0FT8Vg-cKgj-T_S4fQPjzOolx2Q0mzfnT9inmFXLOnpEYP5NXjUL4_IB9l0373iQxk5Fn4S9JfB9MWgbkQwZetthXtq7P3WtCf9rynUFXl4a21yyjBnN_XftaDqrushTbw0Ol0unIFPrW1OaKQLcwG03bTlzJehGuFWAeErr00MV43LlgelZ985b59Q9c1edmVoq9NZ29dd7G0RqKw4BSqZySnaqlVmRXcPmsr3490F_BxUUvqT8Br-DZ015if6FAI857iYtpj5SzXsraREebzx4q1raYttRp-e2Ktu_1Z2Phv45NmdNbQlNYxXWN7sOOyZWAd3tk-WpnLvLlCCw2fxrMphrIK2-TL7DjYNqAcM2Fw1_Ofvee2QQdHw1fN9-3Hh9VVox55RVnUK441Pwn9AZn-NI0KAITvVhNlKauVb0GkoG5BdgBkantKmpMapXWPSxaJD9m2g8f2kS6bWytkQ7H27tfUzYvpPdVEnZUtRbyf3Af-V-FiiYSTUbsP6nK7NvkDxlCF9Xw1AEZrWuZqvb9cpCoSFXhbe7TznZdmIlyZm03r0fbgbU3jAJ2g4ZUbbJVjHqEiWph3iYT32L9WdP6_wAHR9am)
+
+~~~python
+#!/usr/bin/env python
+
+"""Consigne : compléter au niveau des  à "compléter"
+les fonctions :
+    
+    1)  moyenne_table
+    2) enreg_avec_recompense
+    3)  generer_table_recompenses
+    4) decompte_recompenses
+    5) clef_tri_moyenne_decroissant
+    6) clef_tri_alphabetique_croissant_moyenne_decroissant
+    
+    Chaque fonction est accompagné d'un test unitaire => pour tester, 
+    désactiver les commentaires dans le programme principal à partir de la ligne 151
+    Pour les tris il faut aussi compléter le programme principal en lignes 166 et 170
+"""
+
+import csv
+
+#Import / Export d'un tel fichier CSV ver la représentation d'une tble en Python (tableau de dictionnaires)
+def lecture_csv(fichier, delimiteur):
+    """
+    Paramètre : un chemin vers un fichier CSV
+    Valeur renvoyée : un tableau de dictionnaires, extraction de la table contenue dans le fichier
+    """
+    f = open(fichier, mode = 'r', encoding = 'utf8', newline='')
+    reader = csv.DictReader(f, delimiter = delimiteur)  #création de l'objet reader
+    table = [dict(enregistrement) for enregistrement in reader]
+    f.close()
+    return table
+
+def ecriture_csv(table, fichier, delimiteur):
+    """
+    Paramètre : 
+        un chemin vers un fichier CSV
+        une table comme tableau de dictionnaires partageant les mêmes clefs, de valeurs str
+    Valeur renvoyée :
+        None, écrit table dans fichier avec Dictriter du  module CSV 
+    """
+    g = open(fichier, mode = 'w', encoding = 'utf8', newline='')
+    attributs = list(table[0].keys())
+    writer = csv.DictWriter(g, delimiter = delimiteur, fieldnames = attributs) #création de l'objet writer
+    writer.writeheader()   #écriture des attibuts
+    for enregistrement in table:
+        writer.writerow(enregistrement)  #écriture des enregistrements
+    g.close()
+    
+def moyenne_table(table_eleves) :
+    """Paramètre : table_eleves est une représentation de la table extraite de eleves.csv
+        sous forme de tableau de dictionnaires. Attention les attributs 'moyenne' sont de 
+        type 'str'
+    Valeur renvoyée : un flottant représentant la moyenne de tous les élèves
+    de la table arrondie à 2 chiffres après la virgule
+    """
+    somme = 0
+    compteur = 0
+    for enreg in table_eleves:
+        "à compléter"
+        "à compléter"
+    return round(somme / compteur, 2)
+
+def test_moyenne_table():
+    assert moyenne_table(table_eleves) == 11.46
+    print("Test unitaire de moyenne_table réussi")
+    
+def enreg_avec_recompense(enreg):
+    """
+    Paramètre : enreg un dictionnaire de clefs 'prénom', 'nom', 'moyenne' 
+                Attention toutes les clefs ont des valeurs de type str
+    Valeur renvoyée : extension du dictionnaire avec une nouvelle clef
+    'récompense' de valeurs s :
+            'insuffisant' si moyenne < 8
+            'médiocre' si 8 <= moyenne < 10
+            'passable' si 10 <= moyenne < 12
+            'encouragements' si  12 <= moyenne < 14
+            'compliments' si   14 <= moyenne < 16
+            'félicitations' si moyenne > 16
+    """
+    copie = { clef : valeur for clef, valeur in enreg.items() }
+    m = "à compléter"
+    if m < 8:
+        copie['récompense'] = 'insuffisant'
+    elif "à compléter":
+        copie['récompense'] = 'médiocre'
+    elif "à compléter":
+        copie['récompense'] = 'passable'
+    elif "à compléter":
+        copie['récompense'] = 'encouragements'
+    elif "à compléter":
+        copie['récompense'] = 'compliments'
+    else:
+        copie['récompense'] = 'félicitations'
+    return copie
+
+
+def generer_table_recompenses(table_eleves):
+    """Paramètre : table_eleves est une représentation de la table extraite de eleves.csv
+        sous forme de tableau de dictionnaires
+    Valeur renvoyée : une extension de table_eleves avec un nouvel attribut 'récompense'
+    chaque nouvel enregistrement est généré par enreg_avec_recompense
+    """
+    table_recompenses = "à compléter"  
+    return table_recompenses
+
+def test_generer_table_recompenses():
+    """Test unitaires de generer_table_recompenses"""
+    table_recompenses = generer_table_recompenses(table_eleves)
+    assert table_recompenses[0] == {'prénom': 'Zoé', 'nom': 'Collin',
+                                    'moyenne': '19', 'récompense': 'félicitations'}
+    assert table_recompenses[8] == {'prénom': 'Roland', 'nom': 'Joly', 
+                                    'moyenne': '8', 'récompense': 'médiocre'}
+    print("Test unitaires de generer_table_recompenses réussis")
+    
+def decompte_recompenses(table_recompenses):
+    """Paramètre : table_recompenses  est une représentation de la table renvoyée 
+                    par generer_table_recompenses. 
+    Valeur renvoyée : un dictionnaire avec le décompte de chaque récompense
+    """
+    decompte = dict()
+    for enreg in table_recompenses:
+        "à compléter"
+        "à compléter"
+        "à compléter"
+        "à compléter"
+    return decompte
+
+def test_decompte_recompenses():
+    """Test unitaires de decompte_recompenses"""
+    decompte = decompte_recompenses(table_recompenses)
+    assert decompte == {'félicitations': 89,
+                         'médiocre': 77,
+                         'compliments': 95,
+                         'insuffisant': 86,
+                         'passable': 81,
+                         'encouragements': 72}
+    print("Test unitaires de decompte_recompenses réussis")
+    
+    
+     
+def clef_tri_moyenne_decroissant(enreg):
+    """Clef de tri par moyenne décroissante
+    Attention la valeur de l'attribut 'moyenne' de enreg est de type str"""
+    return "à compléter"
+
+def clef_tri_alphabetique_croissant_moyenne_decroissant(enreg):
+    """Clef de tri par moyenne décroissante
+    Attention la valeur de l'attribut 'moyenne' de enreg est de type str"""
+    return "à compléter"
+    
+
+if __name__ == "__main__":
+    table_eleves = lecture_csv('eleves.csv', ',')
+    #Décommenter lorsque moyenne_table est complétée
+    #test_moyenne_table()
+    
+    #Décommenter lorsque generer_table_recompenses est complétée
+    #test_generer_table_recompenses()
+    
+    #Décommenter lorsque decompte_recompenses est complétée
+    #test_decompte_recompenses()
+    
+    #Décommenter e lorsque clef_tri_moyenne_decroissant terminée
+    #table_recompenses = generer_table_recompenses(table_eleves)
+    
+    #Ecrire une instruction qui permet de trier  table_recompenses dans l'ordre décroissant des moyennes
+    #table_tri1 = "à compléter"
+    
+    #Ecrire une instruction qui permet de trier  table_recompenses :
+    #d'abord dans l'ordre alphabétique croissant puis dans l'ordre décroissant des moyennes
+    #table_tri2 = "à compléter"
+~~~
