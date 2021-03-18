@@ -446,15 +446,15 @@ Caractéristiques de la méthode
     [HTTP](https://developer.mozilla.org/fr/docs/Glossaire/HTTP) est
     employé sans chiffrement, il suffit d’intercepter la requête pour
     accéder aux données en clair.
-  - Les données envoyées peuvent modifier l’état du serveur. Les
-    requêtes
+  - Les données envoyées peuvent modifier l’état du serveur. Par
+    exemple, les requêtes
     [POST](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST)
     sont utilisées pour les modifications de bases de données sur le
     serveur (achats, réservation, transfert de fichiers …). Par
-    conséquent si on veut renvoyer les données du formulaire un message
-    en popup avertit que ce nouvel envoi aura pour effet de bord
-    modifier l’état du serveur et par exemple d’enregistrer un nouvel
-    achat s’il s’agit d’un formulaire de commande.
+    conséquent si on veut renvoyer les données d’un formulaire, un
+    message en popup avertit que ce nouvel envoi peut modifier l’état du
+    serveur et par exemple d’enregistrer un nouvel achat s’il s’agit
+    d’un formulaire de commande.
 
 **Exercice 4**
 
