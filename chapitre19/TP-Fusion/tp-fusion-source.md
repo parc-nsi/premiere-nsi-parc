@@ -22,7 +22,7 @@ _Ce TP est largement inspiré du chapitres 18 du manuel NSI de la collection Tor
 :::cours
 Si on dispose de deux __tables de données__ avec la même structure (même nombre d'attributs avec  noms et domaines de valeurs identiques),  il est possible de les fusionner en construisant leur __réunion__  dans une même table en concaténant simplement les lignes / enregistrements.
 
-L'opérateur `+` de concaténation de tableaux permet de réaliser très simplement cette opération en Python. On donne ci-dessous un exemple de réunion de   tables de notes de différentes  classes à un devoir commun de NSI. On observe que si les tables n'ont pas la même structure (attributs différents en noms et en nombre), on peut les concaténer mais on ne peut plus manipuler le résultat comme une   table :
+L'opérateur `+` de concaténation de tableaux permet de réaliser très simplement cette opération en Python. On donne ci-dessous un exemple de réunion de   tables de notes de différentes  classes à un devoir commun de NSI. Dans un second exemple, on observe que si les tables n'ont pas la même structure (attributs différents en noms et en nombre), on peut les concaténer mais on ne peut plus manipuler le résultat comme une  table :
 
 ~~~python
 >>> premiere1 = [{'élève' : 'Donald', 'note' : 18},{'élève' : 'Ada', 'note' : 20}]
@@ -55,16 +55,16 @@ Extraire l'archive, elle contient huit fichiers CSV dont le nom suit le format `
     prenom_10 = lecture_csv('Prénoms2010GF_Rennes.csv', ';', 'ISO8859')
     ~~~
 
-    On peut noter deux paramètres importants dans l'importation d'un fichier CSV : le délimiteur facile à déterminer en éditant le fichier (ici le symbole `;`) et l'encodage (ici `'ISO8859'`) qui peut être obtenu avec la commande `file` sous Linux :
+    On peut noter deux paramètres importants dans l'importation d'un fichier CSV : le délimiteur facile à déterminer en éditant le fichier (ici le symbole `';'`) et l'encodage (ici `'ISO8859'`) qui peut être obtenu avec la commande `file` sous Linux :
 
     ~~~bash
     fjunier@fjunier:~/TP-Fusion/Ressources$ file Prénoms2008GF_Rennes.csv 
     Prénoms2008GF_Rennes.csv: ISO-8859 text, with CRLF line terminators
     ~~~
 
-    Tester un mauvais paramètre d'encodage en remplaçant `'ISO8859'` par `'utf8'`  dans `lecture_csv`. 
+4. Tester un mauvais paramètre d'encodage en remplaçant `'ISO8859'` par `'utf8'`  dans `lecture_csv`. 
 
-4. Compléter le code ci-dessous en respectant les spécifications données en `docstring` ou commentaires. On donne des postconditions pour vérifier les fonctions  `reunion_table` et `prenom_max`.
+5. Compléter le code ci-dessous en respectant les spécifications données en `docstring` ou commentaires. On donne des postconditions pour vérifier les fonctions  `reunion_table` et `prenom_max`.
 
 ~~~python
 def reunion_table(table1, table2):
@@ -102,7 +102,7 @@ prenom_f_10_11 = [enreg for enreg in prenom_10_11
 assert prenom_max(prenom_f_10_11) == (103, ['Louise'])
 ~~~
 
-5.  Exécuter le code ci-dessous. Quel point de vigilance lors de la réunion de tables est ainsi mis en évidence ?
+6.  Exécuter le code ci-dessous. Quel point de vigilance lors de la réunion de tables est ainsi mis en évidence ?
 
 
 ~~~python
@@ -122,7 +122,7 @@ assert sorted(prenom_09, key = clef_prenom_annee) == sorted(prenom_09, key = cle
 prenom_08_09_tri = sorted(prenom_08_09, key = clef_prenom_annee) 
 ~~~
 
-6. Charger les tables des prénoms en 2014 et compléter le code pour sélectionner uniquement les mois de naissance. Que peut-on remarquer ? 
+7. Charger les tables des prénoms en 2014 et compléter le code pour sélectionner uniquement les mois de naissance. Que peut-on remarquer ? 
 
 ~~~python
 prenom_14 = lecture_csv('Prénoms2014GF_ Rennes.csv', ';', 'ISO8859')
@@ -134,7 +134,7 @@ assert mois_14[:4] == ['', '', '', '']
 
 7. Exécuter le code ci-dessous. Quel point de vigilance lors de la réunion de tables est ainsi mis en évidence ?
 
-    Peut-on quand même réunir les tables `prenom_14` et `prenom_15` dans `prenom_14_15` 
+    Peut-on quand même réunir les tables `prenom_14` et `prenom_15` dans `prenom_14_15`, 
     et trier cette dernière  par prénom puis par année ?
 
     ~~~python
@@ -176,7 +176,7 @@ On donne ci-dessous un exemple de jointure de deux tables représentant les memb
 
 :::exercice
 
-On travaille toujours avec le fichier `TP_Fusion_Eleve.py` ouvert dans un IDE Python.On fournit deux tables dans les fichiers `'films.csv'` et '`realisateurs.csv`' dont on donne les premières lignes ci-dessous.
+On travaille toujours avec le fichier `TP_Fusion_Eleve.py` ouvert dans un IDE Python. On fournit deux tables dans les fichiers `'films.csv'` et `'realisateurs.csv'` dont on donne les premières lignes ci-dessous.
 
 **`films.csv`** recense les films détenus en DVD par un cinéphile.
 
@@ -204,7 +204,7 @@ Wilder,Billy,USA
     realisateurs = lecture_csv('realisateurs.csv', ',', 'utf8')
     ~~~
 
-2. On veut fusionner les tables films et réalisateurs  par jointure sur l'attibut 'nom' du réalisateur. Compléter le code ci-dessous en appliquant l'algorithme décrit dans le point de cours 2. On donne une postcondition pour vérifier la correspondance des deux fonctions de fusion.
+2. On veut fusionner les tables films et réalisateurs  par jointure sur l'attribut `'nom'` du réalisateur. Compléter le code ci-dessous en appliquant l'algorithme décrit dans le point de cours 2. On donne une postcondition pour vérifier la correspondance des deux fonctions de fusion.
 
     ~~~python
     def fusion_enregistrements(f, r):
@@ -245,10 +245,9 @@ Wilder,Billy,USA
 5. Éditer avec un éditeur de texte, les fichiers `films_idr.csv` et `realisateurs_id.csv`. 
 On a rajouté dans le fichier des réalisateurs un identifiant unique (le numéro de l'enregistrement) qu'on a reporté dans le fichier des films à la place du nom du réalisateur.  
 
-    Les incohérences repérées dans les questions précédentes sont-elles toujours présentes ? Quels sont les  avantages de l'identifiant unique ?
-
-    
     Compléter le code ci-dessous pour réaliser la fusion par jointure des tables  chargées dans `films_idr` et `realisateurs_id`.
+
+    Les incohérences repérées dans les questions précédentes sont-elles toujours présentes ? Quels sont les  avantages de l'identifiant unique ?
 
     ~~~python
     films_idr = lecture_csv('films_idr.csv', ',', 'utf8')
@@ -291,4 +290,4 @@ La __fusion__ de tables peut se faire de plusieurs façons. Si les __tables__ on
 
 
 
-![[XKCD 1409](https://www.explainxkcd.com/wiki/index.php/1409:_Query)](Images/query.png){width=70%}
+![[XKCD 1409 => SQL en route pour la terminale !](https://www.explainxkcd.com/wiki/index.php/1409:_Query)](Images/query.png){width=70%}

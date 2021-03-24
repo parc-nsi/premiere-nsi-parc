@@ -23,3 +23,12 @@ layout: parc
 * [Correction du TP version pdf](chapitre19/TP-Recherche-Tri/Correction/TP_Recherche_Tris_Correction.pdf)
 * [Correction du TP version python](chapitre19/TP-Recherche-Tri/Correction/TP_Recherche_Tris_Correction.py)
 * [Correction du TP version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre19/TP-Recherche-Tri/Correction/TP_Recherche_Tris_Correction.ipynb)
+
+
+## TP Fusion de tables :
+
+* [TP version pdf](chapitre19/TP-Fusion/tp-fusion-.pdf)
+* [TP version markdown](chapitre19/TP-Fusion/tp-fusion-source.md)
+* [Ressources pour le TP](chapitre19/TP-Fusion/Ressources/materiel_tp_fusion.zip)
+* [Correction du TP version python](chapitre19/TP-Fusion/Ressources/TP_Fusion_Corrigé.py)
+* [Correction du TP version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre19/TP-Fusion/Ressources/TP_Fusion_Corrigé.ipynb)

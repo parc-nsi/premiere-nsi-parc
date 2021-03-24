@@ -804,10 +804,10 @@ enregistrements.
 L'opérateur \passthrough{\lstinline!+!} de concaténation de tableaux
 permet de réaliser très simplement cette opération en Python. On donne
 ci-dessous un exemple de réunion de tables de notes de différentes
-classes à un devoir commun de NSI. On observe que si les tables n'ont
-pas la même structure (attributs différents en noms et en nombre), on
-peut les concaténer mais on ne peut plus manipuler le résultat comme une
-table :
+classes à un devoir commun de NSI. Dans un second exemple, on observe
+que si les tables n'ont pas la même structure (attributs différents en
+noms et en nombre), on peut les concaténer mais on ne peut plus
+manipuler le résultat comme une table :
 
 \begin{lstlisting}[language=Python]
 >>> premiere1 = [{'élève' : 'Donald', 'note' : 18},{'élève' : 'Ada', 'note' : 20}]
@@ -862,7 +862,7 @@ prenom_10 = lecture_csv('Prénoms2010GF_Rennes.csv', ';', 'ISO8859')
 
   On peut noter deux paramètres importants dans l'importation d'un
   fichier CSV : le délimiteur facile à déterminer en éditant le fichier
-  (ici le symbole \passthrough{\lstinline!;!}) et l'encodage (ici
+  (ici le symbole \passthrough{\lstinline!';'!}) et l'encodage (ici
   \passthrough{\lstinline!'ISO8859'!}) qui peut être obtenu avec la
   commande \passthrough{\lstinline!file!} sous Linux :
 
@@ -870,7 +870,7 @@ prenom_10 = lecture_csv('Prénoms2010GF_Rennes.csv', ';', 'ISO8859')
 fjunier@fjunier:~/TP-Fusion/Ressources$ file Prénoms2008GF_Rennes.csv 
 Prénoms2008GF_Rennes.csv: ISO-8859 text, with CRLF line terminators
 \end{lstlisting}
-
+\item
   Tester un mauvais paramètre d'encodage en remplaçant
   \passthrough{\lstinline!'ISO8859'!} par
   \passthrough{\lstinline!'utf8'!} dans
@@ -921,7 +921,7 @@ assert prenom_max(prenom_f_10_11) == (103, ['Louise'])
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
+\setcounter{enumi}{5}
 \tightlist
 \item
   Exécuter le code ci-dessous. Quel point de vigilance lors de la
@@ -947,7 +947,7 @@ prenom_08_09_tri = sorted(prenom_08_09, key = clef_prenom_annee)
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
+\setcounter{enumi}{6}
 \tightlist
 \item
   Charger les tables des prénoms en 2014 et compléter le code pour
@@ -972,7 +972,7 @@ assert mois_14[:4] == ['', '', '', '']
   Peut-on quand même réunir les tables
   \passthrough{\lstinline!prenom\_14!} et
   \passthrough{\lstinline!prenom\_15!} dans
-  \passthrough{\lstinline!prenom\_14\_15!} et trier cette dernière par
+  \passthrough{\lstinline!prenom\_14\_15!}, et trier cette dernière par
   prénom puis par année ?
 
 \begin{lstlisting}[language=Python]
@@ -1029,9 +1029,9 @@ défini en compréhension.
 
 On travaille toujours avec le fichier
 \passthrough{\lstinline!TP\_Fusion\_Eleve.py!} ouvert dans un IDE
-Python.On fournit deux tables dans les fichiers
+Python. On fournit deux tables dans les fichiers
 \passthrough{\lstinline!'films.csv'!} et
-`\passthrough{\lstinline!realisateurs.csv!}' dont on donne les premières
+\passthrough{\lstinline!'realisateurs.csv'!} dont on donne les premières
 lignes ci-dessous.
 
 \textbf{\passthrough{\lstinline!films.csv!}} recense les films détenus
@@ -1071,10 +1071,10 @@ realisateurs = lecture_csv('realisateurs.csv', ',', 'utf8')
 \end{lstlisting}
 \item
   On veut fusionner les tables films et réalisateurs par jointure sur
-  l'attibut `nom' du réalisateur. Compléter le code ci-dessous en
-  appliquant l'algorithme décrit dans le point de cours 2. On donne une
-  postcondition pour vérifier la correspondance des deux fonctions de
-  fusion.
+  l'attribut \passthrough{\lstinline!'nom'!} du réalisateur. Compléter
+  le code ci-dessous en appliquant l'algorithme décrit dans le point de
+  cours 2. On donne une postcondition pour vérifier la correspondance
+  des deux fonctions de fusion.
 
 \begin{lstlisting}[language=Python]
 def fusion_enregistrements(f, r):
@@ -1120,13 +1120,13 @@ print([enreg for enreg in jointure_f_r if enreg['titre'] == 'Autant en emporte l
   l'enregistrement) qu'on a reporté dans le fichier des films à la place
   du nom du réalisateur.
 
-  Les incohérences repérées dans les questions précédentes sont-elles
-  toujours présentes ? Quels sont les avantages de l'identifiant unique
-  ?
-
   Compléter le code ci-dessous pour réaliser la fusion par jointure des
   tables chargées dans \passthrough{\lstinline!films\_idr!} et
   \passthrough{\lstinline!realisateurs\_id!}.
+
+  Les incohérences repérées dans les questions précédentes sont-elles
+  toujours présentes ? Quels sont les avantages de l'identifiant unique
+  ?
 
 \begin{lstlisting}[language=Python]
 films_idr = lecture_csv('films_idr.csv', ',', 'utf8')
@@ -1193,7 +1193,7 @@ tables pour rassembler des informations issues de plusieurs tables.
 \centering
 \includegraphics[width=0.7\textwidth,height=\textheight]{Images/query.png}
 \caption{\href{https://www.explainxkcd.com/wiki/index.php/1409:_Query}{XKCD
-1409}}
+1409 =\textgreater{} SQL en route pour la terminale !}}
 \end{figure}
 
 \end{document}

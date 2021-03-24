@@ -1,15 +1,17 @@
-  - [Crédits](#crédits)
-  - [Réunion de tables](#réunion-de-tables)
-  - [Jointure de tables](#jointure-de-tables)
-  - [Synthèse](#synthèse)
+-   [Crédits](#crédits)
+-   [Réunion de tables](#réunion-de-tables)
+-   [Jointure de tables](#jointure-de-tables)
+-   [Synthèse](#synthèse)
 
-# Crédits
+Crédits
+=======
 
 *Ce TP est largement inspiré du chapitres 18 du manuel NSI de la
 collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon,
 Filliatre, N’Guyen ;*
 
-# Réunion de tables
+Réunion de tables
+=================
 
 **Point de cours 1**
 
@@ -21,9 +23,9 @@ table en concaténant simplement les lignes / enregistrements.
 L’opérateur `+` de concaténation de tableaux permet de réaliser très
 simplement cette opération en Python. On donne ci-dessous un exemple de
 réunion de tables de notes de différentes classes à un devoir commun de
-NSI. On observe que si les tables n’ont pas la même structure (attributs
-différents en noms et en nombre), on peut les concaténer mais on ne peut
-plus manipuler le résultat comme une table :
+NSI. Dans un second exemple, on observe que si les tables n’ont pas la
+même structure (attributs différents en noms et en nombre), on peut les
+concaténer mais on ne peut plus manipuler le résultat comme une table :
 
 ``` python
 >>> premiere1 = [{'élève' : 'Donald', 'note' : 18},{'élève' : 'Ada', 'note' : 20}]
@@ -42,12 +44,13 @@ KeyError: 'élève'
 **Exercice 1**
 
 1.  Télécharger sur la page
-    <https://www.data.gouv.fr/fr/datasets/prenoms-a-rennes/> le fichier
+    <a href="https://www.data.gouv.fr/fr/datasets/prenoms-a-rennes/" class="uri">https://www.data.gouv.fr/fr/datasets/prenoms-a-rennes/</a>
+    le fichier
     [`prenoms_gf_rennes_zip`](https://www.data.gouv.fr/fr/datasets/r/4b1b72d6-7238-4bda-a5de-ebd72cb058a0).
     Extraire l’archive, elle contient huit fichiers CSV dont le nom suit
     le format `Prénoms2008GF_Rennes.csv`, recensant les prénoms donnés
-    aux enfants nés dans la ville de Rennes entre les années 2008 et
-    2015.
+    aux enfants nés dans la ville de Rennes entre les années 2008
+    et 2015.
 
 2.  Ouvrir un fichier au hasard et lister les attributs de ces tables de
     données.
@@ -57,33 +60,31 @@ KeyError: 'élève'
     manipulation de fichiers CSV avec le [module
     `csv`](https://docs.python.org/fr/3/library/csv.html) et des codes à
     compléter.
-    
+
     Charger les tables contenues dans `Prénoms2011GF_Rennes.csv` et
     `Prénoms2010GF_Rennes.csv` avec l’instruction :
-    
+
     ``` python
     prenom_11 = lecture_csv('Prénoms2011GF_Rennes.csv', ';', 'ISO8859')
     prenom_10 = lecture_csv('Prénoms2010GF_Rennes.csv', ';', 'ISO8859')
     ```
-    
+
     On peut noter deux paramètres importants dans l’importation d’un
     fichier CSV : le délimiteur facile à déterminer en éditant le
-    fichier (ici le symbole `;`) et l’encodage (ici `'ISO8859'`) qui
+    fichier (ici le symbole `';'`) et l’encodage (ici `'ISO8859'`) qui
     peut être obtenu avec la commande `file` sous Linux :
-    
+
     ``` bash
     fjunier@fjunier:~/TP-Fusion/Ressources$ file Prénoms2008GF_Rennes.csv 
     Prénoms2008GF_Rennes.csv: ISO-8859 text, with CRLF line terminators
     ```
-    
-    Tester un mauvais paramètre d’encodage en remplaçant `'ISO8859'` par
+
+4.  Tester un mauvais paramètre d’encodage en remplaçant `'ISO8859'` par
     `'utf8'` dans `lecture_csv`.
 
-4.  Compléter le code ci-dessous en respectant les spécifications
+5.  Compléter le code ci-dessous en respectant les spécifications
     données en `docstring` ou commentaires. On donne des postconditions
     pour vérifier les fonctions `reunion_table` et `prenom_max`.
-
-<!-- end list -->
 
 ``` python
 def reunion_table(table1, table2):
@@ -121,10 +122,8 @@ prenom_f_10_11 = [enreg for enreg in prenom_10_11
 assert prenom_max(prenom_f_10_11) == (103, ['Louise'])
 ```
 
-5.  Exécuter le code ci-dessous. Quel point de vigilance lors de la
+1.  Exécuter le code ci-dessous. Quel point de vigilance lors de la
     réunion de tables est ainsi mis en évidence ?
-
-<!-- end list -->
 
 ``` python
 #chargement de deux nouvelles tables
@@ -143,11 +142,9 @@ assert sorted(prenom_09, key = clef_prenom_annee) == sorted(prenom_09, key = cle
 prenom_08_09_tri = sorted(prenom_08_09, key = clef_prenom_annee) 
 ```
 
-6.  Charger les tables des prénoms en 2014 et compléter le code pour
-    sélectionner uniquement les mois de naissance. Que peut-on
-    remarquer ?
-
-<!-- end list -->
+1.  Charger les tables des prénoms en 2014 et compléter le code pour
+    sélectionner uniquement les mois de naissance. Que peut-on remarquer
+    ?
 
 ``` python
 prenom_14 = lecture_csv('Prénoms2014GF_ Rennes.csv', ';', 'ISO8859')
@@ -157,18 +154,19 @@ mois_14 = [..........................    for enreg in prenom_14]
 assert mois_14[:4] == ['', '', '', '']
 ```
 
-7.  Exécuter le code ci-dessous. Quel point de vigilance lors de la
+1.  Exécuter le code ci-dessous. Quel point de vigilance lors de la
     réunion de tables est ainsi mis en évidence ?
-    
+
     Peut-on quand même réunir les tables `prenom_14` et `prenom_15` dans
-    `prenom_14_15` et trier cette dernière par prénom puis par année ?
-    
+    `prenom_14_15`, et trier cette dernière par prénom puis par année ?
+
     ``` python
     prenom_15 = lecture_csv('Prénoms2015GF_Rennes.csv', ';', 'ISO8859')
     mois_15 = [enreg['MNAISS'] for enreg in prenom_15]
     ```
 
-# Jointure de tables
+Jointure de tables
+==================
 
 **Point de cours 2**
 
@@ -210,8 +208,8 @@ défini en compréhension.
 **Exercice 2**
 
 On travaille toujours avec le fichier `TP_Fusion_Eleve.py` ouvert dans
-un IDE Python.On fournit deux tables dans les fichiers `'films.csv'` et
-‘`realisateurs.csv`’ dont on donne les premières lignes ci-dessous.
+un IDE Python. On fournit deux tables dans les fichiers `'films.csv'` et
+`'realisateurs.csv'` dont on donne les premières lignes ci-dessous.
 
 **`films.csv`** recense les films détenus en DVD par un cinéphile.
 
@@ -233,24 +231,24 @@ plusieurs films.
 
 1.  Charger les deux tables dans les variables `films` et
     `realisateurs`.
-    
+
     ``` python
     films = lecture_csv('films.csv', ',', 'utf8')
     realisateurs = lecture_csv('realisateurs.csv', ',', 'utf8')
     ```
 
 2.  On veut fusionner les tables films et réalisateurs par jointure sur
-    l’attibut ‘nom’ du réalisateur. Compléter le code ci-dessous en
+    l’attribut `'nom'` du réalisateur. Compléter le code ci-dessous en
     appliquant l’algorithme décrit dans le point de cours 2. On donne
     une postcondition pour vérifier la correspondance des deux fonctions
     de fusion.
-    
+
     ``` python
     def fusion_enregistrements(f, r):
         return {'titre' : f['titre'], 'année' : f['année'], 
         'nom réalisateur' : r['nom'],'prénom réalisateur' : r['prénom'],
         'pays réalisateur' : r['pays']}
-    
+
     def fusion_tables(films, realisateurs):
         fusion = []
         for f in films:
@@ -258,17 +256,17 @@ plusieurs films.
                 ...................
                 ...................
         return fusion
-    
+
     def fusion_tables_comprehension(films, realisateurs):   
         return ..........................................
-    
+
     jointure_f_r = fusion_tables(films, realisateurs)
     jointure_f_r2 = fusion_tables_comprehension(films, realisateurs)
     ```
 
 3.  Exécuter les instructions ci-dessous. Quelle incohérence peut-on
     observer ? Explication ?
-    
+
     ``` python
     print([enreg for enreg in jointure_f_r if enreg['titre'] == 'CQ'])
     print(len(jointure_f_r), len(films))
@@ -276,7 +274,7 @@ plusieurs films.
 
 4.  Exécuter les instructions ci-dessous. Quelle incohérence peut-on
     observer ? Explication ?
-    
+
     ``` python
     print([enreg for enreg in films if enreg['titre'] == 'Autant en emporte le vent'])
     print([enreg for enreg in jointure_f_r if enreg['titre'] == 'Autant en emporte le vent'])
@@ -286,14 +284,14 @@ plusieurs films.
     `realisateurs_id.csv`. On a rajouté dans le fichier des réalisateurs
     un identifiant unique (le numéro de l’enregistrement) qu’on a
     reporté dans le fichier des films à la place du nom du réalisateur.
-    
+
+    Compléter le code ci-dessous pour réaliser la fusion par jointure
+    des tables chargées dans `films_idr` et `realisateurs_id`.
+
     Les incohérences repérées dans les questions précédentes sont-elles
     toujours présentes ? Quels sont les avantages de l’identifiant
     unique ?
-    
-    Compléter le code ci-dessous pour réaliser la fusion par jointure
-    des tables chargées dans `films_idr` et `realisateurs_id`.
-    
+
     ``` python
     films_idr = lecture_csv('films_idr.csv', ',', 'utf8')
     realisateurs_id = lecture_csv('realisateurs_id.csv', ',', 'utf8')
@@ -305,11 +303,11 @@ plusieurs films.
 **Point de cours 3**
 
 Reprenons l’exemple du point de cours 2 mais avec une personne
-supplémentaire dans la table `membre`, qui n’a pas participé au
-concours mais possède par hasard le même pseudo que `guido van rossum`.
-Si on fusionne les tables `membre` et `concours` par jointure sur
-l’attribut `'pseudo'` on obtient alors un doublon avec un
-enregistrement qui ne correspond à rien :
+supplémentaire dans la table `membre`, qui n’a pas participé au concours
+mais possède par hasard le même pseudo que `guido van rossum`. Si on
+fusionne les tables `membre` et `concours` par jointure sur l’attribut
+`'pseudo'` on obtient alors un doublon avec un enregistrement qui ne
+correspond à rien :
 
 ``` python
 >>> concours = [{'pseudo' : 'knuth69', 'points' : 120}, {'pseudo' : 'guido42', 'points' : 10}]
@@ -331,7 +329,8 @@ dans la table `concours`.
 >>> fusion_tables3(concours, membre)[{'nom': 'knuth', 'prénom': 'donald', 'pseudo': 'knuth69', 'points': 120}, {'nom': 'van rossum', 'prénom': 'guido', 'pseudo': 'guido42', 'points': 10}]
 ```
 
-# Synthèse
+Synthèse
+========
 
 **Synthèse**
 
@@ -340,8 +339,10 @@ La **fusion** de tables peut se faire de plusieurs façons. Si les
 Sinon, si les **tables** ont un ou plusieurs **attributs** communs, on
 peut réaliser une **jointure** qui rapproche les enregistrements qui ont
 les mêmes valeurs sur les attributs partagés. Avec les **bases de
-données**, étudiées en terminale, des opérations de jointure
-permettront de créer de nouvelles tables pour rassembler des
-informations issues de plusieurs tables.
+données**, étudiées en terminale, des opérations de jointure permettront
+de créer de nouvelles tables pour rassembler des informations issues de
+plusieurs tables.
 
-![[XKCD 1409](https://www.explainxkcd.com/wiki/index.php/1409:_Query)](Images/query.png)
+<figure>
+<img src="Images/query.png" style="width:70.0%" alt="XKCD 1409 =&gt; SQL en route pour la terminale !" /><figcaption aria-hidden="true"><a href="https://www.explainxkcd.com/wiki/index.php/1409:_Query">XKCD 1409 =&gt; SQL en route pour la terminale !</a></figcaption>
+</figure>
