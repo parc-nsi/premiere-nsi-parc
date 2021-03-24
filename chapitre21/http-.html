@@ -103,7 +103,7 @@
 </ul></li>
 </ul>
 </nav>
-<h1 class="unnumbered" id="crédits" class="unnumbered">Crédits</h1>
+<h1 class="unnumbered" id="crédits">Crédits</h1>
 <p><em>Ce cours est largement inspiré du chapitre 28 du manuel NSI de la collection Tortue chez Ellipsen auteurs : Ballabonski, Conchon, Filliatre, N’Guyen.</em></p>
 <h1 id="le-web">Le Web</h1>
 <!-- Définition des hyperliens  -->
@@ -111,7 +111,7 @@
 <p>Le Web est une application du réseau Internet qui désigne un réseau de sources d’information reliées par des liens hypertextes. Le Web fonctionne selon <strong>l’architecture client/serveur</strong> : la machine <em>client</em> demande à la machine <em>serveur</em> une ressource identifiée par son adresse <a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>. Aux débuts du Web le client était commandé par un humain mais ce peut être un programme.</p>
 <div class="center">
 <figure>
-<img src="images/client-serveur.png" title="Architecture client serveur" style="width:60.0%" alt="" /><figcaption>Architecture client serveur</figcaption>
+<img src="images/client-serveur.png" title="Architecture client serveur" style="width:60.0%" alt="Architecture client serveur" /><figcaption aria-hidden="true">Architecture client serveur</figcaption>
 </figure>
 </div>
 <p>Les inventeurs du Web, <a href="https://interstices.info/les-debuts-du-web-sous-loeil-du-w3c/">Tim Berners-Lee</a> et <a href="https://fr.wikipedia.org/wiki/Robert_Cailliau">Robert Caillau</a> ont défini au <a href="https://fr.wikipedia.org/wiki/Organisation_europ%C3%A9enne_pour_la_recherche_nucl%C3%A9aire">CERN</a> entre 1989 et 1991 ses trois piliers <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTTP">HTTP</a>, <a href="URL">URL</a> et <a href="HTML">HTML</a>.</p>
@@ -207,20 +207,20 @@ Ouvrir la barre d’outils de développement en appuyant sur la touche de foncti
 <li><p>Remplacer Turing par votre nom et Alan par votre prénom dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> précédente. Que peut-on remarquer ? À votre avis, que se passe-t-il sur le serveur lorsqu’il reçoit la requête HTTP ?</p></li>
 <li><p>Voici le contenu du fichier <code>accueil.php</code> sur le serveur. S’agit-il d’un texte écrit en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> ? Faire une recherche sur la signification de l’acronyme <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>.</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1"></a> &lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
-<span id="cb1-2"><a href="#cb1-2"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3"></a>&lt;head&gt;</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  &lt;title&gt;Accueil &lt;/title&gt;</span>
-<span id="cb1-5"><a href="#cb1-5"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
-<span id="cb1-6"><a href="#cb1-6"></a>&lt;/head&gt; </span>
-<span id="cb1-7"><a href="#cb1-7"></a>&lt;body&gt;</span>
-<span id="cb1-8"><a href="#cb1-8"></a>&lt;h1&gt;</span>
-<span id="cb1-9"><a href="#cb1-9"></a>&lt;<span class="ot">?</span>php  </span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">echo</span> <span class="st">&quot;Bienvenue &quot;</span> . <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;prenom&#39;</span><span class="ot">]</span> . <span class="st">&quot; &quot;</span> .  <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;nom&#39;</span><span class="ot">]</span> <span class="ot">;</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">?&gt;</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>&lt;/h1&gt;</span>
-<span id="cb1-13"><a href="#cb1-13"></a>&lt;/body&gt;</span>
-<span id="cb1-14"><a href="#cb1-14"></a>&lt;/html&gt; </span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> &lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>&lt;head&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  &lt;title&gt;<span class="kw">A</span>ccueil &lt;/title&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span>&gt;    </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>&lt;/head&gt; </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>&lt;body&gt;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>&lt;h1&gt;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>&lt;<span class="ot">?</span>php  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;Bienvenue &quot;</span> . <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;prenom&#39;</span><span class="ot">]</span> . <span class="st">&quot; &quot;</span> .  <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;nom&#39;</span><span class="ot">]</span> <span class="ot">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">?&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>&lt;/h1&gt;</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>&lt;/body&gt;</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>&lt;/html&gt; </span></code></pre></div>
 <ol start="4" type="1">
 <li>Enregistrer l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> testée précédemment dans les marque-pages du navigateur. Ouvrir un autre onglet et cliquer sur le signet enregistré. Retrouve-t-on la même page Web ?</li>
 </ol>
@@ -244,26 +244,26 @@ Ouvrir la barre d’outils de développement en appuyant sur la touche de foncti
 <ul>
 <li>Afficher le code source de la page <code>formulaire-get.html</code> avec le raccourci clavier <code>CRTL + U</code>. On devrait obtenir le texte ci-dessous :</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;fr&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">&lt;title&gt;</span>Formulaire HTML <span class="kw">&lt;/title&gt;</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>    </span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">&lt;/head&gt;</span> </span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="kw">&lt;body&gt;</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a>   <span class="kw">&lt;form</span><span class="ot"> action</span> <span class="ot">=</span> <span class="st">&quot;accueil.php&quot;</span><span class="ot"> method=</span><span class="st">&quot;GET&quot;</span><span class="kw">&gt;</span>        </span>
-<span id="cb2-12"><a href="#cb2-12"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_prenom&quot;</span><span class="kw">&gt;</span>Prénom :<span class="kw">&lt;/label&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_prenom&quot;</span><span class="ot"> name=</span><span class="st">&quot;prenom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Alan&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_nom&quot;</span><span class="kw">&gt;</span>Nom :<span class="kw">&lt;/label&gt;</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_nom&quot;</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Turing&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>      <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> id=</span><span class="st">&quot;bouton&quot;</span><span class="kw">&gt;</span>Envoyer<span class="kw">&lt;/button&gt;</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>   <span class="kw">&lt;/form&gt;</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="kw">&lt;/body&gt;</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="kw">&lt;/html&gt;</span> </span></code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;fr&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;title&gt;</span>Formulaire HTML <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>    </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;form</span><span class="ot"> action</span> <span class="ot">=</span> <span class="st">&quot;accueil.php&quot;</span><span class="ot"> method=</span><span class="st">&quot;GET&quot;</span><span class="kw">&gt;</span>        </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_prenom&quot;</span><span class="kw">&gt;</span>Prénom :<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_prenom&quot;</span><span class="ot"> name=</span><span class="st">&quot;prenom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Alan&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;id_nom&quot;</span><span class="kw">&gt;</span>Nom :<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;id_nom&quot;</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> value=</span><span class="st">&quot;Turing&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> id=</span><span class="st">&quot;bouton&quot;</span><span class="kw">&gt;</span>Envoyer<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;/form&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span> </span></code></pre></div></li>
 <li><p>Ouvrir avec un navigateur Web la page d’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> :</p>
 <p><a href="http://frederic-junier.org/NSI/sandbox/formulaire-post.html">http://frederic-junier.org/NSI/sandbox/formulaire-post.html</a></p>
 <ul>
@@ -278,7 +278,7 @@ Ouvrir la barre d’outils de développement en appuyant sur la touche de foncti
 </ul>
 <p><img src="images/entete-post.png" title="Entête POST" style="width:60.0%" alt="Entête POST" /><br />
 </p>
-<p>Sélectionner l’onglet Paramètres et vérifier qu’on retrouve les paramètres transmis dans l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a>. Quelle différence par rapport à la méthode vue en question 1 ?</p>
+<p>Sélectionner l’onglet Paramètres et vérifier qu’on retrouve les paramètres du formulaire. Quelle différence par rapport à la méthode vue en question 1 ?</p>
 <p><img src="images/parametres2.png" title="Paramètres POST" style="width:40.0%" alt="Paramètres POST" /><br />
 </p>
 <ul>

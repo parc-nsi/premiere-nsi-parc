@@ -245,7 +245,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
 
    ![Entête POST](images/entete-post.png "Entête POST"){width=60%}\
 
-   Sélectionner l'onglet Paramètres et vérifier qu'on retrouve  les paramètres transmis dans l'[URL][URL]. Quelle différence par rapport à la méthode vue en question 1 ? 
+   Sélectionner l'onglet Paramètres et vérifier qu'on retrouve  les paramètres du formulaire. Quelle différence par rapport à la méthode vue en question 1 ? 
 
    ![Paramètres POST](images/parametres2.png "Paramètres POST"){width=40%}\
 
