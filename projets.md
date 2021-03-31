@@ -35,8 +35,8 @@ layout: parc
    
 # Projet final 
 
-* 
-* [Découverte des interfaces graphiques avec Tkinter :
+
+* Découverte des interfaces graphiques avec Tkinter :
   * [énoncé pdf](Projets/ProjetFinal/ExempleMorpion/Mini-Projet-2021V1.pdf)
   * [archive zip](Projets/ProjetFinal/ExempleMorpion.zip)
 * Cadrage du projet final et liste des sujets :
