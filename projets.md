@@ -33,3 +33,12 @@ layout: parc
 * Pour aller plus loin, les plus motivés peuvent traiter la deuxième partie qui était proposée dans la version initiale du sujet avec l'implémentation l'algorithme de compression par dictionnaire LZW.  [ancienne version du sujet](Projets/Compression/PremiereNSI-DM-Compression-2021V1.pdf). Les ressources se trouvent dans le dossier `Projets/Compression` du dépôt.
 
    
+# Projet final 
+
+* 
+* [Découverte des interfaces graphiques avec Tkinter :
+  * [énoncé pdf](Projets/ProjetFinal/ExempleMorpion/Mini-Projet-2021V1.pdf)
+  * [archive zip](Projets/ProjetFinal/ExempleMorpion.zip)
+* Cadrage du projet final et liste des sujets :
+  * [document de cadrage](Projets/ProjetFinal/Cadrage/NSI_Presentation_Projet2021.pdf)
+  * [ressources](Projets/ProjetFinal/Cadrage/ressources.zip)
