@@ -46,3 +46,4 @@ layout: parc
 * [Chapitre 19 : traitement de données en table](chapitre19.md)
 * [Chapitre 20 : correction d'algorithmes](chapitre20.md)
 * [Chapitre 21 : Interaction Homme Machine sur le Web partie 1, protocole HTTP et formulaires](chapitre21.md)
+* [Chapitre 22 : Algorithme de classification des K plus proches voisins](chapitre22.md)
