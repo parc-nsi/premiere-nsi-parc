@@ -38,7 +38,8 @@ layout: parc
 
 * Découverte des interfaces graphiques avec Tkinter :
   * [énoncé pdf](Projets/ProjetFinal/ExempleMorpion/Mini-Projet-2021V1.pdf)
-  * [archive zip](Projets/ProjetFinal/ExempleMorpion.zip)
+  * [archive zip](Projets/ProjetFinal/ExempleMorpion.zip) => extraire puis compléter/exécuter le fichier élève dans `spyder`
+  * [squelette de code sur repl.it](https://replit.com/@fredericjunier/MorpionEleve)  => faites un `fork`.
 * Cadrage du projet final et liste des sujets :
   * [document de cadrage](Projets/ProjetFinal/Cadrage/NSI_Presentation_Projet2021.pdf)
   * [ressources](Projets/ProjetFinal/Cadrage/ressources.zip)
