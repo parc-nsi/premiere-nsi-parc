@@ -30,5 +30,6 @@ layout: parc
 * [TP version pdf](chapitre19/TP-Fusion/tp-fusion-.pdf)
 * [TP version markdown](chapitre19/TP-Fusion/tp-fusion-git.md)
 * [Ressources pour le TP](chapitre19/TP-Fusion/Ressources/materiel_tp_fusion.zip)
+* Code de la version Notebook du TP dans Capytale : **50a5-11200**
 * [Correction du TP version python](chapitre19/TP-Fusion/Ressources/TP_Fusion_Corrigé.py)
 * [Correction du TP version notebook](https://mybinder.org/v2/gh/parc-nsi/premiere-nsi/master?filepath=chapitre19/TP-Fusion/Ressources/TP_Fusion_Corrigé.ipynb)
