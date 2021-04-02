@@ -290,15 +290,21 @@
 
 
 %%Couleur
-\usepackage[table]{xcolor}
-% options : rgb,cmyk,gray,hsb,html pour transformer automatiquement toutes les couleurs du docuement dans le mode choisi
-%\definecolor{mauve}{rgb}{0.7,0,0.43}
-%\color{couleur} bascule
-%\textcolor{couleur}{texte}
-%\pagecolor{couleur}
-%\colorbox{couleur}
-%\fcolorbox{couleur}
+\usepackage[table]{xcolor} 
 
+
+%%%%%%%%%% Nouvelles couleurs
+\definecolor{rouge}{rgb}{1,0,0}
+\definecolor{bleu}{rgb}{0,0,1}
+\definecolor{orange}{rgb}{1.00,0.50,0.00}
+\definecolor{vert}{rgb}{0,0.50,0.00}
+\definecolor{marron}{rgb}{0.49,0.16,0.06}
+\definecolor{mauve}{rgb}{0.42,0.24,0.77}
+\definecolor{rpastel}{rgb}{1.00,0.77,0.77}
+\definecolor{bpastel}{rgb}{0.70,0.86,0.93}
+\definecolor{grisclair}{gray}{0.85}
+\definecolor{gristclair}{gray}{0.95}
+\definecolor{grisfonce}{gray}{0.4}
 
 
 
@@ -612,7 +618,6 @@ ymax/.store in=\ymax, ymax/.default=3, ymax=3,
 %qui permet de définir des options de manière globale.
 
 \lstset{ %
-  frameround = tttt,
   language=Python,                % the language of the code
   basicstyle=\ttfamily,           % the size of the fonts that are used for the code
   %numbers=left,                   % where to put the line-numbers
@@ -620,7 +625,7 @@ ymax/.store in=\ymax, ymax/.default=3, ymax=3,
   %stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
                                   % will be numbered
   %numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{gray!10},      % choose the background color. You must add \usepackage{color}
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
   showspaces=false,               % show spaces adding particular underscores
   showstringspaces=false,         % underline spaces within strings
   showtabs=false,                 % show tabs within strings adding particular underscores
@@ -661,52 +666,19 @@ xleftmargin=1cm,xrightmargin=1cm,
             {À}{{\`{A}}}1
             {Â}{{\^{A}}}1
             {Î}{{\^{I}}}1
+            {€}{{\euro}}1
 }
 
+\lstdefinestyle{rond}{
+  numbers=none,
+  backgroundcolor=\color{gristclair},
+  frameround =tttt
+}
 
 \lstdefinestyle{compil}{
   numbers=none,
   backgroundcolor=\color{gristclair}
 }
-%\lstset{language=Python,basicstyle=\small , frame=single,tabsize=4,showspaces=false,showtabs=false,showstringspaces=false,numbers=left,numberstyle=\tiny , extendedchars=true}
-
-%%%%%Packages pour l'environnement algobox%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-
-%%%%%%%%%Package Algorithmic%%%%%%
-%incompatibilité avec la package algorithm utilisé pour l'environnement algobox
-\begin{comment}
-\usepackage{algorithmic}
-\algsetup{indent=1 em }
-\renewcommand{\algorithmiccomment}{\STATE //}
-\renewcommand{\algorithmicrequire}{\textbf{Entrée(s)}}
-\renewcommand{\algorithmicensure}{\textbf{Sortie(s)}}
-\renewcommand{\algorithmicwhile}{\textbf{tant que}}
-\renewcommand{\algorithmicdo}{\textbf{faire}}
-\renewcommand{\algorithmicendwhile}{\textbf{fin du tant que}}
-\renewcommand{\algorithmicend}{\textbf{fin}}
-\renewcommand{\algorithmicif}{\textbf{si}}
-\renewcommand{\algorithmicendif}{\textbf{fin du si}}
-\renewcommand{\algorithmicelse}{\textbf{sinon}}
-\renewcommand{\algorithmicelsif}{\textbf{fin du sinon}}
-\renewcommand{\algorithmicthen}{\textbf{alors}}
-\renewcommand{\algorithmicfor}{\textbf{pour}}
-\renewcommand{\algorithmicforall}{\textbf{pour tout}}
-\renewcommand{\algorithmicto}{\textbf{\a}}
-\renewcommand{\algorithmicendfor}{\textbf{fin du pour}}
-\renewcommand{\algorithmicdo}{\textbf{faire}}
-\renewcommand{\algorithmicloop}{\textbf{boucler}}
-\renewcommand{\algorithmicendloop}{\textbf{fin de la boucle}}
-\renewcommand{\algorithmicrepeat}{\textbf{r\ep\eter}}
-\renewcommand{\algorithmicuntil}{\textbf{jusqu'\a}}
-\renewcommand{\algorithmicprint}{\textbf{afficher}}
-\end{comment}
-%%%%%%%%PAckage algorithm%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage[french,lined,boxed]{algorithm2e}
-%\SetArgSty{textit}
-%\SetKwInput{Init}{\textbf{Initialisation}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -1294,98 +1266,6 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 \right|}
 
 
-%%%%%%%%%%Cadre Algobox ancien%%%%%%%%%%%%
-\begin{comment}
-\newenvironment{cadrecode}{%
-  \def\FrameCommand{{\color[HTML]{888888}\vrule width 3pt}}%
-  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
-{\endMakeFramed}
-\end{comment}
-
-%%%%%%%%%Environnement pour la derniere version d'Algobox%%%%%%%%%%
-%FONTES POUR ALGO
-\DeclareFontFamily{T1}{lmtt}{} 
-\DeclareFontShape{T1}{lmtt}{m}{n}{<-> ec-lmtl10}{} 
-\DeclareFontShape{T1}{lmtt}{m}{\itdefault}{<-> ec-lmtlo10}{} 
-\DeclareFontShape{T1}{lmtt}{\bfdefault}{n}{<-> ec-lmtk10}{} 
-\DeclareFontShape{T1}{lmtt}{\bfdefault}{\itdefault}{<-> ec-lmtko10}{}
-\renewcommand{\ttdefault}{lmtt}
-
-%%MISE EN PAGE
-%\usepackage{geometry}
-%\renewcommand{\headrulewidth}{0.5pt}
-%\renewcommand{\footrulewidth}{0pt}
-%\geometry{tmargin=2.5cm,lmargin=2cm,rmargin=2cm,bmargin=2.5cm}
-%\fancyhead[C]{\small \url{triangulaire-pour-correc.alg} - \texttt{Page \thepage} }
-%\fancyfoot[C]{\small \texttt{Généré par Algobox le 23.08.2017} }
-%\pagestyle{fancy}
-%ALGO
-\definecolor{fctcolor}{RGB}{154,77,0}
-\definecolor{fond}{RGB}{136,136,136}
-\definecolor{sicolor}{RGB}{128,0,128}
-\definecolor{tantquecolor}{RGB}{221,111,6}
-\definecolor{pourcolor}{RGB}{187,136,0}
-\definecolor{bloccolor}{RGB}{128,0,0}
-\newenvironment{cadrecode}{%
-\def\FrameCommand{{\color{fond}\vrule width 5pt}\fcolorbox{fond}{white}}%
-\MakeFramed {\hsize \linewidth \advance\hsize-\width \FrameRestore}\begin{footnotesize}}%
-{\end{footnotesize}\endMakeFramed}
-\makeatletter
-\def\therule{\makebox[\algorithmicindent][l]{\hspace*{.5em}\color{fond} \vrule width 1pt height .75\baselineskip depth .25\baselineskip}}%
-\newtoks\therules
-\therules={}
-\def\appendto#1#2{\expandafter#1\expandafter{\the#1#2}}
-\def\gobblefirst#1{#1\expandafter\expandafter\expandafter{\expandafter\@gobble\the#1}}%
-\def\Ligne{\State\unskip\the\therules}% 
-\def\pushindent{\appendto\therules\therule}%
-\def\popindent{\gobblefirst\therules}%
-\def\printindent{\unskip\the\therules}%
-\def\printandpush{\printindent\pushindent}%
-\def\popandprint{\popindent\printindent}%
-\def\Variables{\Ligne \textcolor{bloccolor}{\textbf{VARIABLES}}}
-\def\Fonctions{\Ligne \textcolor{fctcolor}{\textbf{FONCTIONS\_UTILISEES}}}
-\def\Si#1{\Ligne \textcolor{sicolor}{\textbf{SI}} #1 \textcolor{sicolor}{\textbf{ALORS}}}%
-\def\Sinon{\Ligne \textcolor{sicolor}{\textbf{SINON}}}%
-\def\Pour#1#2#3{\Ligne \textcolor{pourcolor}{\textbf{POUR}} #1 \textcolor{pourcolor}{\textbf{ALLANT\_DE}} #2 \textcolor{pourcolor}{\textbf{A}} #3}%
-\def\Tantque#1{\Ligne \textcolor{tantquecolor}{\textbf{TANT\_QUE}} #1 \textcolor{tantquecolor}{\textbf{FAIRE}}}%
-\def\Fct#1{\Ligne \textcolor{fctcolor}{\textbf{FONCTION}} \textbf{#1}}%
-\algdef{SE}[WHILE]{DebutTantQue}{FinTantQue}
-  {\pushindent \printindent  \textcolor{tantquecolor}{\textbf{DEBUT\_TANT\_QUE}}}
-  {\printindent \popindent  \textcolor{tantquecolor}{\textbf{FIN\_TANT\_QUE}}}%
-\algdef{SE}[FOR]{DebutPour}{FinPour}
-  {\pushindent \printindent \textcolor{pourcolor}{\textbf{DEBUT\_POUR}}}
-  {\printindent \popindent  \textcolor{pourcolor}{\textbf{FIN\_POUR}}}%
-\algdef{SE}[IF]{DebutSi}{FinSi}%
-  {\pushindent \printindent \textcolor{sicolor}{\textbf{DEBUT\_SI}}}
-  {\printindent \popindent \textcolor{sicolor}{\textbf{FIN\_SI}}}%
-\algdef{SE}[IF]{DebutSinon}{FinSinon}
-  {\pushindent \printindent \textcolor{sicolor}{\textbf{DEBUT\_SINON}}}
-  {\printindent \popindent \textcolor{sicolor}{\textbf{FIN\_SINON}}}%
-\algdef{SE}[PROCEDURE]{DebutAlgo}{FinAlgo}
-   {\printandpush \textcolor{bloccolor}{\textbf{DEBUT\_ALGORITHME}}}%
-   {\popandprint \textcolor{bloccolor}{\textbf{FIN\_ALGORITHME}}}%
-\algdef{SE}[PROCEDURE]{DebutFonction}{FinFonction}
-   {\printandpush \textcolor{fctcolor}{\textbf{DEBUT\_FONCTION}}}%
-   {\popandprint \textcolor{fctcolor}{\textbf{FIN\_FONCTION}}}%   
-\makeatother
-\newenvironment{algobox}%
-{%
-\begin{ttfamily}
-\begin{algorithmic}[1]
-\begin{cadrecode}
-\labelwidth 1.5em
-\leftmargin\labelwidth \addtolength{\leftmargin}{\labelsep}
-}
-{%
-\end{cadrecode}
-\end{algorithmic}
-\end{ttfamily}
-}
-
-%%%%%%Cadre Maxima%%%%%%%
-\definecolor{labelcolor}{RGB}{100,0,0}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \everymath{\displaystyle} % permet d'avoir tout les math en displaystyle
 
@@ -1573,7 +1453,7 @@ fenetre.mainloop()
 
 \begin{enumerate}
 	\item Quelles sont les interactions possibles avec la fenêtre ?
-	\item Modifier les dimensions de la fenêtre.
+	\item Modifier le positionnement de la fenêtre.
 	\item Rechercher dans la documentation \url{http://tkinter.fdex.eu/doc/intro.html} le rôle de l'instruction \texttt{fenetre.mainloop()}.
 \end{enumerate}
 \end{exerciceB2}
@@ -1674,7 +1554,9 @@ identifiant_vers_case[iden - 1] = (2, 1)
 \begin{exerciceB2}{}
 
 Dans le fichier \texttt{MorpionEleve2021.py}, compléter   le code de la fonction \verb+interface_jeu+ (à partir de la ligne  195),  pour tracer la grille complète et remplir les listes de correspondance
-\lstinline+case_vers_identifiant+ et \lstinline+identifiant_vers_case+ avec les identifiants de tous les items graphiques créés.
+\lstinline+case_vers_identifiant+ et 
+
+\lstinline+identifiant_vers_case+ avec les identifiants de tous les items graphiques créés.
 
 \begin{minipage}{0.6\linewidth}
 
@@ -1753,6 +1635,7 @@ def chronometre():
 	La fonction \lstinline+chronometre+  pouvant s'appeler elle-même, c'est une \textbf{fonction récursive}. 
 	\end{itemize}
 	
+\newpage
 
 \begin{exerciceB2}{}
  
@@ -1840,7 +1723,9 @@ def quitter():
 	
 D'après le code de la fonction \lstinline+nouveau_tour+, quel joueur sélectionne avec le clavier ?
 
-\item Rechercher dans le fichier \lstinline+MorpionEleve2021.py+, le message affiché par l'appel de fonction \lstinline+message_fin(vainqueur)+.
+\item Rechercher dans le fichier \lstinline+MorpionEleve2021.py+, le message affiché par l'appel de fonction
+
+ \lstinline+message_fin(vainqueur)+.
 \item Décrire la séquence d'instruction réalisée par l'appel \lstinline+nouveau_tour()+.
 
 \end{enumerate}
@@ -2030,6 +1915,8 @@ Quelle instruction permet de déplacer le rectangle représentant le curseur dan
 
 \end{exerciceB2}
 
+
+\newpage
 
 \section{Partie modèle du jeu et finalisation}
 
