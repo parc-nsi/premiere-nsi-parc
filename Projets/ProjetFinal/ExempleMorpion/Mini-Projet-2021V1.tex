@@ -1595,7 +1595,7 @@ def initialiser_plateau(plateau, case_vers_identifiant):
 
 \subsubsection{Widgets Label}
 
-Le code ci-dessous permet de créer un widget \lstinline+horloge+ contenant un texte figé pour l'instant. Ce widget est défini dans la fonction \lstinline+initialiser_plateau+ de \texttt{MorpionEleve2021.py} à partir de la ligne 205.
+Le code ci-dessous permet de créer un widget \lstinline+horloge+ contenant un texte figé pour l'instant. Ce widget est défini dans la fonction \lstinline+interface_jeu+ de \texttt{MorpionEleve2021.py} à partir de la ligne 205.
 
 \begin{lstlisting}[numbers=left]
 textHorloge = StringVar()  
@@ -1646,7 +1646,7 @@ def chronometre():
 
 
 
-Dans la fonction \lstinline+initialiser_plateau+ de \texttt{MorpionEleve2021.py}, compléter à partir de la ligne 213, le code permettant de créer et positionner dans la fenêtre racine un nouveau  widget de type \lstinline+Label+ :
+Dans la fonction \lstinline+interface_jeu+ de \texttt{MorpionEleve2021.py}, compléter à partir de la ligne 213, le code permettant de créer et positionner dans la fenêtre racine un nouveau  widget de type \lstinline+Label+ :
 \begin{itemize}[label=\textbullet]
 \item Il doit être stocké dans la variable  \lstinline+etiquetteJoueur+ et placé en \lstinline+row = 2+ et \lstinline+column = 0+.
 \item Le texte doit être lié à la variable de contrôle \lstinline+textJoueur = StringVar()+.
@@ -1668,7 +1668,7 @@ bouton_quitter = Button(fenetre, text="Quitter", bg = COULEUR_BOUTON, relief = '
 bouton_quitter.grid(row = 2, column = 2, padx = 5, pady = 5)
 \end{lstlisting}
 
-Détaillons le code ci-dessus qui met en place un bouton qui ferme proprement la fenêtre si on clique dessus. Ce widget est défini dans la fonction \lstinline+initialiser_plateau+ de \texttt{MorpionEleve2021.py} à partir de la ligne 223.
+Détaillons le code ci-dessus qui met en place un bouton qui ferme proprement la fenêtre si on clique dessus. Ce widget est défini dans la fonction \lstinline+interface_jeu+ de \texttt{MorpionEleve2021.py} à partir de la ligne 223.
 
 
 \begin{itemize}[label=\ding{43}]
@@ -1697,7 +1697,7 @@ def quitter():
 
 \begin{enumerate}
 
-\item Dans la fonction \lstinline+initialiser_plateau+ de \texttt{MorpionEleve2021.py}, compléter à partir de la ligne 213, lc code permettant de créer et positionner dans la fenêtre racine un nouveau  widget de type \lstinline+Button+ :
+\item Dans la fonction \lstinline+interface_jeu+ de \texttt{MorpionEleve2021.py}, compléter à partir de la ligne 213, lc code permettant de créer et positionner dans la fenêtre racine un nouveau  widget de type \lstinline+Button+ :
 
 \begin{itemize}[label=\textbullet]
 \item Il doit être stocké dans la variable  \lstinline+bouton_jouer+ et commander l'appel de la fonction \\ \lstinline+nouvelle_partie+ qui elle même lance la fonction \lstinline+nouveau_tour+.
