@@ -1,6 +1,6 @@
 ---
 layout: parc
-title:  Séances
+title:  Capytale
 ---
 
 # Activités disponibles sur Capytale
