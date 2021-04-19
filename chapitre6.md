@@ -2,7 +2,7 @@
 title:  Chapitre 6  tableaux
 layout: parc
 ---
-
+ 
 
 
 [Retour à la page d'accueil](https://parc-nsi.github.io/premiere-nsi/index.html)
