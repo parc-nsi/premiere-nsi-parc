@@ -2,10 +2,10 @@
 layout: parc
 title:  QCM
 ---
-   
+     
  
 Les QCM sont disponibles sur les sites [Genumsi](https://genumsi.inria.fr)  ou [Doctools](http://https://doctools.dgpad.net) maintenus par des professeurs de l'éducation nationale en dehors de toute mission institutionnelle. 
-
+     
 
 ## QCM Genumsi 
 
